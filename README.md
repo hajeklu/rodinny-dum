@@ -8,7 +8,7 @@ Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrác
 - `povoleni/` — složka pro stavební povolení; zatím je v ní pouze informace, že podklad nebyl k dispozici
 - `.github/workflows/pages.yml` — nasazení GitHub Pages po pushi do větve `main`
 
-Dřevěný obklad z průjezdu přechází na boční fasády a končí tam pravidelnými schody (spodní prkna nejdelší). Rohový sloupek je obložený dřevem jen do výšky HS portálu. Lesklá glazura odráží oblohu po jednotlivých řadách tašek místo plošného pruhu. Okna mají antracitové šambrány, dům nízký tmavý sokl končící pod HS portálem a střecha tenké oplechování štítu a hřebene. Přepínače ve „Variantách fasády“ zapínají antracitovou linii patra ve štítech, svislé lamely na rohovém sloupku a ocelovou pergolu nad terasou. Model zůstává vizualizační studií, ne prováděcí dokumentací ani podkladem pro statické posouzení.
+Dřevěný obklad z průjezdu přechází na boční fasády a končí tam pravidelnými schody (spodní prkna nejdelší). Rohový sloupek je obložený dřevem jen do výšky HS portálu. Lesklá glazura odráží oblohu po jednotlivých řadách tašek místo plošného pruhu. Dům má nízký tmavý sokl končící pod HS portálem a střecha tenké oplechování štítu a hřebene. Přepínače ve „Variantách fasády“ zapínají antracitové šambrány a špalety oken, antracitovou linii patra ve štítech, svislé lamely na rohovém sloupku a ocelovou pergolu nad terasou. Model zůstává vizualizační studií, ne prováděcí dokumentací ani podkladem pro statické posouzení.
 
 ## Zprovoznění Pages
 V repozitáři otevři **Settings → Pages** a vyber **GitHub Actions** jako zdroj. Workflow potom nasadí stránku po pushi do `main`.
