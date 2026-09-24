@@ -8,7 +8,7 @@ Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrác
 - `povoleni/` — složka pro stavební povolení; zatím je v ní pouze informace, že podklad nebyl k dispozici
 - `.github/workflows/pages.yml` — nasazení GitHub Pages po pushi do větve `main`
 
-V modelu jsou vodorovná prkna zakončená pravidelnými schody a srovnaný obklad rohového sloupku. Lesklá glazura má zvýrazněný odlesk. Model zůstává vizualizační studií, ne prováděcí dokumentací ani podkladem pro statické posouzení.
+Dřevěný obklad z průjezdu přechází na boční fasády a končí tam schody (spodní prkna nejdelší). Rohový sloupek je čistý dřevěný hranol s tmavými spárami. Lesklá glazura odráží oblohu po jednotlivých řadách tašek místo plošného pruhu. Model zůstává vizualizační studií, ne prováděcí dokumentací ani podkladem pro statické posouzení.
 
 ## Zprovoznění Pages
 V repozitáři otevři **Settings → Pages** a vyber **GitHub Actions** jako zdroj. Workflow potom nasadí stránku po pushi do `main`.
