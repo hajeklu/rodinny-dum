@@ -55,7 +55,7 @@ svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#25372e}
       <section><h2>Souřadný systém</h2><p class="muted">A / přední štít je počátek x=0. x roste zleva doprava. Osa s=0 je přední líc štítu a roste k technické části. Rozměry hlavního úseku jsou 8 000 × 12 000 mm, otevřený průjezd 4 200 mm a technická část 8 000 × 2 400 mm.</p></section>
     </aside>
   </div>
-  <div class="note"><strong>Rozvržení rohu:</strong> předpoklad orientace ZB je 500 mm podél předního štítu k FIX a 300 mm podél boční stěny k HS. ZB vyplňuje roh x=7 500–8 000, s=0–300. K ostění FIX x=7 400 zbývá 100 mm; první kus boční stěny začíná v s=300 a HS jamb je v s=600.</div>
+  <div class="note"><strong>Rozvržení rohu:</strong> předpoklad orientace ZB je 500 mm podél předního štítu k FIX a 300 mm podél boční stěny k HS. ZB vyplňuje roh x=7 500–8 000, s=0–300. FIX se zachovanou šířkou 2 000 mm je posunutý o 100 mm k rohu na x=5 500–7 500 a navazuje přímo na ZB; mezi otvorem a ZB není dořez. První kus boční stěny začíná v s=300 a HS jamb je v s=600.</div>
   <div class="note danger"><strong>Podklad:</strong> rozměry a poloha otvorů jsou převzaté z pracovní vizualizace v09. Je to přesný rozpis podle tohoto modelu, nikoli vytyčení zaměřené desky; délky krajních kusů upravte podle skutečných hran a potvrzeného půdorysu stavby.</div>
   <section class="card section-card">
     <div class="card-head"><h2>Otvory a návaznost na první řadu</h2><p>Pod FIX, HS a dveřmi D1/D2 je v půdorysu mezera. U parapetových oken O1–O8 první řada pokračuje, protože jejich parapet je výše.</p></div>
@@ -67,7 +67,7 @@ svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#25372e}
 'use strict';
 const NS='http://www.w3.org/2000/svg';
 const runs=[
- {id:'A',name:'Přední štít u FIX',axis:'x',start:0,pieces:[['cut',505],...Array(8).fill(['full',590]),['cut',175],['void',2000,'FIX'],['cut',100],['zb',500]],orientation:'h',y:1940},
+ {id:'A',name:'Přední štít u FIX',axis:'x',start:0,pieces:[['cut',505],...Array(8).fill(['full',590]),['cut',275],['void',2000,'FIX'],['zb',500]],orientation:'h',y:1940},
  {id:'B',name:'Pravá boční stěna / HS',axis:'s',start:300,pieces:[['cut',300],['void',3000,'HS'],['cut',430],...Array(13).fill(['full',590])],orientation:'v',x:925,y:800},
  {id:'C',name:'Levá boční stěna',axis:'s',start:300,pieces:[['cut',390],...Array(18).fill(['full',590]),['cut',390]],orientation:'v',x:155,y:800},
  {id:'D',name:'Zadní hrana hlavní části',axis:'x',start:0,pieces:[['cut',250],...Array(5).fill(['full',590]),['void',1800,'D1'],['cut',300],...Array(4).fill(['full',590]),['cut',340]],orientation:'h',y:770},
@@ -77,7 +77,7 @@ const runs=[
  {id:'H',name:'Pravý bok technické části',axis:'s',start:16500,pieces:[['cut',310],['full',590],['full',590],['cut',310]],orientation:'v',x:925,y:140}
 ];
 const openings=[
- {code:'FIX',wall:'A',axis:'x',start:5400,end:7400,size:'2 000 × 2 400',level:'spodní hrana +240'},
+ {code:'FIX',wall:'A',axis:'x',start:5500,end:7500,size:'2 000 × 2 400',level:'spodní hrana +240'},
  {code:'HS',wall:'B',axis:'s',start:600,end:3600,size:'3 000 × 2 400',level:'spodní hrana +240'},
  {code:'O1',wall:'B',axis:'s',start:8000,end:9000,size:'1 000 × 700',level:'parapet +1 740'},
  {code:'O2',wall:'C',axis:'s',start:1400,end:4400,size:'3 000 × 700',level:'parapet +1 140'},
@@ -165,7 +165,7 @@ function renderCorner(){
  const scale=.12,cornerX=680,frontY=520,t=300*scale;
  addLabel(svg,470,38,'PŮDORYSNÝ DETAIL · ZVĚTŠENO', 'house-label');
  addLabel(svg,470,58,'přední štít dole · x = 8 000 / s = 0 · měřítko zvětšené', 'muted-text');
- // Last blocks before FIX, the clear FIX opening, the 100 mm return and ZB.
+ // Last blocks before FIX, the clear FIX opening and ZB.
  const fixGap=layout.A.find(p=>p.type==='void');
  const frontBefore=pieces.A.filter(p=>p.to<=fixGap.from).slice(-2);
  const frontAfter=pieces.A.filter(p=>p.from>=fixGap.to);
@@ -183,12 +183,10 @@ function renderCorner(){
  for(const p of sideBefore)sideRect(p);
  drawGap(svg,hsGap,{x:sideX,y:sideY-(hsGap.to-300)*scale,w:t,h:hsGap.length*scale});
  for(const p of sideAfter)sideRect(p);
- // FIX jamb to the ZB start is 100 mm; B01 spans the 300 mm return to HS.
- const fixJamb=cornerX-(8000-7400)*scale,zbStart=cornerX-(8000-7500)*scale;
- drawDim(svg,fixJamb,frontY+t+29,zbStart,frontY+t+29,'100 mm');
+ // FIX opening ends directly at the ZB start; B01 spans the 300 mm return to HS.
  drawDim(svg,sideX-28,sideY-300*scale,sideX-28,sideY,'300 mm',true);
  el('rect',{x:75,y:600,width:840,height:75,rx:8,fill:'#f2f6f2',stroke:'#d6e0d8'},svg);
- addLabel(svg,495,625,'FIX x=5 400–7 400 je mezera; mezi jambem a ZB je 100mm dořez A11.', 'small');
+ addLabel(svg,495,625,'FIX x=5 500–7 500 je mezera; ostění navazuje přímo na ZB v x=7 500, bez dořezu.', 'small');
  addLabel(svg,495,648,'B01 má 300 mm od s=300 k HS jambě s=600; HS s=600–3 600 je bez tvárnic.', 'small');
 }
 function renderSchedule(){
