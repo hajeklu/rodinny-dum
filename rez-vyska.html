@@ -37,16 +37,16 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
 <main>
   <div class="eyebrow">Kóty v milimetrech · výšková nula = horní líc hrubé základové desky</div>
   <p class="lead">Výškové schéma skládá dohromady dohodnutých 2 900 mm ke spodku stropních panelů, čtyři řady nadezdívky, skladbu podlahy a HS portál vysoký 2 400 mm. Výkres je pracovní geometrický podklad; nosné uložení musí potvrdit statik.</p>
-  <div class="chips"><span class="chip">SOLBET bílá 590 × 240 × 300 mm</span><span class="chip">4 řady · výška tvárnice 240 mm</span><span class="chip">stropní panely 250 mm</span><span class="chip">věnec 300 mm · předpoklad</span></div>
+  <div class="chips"><span class="chip">SOLBET bílá 590 × 240 × 300 mm</span><span class="chip">4 řady · výška tvárnice 240 mm</span><span class="chip">stropní panely 250 mm</span><span class="chip">ŽB věnec pod panely 240 mm*</span><span class="chip">věnec nad nadezdívkou 300 mm*</span></div>
 
-  <div class="notice"><strong>Základní kóta:</strong> +2 900 mm je od horního líce hrubé desky ke spodnímu líci panelů. Pro navazující kóty používám podlahu +240 mm podle aktuálního 3D modelu. Starší skladba podlahy P1 vychází přibližně na 250 mm; před založením otvorů a výrobou HS je potřeba potvrdit finální skladbu a srovnat tento rozdíl 10 mm.</div>
+  <div class="notice"><strong>Základní kóta:</strong> +2 900 mm je od horního líce hrubé desky ke spodnímu líci panelů. Pro navazující kóty používám podlahu +240 mm podle aktuálního 3D modelu. Starší skladba podlahy P1 vychází přibližně na 250 mm; před založením otvorů a výrobou HS je potřeba potvrdit finální skladbu a srovnat tento rozdíl 10 mm. Pod panely je doplněný ŽB věnec; výška 240 mm je pracovní předpoklad.</div>
 
   <section class="card">
     <h2>Řez A–A přes štít · strop a nadezdívka</h2>
-    <p class="desc">Svislé kóty jsou vztaženy k hornímu líci hrubé desky. Řez je schematický; vodorovné a svislé měřítko je stejné pro hlavní obrys.</p>
+    <p class="desc">Výškové úrovně jsou vztaženy k hornímu líci hrubé desky. Kóty jsou vedené pouze šipkami; přesné úrovně jsou také v tabulce.</p>
     <svg viewBox="0 0 1080 730" role="img" aria-labelledby="secTitle secDesc">
       <title id="secTitle">Výškový řez domu od základové desky po hřeben</title>
-      <desc id="secDesc">Hrubá deska v úrovni nula, podlaha plus 240, spodní líc panelů plus 2900, panely 250, čtyři řady zdiva do plus 4118, věnec výšky 300 do plus 4418 a sedlová střecha se sklonem 45 stupňů.</desc>
+      <desc id="secDesc">Hrubá deska v úrovni nula, podlaha plus 240, železobetonový věnec pod panely od plus 2660 do plus 2900, panely 250, čtyři řady zdiva do plus 4118, horní věnec do plus 4418 a sedlová střecha se sklonem 45 stupňů.</desc>
       <defs>
         <pattern id="conc" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#d9ddd9"/><circle cx="3" cy="4" r="1" fill="#aeb6b0"/><circle cx="9" cy="9" r="1" fill="#aeb6b0"/></pattern>
         <pattern id="block" width="58" height="14" patternUnits="userSpaceOnUse"><rect width="58" height="14" fill="#f7f8f5"/><path d="M0 13.5H58" stroke="#c9d1ca" stroke-width="1"/></pattern>
@@ -54,18 +54,21 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       </defs>
       <rect width="1080" height="730" rx="10" fill="#fbfcfa"/>
       <!-- Roof geometry: 45 degrees from wall plate to ridge. -->
-      <path d="M302 406 L534 174 L766 406" fill="none" stroke="#394640" stroke-width="13" stroke-linejoin="round"/>
-      <path d="M302 393 L534 161 L766 393" fill="none" stroke="#75847a" stroke-width="3" stroke-linejoin="round"/>
-      <rect x="294" y="397" width="17" height="9" rx="1" fill="#c49759" stroke="#8c693c"/>
-      <rect x="757" y="397" width="17" height="9" rx="1" fill="#c49759" stroke="#8c693c"/>
-      <rect x="525" y="161" width="18" height="26" fill="#77827b" stroke="#435148"/>
-      <text x="534" y="145" text-anchor="middle" class="label">hřeben: 2× U200*</text>
-      <text x="413" y="300" text-anchor="middle" class="label" transform="rotate(-45 413 300)">krokve 120 × 200*</text>
-      <text x="655" y="300" text-anchor="middle" class="label" transform="rotate(45 655 300)">sklon 45°*</text>
+      <path d="M311 406 L534 183 L757 406" fill="none" stroke="#394640" stroke-width="13" stroke-linejoin="round"/>
+      <path d="M311 393 L534 170 L757 393" fill="none" stroke="#75847a" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="306.4" y="398" width="9.2" height="8" rx="1" fill="#c49759" stroke="#76552f" stroke-width="1.4"/>
+      <rect x="752.4" y="398" width="9.2" height="8" rx="1" fill="#c49759" stroke="#76552f" stroke-width="1.4"/>
+      <rect x="526.5" y="174" width="15" height="18" fill="#77827b" stroke="#435148"/>
+      <text x="534" y="158" text-anchor="middle" class="label">hřeben: 2× U200*</text>
+      <text x="422" y="301" text-anchor="middle" class="label" transform="rotate(-45 422 301)">krokve 120 × 200*</text>
+      <text x="646" y="301" text-anchor="middle" class="label" transform="rotate(45 646 301)">sklon 45°*</text>
       <text x="270" y="390" text-anchor="end" class="tiny">pozednice 160 × 140*</text>
       <!-- Lower storey wall and the slab / floor build-up. -->
-      <rect x="302" y="494" width="18" height="168" fill="url(#block)" stroke="#aeb8b0"/>
-      <rect x="748" y="494" width="18" height="168" fill="url(#block)" stroke="#aeb8b0"/>
+      <rect x="302" y="508" width="18" height="154" fill="url(#block)" stroke="#aeb8b0"/>
+      <rect x="302" y="494" width="18" height="14" fill="url(#conc)" stroke="#7e8981"/>
+      <rect x="748" y="508" width="18" height="154" fill="url(#block)" stroke="#aeb8b0"/>
+      <rect x="748" y="494" width="18" height="14" fill="url(#conc)" stroke="#7e8981"/>
+      <text x="347" y="504" class="tiny">ŽB věnec pod panely · 240*</text>
       <rect x="282" y="662" width="504" height="13" fill="url(#conc)" stroke="#9ca69e"/>
       <rect x="320" y="648" width="428" height="14" fill="#eadfca" stroke="#c9b991"/>
       <text x="534" y="658" text-anchor="middle" class="tiny">pracovní skladba podlahy 240</text>
@@ -83,24 +86,20 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <rect x="302" y="406" width="18" height="17" fill="url(#conc)" stroke="#7e8981"/>
       <rect x="748" y="406" width="18" height="17" fill="url(#conc)" stroke="#7e8981"/>
       <text x="347" y="417" class="tiny">věnec ŽB 300*</text>
-      <!-- Datum levels -->
-      <path d="M166 662H282 M166 648H282 M166 494H302 M166 479H302 M166 423H302 M166 406H302" fill="none" stroke="#839187" stroke-width="1" stroke-dasharray="5 4"/>
-      <text x="778" y="667" class="tiny">±0,000 · horní líc desky</text>
-      <text x="778" y="652" class="tiny">+0,240 · čistá podlaha</text>
-      <text x="778" y="498" class="tiny">+2,900 · spodní líc panelů</text>
-      <text x="778" y="483" class="tiny">+3,150 · horní líc panelů</text>
-      <text x="778" y="427" class="tiny">+4,118 · vršek 4 řad</text>
-      <text x="778" y="410" class="tiny">+4,418 · vršek věnce</text>
+      <!-- Dimensions use arrow lines only; level values are listed below. -->
       <!-- Principal vertical dimension +2.900 -->
       <line x1="194" y1="662" x2="194" y2="494" stroke="#496957" stroke-width="1.7" marker-start="url(#arr)" marker-end="url(#arr)"/>
       <text x="180" y="578" text-anchor="middle" class="dimtxt" transform="rotate(-90 180 578)">2 900</text>
       <text x="194" y="686" text-anchor="middle" class="tiny">od hrubé desky</text>
-      <!-- Course + ring beam dimensions -->
-      <line x1="950" y1="479" x2="950" y2="423" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
-      <text x="964" y="454" class="tiny">≈968</text>
-      <line x1="1012" y1="423" x2="1012" y2="406" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
-      <text x="1026" y="418" class="tiny">300</text>
-      <line x1="534" y1="174" x2="534" y2="662" stroke="#a7b1a9" stroke-width="1" stroke-dasharray="3 6"/>
+      <!-- Course, panel, and ring-beam dimensions: double-arrow style. -->
+      <line x1="920" y1="479" x2="920" y2="423" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+      <text x="934" y="454" class="tiny">≈968</text>
+      <line x1="920" y1="494" x2="920" y2="479" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+      <text x="934" y="490" class="tiny">250</text>
+      <line x1="978" y1="508" x2="978" y2="494" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+      <text x="992" y="504" class="tiny">240*</text>
+      <line x1="978" y1="423" x2="978" y2="406" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+      <text x="992" y="418" class="tiny">300*</text>
       <text x="534" y="710" text-anchor="middle" class="tiny">řez příčným směrem přes dům · obrys střechy je pracovní</text>
       <style>
         .label{font:600 13px system-ui,sans-serif;fill:#34483d}.tiny{font:11px system-ui,sans-serif;fill:#5d6c62}.dimtxt{font:700 13px system-ui,sans-serif;fill:#375744}
@@ -112,8 +111,8 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
         <tr><td>Horní líc hrubé desky</td><td>±0</td><td>datum</td></tr>
         <tr><td>Hotová podlaha 1. NP – pracovní skladba</td><td>+240</td><td>240</td></tr>
         <tr><td>Vršek rámu HS</td><td>+2 640</td><td>+240 + 2 400</td></tr>
-        <tr><td>Spodek IPE nad HS</td><td>+2 660</td><td>pracovní mezera nad rámem 20</td></tr>
-        <tr><td>Spodek stropních panelů / vršek IPE</td><td>+2 900</td><td>světlá výška od desky</td></tr>
+        <tr><td>Spodek věnce pod panely / IPE nad HS</td><td>+2 660</td><td>věnec 240* · mezera nad rámem 20</td></tr>
+        <tr><td>Vršek věnce / vršek IPE / spodek panelů</td><td>+2 900</td><td>základní výšková kóta</td></tr>
         <tr><td>Vrchní líc panelů</td><td>+3 150</td><td>panel 250</td></tr>
         <tr><td>Vršek 4 řad SOLBET</td><td>+4 118</td><td>4 × 240 + tenké spáry ≈ 968</td></tr>
         <tr><td>Vršek předpokládaného věnce</td><td>+4 418</td><td>věnec 300</td></tr>
@@ -126,7 +125,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <p class="desc">Portál navazuje na kout se ztraceným bedněním. V půdorysu začíná hrubý otvor HS hned za ZB; mezi nimi není vložená tvárnice.</p>
     <svg viewBox="0 0 1080 540" role="img" aria-labelledby="hsTitle hsDesc">
       <title id="hsTitle">Výškový detail HS portálu s dvojicí IPE 240</title>
-      <desc id="hsDesc">Rám HS vysoký 2400 mm od hotové podlahy. Nad ním je pracovní mezera 20 mm a dvojice IPE 240, jejíž horní líc navazuje na spodek stropních panelů v úrovni plus 2900.</desc>
+      <desc id="hsDesc">Železobetonový věnec pod stropními panely je nad plnými částmi zdiva. Nad rámem HS je pracovní mezera 20 mm a dvojice IPE 240, jejíž horní líc navazuje na spodek panelů v úrovni plus 2900.</desc>
       <defs>
         <pattern id="masonry" width="24" height="20" patternUnits="userSpaceOnUse"><rect width="24" height="20" fill="#e8ece7"/><path d="M0 19.5H24M12 0V19" stroke="#c8d1c9" stroke-width="1"/></pattern>
         <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#496957"/></marker>
@@ -135,6 +134,8 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <!-- Masonry piers either side of the portal; dimensions of bearing are not specified. -->
       <rect x="140" y="280" width="266" height="200" fill="url(#masonry)" stroke="#aab5ac"/>
       <rect x="634" y="280" width="306" height="200" fill="url(#masonry)" stroke="#aab5ac"/>
+      <rect x="140" y="262" width="266" height="18" fill="#d9ddd9" stroke="#7e8981"/>
+      <rect x="634" y="262" width="306" height="18" fill="#d9ddd9" stroke="#7e8981"/>
       <!-- Rough opening width 3,040; frame width 3,000, 20 mm each jamb. -->
       <rect x="406" y="282" width="228" height="180" fill="#f4fafb" stroke="#558394" stroke-width="1.6" stroke-dasharray="7 5"/>
       <rect x="407.5" y="282" width="225" height="180" fill="#dcebef" stroke="#26718a" stroke-width="3"/>
@@ -150,8 +151,9 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <rect x="140" y="243" width="800" height="19" fill="#aeb8b3" stroke="#65736a"/>
       <path d="M220 244v17 M300 244v17 M700 244v17 M780 244v17 M860 244v17" stroke="#829087"/>
       <text x="800" y="235" class="tiny">panel 250 · spodní líc +2,900</text>
+      <text x="800" y="217" class="tiny">ŽB věnec pod panely · 240*</text>
       <!-- Finished floor and slab datum. -->
-      <rect x="140" y="462" width="800" height="18" fill="url(#conc)" stroke="#9ca69e"/>
+      <rect x="140" y="462" width="800" height="18" fill="#d9ddd9" stroke="#9ca69e"/>
       <line x1="116" y1="462" x2="946" y2="462" stroke="#8b6f46" stroke-width="2"/>
       <text x="948" y="466" class="tiny">+0,240 · hotová podlaha</text>
       <line x1="116" y1="480" x2="946" y2="480" stroke="#89968d" stroke-dasharray="5 4"/>
@@ -179,7 +181,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <h2>Rozhodující kóty a pracovní předpoklady</h2>
     <div class="grid">
       <div class="fact"><b>Portál a překlad</b><span>Rám HS: 3 000 × 2 400 mm. Hrubá šířka otvoru 3 040 mm při vůli 20 mm na každém ostění. Horní mezera 20 mm je pracovní předpoklad. Práh a spodní detail podle výrobce portálu.</span></div>
-      <div class="fact"><b>IPE a panely</b><span>Dvojice 2×IPE240 je uvažována nad HS. Vrch IPE vychází do úrovně spodku panelů +2 900. Délku nosníků, uložení, propojení dvojice a návaznost na panely musí potvrdit statik.</span></div>
+      <div class="fact"><b>IPE a panely</b><span>ŽB věnec pod panely je zakreslený pracovně jako 240 mm. Nad HS otvor je v tomto schématu přemostěn 2×IPE240 ve stejné výškové zóně; vrch vychází na +2 900. Délku, uložení a propojení oceli s věncem a panely potvrdit se statikem.</span></div>
       <div class="fact"><b>Nadezdívka</b><span>Čtyři řady SOLBET bílé 590 × 240 × 300 mm (délka × výška × tloušťka). Čistá výška 960 mm; s tenkými spárami je ve stávajícím modelu uvažováno přibližně 968 mm.</span></div>
       <div class="fact"><b>Střecha a věnec</b><span>Věnec 300 mm, sklon 45°, krokve 120 × 200 mm, pozednice 160 × 140 mm a hřeben 2×U200 jsou pracovní hodnoty z podkladů. Výška střechy a detaily styku ověřit podle statiky a skladby střechy.</span></div>
     </div>
@@ -189,7 +191,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     </div>
   </section>
 
-  <footer>Pracovní výškový řez podle aktuální 3D studie a dohodnutých kót. Není to statický výpočet ani prováděcí detail. Rozměry rámu, prahu, ztužení, uložení IPE a panelů potvrdit s dodavatelem a statikem.</footer>
+  <footer>Pracovní výškový řez podle aktuální 3D studie a dohodnutých kót. Rozměr věnce pod panely je předpoklad 240 mm. Výšku věnce, uložení IPE a panelů, práh a ztužení potvrdit se statikem a dodavatelem.</footer>
 </main>
 </body>
 </html>
