@@ -120,7 +120,7 @@ function renderPlan(){
  const x0=155,y0=110,s=.1,t=30,yAtS=v=>y0+(18600-v)*s;
  // EPS envelope and orientation.
  el('rect',{x:x0-20,y:y0-20,width:840,height:1900,class:'dash'},svg);
- addLabel(svg,x0+400,94,'F · ZADNÍ TECHNICKÁ  /  s = 18 600', 'house-label');
+ addLabel(svg,x0+400,165,'F · ZADNÍ TECHNICKÁ  /  s = 18 600', 'small');
  addLabel(svg,x0+400,yAtS(6000),'HLAVNÍ ČÁST  ·  8 000 × 12 000', 'house-label');
  addLabel(svg,x0+400,yAtS(14100),'OTEVŘENÝ PRŮJEZD  ·  8 000 × 4 200', 'house-label');
  addLabel(svg,x0+400,yAtS(17400),'TECHNICKÁ ČÁST  ·  8 000 × 2 400', 'house-label');
@@ -149,7 +149,7 @@ function renderPlan(){
  const hmarks=[['O4',1000,2000,758],['O5',6000,7000,758],['O6',1000,2000,148],['O7',3500,4500,148],['O8',6000,7000,148]];
  for(const [code,a,b,y] of hmarks){let xa=x0+a*s,xb=x0+b*s;el('line',{x1:xa,y1:y,x2:xb,y2:y,class:'opening-mark'},svg);el('line',{x1:xa,y1:y-6,x2:xa,y2:y+6,class:'opening-mark'},svg);el('line',{x1:xb,y1:y-6,x2:xb,y2:y+6,class:'opening-mark'},svg);addLabel(svg,(xa+xb)/2,y-8,code+' '+fmt(b-a), 'opening-text')}
  const vmarks=[['O1',8000,9000,977],['O2',1400,4400,143],['O3',6200,9200,143]];
- for(const [code,a,b,x] of vmarks){let ya=yAtS(a),yb=yAtS(b),lo=Math.min(ya,yb),hi=Math.max(ya,yb);el('line',{x1:x,y1:lo,x2:x,y2:hi,class:'opening-mark'},svg);el('line',{x1:x-6,y1:lo,x2:x+6,y2:lo,class:'opening-mark'},svg);el('line',{x1:x-6,y1:hi,x2:x+6,y2:hi,class:'opening-mark'},svg);let tx=x+(x<200?-11:11),cy=(lo+hi)/2;el('text',{x:tx,y:cy,class:'opening-text','text-anchor':'middle',transform:'rotate(-90 '+tx+' '+cy+')'},svg,code+' '+fmt(b-a))}
+ for(const [code,a,b,x] of vmarks){let ya=yAtS(a),yb=yAtS(b),lo=Math.min(ya,yb),hi=Math.max(ya,yb);el('line',{x1:x,y1:lo,x2:x,y2:hi,class:'opening-mark'},svg);el('line',{x1:x-6,y1:lo,x2:x+6,y2:lo,class:'opening-mark'},svg);el('line',{x1:x-6,y1:hi,x2:x+6,y2:hi,class:'opening-mark'},svg);let tx=x-14,cy=(lo+hi)/2;el('text',{x:tx,y:cy,class:'opening-text','text-anchor':'middle',transform:'rotate(-90 '+tx+' '+cy+')'},svg,code+' '+fmt(b-a))}
  // Overall and chained dimensions.
  drawDim(svg,x0,70,x0+800,70,'8 000 ZDIVO');
  drawDim(svg,x0-20,48,x0+820,48,'8 400 VČ. EPS');
