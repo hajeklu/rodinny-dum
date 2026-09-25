@@ -56,7 +56,7 @@ svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#25372e}
     </aside>
   </div>
   <div class="note"><strong>Montážní vůle:</strong> v seznamu jsou uvedené rozměry rámů. Pracovní předpoklad je 20 mm vůle po každém ostění a 20 mm nahoře i dole, takže hrubý otvor ve zdivu je o 40 mm širší a vyšší. Přesný rozměr a práh potvrdit podle dodaného rámu a montážního systému.</div>
-  <div class="note"><strong>Rozvržení rohu:</strong> ZB 500 mm podél předního štítu a 300 mm podél boční stěny vyplňuje x=7 500–8 000, s=0–300. Rám FIX 2 000 mm: x=5 480–7 480; hrubý otvor x=5 460–7 500 navazuje přímo na ZB. Rám HS je kvůli celé tvárnici B01 posunutý z v09 o 310 mm: s=910–3 910; hrubý otvor s=890–3 930. Rám D2 se posouvá o 200 mm doleva, aby u něj i u rohu vyšly celé kusy: x=5 800–6 800; hrubý otvor x=5 780–6 820. B01 je celý kus 590 mm od s=300 do s=890.</div>
+  <div class="note"><strong>Rozvržení rohu:</strong> ZB 500 mm podél předního štítu a 300 mm podél boční stěny vyplňuje x=7 500–8 000, s=0–300. Rám FIX 2 000 mm: x=5 480–7 480; hrubý otvor x=5 460–7 500 navazuje přímo na ZB. HS navazuje hned za ZB bez vložené tvárnice: hrubý otvor s=300–3 340, rám s=320–3 320. Rám D2 zůstává posunutý o 200 mm doleva: x=5 800–6 800; hrubý otvor x=5 780–6 820.</div>
   <div class="note danger"><strong>Podklad:</strong> rozměry a poloha otvorů jsou převzaté z pracovní vizualizace v09. Je to přesný rozpis podle tohoto modelu, nikoli vytyčení zaměřené desky; délky krajních kusů upravte podle skutečných hran a potvrzeného půdorysu stavby.</div>
   <section class="card section-card">
     <div class="card-head"><h2>Otvory a návaznost na první řadu</h2><p>Pod FIX, HS a dveřmi D1/D2 je v půdorysu mezera. U parapetových oken O1–O8 první řada pokračuje, protože jejich parapet je výše.</p></div>
@@ -70,7 +70,7 @@ const NS='http://www.w3.org/2000/svg';
 const installClearance=20;
 const runs=[
  {id:'A',name:'Přední štít u FIX',axis:'x',start:0,pieces:[...Array(4).fill(['full',590]),['cut',150],...Array(5).fill(['full',590]),['void',2040,'FIX'],['zb',500]],orientation:'h',y:1940},
- {id:'B',name:'Pravá boční stěna / HS',axis:'s',start:300,pieces:[['full',590],['void',3040,'HS'],...Array(6).fill(['full',590]),['cut',100],...Array(7).fill(['full',590])],orientation:'v',x:925,y:800},
+ {id:'B',name:'Pravá boční stěna / HS',axis:'s',start:300,pieces:[['void',3040,'HS'],...Array(7).fill(['full',590]),['cut',400],...Array(7).fill(['full',590])],orientation:'v',x:925,y:800},
  {id:'C',name:'Levá boční stěna',axis:'s',start:300,pieces:[...Array(9).fill(['full',590]),['cut',190],...Array(10).fill(['full',590])],orientation:'v',x:155,y:800},
  {id:'D',name:'Zadní hrana hlavní části',axis:'x',start:0,pieces:[...Array(2).fill(['full',590]),['cut',230],...Array(3).fill(['full',590]),['void',1840,'D1'],...Array(2).fill(['full',590]),['cut',30],...Array(3).fill(['full',590])],orientation:'h',y:770},
  {id:'E',name:'Technická část k průjezdu',axis:'x',start:0,pieces:[...Array(4).fill(['full',590]),['cut',470],...Array(5).fill(['full',590]),['void',1040,'D2'],['full',590],['full',590]],orientation:'h',y:320},
@@ -80,7 +80,7 @@ const runs=[
 ];
 const openings=[
  {code:'FIX',wall:'A',axis:'x',start:5480,end:7480,size:'2 000 × 2 400',level:'spodní hrana +240'},
- {code:'HS',wall:'B',axis:'s',start:910,end:3910,size:'3 000 × 2 400',level:'spodní hrana +240'},
+ {code:'HS',wall:'B',axis:'s',start:320,end:3320,size:'3 000 × 2 400',level:'spodní hrana +240'},
  {code:'O1',wall:'B',axis:'s',start:8000,end:9000,size:'1 000 × 700',level:'parapet +1 740'},
  {code:'O2',wall:'C',axis:'s',start:1400,end:4400,size:'3 000 × 700',level:'parapet +1 140'},
  {code:'O3',wall:'C',axis:'s',start:6200,end:9200,size:'3 000 × 700',level:'parapet +1 140'},
@@ -176,7 +176,7 @@ function renderCorner(){
  for(const p of frontBefore)frontRect(p);
  drawGap(svg,fixGap,{x:xFor(fixGap.from),y:frontY,w:fixGap.length*scale,h:t});
  for(const p of frontAfter)frontRect(p);
- // The side wall starts at s=300. B01 is the full block up to the HS rough opening.
+ // The HS rough opening begins at s=300, directly after the ZB return.
  const hsGap=layout.B.find(p=>p.type==='void');
  const sideX=cornerX-t,sideY=frontY;
  const sideBefore=pieces.B.filter(p=>p.to<=hsGap.from);
@@ -185,11 +185,13 @@ function renderCorner(){
  for(const p of sideBefore)sideRect(p);
  drawGap(svg,hsGap,{x:sideX,y:sideY-(hsGap.to-300)*scale,w:t,h:hsGap.length*scale});
  for(const p of sideAfter)sideRect(p);
- // The full B01 block spans 590 mm from the ZB return to the HS rough opening.
- drawDim(svg,sideX-28,sideY-590*scale,sideX-28,sideY,'590 mm',true);
- el('rect',{x:75,y:600,width:840,height:75,rx:8,fill:'#f2f6f2',stroke:'#d6e0d8'},svg);
- addLabel(svg,495,625,'Rám FIX x=5 480–7 480; hrubý otvor x=5 460–7 500 končí u ZB, bez dořezu.', 'small');
- addLabel(svg,495,648,'B01 je celá tvárnice 590 mm; rám HS s=910–3 910, hrubý otvor s=890–3 930.', 'small');
+ // Frame cross-lines sit 20 mm inside each end of the rough opening.
+ const frameStart=hsGap.from+installClearance,frameEnd=hsGap.to-installClearance;
+ for(const at of [frameStart,frameEnd]){const y=sideY-(at-300)*scale;el('line',{x1:sideX-4,y1:y,x2:cornerX+4,y2:y,stroke:'#125f75','stroke-width':3},svg);}
+ el('rect',{x:75,y:596,width:840,height:82,rx:8,fill:'#f2f6f2',stroke:'#d6e0d8'},svg);
+ addLabel(svg,495,619,'FIX rám x=5 480–7 480; hrubý otvor x=5 460–7 500 navazuje na ZB.', 'small');
+ addLabel(svg,495,642,'HS rám s=320–3 320; hrubý otvor s=300–3 340 (3 040 mm).', 'small');
+ addLabel(svg,495,665,'Vůle 20 mm na obou stranách rámu; mezi ZB a HS není žádná tvárnice.', 'small');
 }
 function renderSchedule(){
  const host=document.getElementById('wallList');host.replaceChildren();
