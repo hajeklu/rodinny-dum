@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schéma kanalizace · Dům Hájek</title>
+<meta name="description" content="Pracovní schéma kanalizace domu Hájek podle ZTI: realizované vývody K1–K3 pod deskou a varianty odkanalizování koupelny u ložnice v podkroví.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{display:inline-block;text-decoration:none;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:9px 12px;font-size:13px}.nav a:hover,.nav a[aria-current=page]{background:#264b39;border-color:#264b39;color:#fff}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:900px;margin:8px 0 18px;color:#526359}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}.chip{border-radius:999px;background:#e4ece5;color:#375443;padding:6px 11px;font-size:12px}.chip.ok{background:#dcefe0;color:#245a35}.chip.warn{background:#f7ead0;color:#6a4b12}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;font-size:12px;color:#526359}.legend span{display:inline-flex;align-items:center;gap:7px}.legend i{display:inline-block;width:26px;height:0;border-top:4px solid}.legend i.thin{border-top-width:2px}.legend i.dash{border-top-style:dashed}.legend b{display:inline-block;width:13px;height:13px;border-radius:50%;border:2px solid}
+.levels{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}.levels th,.levels td{text-align:left;padding:9px 10px;border-bottom:1px solid #e4e9e5;vertical-align:top}.levels th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em}.levels td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c28a2c;background:#fbf6ea}.note.risk strong{color:#5d4313}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+@media(max-width:760px){.notes,.verdict{grid-template-columns:1fr}.levels{font-size:12px}.levels th,.levels td{padding:8px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}.nav{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+.switch{display:inline-flex;gap:6px;flex-wrap:wrap;margin:4px 0 14px}.switch button{font:inherit;font-size:13px;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:8px 12px;cursor:pointer}.switch button[aria-pressed=true]{background:#264b39;border-color:#264b39;color:#fff}
+.vdesc{font-size:13px;color:#4f5f55;background:#f3f6f2;border-radius:9px;padding:11px 14px;margin:0 0 14px}.vdesc strong{color:#2b4236}
+.isolist{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 22px;font-size:13px;color:#4f5f55}.isolist li{display:flex;gap:9px;align-items:flex-start}.isolist b{flex:0 0 22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}.isolist strong{color:#2b4236}
+@media(max-width:760px){.isolist{grid-template-columns:1fr}}
+.cmp td.good{color:#245a35}.cmp td.bad{color:#8a4a12}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Schéma kanalizace</h1><p>Koupelna u ložnice v podkroví · napojení na vývody realizované pod deskou podle ZTI</p></div>
+  <nav class="nav" aria-label="Stránky projektu">
+    <a href="./index.html">3D vizualizace</a>
+    <a href="./zalozeni-zdiva.html">První řada zdiva</a>
+    <a href="./rez-vyska.html">Výškový řez</a>
+    <a href="./kanalizace.html" aria-current="page">Kanalizace</a>
+  </nav>
+</header>
+<main>
+  <div class="eyebrow">Podklad: ZTI ZT02–ZT04 (DSP 02/2024) a skutečné provedení desky · polohy odečtené z výkresu 1:100 · přesnost asi ±10 cm</div>
+  <p class="lead">Pod deskou jsou tři vývody podle ZTI. <strong>K1</strong> a <strong>K2</strong> jsou u stěny na straně koupelny 1.05 a WC 1.04, <strong>K3</strong> u kuchyňského dřezu pod oknem kuchyně. <strong>Skutečně je pod deskou položené KG 160 a vývody jsou DN 110</strong>, takže na K3 se smí napojit i WC. Koupelna u ložnice (bývalá šatna 2.03) je nad jídelnou na straně kuchyně a nejbližší vývod pro ni je K3.</p>
+
+  <div class="notice"><strong>Stav stavby: zatím jen základová deska.</strong> Teď je nejlepší chvíle rozhodnout trasu. Šachtu v pilíři, potrubí ve skladbě podlahy i prostup stropními panely jde naplánovat předem. Pozor na dimenze: po proudu se potrubí nesmí zužovat, takže za KG 160 pod deskou nesmí jít ven do ČOV menší trubka.</div>
+
+  <div class="verdict">
+    <div class="fact"><b>A · stoupačka v pilíři → K3 (doporučuji)</b><span>Stoupačka S2 sejde v plné zdi mezi okny kuchyně a obýváku, vedle okna, ne před ním. Pak vede asi 2 m v podlaze pod kuchyňskou linkou do vývodu K3 (DN 110 na KG 160). Je to nejkratší, nejlevnější a bez podhledu.</span></div>
+    <div class="fact"><b>B · podhled do K2</b><span>Odpad z koupelny u ložnice jde přes strop do podhledu nad chodbou 1.06 a koupelnou 1.05, kde se napojí na stoupačku K2. V kuchyni a jídelně nic nebude, ale podhled bude asi 21–28 cm a trasa asi 7 m.</span></div>
+    <div class="fact"><b>C · čerpadlo (záloha)</b><span>Přečerpávací jednotka u WC a tlakové potrubí DN 32 v podlaze podkroví. Bez stavebních zásahů, ale je hlučnější, závisí na elektřině a vyžaduje údržbu. Na sprchu je potřeba další čerpadlo.</span></div>
+  </div>
+
+  <section class="card">
+    <h2>Prostorové schéma odpadů</h2>
+    <p class="desc">Pohled od předního štítu: vlevo strana kuchyně (příjezd), vpravo strana koupelny 1.05 a terasy. Dům pokračuje šikmo dozadu k průjezdu. Podkroví je pro přehlednost odsunuté nahoru. Čísla odpovídají seznamu pod obrázkem a tlačítka přepínají variantu ve všech výkresech na stránce.</p>
+    <div class="switch" role="group" aria-label="Varianta"><button type="button" data-v="A" aria-pressed="true">Varianta A · pilíř + K3</button><button type="button" data-v="B" aria-pressed="false">Varianta B · podhled do K2</button></div>
+    <svg id="iso" viewBox="0 0 1000 900" role="img" aria-label="Axonometrické schéma kanalizace v domě"></svg>
+    <ol class="isolist" id="isoList"></ol>
+    <div class="legend"><span><i style="border-color:#2f8a4c"></i>pod deskou KG 160 a vývody (hotovo)</span><span><i style="border-color:#a8461f"></i>DN 110 (WC, stoupačky)</span><span><i class="thin" style="border-color:#e08a2e"></i>DN 50 (umyvadla, sprchy, pračka, dřez)</span><span><i style="border-color:#5f7ea0"></i>stoupačky K1, K2 odvětrané nad střechu</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Přízemí · realizované vývody a trasy variant</h2>
+    <p class="desc">Pohled shora, nahoře strana kuchyně, vlevo přední štít. Zelená je ležatá kanalizace pod deskou podle ZT02, která už je hotová.</p>
+    <div class="switch" role="group" aria-label="Varianta"><button type="button" data-v="A" aria-pressed="true">Varianta A · pilíř + K3</button><button type="button" data-v="B" aria-pressed="false">Varianta B · podhled do K2</button></div>
+    <p class="vdesc" id="vdesc"></p>
+    <svg id="ground" viewBox="0 0 1000 540" role="img" aria-label="Půdorys přízemí s vývody K1 až K3 a trasou zvolené varianty"></svg>
+    <div class="legend"><span><i style="border-color:#2f8a4c"></i>ležatá pod deskou – hotová (ZT02)</span><span><i style="border-color:#a8461f"></i>nové potrubí DN 110</span><span><i class="thin" style="border-color:#e08a2e"></i>DN 50</span><span><b style="border-color:#2f8a4c;background:#dcefe0"></b>vývod / stoupačka podle ZTI</span><span><b style="border-color:#a8461f;background:#f3d3c4"></b>nový prostup stropem</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Podkroví · varianta „Zadní část neobytná“</h2>
+    <p class="desc">Koupelna pro děti je na místě původní koupelny 2.05, takže se napojí přímo do K2 jako v ZTI a další stoupačka nebude potřeba. K1 a K2 vedou dál nahoru k odvětrání nad střechu, v dětském pokoji 2 proto bude pod šikminou nízká šachta.</p>
+    <svg id="attic" viewBox="0 0 1000 540" role="img" aria-label="Půdorys podkroví s rozvody odpadů zvolené varianty"></svg>
+    <div class="legend"><span><i style="border-color:#a8461f"></i>DN 100/110 (WC)</span><span><i class="thin" style="border-color:#e08a2e"></i>DN 50 (umyvadlo, sprcha, pračka, výlevka)</span><span><i class="dash thin" style="border-color:#7d8b83"></i>výška 2,3 m pod šikminou</span></div>
+  </section>
+
+  <section class="card">
+    <h2 id="secTitle">Řez trasou</h2>
+    <p class="desc" id="secDesc"></p>
+    <svg id="section" viewBox="0 0 1000 560" role="img" aria-label="Řez trasou odpadu zvolené varianty"></svg>
+  </section>
+
+  <section class="card" id="popis">
+    <h2>Popis tras k předání</h2>
+    <p class="desc">Text pro instalatéra nebo projektanta ZTI. Stranou příjezdu je myšlená podélná stěna u kuchyně, stranou terasy podélná stěna u koupelny 1.05 a HS. Vzdálenosti jsou od vnitřních líců zdí a mají přesnost asi ±10 cm.</p>
+    <div class="notes">
+      <div class="note"><strong>Výchozí stav – hotovo pod deskou (ZTI ZT02)</strong><br>
+      K1 DN 110 (WC 1.04): asi 0,3 m od líce stěny u vstupu, u stěny na straně terasy.<br>
+      K2 DN 110 (koupelna 1.05): o 1,1 m dál, asi 1,4 m od líce stěny u vstupu, u stejné stěny.<br>
+      K3 DN 110 (kuchyňský dřez): 3,85 m od líce stěny u vstupu, u stěny na straně příjezdu, pod oknem kuchyně.<br>
+      Pod deskou vede KG 160 z K3 napříč domem, pak podél stěny u terasy do K2 a K1, do lomové šachty LŠ a odtud do ČOV. Stoupačky K1 a K2 jsou odvětrané nad střechu.</div>
+      <div class="note"><strong>Společné pro obě varianty</strong><br>
+      Koupelna pro děti (podkroví nad koupelnou 1.05) se napojí do K2 jako v ZTI. WC je na předstěně pod šikminou a odpad DN 110 vede asi 2,2 m v předstěně přes příčku do K2. Umyvadlo a sprcha mají DN 50. Stoupačky K1 a K2 vedou dětským pokojem 2 v nízké šachtě pod šikminou.<br>
+      Všechna připojovací potrubí v podkroví vedou v předstěnách nad podlahou, protože podlaha má jen 150 mm. Sprchy mají stěnovou vpust.<br>
+      K1, K2, vývody a venkovní DN 150 zůstávají podle ZTI. Prostup panelem (jádrový vrt Ø ~130 mm) musí odsouhlasit výrobce panelů a statik před výrobou panelů.</div>
+      <div class="note"><strong>Varianta 1 (A) · stoupačka S2 v pilíři, napojení na K3</strong><br>
+      <em>Podmínka:</em> splněno, pod deskou je KG 160 a vývod K3 je DN 110.<br>
+      <em>Podkroví:</em> WC je na předstěně pod šikminou u stěny na straně příjezdu. S2 DN 110 je v předstěně asi 0,45 m od líce obvodové stěny a 5,85 m od líce stěny u vstupu. WC (DN 110) má asi 0,8 m, umyvadlo (DN 50) asi 0,6 m, sprcha přes stěnovou vpust (DN 50) asi 2,3 m v předstěně zadní stěny. Pračka a výlevka z prádelny (DN 50) vedou přes příčku.<br>
+      <em>Strop:</em> vrt asi 0,45 m od líce obvodové stěny, tedy u uložení panelu.<br>
+      <em>Přízemí:</em> S2 vede svisle v pilíři mezi oknem obýváku a kuchyně, asi 0,2 m od ostění kuchyňského okna, v šachtě nebo vysoké skříni na konci linky. U podlahy přejde do DN 110 ve skladbě podlahy (240 mm) pod linkou, asi 2 m se spádem 2 %, do K3. Na vývod K3 se nasadí odbočka, do které se napojí i dřez a myčka.<br>
+      <em>Odvětrání:</em> přivzdušňovací ventil DN 110 v předstěně WC s revizními dvířky.</div>
+      <div class="note"><strong>Varianta 2 (B) · podhled do K2</strong><br>
+      <em>Podmínka:</em> žádná. Kuchyň zůstane samostatně na K3.<br>
+      <em>Podkroví:</em> WC a umyvadlo jsou na předstěně u příčky do chodby (plná výška), sprcha se stěnovou vpustí na zadní stěně k prádelně a pod šikminou lavice. Odpady se sbíhají do jednoho svislého prostupu v rohu předstěny, asi 0,15 m od příčky do chodby a 0,2 m od zadní stěny koupelny (asi 5,5 m od líce stěny u vstupu, 2,9 m od líce stěny na straně příjezdu). WC (DN 110) má asi 0,4 m, umyvadlo a sprcha (DN 50) asi 1,2–1,3 m, pračka a výlevka přes příčku asi 1 m.<br>
+      <em>Strop:</em> vrt uprostřed rozpětí panelu.<br>
+      <em>Přízemí:</em> pod stropem vede DN 110 s izolací (vnější Ø ~150) v podhledu, celkem asi 7 m. Od prostupu na začátku chodby 1.06 u ostrůvku jde šikmo k chodbě a podél ní směrem ke vstupu asi 0,3 m od příčky koupelny. Mezi dveřmi do koupelny a předsíní prochází příčkou nad úrovní dveří do koupelny 1.05 a v podhledu koupelny šikmo do rohu ke K2, kde se napojí odbočkou 45° pod stropem.<br>
+      <em>Spád a podhled:</em> spád nejméně 1 % (minimum potvrdí ZTI). Podhled asi 21 cm u prostupu a 28 cm u K2, při spádu 2 % asi 35 cm. Je jen v chodbě 1.06 a koupelně 1.05. Na začátku trasy a před K2 čisticí tvarovka s revizními dvířky. Odhlučněné potrubí, pryžové objímky, minerální vata.<br>
+      <em>Odvětrání:</em> přes K2 nad střechu, nic dalšího.</div>
+    </div>
+  </section>
+
+  <section class="card" id="doporuceni">
+    <h2>Doporučení: varianta 1 (A)</h2>
+    <p class="desc">Pod deskou je KG 160 a vývody DN 110, takže hlavní důvod proti A odpadl. Stojí zatím jen deska, takže všechno jde naplánovat předem.</p>
+    <div class="notes">
+      <div class="note"><strong>Proč A</strong><br>Nejkratší trasa: svisle dolů a pak jen asi 2 m v podlaze do K3. Bez podhledu, takže chodba i koupelna 1.05 zůstanou v plné výšce. Méně tvarovek a krátké vodorovné úseky, tedy menší riziko ucpání a jednodušší čištění. Je to nejlevnější řešení a trubka pod linkou se položí do skladby podlahy ještě před izolací a potěrem.</div>
+      <div class="note risk"><strong>Na co pohlídat</strong><br>Šachtu v rohu jídelny vedle kuchyňského okna schovat do vysoké skříně (lednice nebo spíž) na konci linky a počítat s tím v návrhu kuchyně. Potrubí odhlučnit (pryžové objímky, minerální vata). Prostup panelem asi 0,45 m od obvodové stěny musí odsouhlasit výrobce panelů nebo statik před výrobou. Odvětrání přivzdušňovacím ventilem DN 110 v předstěně WC nebo nad střechu.</div>
+      <div class="note"><strong>Kdy B</strong><br>Jen pokud v kuchyni a jídelně nechceš žádnou šachtu ani skříň s potrubím. Platíš za to podhledem 21–28 cm v chodbě 1.06 a koupelně 1.05 a ležatou asi 7 m dlouhou.</div>
+      <div class="note"><strong>Čerpadlo jen v nouzi</strong><br>Přečerpávání (např. Sololift) dává smysl jen tehdy, když nepůjde A ani B.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Porovnání variant</h2>
+    <table class="levels cmp">
+      <thead><tr><th></th><th>A · pilíř + K3</th><th>B · podhled do K2</th><th>C · čerpadlo</th></tr></thead>
+      <tbody>
+        <tr><td>Podmínka</td><td class="good">splněno: KG 160 pod deskou, vývod DN 110</td><td>žádná</td><td>žádná</td></tr>
+        <tr><td>Co uvidíš v přízemí</td><td class="bad">šachta nebo vysoká skříň 30–60 cm v rohu jídelny u okna kuchyně</td><td>podhled asi 21–28 cm nad chodbou 1.06 a v koupelně 1.05 (strop ~2,45–2,38 m)</td><td class="good">nic</td></tr>
+        <tr><td>Kuchyň</td><td>sdílí potrubí s koupelnou (v pořádku při DN 110)</td><td class="good">zůstává samostatně na K3</td><td class="good">zůstává samostatně</td></tr>
+        <tr><td>Prostup stropními panely</td><td>u obvodové zdi (asi 0,45 m od líce)</td><td>uprostřed rozpětí (asi 3,1 m od líce)</td><td class="good">jen malý otvor pro DN 32</td></tr>
+        <tr><td>Bourání v desce / podlaze</td><td>2 m DN 110 ve skladbě podlahy pod linkou (deska zůstane)</td><td class="good">nic</td><td class="good">nic</td></tr>
+        <tr><td>Provoz</td><td class="good">gravitační, bez údržby</td><td class="good">gravitační, bez údržby</td><td class="bad">hluk při čerpání, závisí na elektřině, životnost 10–15 let</td></tr>
+        <tr><td>Orientační náročnost</td><td>nízká</td><td>střední (podhled)</td><td>střední (zařízení)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Doporučení a na co si dát pozor</h2>
+    <div class="notes">
+      <div class="note"><strong>1 · K3 vyhovuje.</strong> Pod deskou je KG 160 a vývod K3 je DN 110, takže na něj smí jít i WC. Koupelna u ložnice, prádelna a kuchyň se mohou spojit do jedné větve. Při odvětrání je to v pořádku a splachování WC kuchyňskou větev proplachuje.</div>
+      <div class="note"><strong>2 · Proč ne přímo nad K3.</strong> K3 je uprostřed kuchyňského okna (3 m), takže svislá stoupačka by vedla před sklem. Svislý odpad proto může jít jen v plném pilíři vedle okna (varianta A), nebo vůbec ne a vede se podhledem (varianta B).</div>
+      <div class="note"><strong>3 · Varianta B: přeskládat koupelnu u ložnice.</strong> WC a umyvadlo se přesunou na předstěnu u chodby, kde je plná výška, a otvor stropem bude v jejím rohu. Sprcha se stěnovou vpustí bude na zadní stěně a pod šikminou zůstane lavice a úložný prostor. Pračka a výlevka z prádelny se napojí do stejného otvoru přes příčku.</div>
+      <div class="note"><strong>4 · Varianta B: podhled.</strong> Trasa je dlouhá asi 7 m se spádem 1 %. S izolovanou trubkou DN 110 (vnější průměr ~150 mm), závěsy a SDK vychází podhled asi 21 cm u otvoru a asi 28 cm u K2, takže světlá výška bude asi 2,45 → 2,38 m. Chodba 1.06 a koupelna 1.05 nejsou obytné místnosti, nižší strop je tam v pořádku. Odhlučněná trubka (Skolan dB, AS+) s tenčí návlečkou ušetří asi 4 cm. Nad chodbou 1.06 může tvořit pás s LED a v koupelně 1.05 je snížený strop běžný. Napojení do K2 udělat odbočkou 45° pod stropem.</div>
+      <div class="note"><strong>5 · Koupelna pro děti → K2.</strong> Leží na místě původní 2.05. WC je na předstěně pod šikminou a odpad vede v předstěně asi 2,2 m přes příčku do K2, stejně jako v ZTI u koupelny 2.07. Stoupačka S3 není potřeba.</div>
+      <div class="note"><strong>6 · Odvětrání.</strong> K1 a K2 se vyvedou nad střechu podle ZTI (HT 110, větrací hlavice). Varianta B pod K2 další odvětrání nepotřebuje. Ve variantě A stačí na S2 přivzdušňovací ventil DN 110 v předstěně WC.</div>
+      <div class="note"><strong>7 · Dimenze.</strong> Pod deskou je KG 160 a vývody K1–K3 jsou DN 110. Nové potrubí (stoupačka S2, v podlaze i v podhledu) bude DN 110, stejně jako svislé odpady HT 110 v ZTI. Po proudu se nesmí zužovat, takže ven do ČOV musí vést aspoň stejná dimenze jako pod deskou.</div>
+      <div class="note risk"><strong>Riziko A · prostupy panely.</strong> Jádrový vrt asi Ø 130 mm (trubka 110 mm + ochranná a odhlučňovací návlečka) musí schválit výrobce panelů a statik, ideálně jako otvor už z výroby. Ve variantě B je ve středu rozpětí, ve variantě A u uložení. Polohu jim pošli před objednáním panelů.</div>
+      <div class="note risk"><strong>Riziko B · hluk.</strong> Odpad z WC nad chodbou (B) nebo v jídelně (A) je potřeba udělat z odhlučněného potrubí (např. Wavin AS+, Geberit Silent-db20, Ostendorf Skolan dB), s pryžovými objímkami a minerální vatou v podhledu nebo šachtě.</div>
+      <div class="note risk"><strong>Riziko C · nevytápěná půda.</strong> Vodovod V1 z technické místnosti podle ZTI vede „v podlaze“ místností 2.08, tedy přes budoucí neobytnou půdu. Zateplení střechy a podhledu průjezdu je proto potřeba nechat, aby půda zůstala uvnitř tepelné obálky, a potrubí tam zaizolovat.</div>
+      <div class="note risk"><strong>Riziko D · změna proti ZTI.</strong> Jakoukoli variantu je potřeba nechat odsouhlasit projektantovi ZTI (zpráva výslovně vyžaduje konzultovat podstatné změny) a zapsat ji do skutečného provedení.</div>
+    </div>
+  </section>
+
+  <footer>Pracovní schéma k diskusi s projektantem ZTI. Nenahrazuje projektovou dokumentaci zdravotně technických instalací. Vývody K1–K3, LŠ a ležatá kanalizace jsou převzaté z výkresu ZT02, dispozice z 3D modelu.</footer>
+</main>
+<script>
+// Plans use the model's pre-mirror coordinates (the same orientation as the DSP drawings): z along the house (0 = inside of the front gable),
+// x across (0.3 = inner face of the kitchen-side wall, 7.7 = inner face of the bathroom-side wall).
+const NS='http://www.w3.org/2000/svg',S=50,OX=40,OY=70;
+const X=z=>OX+(z+.2)*S,Y=x=>OY+(x+.2)*S;
+const C={wall:'#c9d1cb',wallEdge:'#9aa79f',part:'#dfe5e0',fix:'#ffffff',fixEdge:'#8e9c93',dn100:'#a8461f',dn50:'#e08a2e',ex:'#2f8a4c',txt:'#2c3e34',sub:'#6b7a70',void:'#eef1ee',ceil:'#f6e7cf'};
+function el(svg,tag,attrs,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;svg.appendChild(e);return e;}
+const rect=(svg,x0,x1,z0,z1,a)=>el(svg,'rect',Object.assign({x:X(z0),y:Y(x0),width:(z1-z0)*S,height:(x1-x0)*S},a));
+const label=(svg,z,x,t,a={})=>el(svg,'text',Object.assign({x:X(z),y:Y(x),'text-anchor':'middle','font-size':13,fill:C.txt,'font-weight':600},a),t);
+const small=(svg,z,x,t,a={})=>label(svg,z,x,t,Object.assign({'font-size':11,fill:C.sub,'font-weight':400},a));
+const line=(svg,pts,col,w,dash)=>el(svg,'polyline',{points:pts.map(([z,x])=>X(z)+','+Y(x)).join(' '),fill:'none',stroke:col,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':dash||''});
+const node=(svg,z,x,name,kind,dx=0,dy=-.34)=>{const col=kind==='new'?C.dn100:C.ex;el(svg,'circle',{cx:X(z),cy:Y(x),r:9,fill:kind==='new'?'#f3d3c4':'#dcefe0',stroke:col,'stroke-width':2.5});label(svg,z+dx,x+dy,name,{fill:col,'font-size':13});};
+const fix=(svg,x0,x1,z0,z1,t,fs=9.5)=>{rect(svg,x0,x1,z0,z1,{fill:C.fix,stroke:C.fixEdge,'stroke-width':1,rx:3});if(t)small(svg,(z0+z1)/2,(x0+x1)/2+.08,t,{'font-size':fs});};
+function walls(svg,zEnd,partitions){
+ rect(svg,-.2,8.2,-.2,zEnd,{fill:C.wall,stroke:C.wallEdge});rect(svg,.3,7.7,.3,zEnd-.5,{fill:'#fbfcfa'});
+ for(const p of partitions){const [x0,x1,z0,z1,doors=[],axis]=p;
+  if(axis==='z'){let c=[z0,...doors.flat(),z1];for(let i=0;i<c.length;i+=2)rect(svg,x0,x1,c[i],c[i+1],{fill:C.part,stroke:C.wallEdge,'stroke-width':.6});}
+  else{let c=[x0,...doors.flat(),x1];for(let i=0;i<c.length;i+=2)rect(svg,c[i],c[i+1],z0,z1,{fill:C.part,stroke:C.wallEdge,'stroke-width':.6});}}
+}
+const K1=[11.45,7.55],K2=[10.37,7.55],K3=[7.9,.45],LS=[11.45,8.75],D=[6.2,3.17],S2=[5.85,.75];
+let V='A';
+
+function drawGround(){const g=document.getElementById('ground');g.replaceChildren();
+ walls(g,12.2,[[.3,2.44,9.77,9.92,[[1.55,2.25]]],[2.44,2.59,9.92,11.7,[],'z'],[2.59,5.02,9.77,9.92,[[3.25,4.15]]],[5.02,5.17,7.39,11.7,[[8.3,9.0],[10.95,11.65]],'z'],[5.17,7.7,10.43,10.58],[5.17,7.7,7.39,7.54]]);
+ for(const [z0,z1] of [[1.35,4.27],[6.08,9.08]])rect(g,-.2,.3,z0,z1,{fill:'#d5e6ee',stroke:'#8fb2c2'});rect(g,7.7,8.2,8.0,9.0,{fill:'#d5e6ee',stroke:'#8fb2c2'});rect(g,7.7,8.2,.32,3.32,{fill:'#d5e6ee',stroke:'#8fb2c2'});
+ small(g,2.8,-.45,'okno obýváku');small(g,7.6,-.45,'okno kuchyně 3,0 m');small(g,5.17,-.45,'pilíř 1,8 m');small(g,8.5,8.66,'');small(g,1.8,8.7,'HS');
+ el(g,'rect',{x:X(12.2),y:Y(-.2),width:3.8*S,height:8.4*S,fill:'#e8e9e4',stroke:C.wallEdge,'stroke-dasharray':'4 4'});label(g,14.1,3.6,'Průjezd',{fill:C.sub});
+ rect(g,-.2,8.2,16.0,18.8,{fill:C.wall,stroke:C.wallEdge});rect(g,.3,7.7,16.5,18.3,{fill:'#fbfcfa'});label(g,17.4,3.6,'Technická m.',{'font-size':11.5});
+ if(V==='B'){rect(g,.3,5.02,6.1,9.77,{fill:C.ceil,opacity:.0});rect(g,2.9,5.02,6.1,9.77,{fill:C.ceil,stroke:'#d9b67c','stroke-dasharray':'5 4'});rect(g,5.17,7.7,7.54,10.43,{fill:C.ceil,stroke:'#d9b67c','stroke-dasharray':'5 4'});small(g,8.45,3.3,'podhled',{fill:'#9a6a22','font-size':11,'font-weight':600,'text-anchor':'start'});}
+ rect(g,5.1,7.7,4.45,7.23,{fill:C.void,stroke:C.wallEdge,'stroke-dasharray':'3 3'});small(g,5.85,6.55,'schodiště');rect(g,5.1,6.1,3.85,5.2,{fill:'#d7dbd8'});small(g,4.5,5.6,'krb',{'font-size':9.5});
+ label(g,2.4,3.6,'Obývák 1.11');label(g,5.2,2.2,'Jídelna 1.10',{'font-size':12});label(g,8.4,1.25,'Kuchyň 1.07',{'font-size':12,'text-anchor':'start'});label(g,7.4,4.0,'1.06',{'font-size':12});label(g,9.05,6.3,'Koupelna 1.05',{'font-size':11});label(g,11.15,6.2,'WC 1.04',{'font-size':11});label(g,10.85,3.8,'Předsíň',{'font-size':11});label(g,10.85,1.35,'Komora',{'font-size':11});
+ fix(g,.3,.9,6.2,9.7,'');fix(g,.4,.82,7.55,8.25,'dřez');fix(g,1.7,2.5,6.7,9.1,'ostrůvek');
+ fix(g,5.3,6.9,7.56,8.04,'umyvadla');fix(g,7.1,7.7,8.35,8.95,'');fix(g,5.2,6.9,9.72,10.42,'vana');fix(g,7.36,7.7,10.6,11.68,'');
+ // realised under-slab sewer (ZT02)
+ line(g,[K3,[7.9,7.55],K2,K1,LS],C.ex,4);line(g,[LS,[11.45,8.95],[16.5,8.95]],C.ex,4);small(g,14.1,8.6,'DN 150 → K4, ČOV (dle ZTI)',{fill:C.ex,'font-size':10.5});
+ small(g,6.2,7.62,'ležatá KG 160 pod deskou (hotovo)',{fill:C.ex,'font-size':10.5});
+ node(g,...K1,'K1','ex',.0,-.36);node(g,...K2,'K2','ex',-.45,.05);node(g,...K3,'K3','ex',.0,-.36);
+ el(g,'circle',{cx:X(LS[0]),cy:Y(LS[1]),r:11,fill:'#fff',stroke:C.ex,'stroke-width':2.5});small(g,LS[0]+.55,LS[1]+.12,'LŠ',{fill:C.ex,'font-weight':600});
+ small(g,K1[0]+.05,K1[1]-.9,'DN 110',{fill:C.ex,'font-size':10});small(g,K3[0]-.02,K3[1]+.55,'DN 110',{fill:C.ex,'font-size':10});
+ if(V==='A'){fix(g,.3,.95,5.55,6.05,'');node(g,...S2,'S2','new',-.05,.62);line(g,[S2,[5.85,.6],[7.9,.6],K3],C.dn100,4,'9 5');small(g,6.9,1.12,'DN 110 v podlaze pod linkou',{fill:C.dn100,'font-size':10.5});small(g,4.15,.62,'šachta / skříň',{'font-size':10,'text-anchor':'end'});}
+ else{node(g,...D,'↓ z koupelny','new',-.1,-.36);line(g,[D,[6.9,4.7],[9.45,4.7],[9.45,5.1],[10.2,7.35],K2],C.dn100,4,'9 5');small(g,6.95,4.5,'DN 110 izolovaná · 1 %',{fill:C.dn100,'font-size':10.5,'text-anchor':'end'});small(g,10.15,8.66,'↑ odbočka 45° do K2 pod stropem',{fill:C.dn100,'font-size':10.5});}
+}
+function drawAttic(){const a=document.getElementById('attic');a.replaceChildren();
+ walls(a,13.5,[[.3,7.7,4.29,4.44,[[1.55,2.35],[3.6,4.4]]],[.3,3.34,6.4,6.55],[3.34,3.49,4.44,13.0,[[6.7,7.4],[8.4,9.2],[12.15,12.85]],'z'],
+  [.3,3.34,7.6,7.75],[.3,3.34,11.9,12.05],[4.6,4.75,7.38,13.0,[[8.4,9.1],[9.7,10.5]],'z'],[4.75,7.7,9.4,9.55],[4.6,7.7,7.23,7.38],[3.92,4.07,1.15,3.35,[],'z']]);
+ rect(a,.3,7.7,13.0,13.27,{fill:'#e9e2c8',stroke:C.wallEdge});
+ el(a,'rect',{x:X(13.0)+14,y:Y(-.2),width:(18.8-13.0)*S-14,height:8.4*S,fill:'#eef0ea',stroke:C.wallEdge});label(a,15.9,3.9,'Půda – neobytná',{fill:C.sub});small(a,15.9,4.35,'bez odpadů; vodovod V1 zaizolovat');
+ rect(a,5.1,7.7,5.57,7.23,{fill:C.void,stroke:C.wallEdge,'stroke-dasharray':'3 3'});rect(a,6.1,7.7,4.45,5.57,{fill:C.void,stroke:C.wallEdge,'stroke-dasharray':'3 3'});small(a,6.35,6.55,'schodiště');rect(a,5.12,5.5,5.2,5.6,{fill:'#b8bfba'});
+ for(const x of [1.48,6.52])line(a,[[.3,x],[13.0,x]],'#7d8b83',1,'5 5');
+ label(a,2.2,6.1,'Ložnice 2.02');label(a,2.2,1.8,'Šatna');label(a,9.9,1.55,'Dětský pokoj 1');label(a,11.6,5.6,'Dětský pokoj 2');label(a,12.48,1.15,'Komora',{'font-size':11});
+ label(a,10.6,4.12,'Chodba',{'font-size':11,transform:`rotate(-90 ${X(10.6)} ${Y(4.05)})`});label(a,7.1,1.0,'Úklid +',{'font-size':10.5});label(a,7.1,1.27,'prádelna',{'font-size':10.5});label(a,8.3,4.95,'Koupelna děti',{'font-size':11});
+ fix(a,1.95,2.55,6.6,7.2,'pračka');fix(a,2.6,3.15,6.6,7.05,'výlevka');
+ // kids' bathroom → K2 along the knee wall (as bathroom 2.07 → K1 in the ZTI)
+ fix(a,5.0,6.1,7.38,7.85,'umyv.');fix(a,5.55,6.45,8.45,9.4,'sprcha');fix(a,7.0,7.7,7.85,8.5,'');fix(a,6.45,7.0,7.99,8.35,'WC');
+ rect(a,7.3,7.7,10.15,11.7,{fill:'#e3e8e4',stroke:C.wallEdge});small(a,10.95,7.15,'šachta K1+K2 pod šikminou',{'font-size':9.5});
+ line(a,[[8.17,7.0],[8.17,7.45],[K2[0],7.45]],C.dn100,5);line(a,[[7.62,5.55],[7.62,7.45]],C.dn50,2.6);line(a,[[9.3,6.0],[9.3,7.3]],C.dn50,2.6);
+ node(a,...K2,'K2','ex',0,-.34);node(a,...K1,'K1','ex',0,-.34);
+ if(V==='B'){label(a,4.9,1.55,'Koupelna',{'font-size':10.5});label(a,4.9,1.8,'u ložnice',{'font-size':10.5});
+  rect(a,3.0,3.34,4.6,6.4,{fill:'#eef0ec',stroke:'#9aa79f'});fix(a,2.5,3.0,4.65,5.35,'umyv.');fix(a,2.45,3.0,5.62,5.98,'WC');fix(a,1.35,2.35,5.5,6.4,'sprcha');rect(a,.35,1.25,4.6,6.3,{fill:'#f4efe6',stroke:'#c9bda5'});small(a,5.45,.85,'lavice / úložný prostor',{'font-size':9});
+  line(a,[[5.8,2.95],[5.8,3.17],D],C.dn100,5);line(a,[[5.0,2.95],[5.0,3.17],D],C.dn50,2.6);line(a,[[6.3,1.85],[6.3,3.1],D],C.dn50,2.6);el(a,'rect',{x:X(6.25),y:Y(1.7),width:.12*S,height:.3*S,fill:C.dn50});
+  line(a,[[6.62,2.0],[6.62,3.1],D],C.dn50,2.6);node(a,...D,'↓','new',.0,-.34);small(a,6.2,-.42,'otvor stropem → podhled nad chodbou 1.06 → K2',{fill:C.dn100,'text-anchor':'middle'});}
+ else{label(a,4.95,2.2,'Koupelna',{'font-size':10.5});label(a,4.95,2.46,'u ložnice',{'font-size':10.5});
+  rect(a,.3,.9,4.75,6.4,{fill:'#eef0ec',stroke:'#9aa79f'});fix(a,.9,1.45,4.92,5.28,'WC');fix(a,1.05,2.25,5.92,6.39,'umyv.');fix(a,2.34,3.34,5.3,6.4,'sprcha');
+  line(a,[[5.1,.95],[5.1,.7],S2],C.dn100,5);line(a,[[6.3,1.65],[6.3,.75],S2],C.dn50,2.6);line(a,[[6.3,3.1],[6.3,1.65]],C.dn50,2.6);el(a,'rect',{x:X(6.25),y:Y(2.95),width:.12*S,height:.3*S,fill:C.dn50});
+  line(a,[[6.62,2.9],[6.62,.75],S2],C.dn50,2.6);node(a,...S2,'S2','new',.0,-.38);small(a,6.2,-.42,'S2 ↓ do pilíře mezi okny → podlaha pod linkou → K3',{fill:C.dn100,'text-anchor':'middle'});}
+ el(a,'text',{x:X(-.2),y:OY-26,'font-size':11,fill:C.sub},'← přední štít');el(a,'text',{x:X(13.0),y:OY-26,'font-size':11,fill:C.sub},'↑ strana kuchyně');el(a,'text',{x:X(1.0),y:Y(8.2)+20,'font-size':11,fill:C.sub},'strana terasy (HS)');
+}
+function drawSection(){const s=document.getElementById('section');s.replaceChildren();
+ const T=(x,y,t,a={})=>el(s,'text',Object.assign({x,y,'font-size':12,fill:C.txt},a),t);
+ const R=(x,y,w,h,a)=>el(s,'rect',Object.assign({x,y,width:w,height:h},a));
+ const L=(pts,col,w,dash)=>el(s,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:col,'stroke-width':w,'stroke-dasharray':dash||'','stroke-linecap':'round','stroke-linejoin':'round'});
+ const k=95,base=520,Yv=y=>base-y*k;          // vertical metres → px
+ if(V==='B'){
+  document.getElementById('secTitle').textContent='Rozvinutý řez trasou · varianta B';
+  document.getElementById('secDesc').textContent='Rozvinutá trasa od otvoru v koupelně u ložnice ke stoupačce K2 (asi 7 m). Vodorovně je zkreslené měřítko, svisle je ve skutečných výškách.';
+  const x0=150,x1=880;R(60,Yv(3.15),860,Yv(2.9)-Yv(3.15),{fill:'#bfc6c1',stroke:C.wallEdge});R(60,Yv(3.30),860,Yv(3.15)-Yv(3.30),{fill:'#ece7da',stroke:'#c9c1ae'});
+  R(60,Yv(.24),860,Yv(0)-Yv(.24),{fill:'#ece7da',stroke:'#c9c1ae'});R(60,Yv(0),860,Yv(-.15)-Yv(0),{fill:'#b7bdb9'});
+  el(s,'polygon',{points:`${x0-10},${Yv(2.9)} ${x1+20},${Yv(2.9)} ${x1+20},${Yv(2.62)} ${x0-10},${Yv(2.69)}`,fill:C.ceil,stroke:'#d9b67c','stroke-dasharray':'5 4'});
+  L([[x0,Yv(2.805)],[x1,Yv(2.735)]],'#e9d2b0',.15*k);L([[x0,Yv(2.805)],[x1,Yv(2.735)]],C.dn100,.11*k);
+  R(x1+6,Yv(5.3),18,Yv(-.05)-Yv(5.3),{fill:'#dcefe0',stroke:C.ex,'stroke-width':1.6});T(x1+30,Yv(4.6),'K2',{fill:C.ex,'font-weight':700,'font-size':14});T(x1+30,Yv(4.6)+16,'dle ZTI',{fill:C.ex,'font-size':11});T(x1+30,Yv(4.6)+30,'↑ nad střechu',{fill:C.ex,'font-size':11});
+  R(x0-8,Yv(3.30),16,Yv(2.8)-Yv(3.30),{fill:'#f3d3c4',stroke:C.dn100,'stroke-width':1.5});R(x0-14,Yv(3.15),28,Yv(2.9)-Yv(3.15),{fill:'none',stroke:'#c0392b','stroke-width':2,'stroke-dasharray':'3 2'});
+  R(x0-70,Yv(4.4),110,Yv(3.3)-Yv(4.4),{fill:'#eef0ec',stroke:'#9aa79f'});R(x0+40,Yv(4.05),58,Yv(3.66)-Yv(4.05),{fill:'#fff',stroke:C.fixEdge,rx:8});T(x0+54,Yv(3.82),'WC',{'font-size':11});
+  L([[x0+40,Yv(3.55)],[x0+8,Yv(3.5)],[x0,Yv(3.42)]],C.dn100,5);T(x1-120,Yv(2.62)+16,'+2,62',{'font-size':11,fill:C.sub});
+  T(x0-60,Yv(4.55),'koupelna u ložnice · předstěna u chodby',{'font-size':12,'font-weight':600});
+  T(x0+60,Yv(2.5),'podhled ~21 cm u otvoru → ~28 cm u K2 · DN 110 s izolací (vnější Ø ~150) · spád 1 %',{'font-size':12,fill:'#8a5a17','font-weight':600});
+  T(x0+60,Yv(2.5)+17,'trasa: koupelna u ložnice → nad ostrůvkem a chodbou 1.06 → nad dveřmi do koupelny 1.05 → K2',{'font-size':11.5,fill:C.sub});
+  T(x0+20,Yv(3.0)+4,'prostup panelem Ø ~130 pro DN 110 – výrobce panelů',{'font-size':11.5,fill:'#a33224','font-weight':600});
+  T(x0+200,Yv(1.3),'chodba 1.06 / kuchyň',{'font-size':13,'font-weight':600});T(x1-170,Yv(1.3),'koupelna 1.05',{'font-size':13,'font-weight':600});
+  L([[x1-260,Yv(.24)],[x1-260,Yv(2.62)]],'#9aa79f',1,'4 4');T(x1-254,Yv(2.2),'příčka 1.06 / 1.05',{'font-size':10.5,fill:C.sub});
+  R(x1-40,Yv(0),60,Yv(-.15)-Yv(0)+1,{fill:'none'});L([[x1+15,Yv(-.05)],[x1+15,Yv(-.45)],[x1+95,Yv(-.45)]],C.ex,5);T(x1-250,Yv(-.38),'ležatá pod deskou (hotová) → K1 → LŠ',{'font-size':11,fill:C.ex});
+  for(const [y,t] of [[0,'±0,00'],[.24,'+0,24'],[2.69,'+2,69'],[2.9,'+2,90'],[3.3,'+3,30']]){L([[44,Yv(y)],[58,Yv(y)]],'#7d8b83',1);T(40,Yv(y)+4,t,{'font-size':11,fill:C.sub,'text-anchor':'end'});}
+ }else{
+  document.getElementById('secTitle').textContent='Řez stoupačkou S2 · varianta A';
+  document.getElementById('secDesc').textContent='Svislý řez u obvodové stěny na straně kuchyně. S2 vede v pilíři 0,4–0,5 m od líce zdi a v přízemí se vejde do šachty nebo vysoké skříně. Pod linkou pokračuje DN 110 ve skladbě podlahy (240 mm) ke K3.';
+  const ox=250,kk=95,P=(x,y)=>[ox+x*kk,base-y*kk];
+  const RR=(x0,y0,x1,y1,a)=>{const [ax,ay]=P(x0,y1),[bx,by]=P(x1,y0);return R(ax,ay,bx-ax,by-ay,a);};
+  const LL=(pts,col,w,dash)=>L(pts.map(p=>P(...p)),col,w,dash);const TT=(x,y,t,a)=>{const [px,py]=P(x,y);return T(px,py,t,a);};
+  RR(-.7,-.15,6.0,0,{fill:'#b7bdb9'});RR(.5,0,6.0,.24,{fill:'#ece7da',stroke:'#c9c1ae'});RR(0,0,.5,2.9,{fill:C.wall,stroke:C.wallEdge});RR(0,2.9,6.0,3.15,{fill:'#bfc6c1',stroke:C.wallEdge});RR(.5,3.15,6.0,3.3,{fill:'#ece7da',stroke:'#c9c1ae'});RR(0,3.15,.5,4.118,{fill:C.wall,stroke:C.wallEdge});
+  LL([[-.7,3.62],[1.1,5.42]],'#3b4440',9);LL([[.5,4.418],[1.35,5.268]],'#cdb98f',6);
+  const sx=.95;RR(sx-.055,.12,sx+.055,4.05,{fill:'#f3d3c4',stroke:C.dn100,'stroke-width':1.5});RR(sx-.12,2.9,sx+.12,3.15,{fill:'none',stroke:'#c0392b','stroke-width':2,'stroke-dasharray':'3 2'});
+  LL([[sx,.12],[3.6,.07]],C.dn100,6);RR(3.55,-.15,3.75,.12,{fill:'#dcefe0',stroke:C.ex});LL([[3.65,-.1],[5.9,-.1]],C.ex,5);TT(3.85,-.32,'K3 DN 110 → KG 160 pod deskou (hotovo)',{'font-size':11.5,fill:C.ex,'font-weight':600});
+  RR(.5,.24,1.1,2.4,{fill:'none',stroke:'#7d8b83','stroke-dasharray':'6 4'});RR(1.15,.24,3.75,1.1,{fill:'none',stroke:'#9aa79f'});TT(1.9,.62,'kuchyňská linka · DN 110 v podlaze pod ní, 2 % (~2 m)',{'font-size':11.5});
+  RR(.5,3.3,1.15,4.4,{fill:'#eef0ec',stroke:'#9aa79f'});RR(1.15,3.68,1.75,4.08,{fill:'#fff',stroke:C.fixEdge,rx:8});TT(1.28,3.86,'WC',{'font-size':11});LL([[1.25,3.62],[sx+.06,3.57]],C.dn100,5);
+  el(s,'circle',{cx:P(sx,4.15)[0],cy:P(sx,4.15)[1],r:9,fill:'#fff',stroke:C.dn100,'stroke-width':2.2});
+  TT(1.9,4.5,'přivzdušňovací ventil DN 110 v předstěně WC',{'font-size':12,fill:C.dn100,'font-weight':600});TT(1.9,3.45,'prostup panelem Ø ~130 pro DN 110 u uložení – výrobce panelů',{'font-size':11.5,fill:'#a33224','font-weight':600});
+  TT(1.25,2.0,'šachta / vysoká skříň v rohu jídelny',{'font-size':12,'font-weight':600});TT(1.25,1.8,'vedle okna kuchyně, ne před ním',{'font-size':11.5,fill:C.sub});
+  TT(-.66,1.0,'pilíř',{'font-size':11,fill:C.sub});
+  for(const [y,t] of [[0,'±0,00'],[.24,'+0,24'],[2.9,'+2,90'],[3.3,'+3,30']]){LL([[-.95,y],[-.75,y]],'#7d8b83',1);TT(-1.0,y-.04,t,{'font-size':11,fill:C.sub,'text-anchor':'end'});}
+ }
+}
+// ---------- Oblique "render" of the drainage ----------
+// Same coordinates as the DSP drawings (x across, z along the house, y up), seen from the front gable: x to the right,
+// z receding up-right (no mirror), attic lifted by EX so both storeys read separately.
+function drawIso(){const s=document.getElementById('iso');s.replaceChildren();
+ const K=54,O=[150,832],EX=1.4,U=3.3,kx=.42,ky=.36;
+ const P=(x,y,z)=>{const yy=y>3.2?y+EX:y;return [O[0]+(x+z*kx)*K,O[1]-(yy+z*ky)*K];};
+ const pts=a=>a.map(q=>P(...q).map(n=>n.toFixed(1)).join(',')).join(' ');
+ const poly=(a,at)=>el(s,'polygon',Object.assign({points:pts(a)},at));
+ const pl=(a,at)=>el(s,'polyline',Object.assign({points:pts(a),fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},at));
+ const shade=(c,f)=>'#'+c.slice(1).match(/../g).map(h=>Math.max(0,Math.min(255,Math.round(parseInt(h,16)*f))).toString(16).padStart(2,'0')).join('');
+ const box=(x0,x1,y0,y1,z0,z1,c,op=1)=>{const a={stroke:shade(c,.68),'stroke-width':.8,opacity:op};    // visible: right, top, front
+  poly([[x1,y0,z0],[x1,y0,z1],[x1,y1,z1],[x1,y1,z0]],Object.assign({fill:shade(c,.84)},a));
+  poly([[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]],Object.assign({fill:c},a));
+  poly([[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]],Object.assign({fill:shade(c,.93)},a));};
+ const pipe=(a,col,w)=>{pl(a,{stroke:shade(col,.68),'stroke-width':w+1.8});pl(a,{stroke:col,'stroke-width':w});pl(a,{stroke:'#fff','stroke-width':Math.max(1,w*.25),opacity:.42,transform:`translate(${-w*.12},${-w*.18})`});};
+ const name=(x,y,z,t)=>{const [px,py]=P(x,y,z);el(s,'text',{x:px,y:py,'font-size':11,fill:'#7b8a80','text-anchor':'middle','font-style':'italic'},t);};
+ const G='#2f8a4c',R1='#a8461f',R2='#d9822b',ST='#4f74a0',GR='#7d8b83',WH='#ffffff',WOOD='#d8b98f',TRAY='#a39d95';
+ const marks=[];const mark=(q,dx,dy,n,col,text)=>marks.push({q,dx,dy,n,col,text});
+ const outline=(y,z1,dash)=>poly([[.3,y,.3],[7.7,y,.3],[7.7,y,z1],[.3,y,z1]],{fill:'#e9eee9',opacity:.35,stroke:'#a9b5ad','stroke-width':1.1,'stroke-dasharray':dash||''});
+ const walls=(y,list)=>{for(const w of list)pl(w.map(([x,z])=>[x,y,z]),{stroke:'#a3afa7','stroke-width':1.3});};
+ // ground + slab + built sewer under it
+ poly([[-.8,-.16,-.8],[9.4,-.16,-.8],[9.4,-.16,14.0],[-.8,-.16,14.0]],{fill:'#eef0ea'});
+ const yU=-.45;
+ pipe([[.45,yU,7.9],[7.55,yU,7.9],[7.55,yU,10.37],[7.55,yU,11.45],[8.95,yU,11.45],[8.95,yU-.25,14.0]],G,12);
+ box(-.2,8.2,-.15,0,-.2,12.2,'#d9ded9',.55);
+ pl([[.45,yU,7.9],[7.55,yU,7.9],[7.55,yU,11.45],[8.95,yU,11.45],[8.95,yU-.25,14.0]],{stroke:'#fff','stroke-width':2,'stroke-dasharray':'2 8',opacity:.85});
+ box(8.7,9.2,-.6,-.16,11.2,11.7,'#cfd8cf');
+ for(const k of [[.45,7.9],[7.55,10.37],[7.55,11.45]])pipe([[k[0],yU,k[1]],[k[0],.3,k[1]]],G,9);
+ // ghost envelope (walls to the eaves, front gable, ridge, cut over the passage)
+ const ghost={stroke:'#c6cec8','stroke-width':1.1};
+ for(const [x,z] of [[-.2,-.2],[8.2,-.2],[-.2,12.2],[8.2,12.2]])pl([[x,0,z],[x,4.418,z]],ghost);
+ pl([[-.2,4.418,-.2],[4,8.5,-.2],[8.2,4.418,-.2],[8.2,0,-.2],[-.2,0,-.2],[-.2,4.418,-.2]],ghost);
+ pl([[-.2,4.418,-.2],[-.2,4.418,13.0]],ghost);pl([[8.2,4.418,-.2],[8.2,4.418,13.0]],ghost);pl([[4,8.5,-.2],[4,8.5,13.0]],ghost);
+ pl([[-.2,4.418,13.0],[4,8.5,13.0],[8.2,4.418,13.0]],Object.assign({'stroke-dasharray':'6 5'},ghost));
+ // ground floor
+ outline(.24,11.7);
+ walls(.24,[[[5.1,7.39],[5.1,11.7]],[[5.17,7.46],[7.7,7.46]],[[5.17,10.5],[7.7,10.5]],[[5.1,4.45],[7.7,4.45]],[[5.1,4.45],[5.1,7.23]],[[.3,9.85],[5.02,9.85]]]);
+ for(const [z0,z1] of [[1.35,4.27],[6.08,9.08]])poly([[.3,1.14,z0],[.3,2.04,z0],[.3,2.04,z1],[.3,1.14,z1]],{fill:'#cfe3ee',stroke:'#8fb2c2',opacity:.9});
+ poly([[.3,.24,4.27],[.3,2.9,4.27],[.3,2.9,6.08],[.3,.24,6.08]],{fill:'#efe0cc',opacity:.6,stroke:'#d2b48c','stroke-dasharray':'4 3'});
+ name(3.4,.24,2.0,'obývák');name(3.4,.24,5.2,'jídelna');name(2.6,.24,8.6,'kuchyň');name(6.4,.24,5.6,'schodiště');name(6.3,.24,9.2,'koupelna 1.05');name(6.4,.24,11.2,'WC 1.04');
+ box(.3,.9,.24,1.1,6.2,9.7,'#eceeed',.9);
+ if(V==='A')box(.3,.95,.24,2.4,5.5,6.1,WOOD,.65);
+ box(5.3,6.9,.64,1.06,7.56,8.04,WH);box(7.1,7.7,.24,1.09,8.35,8.95,WH);box(5.2,6.9,.24,.8,9.72,10.42,WH);box(7.36,7.7,.24,1.3,10.8,11.4,'#e8ebe8');
+ pipe([[.6,.9,7.9],[.45,.6,7.9],[.45,.3,7.9]],R2,5);
+ pipe([[6.1,.6,7.75],[7.45,.5,7.75],[7.45,.42,10.3],[7.55,.4,10.37]],R2,5);pipe([[7.1,.5,11.12],[7.55,.42,11.45]],R1,8);
+ if(V==='A')pipe([[.75,.12,5.8],[.55,.1,5.8],[.55,.08,7.9],[.45,.08,7.9]],R1,9);
+ // ceiling
+ outline(2.9,12.0,'5 4');
+ if(V==='B'){for(const r of [[2.9,5.02,6.1,9.77],[5.17,7.7,7.54,10.43]])poly([[r[0],2.64,r[2]],[r[1],2.64,r[2]],[r[1],2.64,r[3]],[r[0],2.64,r[3]]],{fill:'#f3dfbd',opacity:.65,stroke:'#d9b67c','stroke-dasharray':'5 4'});
+  const path=[[3.17,6.2],[4.7,6.9],[4.7,9.45],[5.1,9.45],[7.35,10.25],[7.55,10.37]];let L=0;const len=[0];for(let i=1;i<path.length;i++){L+=Math.hypot(path[i][0]-path[i-1][0],path[i][1]-path[i-1][1]);len.push(L);}
+  pipe(path.map(([x,z],i)=>[x,2.805-.07*len[i]/L,z]),R1,10);}
+ // attic
+ outline(U,13.0);
+ walls(U,[[[.3,4.36],[7.7,4.36]],[[.3,6.47],[3.34,6.47]],[[3.4,4.44],[3.4,13.0]],[[.3,7.67],[3.34,7.67]],[[4.68,7.38],[4.68,13.0]],[[4.75,9.47],[7.7,9.47]],[[4.6,7.3],[7.7,7.3]]]);
+ name(5.8,U,2.0,'ložnice');name(1.8,U,10.2,'dětský pokoj 1');name(6.2,U,11.4,'dětský pokoj 2');
+ if(V==='A'){box(.3,.9,U,4.3,4.75,6.4,'#e8ebe8',.85);box(.9,1.45,U+.4,U+.52,4.92,5.28,WH);box(1.05,2.25,U+.4,U+.82,5.92,6.39,WOOD);box(2.34,3.34,U,U+.04,5.3,6.4,TRAY);}
+ else{box(3.0,3.34,U,U+1.2,4.6,6.4,'#e8ebe8',.85);box(2.45,3.0,U+.4,U+.52,5.62,5.98,WH);box(2.5,3.0,U+.4,U+.82,4.65,5.35,WOOD);box(1.35,2.35,U,U+.04,5.5,6.4,TRAY);}
+ box(1.95,2.55,U,U+1.7,6.6,7.2,WH);box(2.6,3.15,U,U+.8,6.6,7.05,WOOD);
+ box(5.0,6.1,U+.4,U+.82,7.38,7.85,WOOD);box(5.55,6.45,U,U+.04,8.45,9.4,TRAY);box(7.0,7.7,U,U+1.0,7.85,8.5,'#e8ebe8',.85);box(6.45,7.0,U+.4,U+.52,7.99,8.35,WH);
+ if(V==='A'){pipe([[.9,U+.22,5.1],[.75,U+.2,5.1],[.75,U+.18,5.8]],R1,8);pipe([[1.65,U+.45,6.3],[1.65,U+.15,6.3],[.8,U+.12,6.3],[.78,U+.12,5.85]],R2,5);
+  pipe([[3.0,U+.05,6.33],[3.0,U+.1,6.3],[.85,U+.06,6.3]],R2,5);pipe([[2.9,U+.5,6.65],[2.9,U+.1,6.62],[.85,U+.06,6.62],[.85,U+.05,6.3]],R2,5);
+  pipe([[.75,.12,5.8],[.75,U+.85,5.8]],R1,9);el(s,'circle',{cx:P(.75,U+.95,5.8)[0],cy:P(.75,U+.95,5.8)[1],r:7,fill:'#fff',stroke:R1,'stroke-width':2.4});}
+ else{pipe([[2.45,U+.22,5.8],[3.12,U+.2,5.8],[3.17,U+.18,6.2]],R1,8);pipe([[2.75,U+.45,5.0],[2.75,U+.15,5.0],[3.1,U+.12,5.0],[3.12,U+.12,6.15]],R2,5);
+  pipe([[1.85,U+.05,6.35],[1.85,U+.1,6.3],[3.1,U+.07,6.3]],R2,5);pipe([[2.9,U+.5,6.65],[2.9,U+.1,6.62],[3.12,U+.06,6.62],[3.15,U+.05,6.25]],R2,5);
+  pipe([[3.17,U+.2,6.2],[3.17,2.805,6.2]],R1,9);}
+ pipe([[6.45,U+.22,8.17],[7.42,U+.2,8.17],[7.42,U+.12,10.3],[7.55,U+.1,10.37]],R1,8);pipe([[5.55,U+.45,7.6],[7.38,U+.18,7.6],[7.4,U+.17,8.12]],R2,5);pipe([[6.0,U+.05,9.3],[7.38,U+.13,9.3]],R2,5);
+ for(const z of [10.37,11.45]){pipe([[7.55,.3,z],[7.55,5.75,z]],ST,9);box(7.46,7.64,5.75,5.92,z-.09,z+.09,'#6f7d74');}
+ // numbered callouts
+ mark([.45,.3,7.9],-30,10,1,G,'<strong>K3</strong> – vývod DN 110 u kuchyňského dřezu (hotovo)');
+ mark([4.0,yU,7.9],0,30,2,G,'<strong>KG 160 pod deskou</strong> (hotovo): K3 → napříč domem → K2 → K1');
+ mark([7.55,1.6,10.37],32,-4,3,ST,'<strong>K1, K2</strong> – vývody DN 110 a stoupačky odvětrané nad střechu');
+ mark([8.95,-.3,13.6],30,10,4,G,'<strong>LŠ</strong> – lomová šachta, dál do ČOV');
+ mark([.6,.95,8.6],-30,-14,5,R2,'<strong>Kuchyňský dřez a myčka</strong> → K3 (DN 50)');
+ if(V==='A'){mark([.75,1.6,5.8],-34,0,6,R1,'<strong>S2</strong> – stoupačka DN 110 v pilíři mezi okny, ve vysoké skříni na konci linky (vedle okna, ne před ním)');
+  mark([.5,.08,6.8],-34,22,7,R1,'<strong>DN 110 ve skladbě podlahy</strong> pod linkou, asi 2 m, spád 2 % → K3');
+  mark([.75,3.0,5.8],-34,-6,8,GR,'<strong>Prostup panelem</strong> Ø ~130 mm, asi 0,45 m od obvodové zdi (výrobce panelů, statik)');
+  mark([.75,U+.95,5.8],-34,-10,9,R1,'<strong>Přivzdušňovací ventil DN 110</strong> v předstěně WC s revizními dvířky');}
+ else{mark([3.17,3.9,6.2],-36,-4,6,R1,'<strong>Svislý odpad DN 110</strong> v rohu předstěny u chodby (WC, umyvadlo, sprcha, prádelna)');
+  mark([4.7,2.77,8.0],-36,-10,7,R1,'<strong>DN 110 s izolací v podhledu</strong>, asi 7 m, spád ≥ 1 %, odbočka 45° do K2');
+  mark([3.17,2.95,6.2],-36,12,8,GR,'<strong>Prostup panelem</strong> Ø ~130 mm, uprostřed rozpětí (výrobce panelů, statik)');
+  mark([6.6,2.64,9.0],34,16,9,'#b08a4a','<strong>Podhled</strong> 21–28 cm jen v chodbě 1.06 a koupelně 1.05');}
+ mark([1.4,U+.6,5.0],-30,-24,10,R2,'<strong>Koupelna u ložnice</strong> – WC, umyvadlo, sprcha se stěnovou vpustí; potrubí v předstěnách');
+ mark([2.25,U+1.7,6.9],-26,-24,11,R2,'<strong>Prádelna</strong> – pračka, sušička, výlevka; DN 50 přes příčku do stejné větve');
+ mark([6.7,U+.55,8.2],-6,-34,12,R1,'<strong>Koupelna děti</strong> → K2: WC v předstěně pod šikminou, asi 2,2 m');
+ for(const m of marks){const [x,y]=P(...m.q),cx=x+m.dx,cy=y+m.dy;if(m.dx||m.dy)el(s,'line',{x1:x,y1:y,x2:cx,y2:cy,stroke:'#5f6d65','stroke-width':1.1});
+  el(s,'circle',{cx:x,cy:y,r:2.6,fill:'#5f6d65'});el(s,'circle',{cx,cy,r:11,fill:m.col,stroke:'#fff','stroke-width':2});el(s,'text',{x:cx,y:cy+4.2,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#fff'},String(m.n));}
+ for(const [y,t] of [[.3,'přízemí'],[2.95,'strop'],[U+.05,'podkroví']]){const [x,yy]=P(-.2,y,-.2);el(s,'text',{x:x-10,y:yy+4,'font-size':12,'font-weight':700,fill:'#8a978e','text-anchor':'end'},t);}
+ const [fx,fy]=P(4,0,-.2);el(s,'text',{x:fx,y:fy+26,'font-size':11.5,fill:'#8a978e','text-anchor':'middle'},'přední štít (obývák)');
+ const [kx2,ky2]=P(-.2,0,6.5);el(s,'text',{x:kx2-8,y:ky2+18,'font-size':11.5,fill:'#8a978e','text-anchor':'end'},'strana kuchyně');
+ const [tx,ty]=P(8.2,0,3.0);el(s,'text',{x:tx+10,y:ty+18,'font-size':11.5,fill:'#8a978e'},'strana terasy (HS)');
+ const [cxp,cyp]=P(4,8.5,13.0);el(s,'text',{x:cxp+10,y:cyp-6,'font-size':11,fill:'#98a49c'},'střecha pokračuje nad průjezdem');
+ el(s,'text',{x:20,y:28,'font-size':12,fill:C.sub},'Bez měřítka · zdi průhledné · podkroví odsunuté nahoru');
+ document.getElementById('isoList').innerHTML=marks.sort((a,b)=>a.n-b.n).map(m=>`<li><b style="background:${m.col}">${m.n}</b><span>${m.text}</span></li>`).join('');
+}
+const VD={B:'<strong>Varianta B (alternativa bez šachty v jídelně):</strong> WC, umyvadlo a sprcha z koupelny u ložnice a pračka s výlevkou z prádelny odtékají do jednoho otvoru stropem u chodby. Pod stropem vede izolovaná DN 110 v podhledu nad chodbou 1.06 a koupelnou 1.05 až do stoupačky K2. Kuchyň zůstane samostatně na K3 a v kuchyni ani jídelně nebude vidět žádné potrubí.',
+ A:'<strong>Varianta A (doporučená):</strong> stoupačka S2 sejde v plném pilíři mezi okny kuchyně a obýváku. Pod linkou pak vede asi 2 m DN 110 ve skladbě podlahy do vývodu K3 (DN 110 na KG 160). Okno nepřekáží a kuchyňský dřez se napojí do stejné větve.'};
+function render(){document.getElementById('vdesc').innerHTML=VD[V];drawIso();drawGround();drawAttic();drawSection();document.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===V)));}
+document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{V=b.dataset.v;render();});
+render();
+</script>
+</body>
+</html>
