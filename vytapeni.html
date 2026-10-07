@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Podlahové topení · Dům Hájek</title>
+<meta name="description" content="Pracovní návrh podlahového vytápění přízemí a podkroví: okruhy, rozdělovače, hydraulika s tepelným čerpadlem, regulace po místnostech a kabeláž pro Home Assistant.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{display:inline-block;text-decoration:none;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:9px 12px;font-size:13px}.nav a:hover,.nav a[aria-current=page]{background:#264b39;border-color:#264b39;color:#fff}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:920px;margin:8px 0 18px;color:#526359}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card h3{font-size:15px;margin:18px 0 6px;color:#2b4236}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;font-size:12px;color:#526359}.legend span{display:inline-flex;align-items:center;gap:7px}.legend i{display:inline-block;width:26px;height:0;border-top:4px solid}.legend i.thin{border-top-width:2px}.legend i.dash{border-top-style:dashed}.legend b{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid}.legend em{display:inline-block;width:18px;height:12px;border:1px solid #9aa79f;background:repeating-linear-gradient(45deg,#cfd6d1 0 2px,#f3f5f2 2px 6px)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}.tbl th,.tbl td{text-align:left;padding:8px 9px;border-bottom:1px solid #e4e9e5;vertical-align:top}.tbl th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:#f6f8f5}.tbl td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.tbl tr.sum td{font-weight:700;border-top:2px solid #cfd8d1;background:#f6f8f5}
+.tbl .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.wrap{overflow-x:auto}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c28a2c;background:#fbf6ea}.note.risk strong{color:#5d4313}
+.note ul,.note ol{margin:6px 0 0;padding-left:18px}.note li{margin:3px 0}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;display:grid;gap:10px}.steps li{position:relative;padding:10px 14px 10px 50px;background:#f3f6f2;border-radius:10px;font-size:13px;color:#4f5f55}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:13px;top:10px;width:26px;height:26px;border-radius:50%;background:#264b39;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}.steps strong{color:#2b4236}
+  .switch{display:inline-flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px}.switch button{font:inherit;font-size:13px;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:8px 12px;cursor:pointer}.switch button[aria-pressed=true]{background:#264b39;border-color:#264b39;color:#fff}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+@media(max-width:760px){.notes,.verdict{grid-template-columns:1fr}.tbl{font-size:12px}.tbl th,.tbl td{padding:7px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}.nav{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Podlahové topení a regulace</h1><p>Okruhy v přízemí a podkroví · hydraulika s tepelným čerpadlem · kabeláž pro Home Assistant</p></div>
+  <nav class="nav" aria-label="Stránky projektu">
+    <a href="./index.html">3D vizualizace</a>
+    <a href="./zalozeni-zdiva.html">První řada zdiva</a>
+    <a href="./rez-vyska.html">Výškový řez</a>
+    <a href="./kanalizace.html">Kanalizace</a>
+    <a href="./vytapeni.html" aria-current="page">Topení</a>
+  </nav>
+</header>
+<main>
+  <div class="eyebrow">Podklad: DSP 2024 – vytápění D.1.4 (tepelné ztráty ČSN EN 12831), stavební část (skladby podlah, řezy), statika, elektro, PENB · dispozice z 3D modelu (přízemí „optimalizovaná“, podkroví „zadní část neobytná“) · návrh k předání topenáři, stav 10/2026</div>
+  <p class="lead">Projekt počítá s tepelným čerpadlem vzduch–voda, podlahovkou v obou podlažích, jedním rozdělovačem na patro a spádem 40/32 °C. Tepelná ztráta je 13,6 kW, z toho 2,6 kW připadá na garáž, která odpadla. <strong>Bez garáže a s neobytnou zadní částí podkroví vychází dům asi na 9 kW, s rekuperací odhadem na 7–7,5 kW.</strong> PENB dává třídu B s potřebou tepla na vytápění 17,4 MWh za rok a upozorňuje na riziko letního přehřívání. Počítá s přirozeným větráním, dům ale bude mít rekuperaci, takže ztráta větráním (v PENB asi 30 % všech ztrát) z velké části odpadne a podlahovka bude mít rezervu. Návrh níže z projektu vychází, ale je vyladěný na co nejnižší teplotu vody (vyšší COP), krátké rozvody a regulaci po místnostech, kterou půjde ovládat z Home Assistantu, a přitom bude fungovat i bez něj.</p>
+
+  <div class="notice"><strong>Co je potřeba rozhodnout hned, dokud je jen deska:</strong> prostupy stropními panely (stoupačka topení R2 → R1, chráničky pro kabely, S2 z kanalizace, prostup z technické místnosti do půdy nad průjezdem). Stropy jsou předpjaté dutinové panely 250 mm, které vedou přes celou šířku domu a leží na podélných obvodových zdech. Otvory se vrtají dutinami podle výrobního výkresu dodavatele panelů, takže je musí znát předem. Druhé rozhodnutí: <strong>potěr</strong>. Projekt má 50 mm betonu i s trubkami, což je pro podlahovku málo (viz skladba podlahy).</div>
+
+  <div class="verdict">
+    <div class="fact"><b>1 · Nízká teplota 35/30 °C místo 40/32 °C</b><span>Hustší pokládka (10 cm u prosklení a v koupelnách, jinak 15 cm) a dubová podlaha s tepelným odporem do 0,10 m²K/W. Každý stupeň vody dolů je zhruba +2,5 % účinnosti TČ.</span></div>
+    <div class="fact"><b>2 · Rozdělovače nad sebou</b><span>R2 v chodbě podkroví u dětského pokoje 1, R1 ve vestavěné skříni v předsíni přímo pod ním. Stoupačka mezi nimi má jen 3 m a páteřní trubky v tenké podlaze podkroví (150 mm) vedou jen kousek podél stěny chodby.</span></div>
+    <div class="fact"><b>3 · Přívod vrchem, rovnou do R2</b><span>Jako v projektu: z technické místnosti pod stropem nahoru a půdou nad průjezdem přímo k R2, odtud stoupačkou dolů do R1. Na neobytné půdě v izolačním boxu, spolu s vodou a chráničkou pro data.</span></div>
+    <div class="fact"><b>4 · 6 zón, zbytek otevřený</b><span>Dole obytná část, koupelna a WC, nahoře ložnice a dva dětské pokoje. Předsíň, koupelny v podkroví, úklid a chodba jsou trvale otevřené, takže TČ má vždy průtok a necykluje. Teplotu drží ekvitermní křivka, zóny jen dolaďují.</span></div>
+    <div class="fact"><b>5 · Koupelny: podlaha, stěna a elektrický žebřík</b><span>Na 24 °C podlaha s 35 °C vodou nestačí. Doplní ji stěnové topení na jedné stěně a elektrický žebřík, který ráno a večer přitopí a v létě suší ručníky.</span></div>
+    <div class="fact"><b>6 · Kabel všude, čidla jen v zónách</b><span>Cat6 z každé místnosti k rozdělovači (levné, na později), osazených 6 čidel: obývák, koupelna, WC, ložnice a dětské pokoje. Regulátory na ESPHome (lokálně, bez cloudu), TČ přes Modbus, elektroměr a kalorimetr pro skutečný COP.</span></div>
+  </div>
+
+  <section class="card">
+    <h2>Přízemí · okruhy, rozdělovač R1 a čidla</h2>
+    <p class="desc">Pohled shora, nahoře strana kuchyně (příjezd), vlevo přední štít, vpravo průjezd a technická místnost. Barvy jsou okruhy, čísla odpovídají tabulce. V pohledu „Pokládka“ je každá trubka zakreslená v měřítku: plná čára přívod, světlejší zpátečka, dvojitá čára připojení k rozdělovači. Šrafované plochy se nevytápějí (linka, ostrůvek, vestavné skříně, vana, schodiště, spíž).</p>
+    <div class="switch" role="group" aria-label="Zobrazení"><button type="button" data-mode="lay" aria-pressed="true">Pokládka trubek (šneky)</button><button type="button" data-mode="zones" aria-pressed="false">Okruhy, čidla a kabely</button></div>
+    <div class="wrap"><svg id="ground" viewBox="0 0 1080 545" role="img" aria-label="Půdorys přízemí s okruhy podlahového topení"></svg></div>
+    <div class="legend" id="legGround"></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>A · R1, rozvaděč RD a SLP v předsíni</strong><br>Stejné místo jako v projektu: příčka ke komoře, kde je podle elektro projektu i hlavní rozvaděč domu (791 × 571 mm) a vývod 230 V pro rozdělovač. Na příčce vedle sebe rozvaděč RD a R1 (10 vývodů: 8 okruhů + 2 rezerva, s průtokoměry), nad R1 zónový regulátor a SLP (HA, router, switch, UPS). Rozvaděč vedle rozdělovače, ne pod ním. Vše schová vestavěná skříň a zadní stěna sedací niky, která se udělá jako servisní dvířka.</div>
+      <div class="note"><strong>B a C · stoupačka a přívod z technické místnosti</strong><br><strong>B:</strong> stoupačka R2 → R1 (2× 26×3 v izolaci) a 2 chráničky Ø 32 pro kabely, prostup stropem asi 2,65 m od líce stěny u kuchyně a 0,8 m od líce stěny u vstupu. <strong>C:</strong> přívod z TČ jde v technické místnosti pod strop a prostupem nahoru do půdy nad průjezdem (topení 2× 32, voda, chránička pro data), dál viz podkroví.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Podkroví · okruhy, rozdělovač R2 a čidla</h2>
+    <p class="desc">Varianta „zadní část neobytná“. R2 je zapuštěný do příčky chodby u dětského pokoje 1, přímo nad R1. Chodbou a podestou vedou připojovací trubky k pokojům, a ty je zároveň vytápějí, takže tam vlastní šnek není. Pod vestavnými skříněmi, ostrůvkem v šatně, sprchovými vaničkami a pračkou se nepokládá.</p>
+    <div class="switch" role="group" aria-label="Zobrazení"><button type="button" data-mode="lay" aria-pressed="true">Pokládka trubek (šneky)</button><button type="button" data-mode="zones" aria-pressed="false">Okruhy, čidla a kabely</button></div>
+    <div class="wrap"><svg id="attic" viewBox="0 0 1080 545" role="img" aria-label="Půdorys podkroví s okruhy podlahového topení"></svg></div>
+    <div class="legend" id="legAttic"></div>
+  </section>
+
+  <section class="card">
+    <h2>Jak vypadá jeden šnek</h2>
+    <p class="desc">Detail pokládky v jedné místnosti. Stejným způsobem jsou nakreslené všechny okruhy v půdorysech výše.</p>
+    <div class="wrap"><svg id="detail" viewBox="0 0 1000 420" role="img" aria-label="Detail pokládky bifilární spirály"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>Skladba podlahy</h2>
+    <p class="desc">Výšky zůstávají podle projektu (přízemí 250 mm na desce, podkroví 150 mm na panelech). Měním jen materiál potěru, protože 50 mm betonu včetně trubek nesplní požadavek na krytí trubek a tenký beton s podlahovkou praská.</p>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Vrstva (shora)</th><th>Přízemí – projekt P1 / P2</th><th>Podkroví – projekt P6 / P7</th><th>Návrh</th></tr></thead>
+      <tbody>
+        <tr><td>Nášlapná vrstva</td><td>dub 10 lepený / dlažba 8 + lepidlo 5</td><td>dub 10 lepený / dlažba 8 + lepidlo 5</td><td>beze změny. Dub 10 mm celoplošně lepený má odpor jen ~0,07 m²K/W, takže je pro podlahovku výborný.</td></tr>
+        <tr><td>Hydroizolace (koupelny, WC)</td><td>stěrka 2×</td><td>stěrka 2×</td><td>beze změny, na anhydrit s penetrací podle výrobce</td></tr>
+        <tr><td><strong>Potěr s trubkami</strong></td><td>beton 50 + kari Ø 4</td><td>beton 50</td><td><strong>lité anhydritové (CaSO₄) 50 mm</strong>, nad trubkou ~33 mm. Beton by potřeboval aspoň 45 mm nad trubkou, tedy 65 mm celkem a o 15 mm tenčí izolaci. Anhydrit je navíc rovný (dub se lepí přímo), lépe vede teplo a podlaha rychleji reaguje.</td></tr>
+        <tr><td>Systémová deska s výstupky</td><td>32</td><td>32</td><td>beze změny, pro trubku 17 mm, rozteč po 5 cm</td></tr>
+        <tr><td>Separace</td><td>PE fólie</td><td>PE fólie</td><td>u anhydritu vanová fólie vytažená na okrajový pásek, aby potěr neutekl</td></tr>
+        <tr><td>Tepelná / kročejová izolace</td><td>EPS 150</td><td>EPS 50</td><td>beze změny. V podkroví do EPS vyříznout drážky pro hlavní trubky k R2 (32 mm s izolací 6–9 mm).</td></tr>
+        <tr><td>Nosná konstrukce</td><td>pásy proti radonu, ŽB deska 150</td><td>dutinové panely 250</td><td>–</td></tr>
+        <tr><td>Okraje a dilatace</td><td colspan="2">neuvedeno</td><td>okrajový pásek 8–10 mm po celém obvodu, dilatační profil ve dveřích a v polích nad ~40 m² nebo delších než 8 m (obývací část rozdělit pod HS a u jídelny podle kladečského plánu)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>Nahoře v potěru: jen podlahovka</strong><br>Smyčky 17×2 a jejich připojení k rozdělovači leží na systémové desce a zalijí se potěrem. Jiné trubky ani kabely do potěru nepatří, protože by ubraly krytí a potěr by nad nimi praskal.</div>
+      <div class="note"><strong>Dole v EPS: všechno ostatní</strong><br>Hlavní trubky topení (32×3 z půdy k R2), voda, odpad S2 pod linkou, chráničky pro kabely a sondy. <strong>Přízemí</strong> (EPS 150): trubky položit na desku přes ochrannou vrstvu (nesmí poškodit protiradonové pásy), spodní vrstvu EPS vyříznout kolem nich a navrch dát celistvou vrstvu aspoň 30–50 mm, aby systémová deska ležela rovně. <strong>Podkroví</strong> (EPS 50): jen hlavní trubky v chodbě do drážky v EPS, s tenkou izolací 6 mm. Chodbu stejně vytápějí.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rekuperace a dveře bez prahů</h2>
+    <p class="desc">Rekuperace mění pár věcí, se kterými je potřeba počítat ještě před stropy a podlahou.</p>
+    <div class="notes">
+      <div class="note"><strong>Jednotka na půdě nad průjezdem</strong><br>Nevytápěná, ale v zateplené obálce, blízko technické místnosti i trasy topení. Sání a výfuk boční stěnou půdy, každý na jinou stranu (aspoň 2–3 m od sebe). Odvod kondenzátu se zápachovou uzávěrkou do nejbližšího odpadu (K1/K2 v šachtě dětského pokoje 2). 230 V a Cat6 do SLP stoupačkou B.</div>
+      <div class="note"><strong>Rozvody</strong><br>Podkroví: potrubí ze stropu podhledem v chodbě (snížit asi na 2,4 m) a vyústě do pokojů. Přízemí: svislá šachta vedle stoupačky B ve vestavěné skříni předsíně, dál v izolaci EPS 150 pod podlahou (kulatá Ø 75 nebo plochá potrubí) k podlahovým nebo stěnovým vyústím. Přívod do obýváku, jídelny a pokojů, odvod z kuchyně, koupelen, WC a spíže.</div>
+      <div class="note risk"><strong>Koordinace s podlahovkou a panely</strong><br>Polohy podlahových vyústí určit před pokládkou, šneky je obejdou s odstupem ~15 cm. Potrubí rekuperace leží v EPS spolu s vodou a odpadem, takže trasy nakreslit dohromady. Šachta rekuperace potřebuje 1–2 prostupy stropními panely Ø 160–200 vedle stoupačky B. Přidat je do seznamu pro dodavatele panelů.</div>
+      <div class="note"><strong>Dveře bez prahů</strong><br>Vzduch proudí pod dveřmi, takže dveře podříznout o 10–15 mm (nebo větrací mřížka). Dlažba (8 + lepidlo 5 mm) a dub (10 + lepidlo ~3 mm) vyjdou na stejnou výšku. Dilatační spára v potěru pod dveřmi ale zůstává: zakryje ji plochý profil v úrovni podlahy nebo pružný tmel ve spáře dlažby.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Okruhy a nastavení průtoků</h2>
+    <p class="desc"><strong>Okruh není zóna.</strong> Okruhů je 17, protože jedna trubka může mít nejvýš asi 100 m a každá místnost potřebuje vlastní nastavení průtoku. Samostatně se ale reguluje jen 6 zón (dole obytná část, koupelna a WC, nahoře ložnice a dva dětské pokoje), ostatní okruhy jsou jednou provždy nastavené na rozdělovači. Trubka PE-Xa 17×2 s kyslíkovou bariérou, okruh nejvýš asi 100 m. Výkon je při venkovní teplotě −15 °C a vodě 35/30 °C. Průtok je nastavení průtokoměru na rozdělovači (ΔT 5 K). Plocha je skutečně vytápěná plocha bez nábytku na podlaze. Délky jsou spočítané z nakreslené pokládky včetně připojení k rozdělovači, přesné je spočítá topenář v prováděcím projektu.</p>
+    <div class="wrap"><table class="tbl" id="circuits"></table></div>
+    <p class="desc" style="margin-top:10px">Podlaha v tomto rozložení dá při 35/30 °C asi 6,5 kW a přívody v chodbách a na podestě asi dalších 0,5 kW. Ustálená ztráta domu při −15 °C je asi 7,5 kW (bez zátopové přirážky). Rozdíl pokryjí ložnice na 19–20 °C, elektrické žebříky v koupelnách a v největších mrazech o 2 K vyšší voda (−15 °C → 37 °C), což ekvitermní křivka udělá sama a týká se to jen pár dní v roce.</p>
+  </section>
+
+  <section class="card">
+    <h2>Hydraulické schéma</h2>
+    <p class="desc">Monoblok venku, uvnitř technické místnosti akumulace a zásobník teplé vody. Do domu vede jedna topná větev bez směšování. Teplotu vody řídí TČ podle venkovní teploty.</p>
+    <div class="wrap"><svg id="hydro" viewBox="0 0 1000 440" role="img" aria-label="Hydraulické schéma vytápění"></svg></div>
+    <div class="notes" style="margin-top:14px">
+      <div class="note"><strong>Akumulace 100 l sériově ve zpátečce</strong><br>Projekt ji má jako oddělovač se samostatným čerpadlem. Pokud to zvolené TČ dovolí, je lepší zapojit ji sériově do zpátečky jako objem pro odtávání. Jedno čerpadlo (v TČ), žádné míchání výstupu se zpátečkou, a tím o 1–2 K nižší teplota výstupu. Musí to potvrdit dodavatel TČ. Když zůstane paralelní zapojení, průtok do domu musí být aspoň stejný jako průtok z TČ.</div>
+      <div class="note"><strong>Velikost TČ</strong><br>Projekt vytápění uvádí jako příklad jednotku 11,7 kW (A7/W35) s elektrokotlem 9 kW, stavební část jednotku třídy 8 kW. Elektro projekt počítá s kompresorem do 5,5 kW příkonu a elektrokotlem 9 kW (jistič 32 A). Bez garáže vychází ztráta asi 9 kW, takže dává smysl třída 8–10 kW. Důležitější než jmenovitý výkon je nízký minimální výkon (ideálně do 3 kW), aby jednotka v přechodném období necyklovala. Pohlídej si také <strong>otevřené rozhraní (Modbus RTU/TCP nebo místní API)</strong>, jinak ji do HA nepřipojíš bez cloudu.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Regulace · co řídí TČ a co Home Assistant</h2>
+    <p class="desc">Podlahovka reaguje v řádu hodin. Klasické termostaty, které zapínají a vypínají jednotlivé místnosti, s TČ fungují špatně. Základ je ekvitermní křivka a vyvážené průtoky, zóny jen dolaďují.</p>
+    <div class="wrap"><svg id="ha" viewBox="0 0 1000 438" role="img" aria-label="Schéma regulace a napojení na Home Assistant"></svg></div>
+    <div class="notes" style="margin-top:14px">
+      <div class="note"><strong>Tepelné čerpadlo (samo, bez HA)</strong><ul>
+        <li>Ekvitermní křivka, startovní body: −15 °C → 35 °C, −5 °C → 31 °C, 0 °C → 29 °C, +10 °C → 25 °C, +15 °C → 23 °C. Pak ji snižuj o 1 K za týden, dokud obývák drží 21 °C.</li>
+        <li>Ohřev teplé vody, odtávání, elektrokotel pod bodem bivalence, týdenní ohřev TV kvůli legionele.</li>
+        <li>Když HA spadne, dům topí dál podle křivky.</li></ul></div>
+      <div class="note"><strong>Home Assistant (dolaďuje)</strong><ul>
+        <li>Posouvá křivku TČ o ±1–2 K podle referenční místnosti (obývák), pomalu, v hodinách. Kompresor nevypíná.</li>
+        <li>Zóny: <strong>obytná část</strong> (obývák, jídelna, kuchyň; když hoří krb nebo svítí slunce do HS, čidlo v obýváku ji samo zavře), <strong>koupelna</strong> 23–24 °C, <strong>WC</strong>, <strong>ložnice</strong> 19–20 °C, <strong>dětský pokoj 1</strong> a <strong>2</strong> po 20–21 °C. Koupelny v podkroví hřejí víc díky hustší pokládce a stěně, ráno a večer přitopí žebřík.</li>
+        <li>Termopohony jsou na 12 okruzích. HA nikdy nezavře všechny zóny naráz a na R1 je přepouštěcí ventil, takže TČ má vždy průtok.</li>
+        <li>Zóny jsou jen nastavení v HA. Rozdělovače mají ventily připravené na termopohony a kabel vede do každé místnosti, takže další zónu (třeba koupelnu) přidáš nasazením hlavice a čidla, bez bourání.</li>
+        <li>Celý dům v noci neutlumuje. U podlahovky útlum stojí víc, než ušetří.</li>
+        <li>Levný tarif nebo přebytek FVE: zvednout křivku o 1–2 K a ohřát vodu (SG Ready). Teplo se uloží do podlahy.</li>
+        <li>Hlídá COP z elektroměru a kalorimetru, rozdíl výstup–zpátečka (má být 4–6 K) a poruchy.</li></ul></div>
+      <div class="note"><strong>Zónové regulátory R1 a R2</strong><br>Deska s ESP32 a relé 24 V (ESPHome) v krabici u každého rozdělovače, zdroj 24 V, termopohony 24 V bez proudu zavřené (NC). Na regulátoru běží i <strong>místní termostaty</strong>, takže když HA nebo síť vypadne, zóny se řídí samy a při ztrátě spojení na delší dobu se otevřou. Výstup „požadavek topení“ jde do TČ.</div>
+      <div class="note"><strong>Chlazení podlahou (volitelně)</strong><br>Pokud TČ umí chladit, podlaha v létě srazí podkroví o 2–3 °C. Podmínka je voda nad rosným bodem + 2 K. Proto mají čidla v místnostech i vlhkost a u R2 je čidlo kondenzace. Koupelny se nechladí. Izolace potrubí u rozdělovačů pak musí být parotěsná.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Kabely · kam co natáhnout</h2>
+    <p class="desc">SLP = slaboproudý rozvaděč (router, switch, mini-PC s HA, UPS) ve vestavěné skříni v předsíni nad R1. Všechny kabely z místností vedou do zónového regulátoru svého patra (hvězda), regulátory a TČ pak do SLP. Ke každé krabici a do každé chráničky přidej protahovací drát.</p>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Co</th><th>Odkud → kam</th><th>Kabel</th><th>Poznámka</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Prostorové čidlo teploty a vlhkosti</strong> (6 ks + kabely do rezervy)</td><td>krabice v místnosti → regulátor R1 / R2</td><td>Cat6 U/UTP</td><td>Hluboká krabice KU 68 ve výšce 1,5 m na vnitřní stěně, mimo slunce, krb, dveře a lampy. Osadit: obytná část (referenční čidlo pro TČ, na stěně schodiště u jídelny), koupelna 1.05, WC, ložnice, dětský 1, dětský 2. Kabel s krabicí natáhnout i do koupelen v podkroví, úklidu a předsíně (vlhkost pro ventilátor nebo zóna později). Cat6 unese i PoE pro pozdější displej.</td></tr>
+        <tr><td>2</td><td><strong>Podlahová sonda</strong> (2 ks)</td><td>potěr → krabice čidla v místnosti</td><td>chránička 16 mm + čidlo NTC / DS18B20</td><td>V obýváku u HS, konec chráničky mezi trubkami 0,5–1 m od stěny, čidlo vyměnitelné. Hlídá přehřátí podlahy od slunce. Druhá v koupelně 1.05 na teplotu podlahy.</td></tr>
+        <tr><td>3</td><td><strong>Termopohony</strong> 24 V NC (7 + 5 ks)</td><td>rozdělovač → svorkovnice regulátoru</td><td>dodaný kabel 2×0,75</td><td>Obytná část 1.1–1.5, koupelna 1.6, WC 1.7, ložnice 2.1–2.3, dětské pokoje 2.6 a 2.8. Ostatní vývody ručně, rozdělovač ale s ventily připravenými na termopohony.</td></tr>
+        <tr><td>4</td><td><strong>Napájení regulátorů R1 a R2</strong></td><td>rozvaděč → krabice R1, krabice R2</td><td>CYKY-J 3×1,5</td><td>Elektro projekt už má u obou rozdělovačů vývod 230 V na samostatném jističi 16 A. Vývod pro R2 jen přesunout z chodby u WC 2.06 na nové místo. V krabici zdroj 24 V, elektroniku nad rozdělovač, ne pod něj.</td></tr>
+        <tr><td>5</td><td><strong>Propojení regulátorů s HA</strong></td><td>R1 → SLP, R2 → SLP</td><td>Cat6 + chránička 25 mm rezerva</td><td>R2 vede stejným prostupem jako stoupačka topení.</td></tr>
+        <tr><td>6</td><td><strong>TČ → HA</strong> (Modbus, síť)</td><td>řídicí jednotka TČ v technické místnosti → SLP</td><td>Cat6 venkovní (PE) + J-Y(St)Y 2×2×0,8 (RS-485)</td><td>Dvě možnosti: vrchem s trubkami topení přes půdu a stoupačkou B k SLP, nebo do výkopu podél průjezdu, kudy podle elektro projektu vede silový kabel do technické místnosti (samostatná chránička Kopoflex). Elektro projekt žádnou datovou kabeláž neobsahuje, tohle je doplněk.</td></tr>
+        <tr><td>7</td><td><strong>Řídicí kontakty TČ</strong></td><td>TČ → regulátor R1</td><td>J-Y(St)Y 4×2×0,8</td><td>Požadavek topení, SG Ready (2 kontakty), porucha, případně přepnutí na chlazení. Stejná chránička jako bod 6.</td></tr>
+        <tr><td>8</td><td><strong>Venkovní čidlo TČ</strong></td><td>fasáda → TČ</td><td>podle výrobce (obvykle 2 žíly)</td><td>Severozápadní fasáda (strana kuchyně a příjezdu) nebo severní stěna technické místnosti, 2,5 m nad terénem, mimo okna a mimo výdech venkovní jednotky.</td></tr>
+        <tr><td>9</td><td><strong>Elektroměr TČ</strong> s Modbusem na DIN liště</td><td>rozvaděč → SLP</td><td>J-Y(St)Y 2×2×0,8</td><td>Měří příkon TČ včetně elektrokotle. Bez něj nepoznáš skutečnou účinnost.</td></tr>
+        <tr><td>10</td><td><strong>Kalorimetr</strong> na výstupu TČ (M-Bus / Modbus)</td><td>technická místnost → SLP</td><td>sdílí kabel z bodu 6</td><td>Vyrobené teplo. Spolu s elektroměrem dává COP v HA a ukáže, jestli úpravy křivky pomáhají.</td></tr>
+        <tr><td>11</td><td><strong>Teploměry na potrubí</strong> (1-Wire DS18B20)</td><td>výstup a zpátečka TČ, akumulace, TV nahoře a dole, přívod R1 a R2</td><td>pár v Cat6</td><td>Levná kontrola celé soustavy na jednom grafu.</td></tr>
+        <tr><td>12</td><td><strong>Elektrické žebříky</strong> v koupelnách (3 ks, 300–500 W)</td><td>rozvaděč → krabice za žebříkem</td><td>CYKY-J 3×1,5</td><td>Elektro projekt má zásuvky pro žebříky v koupelnách 2.05 a 2.07 (původní dispozice). Přesunout do koupelny 1.05, koupelny u ložnice a koupelny dětí, napájet pevně přes relé nebo stykač v rozvaděči řízený z HA, ne Wi-Fi relé v koupelně. Dodržet zóny koupelny.</td></tr>
+        <tr><td>13</td><td><strong>HDO (nízký tarif)</strong></td><td>rozvaděč → TČ a SLP</td><td>J-Y(St)Y 2×2×0,8</td><td>HDO jde podle elektro projektu z elektroměrového pilíře do rozvaděče vytápění na relé KA1 a jeho kontakt blokuje TČ. Druhý (rozpínací) kontakt KA1 je volný, takže stačí dovést pár do SLP a HA ví, kdy je nízký tarif.</td></tr>
+        <tr><td>14</td><td><strong>Krb</strong> – teplota</td><td>kouřovod / plášť vložky → krabice čidla obývacího prostoru</td><td>silikonový kabel u krbu, dál Cat6</td><td>HA pozná, že se topí, a ubere obývák i křivku. Pokud bude mít krb klapku přívodu vzduchu, stejná trasa.</td></tr>
+        <tr><td>15</td><td><strong>Okenní kontakty</strong> (volitelně, s EZS)</td><td>HS, fix, balkonové dveře, střešní okna → SLP</td><td>sdělovací kabel podle EZS</td><td>Při otevření HA pozastaví zónu.</td></tr>
+        <tr><td>16</td><td><strong>Rekuperační jednotka</strong></td><td>půda nad průjezdem → SLP, rozvaděč</td><td>Cat6 (Modbus TCP / RS-485 podle jednotky) + CYKY-J 3×1,5</td><td>Do HA: intenzita podle vlhkosti v koupelnách a CO₂ v ložnicích, letní bypass, stav filtrů. Odsávací ventilátory v koupelnách z elektro projektu pak odpadají.</td></tr>
+        <tr><td>17</td><td><strong>Rezerva</strong></td><td>SLP → podkroví, SLP → technická místnost, R1/R2 → SLP</td><td>prázdná chránička 25–32 mm</td><td>FVE, rekuperace, displeje. Natáhnout teď stojí málo, později hodně.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Co z projektu měním a proč</h2>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Téma</th><th>Projekt D.1.4</th><th>Návrh</th><th>Proč</th></tr></thead>
+      <tbody>
+        <tr><td>Teplota vody</td><td>40/32 °C</td><td>35/30 °C</td><td>Vyšší COP. Podlaha je při ztrátě ~50 W/m² teplá jen do 26 °C, takže je i příjemnější.</td></tr>
+        <tr><td>Rozdělovače</td><td>1 na patro, v přízemí v předsíni u rozvaděče, v podkroví v koupelně 2.05 u WC 2.06</td><td>R1 na stejném místě, R2 v chodbě podkroví přímo nad ním</td><td>Krátká stoupačka, žádné páteřní trubky v podlaze podkroví (150 mm), obojí přístupné bez bourání.</td></tr>
+        <tr><td>Přívod z technické místnosti</td><td>pod stropem t. m. a podlahou podkroví nad průjezdem k R2, dál do 1.NP</td><td>stejně, přímo k R2 v chodbě podkroví, stoupačka R2 → R1 v předsíni</td><td>Nejkratší trasa. Na neobytné půdě ale vedou trubky mimo vytápěný prostor, proto izolační box (viz rizika).</td></tr>
+        <tr><td>Potěr</td><td>beton 50 mm včetně trubek</td><td>litý anhydrit 50 mm</td><td>Beton potřebuje aspoň 45 mm nad trubkou, 50 mm celkem je málo a praská. Anhydrit stejné tloušťky vyhoví, je rovný pod lepený dub a lépe vede teplo.</td></tr>
+        <tr><td>Větrání</td><td>přirozené (PENB), ventilátory v koupelnách</td><td>rekuperace s jednotkou na půdě nad průjezdem</td><td>Menší ztráta větráním, čerstvý vzduch bez otevírání oken, intenzitu řídí HA podle vlhkosti a CO₂.</td></tr>
+        <tr><td>Akumulace</td><td>oddělovač s druhým čerpadlem</td><td>sériově ve zpátečce (ověřit s dodavatelem TČ)</td><td>Bez míchání výstupu se zpátečkou, jedno čerpadlo.</td></tr>
+        <tr><td>Koupelny</td><td>podlaha + vodní těleso z rozdělovače</td><td>podlaha 10 cm + stěnové topení + elektrický žebřík</td><td>Těleso na 35 °C vodu dá jen zlomek výkonu. Stěna hřeje příjemně a žebřík přitopí a funguje i v létě.</td></tr>
+        <tr><td>Předsíň</td><td>podlahovka</td><td>podlahovka 10 cm + dlažba</td><td>Ztráta je kvůli dveřím vysoká. Dlažba přenese víc tepla a hodí se na mokré boty.</td></tr>
+        <tr><td>Spíž</td><td>nevytápěná (12 °C)</td><td>zůstává nevytápěná, rozvody přes ni izolované</td><td>Chladná spíž je výhoda.</td></tr>
+        <tr><td>Garáž</td><td>desková tělesa, samostatná větev</td><td>odpadá</td><td>Garáž v návrhu není.</td></tr>
+        <tr><td>Regulace</td><td>ekvitermní, prostorový regulátor volitelně</td><td>ekvitermní + 6 zón (dole obytná část, koupelna, WC; nahoře ložnice a 2 dětské pokoje), HA lokálně (ESPHome, Modbus)</td><td>Ložnice chladnější, děti si nastaví svoje, ochrana před přehřátím od slunce a krbu, měření COP. Další zóny jdou přidat bez bourání.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Postup</h2>
+    <ol class="steps">
+      <li><strong>Teď (deska):</strong> v zemi se kvůli topení nic nedělá. Rozhodnout polohu R1 a R2, trasu přes půdu a potěr (anhydrit 50 mm). Pokud mají data jít s elektřinou výkopem podél průjezdu, přidat do něj chráničku hned při výkopu pro silový kabel.</li>
+      <li><strong>Před objednáním stropních panelů:</strong> předat výrobci seznam prostupů. Stoupačka topení R2 → R1 (2× Ø 80 nebo 1× Ø 160) a 2 chráničky Ø 32 v předsíni ve vestavěné skříni, asi 2,65 m od líce stěny u kuchyně a 0,8 m od líce stěny u vstupu (bod B v plánku). K tomu S2 z kanalizace (Ø 130) a prostup ze stropu technické místnosti do půdy (asi Ø 200 pro topení, vodu a chráničky). K tomu 1–2 prostupy Ø 160–200 pro šachtu rekuperace vedle stoupačky B. Otvory jen dutinami podle výkresu dodavatele, mimo sloupky na koncích chodby.</li>
+      <li><strong>Hrubá stavba a elektro:</strong> elektrikáři předat změny proti elektro projektu (vývod 230 V pro R2 na nové místo, žebříky do 1.05 a obou koupelen v podkroví přes relé, volný kontakt HDO relé do SLP, ventilátory přes relé). Krabice čidel KU 68 ve výšce 1,5 m, Cat6 hvězdou do R1 a R2, venkovní čidlo, kabely v technické místnosti. Skříně rozdělovačů: R1 ve vestavěné skříni předsíně (min. 80 cm šířka), R2 zapuštěný do zesílené příčky chodby (hloubka 120 mm).</li>
+      <li><strong>Před potěrem:</strong> nejdřív rozvody v EPS (voda, odpad, rekuperace) a polohy podlahových vyústí, pak pokládka podle plánku (10/15/20 cm), i pod linkou a ostrůvkem, ne pod vestavnými skříněmi a vanou. Chráničky podlahových sond, tlaková zkouška, vše vyfotit a okótovat, ať víš, kam pak nevrtat. Anhydrit lít pod tlakem v trubkách.</li>
+      <li><strong>Uvedení do provozu:</strong> natápěcí protokol podle typu potěru (anhydrit / beton), vyvážení průtokoměrů podle tabulky, startovní ekvitermní křivka a pak týdenní snižování. HA nejdřív jen měří, zóny zapínat až po první zimě.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Materiál · orientačně</h2>
+    <p class="desc">Pro objednávku a porovnání nabídek. Přesné množství dá kladečský plán dodavatele.</p>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Položka</th><th>Množství</th><th>Poznámka</th></tr></thead>
+      <tbody>
+        <tr><td>Trubka PE-Xa (nebo PE-RT) 17×2 s kyslíkovou bariérou</td><td class="n">~1 070 m → 2 role po 600 m</td><td>každý okruh z jednoho kusu, bez spojek v podlaze</td></tr>
+        <tr><td>Systémová deska s výstupky 32 mm</td><td class="n">~85 m² přízemí + 13 m² tech. m., ~80 m² podkroví</td><td>i pod linkou a ostrůvkem, pod vestavné skříně jen deska bez trubek</td></tr>
+        <tr><td>Okrajový pásek 8–10 mm s fólií</td><td class="n">~170 m</td><td>po obvodu všech místností a kolem sloupků, krbu a schodiště</td></tr>
+        <tr><td>Rozdělovač nerez s průtokoměry a ventily pro termopohony</td><td class="n">2× 10 vývodů</td><td>R1 nástěnný ve vestavné skříni, R2 podomítková skříň v zesílené příčce</td></tr>
+        <tr><td>Termopohony 24 V NC</td><td class="n">12 ks (+ 2 rezerva)</td><td>obytná část 5, koupelna, WC, ložnice 3, dětské pokoje 2</td></tr>
+        <tr><td>Ochranné trubky (husí krk) a dilatační profily</td><td class="n">~40 m trubky, ~10 profilů</td><td>u rozdělovačů, přes dveře a dilatační spáry</td></tr>
+        <tr><td>Vícevrstvé potrubí 32×3 + izolace, 26×3 na stoupačku</td><td class="n">~15 m + ~5 m</td><td>technická místnost → půda → R2, R2 → R1</td></tr>
+        <tr><td>Anhydritový litý potěr 50 mm</td><td class="n">~9 m³</td><td>včetně technické místnosti</td></tr>
+        <tr><td>Čidla teploty a vlhkosti, podlahové sondy</td><td class="n">6 + 2</td><td>krabice KU 68 i do místností bez čidla</td></tr>
+        <tr><td>Zónové regulátory (ESP32, relé 24 V, zdroj)</td><td class="n">2</td><td>jeden u každého rozdělovače</td></tr>
+        <tr><td>Cat6 U/UTP, J-Y(St)Y, chráničky</td><td class="n">~300 m, ~60 m, ~80 m</td><td>podle seznamu kabelů</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Svépomoc · co sám a co firma</h2>
+    <div class="notes">
+      <div class="note"><strong>Zvládneš sám</strong><ul>
+        <li>Pokládku podlahovky: desky, okrajové pásky, trubky podle plánku, rozdělovače. Ve dvou asi 2–3 dny na patro, odvíječ trubek si půjčíš.</li>
+        <li>Tlakovou zkoušku vodou podle výrobce systému (typicky 6 bar 24 h) a během lití potěru držet tlak ~3 bar. Protokol podepíše stavbyvedoucí.</li>
+        <li>Rozvody 32×3 a 26×3, když si půjčíš lisovačku se správnými čelistmi.</li>
+        <li>Slaboproud, čidla, regulátory na ESPHome a Home Assistant.</li>
+        <li>Natápění potěru podle protokolu a vyvážení průtoků podle tabulky.</li></ul></div>
+      <div class="note risk"><strong>Raději firma</strong><ul>
+        <li>Tepelné čerpadlo: připojení a hlavně uvedení do provozu autorizovaným servisem, jinak hrozí ztráta záruky. Pokud budeš žádat o dotaci, ověř její podmínky.</li>
+        <li>Silová elektřina: přívody k TČ, jištění, HDO, žebříky. Bez revizní zprávy dům nezkolauduješ.</li>
+        <li>Technická místnost: pojistný ventil, expanzní nádoba podle výpočtu, napojení teplé vody a zapojení akumulace.</li>
+        <li>Kladečský plán a výpočet podlahovky: dodavatel materiálu ho často udělá k nákupu zdarma podle tohoto plánku.</li></ul></div>
+      <div class="note"><strong>Postup pokládky</strong><ol>
+        <li>Okrajový pásek po obvodu, PE/vanová fólie, systémové desky přes celou plochu.</li>
+        <li>Rozdělovač osadit a popsat vývody podle tabulky.</li>
+        <li>Okruh po okruhu: přívod nasadit na rozdělovač, z odvíječe pokládat šnek podle plánku od rozdělovače dovnitř a zpátečkou ven, konec zpátky na rozdělovač. Rozteč podle tabulky, oblouky nejmíň 5× průměr.</li>
+        <li>Ochranné trubky u rozdělovače a přes dveře, dilatační profily podle plánku.</li>
+        <li>Naplnit, odvzdušnit, tlaková zkouška a protokol, nafotit a okótovat každý okruh.</li>
+        <li>Potěr lít pod tlakem, po zrání natápět podle protokolu výrobce, pak změřit vlhkost před lepením dubu.</li></ol></div>
+      <div class="note risk"><strong>Nejčastější chyby</strong><ul>
+        <li>Spojka trubky pod potěrem. Každý okruh musí být z jednoho kusu.</li>
+        <li>Zalomená nebo přišlápnutá trubka. Při lití chodit po fošnách.</li>
+        <li>Lití potěru bez tlaku v trubkách. Poškození se pak nepozná.</li>
+        <li>Chybějící ochranné trubky a dilatace ve dveřích.</li>
+        <li>Neoznačené okruhy na rozdělovači.</li>
+        <li>Natápění anhydritu moc brzy nebo moc rychle a lepení dubu na vlhký potěr.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rizika a poznámky</h2>
+    <div class="notes">
+      <div class="note risk"><strong>Dubová podlaha</strong><br>Projekt má dub 10 mm celoplošně lepený (~0,07 m²K/W), to je pro podlahovku ideální. Nezaměnit za plovoucí podlahu s podložkou nebo tlustší dřevo nad 0,10 m²K/W, žádné silné koberce v zóně u HS, nábytek na nožičkách. Lepit až po natápění a změření vlhkosti potěru.</div>
+      <div class="note risk"><strong>Varianta podkroví podle D1.3</strong><br>Pokud zůstanou pokoje 2.07–2.09 nad průjezdem, přibudou na R2 tři okruhy (rozdělovač na 12 vývodů). Podlaha nad průjezdem pak potřebuje silnou izolaci pod podlahovkou, protože pod ní je venkovní prostor.</div>
+      <div class="note risk"><strong>Trasa přes neobytnou půdu</strong><br>Střecha je podle projektu zateplená 400 mm minerální vaty po celé délce, i nad průjezdem a technickou místností, a strop průjezdu má 400 mm EPS. Půda tak zůstane uvnitř zateplené obálky, jen nevytápěná (v zimě odhadem 10–15 °C) a zamrznutí nehrozí. Trubky vést <strong>nahoře na stropních panelech, v podlaze půdy</strong> (vrstva EPS 50 pod podlahou z OSB), ne v 400 mm EPS podhledu průjezdu, který je na venkovní straně. Izolace trubek 9–13 mm, aby se vešly do drážky v EPS, trasa uprostřed šířky průjezdu, mimo uložení panelů a ocelové překlady u podélných zdí. Vypouštění u venkovní jednotky TČ zůstává podle projektu.</div>
+      <div class="note risk"><strong>Stropní panely a prostupy</strong><br>Panely 250 mm vedou přes celou šířku domu a leží na podélných obvodových zdech. Otvory vrtat dutinami podle výrobního výkresu dodavatele. Nevrtat u ocelových sloupků 2U140 na koncích chodby v podkroví, které nesou hřebenovou vaznici. Stoupačka B je uprostřed rozpětí, to je v pořádku. S2 z kanalizace je 0,2 m od podélné zdi, tedy u uložení panelů, a musí ji odsouhlasit dodavatel panelů.</div>
+      <div class="note risk"><strong>Letní přehřívání</strong><br>PENB na něj upozorňuje a dům nemá chlazení. Rekuperace s letním bypassem pomůže v noci, ale sama nechladí. Pomohou venkovní žaluzie (v projektu Z90) řízené z HA podle slunce a teploty a volitelně chlazení podlahou, pokud ho TČ umí (voda nad rosným bodem + 2 K, proto čidla s vlhkostí).</div>
+      <div class="note risk"><strong>Koupelny na 24 °C</strong><br>Z vody spolehlivě 22–23 °C, zbytek ráno a večer přitopí elektrický žebřík (krátce, ~1 kWh denně na koupelnu v zimě). Kdo chce 24 °C nonstop jen z vody, potřebuje vyšší teplotu pro celý dům, a to se nevyplatí.</div>
+      <div class="note risk"><strong>Předsíň při −15 °C</strong><br>I s dlažbou a roztečí 10 cm vyjde při extrémním mrazu spíš 17–18 °C, protože ztráta dveřmi je velká. Pro předsíň je to v pořádku.</div>
+      <div class="note"><strong>Krb</strong><br>Krbová vložka v otevřeném prostoru dá víc, než je ztráta obýváku. Bez regulace se přetopí. HA podle čidla krbu a čidla v obýváku zavře okruhy obýváku a jídelny 1.1–1.4 a sníží křivku a TČ díky otevřeným okruhům jinde dál bezpečně běží.</div>
+      <div class="note"><strong>Hluk venkovní jednotky</strong><br>Jednotka stojí za technickou místností, daleko od ložnic. Výfuk směrovat od sousedů a od oken dětského pokoje 2, na pružné podložky, s odvodem kondenzátu vyhřívaným kabelem do nezámrzné hloubky (podle projektu).</div>
+    </div>
+  </section>
+
+  <footer>Návrh k předání topenáři a projektantovi vytápění. Nenahrazuje prováděcí projekt (výpočet podlahového vytápění podle ČSN EN 1264, dimenzování, zabezpečovací zařízení). Podklady: DSP 2024 – vytápění D.1.4 (tepelné ztráty), stavební část D.1 (skladby podlah, řezy), statika, elektro, PENB. Dispozice a souřadnice z 3D modelu s přesností asi ±10 cm.</footer>
+</main>
+<script>
+// Plans use the model's pre-mirror coordinates (as on kanalizace.html): z along the house (0 = inside of the front gable),
+// x across (0.3 = inner face of the kitchen-side wall, 7.7 = inner face of the bathroom/terrace-side wall).
+const NS='http://www.w3.org/2000/svg',S=50,OX=40,OY=70;
+const X=z=>OX+(z+.2)*S,Y=x=>OY+(x+.2)*S;
+const C={wall:'#c9d1cb',wallEdge:'#9aa79f',part:'#dfe5e0',txt:'#2c3e34',sub:'#6b7a70',sup:'#c0392b',ret:'#2e6fb5',sen:'#6d4bb3',glass:'#d5e6ee',glassEdge:'#8fb2c2'};
+function el(svg,tag,attrs,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;svg.appendChild(e);return e;}
+const rect=(svg,x0,x1,z0,z1,a)=>el(svg,'rect',Object.assign({x:X(z0),y:Y(x0),width:(z1-z0)*S,height:(x1-x0)*S},a));
+const label=(svg,z,x,t,a={})=>el(svg,'text',Object.assign({x:X(z),y:Y(x),'text-anchor':'middle','font-size':13,fill:C.txt,'font-weight':600},a),t);
+const small=(svg,z,x,t,a={})=>label(svg,z,x,t,Object.assign({'font-size':11,fill:C.sub,'font-weight':400},a));
+const line=(svg,pts,col,w,dash,op=1)=>el(svg,'polyline',{points:pts.map(([z,x])=>X(z)+','+Y(x)).join(' '),fill:'none',stroke:col,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':dash||'','stroke-opacity':op});
+function defs(svg,id){const d=el(svg,'defs',{});const p=el(d,'pattern',{id,width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});el(p,'rect',{width:6,height:6,fill:'#f3f5f2'});el(p,'line',{x1:0,y1:0,x2:0,y2:6,stroke:'#b9c2bc','stroke-width':2});}
+function shell(svg,zEnd){rect(svg,-.2,8.2,-.2,zEnd,{fill:C.wall,stroke:C.wallEdge});rect(svg,.3,7.7,.3,zEnd-.5,{fill:'#fbfcfa'});}
+function parts(svg,list){for(const p of list){const [x0,x1,z0,z1,doors=[],axis]=p;
+  if(axis==='z'){let c=[z0,...doors.flat(),z1];for(let i=0;i<c.length;i+=2)rect(svg,x0,x1,c[i],c[i+1],{fill:C.part,stroke:C.wallEdge,'stroke-width':.6});}
+  else{let c=[x0,...doors.flat(),x1];for(let i=0;i<c.length;i+=2)rect(svg,c[i],c[i+1],z0,z1,{fill:C.part,stroke:C.wallEdge,'stroke-width':.6});}}}
+const glass=(svg,x0,x1,z0,z1)=>rect(svg,x0,x1,z0,z1,{fill:C.glass,stroke:C.glassEdge});
+const no=(svg,pid,x0,x1,z0,z1,t)=>{rect(svg,x0,x1,z0,z1,{fill:`url(#${pid})`,stroke:'#a9b3ad','stroke-width':.8});if(t)small(svg,(z0+z1)/2,(x0+x1)/2+.08,t,{'font-size':9.5});};
+function sensor(svg,z,x,t='T'){el(svg,'circle',{cx:X(z),cy:Y(x),r:8.5,fill:'#fff',stroke:C.sen,'stroke-width':2.2});el(svg,'text',{x:X(z),y:Y(x)+4,'text-anchor':'middle','font-size':10,'font-weight':700,fill:C.sen},t);}
+function probe(svg,z,x){el(svg,'rect',{x:X(z)-6,y:Y(x)-6,width:12,height:12,fill:'#fff',stroke:C.sen,'stroke-width':2,transform:`rotate(45 ${X(z)} ${Y(x)})`});}
+function manifold(svg,x0,x1,z0,z1,name){rect(svg,x0,x1,z0,z1,{fill:'#263a30',stroke:'#263a30',rx:2});label(svg,(z0+z1)/2,x0-.14,name,{'font-size':14,fill:'#263a30'});}
+function wallHeat(svg,x0,x1,z0,z1,col){rect(svg,x0,x1,z0,z1,{fill:col,stroke:col,'stroke-width':1});}
+const callout=(svg,z,x,t,to)=>{if(to)line(svg,[[z,x],to],'#263a30',1.2);el(svg,'circle',{cx:X(z),cy:Y(x),r:9.5,fill:'#263a30',stroke:'#fff','stroke-width':1.5});el(svg,'text',{x:X(z),y:Y(x)+4,'text-anchor':'middle','font-size':10.5,'font-weight':700,fill:'#fff'},t);};
+const flow=W=>W*60/(4186*5);
+const pal=['#e4572e','#f0a202','#76b041','#17a2b8','#2e86ab','#a23b72','#6a4c93','#d1495b','#3c896d','#c97c10','#5c80bc'];
+
+// ---------- circuits ----------
+// lay: heated rectangles [x0,x1,z0,z1] with the loop entry edge (e: x0/x1/z0/z1), the corner the loop starts from along that edge (c: lo/hi)
+// and the pattern (t: s = bifilar spiral, m = meander for narrow strips). fw: feed waypoints [z,x] from the manifold port to the first entry,
+// lk: optional waypoints between consecutive rectangles. q: floor output W/m² at 35/30 °C (oak or tiles, given spacing), wall: wall heating m².
+const R1=[
+ {id:'1.1',room:'Obývák – u HS a fixu',s:10,q:62,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[2.05,6.65],lay:[{r:[5.6,7.7,.3,3.85],e:'x0',c:'hi',t:'s'}],fw:[[9.85,3.05],[9.6,4.95],[3.9,4.95],[3.72,5.1]]},
+ {id:'1.2',room:'Obývák – střed (sedačka, TV)',s:15,q:54,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[2.05,4.3],lay:[{r:[3.0,5.6,.3,3.7],e:'z1',c:'lo',t:'s'}],fw:[[9.8,3.1],[9.55,4.87],[3.95,4.87],[3.88,3.4]]},
+ {id:'1.3',room:'Obývák – u okna',s:15,q:54,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[2.05,1.65],lay:[{r:[.3,3.0,.3,3.7],e:'z1',c:'hi',t:'s'}],fw:[[9.75,3.0],[9.5,4.79],[4.0,4.79],[3.95,3.1]]},
+ {id:'1.4',room:'Jídelna',s:15,q:54,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[5.05,1.55],lay:[{r:[.65,4.6,4.05,6.05],e:'z1',c:'hi',t:'s'}],fw:[[9.7,2.95],[9.45,4.71],[6.3,4.71]]},
+ {id:'1.5',room:'Kuchyň a chodba 1.06 – dlažba, i pod linkou a ostrůvkem',s:15,q:62,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[8.05,3.7],lay:[{r:[2.45,4.6,6.2,9.77],e:'z1',c:'lo',t:'s'},{r:[.3,2.45,6.2,9.22],e:'z1',c:'hi',t:'s'}],fw:[[10.0,2.7]],lk:[[[9.5,2.38]]]},
+ {id:'1.6',room:'Koupelna 1.05 – podlaha + stěna nad vanou',s:10,q:60,wall:2.4,ctl:'Koupelna · termopohon, 23–24 °C + elektrický žebřík',lab:[8.4,6.6],lay:[{r:[5.17,7.7,7.54,9.72],e:'x0',c:'hi',t:'s'}],fw:[[10.3,3.6],[9.75,4.6],[9.59,4.9]],wh:[5.2,6.9,10.35,10.43]},
+ {id:'1.7',room:'WC 1.04',s:10,q:85,ctl:'WC · termopohon, 20 °C',lab:[11.14,6.65],lay:[{r:[5.17,7.36,10.58,11.7],e:'x0',c:'hi',t:'s'}],fw:[[10.9,2.95],[11.57,3.1]]},
+ {id:'1.8',room:'Předsíň 1.03 (dlažba)',s:10,q:100,ctl:'ručně, otevřeno',lab:[11.0,4.45],lay:[{r:[3.2,5.02,10.54,11.45],e:'x0',c:'lo',t:'s'}],fw:[[10.62,2.95]]}
+];
+const R2=[
+ {id:'2.1',room:'Ložnice – u štítové stěny a terasy',s:10,q:60,ctl:'Ložnice · termopohon, 19–20 °C',lab:[1.6,6.85],lay:[{r:[5.9,7.7,.3,4.29],e:'z1',c:'lo',t:'s'}],fw:[[9.98,4.0],[4.75,4.05],[4.52,4.5],[4.52,6.0]]},
+ {id:'2.2',room:'Ložnice – u postele',s:15,q:52,ctl:'Ložnice · termopohon, 19–20 °C',lab:[1.6,5.0],lay:[{r:[4.07,5.9,.3,4.29],e:'z1',c:'lo',t:'s'}],fw:[[10.06,4.1],[4.6,4.15]]},
+ {id:'2.3',room:'Šatna v ložnici (mimo skříně a ostrůvek)',s:15,q:52,ctl:'Ložnice · termopohon (stejné čidlo)',lab:[2.45,2.2],lay:[{r:[.85,3.3,3.1,4.29],e:'x1',c:'hi',t:'s'},{r:[.85,3.3,.3,1.8],e:'x1',c:'hi',t:'s'}],fw:[[10.15,3.92],[4.6,3.92],[4.3,3.6]],lk:[[[3.0,3.55],[1.9,3.55]]]},
+ {id:'2.4',room:'Koupelna u ložnice – podlaha + stěna',s:10,q:60,wall:1.7,ctl:'ručně, otevřeno · hustší pokládka + stěna + elektrický žebřík',lab:[5.85,1.3],lay:[{r:[.9,3.34,4.44,5.3],e:'x1',c:'lo',t:'s'},{r:[.9,2.34,5.3,6.4],e:'z0',c:'lo',t:'s'}],fw:[[10.23,3.95],[4.7,3.95],[4.57,3.6]],lk:[[[5.12,2.0]]],wh:[3.27,3.34,4.5,5.25]},
+ {id:'2.5',room:'Úklid a prádelna (mimo pračku a dřez)',s:10,q:85,ctl:'ručně, otevřeno',lab:[7.32,.85],lay:[{r:[.3,3.34,7.05,7.6],e:'x1',c:'hi',t:'m'}],fw:[[10.32,3.95],[7.62,3.95],[7.5,3.55]]},
+ {id:'2.6',room:'Dětský pokoj 1 (mimo šatní skříň)',s:15,q:52,ctl:'Dětský 1 · termopohon, 20–21 °C',lab:[10.7,1.4],lay:[{r:[.3,3.34,7.75,9.5],e:'x1',c:'hi',t:'s'},{r:[.3,2.72,9.5,11.9],e:'z0',c:'hi',t:'s'}],fw:[[10.4,3.86],[9.75,3.86],[9.35,3.6]],lk:[[[9.38,2.9]]]},
+ {id:'2.7',room:'Koupelna děti – podlaha + stěna',s:10,q:60,wall:2.2,ctl:'ručně, otevřeno · hustší pokládka + stěna + elektrický žebřík',lab:[7.9,6.35],lay:[{r:[4.75,7.0,7.38,8.45],e:'x0',c:'hi',t:'s'},{r:[4.75,5.55,8.45,9.4],e:'x0',c:'lo',t:'m'}],fw:[[10.49,3.95],[9.0,4.2],[8.45,4.5]],wh:[4.75,4.82,7.42,8.38]},
+ {id:'2.8',room:'Dětský pokoj 2 (mimo skříň a šachtu)',s:15,q:52,ctl:'Dětský 2 · termopohon, 20–21 °C',lab:[11.3,6.2],lay:[{r:[4.75,7.3,9.55,12.38],e:'x0',c:'lo',t:'s'}],fw:[[10.57,3.95],[10.2,4.4],[9.7,4.5]]},
+ {id:'2.9',room:'Konec chodby a komora',s:20,q:45,ctl:'ručně, otevřeno',lab:[12.2,4.05],lay:[{r:[3.75,4.6,10.8,13.0],e:'z0',c:'lo',t:'m'},{r:[.3,3.34,12.05,13.0],e:'x1',c:'lo',t:'s'}],fw:[[10.66,3.9]],lk:[[[12.1,3.62]]]}
+];
+R1.forEach((c,i)=>{c.col=pal[i];c.port=[10.08+i*.105,2.78];});R2.forEach((c,i)=>{c.col=pal[i];c.port=[9.98+i*.085,3.8];});
+
+// ---------- loop geometry ----------
+const ST=.12;                                             // stub length outside the heated rectangle
+const edgeOf=s=>Math.max(.08,s/2);                         // first pipe from the wall
+function frame(l){const [x0,x1,z0,z1]=l.r,zEdge=l.e[0]==='z';return {Lu:zEdge?x1-x0:z1-z0,Lv:zEdge?z1-z0:x1-x0,
+ g:(u,v)=>zEdge?[l.e==='z0'?z0+v:z1-v,l.c==='lo'?x0+u:x1-u]:[l.c==='lo'?z0+u:z1-u,l.e==='x0'?x0+v:x1-v]};}
+// Bifilar spiral: supply spirals inwards with pitch 2s, return interleaves at offset s and spirals back out; both ends leave side by side.
+function spiral(Lu,Lv,s){const e=edgeOf(s),p=2*s;
+ const gen=o=>{let ua=e+o,va=e+o,ub=Lu-e-o,vb=Lv-e-o;const pts=[[ua,va]];let n=0;while(ub-ua>=p*.98&&vb-va>=p*.98&&n++<80){pts.push([ua,vb],[ub,vb],[ub,va],[ua+p,va]);ua+=p;ub-=p;va+=p;vb-=p;}return pts;};
+ const a=gen(0),b=gen(s);return {sup:[[e,-ST],...a],ret:[...b.slice().reverse(),[e+s,-ST]],mid:[a[a.length-1],b[b.length-1]],u:e+s/2};}
+function meander(Lu,Lv,s){const e=edgeOf(s);let n=Math.floor((Lu-2*e)/s+1e-6)+1;if(n%2)n--;n=Math.max(n,2);const pts=[[e,-ST]];
+ for(let k=0;k<n;k++){const u=e+k*s;if(k%2===0)pts.push([u,k===0?-ST:e],[u,Lv-e]);else pts.push([u,Lv-e],[u,e]);}pts.push([e+(n-1)*s,-ST]);return {path:pts,u:e+(n-1)*s/2};}
+function loopOf(l,s){const f=frame(l);return Object.assign(l.t==='m'?meander(f.Lu,f.Lv,s/100):spiral(f.Lu,f.Lv,s/100),{f});}
+const entryOf=(l,s)=>{const L=loopOf(l,s);return L.f.g(L.u,-ST);};
+const plen=pts=>pts.reduce((t,p,i)=>i?t+Math.hypot(p[0]-pts[i-1][0],p[1]-pts[i-1][1]):0,0);
+function feedPts(c){return [c.port,...c.fw,entryOf(c.lay[0],c.s)];}
+function linkPts(c,k){return [entryOf(c.lay[k-1],c.s),...((c.lk||[])[k-1]||[]),entryOf(c.lay[k],c.s)];}
+for(const c of R1.concat(R2)){c.area=c.lay.reduce((t,l)=>t+(l.r[1]-l.r[0])*(l.r[3]-l.r[2]),0);c.W=Math.round((c.area*c.q+(c.wall||0)*70)/5)*5;
+ c.feedLen=plen(feedPts(c))+c.lay.slice(1).reduce((t,l,k)=>t+plen(linkPts(c,k+1)),0);}
+const len=c=>c.area*100/c.s+(c.wall||0)*10+2*c.feedLen;
+
+function pair(svg,pts,col,w=4.6){line(svg,pts,'#fff',w+2.6);line(svg,pts,col,w);line(svg,pts,'#fff',w*.3);}
+function drawLoops(svg,list){for(const c of list)for(const l of c.lay){const L=loopOf(l,c.s),g=p=>L.f.g(...p);
+ if(L.path)line(svg,L.path.map(g),c.col,1.5);else{line(svg,L.sup.map(g),c.col,1.5);line(svg,L.ret.map(g),c.col,1.5,'',.5);line(svg,L.mid.map(g),c.col,1.5,'',.75);}}}
+function drawZones(svg,list,op){for(const c of list)for(const l of c.lay){const [x0,x1,z0,z1]=l.r;rect(svg,x0,x1,z0,z1,{fill:c.col,'fill-opacity':op,stroke:c.col,'stroke-opacity':op>.1?.7:.35,'stroke-width':1.2});}}
+function drawFeeds(svg,list,w){for(const c of list){pair(svg,feedPts(c),c.col,w);for(let k=1;k<c.lay.length;k++)pair(svg,linkPts(c,k),c.col,w*.8);if(c.wh)wallHeat(svg,...c.wh,c.col);}}
+function drawLabels(svg,list){for(const c of list){const [z,x]=c.lab;el(svg,'circle',{cx:X(z),cy:Y(x),r:14,fill:c.col,stroke:'#fff','stroke-width':2.5});el(svg,'text',{x:X(z),y:Y(x)+4.5,'text-anchor':'middle','font-size':11.5,'font-weight':700,fill:'#fff'},c.id);}}
+let MODE='lay';
+
+function drawGround(){const g=document.getElementById('ground');g.replaceChildren();defs(g,'hatchG');const lay=MODE==='lay';
+ shell(g,12.2);
+ drawZones(g,R1,lay?.06:.17);
+ // not heated: built-ins, bath, stairs, fireplace, pantry
+ no(g,'hatchG',.3,2.44,9.92,11.7,'');small(g,10.8,1.25,'spíž – nevytápěná',{'font-size':10.5,'font-weight':600});
+ no(g,'hatchG',.3,.9,9.22,9.77,'');rect(g,1.65,2.7,6.65,9.15,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});small(g,7.9,2.25,'ostrůvek',{'font-size':9.5});rect(g,.3,.9,6.2,9.22,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});no(g,'hatchG',.3,.65,4.4,6.2,'');no(g,'hatchG',2.6,3.2,10.0,11.65,'');no(g,'hatchG',4.6,5.02,9.94,10.54,'');
+ no(g,'hatchG',5.2,6.9,9.72,10.42,'vana');no(g,'hatchG',7.36,7.7,10.6,11.68,'');no(g,'hatchG',5.1,7.7,4.45,7.23,'schodiště');no(g,'hatchG',5.1,6.1,3.85,5.2,'krb');
+ if(lay)drawLoops(g,R1);
+ parts(g,[[.3,2.44,9.77,9.92,[[1.55,2.25]]],[2.44,2.59,9.92,11.7,[],'z'],[2.59,5.02,9.77,9.92,[[3.95,4.85]]],[5.02,5.17,7.39,11.7,[[8.3,9.0],[10.95,11.65]],'z'],[5.17,7.7,10.43,10.58],[5.17,7.7,7.39,7.54]]);
+ glass(g,-.2,.3,1.4,4.4);glass(g,-.2,.3,6.2,9.2);glass(g,7.7,8.2,.32,3.32);glass(g,7.7,8.2,8.0,9.0);glass(g,5.48,7.48,-.2,.3);glass(g,1.0,2.0,11.7,12.2);glass(g,6.0,7.0,11.7,12.2);rect(g,3.2,5.0,11.7,12.2,{fill:'#fff',stroke:C.wallEdge});
+ small(g,2.9,-.45,'okno obýváku 3,0 × 0,6');small(g,7.7,-.45,'okno kuchyně 3,0 × 0,6');small(g,1.8,8.72,'HS portál');small(g,-.45,6.5,'fix',{transform:`rotate(-90 ${X(-.45)} ${Y(6.5)})`});
+ if(!lay){label(g,1.0,4.3,'Obývák 1.11',{'font-size':12,fill:C.sub});label(g,5.75,3.6,'Jídelna 1.10',{'font-size':11.5,fill:C.sub});label(g,9.35,1.6,'Kuchyň 1.07',{'font-size':11.5,fill:C.sub});label(g,9.55,6.3,'Koupelna 1.05',{'font-size':11,fill:C.sub});label(g,11.45,6.95,'WC',{'font-size':11,fill:C.sub});label(g,11.45,4.3,'Předsíň',{'font-size':11,fill:C.sub});}
+ // passage and plant room
+ el(g,'rect',{x:X(12.2),y:Y(-.2),width:3.8*S,height:8.4*S,fill:'#eceee8',stroke:C.wallEdge,'stroke-dasharray':'4 4'});label(g,14.1,6.6,'Průjezd',{fill:C.sub});
+ rect(g,-.2,8.2,16.0,18.8,{fill:C.wall,stroke:C.wallEdge});rect(g,.3,7.7,16.5,18.3,{fill:'#fbfcfa'});rect(g,.3,7.7,16.5,18.3,{fill:pal[10],'fill-opacity':.1});
+ label(g,17.4,6.3,'Technická m. 1.02',{'font-size':11.5});small(g,17.4,6.75,'podlahovka přes RTL, 15 °C',{'font-size':10});
+ el(g,'circle',{cx:X(17.6),cy:Y(1.0),r:.45*S,fill:'#fff',stroke:'#7d8b83','stroke-width':1.5});small(g,17.6,1.08,'TV 300',{'font-size':9.5,fill:C.txt});
+ el(g,'circle',{cx:X(17.85),cy:Y(2.15),r:.27*S,fill:'#fff',stroke:'#7d8b83','stroke-width':1.5});small(g,17.85,2.23,'AKU',{'font-size':9,fill:C.txt});
+ rect(g,3.0,3.9,17.95,18.25,{fill:'#fff',stroke:'#7d8b83'});small(g,18.1,4.3,'RTL',{'font-size':9});
+ rect(g,1.75,2.05,16.65,17.25,{fill:'#263a30',rx:2});small(g,16.95,2.4,'řízení TČ',{'font-size':9.5});
+ rect(g,5.2,6.3,18.86,19.36,{fill:'#dfe3e0',stroke:'#7d8b83'});small(g,19.11,5.82,'TČ',{'font-size':10,fill:C.txt,'font-weight':700});small(g,19.6,6.9,'venkovní jednotka',{'font-size':9.5,'text-anchor':'start',transform:`rotate(-90 ${X(19.6)} ${Y(6.9)})`});
+ line(g,[[18.86,5.6],[18.3,5.6],[17.6,4.6],[17.4,2.6]],C.sup,3);line(g,[[18.86,5.9],[18.3,5.9],[17.7,4.9],[17.6,2.6]],C.ret,3);
+ // main pipes leave the plant room upwards, run through the loft over the passage to R2 and come down the riser B to R1
+ line(g,[[17.4,2.6],[17.0,3.4],[16.75,3.55]],C.sup,3);line(g,[[17.6,2.6],[17.1,3.65],[16.75,3.7]],C.ret,3);
+ el(g,'circle',{cx:X(16.72),cy:Y(3.62),r:8,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(g,16.72,3.67,'↑',{'font-size':10,fill:C.sup,'font-weight':700});
+ small(g,14.1,3.2,'přívod vede vrchem',{'font-size':10.5,fill:'#8a5a17','font-weight':600});small(g,14.1,3.47,'přes půdu nad průjezdem',{'font-size':10,fill:'#8a5a17'});
+ line(g,[[10.95,2.7],[10.9,2.95]],C.sup,3);
+ drawFeeds(g,R1,lay?4.2:3.4);
+ manifold(g,2.6,2.78,10.02,10.95,'R1');
+ el(g,'circle',{cx:X(10.9),cy:Y(2.95),r:7,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(g,10.9,3.0,'↓',{'font-size':10,fill:C.sup,'font-weight':700});
+ callout(g,10.2,1.95,'A',[10.42,2.62]);callout(g,11.35,1.95,'B',[10.95,2.9]);callout(g,16.0,4.6,'C',[16.68,3.75]);
+ if(!lay){const cab=(pts)=>line(g,pts,C.sen,1.6,'4 3');
+  cab([[6.6,4.98],[7.39,4.98],[9.6,4.98],[9.85,3.3],[10.3,2.8]]);cab([[9.2,5.25],[9.2,4.95],[10.0,4.95],[10.35,2.85]]);cab([[11.35,5.25],[11.35,4.95],[10.6,4.95],[10.5,2.85]]);
+  line(g,[[2.0,6.8],[2.0,4.95],[6.6,4.98]],C.sen,1.4,'1 3');line(g,[[4.55,5.6],[6.0,5.0],[6.6,4.98]],C.sen,1.4,'1 3');line(g,[[8.6,6.25],[9.2,5.3]],C.sen,1.4,'1 3');
+  sensor(g,6.6,4.98);sensor(g,9.2,5.25);sensor(g,11.35,5.25);probe(g,2.0,6.8);probe(g,8.6,6.25);
+  el(g,'circle',{cx:X(4.55),cy:Y(5.6),r:7,fill:'#fff',stroke:C.sen,'stroke-width':2});small(g,4.55,5.63,'K',{'font-size':9,fill:C.sen,'font-weight':700});
+  line(g,[[16.95,2.05],[16.72,3.45]],C.sen,1.6,'4 3');}
+ drawLabels(g,R1);
+ el(g,'text',{x:X(-.2),y:OY-26,'font-size':11,fill:C.sub},'← přední štít');el(g,'text',{x:X(4.5),y:OY-26,'font-size':11,fill:C.sub},'↑ strana kuchyně (příjezd)');
+}
+
+function drawAttic(){const a=document.getElementById('attic');a.replaceChildren();defs(a,'hatchA');const lay=MODE==='lay';
+ shell(a,13.5);
+ drawZones(a,R2,lay?.06:.17);
+ // not heated: built-in wardrobes, island, WC installation walls, shower trays, washer column, stack shaft, stair opening
+ no(a,'hatchA',.3,.9,4.75,6.4,'');no(a,'hatchA',2.34,3.34,5.3,6.4,'sprcha');no(a,'hatchA',7.3,7.7,10.15,11.7,'');no(a,'hatchA',7.0,7.7,7.85,8.5,'');no(a,'hatchA',5.55,6.45,8.45,9.4,'sprcha');
+ no(a,'hatchA',3.3,3.9,1.15,3.35,'');no(a,'hatchA',.35,.85,1.2,4.1,'');no(a,'hatchA',1.75,2.65,1.8,3.1,'ostrůvek');no(a,'hatchA',1.95,3.15,6.6,7.05,'');no(a,'hatchA',2.72,3.32,9.5,11.4,'skříň');no(a,'hatchA',4.8,6.4,12.38,13.0,'skříň');
+ no(a,'hatchA',5.1,7.7,5.57,7.23,'otvor schodiště');no(a,'hatchA',6.1,7.7,4.45,5.57,'');
+ if(lay)drawLoops(a,R2);
+ parts(a,[[.3,7.7,4.29,4.44,[[1.55,2.35],[3.6,4.4]]],[.3,3.34,6.4,6.55],[3.34,3.49,4.44,13.0,[[6.7,7.4],[8.4,9.2],[12.15,12.85]],'z'],
+  [.3,3.34,7.6,7.75],[.3,3.34,11.9,12.05],[4.6,4.75,7.38,13.0,[[8.4,9.1],[9.7,10.5]],'z'],[4.75,7.7,9.4,9.55],[4.6,7.7,7.23,7.38],[3.92,4.07,1.15,3.35,[],'z']]);
+ rect(a,.3,7.7,13.0,13.27,{fill:'#e9e2c8',stroke:C.wallEdge});
+ el(a,'rect',{x:X(13.0)+14,y:Y(-.2),width:(18.8-13.0)*S-14,height:8.4*S,fill:'#eef0ea',stroke:C.wallEdge});label(a,15.9,6.0,'Půda – neobytná',{fill:C.sub});small(a,15.9,6.4,'nevytápěná');
+ rect(a,3.49,3.62,9.9,10.75,{fill:C.part,stroke:C.wallEdge,'stroke-width':.6});
+ if(!lay){label(a,1.0,6.6,'Ložnice 2.02',{'font-size':11.5,fill:C.sub});label(a,1.0,1.1,'Šatna',{'font-size':11,fill:C.sub});label(a,10.9,1.0,'Dětský 1',{'font-size':11,fill:C.sub});label(a,12.6,6.0,'Dětský 2',{'font-size':11,fill:C.sub});label(a,12.55,1.6,'Komora',{'font-size':10.5,fill:C.sub});
+  label(a,5.0,1.0,'Koupelna',{'font-size':10.5,fill:C.sub});label(a,7.55,2.6,'Úklid',{'font-size':10.5,fill:C.sub});label(a,8.0,7.35,'Koupelna děti',{'font-size':10.5,fill:C.sub});}
+ // riser from R1 below
+ // main pipes from the plant room: up into the loft, along the loft floor in an insulated box, through the loft wall and the corridor floor to R2
+ el(a,'rect',{x:X(13.0),y:Y(3.4),width:(16.75-13.0)*S,height:.45*S,fill:'#f2d9b6','fill-opacity':.6,stroke:'#c79a5a','stroke-dasharray':'5 4'});
+ line(a,[[16.72,3.55],[13.0,3.55],[10.8,3.55],[10.72,3.66]],C.sup,3.2);line(a,[[16.72,3.7],[13.0,3.7],[10.8,3.7],[10.72,3.74]],C.ret,3.2);
+ el(a,'circle',{cx:X(16.72),cy:Y(3.62),r:8,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(a,16.72,3.67,'↑',{'font-size':10,fill:C.sup,'font-weight':700});
+ small(a,14.9,3.25,'přívod z technické místnosti v izolačním boxu',{'font-size':10,fill:'#8a5a17','font-weight':600});small(a,14.9,4.0,'(+ TV/SV a chránička pro data)',{'font-size':9.5,fill:'#8a5a17'});
+ line(a,[[10.9,2.95],[10.9,3.3],[10.6,3.49]],C.sup,3);el(a,'circle',{cx:X(10.9),cy:Y(2.95),r:7,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(a,10.9,3.0,'↓',{'font-size':10,fill:C.sup,'font-weight':700});
+ drawFeeds(a,R2,lay?4.2:3.4);
+ manifold(a,3.62,3.8,9.92,10.72,'R2');
+ if(!lay){const cab=(pts)=>line(a,pts,C.sen,1.6,'4 3');
+  cab([[2.6,4.15],[4.36,4.15],[9.85,4.05],[10.1,3.85]]);cab([[9.6,3.25],[9.6,3.5],[10.0,3.62]]);cab([[11.0,4.82],[11.0,4.5],[10.7,3.85]]);
+  sensor(a,2.6,4.15);sensor(a,9.6,3.25);sensor(a,11.0,4.82);}
+ drawLabels(a,R2);
+ el(a,'text',{x:X(-.2),y:OY-26,'font-size':11,fill:C.sub},'← přední štít');el(a,'text',{x:X(4.5),y:OY-26,'font-size':11,fill:C.sub},'↑ strana kuchyně');el(a,'text',{x:X(1.0),y:Y(8.2)+22,'font-size':11,fill:C.sub},'strana terasy (HS)');
+}
+
+// One bifilar spiral at a large scale with the laying rules annotated.
+function drawDetail(){const s=document.getElementById('detail');s.replaceChildren();const k=112,ox=60,oy=96,Lu=3.4,Lv=2.5,sp=.15;
+ const P=(u,v)=>[ox+u*k,oy+v*k],T=(x,y,t,a={})=>el(s,'text',Object.assign({x,y,'font-size':12,fill:C.txt},a),t);
+ const L=(pts,col,w,dash='',op=1)=>el(s,'polyline',{points:pts.map(p=>P(...p).join(',')).join(' '),fill:'none',stroke:col,'stroke-width':w,'stroke-dasharray':dash,'stroke-opacity':op,'stroke-linejoin':'round','stroke-linecap':'round'});
+ el(s,'rect',{x:ox-10,y:oy-10,width:Lu*k+20,height:Lv*k+20,fill:'#c9d1cb'});el(s,'rect',{x:ox,y:oy,width:Lu*k,height:Lv*k,fill:'#fbfcfa',stroke:'#e2b04a','stroke-width':3});
+ el(s,'rect',{x:ox+.6*k,y:oy+Lv*k,width:2.2*k,height:10,fill:C.glass,stroke:C.glassEdge});T(ox+1.7*k,oy+Lv*k+30,'okno / prosklení',{'text-anchor':'middle','font-size':11,fill:C.sub});
+ const sp_=spiral(Lu,Lv,sp);L(sp_.sup,C.sup,2.2);L(sp_.ret,C.ret,2.2);L(sp_.mid,'#7a4fa0',2.4);
+ el(s,'rect',{x:ox-6,y:oy-66,width:120,height:22,rx:3,fill:'#263a30'});T(ox+54,oy-51,'rozdělovač',{'text-anchor':'middle','font-size':11,fill:'#fff'});
+ L([[sp_.sup[0][0],-.4],sp_.sup[0]],C.sup,2.2);L([[sp_.ret[sp_.ret.length-1][0],-.4],sp_.ret[sp_.ret.length-1]],C.ret,2.2);
+ el(s,'rect',{x:P(.03,0)[0],y:oy-26,width:.3*k,height:40,fill:'none',stroke:'#7d8b83','stroke-dasharray':'3 2'});
+ const ex=ox+Lu*k+40,note=(x,y,ty,t,sub)=>{el(s,'polyline',{points:`${x},${y} ${ex-14},${ty} ${ex-4},${ty}`,fill:'none',stroke:'#9aa79f','stroke-width':1});T(ex,ty+4,t,{'font-size':12.5,fill:'#2c3e34','font-weight':600});if(sub)T(ex,ty+21,sub,{'font-size':11.5,fill:C.sub});};
+ T(ex,24,'Bifilární spirála („šnek“), rozteč 15 cm',{'font-size':15,'font-weight':700});
+ note(...P(Lu-.08,.55),120,'První trubka 8–10 cm od stěny','po obvodu dilatační pásek, ve dveřích dilatační spára');
+ note(...P(Lu-.23,1.0),175,'Přívod a zpátečka se střídají','vedle teplé trubky je vždy chladnější, podlaha je všude stejně teplá');
+ note(...P(Lu/2+.35,Lv/2),236,'Obrat uprostřed','oblouk na dvojnásobnou rozteč, trubka 17 mm se nezalomí');
+ T(ox+128,oy-50,'oba konce vedle sebe, u rozdělovače a přes dveře v ochranné trubce',{'font-size':11.5,fill:'#3b4a42'});
+ T(ex,300,'U prosklení začíná přívod',{'font-size':12.5,fill:'#2c3e34','font-weight':600});T(ex,317,'nebo okrajová zóna ~1 m s roztečí 10 cm, zbytek 15 cm',{'font-size':11.5,fill:C.sub});
+ T(ex,352,'Meandr (hadovec) jen v úzkých pruzích do ~1 m:',{'font-size':12.5,fill:'#2c3e34','font-weight':600});T(ex,369,'na začátku je voda teplejší než na konci',{'font-size':11.5,fill:C.sub});
+ const y0=oy+Lv*k+50;el(s,'line',{x1:P(.08,0)[0],y1:y0,x2:P(.08+sp,0)[0],y2:y0,stroke:'#26352f','stroke-width':1.4});for(const u of [.08,.08+sp])el(s,'line',{x1:P(u,0)[0],y1:y0-5,x2:P(u,0)[0],y2:y0+5,stroke:'#26352f','stroke-width':1.4});T(P(.08+sp/2,0)[0]+28,y0+4,'15 cm',{'font-size':11,'font-weight':700});
+ T(ox,y0+28,'Pokoj 3,4 × 2,5 m (asi 8,5 m²) ≈ 57 m trubky + připojení k rozdělovači.',{'font-size':11,fill:C.sub});
+}
+
+function legends(){
+ const base='<span><i class="thin" style="border-color:#e4572e"></i>trubka okruhu (přívod)</span><span><i class="thin" style="border-color:#e4572e;opacity:.5"></i>zpátečka</span><span><i style="border-color:#e4572e;border-top-width:5px"></i>připojení k rozdělovači</span><span><i style="border-color:#c0392b"></i>hlavní přívod</span><span><i style="border-color:#2e6fb5"></i>hlavní zpátečka</span><span><b style="border-color:#6d4bb3;background:#fff"></b>čidlo teploty a vlhkosti (KU 68, 1,5 m)</span><span><b style="border-color:#6d4bb3;background:#fff;border-radius:2px;transform:rotate(45deg);width:11px;height:11px"></b>podlahová sonda v chráničce</span><span><i class="thin dash" style="border-color:#6d4bb3"></i>Cat6 k regulátoru</span><span><em></em>bez podlahovky</span><span><i style="border-color:#888;border-top-width:6px"></i>stěnové topení</span>';
+ document.getElementById('legGround').innerHTML=base+'<span><b style="border-color:#6d4bb3;background:#fff"></b>K – čidlo krbu</span>';
+ document.getElementById('legAttic').innerHTML=base;
+}
+
+function table(){const t=document.getElementById('circuits');
+ const row=c=>`<tr><td><span class="dot" style="background:${c.col}"></span><strong>${c.id}</strong></td><td>${c.room}</td><td class="n">${c.area.toFixed(1).replace('.',',')}${c.wall?` + ${String(c.wall).replace('.',',')} stěna`:''}</td><td class="n">${c.s} cm</td><td class="n">~${Math.round(len(c)/5)*5} m</td><td class="n">${c.W}</td><td class="n">${flow(c.W).toFixed(1).replace('.',',')}</td><td>${c.ctl}</td></tr>`;
+ const sum=(list,name)=>{const W=list.reduce((s,c)=>s+c.W,0),A=list.reduce((s,c)=>s+c.area,0),L=list.reduce((s,c)=>s+len(c),0);return `<tr class="sum"><td colspan="2">${name}</td><td class="n">${A.toFixed(1).replace('.',',')}</td><td></td><td class="n">~${Math.round(L/10)*10} m</td><td class="n">${W}</td><td class="n">${flow(W).toFixed(1).replace('.',',')}</td><td></td></tr>`;};
+ t.innerHTML='<thead><tr><th>Okruh</th><th>Místnost</th><th>Plocha m²</th><th>Rozteč</th><th>Délka</th><th>Výkon W</th><th>l/min</th><th>Regulace</th></tr></thead><tbody>'
+  +'<tr><td colspan="8" style="background:#eef3ee;font-weight:700;color:#2b4236">R1 · přízemí · 10 vývodů (8 + 2 rezerva), vestavěná skříň v předsíni</td></tr>'+R1.map(row).join('')+sum(R1,'Celkem R1')
+  +'<tr><td colspan="8" style="background:#eef3ee;font-weight:700;color:#2b4236">R2 · podkroví · 10 vývodů (9 + 1 rezerva), příčka chodby u dětského pokoje 1</td></tr>'+R2.map(row).join('')+sum(R2,'Celkem R2')
+  +`<tr class="sum"><td colspan="5">Dům celkem (bez technické místnosti ~0,6 kW a elektrických žebříků)</td><td class="n">${R1.concat(R2).reduce((s,c)=>s+c.W,0)}</td><td class="n">${flow(R1.concat(R2).reduce((s,c)=>s+c.W,0)).toFixed(1).replace('.',',')}</td><td>trubky: hlavní přívod 32×3 k R2, stoupačka R2 → R1 26×3</td></tr></tbody>`;
+}
+
+function drawHydro(){const s=document.getElementById('hydro');s.replaceChildren();
+ const T=(x,y,t,a={})=>el(s,'text',Object.assign({x,y,'font-size':12,fill:C.txt},a),t);
+ const R=(x,y,w,h,a)=>el(s,'rect',Object.assign({x,y,width:w,height:h},a));
+ const L=(pts,col,w=3.5,dash='')=>el(s,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:col,'stroke-width':w,'stroke-linejoin':'round','stroke-dasharray':dash});
+ const sen=(x,y,t)=>{el(s,'circle',{cx:x,cy:y,r:9,fill:'#fff',stroke:C.sen,'stroke-width':2});T(x,y+4,t,{'font-size':9.5,'text-anchor':'middle','font-weight':700,fill:C.sen});};
+ // zones
+ R(20,40,150,360,{fill:'#eef0ec',stroke:'#c9d1cb',rx:10});T(95,62,'venku',{'text-anchor':'middle',fill:C.sub});
+ R(185,40,395,360,{fill:'#f6f8f5',stroke:'#c9d1cb',rx:10});T(382,62,'technická místnost 1.02',{'text-anchor':'middle',fill:C.sub});
+ R(595,40,90,360,{fill:'#f6efe2',stroke:'#dcc7a2',rx:10,'stroke-dasharray':'5 4'});T(640,62,'půda nad',{'text-anchor':'middle',fill:'#8a5a17'});T(640,78,'průjezdem',{'text-anchor':'middle',fill:'#8a5a17'});
+ R(700,40,280,360,{fill:'#f3f6f2',stroke:'#c9d1cb',rx:10});T(840,62,'dům',{'text-anchor':'middle',fill:C.sub});
+ // heat pump
+ R(40,150,110,110,{fill:'#dfe3e0',stroke:'#7d8b83',rx:8});T(95,185,'TČ vzduch–voda',{'text-anchor':'middle','font-weight':700,'font-size':12});T(95,203,'monoblok',{'text-anchor':'middle','font-size':11,fill:C.sub});T(95,221,'+ elektrokotel 9 kW',{'text-anchor':'middle','font-size':10.5,fill:C.sub});
+ el(s,'circle',{cx:95,cy:120,r:12,fill:'#fff',stroke:C.sen,'stroke-width':2});T(95,124,'Te',{'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:C.sen});T(95,100,'venkovní čidlo (stinná fasáda)',{'text-anchor':'middle','font-size':9.5,fill:C.sen});
+ // supply from HP
+ L([[150,180],[230,180]],C.sup);L([[475,300],[475,250],[150,250]],C.ret);
+ R(204,168,22,24,{fill:'#fff',stroke:'#7d8b83'});T(205,212,'filtr + magnet',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ // 3-way valve
+ el(s,'polygon',{points:'240,170 260,180 240,190',fill:'#fff',stroke:'#26352f','stroke-width':1.6});el(s,'polygon',{points:'280,170 260,180 280,190',fill:'#fff',stroke:'#26352f','stroke-width':1.6});T(260,160,'3cestný ventil',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ // DHW cylinder
+ L([[260,180],[260,100],[300,100]],C.sup);R(300,80,80,120,{fill:'#fff',stroke:'#7d8b83',rx:14});T(340,128,'TV 300 l',{'text-anchor':'middle','font-weight':700,'font-size':12});T(340,145,'ohřev TČ',{'text-anchor':'middle','font-size':10,fill:C.sub});
+ el(s,'path',{d:'M318 165 q22 -10 44 0 q-22 10 -44 0',fill:'none',stroke:C.sup,'stroke-width':1.6});L([[380,175],[400,175],[400,250]],C.ret,2.5);sen(392,96,'T');
+ // heating supply to house, heat meter
+ L([[280,180],[700,180]],C.sup);R(430,168,30,24,{fill:'#fff',stroke:'#26352f'});T(445,184,'Q',{'text-anchor':'middle','font-weight':700});T(445,160,'kalorimetr',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ sen(510,180,'T');
+ // buffer in return (series)
+ R(440,300,70,80,{fill:'#fff',stroke:'#7d8b83',rx:12});T(475,335,'AKU',{'text-anchor':'middle','font-weight':700,'font-size':12});T(475,352,'100 l',{'text-anchor':'middle','font-size':11,fill:C.sub});T(475,396,'sériově ve zpátečce',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ L([[700,250],[580,250],[580,340],[510,340]],C.ret);sen(545,340,'T');
+ // expansion + safety
+ L([[350,250],[350,280]],'#7d8b83',1.6);el(s,'ellipse',{cx:350,cy:300,rx:16,ry:22,fill:'#e9eef2',stroke:'#7d8b83'});T(350,338,'expanzní',{'text-anchor':'middle','font-size':9.5,fill:C.sub});T(350,350,'nádoba',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ // plant room UFH via RTL
+ L([[540,180],[540,120],[565,120]],C.sup,2);R(560,108,16,24,{fill:'#fff',stroke:'#26352f'});T(572,100,'RTL',{'text-anchor':'end','font-size':9.5,fill:C.sub});
+ // trench
+ R(600,170,80,75,{fill:'#f2d9b6','fill-opacity':.6,stroke:'#c79a5a','stroke-dasharray':'5 4',rx:6});T(640,268,'izolační box',{'text-anchor':'middle','font-size':10,fill:'#8a5a17'});T(640,281,'2× 32, izolace 2×',{'text-anchor':'middle','font-size':10,fill:'#8a5a17'});
+ // manifolds
+ const man=(x,y,n,name,sub,col)=>{R(x,y,20,120,{fill:'#263a30',rx:3});T(x+10,y-10,name,{'text-anchor':'middle','font-weight':700,'font-size':14});T(x+34,y-10,sub,{'font-size':10.5,fill:C.sub});
+  for(let i=0;i<n;i++){const yy=y+8+i*(104/(n-1));el(s,'path',{d:`M${x+20} ${yy} h18 q14 0 14 6 q0 6 -14 6 h-4`,fill:'none',stroke:pal[i%pal.length],'stroke-width':2.2,opacity:i<n-(name==='R1'?2:1)?1:.3});}};
+ // house: supply bus x 745, return bus x 728; R2 above R1
+ L([[728,195],[780,195]],C.ret);L([[728,375],[780,375]],C.ret);L([[728,195],[728,375]],C.ret);L([[728,250],[700,250]],C.ret);
+ L([[700,180],[745,180]],C.sup);L([[745,105],[745,285]],'#fff',8);L([[745,105],[745,285]],C.sup);L([[745,105],[780,105]],C.sup);L([[745,285],[780,285]],C.sup);
+ man(780,90,10,'R2','podkroví · 9 okruhů + 1 rezerva');man(780,270,10,'R1','přízemí · 8 okruhů + 2 rezerva');
+ T(739,140,'stoupačka',{'font-size':9.5,fill:C.sup,'text-anchor':'end'});T(739,152,'R2 → R1',{'font-size':9.5,fill:C.sup,'text-anchor':'end'});
+ sen(890,300,'T');sen(890,125,'T');T(905,304,'přívod R1',{'font-size':9.5,fill:C.sen});T(905,129,'přívod R2',{'font-size':9.5,fill:C.sen});
+ T(812,236,'termopohony 24 V NC + průtokoměry',{'font-size':10,fill:C.sub});
+ T(30,425,'Teplota vody 35/30 °C při −15 °C, bez směšování na rozdělovačích. Pojistný ventil, filtr s magnetem, odlučovač mikrobublin a vypouštění u TČ podle projektu.',{'font-size':11,fill:C.sub});
+}
+
+function drawHA(){const s=document.getElementById('ha');s.replaceChildren();
+ const T=(x,y,t,a={})=>el(s,'text',Object.assign({x,y,'font-size':12,fill:C.txt},a),t);
+ const box=(x,y,w,h,title,lines,fill='#fff',stroke='#9aa79f')=>{el(s,'rect',{x,y,width:w,height:h,rx:10,fill,stroke,'stroke-width':1.4});T(x+12,y+21,title,{'font-weight':700,'font-size':12.5});lines.forEach((l,i)=>T(x+12,y+39+i*15,l,{'font-size':10.5,fill:C.sub}));};
+ const link=(pts,t,tx,ty,col='#6d4bb3',dash='')=>{el(s,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:col,'stroke-width':2,'stroke-dasharray':dash});if(t)T(tx,ty,t,{'font-size':10,fill:col,'font-weight':600});};
+ box(380,160,240,96,'Home Assistant',['mini-PC v SLP v předsíni, UPS','Modbus, ESPHome API, M-Bus','bez cloudu, vzdáleně přes VPN'],'#eef5ef','#264b39');
+ box(20,30,270,108,'Zónový regulátor R2 (podkroví)',['ESP32 + relé 24 V, zdroj 24 V','5 termopohonů, 3 čidla (ložnice, děti)','místní termostaty, když HA nejede','čidlo kondenzace (chlazení)']);
+ box(20,280,270,108,'Zónový regulátor R1 (přízemí)',['ESP32 + relé 24 V, zdroj 24 V','7 termopohonů, 3 čidla, 2 podlahové sondy, krb','výstup „požadavek topení“ do TČ','1-Wire: přívod R1 a R2']);
+ box(710,20,270,92,'Tepelné čerpadlo',['Modbus RTU/TCP nebo místní API','Cat6 + RS-485 přes půdu nad průjezdem','kontakty: SG Ready, porucha, chlazení']);
+ box(710,128,270,60,'Měření',['elektroměr TČ (Modbus), kalorimetr (M-Bus)']);
+ box(710,204,270,60,'Teploty v technické místnosti',['1-Wire: výstup/zpátečka TČ, AKU, TV']);
+ box(710,280,270,52,'Elektrické žebříky 3×',['relé / stykač v rozvaděči']);
+ box(710,346,270,52,'HDO, FVE (budoucí), okna',['tarif, přebytky, okenní kontakty']);
+ link([[290,84],[335,84],[335,190],[380,190]],'Cat6','300','78');
+ link([[290,334],[335,334],[335,226],[380,226]],'Cat6','300','352');
+ link([[620,175],[640,175],[640,66],[710,66]]);
+ link([[620,195],[652,195],[652,158],[710,158]]);
+ link([[620,215],[664,215],[664,234],[710,234]]);
+ link([[620,235],[688,235],[688,306],[710,306]]);
+ link([[620,250],[676,250],[676,372],[710,372]]);
+ link([[155,388],[155,406],[992,406],[992,60],[980,60]],'požadavek topení · J-Y(St)Y 4×2×0,8','170','400','#c0392b','6 4');
+ T(20,426,'Fialově datové kabely, červeně přímý řídicí kontakt do TČ. Když HA vypadne, R1 a R2 řídí zóny samy a TČ topí podle ekvitermní křivky.',{'font-size':11,fill:C.sub});
+}
+
+drawGround();drawAttic();drawDetail();legends();table();drawHydro();drawHA();
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{MODE=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.mode===MODE)));drawGround();drawAttic();});
+</script>
+</body>
+</html>
