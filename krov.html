@@ -63,13 +63,13 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 </header>
 <main>
   <div class="eyebrow">Kóty v milimetrech · výšková nula = horní líc hrubé základové desky · x napříč (0 = líc zdiva strany C), s podél (0 = líc štítu A)</div>
-  <p class="lead">Krov je postavený na geometrii naší 3D studie: sklon 45°, okapový přesah 1,0 m a štítový 0,8 m od fasády, tašková krytina, šest střešních oken VELUX FK08 (4 na jih, 2 na sever), komín krbu a rovný podhled v podkroví ve 2,60 m. Princip nosné konstrukce i průřezy jsou převzaté ze statiky a výkresu krovu D1.4: krokve 120×200 na pozednicích 160×140, vrcholová vaznice 2U200 na ocelových rámech 2U140 u dveří chodby a kleštiny 2×60×180. Krokve jsou rovnoměrně po 0,9 m jako v DSP a všechny stejné; okna S1, S2 a J1 jsou proti modelu posunutá tak, aby padla mezi krokve, a komín padne do pole s odstupem 50 mm. Všechny rozměry se dopočítávají.</p>
+  <p class="lead">Krov je postavený na geometrii naší 3D studie: sklon 45°, okapový přesah 1,0 m a štítový 0,8 m od fasády, tašková krytina, šest střešních oken VELUX FK08 (4 na jih, 2 na sever), komín krbu a rovný podhled v podkroví ve 2,60 m. Princip nosné konstrukce i průřezy jsou převzaté ze statiky a výkresu krovu D1.4: krokve 120×200 na pozednicích 160×140, vrcholová vaznice 2U200 na ocelových rámech 2U140 u dveří chodby a kleštiny 2×60×180. Navíc je uprostřed třetí rám R2, jehož stojky jsou schované v příčkách chodby. Krokve jsou rovnoměrně po 0,9 m jako v DSP a všechny stejné; okna S1, S2 a J1 jsou proti modelu posunutá tak, aby padla mezi krokve, a komín padne do pole s odstupem 50 mm. Všechny rozměry se dopočítávají.</p>
   <div class="chips"><span class="chip">krokve 120×200 po 0,9 m · sklon 45°</span><span class="chip">pozednice 160×140 na ŽB věnci</span><span class="chip">vaznice ze dvou U profilů svařených do truhlíku</span><span class="chip">sloupy a rámy 2U140</span><span class="chip">kleštiny 2×60×180 na každé vazbě</span><span class="chip">tašky na latích 40×60 a kontralatích 50×60</span></div>
 
   <div class="notice"><strong>V čem se krov liší od DSP a co je potřeba potvrdit se statikem:</strong>
     <ul>
       <li><strong>Krytina:</strong> DSP a statika počítají s falcovaným plechem, budou tašky, zhruba o 0,5 kN/m² těžší. Krokve 120×200 s roztečí do <span data-k="maxAxis">—</span> mm to orientačně unesou: statika je posoudila na moment 5,75 kNm, s taškami a sněhem vychází asi 4,7–5,2 kNm.</li>
-      <li><strong>Vaznice:</strong> v DSP je 2U200 jen na rámech R1 a R3 u dveří, prostřední pole má 9,94 m. S taškami a sněhem by vycházela na 80–88 % únosnosti a s průhybem asi 40 mm (L/250), tedy na hranici. Doporučuji vaznici <strong>2U240 svařenou do truhlíku</strong> na stejných dvou rámech: orientačně 52–57 % únosnosti a průhyb 21–23 mm (L/430), v chodbě nebude žádná ocel. Druhá možnost je 2U200 s třetím rámem R2 schovaným ve stěnách chodby. Rozhodne statik.</li>
+      <li><strong>Vaznice:</strong> v DSP je 2U200 jen na dvou rámech R1 a R3 u dveří, prostřední pole má 9,94 m. S taškami a sněhem by vycházela na 80–88 % únosnosti a s průhybem asi 40 mm (L/250), tedy na hranici. Proto je přidaný <strong>třetí rám R2</strong> v půlce chodby: stojky 2U140 jsou schované v příčkách chodby, příčel vede nad podhledem a chodba zůstane po celé šířce volná. Vaznice tak zůstává 2U200 jako v DSP, pole jsou nejvýš 5,6 m a vychází orientačně na 30–35 % únosnosti. Statik musí potvrdit R2 a hlavně stojky, které stojí na stropních panelech. Bez R2 by byla potřeba vaznice 2U240 (přepínač u 3D modelu).</li>
       <li><strong>Kleštiny:</strong> rovný podhled ve 2,60 m je široký asi 4,5 m, proto jsou kleštiny na každé vazbě a podhled na nich visí. DSP měla kleštiny po 4 m a strop ve 3,0 m.</li>
       <li><strong>Výška:</strong> hřeben krytiny vychází na <span data-k="roofTop">—</span> nad hrubou deskou, tj. <span data-k="roofTopFloor">—</span> nad čistou podlahou přízemí (DSP +8,678). Vizualizace má střechu tenčí a hřeben asi o 0,2 m níž.</li>
     </ul>
@@ -77,7 +77,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 
   <div class="toolbar">
     <div class="seg" role="group" aria-label="Výšky podle výškového řezu"><button type="button" data-h="A" aria-pressed="true">Výšky var. A · panely +2 925</button><button type="button" data-h="B" aria-pressed="false">var. B · +2 900</button></div>
-    <div class="toggles"></div><div class="seg" role="group" aria-label="Vaznice"><button type="button" data-rb="U240" aria-pressed="true">Vaznice 2U240, bez R2</button><button type="button" data-rb="R2" aria-pressed="false">2U200 + rám R2 v chodbě</button></div><div class="toggles"><label>světlá šířka chodby u R2 <input type="number" id="corrW" value="1110" disabled min="900" max="2500" step="10" style="width:84px;font:inherit;padding:3px 6px;border:1px solid #cad6cc;border-radius:6px"> mm</label></div>
+    <div class="toggles"></div><div class="seg" role="group" aria-label="Vaznice"><button type="button" data-rb="R2" aria-pressed="true">3 rámy · 2U200 + R2 v příčkách chodby</button><button type="button" data-rb="U240" aria-pressed="false">2 rámy · 2U240 bez R2</button></div><div class="toggles"><label>světlá šířka chodby u R2 <input type="number" id="corrW" value="1110" min="900" max="2500" step="10" style="width:84px;font:inherit;padding:3px 6px;border:1px solid #cad6cc;border-radius:6px"> mm</label></div>
   </div>
 
   <section class="card">
@@ -95,7 +95,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 
   <section class="card">
     <h2>3D model krovu</h2>
-    <p class="desc">Tažením otáčíte, kolečkem nebo dvěma prsty přibližujete, s klávesou Shift nebo pravým tlačítkem posouváte. Výměny u oken a komína jsou oranžově, navržená podpora R2 oranžovou ocelí.</p>
+    <p class="desc">Tažením otáčíte, kolečkem nebo dvěma prsty přibližujete, s klávesou Shift nebo pravým tlačítkem posouváte. Výměny u oken a komína jsou oranžově, přidaný rám R2 oranžovou ocelí.</p>
     <div class="toolbar">
       <div class="seg" role="group" aria-label="Pohled"><button type="button" data-view="axo" aria-pressed="true">Axonometrie</button><button type="button" data-view="gable" aria-pressed="false">Štít A</button><button type="button" data-view="side" aria-pressed="false">Jih</button><button type="button" data-view="top" aria-pressed="false">Shora</button></div>
       <div class="toggles">
@@ -114,7 +114,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 
   <section class="card">
     <h2 id="crossTitle">Příčný řez krovem</h2>
-    <p class="desc">Řez v ose vazby se sloupem R1. Krokve leží na pozednicích se zářezem 80 × 80 mm, nahoře na ocelové vaznici. Kleštiny nad podhledem nesou rovný strop podkroví.</p>
+    <p class="desc">Řez u ocelového rámu, za ním vazba v pohledu. Krokve leží na pozednicích se zářezem 80 × 80 mm, nahoře na ocelové vaznici. Kleštiny nad podhledem nesou rovný strop podkroví.</p>
     <div class="scroll"><svg id="cross" role="img" aria-label="Příčný řez krovem s kótami"></svg></div>
   </section>
 
@@ -126,7 +126,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 
   <section class="card">
     <h2>Podélný řez ve hřebeni</h2>
-    <p class="desc">Řez osou vaznice. Podpory: štítové zdi a rámy R1 a R3 kolem dveří na koncích chodby, ve variantě s 2U200 ještě rám R2 schovaný ve stěnách chodby. Kleštiny jsou proříznuté nad podhledem.</p>
+    <p class="desc">Řez osou vaznice. Podpory: štítové zdi, rámy R1 a R3 kolem dveří na koncích chodby a rám R2 schovaný v příčkách chodby (ve variantě 2U240 odpadá). Kleštiny jsou proříznuté nad podhledem.</p>
     <div class="scroll"><svg id="long" role="img" aria-label="Podélný řez vaznicí se sloupy"></svg></div>
   </section>
 
@@ -172,9 +172,9 @@ const P={W:8000,L:18600,wall:300,eps:200,panelTop:3175,knee:968,ring:300,floorBu
   ridgeW:150,ridgeH:200,ridgeSeat:75,klT:60,klH:180,klGap:50,cb:50,lath:40,tile:30,maxAxis:960,r2:true,corrW:1110,corrC:4045};
 // R2 sits in the corridor walls: posts 120 mm wide in the middle of the 150 mm walls, crossbar above the ceiling across the corridor.
 const UPROF={U200:{h:200,b:75,tw:8.5,tf:11.5,kg:25.3},U240:{h:240,b:85,tw:9.5,tf:13,kg:33.2}};
-// Ridge beam: 2U240 box on the two door frames (recommended), or 2U200 box with the extra frame R2 in the corridor walls.
+// Ridge beam: 2U200 box as in the DSP on three frames, R2 added in the corridor walls (chosen), or 2U240 box on the two door frames only.
 function setRidge(r2){P.r2=r2;P.uName=r2?'U200':'U240';P.U=UPROF[P.uName];P.ridgeH=P.U.h;P.ridgeW=2*P.U.b;P.ridgeSeat=P.U.b}
-setRidge(false);
+setRidge(true);
 const r2Geo=()=>{const c=P.corrC,h=P.corrW/2;return {posts:[[c-h-135,c-h-15],[c+h+15,c+h+135]],bar:[c-h-135,c+h+135]}};
 // Roof windows (s = left edge of the 660 mm frame); side 0 = north (C), side 1 = south (B, HS). s0 is the earlier model position;
 // S1, S2 and J1 were moved so every window falls between rafters, still 150 mm or more from the attic partitions.
@@ -237,7 +237,7 @@ function layout(){
     p.kl=p.kind==='main'&&!(p.s+half+P.klT>chim.sLo&&p.s-half-P.klT<chim.sHi);
     if(p.kind==='main'&&!p.kl)p.notes.push('bez kleštin (komín)');
   }
-  for(const c of cols){const p=pairs.filter(p=>p.s<c.s).pop();p.notes.push(`za ní ve vzdálenosti ${fmt(c.s-p.s)} sloup ${c.id}${c.proposal?' (návrh)':''}`)}
+  for(const c of cols){const p=pairs.filter(p=>p.s<c.s).pop();p.notes.push(`za ní ve vzdálenosti ${fmt(c.s-p.s)} sloup ${c.id}`)}
   return {D,pairs,ops,cols};
 }
 function rafterPieces(L,p,side){
@@ -254,9 +254,12 @@ function supportMoments(spans){const m=spans.length-1,A=[],b=[];
   for(let i=0;i<m;i++){const L1=spans[i],L2=spans[i+1],row=new Array(m).fill(0);row[i]=2*(L1+L2);if(i>0)row[i-1]=L1;if(i<m-1)row[i+1]=L2;A.push(row);b.push(-(L1**3+L2**3)/4)}
   for(let i=0;i<m;i++)for(let r=i+1;r<m;r++){const f=A[r][i]/A[i][i];for(let c=i;c<m;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}
   const x=new Array(m).fill(0);for(let i=m-1;i>=0;i--){let s=b[i];for(let c=i+1;c<m;c++)s-=A[i][c]*x[c];x[i]=s/A[i][i]}return [0,...x,0]}
-// Zero-moment points in the longest span of the continuous ridge beam: the place for the splices.
-function ridgeSplices(L){const sp=supports(L).map(s=>s.s/1000),spans=sp.slice(1).map((s,i)=>s-sp[i]),M=supportMoments(spans),i=spans.indexOf(Math.max(...spans)),Ls=spans[i],Ma=M[i],Mb=M[i+1];
-  const bb=Ls/2+(Mb-Ma)/Ls,disc=Math.sqrt(bb*bb+2*Ma);return [bb+disc,bb-disc].filter(x=>x>0&&x<Ls).sort((p,q)=>p-q).map(x=>Math.round((sp[i]+x)*100)*10)}
+// Zero-moment points of the continuous ridge beam are the places for the splices: both points of the longest span
+// on two supports (three pieces), with R2 the one point nearest the middle of the beam (two pieces).
+function ridgeSplices(L){const sp=supports(L).map(s=>s.s/1000),spans=sp.slice(1).map((s,i)=>s-sp[i]),M=supportMoments(spans);
+  const zeros=i=>{const Ls=spans[i],Ma=M[i],Mb=M[i+1],bb=Ls/2+(Mb-Ma)/Ls,disc=Math.sqrt(bb*bb+2*Ma);return [bb+disc,bb-disc].filter(x=>x>0&&x<Ls).sort((p,q)=>p-q).map(x=>Math.round((sp[i]+x)*100)*10)};
+  if(!P.r2)return zeros(spans.indexOf(Math.max(...spans)));
+  const mid=(P.verge0+P.verge1)/2;return [spans.flatMap((_,i)=>zeros(i)).sort((a,b)=>Math.abs(a-mid)-Math.abs(b-mid))[0]]}
 const atticWalls=()=>{const c=P.corrC,h=P.corrW/2;return {corr:[[c-h-150,c-h,[[6800,7600]]],[c+h,c+h+150,[[8500,9200],[10350,11050]]]],cross:[[4290,4440],[14240,14370]],s0:4440,s1:14240}};
 const supports=L=>[{id:'štít A',s:P.gableRaf},...L.cols.map(c=>({id:c.id,s:c.s,proposal:c.proposal})),{id:'zadní štít',s:P.L-P.gableRaf}];
 
@@ -395,8 +398,9 @@ const ptsStr=(arr,X,Y)=>arr.map(([x,z])=>X(x).toFixed(1)+','+Y(z).toFixed(1)).jo
 function drawCross(L){
   const D=L.D,k=.07,X=x=>40+(x+1500)*k,Y=z=>24+(9650-z)*k,W=1060,H=Math.round(Y(2780)+86),svg=svgInit('cross',W,H),g=el('g',{},svg);
   const poly=(a,at)=>el('polygon',{points:ptsStr(a,X,Y),...at},g),rect=(x0,x1,z0,z1,at)=>el('rect',{x:X(Math.min(x0,x1)),y:Y(z1),width:Math.abs(x1-x0)*k,height:(z1-z0)*k,...at},g);
-  const R1=L.pairs.find(p=>p.s>COLS[0].s&&p.kl);
-  document.getElementById('crossTitle').textContent=`Příčný řez u rámu R1 · krokve a kleštiny vazby č. ${R1.n} v pohledu`;
+  // With R2 the section goes through R2 in the corridor walls, otherwise through the door frame R1.
+  const fr=P.r2?COLS.find(c=>c.proposal):COLS[0],R1=L.pairs.find(p=>p.s>fr.s&&p.kl),frTop=P.r2?D.ceil+150:D.doorHead+150;
+  document.getElementById('crossTitle').textContent=`Příčný řez u rámu ${fr.id} · krokve a kleštiny vazby č. ${R1.n} v pohledu`;
   rect(0,P.W,P.panelTop-250,P.panelTop,{fill:'url(#pConc)',stroke:'#8e988f'});
   rect(P.wall,P.W-P.wall,P.panelTop,D.floor,{fill:'#efe7d6',stroke:'#cdbf9c'});
   for(const s of [0,1]){const x0=s?P.W-P.wall:0,xe=s?P.W:-P.eps;
@@ -406,10 +410,6 @@ function drawCross(L){
   const dc=D.ceil-D.A0+P.wall,dt=D.ceil+250-D.A0-D.RT,ins=[[P.wall,D.A0],[dc,D.ceil],[P.W-dc,D.ceil],[P.W-P.wall,D.A0],[P.W-P.wall,D.A0+P.wall+D.RT],[P.W-dt,D.ceil+250],[dt,D.ceil+250],[P.wall,D.A0+P.wall+D.RT]];
   poly(ins,{fill:'url(#pWool)',stroke:'none'});
   el('polyline',{points:ptsStr([[P.wall,D.A0],[dc,D.ceil],[P.W-dc,D.ceil],[P.W-P.wall,D.A0]],X,Y),fill:'none',stroke:'#7d8a81','stroke-width':2},g);
-  // Door frame R1, column, crossbar.
-  el('rect',{x:X(3600),y:Y(D.doorHead),width:800*k,height:2100*k,fill:'none',stroke:'#9aa59d','stroke-dasharray':'5 4'},g);
-  for(const [a,b] of [[3440,3580],[4420,4560]])rect(a,b,P.panelTop,D.doorHead+10,{fill:'#7a8791',stroke:'#3c474f'});
-  rect(3440,4560,D.doorHead+10,D.doorHead+150,{fill:'#7a8791',stroke:'#3c474f'});rect(3930,4070,D.doorHead+150,D.ridgeBot,{fill:'#7a8791',stroke:'#3c474f'});
   for(const s of [0,1]){const xa=X1(s,P.plateX),xb=X1(s,P.plateX+P.plateW);rect(xa,xb,D.vt,D.plateTop,{fill:'url(#pWood)',stroke:'#7a5530'})}
   // Roof build-up: counter battens in view, cut battens, tiles.
   for(const s of [0,1]){
@@ -425,6 +425,16 @@ function drawCross(L){
   }
   if(R1.kl){poly(klProfile(D),{fill:'#e8c999',stroke:'#8a6235','stroke-width':1});
     for(const s of [0,1])for(const [d,dz] of [[1290,40],[1450,120]])el('circle',{cx:X(X1(s,d)),cy:Y(D.klBot+dz),r:2.6,fill:'#3c474f'},g)}
+  // Steel frame in the cut, in front of the pair in view: posts, crossbar, column under the ridge beam.
+  const stl={fill:'#7a8791',stroke:'#3c474f'};
+  if(P.r2){const A=atticWalls(),G=r2Geo();
+    for(const [x0,x1] of A.corr)rect(x0,x1,D.floor,D.ceil,{fill:'#ebe6dc',stroke:'#a99f8c'});
+    for(const [a,b] of G.posts)rect(a,b,P.panelTop,D.ceil+10,stl);
+    rect(G.bar[0],G.bar[1],D.ceil+10,frTop,stl)}
+  else{el('rect',{x:X(3600),y:Y(D.doorHead),width:800*k,height:2100*k,fill:'none',stroke:'#9aa59d','stroke-dasharray':'5 4'},g);
+    for(const [a,b] of [[3440,3580],[4420,4560]])rect(a,b,P.panelTop,D.doorHead+10,stl);
+    rect(3440,4560,D.doorHead+10,frTop,stl)}
+  rect(3930,4070,frTop,D.ridgeBot,stl);
   // 2U200 box cut.
   for(const sgn of [-1,1])poly(boxU(P.W/2,D.ridgeBot,D.ridgeTop,sgn,P.U.tf,P.U.tw,P.U.b),{fill:'#4d5963',stroke:'#232a30','stroke-width':.8});
   // Labels.
@@ -433,7 +443,10 @@ function drawCross(L){
   lab(6600,D.A0+1400+D.RT/2+420,'tašky · latě 40×60 · kontralatě 50×60 · pojistná fólie',{'text-anchor':'middle',transform:`rotate(45 ${X(6600)} ${Y(D.A0+1400+D.RT/2+420)})`});
   if(R1.kl)lab(P.W/2,D.klTop+70,`kleštiny 2×60×180 · ${fmt(P.W-2*(D.klBot-D.A0-D.RT))}`,{'text-anchor':'middle','font-weight':600});
   {const lx=X(2600),ly=Y(D.roofTop+330);T(g,lx,ly,`vaznice 2${P.uName}`,'tiny halo',{'text-anchor':'end','font-weight':700});el('path',{d:`M${lx+4} ${ly-4}L${X(P.W/2-P.ridgeW/2)} ${Y(D.ridgeTop-20)}`,class:'lead'},g)}
-  lab(4130,(D.klTop+D.ridgeBot)/2,'sloup 2U140');lab(P.W/2,D.doorHead-500,'rám R1 2U140',{'text-anchor':'middle'});lab(P.W/2,D.doorHead-680,'dveře 800 × 2 100',{'text-anchor':'middle'});
+  lab(4130,(D.klTop+D.ridgeBot)/2,'sloup 2U140');
+  if(P.r2){const c=P.corrC,h=P.corrW/2;lab(c+h+230,D.ceil-220,'rám R2 2U140, příčel nad podhledem',{'text-anchor':'start'});lab(c+h+230,D.floor+1100,'stojky 2U140 v příčkách chodby',{'text-anchor':'start'});
+    lab(P.W/2,D.floor+800,'chodba',{'text-anchor':'middle'});hdim(g,Y(D.floor+380),[c-h-150,c-h,c+h,c+h+150].map(X),['150',fmt(P.corrW),'150'])}
+  else{lab(P.W/2,D.doorHead-500,'rám R1 2U140',{'text-anchor':'middle'});lab(P.W/2,D.doorHead-680,'dveře 800 × 2 100',{'text-anchor':'middle'})}
   lab(2400,D.ceil-150,`podhled SDK ${lvl(D.ceil)}`,{'text-anchor':'middle'});
   lab(P.W/2,(P.panelTop-250+P.panelTop)/2+4,'stropní panely 250',{'text-anchor':'middle'});
   lab(150,D.vt-200,'věnec',{'text-anchor':'middle'});lab(100,D.plateTop+70,'pozednice 160×140',{'text-anchor':'start'});
@@ -454,7 +467,7 @@ function drawCross(L){
   // Levels on the right.
   const xa=X(P.W-P.eaveEdge)+30,items=[
     {z:D.roofTop,a:'≈ '+lvl(D.roofTop),b:'krytina v hřebeni'},{z:D.apexTop,a:lvl(D.apexTop),b:'vrchol krokví'},{z:D.ridgeTop,a:lvl(D.ridgeTop),b:'vrch vaznice'},{z:D.ridgeBot,a:lvl(D.ridgeBot),b:'spodek vaznice'},
-    {z:D.klTop,a:lvl(D.klTop),b:'vrch kleštin'},{z:D.klBot,a:lvl(D.klBot),b:'spodek kleštin'},{z:D.ceil,a:lvl(D.ceil),b:'podhled'},{z:D.doorHead+150,a:lvl(D.doorHead+150),b:'vrch příčle rámu'},
+    {z:D.klTop,a:lvl(D.klTop),b:'vrch kleštin'},{z:D.klBot,a:lvl(D.klBot),b:'spodek kleštin'},{z:D.ceil,a:lvl(D.ceil),b:'podhled'},{z:frTop,a:lvl(frTop),b:'vrch příčle rámu'},
     {z:D.plateTop,a:lvl(D.plateTop),b:'vrch pozednice'},{z:D.vt,a:lvl(D.vt),b:'vrch věnce'},{z:D.floor,a:lvl(D.floor),b:'podlaha podkroví'},{z:D.tailZ,a:lvl(D.tailZ),b:'spodní hrana krokve na okapu'},{z:P.panelTop,a:lvl(P.panelTop),b:'vrch panelů'}
   ].sort((a,b)=>b.z-a.z).map(i=>({...i,y:Y(i.z)}));
   for(const i of items)el('line',{x1:xa-22,y1:i.y,x2:xa,y2:i.y,class:'dl'},g);
@@ -481,7 +494,7 @@ function drawPlan(L){
     else{R(CH.s0,CH.s1,CH.x0,CH.x1,{fill:'#ddd5c8',stroke:'#6d625a','stroke-width':1.2});T(g,SX((CH.s0+CH.s1)/2),XY(CH.x1)+14,'komín','tiny halo',{'text-anchor':'middle','font-weight':700})}}
   for(const c of L.cols){const k2=c.proposal?'#d9772e':'#3c474f';R(c.s-half,c.s+half,3930,4070,{fill:k2});
     const posts=c.door?[[3440,3580],[4420,4560]]:r2Geo().posts;for(const [a,b] of posts)R(c.s-(c.door?half:70),c.s+(c.door?half:70),a,b,{fill:'none',stroke:k2,'stroke-width':1.3});
-    T(g,SX(c.s),XY(4560)+16,c.id+(c.proposal?' návrh':''),'tiny halo',{'text-anchor':'middle','font-weight':700,fill:k2})}
+    T(g,SX(c.s),XY(4560)+16,c.id,'tiny halo',{'text-anchor':'middle','font-weight':700,fill:k2})}
   for(const p of L.pairs){const x=SX(p.s),y=XY(-750);T(g,x+3,y,String(p.n),'micro',{'text-anchor':'middle',transform:`rotate(-90 ${x+3} ${y})`,fill:'#3a2a18'})}
   T(g,SX(P.roof0)+4,XY(P.eaveEdge)+14,'SEVER · strana C','tiny halo',{'font-weight':700});T(g,SX(P.roof0)+4,XY(P.W-P.eaveEdge)-6,'JIH · strana B s HS (předpoklad)','tiny halo',{'font-weight':700});
   T(g,SX(-640),XY(2200),'štít A','tiny halo',{'text-anchor':'middle',transform:`rotate(-90 ${SX(-640)} ${XY(2200)})`,'font-weight':700});
@@ -515,8 +528,8 @@ function drawLong(L){
   for(const c of L.cols){const k2=c.proposal?'#d9772e':'#4d5963',pale=c.proposal?'#f2c7a3':'#b9c2c8';
     if(c.door){R(c.s-75,c.s+75,D.doorHead,D.ceil,{fill:'url(#pMas)',stroke:'#b8c0ba'});R(c.s-half,c.s+half,P.panelTop,D.doorHead+10,{fill:pale,stroke:'none'});R(c.s-half,c.s+half,D.doorHead+10,D.doorHead+150,{fill:k2});R(c.s-half,c.s+half,D.doorHead+150,D.ridgeBot,{fill:k2})}
     else{R(c.s-70,c.s+70,P.panelTop,D.ceil+10,{fill:pale,stroke:'none'});R(c.s-half,c.s+half,D.ceil+10,D.ceil+150,{fill:k2});R(c.s-half,c.s+half,D.ceil+150,D.ridgeBot,{fill:k2})}
-    T(g,SX(c.s)+6,Y((D.ceil+D.ridgeBot)/2),c.id+(c.proposal?' (návrh)':''),'tiny halo',{'font-weight':700,fill:k2})}
-  {const r2=L.cols.find(c=>c.proposal),sx=r2?[r2.s]:ridgeSplices(L);for(const s of sx){el('line',{x1:SX(s),y1:Y(D.ridgeTop)-4,x2:SX(s),y2:Y(D.ridgeBot)+4,stroke:'#fff','stroke-width':2},g);T(g,SX(s)+5,Y(D.ridgeTop)-6,'spoj','micro')}}
+    T(g,SX(c.s)+6,Y((D.ceil+D.ridgeBot)/2),c.id,'tiny halo',{'font-weight':700,fill:k2})}
+  {const sx=ridgeSplices(L);for(const s of sx){el('line',{x1:SX(s),y1:Y(D.ridgeTop)-4,x2:SX(s),y2:Y(D.ridgeBot)+4,stroke:'#fff','stroke-width':2},g);T(g,SX(s)+5,Y(D.ridgeTop)-6,'spoj','micro')}}
   T(g,SX(1800),Y(D.ridgeBot)+14,`vaznice 2${P.uName} · ${fmt(P.verge1-P.verge0)}`,'tiny',{'font-weight':700});
   T(g,SX(1800),Y(D.ceil)+14,`podhled ${lvl(D.ceil)}`,'tiny');T(g,SX(1800),Y(D.floor)-4,`podlaha podkroví ${lvl(D.floor)}`,'tiny');
   T(g,SX(150),Y(D.ridgeBot)+30,'štít A','micro',{'text-anchor':'middle'});T(g,SX(P.L-150),Y(D.ridgeBot)+30,'zadní štít','micro',{'text-anchor':'middle'});
@@ -620,7 +633,7 @@ function tables(L){
   const ridge=P.verge1-P.verge0;it('Vaznice',`2× ${P.uName}`,2,ridge,`přírubami k sobě, svařené do truhlíku ${P.ridgeW} × ${P.ridgeH}; asi ${fmt(2*ridge/1000*P.U.kg)} kg`);
   const colLen=[],frame=[];for(const c of L.cols){if(c.door){colLen.push(D.ridgeBot-D.doorHead-150);frame.push(D.doorHead+10-P.panelTop,D.doorHead+10-P.panelTop,1120)}else{colLen.push(D.ridgeBot-D.ceil-150);frame.push(D.ceil+10-P.panelTop,D.ceil+10-P.panelTop,r2Geo().bar[1]-r2Geo().bar[0])}}
   for(const [len,n] of grp(colLen))it('Sloupy pod vaznicí','2× U140',n,len,L.cols.map(c=>c.id).join(', '));
-  for(const [len,n] of grp(frame))it('Rámy: stojky a příčle','2× U140',n,len,'kolem dveří R1, R3; ve stěnách chodby R2');
+  for(const [len,n] of grp(frame))it('Rámy: stojky a příčle','2× U140',n,len,'kolem dveří R1, R3; v příčkách chodby R2');
   add('Ostatní');
   const anchors=2*(Math.ceil(P.L/1200)+1);rows.push({name:'Kotvy pozednic',prof:'M16',n:anchors,len:null,note:'chemická kotva do věnce, á ≤ 1 200*'});
   const cbLen=(full.length*(D.tApex-D.tTail-200)+pieces.reduce((a,b)=>a+b,0))/1000;rows.push({name:'Kontralatě',prof:'50×60',n:null,len:null,note:`asi ${fmt(cbLen)} m`});
@@ -646,10 +659,10 @@ function facts(L,t){
   const nIn=inner.length,vg=L.pairs.find(p=>p.kind==='verge'),gb=L.pairs.find(p=>p.kind==='gable');
   const N=[
     ['risk','Tašky místo plechu',`Statika posoudila krokve na q<sub>d</sub> = 1,7 kN/m a L = 5,2 m, tedy moment 5,75 kNm. S taškami, sněhem (s<sub>k</sub> 1,5–2,0 kN/m²) a roztečí do ${fmt(Math.max(...ax))} mm vychází orientačně 4,7–5,2 kNm a průhyb asi 13 mm, krokve 120×200 tedy vyhoví. Statik by to měl potvrdit spolu s vyměněnými krokvemi a výměnami.`],
-    P.r2?['risk','Rám R2 v chodbě',`Bez R2 by 2U200 měla pole ${fmt(COLS[2].s-COLS[0].s)} mm a s taškami vycházela na hranici (80–88 % únosnosti, průhyb asi 40 mm). R2 nestojí kolem dveří jako R1 a R3: stojky 2U140 (120 mm) jsou schované v ${150} mm stěnách chodby u příčky mezi 2.05 a 2.06 a příčel vede nad podhledem mezi dvěma vazbami, chodba zůstane po celé šířce volná. Příčel přes chodbu ${fmt(P.corrW)} mm nese sloup se silou asi 57 kN a vychází orientačně na ${Math.round(57*(P.corrW+150)/4000/40.6*100)} % únosnosti. Stojky ale vnášejí další bodová zatížení do stropních panelů.`]
+    P.r2?['risk','Rám R2 v příčkách chodby',`Bez R2 by 2U200 měla pole ${fmt(COLS[2].s-COLS[0].s)} mm a s taškami vycházela na hranici (80–88 % únosnosti, průhyb asi 40 mm). Se třemi rámy je největší pole ${fmt(Math.max(...spans))} mm a 2U200 vychází orientačně na 30–35 % únosnosti. R2 nestojí kolem dveří jako R1 a R3: stojky 2U140 (120 mm) jsou schované ve 150 mm příčkách chodby u příčky mezi 2.05 a 2.06 a příčel vede nad podhledem mezi dvěma vazbami, chodba zůstane po celé šířce volná. Příčel přes chodbu ${fmt(P.corrW)} mm nese sloup se silou asi 57 kN a vychází orientačně na ${Math.round(57*(P.corrW+150)/4000/40.6*100)} % únosnosti. Stojky ale vnášejí další bodová zatížení do stropních panelů.`]
      :['risk','Vaznice 2U240 bez R2',`Vaznice leží jen na štítech a rámech R1, R3 u dveří (jako v DSP), prostřední pole má ${fmt(COLS[2].s-COLS[0].s)} mm. 2U240 svařená do truhlíku vychází s taškami a sněhem orientačně na 52–57 % únosnosti a průhyb 21–23 mm (L/430–470); 2U200 by byla na hranici. Reakce na rámech R1 a R3 je asi 58–64 kN, příčel rámu nad dveřmi ji unese s rezervou. V chodbě není žádná ocel.`],
     ['','Počet krokví',`V délce domu je ${nIn} vazeb s osovou roztečí ${fmt(Math.min(...ax))}–${fmt(Math.max(...ax))} mm, skoro stejně jako v DSP (22 vazeb po 740–960 mm). V každém štítovém přesahu je navíc jen krajní krokev, celkem tedy ${L.pairs.length} vazeb a ${2*L.pairs.length} stejných krokví. Hustší rozteč nic nepřinese, statika i DSP počítají s krokvemi 120×200 zhruba po 0,9 m.`],
-    ['','Vaznice do truhlíku',`Dva ${P.uName} jsou otočené přírubami k sobě a svařené přerušovaným svarem do jednoho uzavřeného profilu ${P.ridgeW} × ${P.ridgeH}. Proti profilům zády k sobě je mnohem tužší v kroucení a odolnější proti klopení, krokve leží na rovné ploše ${P.ridgeW} mm se zářezem ${P.ridgeSeat} × ${P.ridgeSeat}. Spoje ${P.r2?'nad R2 přes čelní desky':`v místech nulového momentu (s ≈ ${ridgeSplices(L).map(fmt).join(' a ')}), aby kusy byly do 12 m`}, konce zaslepit; protikorozní ochranu dohodnout s výrobcem. Potvrdí statik.`],
+    ['','Vaznice do truhlíku',`Dva ${P.uName} jsou otočené přírubami k sobě a svařené přerušovaným svarem do jednoho uzavřeného profilu ${P.ridgeW} × ${P.ridgeH}. Proti profilům zády k sobě je mnohem tužší v kroucení a odolnější proti klopení, krokve leží na rovné ploše ${P.ridgeW} mm se zářezem ${P.ridgeSeat} × ${P.ridgeSeat}. ${P.r2?'Spoj':'Spoje'} v ${P.r2?'místě':'místech'} nulového momentu (s ≈ ${ridgeSplices(L).map(fmt).join(' a ')}), aby kusy byly do 12 m, konce zaslepit; protikorozní ochranu dohodnout s výrobcem. Potvrdí statik.`],
     ['','Okna VELUX',`Okna se kotví montážními úhelníky do latí. Aby padla mezi krokve, jsou proti modelu posunutá: ${WIN.filter(w=>w.s!==w.s0).map(w=>`${w.id} o ${w.s>w.s0?'+':'−'}${fmt(Math.abs(w.s-w.s0))} mm`).join(', ')}; všechna zůstávají ve svých místnostech nejméně 150 mm od příček. Žádná krokev se nevyměňuje, nad a pod oknem jsou jen výměny pro ostění. Spodní vnější hrana rámu vychází asi ${m2(foot)} m nad podlahou podkroví.`],
     ['','Komín krbu',`Průduch je převzatý z interiéru modelu (x 5 120–5 500, s 5 200–5 600); nad střechou ve vizualizaci zatím chybí. Padne do pole mezi krokve s odstupem 50 mm od dřeva, nad a pod ním jsou výměny. Na vazbě těsně vedle komína nejsou kleštiny, podhled tam zavěsit na výměnu. Ústí musí být nejméně 0,65 m nad hřebenem (zakreslen ${lvl(D.chimTop)}); ověřit s kominíkem a projektantem.`],
     ['','Přesahy ve štítech',`V každém štítovém přesahu je jen krajní krokev. Nese ji pozednice a vaznice vyložené asi 1,1 m za osu štítové zdi. Latě mezi krajní a štítovou krokví pnou ${fmt(gb.s-vg.s)} mm, což je pro latě 40×60 horní mez; v přesazích použít latě 50×60. Pozednice kotvit M16 po nejvýš 1,2 m, v rozích hustěji; podložit asfaltovým pásem.`],
@@ -723,11 +736,10 @@ function cutList(L){
     const p=document.createElement('p');p.textContent=r.id==='A'?`Všechny krokve jsou stejné, vyplatí se udělat šablonu. Pata i vrchol svisle, oba řezy rovnoběžné. Zářez na pozednici: svislá i vodorovná stěna ${P.seatX-P.plateX} mm. Zářez na vaznici: ${P.ridgeSeat} mm. Mezi zářezy je ${fmt(Math.round((P.W/2-P.ridgeSeat-P.seatX)*SQ))} mm po spodní hraně.`:`Kde: ${r.where.join(', ')}.`;d.appendChild(p);box.appendChild(d)}
   {const d=document.createElement('div');d.className='piece';d.innerHTML=`<h3>H · Kleština · ${2*nk} ks · 60×180 · přířez ${fmt(klLen)}</h3>`;const sc=document.createElement('div');sc.className='scroll';sc.appendChild(boardSvg(klLen,P.klH,true,'Kleština'));d.appendChild(sc);const p=document.createElement('p');p.textContent='Konce seříznout 45° rovnoběžně s krokví, takže prkno je lichoběžník. Ke každé krokvi 2 šrouby M12.';d.appendChild(p);box.appendChild(d)}
   // Steel.
-  const cols=L.cols,sr=[];const r2=cols.find(c=>c.proposal);
-  if(r2)sr.push(['Vaznice',P.uName,'2 + 2',`${fmt(r2.s-P.verge0)} + ${fmt(P.verge1-r2.s)}`,'po dvou přírubami k sobě, svařit do truhlíku 150 × 200; spoj nad R2 čelními deskami']);
-  else{const sx=ridgeSplices(L),cuts=[P.verge0,...sx,P.verge1];sr.push(['Vaznice',P.uName,cuts.slice(1).map(()=>'2').join(' + '),cuts.slice(1).map((s,i)=>fmt(s-cuts[i])).join(' + '),`po dvou přírubami k sobě, svařit do truhlíku ${P.ridgeW} × ${P.ridgeH}; spoje čelními deskami v místech nulového momentu s ≈ ${sx.map(fmt).join(' a ')}`])}
+  const cols=L.cols,sr=[];
+  {const sx=ridgeSplices(L),cuts=[P.verge0,...sx,P.verge1];sr.push(['Vaznice',P.uName,cuts.slice(1).map(()=>'2').join(' + '),cuts.slice(1).map((s,i)=>fmt(s-cuts[i])).join(' + '),`po dvou přírubami k sobě, svařit do truhlíku ${P.ridgeW} × ${P.ridgeH}; ${sx.length>1?'spoje':'spoj'} čelními deskami v ${sx.length>1?'místech':'místě'} nulového momentu s ≈ ${sx.map(fmt).join(' a ')}`])}
   for(const c of cols){if(c.door)sr.push([`Rám ${c.id} kolem dveří`,'2× U140','2 stojky + příčel + sloup',`${fmt(D.doorHead+10-P.panelTop)} · 1 120 · ${fmt(D.ridgeBot-D.doorHead-150)}`,'stojky z podlahy na příčel, sloup z příčle pod vaznici']);
-    else sr.push([`Rám ${c.id} ve stěnách chodby (návrh)`,'2× U140','2 stojky + příčel + sloup',`${fmt(D.ceil+10-P.panelTop)} · ${fmt(r2Geo().bar[1]-r2Geo().bar[0])} · ${fmt(D.ridgeBot-D.ceil-150)}`,`stojky ve stěnách chodby (světlá šířka ${fmt(P.corrW)}), příčel nad podhledem mezi vazbami`])}
+    else sr.push([`Rám ${c.id} v příčkách chodby`,'2× U140','2 stojky + příčel + sloup',`${fmt(D.ceil+10-P.panelTop)} · ${fmt(r2Geo().bar[1]-r2Geo().bar[0])} · ${fmt(D.ridgeBot-D.ceil-150)}`,`stojky v příčkách chodby (světlá šířka ${fmt(P.corrW)}), příčel nad podhledem mezi vazbami`])}
   document.getElementById('steelTable').innerHTML='<thead><tr><th>Prvek</th><th>Profil</th><th>Ks</th><th class="n">Délky</th><th>Poznámka</th></tr></thead><tbody>'+sr.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="n">${r[3]}</td><td>${r[4]}</td></tr>`).join('')+'</tbody>';
 }
 
