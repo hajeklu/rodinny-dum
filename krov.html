@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krov · Dům Hájek</title>
+<meta name="description" content="Pracovní návrh krovu domu Hájek podle 3D studie v09: 3D model, příčný a podélný řez, půdorys krovu, detaily, rozměření vazeb a výpis prvků.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{display:inline-block;text-decoration:none;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:9px 12px;font-size:13px}.nav a:hover,.nav a[aria-current=page]{background:#264b39;border-color:#264b39;color:#fff}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:920px;margin:8px 0 18px;color:#526359}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}.chip{border-radius:999px;background:#e4ece5;color:#375443;padding:6px 11px;font-size:12px}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 14px;color:#514a3d}.notice strong{color:#42351d}.notice ul{margin:6px 0 0;padding-left:20px}.notice li{margin:3px 0}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}.card h3{font-size:15px;margin:0 0 8px;color:#294636}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+svg.defs{position:absolute;width:0;height:0;border:0;overflow:hidden}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll svg{min-width:760px}.scroll svg.small{min-width:440px}
+.viewer{position:relative;height:clamp(380px,64vh,640px);border:1px solid #e2e8e2;border-radius:10px;overflow:hidden;background:linear-gradient(#e6edf1,#f7f9f6)}
+.viewer canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}.viewer canvas:active{cursor:grabbing}
+.viewer .hint{position:absolute;left:10px;bottom:10px;font-size:12px;color:#4d5d53;background:#ffffffd9;border-radius:6px;padding:4px 8px;pointer-events:none}
+.viewer .nogl{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:20px;color:#5d6c62}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 12px}
+.seg{display:inline-flex;border:1px solid #cad6cc;border-radius:9px;overflow:hidden;background:#fff}.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:#284638;padding:7px 11px;cursor:pointer}.seg button+button{border-left:1px solid #cad6cc}.seg button:hover{background:#eef4ef}.seg button[aria-pressed=true]{background:#264b39;color:#fff}
+.toggles{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:#3f5047}.toggles label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:#526359}.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:14px;height:14px;border-radius:3px;border:1px solid #0003;display:inline-block}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:12px 14px}.fact b{display:block;color:#294636;font-size:20px;line-height:1.2}.fact span{font-size:12.5px;color:#59685e}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.split>*{min-width:0}
+figure{margin:0}figcaption{font-size:13px;color:#66756b;margin-top:6px}
+.tablewrap{overflow:auto;max-height:620px;border:1px solid #e4e9e5;border-radius:10px}
+table.t{width:100%;border-collapse:collapse;font-size:13px}.t th,.t td{text-align:left;padding:7px 9px;border-bottom:1px solid #e9eee9;vertical-align:top}.t thead th{position:sticky;top:0;background:#f7f9f6;color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em;z-index:1}.t .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.t tr.sec td{background:#f2f5f1;font-weight:700;color:#30463a}.t tr.cut td{background:#fbf3e6}.t tr.prop td{background:#fdf0e6}.t tr.sum td{font-weight:700;border-top:2px solid #cfd8d0}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c27a2c;background:#fbf4ea}
+.pilahead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.pilahead button{font:inherit;font-size:13px;cursor:pointer;border:1px solid #264b39;background:#264b39;color:#fff;border-radius:8px;padding:8px 13px}
+.rule{font-size:14px;background:#eef4ef;border-radius:9px;padding:10px 14px;margin:0 0 14px;color:#24412f}.rule b{color:#1f332a}
+.pieces{display:grid;gap:18px;margin-top:18px}.piece h3{margin:0 0 4px;font-size:15px}.piece p{margin:6px 0 0;font-size:13px;color:#4f5f55}.piece .scroll svg{min-width:640px}
+@media print{body.print-cut header,body.print-cut main>*:not(#pila){display:none!important}body.print-cut #pila{border:0;padding:0;margin:0}body.print-cut .pilahead button{display:none}body.print-cut .piece{break-inside:avoid}}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+svg .label{font:600 13px system-ui,sans-serif;fill:#34483d}svg .tiny{font:11px system-ui,sans-serif;fill:#5d6c62}svg .micro{font:9.5px system-ui,sans-serif;fill:#4f5f55}svg .dimtxt{font:700 11.5px system-ui,sans-serif;fill:#375744}svg .lv{font:700 11.5px system-ui,sans-serif;fill:#23382d}
+svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:round}svg .dl{stroke:#496957;stroke-width:1.1;fill:none}svg .ext{stroke:#9fb0a4;stroke-width:.8;stroke-dasharray:3 3;fill:none}svg .lead{stroke:#7b8a80;stroke-width:.8;fill:none}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}}
+@media(max-width:700px){.notes{grid-template-columns:1fr}header{align-items:flex-start}}
+@media print{body{background:#fff}.nav,.toolbar{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}.scroll svg{min-width:0}.tablewrap{max-height:none;overflow:visible}}
+</style>
+<meta name="robots" content="noindex,nofollow">
+<script src="./nav.js" defer></script>
+</head>
+<body>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="pConc" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#d9ddd9"/><circle cx="3" cy="4" r="1" fill="#aeb6b0"/><circle cx="9" cy="9" r="1" fill="#aeb6b0"/></pattern>
+    <pattern id="pMas" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#eef0ec"/><path d="M0 10L10 0" stroke="#c4ccc5" stroke-width="1"/></pattern>
+    <pattern id="pWood" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e3bf88"/><path d="M0 7L7 0M0 0L7 7" stroke="#b58c55" stroke-width=".7"/></pattern>
+    <pattern id="pWool" width="14" height="8" patternUnits="userSpaceOnUse"><rect width="14" height="8" fill="#fbf3d8"/><path d="M0 6Q3.5 0 7 6T14 6" fill="none" stroke="#e1cf93" stroke-width="1"/></pattern>
+    <pattern id="pEps" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#f4f6f8"/><circle cx="4" cy="4" r="1.2" fill="#d5dce2"/></pattern>
+  </defs>
+</svg>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Krov</h1><p>Pracovní návrh krovu podle 3D studie v09 · průřezy podle statiky a DSP</p></div>
+  <nav data-nav="krov"></nav>
+</header>
+<main>
+  <div class="eyebrow">Kóty v milimetrech · výšková nula = horní líc hrubé základové desky · x napříč (0 = líc zdiva strany C), s podél (0 = líc štítu A)</div>
+  <p class="lead">Krov je postavený na geometrii naší 3D studie: sklon 45°, okapový přesah 1,0 m a štítový 0,8 m od fasády, tašková krytina, šest střešních oken VELUX FK08 (4 na jih, 2 na sever), komín krbu a rovný podhled v podkroví ve 2,60 m. Princip nosné konstrukce i průřezy jsou převzaté ze statiky a výkresu krovu D1.4: krokve 120×200 na pozednicích 160×140, vrcholová vaznice 2U200 na ocelových rámech 2U140 u dveří chodby a kleštiny 2×60×180. Krokve jsou rovnoměrně po 0,9 m jako v DSP a všechny stejné; okna S1, S2 a J1 jsou proti modelu posunutá tak, aby padla mezi krokve, a komín padne do pole s odstupem 50 mm. Všechny rozměry se dopočítávají.</p>
+  <div class="chips"><span class="chip">krokve 120×200 po 0,9 m · sklon 45°</span><span class="chip">pozednice 160×140 na ŽB věnci</span><span class="chip">vaznice ze dvou U profilů svařených do truhlíku</span><span class="chip">sloupy a rámy 2U140</span><span class="chip">kleštiny 2×60×180 na každé vazbě</span><span class="chip">tašky na latích 40×60 a kontralatích 50×60</span></div>
+
+  <div class="notice"><strong>V čem se krov liší od DSP a co je potřeba potvrdit se statikem:</strong>
+    <ul>
+      <li><strong>Krytina:</strong> DSP a statika počítají s falcovaným plechem, budou tašky, zhruba o 0,5 kN/m² těžší. Krokve 120×200 s roztečí do <span data-k="maxAxis">—</span> mm to orientačně unesou: statika je posoudila na moment 5,75 kNm, s taškami a sněhem vychází asi 4,7–5,2 kNm.</li>
+      <li><strong>Vaznice:</strong> v DSP je 2U200 jen na rámech R1 a R3 u dveří, prostřední pole má 9,94 m. S taškami a sněhem by vycházela na 80–88 % únosnosti a s průhybem asi 40 mm (L/250), tedy na hranici. Doporučuji vaznici <strong>2U240 svařenou do truhlíku</strong> na stejných dvou rámech: orientačně 52–57 % únosnosti a průhyb 21–23 mm (L/430), v chodbě nebude žádná ocel. Druhá možnost je 2U200 s třetím rámem R2 schovaným ve stěnách chodby. Rozhodne statik.</li>
+      <li><strong>Kleštiny:</strong> rovný podhled ve 2,60 m je široký asi 4,5 m, proto jsou kleštiny na každé vazbě a podhled na nich visí. DSP měla kleštiny po 4 m a strop ve 3,0 m.</li>
+      <li><strong>Výška:</strong> hřeben krytiny vychází na <span data-k="roofTop">—</span> nad hrubou deskou, tj. <span data-k="roofTopFloor">—</span> nad čistou podlahou přízemí (DSP +8,678). Vizualizace má střechu tenčí a hřeben asi o 0,2 m níž.</li>
+    </ul>
+  </div>
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Výšky podle výškového řezu"><button type="button" data-h="A" aria-pressed="true">Výšky var. A · panely +2 925</button><button type="button" data-h="B" aria-pressed="false">var. B · +2 900</button></div>
+    <div class="toggles"></div><div class="seg" role="group" aria-label="Vaznice"><button type="button" data-rb="U240" aria-pressed="true">Vaznice 2U240, bez R2</button><button type="button" data-rb="R2" aria-pressed="false">2U200 + rám R2 v chodbě</button></div><div class="toggles"><label>světlá šířka chodby u R2 <input type="number" id="corrW" value="1110" disabled min="900" max="2500" step="10" style="width:84px;font:inherit;padding:3px 6px;border:1px solid #cad6cc;border-radius:6px"> mm</label></div>
+  </div>
+
+  <section class="card">
+    <div class="grid" id="facts"></div>
+  </section>
+
+  <section class="card" id="pila">
+    <div class="pilahead"><div><h2>Na pilu · řezný plán</h2><p class="desc">Co se řeže a kolikrát. Délky jsou délky přířezu, míry na krokvích se měří po spodní hraně od levého konce (paty u okapu).</p></div><button type="button" id="printCut">Vytisknout řezný plán</button></div>
+    <div class="rule"><b>Sklon je 45°, takže všechny šikmé řezy jsou pod 45° k hraně trámu.</b> Svislý řez na okapu i ve hřebeni a oba zářezy (svislá a vodorovná stěna) jsou vždy 45° ke hraně, rovné řezy jsou 90°.</div>
+    <div class="tablewrap"><table class="t" id="cutTable"></table></div>
+    <div class="pieces" id="cutPieces"></div>
+    <h3 style="margin-top:20px">Ocel pro zámečníka</h3>
+    <div class="tablewrap"><table class="t" id="steelTable"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>3D model krovu</h2>
+    <p class="desc">Tažením otáčíte, kolečkem nebo dvěma prsty přibližujete, s klávesou Shift nebo pravým tlačítkem posouváte. Výměny u oken a komína jsou oranžově, navržená podpora R2 oranžovou ocelí.</p>
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="Pohled"><button type="button" data-view="axo" aria-pressed="true">Axonometrie</button><button type="button" data-view="gable" aria-pressed="false">Štít A</button><button type="button" data-view="side" aria-pressed="false">Jih</button><button type="button" data-view="top" aria-pressed="false">Shora</button></div>
+      <div class="toggles">
+        <label><input type="checkbox" data-g="house" checked> zdivo a strop</label>
+        <label><input type="checkbox" data-g="kl" checked> kleštiny</label>
+        <label><input type="checkbox" data-g="open" checked> okna a komín</label>
+        <label><input type="checkbox" data-g="bat"> laťování a čela</label>
+        <label><input type="checkbox" data-g="walls"> příčky podkroví</label>
+      </div>
+    </div>
+    <div class="viewer"><canvas id="gl" aria-label="Otočný 3D model krovu"></canvas><div class="hint">táhnout = otočit · kolečko = zoom · Shift + táhnout = posun</div><div class="nogl" id="nogl">Prohlížeč nepodporuje WebGL, 3D model nejde zobrazit. Výkresy níže fungují.</div></div>
+    <div class="legend">
+      <span><i style="background:#cc9e61"></i>krokve</span><span><i style="background:#e08a3c"></i>výměny u oken a komína</span><span><i style="background:#e8c999"></i>kleštiny</span><span><i style="background:#a87745"></i>pozednice</span><span><i style="background:#5c6a74"></i>ocel: vaznice a rámy 2U140</span><span><i style="background:#d9772e"></i>navržená podpora R2</span><span><i style="background:#3d4449"></i>střešní okna</span><span><i style="background:#ddd5c8"></i>komín</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="crossTitle">Příčný řez krovem</h2>
+    <p class="desc">Řez v ose vazby se sloupem R1. Krokve leží na pozednicích se zářezem 80 × 80 mm, nahoře na ocelové vaznici. Kleštiny nad podhledem nesou rovný strop podkroví.</p>
+    <div class="scroll"><svg id="cross" role="img" aria-label="Příčný řez krovem s kótami"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>Půdorys krovu</h2>
+    <p class="desc">Pohled shora, štít A vlevo, strana C (sever) nahoře, strana B s HS (jih) dole. Nahoře jsou osové vzdálenosti vazeb, dole rozpětí vaznice. Čísla na krokvích jsou čísla vazeb z tabulky rozměření.</p>
+    <div class="scroll"><svg id="plan" role="img" aria-label="Půdorys krovu s rozměřením krokví"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>Podélný řez ve hřebeni</h2>
+    <p class="desc">Řez osou vaznice. Podpory: štítové zdi a rámy R1 a R3 kolem dveří na koncích chodby, ve variantě s 2U200 ještě rám R2 schovaný ve stěnách chodby. Kleštiny jsou proříznuté nad podhledem.</p>
+    <div class="scroll"><svg id="long" role="img" aria-label="Podélný řez vaznicí se sloupy"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>Detaily</h2>
+    <div class="split">
+      <figure><div class="scroll"><svg id="detA" class="small" role="img" aria-label="Detail uložení krokve na pozednici"></svg></div><figcaption>Detail A · pata krokve na pozednici a věnci.</figcaption></figure>
+      <figure><div class="scroll"><svg id="detB" class="small" role="img" aria-label="Detail krokví na vaznici"></svg></div><figcaption>Detail B · vrchol, krokve na ocelové vaznici svařené do truhlíku.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rozměření vazeb</h2>
+    <p class="desc">Osa každé dvojice krokví od líce zdiva štítu A (s = 0). Vazby jsou na obou stranách ve stejné ose. Okna i komín padnou do polí mezi krokvemi, žádná krokev není vyměněná.</p>
+    <div class="tablewrap"><table class="t" id="pairs"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Výpis prvků</h2>
+    <p class="desc">Řezivo KVH / hranoly C24, ocel S235. Délky jsou délky přířezu včetně svislých řezů. Spoje pozednic a vaznice řešit nad podporami.</p>
+    <div class="tablewrap"><table class="t" id="bom"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>K ověření</h2>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Pracovní návrh krovu podle 3D studie v09, statiky (Ing. Khol, 04/2024) a výkresů D1.4 a D1.6. Není to prováděcí dokumentace ani statický výpočet; průřezy, rozteče, uložení, kotvení a podpory vaznice musí potvrdit statik a tesař.</footer>
+</main>
+<script>
+'use strict';
+const NS='http://www.w3.org/2000/svg',NB=' ',SQ=Math.SQRT2;
+const fmt=n=>{const v=Math.round(n),a=String(Math.abs(v)).replace(/\B(?=(\d{3})+(?!\d))/g,NB);return (v<0?'−':'')+a};
+const lvl=n=>Math.round(n)===0?'±0':(n>0?'+':'−')+fmt(Math.abs(n));
+const m2=(n,d=2)=>(n/1000).toFixed(d).replace('.',',');
+const el=(tag,attrs={},parent=null,text=null)=>{const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text!==null)n.textContent=text;if(parent)parent.appendChild(n);return n};
+
+// ---------- Inputs (mm). Heights follow the height section; geometry follows the 3D study v09. ----------
+const P={W:8000,L:18600,wall:300,eps:200,panelTop:3175,knee:968,ring:300,floorBuild:150,ceilH:2600,
+  plateX:20,plateW:160,plateH:140,seatX:100,rafB:120,rafH:200,eaveX:-1170,eaveEdge:-1200,
+  verge0:-970,verge1:19570,roof0:-1000,roof1:19600,gableRaf:150,
+  ridgeW:150,ridgeH:200,ridgeSeat:75,klT:60,klH:180,klGap:50,cb:50,lath:40,tile:30,maxAxis:960,r2:true,corrW:1110,corrC:4045};
+// R2 sits in the corridor walls: posts 120 mm wide in the middle of the 150 mm walls, crossbar above the ceiling across the corridor.
+const UPROF={U200:{h:200,b:75,tw:8.5,tf:11.5,kg:25.3},U240:{h:240,b:85,tw:9.5,tf:13,kg:33.2}};
+// Ridge beam: 2U240 box on the two door frames (recommended), or 2U200 box with the extra frame R2 in the corridor walls.
+function setRidge(r2){P.r2=r2;P.uName=r2?'U200':'U240';P.U=UPROF[P.uName];P.ridgeH=P.U.h;P.ridgeW=2*P.U.b;P.ridgeSeat=P.U.b}
+setRidge(false);
+const r2Geo=()=>{const c=P.corrC,h=P.corrW/2;return {posts:[[c-h-135,c-h-15],[c+h+15,c+h+135]],bar:[c-h-135,c+h+135]}};
+// Roof windows (s = left edge of the 660 mm frame); side 0 = north (C), side 1 = south (B, HS). s0 is the earlier model position;
+// S1, S2 and J1 were moved so every window falls between rafters, still 150 mm or more from the attic partitions.
+const WIN=[{id:'J1',side:1,s:4840,s0:4800},{id:'J2',side:1,s:7550,s0:7550},{id:'J3',side:1,s:10450,s0:10450},{id:'J4',side:1,s:12300,s0:12300},{id:'S1',side:0,s:4960,s0:5500},{id:'S2',side:0,s:10330,s0:10100}];
+const WW=660,WL=1400,WCL=30,WSL=40,WT0=200*SQ;   // frame, side gap to rafters, gap to headers, opening starts 200 mm (plan) past the wall face
+const CH={x0:5120,x1:5500,s0:5200,s1:5600,cl:50}; // fireplace flue from the model interior, 50 mm clear of timber
+const COLS=[{id:'R1',s:4365,door:true},{id:'R2',s:10010,proposal:true},{id:'R3',s:14305,door:true}];
+
+function derive(){
+  const D={};D.vt=P.panelTop+P.knee+P.ring;D.kneeTop=D.vt-P.ring;D.floor=P.panelTop+P.floorBuild;D.ceil=D.floor+P.ceilH;
+  D.plateTop=D.vt+P.plateH;D.A0=D.plateTop-P.seatX;D.RT=P.rafH*SQ;D.apexU=D.A0+P.W/2;D.ridgeTop=D.apexU;D.ridgeBot=D.ridgeTop-P.ridgeH;
+  D.klBot=D.ceil+P.klGap;D.klTop=D.klBot+P.klH;D.apexTop=D.apexU+D.RT;D.pRoof=P.rafH+P.cb+P.lath+P.tile;D.roofTop=D.apexTop+(D.pRoof-P.rafH)*SQ;
+  D.doorHead=D.floor+2100;D.tailZ=D.A0+P.eaveX;D.tTail=P.eaveX*SQ;D.tApex=(P.W/2+D.apexTop-D.A0)/SQ;D.chimTop=D.roofTop+700;
+  return D;
+}
+// Slope coordinates: t along the rafter from the underside line, p perpendicular to it (p = 0 underside, p = 200 rafter top).
+const tp=(D,t,p)=>[(t-p)/SQ,D.A0+(t+p)/SQ];
+const TP=(D,d,z)=>[(d+z-D.A0)/SQ,(z-D.A0-d)/SQ];
+const slab=(D,t0,t1,p0,p1)=>[tp(D,t0,p0),tp(D,t1,p0),tp(D,t1,p1),tp(D,t0,p1)];
+const X=(side,d)=>side?P.W-d:d;
+const toX=(side,poly)=>poly.map(([d,z])=>[X(side,d),z]);
+function clipHalf(poly,f){const out=[];for(let i=0;i<poly.length;i++){const A=poly[i],B=poly[(i+1)%poly.length],fa=f(A),fb=f(B);if(fa>=0)out.push(A);if((fa>=0)!==(fb>=0)){const t=fa/(fa-fb);out.push([A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t])}}return out}
+// Bird's mouth on the wall plate (plumb face at the plate's outer edge, horizontal seat) and the same notch over the ridge beam.
+function rafterProfile(D){const e=P.eaveX,h=P.W/2,r=h-P.ridgeSeat;return [[e,D.A0+e],[P.plateX,D.A0+P.plateX],[P.plateX,D.plateTop],[P.seatX,D.plateTop],[r,D.A0+r],[r,D.ridgeTop],[h,D.ridgeTop],[h,D.apexTop],[e,D.A0+e+D.RT]]}
+function klProfile(D){const a=D.klBot-D.A0-D.RT,b=D.klTop-D.A0-D.RT;return [[a,D.klBot],[P.W-a,D.klBot],[P.W-b,D.klTop],[b,D.klTop]]}
+
+// ---------- Rafter layout ----------
+function layout(){
+  const D=derive(),half=P.rafB/2,hits=(c,lo,hi)=>c+half>lo+.5&&c-half<hi-.5;
+  const ops=WIN.map(w=>({...w,kind:'win',sLo:w.s-WCL,sHi:w.s+WW+WCL,tLo:WT0,tHi:WT0+WL+2*WSL}));
+  ops.push({id:'K',kind:'chim',side:1,sLo:CH.s0-CH.cl,sHi:CH.s1+CH.cl,tLo:(P.W-CH.x1-CH.cl)*SQ,tHi:(P.W-CH.x0+CH.cl)*SQ+P.rafH});
+  const cols=COLS.filter(c=>!c.proposal||P.r2);
+  // Even grid like the DSP (axis about 0.9 m, at most P.maxAxis). Roof windows are fixed to the battens, so they only need
+  // a bay without a rafter; where no bay fits, the rafter is trimmed. Shortest path over 10 mm steps: every pair costs 1,
+  // every trimmed side 3, uneven bays a little; rafters keep 190 mm from the columns so the collar ties miss them.
+  const nHits=c=>ops.filter(o=>hits(c,o.sLo,o.sHi)).length,okCol=c=>cols.every(x=>Math.abs(c-x.s)>=190);
+  const first=P.gableRaf,last=P.L-P.gableRaf,best=new Map([[first,{v:0,prev:null}]]);
+  for(let c=first+10;c<=last;c+=10){if(!okCol(c))continue;const cost=1+3*nHits(c);let bv=Infinity,bp=null;
+    for(let d=500;d<=P.maxAxis;d+=10){const q=best.get(c-d);if(!q)continue;const v=q.v+cost+.02*((d-900)/100)**2;if(v<bv){bv=v;bp=c-d}}
+    if(bp!==null)best.set(c,{v:bv,prev:bp})}
+  const pos=[last];while(best.get(pos[pos.length-1]).prev!==null)pos.push(best.get(pos[pos.length-1]).prev);pos.reverse();
+  const v0=P.verge0+half,v1=P.verge1-half;
+  const pairs=[{s:v0,kind:'verge'},...pos.map(s=>({s,kind:s===first||s===last?'gable':'main'})),{s:v1,kind:'verge'}];
+  pairs.forEach((p,i)=>{p.n=i+1;p.cut=[[],[]];p.col=cols.find(c=>Math.abs(c.s-p.s)<1)||null;p.notes=[]});
+  for(const o of ops){
+    o.trimmed=pairs.filter(p=>p.kind==='main'&&hits(p.s,o.sLo,o.sHi));
+    o.trimmed.forEach(p=>{p.cut[o.side].push(o);p.notes.push(`${o.side?'jih':'sever'}: vyměněná krokev (${o.kind==='chim'?'komín':'okno '+o.id})`)});
+    o.left=pairs.filter(p=>p.s+half<=o.sLo+.5).pop();o.right=pairs.find(p=>p.s-half>=o.sHi-.5);
+    const s0=o.left.s+half,s1=o.right.s-half;
+    o.headers=[{side:o.side,s0,s1,t0:o.tLo-P.rafB,t1:o.tLo},{side:o.side,s0,s1,t0:o.tHi,t1:o.tHi+P.rafB}];
+    o.jambs=[];
+    if(o.kind==='win'){
+      if(o.sLo-s0>150)o.jambs.push({side:o.side,s0:o.sLo-P.rafB,s1:o.sLo,t0:o.tLo,t1:o.tHi});
+      if(s1-o.sHi>150)o.jambs.push({side:o.side,s0:o.sHi,s1:o.sHi+P.rafB,t0:o.tLo,t1:o.tHi});
+    }
+    if(o.kind==='win'){o.left.notes.push(`${o.side?'jih':'sever'}: vlevo od okna ${o.id}`);o.right.notes.push(`${o.side?'jih':'sever'}: vpravo od okna ${o.id}`)}
+  }
+  const chim=ops.find(o=>o.kind==='chim');
+  for(const p of pairs){
+    p.kl=p.kind==='main'&&!(p.s+half+P.klT>chim.sLo&&p.s-half-P.klT<chim.sHi);
+    if(p.kind==='main'&&!p.kl)p.notes.push('bez kleštin (komín)');
+  }
+  for(const c of cols){const p=pairs.filter(p=>p.s<c.s).pop();p.notes.push(`za ní ve vzdálenosti ${fmt(c.s-p.s)} sloup ${c.id}${c.proposal?' (návrh)':''}`)}
+  return {D,pairs,ops,cols};
+}
+function rafterPieces(L,p,side){
+  const D=L.D;let polys=[rafterProfile(D)];
+  for(const o of p.cut[side]){const lo=o.tLo-P.rafB,hi=o.tHi+P.rafB,next=[];
+    for(const poly of polys){const a=clipHalf(poly,q=>lo-TP(D,q[0],q[1])[0]),b=clipHalf(poly,q=>TP(D,q[0],q[1])[0]-hi);if(a.length>=3)next.push(a);if(b.length>=3)next.push(b)}
+    polys=next}
+  return polys;
+}
+const tRange=(D,poly)=>{const ts=poly.map(q=>TP(D,q[0],q[1])[0]);return [Math.min(...ts),Math.max(...ts)]};
+const xRange=poly=>[Math.min(...poly.map(q=>q[0])),Math.max(...poly.map(q=>q[0]))];
+const boxU=(c,bot,top,sgn,tf=11.5,tw=8.5,b=75)=>[[c+sgn*b,bot],[c,bot],[c,bot+tf],[c+sgn*(b-tw),bot+tf],[c+sgn*(b-tw),top-tf],[c,top-tf],[c,top],[c+sgn*b,top]];
+function supportMoments(spans){const m=spans.length-1,A=[],b=[];
+  for(let i=0;i<m;i++){const L1=spans[i],L2=spans[i+1],row=new Array(m).fill(0);row[i]=2*(L1+L2);if(i>0)row[i-1]=L1;if(i<m-1)row[i+1]=L2;A.push(row);b.push(-(L1**3+L2**3)/4)}
+  for(let i=0;i<m;i++)for(let r=i+1;r<m;r++){const f=A[r][i]/A[i][i];for(let c=i;c<m;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}
+  const x=new Array(m).fill(0);for(let i=m-1;i>=0;i--){let s=b[i];for(let c=i+1;c<m;c++)s-=A[i][c]*x[c];x[i]=s/A[i][i]}return [0,...x,0]}
+// Zero-moment points in the longest span of the continuous ridge beam: the place for the splices.
+function ridgeSplices(L){const sp=supports(L).map(s=>s.s/1000),spans=sp.slice(1).map((s,i)=>s-sp[i]),M=supportMoments(spans),i=spans.indexOf(Math.max(...spans)),Ls=spans[i],Ma=M[i],Mb=M[i+1];
+  const bb=Ls/2+(Mb-Ma)/Ls,disc=Math.sqrt(bb*bb+2*Ma);return [bb+disc,bb-disc].filter(x=>x>0&&x<Ls).sort((p,q)=>p-q).map(x=>Math.round((sp[i]+x)*100)*10)}
+const atticWalls=()=>{const c=P.corrC,h=P.corrW/2;return {corr:[[c-h-150,c-h,[[6800,7600]]],[c+h,c+h+150,[[8500,9200],[10350,11050]]]],cross:[[4290,4440],[14240,14370]],s0:4440,s1:14240}};
+const supports=L=>[{id:'štít A',s:P.gableRaf},...L.cols.map(c=>({id:c.id,s:c.s,proposal:c.proposal})),{id:'zadní štít',s:P.L-P.gableRaf}];
+
+// ---------- 3D model ----------
+const COL={raf:[.80,.62,.38],cut:[.88,.54,.24],kl:[.91,.79,.60],plate:[.66,.47,.27],steel:[.36,.42,.46],prop:[.85,.47,.18],wall:[.93,.92,.89],ring:[.74,.76,.74],slab:[.82,.83,.81],chim:[.87,.84,.79],win:[.24,.27,.29],glass:[.52,.68,.77],cb:[.86,.73,.52],lath:[.76,.62,.42],fascia:[.58,.43,.28]};
+function earclip(poly){
+  const idx=poly.map((_,i)=>i),out=[],cr=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  const inTri=(p,a,b,c)=>cr(a,b,p)>1e-9&&cr(b,c,p)>1e-9&&cr(c,a,p)>1e-9;
+  let guard=0;
+  while(idx.length>3&&guard++<1000){let done=false;
+    for(let i=0;i<idx.length&&!done;i++){const a=idx[(i+idx.length-1)%idx.length],b=idx[i],c=idx[(i+1)%idx.length];
+      if(cr(poly[a],poly[b],poly[c])<=1e-9)continue;
+      if(idx.some(o=>o!==a&&o!==b&&o!==c&&inTri(poly[o],poly[a],poly[b],poly[c])))continue;
+      out.push([a,b,c]);idx.splice(i,1);done=true}
+    if(!done){let best=0,bv=1e18;for(let i=0;i<idx.length;i++){const v=Math.abs(cr(poly[idx[(i+idx.length-1)%idx.length]],poly[idx[i]],poly[idx[(i+1)%idx.length]]));if(v<bv){bv=v;best=i}}idx.splice(best,1)}}
+  if(idx.length===3)out.push(idx.slice());
+  return out;
+}
+const area=poly=>poly.reduce((s,a,i)=>{const b=poly[(i+1)%poly.length];return s+a[0]*b[1]-b[0]*a[1]},0)/2;
+function buildScene(L,show){
+  const D=L.D,tri=[],col=[],lin=[];
+  const g=(x,z,s)=>[s/1000,z/1000,x/1000];
+  const addTri=(a,b,c,k)=>{tri.push(...a,...b,...c);for(let i=0;i<3;i++)col.push(...k)};
+  // Every member is a prism: a profile in the (x, z) plane extruded along s.
+  const prism=(poly,s0,s1,k)=>{let pl=poly.filter((q,i)=>{const r=poly[(i+1)%poly.length];return Math.hypot(q[0]-r[0],q[1]-r[1])>.01});if(pl.length<3)return;if(area(pl)<0)pl=pl.slice().reverse();
+    for(const [a,b,c] of earclip(pl)){addTri(g(...pl[a],s0),g(...pl[c],s0),g(...pl[b],s0),k);addTri(g(...pl[a],s1),g(...pl[b],s1),g(...pl[c],s1),k)}
+    for(let i=0;i<pl.length;i++){const a=pl[i],b=pl[(i+1)%pl.length];addTri(g(...a,s0),g(...b,s0),g(...b,s1),k);addTri(g(...a,s0),g(...b,s1),g(...a,s1),k);lin.push(...g(...a,s0),...g(...b,s0),...g(...a,s1),...g(...b,s1),...g(...a,s0),...g(...a,s1))}};
+  const box=(x0,x1,s0,s1,z0,z1,k)=>prism([[x0,z0],[x1,z0],[x1,z1],[x0,z1]],s0,s1,k);
+  const half=P.rafB/2;
+  for(const p of L.pairs)for(const side of [0,1])for(const piece of rafterPieces(L,p,side))prism(toX(side,piece),p.s-half,p.s+half,p.cut[side].length?COL.cut:COL.raf);
+  for(const side of [0,1]){const x0=X(side,P.plateX),x1=X(side,P.plateX+P.plateW);box(Math.min(x0,x1),Math.max(x0,x1),P.verge0,P.verge1,D.vt,D.plateTop,COL.plate)}
+  // Two U channels toes-in, welded into one closed box: webs outside, flanges meet in the middle.
+  for(const sgn of [-1,1])prism(boxU(P.W/2,D.ridgeBot,D.ridgeTop,sgn,P.U.tf,P.U.tw,P.U.b),P.verge0,P.verge1,COL.steel);
+  for(const c of L.cols){const k=c.proposal?COL.prop:COL.steel,s0=c.s-half,s1=c.s+half;
+    if(c.door){box(3440,3580,s0,s1,P.panelTop,D.doorHead+10,k);box(4420,4560,s0,s1,P.panelTop,D.doorHead+10,k);box(3440,4560,s0,s1,D.doorHead+10,D.doorHead+150,k);box(3930,4070,s0,s1,D.doorHead+150,D.ridgeBot,k)}
+    else{const G=r2Geo();for(const [a,b] of G.posts)box(a,b,c.s-70,c.s+70,P.panelTop,D.ceil+10,k);box(G.bar[0],G.bar[1],s0,s1,D.ceil+10,D.ceil+150,k);box(3930,4070,s0,s1,D.ceil+150,D.ridgeBot,k)}}
+  for(const o of L.ops){for(const h of [...o.headers,...o.jambs])prism(toX(h.side,slab(D,h.t0,h.t1,0,P.rafH)),h.s0,h.s1,COL.cut)}
+  if(show.kl)for(const p of L.pairs)if(p.kl){prism(klProfile(D),p.s-half-P.klT,p.s-half,COL.kl);prism(klProfile(D),p.s+half,p.s+half+P.klT,COL.kl)}
+  if(show.open){for(const o of L.ops)if(o.kind==='win'){prism(toX(o.side,slab(D,o.tLo+WSL,o.tLo+WSL+WL,120,D.pRoof+10)),o.s,o.s+WW,COL.win);prism(toX(o.side,slab(D,o.tLo+WSL+50,o.tLo+WSL+WL-50,D.pRoof+10,D.pRoof+14)),o.s+50,o.s+WW-50,COL.glass)}
+    box(CH.x0,CH.x1,CH.s0,CH.s1,D.floor,D.chimTop,COL.chim)}
+  if(show.bat){
+    for(const p of L.pairs)for(const side of [0,1])for(const piece of rafterPieces(L,p,side)){const tops=piece.map(q=>TP(D,q[0],q[1])).filter(q=>Math.abs(q[1]-P.rafH)<1).map(q=>q[0]);if(tops.length<2)continue;prism(toX(side,slab(D,Math.min(...tops),Math.max(...tops),P.rafH,P.rafH+P.cb)),p.s-30,p.s+30,COL.cb)}
+    for(const side of [0,1])for(let t=D.tTail+200+20;t<D.tApex-60;t+=330){
+      let runs=[[P.roof0,P.roof1]];
+      for(const o of L.ops)if(o.side===side&&t+60>o.tLo-P.rafB&&t<o.tHi+P.rafB)runs=runs.flatMap(([a,b])=>[[a,Math.min(b,o.sLo)],[Math.max(a,o.sHi),b]]).filter(([a,b])=>b-a>20);
+      for(const [a,b] of runs)prism(toX(side,slab(D,t,t+60,P.rafH+P.cb,P.rafH+P.cb+P.lath)),a,b,COL.lath)}
+    for(const side of [0,1]){prism(toX(side,[[P.eaveEdge,D.tailZ-20],[P.eaveX,D.tailZ-20],[P.eaveX,D.tailZ+D.RT+90],[P.eaveEdge,D.tailZ+D.RT+90]]),P.roof0,P.roof1,COL.fascia);
+      for(const [s0,s1] of [[P.roof0,P.verge0],[P.verge1,P.roof1]])prism(toX(side,slab(D,D.tTail-30,D.tApex,-20,P.rafH+P.cb+P.lath)),s0,s1,COL.fascia)}}
+  if(show.walls){const k=[.95,.95,.92],A=atticWalls(),dc=D.ceil-D.A0+P.wall;
+    const cross=[[P.wall,D.floor],[3600,D.floor],[3600,D.doorHead],[4400,D.doorHead],[4400,D.floor],[P.W-P.wall,D.floor],[P.W-P.wall,D.A0],[P.W-dc,D.ceil],[dc,D.ceil],[P.wall,D.A0]];
+    for(const [s0,s1] of A.cross)prism(cross,s0,s1,k);
+    for(const [x0,x1,doors] of A.corr){let s=A.s0;for(const [a,b] of doors){box(x0,x1,s,a,D.floor,D.ceil,k);box(x0,x1,a,b,D.doorHead,D.ceil,k);s=b}box(x0,x1,s,A.s1,D.floor,D.ceil,k)}}
+  if(show.house){
+    box(0,P.W,0,P.L,P.panelTop-250,P.panelTop,COL.slab);
+    for(const x0 of [0,P.W-P.wall]){box(x0,x0+P.wall,0,P.L,P.panelTop,D.kneeTop,COL.wall);box(x0,x0+P.wall,0,P.L,D.kneeTop,D.vt,COL.ring)}
+    const c=P.W/2,hw=P.ridgeW/2,u=d=>D.A0+d;
+    const gable=[[P.wall,P.panelTop],[P.W-P.wall,P.panelTop],[P.W-P.wall,u(P.wall)],[c+hw,u(c-hw)],[c+hw,D.ridgeBot],[c-hw,D.ridgeBot],[c-hw,u(c-hw)],[P.wall,u(P.wall)]];
+    prism(gable,0,P.wall,COL.wall);prism(gable,P.L-P.wall,P.L,COL.wall)}
+  return {tri:new Float32Array(tri),col:new Float32Array(col),lin:new Float32Array(lin)};
+}
+
+const V={yaw:-.62,pitch:.46,dist:27,tx:9.6,ty:4.9,tz:4.0};
+const VIEWS={axo:{yaw:-.62,pitch:.46,dist:27,tx:9.6,ty:4.9,tz:4.0},gable:{yaw:-Math.PI/2,pitch:.06,dist:21,tx:9.3,ty:6.2,tz:4.0},side:{yaw:0,pitch:.08,dist:25,tx:9.3,ty:6.2,tz:4.0},top:{yaw:0,pitch:1.52,dist:27,tx:9.3,ty:6.0,tz:4.0}};
+const R3={gl:null};
+function mat4mul(a,b){const o=new Float32Array(16);for(let i=0;i<4;i++)for(let j=0;j<4;j++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+j]*b[i*4+k];o[i*4+j]=s}return o}
+function persp(f,asp,n,fa){const t=1/Math.tan(f/2);return new Float32Array([t/asp,0,0,0,0,t,0,0,0,0,(fa+n)/(n-fa),-1,0,0,2*fa*n/(n-fa),0])}
+function lookAt(e,c,u){const z=norm([e[0]-c[0],e[1]-c[1],e[2]-c[2]]),x=norm(cross(u,z)),y=cross(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,e),-dot(y,e),-dot(z,e),1])}
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],norm=a=>{const l=Math.hypot(...a)||1;return a.map(v=>v/l)};
+function initGL(){
+  const cv=document.getElementById('gl'),gl=cv.getContext('webgl',{antialias:true});
+  if(!gl){document.getElementById('nogl').style.display='flex';return}
+  const sh=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s};
+  const prog=(vs,fs)=>{const p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,vs));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);return p};
+  const pTri=prog('attribute vec3 p;attribute vec3 n;attribute vec3 c;uniform mat4 m;varying vec3 vn;varying vec3 vc;void main(){vn=n;vc=c;gl_Position=m*vec4(p,1.);}',
+    'precision mediump float;varying vec3 vn;varying vec3 vc;void main(){vec3 N=normalize(vn);if(!gl_FrontFacing)N=-N;float d=.40+.52*max(dot(N,normalize(vec3(.45,.85,.6))),0.)+.2*max(dot(N,normalize(vec3(-.6,.3,-.5))),0.);gl_FragColor=vec4(min(vc*d,vec3(1.)),1.);}');
+  const pLin=prog('attribute vec3 p;uniform mat4 m;void main(){gl_Position=m*vec4(p,1.);}','precision mediump float;void main(){gl_FragColor=vec4(.16,.13,.10,.42);}');
+  Object.assign(R3,{gl,cv,pTri,pLin,buf:{p:gl.createBuffer(),n:gl.createBuffer(),c:gl.createBuffer(),l:gl.createBuffer()},count:0,lines:0});
+  let drag=null;const pts=new Map();
+  cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);drag={pan:e.shiftKey||e.button===2}});
+  cv.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const [x0,y0]=pts.get(e.pointerId),dx=e.clientX-x0,dy=e.clientY-y0;
+    if(pts.size===2){const o=[...pts.entries()].find(([k])=>k!==e.pointerId)[1],before=Math.hypot(x0-o[0],y0-o[1]),after=Math.hypot(e.clientX-o[0],e.clientY-o[1]);if(after>0)V.dist=Math.min(80,Math.max(4,V.dist*before/after))}
+    else if(drag&&drag.pan){const s=V.dist/cv.clientHeight,c=Math.cos(V.yaw),sn=Math.sin(V.yaw);V.tx-=(dx*c)*s;V.tz+=(dx*sn)*s;V.ty+=dy*s}
+    else{V.yaw-=dx*.008;V.pitch=Math.min(1.55,Math.max(-.3,V.pitch+dy*.006))}
+    pts.set(e.pointerId,[e.clientX,e.clientY]);draw()});
+  const end=e=>{pts.delete(e.pointerId);if(!pts.size)drag=null};cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
+  cv.addEventListener('contextmenu',e=>e.preventDefault());
+  cv.addEventListener('wheel',e=>{e.preventDefault();V.dist=Math.min(80,Math.max(4,V.dist*Math.exp(e.deltaY*.0012)));draw()},{passive:false});
+  new ResizeObserver(()=>draw()).observe(cv);
+}
+function upload(scene){
+  const {gl,buf}=R3;if(!gl)return;const t=scene.tri,n=new Float32Array(t.length);
+  for(let i=0;i<t.length;i+=9){const a=[t[i+3]-t[i],t[i+4]-t[i+1],t[i+5]-t[i+2]],b=[t[i+6]-t[i],t[i+7]-t[i+1],t[i+8]-t[i+2]],c=norm(cross(a,b));for(let j=0;j<3;j++)n.set(c,i+j*3)}
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.p);gl.bufferData(gl.ARRAY_BUFFER,t,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.n);gl.bufferData(gl.ARRAY_BUFFER,n,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.c);gl.bufferData(gl.ARRAY_BUFFER,scene.col,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.l);gl.bufferData(gl.ARRAY_BUFFER,scene.lin,gl.STATIC_DRAW);
+  R3.count=t.length/3;R3.lines=scene.lin.length/3;draw();
+}
+let raf=0;function draw(){if(!R3.gl||raf)return;raf=requestAnimationFrame(()=>{raf=0;paint()})}
+function paint(){
+  const {gl,cv,pTri,pLin,buf}=R3,dpr=Math.min(2,window.devicePixelRatio||1),w=Math.round(cv.clientWidth*dpr),h=Math.round(cv.clientHeight*dpr);
+  if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+  gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);
+  const cp=Math.cos(V.pitch),eye=[V.tx+V.dist*cp*Math.sin(V.yaw),V.ty+V.dist*Math.sin(V.pitch),V.tz+V.dist*cp*Math.cos(V.yaw)];
+  const up=Math.abs(V.pitch)>1.5?[-Math.sin(V.yaw),0,-Math.cos(V.yaw)]:[0,1,0];
+  const m=mat4mul(persp(.62,w/Math.max(1,h),.1,300),lookAt(eye,[V.tx,V.ty,V.tz],up));
+  const attr=(p,name,b,size)=>{const l=gl.getAttribLocation(p,name);if(l<0)return;gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,size,gl.FLOAT,false,0,0)};
+  gl.useProgram(pTri);attr(pTri,'p',buf.p,3);attr(pTri,'n',buf.n,3);attr(pTri,'c',buf.c,3);gl.uniformMatrix4fv(gl.getUniformLocation(pTri,'m'),false,m);
+  gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(1,1);gl.drawArrays(gl.TRIANGLES,0,R3.count);gl.disable(gl.POLYGON_OFFSET_FILL);
+  for(const name of ['n','c']){const l=gl.getAttribLocation(pTri,name);if(l>=0)gl.disableVertexAttribArray(l)}
+  gl.useProgram(pLin);attr(pLin,'p',buf.l,3);gl.uniformMatrix4fv(gl.getUniformLocation(pLin,'m'),false,m);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.LINES,0,R3.lines);gl.disable(gl.BLEND);
+}
+
+// ---------- SVG helpers ----------
+function svgInit(id,w,h){const s=document.getElementById(id);s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.replaceChildren();return s}
+const T=(g,x,y,t,cls='tiny',a={})=>{const at={x,y,class:cls,...a};if(at.fill){at.style=`fill:${at.fill}`;delete at.fill}return el('text',at,g,t)};
+function hdim(g,y,xs,labels,{ext=null,small=24}={}){
+  el('line',{x1:xs[0],y1:y,x2:xs[xs.length-1],y2:y,class:'dl'},g);
+  for(const x of xs){el('path',{d:`M${x-3.5} ${y+3.5}l7 -7`,class:'dl'},g);if(ext!==null)el('line',{x1:x,y1:ext,x2:x,y2:y+(ext<y?3:-3),class:'ext'},g)}
+  labels.forEach((t,i)=>{if(!t)return;const a=xs[i],b=xs[i+1],m=(a+b)/2;if(b-a>=small)T(g,m,y-4,t,'dimtxt',{'text-anchor':'middle'});else T(g,m+3.5,y-6,t,'micro',{'text-anchor':'start',transform:`rotate(-90 ${m+3.5} ${y-6})`,'font-weight':700})});
+}
+function vdim(g,x,ys,labels,{ext=null,side=-1}={}){
+  el('line',{x1:x,y1:ys[0],x2:x,y2:ys[ys.length-1],class:'dl'},g);
+  for(const y of ys){el('path',{d:`M${x-3.5} ${y+3.5}l7 -7`,class:'dl'},g);if(ext!==null)el('line',{x1:ext,y1:y,x2:x,y2:y,class:'ext'},g)}
+  labels.forEach((t,i)=>{if(!t)return;const a=ys[i],b=ys[i+1],m=(a+b)/2,xx=x+side*6;if(Math.abs(a-b)>=60)T(g,xx,m,t,'dimtxt',{'text-anchor':'middle',transform:`rotate(-90 ${xx} ${m})`});else T(g,x+side*8,m+4,t,'dimtxt',{'text-anchor':side<0?'end':'start'})});
+}
+function callouts(g,items,xa,xl,minGap=15){
+  let prev=-1e9;
+  for(const it of items){const y0=it.y,y=Math.max(y0+4,prev+(it.c?minGap+12:minGap));prev=y+(it.c?12:0);
+    el('path',{d:`M${xa} ${y0}H${xa+8}L${xl-4} ${y-4}`,class:'lead'},g);
+    const t=el('text',{x:xl,y,class:'tiny'},g);el('tspan',{class:'lv'},t,it.a+' ');el('tspan',{},t,it.b);if(it.c)T(g,xl,y+12,it.c)}
+}
+const ptsStr=(arr,X,Y)=>arr.map(([x,z])=>X(x).toFixed(1)+','+Y(z).toFixed(1)).join(' ');
+
+// ---------- Cross section ----------
+function drawCross(L){
+  const D=L.D,k=.07,X=x=>40+(x+1500)*k,Y=z=>24+(9650-z)*k,W=1060,H=Math.round(Y(2780)+86),svg=svgInit('cross',W,H),g=el('g',{},svg);
+  const poly=(a,at)=>el('polygon',{points:ptsStr(a,X,Y),...at},g),rect=(x0,x1,z0,z1,at)=>el('rect',{x:X(Math.min(x0,x1)),y:Y(z1),width:Math.abs(x1-x0)*k,height:(z1-z0)*k,...at},g);
+  const R1=L.pairs.find(p=>p.s>COLS[0].s&&p.kl);
+  document.getElementById('crossTitle').textContent=`Příčný řez u rámu R1 · krokve a kleštiny vazby č. ${R1.n} v pohledu`;
+  rect(0,P.W,P.panelTop-250,P.panelTop,{fill:'url(#pConc)',stroke:'#8e988f'});
+  rect(P.wall,P.W-P.wall,P.panelTop,D.floor,{fill:'#efe7d6',stroke:'#cdbf9c'});
+  for(const s of [0,1]){const x0=s?P.W-P.wall:0,xe=s?P.W:-P.eps;
+    rect(x0,x0+P.wall,P.panelTop,D.kneeTop,{fill:'url(#pMas)',stroke:'#8e988f'});rect(x0,x0+P.wall,D.kneeTop,D.vt,{fill:'url(#pConc)',stroke:'#6f7a72'});
+    rect(xe,xe+P.eps,P.panelTop-250,D.A0-P.eps,{fill:'url(#pEps)',stroke:'#b9c3ca'})}
+  // Insulation under and between the rafters and on the flat ceiling, SDK lining.
+  const dc=D.ceil-D.A0+P.wall,dt=D.ceil+250-D.A0-D.RT,ins=[[P.wall,D.A0],[dc,D.ceil],[P.W-dc,D.ceil],[P.W-P.wall,D.A0],[P.W-P.wall,D.A0+P.wall+D.RT],[P.W-dt,D.ceil+250],[dt,D.ceil+250],[P.wall,D.A0+P.wall+D.RT]];
+  poly(ins,{fill:'url(#pWool)',stroke:'none'});
+  el('polyline',{points:ptsStr([[P.wall,D.A0],[dc,D.ceil],[P.W-dc,D.ceil],[P.W-P.wall,D.A0]],X,Y),fill:'none',stroke:'#7d8a81','stroke-width':2},g);
+  // Door frame R1, column, crossbar.
+  el('rect',{x:X(3600),y:Y(D.doorHead),width:800*k,height:2100*k,fill:'none',stroke:'#9aa59d','stroke-dasharray':'5 4'},g);
+  for(const [a,b] of [[3440,3580],[4420,4560]])rect(a,b,P.panelTop,D.doorHead+10,{fill:'#7a8791',stroke:'#3c474f'});
+  rect(3440,4560,D.doorHead+10,D.doorHead+150,{fill:'#7a8791',stroke:'#3c474f'});rect(3930,4070,D.doorHead+150,D.ridgeBot,{fill:'#7a8791',stroke:'#3c474f'});
+  for(const s of [0,1]){const xa=X1(s,P.plateX),xb=X1(s,P.plateX+P.plateW);rect(xa,xb,D.vt,D.plateTop,{fill:'url(#pWood)',stroke:'#7a5530'})}
+  // Roof build-up: counter battens in view, cut battens, tiles.
+  for(const s of [0,1]){
+    poly(toX(s,slab(D,D.tTail+200,D.tApex,P.rafH,P.rafH+P.cb)),{fill:'#ecd6ad',stroke:'#a8875a','stroke-width':.6});
+    for(let t=D.tTail+220;t<D.tApex-60;t+=330)poly(toX(s,slab(D,t,t+60,P.rafH+P.cb,P.rafH+P.cb+P.lath)),{fill:'#c99e68',stroke:'#7a5530','stroke-width':.5});
+    poly(toX(s,slab(D,D.tTail+160,D.tApex,P.rafH+P.cb+P.lath,D.pRoof)),{fill:'#4a5055',stroke:'#2b3034','stroke-width':.5});
+    el('polyline',{points:ptsStr(toX(s,[tp(D,D.tTail+200,P.rafH),tp(D,D.tApex,P.rafH)]),X,Y),fill:'none',stroke:'#3d7fb0','stroke-width':1.3},g);
+    for(const piece of rafterPieces(L,R1,s))poly(toX(s,piece),{fill:'#d7a96b',stroke:'#7a5530','stroke-width':1.1});
+    // Eave: fascia board, horizontal soffit, half-round gutter.
+    rect(X1(s,P.eaveEdge),X1(s,P.eaveX),D.tailZ-20,D.tailZ+D.RT+90,{fill:'#b88b57',stroke:'#7a5530'});
+    rect(X1(s,P.eaveX),X1(s,-P.eps),D.tailZ-42,D.tailZ-20,{fill:'#c9a675',stroke:'#7a5530'});
+    const gx=X(X1(s,P.eaveEdge-90)),gy=Y(D.tailZ+D.RT+20),r=75*k;el('path',{d:`M${gx-r} ${gy}A${r} ${r} 0 0 0 ${gx+r} ${gy}`,fill:'none',stroke:'#2f3438','stroke-width':1.6},g);
+  }
+  if(R1.kl){poly(klProfile(D),{fill:'#e8c999',stroke:'#8a6235','stroke-width':1});
+    for(const s of [0,1])for(const [d,dz] of [[1290,40],[1450,120]])el('circle',{cx:X(X1(s,d)),cy:Y(D.klBot+dz),r:2.6,fill:'#3c474f'},g)}
+  // 2U200 box cut.
+  for(const sgn of [-1,1])poly(boxU(P.W/2,D.ridgeBot,D.ridgeTop,sgn,P.U.tf,P.U.tw,P.U.b),{fill:'#4d5963',stroke:'#232a30','stroke-width':.8});
+  // Labels.
+  const lab=(x,z,t,a={})=>T(g,X(x),Y(z),t,'tiny halo',a);
+  {const [a,b]=tRange(D,rafterProfile(D)),zc=D.A0+2000+D.RT/2+4;lab(2000,zc,`krokev 120×200 · přířez ${fmt(b-a)}`,{'text-anchor':'middle',transform:`rotate(-45 ${X(2000)} ${Y(zc)})`,'font-weight':600})}
+  lab(6600,D.A0+1400+D.RT/2+420,'tašky · latě 40×60 · kontralatě 50×60 · pojistná fólie',{'text-anchor':'middle',transform:`rotate(45 ${X(6600)} ${Y(D.A0+1400+D.RT/2+420)})`});
+  if(R1.kl)lab(P.W/2,D.klTop+70,`kleštiny 2×60×180 · ${fmt(P.W-2*(D.klBot-D.A0-D.RT))}`,{'text-anchor':'middle','font-weight':600});
+  {const lx=X(2600),ly=Y(D.roofTop+330);T(g,lx,ly,`vaznice 2${P.uName}`,'tiny halo',{'text-anchor':'end','font-weight':700});el('path',{d:`M${lx+4} ${ly-4}L${X(P.W/2-P.ridgeW/2)} ${Y(D.ridgeTop-20)}`,class:'lead'},g)}
+  lab(4130,(D.klTop+D.ridgeBot)/2,'sloup 2U140');lab(P.W/2,D.doorHead-500,'rám R1 2U140',{'text-anchor':'middle'});lab(P.W/2,D.doorHead-680,'dveře 800 × 2 100',{'text-anchor':'middle'});
+  lab(2400,D.ceil-150,`podhled SDK ${lvl(D.ceil)}`,{'text-anchor':'middle'});
+  lab(P.W/2,(P.panelTop-250+P.panelTop)/2+4,'stropní panely 250',{'text-anchor':'middle'});
+  lab(150,D.vt-200,'věnec',{'text-anchor':'middle'});lab(100,D.plateTop+70,'pozednice 160×140',{'text-anchor':'start'});
+  lab(-700,D.tailZ-120,'podbití',{'text-anchor':'middle'});lab(P.W+700,D.tailZ-120,'podbití',{'text-anchor':'middle'});
+  lab(-1300,D.tailZ+D.RT+260,'žlab 150',{'text-anchor':'end'});
+  lab(1000,D.A0+1000-150,'tepelná izolace',{'text-anchor':'middle',transform:`rotate(-45 ${X(1000)} ${Y(D.A0+1000-150)})`});
+  // 45° mark at the north eave.
+  {const cx=X(P.W/2),cy=Y(D.roofTop),r=46;el('line',{x1:cx-r-14,y1:cy,x2:cx,y2:cy,class:'dl'},g);el('path',{d:`M${cx-r} ${cy}A${r} ${r} 0 0 0 ${cx-r*Math.SQRT1_2} ${cy+r*Math.SQRT1_2}`,fill:'none',stroke:'#496957','stroke-width':1.1},g);T(g,cx-r-18,cy+22,'45°','dimtxt',{'text-anchor':'end'})}
+  // Interior heights.
+  vdim(g,X(700),[Y(D.floor),Y(D.vt)],[fmt(D.vt-D.floor)],{side:1});vdim(g,X(2600),[Y(D.floor),Y(D.ceil)],['2 600 světlá výška'],{side:1});
+  // Plan widths below.
+  const yb=Y(P.panelTop-250);
+  const xs=[P.eaveEdge,-P.eps,0,P.wall,P.W-P.wall,P.W,P.W+P.eps,P.W-P.eaveEdge].map(X);
+  hdim(g,yb+26,xs,['1 000','200','300','7 400','300','200','1 000'],{ext:yb+4});
+  hdim(g,yb+54,[X(P.eaveEdge),X(P.W/2),X(P.W-P.eaveEdge)],['5 200 · osa hřebene','5 200'],{ext:null});
+  T(g,X(P.W/2),yb+72,`střecha celkem ${fmt(P.W-2*P.eaveEdge)} napříč`,'tiny',{'text-anchor':'middle'});
+  el('line',{x1:X(P.W/2),y1:Y(D.roofTop+260),x2:X(P.W/2),y2:yb+50,stroke:'#b0603e','stroke-width':.8,'stroke-dasharray':'10 4 2 4'},g);
+  // Levels on the right.
+  const xa=X(P.W-P.eaveEdge)+30,items=[
+    {z:D.roofTop,a:'≈ '+lvl(D.roofTop),b:'krytina v hřebeni'},{z:D.apexTop,a:lvl(D.apexTop),b:'vrchol krokví'},{z:D.ridgeTop,a:lvl(D.ridgeTop),b:'vrch vaznice'},{z:D.ridgeBot,a:lvl(D.ridgeBot),b:'spodek vaznice'},
+    {z:D.klTop,a:lvl(D.klTop),b:'vrch kleštin'},{z:D.klBot,a:lvl(D.klBot),b:'spodek kleštin'},{z:D.ceil,a:lvl(D.ceil),b:'podhled'},{z:D.doorHead+150,a:lvl(D.doorHead+150),b:'vrch příčle rámu'},
+    {z:D.plateTop,a:lvl(D.plateTop),b:'vrch pozednice'},{z:D.vt,a:lvl(D.vt),b:'vrch věnce'},{z:D.floor,a:lvl(D.floor),b:'podlaha podkroví'},{z:D.tailZ,a:lvl(D.tailZ),b:'spodní hrana krokve na okapu'},{z:P.panelTop,a:lvl(P.panelTop),b:'vrch panelů'}
+  ].sort((a,b)=>b.z-a.z).map(i=>({...i,y:Y(i.z)}));
+  for(const i of items)el('line',{x1:xa-22,y1:i.y,x2:xa,y2:i.y,class:'dl'},g);
+  callouts(g,items,xa,xa+30,15);
+}
+const X1=(s,d)=>s?P.W-d:d;
+
+// ---------- Plan ----------
+function drawPlan(L){
+  const D=L.D,k=.046,SX=s=>64+(s+1100)*k,XY=x=>104+(x+1250)*k,W=1060,H=Math.round(XY(9250)+92),svg=svgInit('plan',W,H),g=el('g',{},svg);
+  const R=(s0,s1,x0,x1,at)=>el('rect',{x:SX(Math.min(s0,s1)),y:XY(Math.min(x0,x1)),width:Math.abs(s1-s0)*k,height:Math.abs(x1-x0)*k,...at},g);
+  const half=P.rafB/2;
+  R(P.roof0,P.roof1,P.eaveEdge,P.W-P.eaveEdge,{fill:'#f7f4ec',stroke:'#7b8580','stroke-width':1.2});
+  R(-P.eps,P.L+P.eps,-P.eps,P.W+P.eps,{fill:'none',stroke:'#9aa59d','stroke-dasharray':'6 4'});
+  for(const x0 of [0,P.W-P.wall])R(0,P.L,x0,x0+P.wall,{fill:'#e3e6e1',stroke:'#b8c0ba'});
+  for(const s0 of [0,P.L-P.wall])R(s0,s0+P.wall,P.wall,P.W-P.wall,{fill:'#e3e6e1',stroke:'#b8c0ba'});
+  {const A=atticWalls(),k={fill:'#eceee9',stroke:'#9aa59d','stroke-dasharray':'4 3','stroke-width':.8};for(const [x0,x1] of A.corr)R(A.s0,A.s1,x0,x1,k);for(const [s0,s1] of A.cross)R(s0,s1,P.wall,P.W-P.wall,k);T(g,SX(7025),XY(P.corrC+P.corrW/2)-8,'chodba','micro halo',{'text-anchor':'middle','font-weight':700})}
+  for(const p of L.pairs)if(p.kl)R(p.s-half-P.klT,p.s+half+P.klT,D.klBot-D.A0-D.RT,P.W-(D.klBot-D.A0-D.RT),{fill:'#f1dcb4',stroke:'#d9bd8c','stroke-width':.5});
+  for(const side of [0,1])R(P.verge0,P.verge1,X(side,P.plateX),X(side,P.plateX+P.plateW),{fill:'#b98a55',stroke:'#7a5530','stroke-width':.6});
+  R(P.verge0,P.verge1,P.W/2-P.ridgeW/2,P.W/2+P.ridgeW/2,{fill:'#5c6a74',stroke:'#2f383f','stroke-width':.6});
+  for(const p of L.pairs)for(const side of [0,1])for(const piece of rafterPieces(L,p,side)){const [a,b]=xRange(toX(side,piece));R(p.s-half,p.s+half,a,b,{fill:p.cut[side].length?'#e08a3c':'#cc9e61',stroke:'#7a5530','stroke-width':.5})}
+  for(const o of L.ops)for(const h of [...o.headers,...o.jambs]){const [a,b]=xRange(toX(h.side,slab(D,h.t0,h.t1,0,P.rafH)));R(h.s0,h.s1,a,b,{fill:'#e08a3c',stroke:'#8a4a17','stroke-width':.5})}
+  for(const o of L.ops){if(o.kind==='win'){const [a,b]=xRange(toX(o.side,slab(D,o.tLo+WSL,o.tLo+WSL+WL,120,D.pRoof)));R(o.s,o.s+WW,a,b,{fill:'#bcd3dc',stroke:'#2c3338','stroke-width':1.4,'fill-opacity':.85});T(g,SX(o.s+WW/2),XY((a+b)/2)+4,o.id,'label halo',{'text-anchor':'middle'})}
+    else{R(CH.s0,CH.s1,CH.x0,CH.x1,{fill:'#ddd5c8',stroke:'#6d625a','stroke-width':1.2});T(g,SX((CH.s0+CH.s1)/2),XY(CH.x1)+14,'komín','tiny halo',{'text-anchor':'middle','font-weight':700})}}
+  for(const c of L.cols){const k2=c.proposal?'#d9772e':'#3c474f';R(c.s-half,c.s+half,3930,4070,{fill:k2});
+    const posts=c.door?[[3440,3580],[4420,4560]]:r2Geo().posts;for(const [a,b] of posts)R(c.s-(c.door?half:70),c.s+(c.door?half:70),a,b,{fill:'none',stroke:k2,'stroke-width':1.3});
+    T(g,SX(c.s),XY(4560)+16,c.id+(c.proposal?' návrh':''),'tiny halo',{'text-anchor':'middle','font-weight':700,fill:k2})}
+  for(const p of L.pairs){const x=SX(p.s),y=XY(-750);T(g,x+3,y,String(p.n),'micro',{'text-anchor':'middle',transform:`rotate(-90 ${x+3} ${y})`,fill:'#3a2a18'})}
+  T(g,SX(P.roof0)+4,XY(P.eaveEdge)+14,'SEVER · strana C','tiny halo',{'font-weight':700});T(g,SX(P.roof0)+4,XY(P.W-P.eaveEdge)-6,'JIH · strana B s HS (předpoklad)','tiny halo',{'font-weight':700});
+  T(g,SX(-640),XY(2200),'štít A','tiny halo',{'text-anchor':'middle',transform:`rotate(-90 ${SX(-640)} ${XY(2200)})`,'font-weight':700});
+  T(g,SX(P.L+640),XY(2200),'zadní štít','tiny halo',{'text-anchor':'middle',transform:`rotate(-90 ${SX(P.L+640)} ${XY(2200)})`,'font-weight':700});
+  T(g,SX(9300),XY(P.W/2)-6,`vaznice 2${P.uName}`,'tiny halo',{'text-anchor':'middle','font-weight':700});
+  // Top: rafter axes chain and overall length.
+  const ax=L.pairs.map(p=>SX(p.s)),labels=L.pairs.slice(1).map((p,i)=>fmt(p.s-L.pairs[i].s));
+  hdim(g,XY(P.eaveEdge)-30,ax,labels,{ext:XY(P.eaveEdge)-2,small:27});
+  hdim(g,XY(P.eaveEdge)-74,[SX(P.roof0),SX(0),SX(P.L),SX(P.roof1)],['1 000','18 600 zdivo','1 000']);
+  T(g,SX(P.L/2),XY(P.eaveEdge)-90,`střecha ${fmt(P.roof1-P.roof0)} × ${fmt(P.W-2*P.eaveEdge)}`,'tiny',{'text-anchor':'middle','font-weight':700});
+  // Bottom: ridge beam supports and spans.
+  const sp=supports(L),yb=XY(P.W-P.eaveEdge)+28,xs=[P.verge0,...sp.map(x=>x.s),P.verge1];
+  hdim(g,yb,xs.map(SX),xs.slice(1).map((s,i)=>fmt(s-xs[i])),{ext:XY(P.W/2+P.ridgeW/2)+2});
+  for(const s of sp){el('path',{d:`M${SX(s.s)} ${yb+6}l-5 9h10z`,fill:s.proposal?'#d9772e':'#3c474f'},g);T(g,SX(s.s),yb+28,s.id,'micro',{'text-anchor':'middle','font-weight':700})}
+  T(g,SX(P.L/2),yb+46,`rozpětí vaznice 2${P.uName} mezi podporami`,'tiny',{'text-anchor':'middle'});
+  // Left: widths.
+  vdim(g,40,[XY(P.eaveEdge),XY(0),XY(P.W),XY(P.W-P.eaveEdge)],['1 200','8 000','1 200'],{side:-1});
+}
+
+// ---------- Longitudinal section ----------
+function drawLong(L){
+  const D=L.D,k=.04,SX=s=>64+(s+1100)*k,Y=z=>24+(9500-z)*k,W=1060,H=Math.round(Y(2800)+84),svg=svgInit('long',W,H),g=el('g',{},svg);
+  const R=(s0,s1,z0,z1,at)=>el('rect',{x:SX(s0),y:Y(z1),width:(s1-s0)*k,height:(z1-z0)*k,...at},g),half=P.rafB/2;
+  R(0,P.L,P.panelTop-250,P.panelTop,{fill:'url(#pConc)',stroke:'#8e988f'});
+  R(P.wall,P.L-P.wall,P.panelTop,D.floor,{fill:'#efe7d6',stroke:'none'});
+  el('line',{x1:SX(P.wall),y1:Y(D.ceil),x2:SX(P.L-P.wall),y2:Y(D.ceil),stroke:'#7d8a81','stroke-width':1.6},g);
+  for(const s0 of [0,P.L-P.wall])R(s0,s0+P.wall,P.panelTop,D.ridgeBot,{fill:'url(#pMas)',stroke:'#8e988f'});
+  for(const p of L.pairs)R(p.s-half,p.s+half,D.ridgeTop,D.apexTop,{fill:'#d7a96b',stroke:'#7a5530','stroke-width':.5});
+  R(P.verge0,P.verge1,D.ridgeBot,D.ridgeTop,{fill:'#5c6a74',stroke:'#2f383f','stroke-width':.7});
+  for(const p of L.pairs)if(p.kl)for(const s0 of [p.s-half-P.klT,p.s+half])R(s0,s0+P.klT,D.klBot,D.klTop,{fill:'#e8c999',stroke:'#8a6235','stroke-width':.5});
+  for(const c of L.cols){const k2=c.proposal?'#d9772e':'#4d5963',pale=c.proposal?'#f2c7a3':'#b9c2c8';
+    if(c.door){R(c.s-75,c.s+75,D.doorHead,D.ceil,{fill:'url(#pMas)',stroke:'#b8c0ba'});R(c.s-half,c.s+half,P.panelTop,D.doorHead+10,{fill:pale,stroke:'none'});R(c.s-half,c.s+half,D.doorHead+10,D.doorHead+150,{fill:k2});R(c.s-half,c.s+half,D.doorHead+150,D.ridgeBot,{fill:k2})}
+    else{R(c.s-70,c.s+70,P.panelTop,D.ceil+10,{fill:pale,stroke:'none'});R(c.s-half,c.s+half,D.ceil+10,D.ceil+150,{fill:k2});R(c.s-half,c.s+half,D.ceil+150,D.ridgeBot,{fill:k2})}
+    T(g,SX(c.s)+6,Y((D.ceil+D.ridgeBot)/2),c.id+(c.proposal?' (návrh)':''),'tiny halo',{'font-weight':700,fill:k2})}
+  {const r2=L.cols.find(c=>c.proposal),sx=r2?[r2.s]:ridgeSplices(L);for(const s of sx){el('line',{x1:SX(s),y1:Y(D.ridgeTop)-4,x2:SX(s),y2:Y(D.ridgeBot)+4,stroke:'#fff','stroke-width':2},g);T(g,SX(s)+5,Y(D.ridgeTop)-6,'spoj','micro')}}
+  T(g,SX(1800),Y(D.ridgeBot)+14,`vaznice 2${P.uName} · ${fmt(P.verge1-P.verge0)}`,'tiny',{'font-weight':700});
+  T(g,SX(1800),Y(D.ceil)+14,`podhled ${lvl(D.ceil)}`,'tiny');T(g,SX(1800),Y(D.floor)-4,`podlaha podkroví ${lvl(D.floor)}`,'tiny');
+  T(g,SX(150),Y(D.ridgeBot)+30,'štít A','micro',{'text-anchor':'middle'});T(g,SX(P.L-150),Y(D.ridgeBot)+30,'zadní štít','micro',{'text-anchor':'middle'});
+  const sp=supports(L),yb=Y(P.panelTop-250)+26,xs=[P.verge0,...sp.map(x=>x.s),P.verge1];
+  hdim(g,yb,xs.map(SX),xs.slice(1).map((s,i)=>fmt(s-xs[i])),{ext:Y(P.panelTop-250)+2});
+  T(g,SX(P.L/2),yb+20,'rozpětí vaznice · podpory v ose sloupů a štítových zdí','tiny',{'text-anchor':'middle'});
+  const xa=SX(P.verge1)+18,items=[{z:D.apexTop,a:lvl(D.apexTop),b:'vrchol krokví'},{z:D.ridgeTop,a:lvl(D.ridgeTop),b:'vrch vaznice'},{z:D.ridgeBot,a:lvl(D.ridgeBot),b:'spodek vaznice'},{z:D.klTop,a:lvl(D.klTop),b:'vrch kleštin'},{z:D.ceil,a:lvl(D.ceil),b:'podhled'},{z:D.doorHead+150,a:lvl(D.doorHead+150),b:'příčle R1, R3'},{z:D.floor,a:lvl(D.floor),b:'podlaha podkroví'}].map(i=>({...i,y:Y(i.z)}));
+  callouts(g,items,xa-10,xa+10,14);
+}
+
+// ---------- Details ----------
+function drawDetA(L){
+  const D=L.D,k=.42,X=x=>36+(x+760)*k,Y=z=>30+(D.plateTop+560-z)*k,W=880,H=Math.round(Y(D.vt-560)+60),svg=svgInit('detA',W,H);
+  const cl=el('clipPath',{id:'cA'},svg);el('rect',{x:X(-760),y:Y(D.plateTop+560),width:1520*k,height:1120*k},cl);
+  const g=el('g',{'clip-path':'url(#cA)'},svg),o=el('g',{},svg);
+  const poly=(a,at)=>el('polygon',{points:ptsStr(a,X,Y),...at},g),rect=(x0,x1,z0,z1,at,p=g)=>el('rect',{x:X(x0),y:Y(z1),width:(x1-x0)*k,height:(z1-z0)*k,...at},p);
+  rect(0,P.wall,D.vt-900,D.kneeTop,{fill:'url(#pMas)',stroke:'#8e988f'});rect(0,P.wall,D.kneeTop,D.vt,{fill:'url(#pConc)',stroke:'#6f7a72'});
+  for(const [x,z] of [[55,D.kneeTop+55],[245,D.kneeTop+55],[55,D.vt-55],[245,D.vt-55]])el('circle',{cx:X(x),cy:Y(z),r:3,fill:'#3c474f'},g);
+  el('rect',{x:X(40),y:Y(D.vt-40),width:220*k,height:220*k,fill:'none',stroke:'#3c474f','stroke-width':.8},g);
+  rect(-P.eps,0,D.vt-900,D.A0-P.eps,{fill:'url(#pEps)',stroke:'#b9c3ca'});
+  const dc=900,ins=[[P.wall,D.A0],[P.wall+dc,D.A0+dc],[P.wall+dc,D.A0+P.wall+dc+D.RT],[P.wall,D.A0+P.wall+D.RT]];poly(ins,{fill:'url(#pWool)'});
+  el('polyline',{points:ptsStr([[P.wall,D.A0],[P.wall+dc,D.A0+dc]],X,Y),fill:'none',stroke:'#7d8a81','stroke-width':2.4},g);
+  rect(P.plateX,P.plateX+P.plateW,D.vt+4,D.plateTop,{fill:'url(#pWood)',stroke:'#7a5530'});rect(P.plateX-10,P.plateX+P.plateW+10,D.vt,D.vt+4,{fill:'#222'});
+  el('line',{x1:X(100),y1:Y(D.plateTop+25),x2:X(100),y2:Y(D.vt-170),stroke:'#2f383f','stroke-width':2.2,'stroke-dasharray':'6 3'},g);
+  rect(65,135,D.plateTop,D.plateTop+8,{fill:'#2f383f'});rect(82,118,D.plateTop+8,D.plateTop+22,{fill:'#2f383f'});
+  poly(slab(D,D.tTail+200,D.tApex,P.rafH,P.rafH+P.cb),{fill:'#ecd6ad',stroke:'#a8875a','stroke-width':.6});
+  for(let t=D.tTail+220;t<D.tApex;t+=330)poly(slab(D,t,t+60,P.rafH+P.cb,P.rafH+P.cb+P.lath),{fill:'#c99e68',stroke:'#7a5530','stroke-width':.6});
+  poly(slab(D,D.tTail+160,D.tApex,P.rafH+P.cb+P.lath,D.pRoof),{fill:'#4a5055',stroke:'#2b3034','stroke-width':.6});
+  el('polyline',{points:ptsStr([tp(D,D.tTail+200,P.rafH),tp(D,D.tApex,P.rafH)],X,Y),fill:'none',stroke:'#3d7fb0','stroke-width':1.6},g);
+  poly(rafterProfile(D),{fill:'#d7a96b',stroke:'#7a5530','stroke-width':1.4});
+  el('path',{d:`M${X(P.seatX+10)} ${Y(D.plateTop+70)}h${70*k}v${-60*k}`,fill:'none',stroke:'#2f383f','stroke-width':2.2},g);
+  // Break line on the eave side.
+  el('path',{d:`M${X(-700)} ${Y(D.A0-700+D.RT+120)}l6 10l-12 10l6 10`,fill:'none',stroke:'#26313a','stroke-width':1.2},o);
+  const lab=(x,z,t,a={})=>T(o,X(x),Y(z),t,'tiny halo',a);
+  // Seat dimensions.
+  hdim(o,Y(D.vt-560)+22,[X(-P.eps),X(0),X(P.plateX),X(P.plateX+P.plateW),X(P.wall)],['200','20','160','120'],{ext:Y(D.vt-560)+2});
+  const xa=X(760)-4,items=[{z:D.plateTop,a:lvl(D.plateTop),b:'vrch pozednice',c:'osedlání 80 × 80'},{z:D.A0+P.plateX,a:lvl(D.A0+P.plateX),b:'dno zářezu',c:`hloubka ${fmt(80/SQ)} mm ≤ h/3`},{z:D.vt,a:lvl(D.vt),b:'vrch věnce'}].map(i=>({...i,y:Y(i.z)}));
+  lab(-430,D.A0-430+D.RT/2+40,'krokev 120×200',{'text-anchor':'middle','font-weight':700,transform:`rotate(-45 ${X(-430)} ${Y(D.A0-430+D.RT/2+40)})`});
+  lab(100,D.vt+60,'pozednice 160×140',{'text-anchor':'middle'});lab(150,D.vt-150,'ŽB věnec 300×300',{'text-anchor':'middle'});
+  lab(330,D.vt-300,'kotva M16 á ≤ 1,2 m',{'text-anchor':'start'});lab(330,D.vt-360,'chemicky, 180 do věnce*',{'text-anchor':'start'});
+  lab(-100,D.vt-450,'EPS 200',{'text-anchor':'middle'});lab(200,D.vt+14,'asfaltový pás pod pozednicí',{'text-anchor':'start'});
+  lab(260,D.plateTop+200,'úhelník / krokvová spona',{'text-anchor':'start'});
+  lab(560,D.A0+560-140,'izolace + SDK',{'text-anchor':'middle',transform:`rotate(-45 ${X(560)} ${Y(D.A0+560-140)})`});
+  callouts(o,items,X(760)+4,X(760)+24,30);
+  el('rect',{x:X(-760),y:Y(D.plateTop+560),width:1520*k,height:1120*k,fill:'none',stroke:'#c9d2cb'},svg);
+}
+function drawDetB(L){
+  const D=L.D,k=.5,c=P.W/2,X=x=>40+(x-(c-460))*k,Y=z=>34+(D.roofTop+230-z)*k,W=720,H=Math.round(Y(D.ridgeBot-200)+56),svg=svgInit('detB',W,H);
+  const cl=el('clipPath',{id:'cB'},svg);el('rect',{x:X(c-460),y:Y(D.roofTop+230),width:920*k,height:(D.roofTop+230-(D.ridgeBot-200))*k},cl);
+  const g=el('g',{'clip-path':'url(#cB)'},svg),o=el('g',{},svg),poly=(a,at)=>el('polygon',{points:ptsStr(a,X,Y),...at},g);
+  for(const s of [0,1]){
+    poly(toX(s,slab(D,D.tTail+200,D.tApex,P.rafH,P.rafH+P.cb)),{fill:'#ecd6ad',stroke:'#a8875a','stroke-width':.6});
+    for(let t=D.tTail+220;t<D.tApex-60;t+=330)poly(toX(s,slab(D,t,t+60,P.rafH+P.cb,P.rafH+P.cb+P.lath)),{fill:'#c99e68',stroke:'#7a5530','stroke-width':.6});
+    poly(toX(s,slab(D,D.tTail+160,D.tApex-40,P.rafH+P.cb+P.lath,D.pRoof)),{fill:'#4a5055',stroke:'#2b3034','stroke-width':.6});
+    el('polyline',{points:ptsStr(toX(s,[tp(D,D.tTail+200,P.rafH),tp(D,D.tApex,P.rafH)]),X,Y),fill:'none',stroke:'#3d7fb0','stroke-width':1.6},g);
+    poly(toX(s,rafterProfile(D)),{fill:'#d7a96b',stroke:'#7a5530','stroke-width':1.4});
+  }
+  // Ridge batten on brackets, ventilated ridge strip and ridge tile.
+  const zb=D.apexTop+(P.cb+P.lath)*SQ;
+  el('rect',{x:X(c-20),y:Y(zb+110),width:40*k,height:60*k,fill:'#c99e68',stroke:'#7a5530'},g);
+  el('line',{x1:X(c),y1:Y(zb+50),x2:X(c),y2:Y(D.apexTop),stroke:'#2f383f','stroke-width':2},g);
+  el('path',{d:`M${X(c-150)} ${Y(zb+20)}Q${X(c)} ${Y(zb+250)} ${X(c+150)} ${Y(zb+20)}`,fill:'none',stroke:'#2b3034','stroke-width':5},g);
+  el('path',{d:`M${X(c-170)} ${Y(zb-10)}L${X(c)} ${Y(zb+110)}L${X(c+170)} ${Y(zb-10)}`,fill:'none',stroke:'#7d6a9a','stroke-width':1.4,'stroke-dasharray':'4 3'},g);
+  for(const sgn of [-1,1])poly(boxU(c,D.ridgeBot,D.ridgeTop,sgn,P.U.tf,P.U.tw,P.U.b),{fill:'#4d5963',stroke:'#232a30','stroke-width':.8});
+  for(const z of [D.ridgeTop,D.ridgeBot]){const s=z===D.ridgeTop?-1:1;el('path',{d:`M${X(c-9)} ${Y(z)}L${X(c)} ${Y(z)+s*9}L${X(c+9)} ${Y(z)}Z`,fill:'#111'},g)}
+  for(const sgn of [-1,1])el('path',{d:`M${X(c+sgn*95)} ${Y(D.ridgeTop+120)}V${Y(D.ridgeTop)}H${X(c+sgn*75)}`,fill:'none',stroke:'#2f383f','stroke-width':2.4},g);
+  const lab=(x,z,t,a={})=>T(o,X(x),Y(z),t,'tiny halo',a);
+  hdim(o,Y(D.ridgeBot-200)+22,[X(c-P.ridgeW/2),X(c+P.ridgeW/2)],[String(P.ridgeW)],{ext:Y(D.ridgeBot)+2});
+  lab(c-330,D.ridgeTop+40,`osedlání krokve ${P.ridgeSeat} mm`,{'text-anchor':'middle'});
+  vdim(o,X(c-460)+16,[Y(D.ridgeBot),Y(D.ridgeTop)],['200'],{ext:X(c-P.ridgeW/2),side:1});
+  lab(c-260,D.ridgeBot+60,`2× ${P.uName} do truhlíku`,{'text-anchor':'middle'});lab(c-260,D.ridgeBot+10,'přerušovaný svar*',{'text-anchor':'middle'});lab(c+150,D.ridgeTop+300,'úhelník do pásnice',{'text-anchor':'start'});
+  lab(c,zb+300,'hřebenáč, větraný pás, hřebenová lať na držácích',{'text-anchor':'middle'});
+  const xa=X(c+460)+4,items=[{z:D.roofTop,a:'≈ '+lvl(D.roofTop),b:'krytina v hřebeni'},{z:D.apexTop,a:lvl(D.apexTop),b:'vrchol krokví'},{z:D.ridgeTop,a:lvl(D.ridgeTop),b:'vrch vaznice'},{z:D.ridgeBot,a:lvl(D.ridgeBot),b:'spodek vaznice'}].map(i=>({...i,y:Y(i.z)}));
+  callouts(o,items,xa,xa+18,16);
+  el('rect',{x:X(c-460),y:Y(D.roofTop+230),width:920*k,height:(D.roofTop+230-(D.ridgeBot-200))*k,fill:'none',stroke:'#c9d2cb'},svg);
+}
+
+// ---------- Tables, facts, notes ----------
+function tables(L){
+  const D=L.D,half=P.rafB/2,kinds={verge:'krajní krokev v přesahu',over:'krokev v přesahu',gable:'štítová (na štítové zdi)',main:'vazba'};
+  let h='<thead><tr><th class="n">Vazba</th><th class="n">Osa s</th><th class="n">Rozteč</th><th>Typ</th><th>Kleštiny</th><th>Poznámka</th></tr></thead><tbody>';
+  L.pairs.forEach((p,i)=>{const cls=p.col&&p.col.proposal?'prop':(p.cut[0].length||p.cut[1].length?'cut':'');
+    h+=`<tr class="${cls}"><td class="n">${p.n}</td><td class="n">${fmt(p.s)}</td><td class="n">${i?fmt(p.s-L.pairs[i-1].s):'—'}</td><td>${kinds[p.kind]}</td><td>${p.kl?'ano':'—'}</td><td>${p.notes.join('; ')}</td></tr>`});
+  document.getElementById('pairs').innerHTML=h+'</tbody>';
+  // Bill of materials.
+  const rows=[],add=(sec)=>rows.push({sec}),it=(name,prof,n,len,note='',unit=null)=>rows.push({name,prof,n,len,note,unit});
+  const full=[],pieces=[];
+  for(const p of L.pairs)for(const s of [0,1]){const ps=rafterPieces(L,p,s);if(p.cut[s].length)ps.forEach(q=>{const [a,b]=tRange(D,q);pieces.push(b-a)});else full.push(1)}
+  const rafLen=(()=>{const [a,b]=tRange(D,rafterProfile(D));return b-a})();
+  add('Řezivo');
+  it('Krokve','120×200',full.length,rafLen,'svislé řezy na okapu i ve hřebeni');
+  const grp=arr=>{const m=new Map();for(const v of arr){const r=Math.round(v/10)*10;m.set(r,(m.get(r)||0)+1)}return [...m.entries()].sort((a,b)=>b[0]-a[0])};
+  for(const [len,n] of grp(pieces))it('Krokve vyměněné, díly','120×200',n,len,'u oken S1, S2 a u komína');
+  const hdr=[],jm=[];for(const o of L.ops){for(const h of o.headers)hdr.push(h.s1-h.s0);for(const j of o.jambs)jm.push((j.t1-j.t0))}
+  for(const [len,n] of grp(hdr))it('Výměny','120×200',n,len,'nad a pod okny a komínem');
+  for(const [len,n] of grp(jm))it('Pomocné krokve u oken','120×200',n,len,'boční ostění oken S1, S2');
+  const nk=L.pairs.filter(p=>p.kl).length,klLen=P.W-2*(D.klBot-D.A0-D.RT);
+  it('Kleštiny','2× 60×180',2*nk,klLen,`${nk} vazeb, šrouby M12 2× na každé straně`);
+  it('Pozednice','160×140',2,P.verge1-P.verge0,'spoj šikmým plátem nad kotvou');
+  add('Ocel');
+  const ridge=P.verge1-P.verge0;it('Vaznice',`2× ${P.uName}`,2,ridge,`přírubami k sobě, svařené do truhlíku ${P.ridgeW} × ${P.ridgeH}; asi ${fmt(2*ridge/1000*P.U.kg)} kg`);
+  const colLen=[],frame=[];for(const c of L.cols){if(c.door){colLen.push(D.ridgeBot-D.doorHead-150);frame.push(D.doorHead+10-P.panelTop,D.doorHead+10-P.panelTop,1120)}else{colLen.push(D.ridgeBot-D.ceil-150);frame.push(D.ceil+10-P.panelTop,D.ceil+10-P.panelTop,r2Geo().bar[1]-r2Geo().bar[0])}}
+  for(const [len,n] of grp(colLen))it('Sloupy pod vaznicí','2× U140',n,len,L.cols.map(c=>c.id).join(', '));
+  for(const [len,n] of grp(frame))it('Rámy: stojky a příčle','2× U140',n,len,'kolem dveří R1, R3; ve stěnách chodby R2');
+  add('Ostatní');
+  const anchors=2*(Math.ceil(P.L/1200)+1);rows.push({name:'Kotvy pozednic',prof:'M16',n:anchors,len:null,note:'chemická kotva do věnce, á ≤ 1 200*'});
+  const cbLen=(full.length*(D.tApex-D.tTail-200)+pieces.reduce((a,b)=>a+b,0))/1000;rows.push({name:'Kontralatě',prof:'50×60',n:null,len:null,note:`asi ${fmt(cbLen)} m`});
+  const rowsL=Math.ceil((D.tApex-D.tTail)/330);rows.push({name:'Latě',prof:'40×60',n:null,len:null,note:`asi ${fmt(2*rowsL*(P.roof1-P.roof0)/1000)} m (rozteč podle tašky)`});
+  const roofA=2*(P.W/2-P.eaveEdge)*SQ*(P.roof1-P.roof0)/1e6;rows.push({name:'Plocha střechy',prof:'',n:null,len:null,note:`${roofA.toFixed(1).replace('.',',')} m² (2 × ${m2((P.W/2-P.eaveEdge)*SQ)} × ${m2(P.roof1-P.roof0)} m)`});
+  let b='<thead><tr><th>Prvek</th><th>Profil</th><th class="n">Ks</th><th class="n">Délka</th><th class="n">Celkem</th><th>Poznámka</th></tr></thead><tbody>',vol=0;
+  for(const r of rows){if(r.sec){b+=`<tr class="sec"><td colspan="6">${r.sec}</td></tr>`;continue}
+    let tot='';if(r.n&&r.len){tot=m2(r.n*r.len,1)+' m';const m=r.prof.match(/(\d+)×(\d+)/);if(m&&!r.prof.includes('U'))vol+=r.n*r.len*m[1]*m[2]/1e9}
+    b+=`<tr><td>${r.name}</td><td>${r.prof}</td><td class="n">${r.n??''}</td><td class="n">${r.len?fmt(r.len):''}</td><td class="n">${tot}</td><td>${r.note}</td></tr>`}
+  b+=`<tr class="sum"><td colspan="4">Řezivo celkem (bez latí a kontralatí)</td><td class="n">${vol.toFixed(1).replace('.',',')} m³</td><td>bez prořezu</td></tr>`;
+  document.getElementById('bom').innerHTML=b+'</tbody>';
+  return {full:full.length,pieces:pieces.length,nk,rafLen,vol};
+}
+function facts(L,t){
+  const D=L.D,inner=L.pairs.filter(p=>p.kind==='main'||p.kind==='gable'),ax=inner.slice(1).map((p,i)=>p.s-inner[i].s),sp=supports(L),spans=sp.slice(1).map((s,i)=>s.s-sp[i].s);
+  const F=[[`${t.full+t.pieces}`,`kusů krokví 120×200 (${L.pairs.length} vazeb, přířez ${fmt(t.rafLen)})`],[`${fmt(Math.min(...ax))}–${fmt(Math.max(...ax))}`,'osové rozteče vazeb v mm'],[fmt(Math.max(...spans)),`největší pole vaznice 2${P.uName}`],[`≈ ${lvl(D.roofTop)}`,'krytina v hřebeni nad hrubou deskou'],
+    [`${t.nk}`,'vazeb s kleštinami 2×60×180'],[`${L.cols.length}`,`ocelové rámy 2U140 (${L.cols.map(c=>c.id).join(', ')})`],[`${fmt(D.vt-D.floor)}`,'nadezdívka nad podlahou podkroví po vrch věnce'],[`${t.vol.toFixed(1).replace('.',',')} m³`,'řeziva bez latí a kontralatí']];
+  document.getElementById('facts').innerHTML=F.map(([a,b])=>`<div class="fact"><b>${a}</b><span>${b}</span></div>`).join('');
+  const win=L.ops.find(o=>o.kind==='win'),foot=tp(D,win.tLo+WSL,D.pRoof+10)[1]-D.floor;
+  document.querySelectorAll('[data-k=maxAxis]').forEach(e=>e.textContent=fmt(Math.max(...ax)));
+  document.querySelectorAll('[data-k=roofTop]').forEach(e=>e.textContent='≈ '+lvl(D.roofTop));
+  document.querySelectorAll('[data-k=roofTopFloor]').forEach(e=>e.textContent='≈ '+lvl(D.roofTop-240));
+  const nIn=inner.length,vg=L.pairs.find(p=>p.kind==='verge'),gb=L.pairs.find(p=>p.kind==='gable');
+  const N=[
+    ['risk','Tašky místo plechu',`Statika posoudila krokve na q<sub>d</sub> = 1,7 kN/m a L = 5,2 m, tedy moment 5,75 kNm. S taškami, sněhem (s<sub>k</sub> 1,5–2,0 kN/m²) a roztečí do ${fmt(Math.max(...ax))} mm vychází orientačně 4,7–5,2 kNm a průhyb asi 13 mm, krokve 120×200 tedy vyhoví. Statik by to měl potvrdit spolu s vyměněnými krokvemi a výměnami.`],
+    P.r2?['risk','Rám R2 v chodbě',`Bez R2 by 2U200 měla pole ${fmt(COLS[2].s-COLS[0].s)} mm a s taškami vycházela na hranici (80–88 % únosnosti, průhyb asi 40 mm). R2 nestojí kolem dveří jako R1 a R3: stojky 2U140 (120 mm) jsou schované v ${150} mm stěnách chodby u příčky mezi 2.05 a 2.06 a příčel vede nad podhledem mezi dvěma vazbami, chodba zůstane po celé šířce volná. Příčel přes chodbu ${fmt(P.corrW)} mm nese sloup se silou asi 57 kN a vychází orientačně na ${Math.round(57*(P.corrW+150)/4000/40.6*100)} % únosnosti. Stojky ale vnášejí další bodová zatížení do stropních panelů.`]
+     :['risk','Vaznice 2U240 bez R2',`Vaznice leží jen na štítech a rámech R1, R3 u dveří (jako v DSP), prostřední pole má ${fmt(COLS[2].s-COLS[0].s)} mm. 2U240 svařená do truhlíku vychází s taškami a sněhem orientačně na 52–57 % únosnosti a průhyb 21–23 mm (L/430–470); 2U200 by byla na hranici. Reakce na rámech R1 a R3 je asi 58–64 kN, příčel rámu nad dveřmi ji unese s rezervou. V chodbě není žádná ocel.`],
+    ['','Počet krokví',`V délce domu je ${nIn} vazeb s osovou roztečí ${fmt(Math.min(...ax))}–${fmt(Math.max(...ax))} mm, skoro stejně jako v DSP (22 vazeb po 740–960 mm). V každém štítovém přesahu je navíc jen krajní krokev, celkem tedy ${L.pairs.length} vazeb a ${2*L.pairs.length} stejných krokví. Hustší rozteč nic nepřinese, statika i DSP počítají s krokvemi 120×200 zhruba po 0,9 m.`],
+    ['','Vaznice do truhlíku',`Dva ${P.uName} jsou otočené přírubami k sobě a svařené přerušovaným svarem do jednoho uzavřeného profilu ${P.ridgeW} × ${P.ridgeH}. Proti profilům zády k sobě je mnohem tužší v kroucení a odolnější proti klopení, krokve leží na rovné ploše ${P.ridgeW} mm se zářezem ${P.ridgeSeat} × ${P.ridgeSeat}. Spoje ${P.r2?'nad R2 přes čelní desky':`v místech nulového momentu (s ≈ ${ridgeSplices(L).map(fmt).join(' a ')}), aby kusy byly do 12 m`}, konce zaslepit; protikorozní ochranu dohodnout s výrobcem. Potvrdí statik.`],
+    ['','Okna VELUX',`Okna se kotví montážními úhelníky do latí. Aby padla mezi krokve, jsou proti modelu posunutá: ${WIN.filter(w=>w.s!==w.s0).map(w=>`${w.id} o ${w.s>w.s0?'+':'−'}${fmt(Math.abs(w.s-w.s0))} mm`).join(', ')}; všechna zůstávají ve svých místnostech nejméně 150 mm od příček. Žádná krokev se nevyměňuje, nad a pod oknem jsou jen výměny pro ostění. Spodní vnější hrana rámu vychází asi ${m2(foot)} m nad podlahou podkroví.`],
+    ['','Komín krbu',`Průduch je převzatý z interiéru modelu (x 5 120–5 500, s 5 200–5 600); nad střechou ve vizualizaci zatím chybí. Padne do pole mezi krokve s odstupem 50 mm od dřeva, nad a pod ním jsou výměny. Na vazbě těsně vedle komína nejsou kleštiny, podhled tam zavěsit na výměnu. Ústí musí být nejméně 0,65 m nad hřebenem (zakreslen ${lvl(D.chimTop)}); ověřit s kominíkem a projektantem.`],
+    ['','Přesahy ve štítech',`V každém štítovém přesahu je jen krajní krokev. Nese ji pozednice a vaznice vyložené asi 1,1 m za osu štítové zdi. Latě mezi krajní a štítovou krokví pnou ${fmt(gb.s-vg.s)} mm, což je pro latě 40×60 horní mez; v přesazích použít latě 50×60. Pozednice kotvit M16 po nejvýš 1,2 m, v rozích hustěji; podložit asfaltovým pásem.`],
+    ['','Kleštiny na každé vazbě',`Rovný podhled ve ${lvl(D.ceil)} je široký asi ${m2(P.W-2*(D.ceil-D.A0+P.wall))} m, proto jsou kleštiny na všech vazbách kromě té u komína a podhled na nich visí. Sloupy R1–R3 stojí mezi vazbami, nejméně 190 mm od kleštin.`],
+    ['','Sloupy na panelech',`Stojky rámů stojí na stropních panelech. Bodová zatížení od vaznice je potřeba roznést (ocelová deska, uložení nad žebrem panelu) a odsouhlasit s dodavatelem panelů.`],
+    ['','Nadezdívka a výšky',`Výšky vycházejí z výškového řezu (${P.panelTop===3175?'varianta A':'varianta B'}): 4 řady nadezdívky + věnec 300, vrch věnce ${lvl(D.vt)}. Při změně nadezdívky se celý krov posune o stejnou hodnotu.`]];
+  document.getElementById('notes').innerHTML=N.map(([c,h,t])=>`<div class="note ${c}"><strong>${h}:</strong> ${t}</div>`).join('');
+}
+
+
+// ---------- Cut list ("na pilu") ----------
+function pieceSvg(D,poly,title){
+  const loc=poly.map(q=>TP(D,q[0],q[1])),u0=Math.min(...loc.map(q=>q[0])),pts=loc.map(([t,p])=>[t-u0,p,t]),Lp=Math.max(...pts.map(q=>q[0]));
+  const k=.3,brk=Lp>3000,a=brk?1950:Lp,b=brk?Lp-700:Lp,gap=brk?54:0,x0=34,W=Math.round(2*x0+(brk?(a+Lp-b)*k+gap:Lp*k)),yT=56,H=Math.round(yT+200*k+92);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':title}),Y=v=>yT+(200-v)*k;
+  const XL=u=>x0+u*k,XR=u=>x0+a*k+gap+(u-b)*k,Xu=u=>u<=a+.5?XL(u):XR(u);
+  const part=(map,c0,c1)=>{const id='cp'+Math.random().toString(36).slice(2,9),cp=el('clipPath',{id},svg);el('rect',{x:c0,y:0,width:Math.max(0,c1-c0),height:H},cp);
+    el('polygon',{points:pts.map(([u,v])=>map(u).toFixed(1)+','+Y(v).toFixed(1)).join(' '),fill:'#e6c48f',stroke:'#7a5530','stroke-width':1.3,'clip-path':`url(#${id})`},svg)};
+  if(brk){part(XL,0,XL(a));part(XR,XR(b),W);for(const x of [XL(a),XR(b)])el('path',{d:`M${x} ${Y(200)-8}l-5 ${(200*k+16)/3}l10 ${(200*k+16)/3}l-5 ${(200*k+16)/3}`,fill:'none',stroke:'#26313a','stroke-width':1.3},svg)}
+  else part(XL,0,W);
+  // Overall length above.
+  const yo=yT-22;el('line',{x1:XL(0),y1:yo,x2:Xu(Lp),y2:yo,class:'dl'},svg);for(const x of [XL(0),Xu(Lp)])el('path',{d:`M${x-4} ${yo+4}l8 -8`,class:'dl'},svg);
+  for(const x of [XL(0),Xu(Lp)])el('line',{x1:x,y1:yo-4,x2:x,y2:Y(200)-2,class:'ext'},svg);
+  T(svg,brk?XL(a)+gap/2:(XL(0)+XL(Lp))/2,yo-6,`přířez ${fmt(Lp)}`,'dimtxt',{'text-anchor':'middle'});
+  // Ordinates along the bottom edge from the left end.
+  const bot=[...new Set(pts.filter(q=>q[1]<.5).map(q=>Math.round(q[0])))].sort((p,q)=>p-q),yb=Y(0)+16;
+  el('line',{x1:Xu(bot[0]),y1:yb,x2:Xu(bot[bot.length-1]),y2:yb,class:'dl'},svg);
+  bot.forEach((u,i)=>{const x=Xu(u);el('line',{x1:x,y1:Y(0)+2,x2:x,y2:yb+4,class:'ext'},svg);el('path',{d:`M${x-4} ${yb+4}l8 -8`,class:'dl'},svg);T(svg,x,yb+17+(i%2)*14,fmt(u),'dimtxt',{'text-anchor':'middle'})});
+  T(svg,XL(0),H-6,'míry po spodní hraně od levého konce','micro');
+  // End cuts and notches.
+  const top=pts.filter(q=>q[1]>199.5).map(q=>q[0]),bl=Math.min(...bot),br=Math.max(...bot),tl=Math.min(...top),tr=Math.max(...top);
+  const ang=d=>Math.abs(d)>100?'45°':'90°';
+  T(svg,Xu(Math.max(bl,tl))+8,Y(150)+4,ang(tl-bl),'lv');T(svg,Xu(Math.min(br,tr)-(tr-br>100?20:0))-8,Y(150)+4,ang(tr-br),'lv',{'text-anchor':'end'});
+  for(const [u,v,tt] of pts)if(v>.5&&v<199.5){const i=pts.findIndex(q=>q[0]===u&&q[1]===v),n=pts[(i+1)%pts.length],leg=Math.round(Math.hypot(n[0]-u,n[1]-v));
+    T(svg,Xu(u),Y(v)-10,`zářez ${leg} × ${leg} ${tt<1000?'na pozednici':'na vaznici'}`,'tiny halo',{'text-anchor':'middle','font-weight':700})}
+  return svg;
+}
+function boardSvg(len,h,cut,title,k=.16){
+  const x0=30,W=Math.round(2*x0+len*k),yT=46,H=Math.round(yT+h*k+56),svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':title}),Y=v=>yT+(h-v)*k,X=u=>x0+u*k;
+  const c=cut?h:0;el('polygon',{points:[[0,0],[len,0],[len-c,h],[c,h]].map(([u,v])=>X(u)+','+Y(v)).join(' '),fill:'#ecd3a3',stroke:'#7a5530','stroke-width':1.3},svg);
+  hdim(svg,yT-16,[X(0),X(len)],[`spodní hrana ${fmt(len)}`]);
+  if(cut){hdim(svg,Y(0)+22,[X(c),X(len-c)],[`horní hrana ${fmt(len-2*c)}`]);T(svg,X(c)+6,Y(h/2)+4,'45°','lv');T(svg,X(len-c)-6,Y(h/2)+4,'45°','lv',{'text-anchor':'end'})}
+  return svg;
+}
+function cutList(L){
+  const D=L.D,types=new Map(),len=poly=>{const [a,b]=tRange(D,poly);return Math.round(b-a)};
+  const add=(id,name,poly,where)=>{const key=id+'|'+len(poly);if(!types.has(key))types.set(key,{id,name,poly,len:len(poly),n:0,where:[]});const ty=types.get(key);ty.n++;if(where)ty.where.push(where)};
+  for(const p of L.pairs)for(const s of [0,1]){
+    const ps=rafterPieces(L,p,s).sort((a,b)=>tRange(D,a)[0]-tRange(D,b)[0]);
+    if(!p.cut[s].length){add('A','Krokev',ps[0]);continue}
+    const ch=p.cut[s].some(o=>o.kind==='chim');
+    ps.forEach((q,i)=>add(ch?(i?'E':'D'):(i?'C':'B'),`Krokev ${ch?'u komína':'u okna'}, ${i?'horní':'dolní'} díl`,q,`vazba ${p.n} ${s?'jih':'sever'}`));
+  }
+  const rafters=[...types.values()].sort((a,b)=>a.id.localeCompare(b.id));
+  const rows=rafters.map(r=>({id:r.id,name:r.name,prof:'120×200',n:r.n,len:r.len,cuts:r.id==='A'?'oba konce svisle (45°), zářez na pozednici a na vaznici':r.id==='B'||r.id==='D'?'pata svisle (45°), zářez na pozednici, konec 90°':'začátek 90°, zářez na vaznici, vrchol svisle (45°)',where:r.where.join(', ')}));
+  const grp=list=>{const m=new Map();for(const [len,w] of list){const r=Math.round(len);if(!m.has(r))m.set(r,[]);m.get(r).push(w)}return [...m.entries()].sort((a,b)=>b[0]-a[0])};
+  let fi=0;
+  for(const [len,w] of grp(L.ops.flatMap(o=>o.headers.map(h=>[h.s1-h.s0,o.id]))))rows.push({id:'F'+(++fi),name:'Výměna',prof:'120×200',n:w.length,len,cuts:'oba konce 90°',where:[...new Set(w)].map(x=>x==='K'?'komín':'okno '+x).join(', ')});
+  let id='G';for(const [len,w] of grp(L.ops.flatMap(o=>o.jambs.map(j=>[j.t1-j.t0,o.id]))))rows.push({id,name:'Pomocná krokev u okna',prof:'120×200',n:w.length,len,cuts:'oba konce 90°',where:[...new Set(w)].join(', ')});
+  const nk=L.pairs.filter(p=>p.kl).length,klLen=Math.round(P.W-2*(D.klBot-D.A0-D.RT));
+  rows.push({id:'H',name:'Kleština',prof:'60×180',n:2*nk,len:klLen,cuts:`oba konce 45° do lichoběžníku, horní hrana ${fmt(klLen-2*P.klH)}`,where:`${nk} vazeb, po prkně z každé strany`});
+  const pz=P.verge1-P.verge0,splice=9300,lap=500,pa=splice+lap/2-P.verge0,pb=P.verge1-(splice-lap/2);
+  rows.push({id:'I',name:'Pozednice',prof:'160×140',n:4,len:Math.max(pa,pb),cuts:`jeden konec 90°, druhý šikmý plát ${lap} mm`,where:`2 kusy na každou stranu, spoj nad kotvou v s ≈ ${fmt(splice)}`});
+  const topLen=poly=>{const tt=poly.map(q=>TP(D,q[0],q[1])).filter(q=>q[1]>199.5).map(q=>q[0]);return Math.round(Math.max(...tt)-Math.min(...tt))};
+  for(const r of rafters)rows.push({id:'J',name:'Kontralať',prof:'50×60',n:r.n,len:topLen(r.poly),cuts:'oba konce 90°',where:r.id==='A'?'na každou krokev':`na díl ${r.id}`});
+  let h='<thead><tr><th>Poz.</th><th>Prvek</th><th>Profil</th><th class="n">Ks</th><th class="n">Délka</th><th>Řezy</th><th>Kde</th></tr></thead><tbody>';
+  for(const r of rows)h+=`<tr><td><b>${r.id}</b></td><td>${r.name}</td><td>${r.prof}</td><td class="n">${r.n}</td><td class="n">${fmt(r.len)}</td><td>${r.cuts}</td><td>${r.where}</td></tr>`;
+  document.getElementById('cutTable').innerHTML=h+'</tbody>';
+  const box=document.getElementById('cutPieces');box.replaceChildren();
+  for(const r of rafters){const d=document.createElement('div');d.className='piece';d.innerHTML=`<h3>${r.id} · ${r.name} · ${r.n} ks · 120×200 · přířez ${fmt(r.len)}</h3>`;const sc=document.createElement('div');sc.className='scroll';sc.appendChild(pieceSvg(D,r.poly,r.name));d.appendChild(sc);
+    const p=document.createElement('p');p.textContent=r.id==='A'?`Všechny krokve jsou stejné, vyplatí se udělat šablonu. Pata i vrchol svisle, oba řezy rovnoběžné. Zářez na pozednici: svislá i vodorovná stěna ${P.seatX-P.plateX} mm. Zářez na vaznici: ${P.ridgeSeat} mm. Mezi zářezy je ${fmt(Math.round((P.W/2-P.ridgeSeat-P.seatX)*SQ))} mm po spodní hraně.`:`Kde: ${r.where.join(', ')}.`;d.appendChild(p);box.appendChild(d)}
+  {const d=document.createElement('div');d.className='piece';d.innerHTML=`<h3>H · Kleština · ${2*nk} ks · 60×180 · přířez ${fmt(klLen)}</h3>`;const sc=document.createElement('div');sc.className='scroll';sc.appendChild(boardSvg(klLen,P.klH,true,'Kleština'));d.appendChild(sc);const p=document.createElement('p');p.textContent='Konce seříznout 45° rovnoběžně s krokví, takže prkno je lichoběžník. Ke každé krokvi 2 šrouby M12.';d.appendChild(p);box.appendChild(d)}
+  // Steel.
+  const cols=L.cols,sr=[];const r2=cols.find(c=>c.proposal);
+  if(r2)sr.push(['Vaznice',P.uName,'2 + 2',`${fmt(r2.s-P.verge0)} + ${fmt(P.verge1-r2.s)}`,'po dvou přírubami k sobě, svařit do truhlíku 150 × 200; spoj nad R2 čelními deskami']);
+  else{const sx=ridgeSplices(L),cuts=[P.verge0,...sx,P.verge1];sr.push(['Vaznice',P.uName,cuts.slice(1).map(()=>'2').join(' + '),cuts.slice(1).map((s,i)=>fmt(s-cuts[i])).join(' + '),`po dvou přírubami k sobě, svařit do truhlíku ${P.ridgeW} × ${P.ridgeH}; spoje čelními deskami v místech nulového momentu s ≈ ${sx.map(fmt).join(' a ')}`])}
+  for(const c of cols){if(c.door)sr.push([`Rám ${c.id} kolem dveří`,'2× U140','2 stojky + příčel + sloup',`${fmt(D.doorHead+10-P.panelTop)} · 1 120 · ${fmt(D.ridgeBot-D.doorHead-150)}`,'stojky z podlahy na příčel, sloup z příčle pod vaznici']);
+    else sr.push([`Rám ${c.id} ve stěnách chodby (návrh)`,'2× U140','2 stojky + příčel + sloup',`${fmt(D.ceil+10-P.panelTop)} · ${fmt(r2Geo().bar[1]-r2Geo().bar[0])} · ${fmt(D.ridgeBot-D.ceil-150)}`,`stojky ve stěnách chodby (světlá šířka ${fmt(P.corrW)}), příčel nad podhledem mezi vazbami`])}
+  document.getElementById('steelTable').innerHTML='<thead><tr><th>Prvek</th><th>Profil</th><th>Ks</th><th class="n">Délky</th><th>Poznámka</th></tr></thead><tbody>'+sr.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="n">${r[3]}</td><td>${r[4]}</td></tr>`).join('')+'</tbody>';
+}
+
+// ---------- Wiring ----------
+const show={house:true,kl:true,open:true,bat:false,walls:false};
+function render(){
+  const L=layout();
+  upload(buildScene(L,show));
+  drawCross(L);drawPlan(L);drawLong(L);drawDetA(L);drawDetB(L);
+  facts(L,tables(L));cutList(L);
+}
+document.querySelectorAll('[data-g]').forEach(c=>c.addEventListener('change',()=>{show[c.dataset.g]=c.checked;upload(buildScene(layout(),show))}));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{Object.assign(V,VIEWS[b.dataset.view]);document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()}));
+document.querySelectorAll('[data-h]').forEach(b=>b.addEventListener('click',()=>{P.panelTop=b.dataset.h==='A'?3175:3150;document.querySelectorAll('[data-h]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
+document.querySelectorAll('[data-rb]').forEach(b=>b.addEventListener('click',()=>{setRidge(b.dataset.rb==='R2');document.querySelectorAll('[data-rb]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('corrW').disabled=!P.r2;render()}));
+document.getElementById('corrW').addEventListener('change',e=>{const v=parseFloat(e.target.value);if(Number.isFinite(v)&&v>=900&&v<=2500){P.corrW=v;render()}});
+document.getElementById('printCut').addEventListener('click',()=>{document.body.classList.add('print-cut');window.print();document.body.classList.remove('print-cut')});
+initGL();render();
+</script>
+</body>
+</html>

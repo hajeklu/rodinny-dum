@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Výškový řez domu · Dům Hájek</title>
-<meta name="description" content="Pracovní výškový řez domu Hájek: hrubá deska, skladba podlahy, HS portál, IPE 240, panely, nadezdívka a věnec.">
+<meta name="description" content="Pracovní výškový řez domu Hájek: hrubá deska, skladba podlahy, HS portál, 2× IPE 240 na betonovém polštáři, řady SOLBET 240, panely, nadezdívka a věnec.">
 <style>
 :root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
 *{box-sizing:border-box}body{margin:0}a{color:#24533d}
@@ -13,40 +13,74 @@ header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4
 .nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{display:inline-block;text-decoration:none;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:9px 12px;font-size:13px}.nav a:hover,.nav a[aria-current=page]{background:#264b39;border-color:#264b39;color:#fff}
 main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
 .lead{max-width:900px;margin:8px 0 18px;color:#526359}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}.chip{border-radius:999px;background:#e4ece5;color:#375443;padding:6px 11px;font-size:12px}
-.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 14px;color:#514a3d}.notice strong{color:#42351d}
+.variant{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
+.variant button{font:inherit;text-align:left;cursor:pointer;border:1px solid #cad6cc;background:#fff;border-radius:12px;padding:12px 14px;color:#284638}
+.variant button:hover{background:#eef4ef}.variant button[aria-checked=true]{border-color:#264b39;background:#264b39;color:#fff}
+.variant b{display:block;font-size:15px;margin-bottom:2px}.variant span{display:block;font-size:12.5px;opacity:.88}
 .card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
-.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}.card h3{font-size:15px;margin:0 0 8px;color:#294636}
 svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+svg.defs{position:absolute;width:0;height:0;border:0;overflow:hidden}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll svg{min-width:720px}.scroll svg.detail{min-width:560px}
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.checks span{border-radius:8px;padding:6px 10px;font-size:12.5px}
+.ok{background:#e6f1e8;color:#24533d}.warn{background:#fff1eb;color:#7a3a28;border:1px solid #e6b9a8}.info{background:#fbf6ea;color:#5a4a26;border:1px solid #e2d4b7}
+.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}
+figure{margin:0}figcaption{font-size:13px;color:#66756b;margin-top:6px}
 .levels{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}.levels th,.levels td{text-align:left;padding:9px 10px;border-bottom:1px solid #e4e9e5;vertical-align:top}.levels th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em}.levels td:last-child,.levels th:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pole{margin-top:0}.pole td,.pole th{padding:6px 8px}.pole td:first-child{white-space:nowrap;font-weight:650;color:#30463a}.pole td:nth-child(2){color:#59685e}.pole tr.hl td{background:#f6f1e3}.pole tr.top td{background:#eef2ef}
+.steps{margin:6px 0 0;padding-left:22px;font-size:13.5px;color:#3f5047}.steps li{margin:6px 0}.steps b{color:#23382d}
+details.inputs{margin-top:18px;border:1px solid #dce4dd;border-radius:10px;padding:10px 14px;background:#f7f9f6}
+details.inputs summary{cursor:pointer;font-weight:650;color:#284638}
+.inp{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px 16px;margin:12px 0 4px}
+.inp label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#59685e}
+.inp input{font:inherit;font-size:14px;padding:7px 9px;border:1px solid #cad6cc;border-radius:7px;width:100%;background:#fff}
+.inputs button{font:inherit;font-size:13px;cursor:pointer;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:7px 12px;margin-top:8px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
 .notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}
 footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
-@media(max-width:700px){.grid,.notes{grid-template-columns:1fr}.levels{font-size:12px}.levels th,.levels td{padding:8px 6px}header{align-items:flex-start}}
-@media print{body{background:#fff}.nav{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}.notice{break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+svg .label{font:600 13px system-ui,sans-serif;fill:#34483d}svg .tiny{font:11px system-ui,sans-serif;fill:#5d6c62}svg .dimtxt{font:700 12px system-ui,sans-serif;fill:#375744}
+svg .lv{font:700 12px system-ui,sans-serif;fill:#23382d}svg .white{fill:#fff}svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:round}
+svg .dl{stroke:#496957;stroke-width:1.2;fill:none}svg .ext{stroke:#9fb0a4;stroke-width:.8;stroke-dasharray:3 3}svg .lead{stroke:#7b8a80;stroke-width:.9;fill:none}
+.split>*{min-width:0}
+@media(max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.grid,.notes,.variant{grid-template-columns:1fr}.levels{font-size:12px}.levels th,.levels td{padding:8px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}.nav,details.inputs{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}.notice{break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}.scroll svg{min-width:0}}
 </style>
+<meta name="robots" content="noindex,nofollow">
+<script src="./nav.js" defer></script>
 </head>
 <body>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="pConc" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#d9ddd9"/><circle cx="3" cy="4" r="1" fill="#aeb6b0"/><circle cx="9" cy="9" r="1" fill="#aeb6b0"/></pattern>
+    <pattern id="pPad" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#cbd2cc"/><path d="M0 9L9 0" stroke="#97a39a" stroke-width="1"/><circle cx="2.5" cy="2.5" r=".9" fill="#7f8b83"/></pattern>
+    <pattern id="pFloor" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#f4eedf"/><path d="M0 8L8 0" stroke="#dccfae" stroke-width="1"/></pattern>
+    <pattern id="pRing" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#c3cac5"/><circle cx="3" cy="4" r="1.1" fill="#8d998f"/><circle cx="10" cy="10" r="1.1" fill="#8d998f"/><circle cx="11" cy="3" r=".7" fill="#a3ada5"/></pattern>
+  </defs>
+</svg>
 <header>
   <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Výškový řez domu</h1><p>Pracovní řez A–A · hrubá deska, strop, nadezdívka a detail HS portálu</p></div>
-  <nav class="nav" aria-label="Stránky projektu">
-    <a href="./index.html">3D vizualizace</a>
-    <a href="./zalozeni-zdiva.html">První řada zdiva</a>
-    <a href="./rez-vyska.html" aria-current="page">Výškový řez</a>
-  </nav>
+  <nav data-nav="rez-vyska"></nav>
 </header>
 <main>
   <div class="eyebrow">Kóty v milimetrech · výšková nula = horní líc hrubé základové desky</div>
-  <p class="lead">Výškové schéma skládá dohromady dohodnutých 2 900 mm ke spodku stropních panelů, čtyři řady nadezdívky, skladbu podlahy a HS portál vysoký 2 400 mm. Výkres je pracovní geometrický podklad; nosné uložení musí potvrdit statik.</p>
-  <div class="chips"><span class="chip">SOLBET bílá 590 × 240 × 300 mm</span><span class="chip">4 řady · výška tvárnice 240 mm</span><span class="chip">stropní panely 250 mm</span><span class="chip">ŽB věnec pod panely 240 mm*</span><span class="chip">věnec nad nadezdívkou 300 mm*</span></div>
+  <p class="lead">Výškové schéma skládá dohromady 11 řad SOLBET výšky 240 mm, ŽB věnec místo 12. řady, skladbu podlahy, HS portál, překlad 2× IPE 240 podle statiky zalitý ve věnci a stropní panely 250 mm. Konce IPE leží na ZB rohu a na roznášecím betonovém polštáři, takže výšky zdiva, věnce, IPE a rámu HS musí vycházet společně. Výkres je pracovní geometrický podklad; nosné uložení musí potvrdit statik.</p>
+  <div class="chips"><span class="chip">SOLBET bílá 590 × 240 × 300 mm</span><span class="chip">11 řad · řada 240 + spára 2</span><span class="chip">ŽB věnec místo 12. řady</span><span class="chip">2× IPE 240 nad HS zalité ve věnci</span><span class="chip">roznášecí betonový polštář pod IPE</span><span class="chip">stropní panely 250 mm</span><span class="chip">věnec nad nadezdívkou 300 mm*</span></div>
 
-  <div class="notice"><strong>Základní kóta:</strong> +2 900 mm je od horního líce hrubé desky ke spodnímu líci panelů. Pro navazující kóty používám podlahu +240 mm podle aktuálního 3D modelu. Starší skladba podlahy P1 vychází přibližně na 250 mm; před založením otvorů a výrobou HS je potřeba potvrdit finální skladbu a srovnat tento rozdíl 10 mm. Pod panely je doplněný ŽB věnec; výška 240 mm je pracovní předpoklad.</div>
+  <div class="notice"><strong>Proč to na +2 900 nevychází:</strong> 240 podlaha + 2 400 rám HS + 240 IPE = 2 880 mm. Do 2 900 zbývá 20 mm, a z nich se musí vzít montážní spára nad rámem i maltové lože pod panely. Věnec to nevyřeší: dá se sice vylít na libovolnou výšku, ale IPE je v něm zalité a má pořád 240 mm. Trvat na všech třech číslech najednou nejde, proto jsou tu dvě varianty. Doporučuji variantu A: IPE položit na vršek 11. řady, věnec vylít do výšky IPE a HS nechat 2 400 se spárou 35 mm.</div>
+
+  <div class="variant" role="radiogroup" aria-label="Varianta výšek">
+    <button type="button" role="radio" data-v="A" aria-checked="true"><b>A · věnec 240 na 11. řadě (doporučuji)</b><span id="vA">—</span></button>
+    <button type="button" role="radio" data-v="B" aria-checked="false"><b>B · držet spodek panelů +2 900</b><span id="vB">—</span></button>
+  </div>
 
   <section class="card">
     <h2>Řez A–A přes štít · strop a nadezdívka</h2>
     <p class="desc">Výškové úrovně jsou vztaženy k hornímu líci hrubé desky. Kóty jsou vedené pouze šipkami; přesné úrovně jsou také v tabulce.</p>
     <svg viewBox="0 0 1080 730" role="img" aria-labelledby="secTitle secDesc">
       <title id="secTitle">Výškový řez domu od základové desky po hřeben</title>
-      <desc id="secDesc">Hrubá deska v úrovni nula, podlaha plus 240, železobetonový věnec pod panely od plus 2660 do plus 2900, panely 250, čtyři řady zdiva do plus 4118, horní věnec do plus 4418 a sedlová střecha se sklonem 45 stupňů.</desc>
+      <desc id="secDesc">Hrubá deska v úrovni nula, podlaha plus 240, jedenáct řad zdiva SOLBET, nad nimi železobetonový věnec pod stropními panely, panely 250, čtyři řady nadezdívky, horní věnec a sedlová střecha se sklonem 45 stupňů.</desc>
       <defs>
         <pattern id="conc" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#d9ddd9"/><circle cx="3" cy="4" r="1" fill="#aeb6b0"/><circle cx="9" cy="9" r="1" fill="#aeb6b0"/></pattern>
         <pattern id="block" width="58" height="14" patternUnits="userSpaceOnUse"><rect width="58" height="14" fill="#f7f8f5"/><path d="M0 13.5H58" stroke="#c9d1ca" stroke-width="1"/></pattern>
@@ -63,16 +97,17 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <text x="422" y="301" text-anchor="middle" class="label" transform="rotate(-45 422 301)">krokve 120 × 200*</text>
       <text x="646" y="301" text-anchor="middle" class="label" transform="rotate(45 646 301)">sklon 45°*</text>
       <text x="270" y="390" text-anchor="end" class="tiny">pozednice 160 × 140*</text>
-      <!-- Lower storey wall and the slab / floor build-up. -->
+      <!-- Lower storey wall: eleven SOLBET courses, then a cast ring beam in place of course 12 (the HS lintel is cast into it). -->
       <rect x="302" y="508" width="18" height="154" fill="url(#block)" stroke="#aeb8b0"/>
       <rect x="302" y="494" width="18" height="14" fill="url(#conc)" stroke="#7e8981"/>
       <rect x="748" y="508" width="18" height="154" fill="url(#block)" stroke="#aeb8b0"/>
       <rect x="748" y="494" width="18" height="14" fill="url(#conc)" stroke="#7e8981"/>
-      <text x="347" y="520" class="tiny">ŽB věnec pod panely · 240*</text>
+      <text x="347" y="520" class="tiny">ŽB věnec pod panely místo 12. řady · nad HS v něm 2× IPE 240</text>
+      <text x="347" y="536" class="tiny">11 řad SOLBET</text>
       <rect x="282" y="662" width="504" height="13" fill="url(#conc)" stroke="#9ca69e"/>
       <rect x="320" y="648" width="428" height="14" fill="#eadfca" stroke="#c9b991"/>
       <text x="534" y="658" text-anchor="middle" class="tiny">pracovní skladba podlahy 240</text>
-      <!-- Hollow-core panels, underside at +2.900 and top at +3.150. -->
+      <!-- Hollow-core panels on the masonry. -->
       <rect x="302" y="479" width="464" height="15" fill="#aeb8b3" stroke="#65736a"/>
       <path d="M360 480v13 M418 480v13 M476 480v13 M534 480v13 M592 480v13 M650 480v13 M708 480v13" stroke="#829087" stroke-width="1"/>
       <text x="534" y="470" text-anchor="middle" class="label">stropní panely 250</text>
@@ -86,10 +121,9 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <rect x="302" y="406" width="18" height="17" fill="url(#conc)" stroke="#7e8981"/>
       <rect x="748" y="406" width="18" height="17" fill="url(#conc)" stroke="#7e8981"/>
       <text x="347" y="417" class="tiny">věnec ŽB 300*</text>
-      <!-- Dimensions use arrow lines only; level values are listed below. -->
-      <!-- Principal vertical dimension +2.900 -->
+      <!-- Principal vertical dimension: slab to panel underside, value set by the chosen variant. -->
       <line x1="194" y1="662" x2="194" y2="494" stroke="#496957" stroke-width="1.7" marker-start="url(#arr)" marker-end="url(#arr)"/>
-      <text x="180" y="578" text-anchor="middle" class="dimtxt" transform="rotate(-90 180 578)">2 900</text>
+      <text id="aaMain" x="180" y="578" text-anchor="middle" class="dimtxt" transform="rotate(-90 180 578)">2 900</text>
       <text x="194" y="686" text-anchor="middle" class="tiny">od hrubé desky</text>
       <!-- Course, panel, and ring-beam dimensions: double-arrow style. -->
       <line x1="920" y1="479" x2="920" y2="423" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
@@ -97,101 +131,329 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <line x1="920" y1="494" x2="920" y2="479" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
       <text x="934" y="490" class="tiny">250</text>
       <line x1="978" y1="508" x2="978" y2="494" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
-      <text x="992" y="504" class="tiny">240*</text>
+      <text id="aaRing" x="992" y="504" class="tiny">240</text>
       <line x1="978" y1="423" x2="978" y2="406" stroke="#496957" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
       <text x="992" y="418" class="tiny">300*</text>
       <text x="534" y="710" text-anchor="middle" class="tiny">řez příčným směrem přes dům · obrys střechy je pracovní</text>
-      <style>
-        .label{font:600 13px system-ui,sans-serif;fill:#34483d}.tiny{font:11px system-ui,sans-serif;fill:#5d6c62}.dimtxt{font:700 13px system-ui,sans-serif;fill:#375744}
-      </style>
     </svg>
     <table class="levels" aria-label="Výškové úrovně">
-      <thead><tr><th>Prvek / úroveň</th><th>Výška od hrubé desky</th><th>Rozměr</th></tr></thead>
-      <tbody>
-        <tr><td>Horní líc hrubé desky</td><td>±0</td><td>datum</td></tr>
-        <tr><td>Hotová podlaha 1. NP – pracovní skladba</td><td>+240</td><td>240</td></tr>
-        <tr><td>Vršek rámu HS</td><td>+2 640</td><td>+240 + 2 400</td></tr>
-        <tr><td>Spodek věnce pod panely / IPE nad HS</td><td>+2 660</td><td>věnec 240* · mezera nad rámem 20</td></tr>
-        <tr><td>Vršek věnce / vršek IPE / spodek panelů</td><td>+2 900</td><td>základní výšková kóta</td></tr>
-        <tr><td>Vrchní líc panelů</td><td>+3 150</td><td>panel 250</td></tr>
-        <tr><td>Vršek 4 řad SOLBET</td><td>+4 118</td><td>4 × 240 + tenké spáry ≈ 968</td></tr>
-        <tr><td>Vršek předpokládaného věnce</td><td>+4 418</td><td>věnec 300</td></tr>
-      </tbody>
+      <thead><tr><th>Prvek / úroveň</th><th>Rozměr</th><th>Výška od hrubé desky</th></tr></thead>
+      <tbody id="levels"></tbody>
     </table>
   </section>
 
-  <section class="card">
+  <section class="card" id="hs">
     <h2>Boční pohled na HS portál a překlad</h2>
-    <p class="desc">Portál navazuje na kout se ztraceným bedněním. V půdorysu začíná hrubý otvor HS hned za ZB; mezi nimi není vložená tvárnice.</p>
-    <svg viewBox="0 0 1080 540" role="img" aria-labelledby="hsTitle hsDesc">
-      <title id="hsTitle">Výškový detail HS portálu s dvojicí IPE 240</title>
-      <desc id="hsDesc">Železobetonový věnec pod stropními panely je nad plnými částmi zdiva. Nad rámem HS je pracovní mezera 20 mm a dvojice IPE 240, jejíž horní líc navazuje na spodek panelů v úrovni plus 2900.</desc>
-      <defs>
-        <pattern id="masonry" width="24" height="20" patternUnits="userSpaceOnUse"><rect width="24" height="20" fill="#e8ece7"/><path d="M0 19.5H24M12 0V19" stroke="#c8d1c9" stroke-width="1"/></pattern>
-        <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#496957"/></marker>
-      </defs>
-      <rect width="1080" height="540" rx="10" fill="#fbfcfa"/>
-      <!-- Masonry piers either side of the portal; dimensions of bearing are not specified. -->
-      <rect x="140" y="280" width="266" height="200" fill="url(#masonry)" stroke="#aab5ac"/>
-      <rect x="634" y="280" width="306" height="200" fill="url(#masonry)" stroke="#aab5ac"/>
-      <rect x="140" y="262" width="266" height="18" fill="#d9ddd9" stroke="#7e8981"/>
-      <rect x="634" y="262" width="306" height="18" fill="#d9ddd9" stroke="#7e8981"/>
-      <!-- Rough opening width 3,040; frame width 3,000, 20 mm each jamb. -->
-      <rect x="406" y="282" width="228" height="180" fill="#f4fafb" stroke="#558394" stroke-width="1.6" stroke-dasharray="7 5"/>
-      <rect x="407.5" y="282" width="225" height="180" fill="#dcebef" stroke="#26718a" stroke-width="3"/>
-      <path d="M407.5 282V462H632.5V282" fill="none" stroke="#26718a" stroke-width="4"/>
-      <rect x="407.5" y="458" width="225" height="7" fill="#9ab7bd"/>
-      <text x="520" y="370" text-anchor="middle" class="label">HS rám</text>
-      <text x="520" y="392" text-anchor="middle" class="label">3 000 × 2 400</text>
-      <!-- Steel lintel: the top is aligned with panel underside; support length is not dimensioned. -->
-      <rect x="386" y="262" width="268" height="18" rx="2" fill="#c39a62" stroke="#82613a"/>
-      <path d="M394 267H646 M394 275H646" stroke="#76552f" stroke-width="2"/>
-      <text x="520" y="252" text-anchor="middle" class="label">2× IPE 240 · nad rámem pracovní mezera 20</text>
-      <!-- Panel bearing plane and 250 mm panel strip. -->
-      <rect x="140" y="243" width="800" height="19" fill="#aeb8b3" stroke="#65736a"/>
-      <path d="M220 244v17 M300 244v17 M700 244v17 M780 244v17 M860 244v17" stroke="#829087"/>
-      <text x="800" y="235" class="tiny">panel 250 · spodní líc +2,900</text>
-      <text x="800" y="217" class="tiny">ŽB věnec pod panely · 240*</text>
-      <!-- Finished floor and slab datum. -->
-      <rect x="140" y="462" width="800" height="18" fill="#d9ddd9" stroke="#9ca69e"/>
-      <line x1="116" y1="462" x2="946" y2="462" stroke="#8b6f46" stroke-width="2"/>
-      <text x="948" y="466" class="tiny">+0,240 · hotová podlaha</text>
-      <line x1="116" y1="480" x2="946" y2="480" stroke="#89968d" stroke-dasharray="5 4"/>
-      <text x="948" y="484" class="tiny">±0,000 hrubá deska</text>
-      <!-- Vertical dimensions -->
-      <line x1="190" y1="462" x2="190" y2="282" stroke="#496957" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
-      <text x="176" y="374" text-anchor="middle" class="dimtxt" transform="rotate(-90 176 374)">2 400 · výška rámu</text>
-      <line x1="684" y1="280" x2="684" y2="262" stroke="#496957" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
-      <text x="697" y="276" class="tiny">240</text>
-      <line x1="750" y1="282" x2="750" y2="280" stroke="#26718a" stroke-width="2"/>
-      <path d="M744 282h12 M744 280h12" stroke="#26718a" stroke-width="2"/>
-      <text x="762" y="290" class="tiny">20 mezera*</text>
-      <!-- Horizontal dimensions -->
-      <line x1="406" y1="508" x2="634" y2="508" stroke="#496957" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
-      <text x="520" y="501" text-anchor="middle" class="dimtxt">hrubý otvor 3 040</text>
-      <line x1="407.5" y1="528" x2="632.5" y2="528" stroke="#26718a" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
-      <text x="520" y="524" text-anchor="middle" class="tiny">rám 3 000 · vůle 20 mm po stranách</text>
-      <style>
-        .label{font:600 13px system-ui,sans-serif;fill:#34483d}.tiny{font:11px system-ui,sans-serif;fill:#5d6c62}.dimtxt{font:700 12px system-ui,sans-serif;fill:#375744}
-      </style>
-    </svg>
+    <p class="desc">Pohled zvenku na pravou boční stěnu B, nosná konstrukce bez EPS a omítek. Vlevo je roh se ztraceným bedněním (ZB) u předního štítu, hrubý otvor HS začíná hned za ním. Vpravo pokračuje zdivo a pod koncem překladu je místo jedné tvárnice roznášecí betonový polštář. Místo 12. řady je ŽB věnec a 2× IPE jsou v něm zalité (ve výkresu čárkovaně). Všechny výšky se dopočítávají z výšky řady.</p>
+    <div class="checks" id="checks"></div>
+    <div class="scroll"><svg id="hsView" viewBox="0 0 1120 675" role="img" aria-labelledby="hsTitle hsDesc">
+      <title id="hsTitle">Pohled na HS portál, překlad 2× IPE 240 a řady zdiva</title>
+      <desc id="hsDesc">Jedenáct řad tvárnic SOLBET výšky 240 mm, nad nimi železobetonový věnec. Nad HS portálem je ve věnci zalitá dvojice IPE 240 uložená vlevo na železobetonovém rohu a vpravo na betonovém polštáři v jedenácté řadě, nad tím maltové lože a stropní panely.</desc>
+      <g id="hsLayer"></g>
+    </svg></div>
+    <div class="split">
+      <figure>
+        <div class="scroll"><svg id="hsDetail" class="detail" viewBox="0 0 800 540" role="img" aria-labelledby="dTitle">
+          <title id="dTitle">Detail 1: uložení IPE na betonovém polštáři</title>
+          <defs><clipPath id="dClip"><rect x="20" y="24" width="580" height="440"/></clipPath></defs>
+          <g id="dLayer"></g>
+        </svg></div>
+        <figcaption>Detail 1 · pravé uložení překladu, zvětšeno (vlevo hlava rámu HS, vpravo řady 10–11 a věnec).</figcaption>
+      </figure>
+      <div>
+        <h3>Výšková lať · horní líce řad</h3>
+        <table class="levels pole" aria-label="Horní líce jednotlivých řad">
+          <thead><tr><th>Řada</th><th>Co tam je</th><th>Horní líc</th></tr></thead>
+          <tbody id="pole"></tbody>
+        </table>
+      </div>
+    </div>
+    <h3 style="margin-top:20px">Postup na stavbě</h3>
+    <ol class="steps" id="steps"></ol>
+    <details class="inputs">
+      <summary>Upravit vstupní hodnoty (např. podle skutečně vyzděné 1. řady)</summary>
+      <div class="inp">
+        <label>Horní líc 1. řady nad hrubou deskou<input type="number" id="i-t1" step="1"></label>
+        <label>Výška řady včetně spáry<input type="number" id="i-m" step="1"></label>
+        <label>Hotová podlaha = spodek rámu HS<input type="number" id="i-floor" step="1"></label>
+        <label>Výška rámu HS (objednaná)<input type="number" id="i-frame" step="10"></label>
+        <label>Maltové lože pod panely<input type="number" id="i-bed" step="1"></label>
+        <label>Min. montážní spára nad rámem<input type="number" id="i-gap" step="1"></label>
+        <label>Varianta B: spodek panelů<input type="number" id="i-target" step="1"></label>
+      </div>
+      <button type="button" id="reset">Obnovit výchozí hodnoty</button>
+    </details>
   </section>
 
   <section class="card">
     <h2>Rozhodující kóty a pracovní předpoklady</h2>
     <div class="grid">
-      <div class="fact"><b>Portál a překlad</b><span>Rám HS: 3 000 × 2 400 mm. Hrubá šířka otvoru 3 040 mm při vůli 20 mm na každém ostění. Horní mezera 20 mm je pracovní předpoklad. Práh a spodní detail podle výrobce portálu.</span></div>
-      <div class="fact"><b>IPE a panely</b><span>ŽB věnec pod panely je zakreslený pracovně jako 240 mm. Nad HS otvor je v tomto schématu přemostěn 2×IPE240 ve stejné výškové zóně; vrch vychází na +2 900. Délku, uložení a propojení oceli s věncem a panely potvrdit se statikem.</span></div>
-      <div class="fact"><b>Nadezdívka</b><span>Čtyři řady SOLBET bílé 590 × 240 × 300 mm (délka × výška × tloušťka). Čistá výška 960 mm; s tenkými spárami je ve stávajícím modelu uvažováno přibližně 968 mm.</span></div>
+      <div class="fact"><b>Portál a překlad</b><span>Rám HS 3 000 × 2 400 mm (ve variantě B nejvýš 2 390). Hrubý otvor 3 040 mm na šířku při vůli 20 mm na každém ostění, nahoře končí spodkem IPE. Práh a spodní detail podle výrobce portálu.</span></div>
+      <div class="fact"><b>IPE, věnec a panely</b><span>Statika (Ing. Khol, 04/2024) předepisuje nad otvory 3,0 m 2× IPE 240. Délka 3 640 = 300 na ZB rohu + 3 040 + 300 na polštáři. IPE se nejdřív usadí na ZB roh a polštář, pak se zalijí do ŽB věnce, který nahrazuje 12. řadu. Vršek věnce = vršek IPE; pokud statik bude chtít beton i nad horní pásnicí, zvednou se panely o tuto hodnotu. Uložení, polštář, výztuž věnce a spojení nosníků potvrdit se statikem.</span></div>
+      <div class="fact"><b>Zdivo</b><span>SOLBET bílá 590 × 240 × 300 mm (délka × výška × tloušťka) na tenkovrstvé lepidlo, řada 240 + 2 mm. Založení (hydroizolace + zakládací malta) asi 15 mm, horní líc 1. řady +255, 11 řad do +2 675. Nadezdívka 4 řady ≈ 968 mm.</span></div>
       <div class="fact"><b>Střecha a věnec</b><span>Věnec 300 mm, sklon 45°, krokve 120 × 200 mm, pozednice 160 × 140 mm a hřeben 2×U200 jsou pracovní hodnoty z podkladů. Výška střechy a detaily styku ověřit podle statiky a skladby střechy.</span></div>
     </div>
     <div class="notes" style="margin-top:14px">
-      <div class="note"><strong>Podlaha:</strong> nyní je ve výkresu +240 mm podle 3D modelu. Starší skladba P1 vychází asi na +250 mm. Pokud se potvrdí 250 mm, kóty HS rámu vůči hrubé desce se zvýší o 10 mm a je nutné znovu sladit hlavu portálu s IPE a panely.</div>
-      <div class="note"><strong>Roh u HS:</strong> ztracené bednění je v koutě a otvor HS na něj navazuje bez vložené tvárnice. Přesné uložení první řady, půdorysné souřadnice a montážní vůle jsou na stránce <a href="./zalozeni-zdiva.html">První řada zdiva</a>.</div>
+      <div class="note"><strong>Šířka věnce s IPE:</strong> dva IPE 240 vedle sebe mají asi 250 mm (2 × 120 + mezera), stěna 300. Do věncovky s EPS se nevejdou. Nad HS a na uloženích proto bednit věnec na celou šířku 300 a tepelný most nechat na ETICS, případně jiné uspořádání ověřit se statikem.</div>
+      <div class="note"><strong>Stejně na všech stěnách:</strong> věnec se vylévá na jednu kótu po celém obvodu pod panely, protože panely potřebují jednu rovinu. Horní líc věnce stáhnout podle nivelace přesně na výšku horního líce IPE.</div>
+      <div class="note"><strong>Podlaha 250 a práh HS:</strong> pokud se potvrdí skladba P1 asi 250 mm, rám HS se zvedne o 10 mm. Ve variantě A zbude spára 25 mm, ve variantě B musí mít rám nejvýš 2 380. Pokud výrobce osazuje rám pod úroveň hotové podlahy (zapuštěný práh), zvětší se spára nahoře přesně o tuto hodnotu.</div>
+      <div class="note"><strong>Roh FIX–HS:</strong> FIX má hrubý otvor 2 040 mm, víc než 1,8 m, do kterých statika připouští překlady Ytong NOP. Pokud bude i nad FIX ocel, potkají se oba páry IPE na ZB rohu ve stejné výšce uvnitř věnce. Jeden pár pak musí rohem projít a druhý skončit u jeho boku; vyřešit se statikem. Půdorys rohu je na stránce <a href="./zalozeni-zdiva.html">První řada zdiva</a>.</div>
     </div>
   </section>
 
-  <footer>Pracovní výškový řez podle aktuální 3D studie a dohodnutých kót. Rozměr věnce pod panely je předpoklad 240 mm. Výšku věnce, uložení IPE a panelů, práh a ztužení potvrdit se statikem a dodavatelem.</footer>
+  <footer>Pracovní výškový řez podle aktuální 3D studie a statiky. Hodnoty označené * a uložení IPE, polštář, výztuž věnce, práh a ztužení potvrdit se statikem a dodavatelem. 3D model zatím počítá se spodkem panelů +2 900.</footer>
 </main>
+<script>
+'use strict';
+const NS='http://www.w3.org/2000/svg',NB=' ';
+const fmt=n=>{const v=Math.round(n),a=String(Math.abs(v)).replace(/\B(?=(\d{3})+(?!\d))/g,NB);return (v<0?'−':'')+a};
+const lvl=n=>Math.round(n)===0?'±0':(n>0?'+':'−')+fmt(Math.abs(n));
+const el=(tag,attrs={},parent=null,text=null)=>{const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text!==null)n.textContent=text;if(parent)parent.appendChild(n);return n};
+
+// Fixed geometry along wall B (s = 0 at the front corner) and section sizes, in mm.
+const K={block:240,ipe:240,tf:9.8,panel:250,zb:300,open:3040,side:20,bear:300,blockL:590,half:295,ring:300};
+K.openA=K.zb;K.openB=K.zb+K.open;K.ipeEnd=K.openB+K.bear;K.padB=K.openB+K.blockL;
+const SMAX=4815;
+const DEF={t1:255,m:242,floor:240,frame:2400,bed:10,gap:20,target:2900};
+let inp={...DEF},variant=location.hash==='#varianta-b'?'B':'A';
+
+// Height chain. Eleven courses of blocks, then a cast ring beam in place of course 12 with the IPE pair inside it.
+// A: the IPE sits on top of course 11 (pad and ZB corner), the ring beam is cast up to the top of the IPE.
+// B: panel underside fixed, so the IPE sits 25 mm lower on a lower pad, the ring beam is lower and the HS frame may have to shrink.
+function calc(v){
+  const {t1,m,floor,frame,bed,gap,target}=inp,j=m-K.block,T=c=>t1+(c-1)*m,r={variant:v,j,T,base:t1-K.block};
+  r.ringBottom=T(11);
+  if(v==='A'){r.ipeBottom=T(11);r.ringTop=r.ipeBottom+K.ipe;r.panelBottom=r.ringTop+bed}
+  else{r.panelBottom=target;r.ringTop=target-bed;r.ipeBottom=r.ringTop-K.ipe}
+  r.ipeTop=r.ringTop;r.ringH=r.ringTop-r.ringBottom;r.drop=r.ringBottom-r.ipeBottom;
+  r.maxFrame=Math.floor((r.ipeBottom-gap-floor)/10)*10;
+  r.frameH=v==='A'?frame:Math.min(frame,r.maxFrame);
+  r.padBottom=T(10);r.padTop=r.ipeBottom;r.padH=r.padTop-r.padBottom;
+  r.frameTop=floor+r.frameH;r.gap=r.ipeBottom-r.frameTop;
+  r.bed=r.panelBottom-r.ringTop;
+  r.panelTop=r.panelBottom+K.panel;r.kneeTop=r.panelTop+4*m;r.capTop=r.kneeTop+K.ring;
+  r.diff=r.panelBottom-2900;
+  return r;
+}
+
+// Individual blocks right of the opening in running bond; odd courses start whole at the jamb, even ones with a half.
+function pieces(r){
+  const out=[];
+  const row=(c,from,off,za,zb)=>{if(zb-za<5)return;const e=[from];for(let s=from+off;s<SMAX-1;s+=K.blockL)if(s>from+1)e.push(s);e.push(SMAX);for(let i=0;i<e.length-1;i++)out.push({c,sa:e[i],sb:e[i+1],za,zb})};
+  for(let c=1;c<=11;c++)row(c,c===11?K.padB:K.openB,c%2?0:K.half,r.T(c)-K.block,r.T(c));
+  for(const p of out)p.cut=(p.zb-p.za<K.block-1)||(p.sb-p.sa<K.blockL-1&&p.sb<SMAX-1);
+  return out;
+}
+
+// Shared drawing of the structure; V maps mm to px.
+function scene(g,V,r){
+  const {X,Y,k}=V;
+  const R=(sa,sb,za,zb,a)=>el('rect',{x:X(sa),y:Y(zb),width:Math.max(0,(sb-sa)*k),height:Math.max(0,(zb-za)*k),...a},g);
+  const L=(s1,z1,s2,z2,a)=>el('line',{x1:X(s1),y1:Y(z1),x2:X(s2),y2:Y(z2),...a},g);
+  R(0,SMAX,-150,0,{fill:'url(#pConc)',stroke:'#9ca69e'});
+  R(K.openA,K.openB,0,inp.floor,{fill:'url(#pFloor)',stroke:'#cdbf9c'});
+  R(K.openA,K.openB,inp.floor,r.ipeBottom,{fill:'#f3f8f9'});
+  R(0,SMAX,r.ringTop,r.panelBottom,{fill:'#5f6762'});
+  R(0,K.zb,0,r.base,{fill:'#5f6762'});R(K.openB,SMAX,0,r.base,{fill:'#5f6762'});
+  R(0,K.zb,r.base,r.ipeBottom,{fill:'url(#pConc)',stroke:'#78837b'});
+  for(let z=r.base+250;z<r.ipeBottom-30;z+=250)L(0,z,K.zb,z,{stroke:'#a9b2ab','stroke-width':1});
+  for(const p of pieces(r))R(p.sa,p.sb,p.za,p.zb,{fill:p.cut?'#f6ecd0':'#eef1ec',stroke:p.cut?'#b49a55':'#a7b2a9','stroke-width':1});
+  R(K.openB,K.padB,r.padBottom,r.padTop,{fill:'url(#pPad)',stroke:'#4f5a53','stroke-width':1.4});
+  // Ring beam in place of course 12; over the corner, the opening and the pad it reaches down to the IPE.
+  const low=Math.min(r.ipeBottom,r.ringBottom);
+  el('path',{d:`M${X(0)} ${Y(low)}H${X(K.padB)}V${Y(r.ringBottom)}H${X(SMAX)}V${Y(r.ringTop)}H${X(0)}Z`,fill:'url(#pRing)',stroke:'#4f5a53','stroke-width':1.3},g);
+  // IPE pair cast inside the ring beam: hidden edges, dashed.
+  R(0,K.ipeEnd,r.ipeBottom,r.ipeTop,{fill:'#5f7080','fill-opacity':.82,stroke:'#26313a','stroke-width':1.3,'stroke-dasharray':'8 4'});
+  L(0,r.ipeTop-K.tf,K.ipeEnd,r.ipeTop-K.tf,{stroke:'#26313a','stroke-width':.8,'stroke-dasharray':'8 4'});
+  L(0,r.ipeBottom+K.tf,K.ipeEnd,r.ipeBottom+K.tf,{stroke:'#26313a','stroke-width':.8,'stroke-dasharray':'8 4'});
+  R(0,SMAX,r.panelBottom,r.panelTop,{fill:'#b4bdb8',stroke:'#65736a'});
+  for(let s0=K.zb-1200;s0<SMAX;s0+=1200){
+    if(s0>0)L(s0,r.panelBottom,s0,r.panelTop,{stroke:'#65736a'});
+    for(let i=0;i<6;i++){const s=s0+100+i*200;if(s-85>=0&&s+85<=SMAX)el('circle',{cx:X(s),cy:Y(r.panelBottom+K.panel/2),r:85*k,fill:'#cad1cc',stroke:'#98a49c','stroke-width':.6},g)}
+  }
+  const fa=K.openA+K.side,fb=K.openB-K.side,mid=(fa+fb)/2,z0=inp.floor,z1=r.frameTop;
+  R(fa,fb,z0,z1,{fill:'#d9e9ee',stroke:'#26718a','stroke-width':2.4});
+  R(fa+70,mid,z0+90,z1-70,{fill:'#e8f2f5',stroke:'#26718a','stroke-width':1.3});
+  R(mid,fb-70,z0+90,z1-70,{fill:'#e8f2f5',stroke:'#26718a','stroke-width':1.3});
+  R(fa,fb,z0,z0+40,{fill:'#8fb0b8'});
+  L(0,inp.floor,SMAX,inp.floor,{stroke:'#8b6f46','stroke-width':1.2,'stroke-dasharray':'6 4'});
+}
+
+const T=(g,x,y,t,cls='tiny',a={})=>el('text',{x,y,class:cls,...a},g,t);
+function vchain(g,x,levels,labels,Y,extTo){
+  el('line',{x1:x,y1:Y(levels[0]),x2:x,y2:Y(levels[levels.length-1]),class:'dl'},g);
+  for(const z of levels){const y=Y(z);el('path',{d:`M${x-4} ${y+4}l8 -8`,class:'dl'},g);if(extTo!==undefined)el('line',{x1:x+4,y1:y,x2:extTo,y2:y,class:'ext'},g)}
+  const flat=[];
+  labels.forEach((t,i)=>{const ya=Y(levels[i]),yb=Y(levels[i+1]),ym=(ya+yb)/2;if(ya-yb>=70)T(g,x-7,ym,t,'dimtxt',{'text-anchor':'middle',transform:`rotate(-90 ${x-7} ${ym})`});else flat.push({y:ym+4,t})});
+  flat.sort((a,b)=>a.y-b.y);for(let i=1;i<flat.length;i++)if(flat[i].y-flat[i-1].y<13)flat[i].y=flat[i-1].y+13;
+  for(const f of flat)T(g,x-8,f.y,f.t,'dimtxt',{'text-anchor':'end'});
+}
+function hdim(g,y,xa,xb,t){
+  el('line',{x1:xa,y1:y,x2:xb,y2:y,class:'dl'},g);
+  for(const x of [xa,xb])el('path',{d:`M${x-4} ${y+4}l8 -8`,class:'dl'},g);
+  T(g,(xa+xb)/2,y-5,t,'dimtxt',{'text-anchor':'middle'});
+}
+
+function drawElevation(r){
+  const g=document.getElementById('hsLayer');g.replaceChildren();
+  const k=.16,X=s=>175+s*k,Y=z=>30+(3420-z)*k,V={X,Y,k};
+  scene(g,V,r);
+  T(g,20,18,'Pohled zvenku na stěnu B · nosná konstrukce bez EPS a omítek · s = 0 je roh u předního štítu · kóty v mm');
+  // Labels inside the drawing.
+  T(g,X(1700),Y(-75)+4,'hrubá základová deska · ±0 = horní líc','tiny',{'text-anchor':'middle'});
+  T(g,X(1820),Y(inp.floor/2)+4,`skladba podlahy ${fmt(inp.floor)} · hotová podlaha ${lvl(inp.floor)}`,'tiny halo',{'text-anchor':'middle'});
+  const fm=(inp.floor+r.frameTop)/2;
+  T(g,X(1820),Y(fm)-6,`HS rám 3${NB}000 × ${fmt(r.frameH)}`,'label halo',{'text-anchor':'middle'});
+  T(g,X(1820),Y(fm)+13,'hrubý otvor 3 040 · vůle 20 po stranách','tiny halo',{'text-anchor':'middle'});
+  T(g,X(1820),Y(r.frameTop)+30,`↑ montážní spára ${fmt(r.gap)} mm`,'tiny halo',{'text-anchor':'middle'});
+  T(g,X(1670),Y((r.ipeBottom+r.ipeTop)/2)+5,'2× IPE 240 zalité ve věnci','label white',{'text-anchor':'middle'});
+  T(g,X(4280),Y((r.ringBottom+r.ringTop)/2)+4,`ŽB věnec ${fmt(r.ringH)}`,'tiny halo',{'text-anchor':'middle','font-weight':700});
+  T(g,X(2400),Y(r.panelBottom+K.panel/2)+4,'stropní dutinové panely 250','tiny halo',{'text-anchor':'middle'});
+  const zm=(r.base+r.ipeBottom)/2;
+  T(g,X(150)+4,Y(zm),`ZB roh · beton do ${lvl(r.ipeBottom)}`,'tiny halo',{'text-anchor':'middle',transform:`rotate(-90 ${X(150)+4} ${Y(zm)})`});
+  T(g,X((K.openB+K.padB)/2),Y((r.padBottom+r.padTop)/2)-1,'polštář','tiny halo',{'text-anchor':'middle'});
+  T(g,X((K.openB+K.padB)/2),Y((r.padBottom+r.padTop)/2)+11,`590 × ${fmt(r.padH)}`,'tiny halo',{'text-anchor':'middle'});
+  // Height chain on the left, total further out.
+  vchain(g,139,[0,inp.floor,r.frameTop,r.ipeBottom,r.ipeTop,r.panelBottom],
+    [`${fmt(inp.floor)} podlaha`,`${fmt(r.frameH)} rám HS`,`${fmt(r.gap)} spára`,`${fmt(K.ipe)} IPE`,`${fmt(r.bed)} lože`],Y,X(0)-2);
+  vchain(g,26,[0,r.panelBottom],[`${fmt(r.panelBottom)} · hrubá deska → spodek panelů`],Y);
+  // Course tops on the right: the story pole, then the ring beam.
+  const xr=X(SMAX);
+  for(let c=1;c<=11;c++){
+    const y=Y(r.T(c));
+    el('line',{x1:xr,y1:y,x2:xr+7,y2:y,class:'dl'},g);
+    T(g,xr+10,y+12,`ř. ${c} · ${lvl(r.T(c))}`,'tiny');
+  }
+  el('line',{x1:xr,y1:Y(r.ringTop),x2:xr+7,y2:Y(r.ringTop),class:'dl'},g);
+  T(g,xr+10,Y(r.ringTop)+12,`věnec · ${lvl(r.ringTop)}`,'tiny',{'font-weight':700});
+  el('line',{x1:xr,y1:Y(r.panelTop),x2:xr+7,y2:Y(r.panelTop),class:'dl'},g);
+  T(g,xr+10,Y(r.panelTop)+12,`vrch panelů ${lvl(r.panelTop)}`,'tiny');
+  el('line',{x1:xr,y1:Y(r.panelBottom),x2:xr+7,y2:Y(r.panelBottom),class:'dl'},g);
+  T(g,xr+10,Y(r.panelBottom)-5,`spodek panelů ${lvl(r.panelBottom)}`,'lv');
+  // Horizontal dimensions under the slab.
+  const yb=Y(-150);
+  for(const s of [0,K.zb,K.openB,K.ipeEnd,K.padB])el('line',{x1:X(s),y1:yb+3,x2:X(s),y2:yb+52,class:'ext'},g);
+  hdim(g,yb+24,X(0),X(K.zb),'300');hdim(g,yb+24,X(K.zb),X(K.openB),'hrubý otvor 3 040');hdim(g,yb+24,X(K.openB),X(K.padB),'polštář 590');
+  hdim(g,yb+50,X(0),X(K.ipeEnd),'2× IPE 240 · L = 3 640 = 300 na ZB + 3 040 + 300 na polštáři');
+  // Where detail 1 is.
+  el('rect',{x:X(3140),y:Y(3240),width:(4300-3140)*k,height:(3240-2360)*k,fill:'none',stroke:'#b0603e','stroke-width':1.3,'stroke-dasharray':'6 4',rx:6},g);
+  T(g,X(3140)+4,Y(3240)-5,'detail 1','tiny',{fill:'#9a4f2f','font-weight':700});
+}
+
+function drawDetail(r){
+  const g=document.getElementById('dLayer');g.replaceChildren();
+  const S0=3140,S1=4300,Z0=2360,Z1=3240,k=.5,X=s=>20+(s-S0)*k,Y=z=>24+(Z1-z)*k,V={X,Y,k};
+  const clip=el('g',{'clip-path':'url(#dClip)'},g);
+  scene(clip,V,r);
+  el('rect',{x:20,y:24,width:580,height:440,fill:'none',stroke:'#c9d2cb'},g);
+  // Labels inside.
+  const ipeY=Y((r.ipeBottom+r.ipeTop)/2);
+  T(g,X(3390),ipeY-10,'2× IPE 240','label white',{'text-anchor':'middle'});
+  T(g,X(3390),ipeY+7,'zalité ve věnci','tiny white',{'text-anchor':'middle'});
+  T(g,X(3390),ipeY+22,`${lvl(r.ipeBottom)} až ${lvl(r.ipeTop)}`,'tiny white',{'text-anchor':'middle'});
+  const pm=Y((r.padBottom+r.padTop)/2),px=X((K.openB+K.padB)/2);
+  T(g,px,pm-10,'roznášecí betonový polštář','tiny halo',{'text-anchor':'middle','font-weight':700});
+  T(g,px,pm+5,`590 × 300 × ${fmt(r.padH)}`,'tiny halo',{'text-anchor':'middle'});
+  T(g,px,pm+20,'beton C20/25, výztuž dle statika*','tiny halo',{'text-anchor':'middle'});
+  T(g,24,Y(r.frameTop)+16,`rám HS ${lvl(r.frameTop)}`,'tiny halo');
+  const gx=X(3300);
+  el('line',{x1:gx,y1:Y(r.ipeBottom),x2:gx,y2:Y(r.frameTop),class:'dl'},g);
+  for(const z of [r.ipeBottom,r.frameTop])el('path',{d:`M${gx-4} ${Y(z)+4}l8 -8`,class:'dl'},g);
+  T(g,gx-6,(Y(r.ipeBottom)+Y(r.frameTop))/2+4,`${fmt(r.gap)}`,'dimtxt halo',{'text-anchor':'end'});
+  for(const [c,s] of [[11,4100],[10,3800]]){const top=r.T(c),y=Y(Math.max(top-K.block,Z0)/2+Math.min(top,Z1)/2);T(g,X(s),y+4,`ř. ${c}`,'tiny',{'text-anchor':'middle','font-weight':700})}
+  T(g,X(4060),Y((r.ringBottom+r.ringTop)/2)+4,`ŽB věnec ${fmt(r.ringH)}`,'tiny halo',{'text-anchor':'middle','font-weight':700});
+  // Level callouts on the right, all anchored on the right edge of the masonry.
+  const A=r.variant==='A',items=[
+    {z:r.panelTop,a:lvl(r.panelTop),b:'vrch panelů'},
+    {z:r.panelBottom,a:lvl(r.panelBottom),b:'spodek panelů',c:`maltové lože ${fmt(r.bed)} mm`},
+    {z:r.ringTop,a:lvl(r.ringTop),b:'vršek věnce',c:'= vršek IPE'},
+    {z:r.T(11),a:lvl(r.T(11)),b:'vršek 11. řady',c:A?'= spodek věnce i IPE':`IPE o ${fmt(r.drop)} níž (${lvl(r.ipeBottom)})`},
+    {z:r.T(10),a:lvl(r.T(10)),b:'vršek 10. řady',c:'= spodek polštáře'}
+  ];
+  let prev=-1e9;const xa=X(S1),xl=xa+26;
+  for(const it of items){
+    const y0=Y(it.z),y=Math.max(y0+4,prev+(it.c?30:26));prev=y+(it.c?13:0);
+    el('path',{d:`M${xa} ${y0}H${xa+10}L${xl-4} ${y-4}`,class:'lead'},g);
+    const t=el('text',{x:xl,y,class:'tiny'},g);el('tspan',{class:'lv'},t,it.a+' ');el('tspan',{},t,it.b);
+    if(it.c)T(g,xl,y+13,it.c);
+  }
+  // Bearing and pad length.
+  const yb=Y(Z0);
+  for(const s of [K.openB,K.ipeEnd,K.padB])el('line',{x1:X(s),y1:yb+3,x2:X(s),y2:yb+50,class:'ext'},g);
+  hdim(g,yb+22,X(K.openB),X(K.ipeEnd),'uložení 300');
+  hdim(g,yb+48,X(K.openB),X(K.padB),'polštář 590');
+  T(g,24,yb+26,'← otvor HS','tiny');
+}
+
+function fillPole(r){
+  const A=r.variant==='A',tb=document.getElementById('pole');tb.replaceChildren();
+  const add=(a,b,z,cls='')=>{const tr=document.createElement('tr');if(cls)tr.className=cls;for(const v of [a,b,lvl(z)]){const td=document.createElement('td');td.textContent=v;tr.appendChild(td)}tb.appendChild(tr)};
+  add('panely',`spodek, maltové lože ${fmt(r.bed)} mm`,r.panelBottom,'top');
+  add('věnec',A?`ŽB věnec ${fmt(r.ringH)} místo 12. řady, IPE zalité uvnitř`:`ŽB věnec ${fmt(r.ringH)}; nad otvorem a polštářem od ${lvl(r.ipeBottom)}`,r.ringTop,'hl');
+  add('11',A?`u otvoru místo tvárnice polštář, beton do ${lvl(r.padTop)}; ZB roh také`:`polštář jen do ${lvl(r.padTop)}; ZB roh také`,r.T(11),'hl');
+  add('10','na ni se betonuje polštář',r.T(10));
+  for(let c=9;c>=2;c--)add(String(c),'',r.T(c));
+  add('1',`založení ${fmt(r.base)} mm: hydroizolace + zakládací malta`,r.T(1));
+}
+
+function fillSteps(r){
+  const A=r.variant==='A',s=[];
+  s.push(`Založit 1. řadu horním lícem na <b>${lvl(inp.t1)}</b> (hydroizolace + zakládací malta ${fmt(r.base)} mm, v nejvyšším místě desky min. 10 mm malty). Každá další řada ${fmt(inp.m)} mm (240 + ${fmt(r.j)} mm lepidla).`);
+  s.push(`Vyzdít 10 řad → vršek <b>${lvl(r.T(10))}</b>. ZB roh u předního štítu betonovat průběžně s výztuží podle statika.`);
+  s.push(A?`11. řadu vyzdít do <b>${lvl(r.T(11))}</b>, jen u otvoru vynechat jednu tvárnici (s = 3${NB}340–3${NB}930), zabednit a vybetonovat roznášecí polštář 590 × 300 do stejné výšky. ZB roh dobetonovat také na ${lvl(r.padTop)}. Oba horní líce srovnat nivelačním přístrojem, leží na nich IPE.`
+          :`11. řadu vyzdít do ${lvl(r.T(11))}, u otvoru vynechat jednu tvárnici a vybetonovat polštář jen do <b>${lvl(r.padTop)}</b> (${fmt(r.padH)} mm, o ${fmt(r.drop)} mm níž než vršek řady). ZB roh dobetonovat také na ${lvl(r.padTop)}.`);
+  s.push(`Osadit 2× IPE 240, L = 3${NB}640, spojené svorníky s rozpěrkami: 300 mm na ZB rohu a 300 mm na polštáři, do maltového lože. Horní líc IPE <b>${lvl(r.ipeTop)}</b>.`);
+  s.push(`Bednit věnec místo 12. řady, nad HS a na uloženích na celou šířku stěny (dno bednění nad otvorem = spodek IPE). Uložit výztuž věnce podle statika kolem IPE a zalít beton do <b>${lvl(r.ringTop)}</b>, tj. do vršku IPE. Věnec je ${fmt(r.ringH)} mm vysoký`+(A?'.':`, nad otvorem a polštářem ${fmt(r.ringTop-r.ipeBottom)} mm.`)+` Horní líc stáhnout po celém obvodu na jednu kótu.`);
+  s.push(`Panely uložit do maltového lože ${fmt(inp.bed)} mm → spodek panelů <b>${lvl(r.panelBottom)}</b>.`);
+  s.push(`HS: hrubý otvor 3${NB}040 mm na šířku, nahoře spodek IPE ${lvl(r.ipeBottom)}. Rám 3${NB}000 × <b>${fmt(r.frameH)}</b> od ${lvl(inp.floor)} → spára nahoře <b>${fmt(r.gap)} mm</b>.`+(r.frameH<inp.frame?` Rám objednat o ${fmt(inp.frame-r.frameH)} mm nižší, nebo ho zapustit pod podlahu.`:''));
+  document.getElementById('steps').innerHTML=s.map(t=>`<li>${t}</li>`).join('');
+}
+
+function fillChecks(r){
+  const c=[],A=r.variant==='A';
+  c.push(r.gap>=inp.gap?['ok',`✓ spára nad rámem HS ${fmt(r.gap)} mm`]:['warn',`! spára nad rámem jen ${fmt(r.gap)} mm: rám nejvýš ${fmt(r.maxFrame)}, nebo zapustit práh`]);
+  if(A){c.push(['ok',`✓ věnec ${fmt(r.ringH)} = výška IPE, 11 celých řad`]);c.push([Math.abs(r.diff)<=5?'ok':'info',`spodek panelů ${lvl(r.panelBottom)} (${r.diff>=0?'+':'−'}${fmt(Math.abs(r.diff))} proti 2${NB}900)`])}
+  else{c.push(['ok',`✓ spodek panelů ${lvl(r.panelBottom)}`]);if(r.frameH<inp.frame)c.push(['warn',`! rám HS snížit z ${fmt(inp.frame)} na ${fmt(r.frameH)}`]);
+    c.push(r.drop<0?['warn',`! IPE o ${fmt(-r.drop)} mm nad 11. řadou, zvol variantu A`]:['info',`věnec ${fmt(r.ringH)}, IPE o ${fmt(r.drop)} mm níž do polštáře`])}
+  c.push(r.padH>=100?['ok',`✓ polštář ${fmt(r.padH)} mm`]:['warn',`! polštář jen ${fmt(r.padH)} mm`]);
+  document.getElementById('checks').innerHTML=c.map(([k,t])=>`<span class="${k}">${t}</span>`).join('');
+}
+
+function fillLevels(r){
+  const A=r.variant==='A',rows=[
+    ['Horní líc hrubé desky','datum',0],
+    ['Horní líc 1. řady zdiva',`založení ${fmt(r.base)} + 240`,inp.t1],
+    ['Hotová podlaha 1. NP = spodek rámu HS','pracovní skladba',inp.floor],
+    ['Vršek rámu HS',`${lvl(inp.floor)} + ${fmt(r.frameH)}`,r.frameTop],
+    ...(A?[['Vršek 11. řady = spodek věnce a IPE = vršek polštáře',`spára nad rámem ${fmt(r.gap)}`,r.T(11)]]
+         :[['Spodek 2× IPE 240 = vršek polštáře',`spára nad rámem ${fmt(r.gap)}`,r.ipeBottom],['Vršek 11. řady = spodek věnce','11 řad',r.T(11)]]),
+    ['Vršek ŽB věnce = vršek IPE',`věnec ${fmt(r.ringH)} · IPE 240`,r.ringTop],
+    ['Spodek stropních panelů',`lože ${fmt(r.bed)}`,r.panelBottom],
+    ['Vrchní líc panelů','panel 250',r.panelTop],
+    ['Vršek 4 řad nadezdívky',`4 × ${fmt(inp.m)} ≈ ${fmt(4*inp.m)}`,r.kneeTop],
+    ['Vršek předpokládaného věnce nad nadezdívkou','věnec 300*',r.capTop]
+  ];
+  document.getElementById('levels').innerHTML=rows.map(([a,b,z])=>`<tr><td>${a}</td><td>${b}</td><td>${lvl(z)}</td></tr>`).join('');
+  document.getElementById('aaMain').textContent=fmt(r.panelBottom);
+  document.getElementById('aaRing').textContent=fmt(r.ringH);
+}
+
+function render(){
+  const a=calc('A'),b=calc('B'),r=variant==='A'?a:b;
+  document.getElementById('vA').textContent=`spodek panelů ${lvl(a.panelBottom)} · rám HS ${fmt(a.frameH)} · spára ${fmt(a.gap)} · věnec ${fmt(a.ringH)}`;
+  document.getElementById('vB').textContent=`spodek panelů ${lvl(b.panelBottom)} · rám HS ${fmt(b.frameH)} · spára ${fmt(b.gap)} · věnec ${fmt(b.ringH)}`;
+  document.querySelectorAll('.variant button').forEach(btn=>btn.setAttribute('aria-checked',String(btn.dataset.v===variant)));
+  drawElevation(r);drawDetail(r);fillPole(r);fillSteps(r);fillChecks(r);fillLevels(r);
+}
+
+document.querySelectorAll('.variant button').forEach(btn=>btn.addEventListener('click',()=>{
+  variant=btn.dataset.v;history.replaceState(null,'',variant==='B'?'#varianta-b':location.pathname+location.search);render();
+}));
+const fields=Object.keys(DEF);
+const syncInputs=()=>fields.forEach(f=>{document.getElementById('i-'+f).value=inp[f]});
+fields.forEach(f=>document.getElementById('i-'+f).addEventListener('input',e=>{const v=parseFloat(e.target.value);if(Number.isFinite(v)){inp[f]=v;render()}}));
+document.getElementById('reset').addEventListener('click',()=>{inp={...DEF};syncInputs();render()});
+syncInputs();render();
+</script>
 </body>
 </html>
