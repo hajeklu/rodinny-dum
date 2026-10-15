@@ -364,10 +364,10 @@ function drawGround(){const g=document.getElementById('ground');g.replaceChildre
  drawZones(g,R1,lay?.06:.17);
  // not heated: built-ins, bath, stairs, fireplace, pantry
  no(g,'hatchG',.3,2.44,9.92,11.7,'');small(g,10.8,1.25,'spíž – nevytápěná',{'font-size':10.5,'font-weight':600});
- no(g,'hatchG',.3,.9,9.22,9.77,'');rect(g,1.65,2.7,6.65,9.15,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});small(g,7.9,2.25,'ostrůvek',{'font-size':9.5});rect(g,.3,.9,6.2,9.22,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});no(g,'hatchG',.3,.65,4.4,6.2,'');no(g,'hatchG',2.6,3.2,10.0,11.65,'');no(g,'hatchG',4.6,5.02,9.94,10.54,'');
+ no(g,'hatchG',.3,.9,9.22,9.77,'');rect(g,1.85,2.9,6.65,8.75,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});small(g,7.7,2.45,'ostrůvek',{'font-size':9.5});rect(g,.3,.9,6.2,9.22,{fill:'none',stroke:'#8e9c93','stroke-dasharray':'4 3'});no(g,'hatchG',.3,.65,4.4,6.2,'');no(g,'hatchG',2.6,3.2,10.0,11.65,'');no(g,'hatchG',4.6,5.02,9.94,10.54,'');
  no(g,'hatchG',5.2,6.9,9.72,10.42,'vana');no(g,'hatchG',7.36,7.7,10.6,11.68,'');no(g,'hatchG',5.1,7.7,4.45,7.23,'schodiště');no(g,'hatchG',5.1,6.1,3.85,5.2,'krb');
  if(lay)drawLoops(g,R1);
- parts(g,[[.3,2.44,9.77,9.92,[[1.55,2.25]]],[2.44,2.59,9.92,11.7,[],'z'],[2.59,5.02,9.77,9.92,[[3.95,4.85]]],[5.02,5.17,7.39,11.7,[[8.3,9.0],[10.95,11.65]],'z'],[5.17,7.7,10.43,10.58],[5.17,7.7,7.39,7.54]]);
+ parts(g,[[.3,2.44,9.77,9.92,[[1.55,2.25]]],[2.44,2.59,9.92,11.7,[],'z'],[2.59,5.02,9.77,9.92,[[3.35,4.25]]],[5.02,5.17,7.39,11.7,[[8.3,9.0],[10.95,11.65]],'z'],[5.17,7.7,10.43,10.58],[5.17,7.7,7.39,7.54]]);
  glass(g,-.2,.3,1.4,4.4);glass(g,-.2,.3,6.2,9.2);glass(g,7.7,8.2,.32,3.32);glass(g,7.7,8.2,8.0,9.0);glass(g,5.48,7.48,-.2,.3);glass(g,1.0,2.0,11.7,12.2);glass(g,6.0,7.0,11.7,12.2);rect(g,3.2,5.0,11.7,12.2,{fill:'#fff',stroke:C.wallEdge});
  small(g,2.9,-.45,'okno obýváku 3,0 × 0,6');small(g,7.7,-.45,'okno kuchyně 3,0 × 0,6');small(g,1.8,8.72,'HS portál');small(g,-.45,6.5,'fix',{transform:`rotate(-90 ${X(-.45)} ${Y(6.5)})`});
  if(!lay){label(g,1.0,4.3,'Obývák 1.11',{'font-size':12,fill:C.sub});label(g,5.75,3.6,'Jídelna 1.10',{'font-size':11.5,fill:C.sub});label(g,9.35,1.6,'Kuchyň 1.07',{'font-size':11.5,fill:C.sub});label(g,9.55,6.3,'Koupelna 1.05',{'font-size':11,fill:C.sub});label(g,11.45,6.95,'WC',{'font-size':11,fill:C.sub});label(g,11.45,4.3,'Předsíň',{'font-size':11,fill:C.sub});}
@@ -379,10 +379,11 @@ function drawGround(){const g=document.getElementById('ground');g.replaceChildre
  el(g,'circle',{cx:X(17.85),cy:Y(2.15),r:.27*S,fill:'#fff',stroke:'#7d8b83','stroke-width':1.5});small(g,17.85,2.23,'AKU',{'font-size':9,fill:C.txt});
  rect(g,3.0,3.9,17.95,18.25,{fill:'#fff',stroke:'#7d8b83'});small(g,18.1,4.3,'RTL',{'font-size':9});
  rect(g,1.75,2.05,16.65,17.25,{fill:'#263a30',rx:2});small(g,16.95,2.4,'řízení TČ',{'font-size':9.5});
- rect(g,5.2,6.3,18.86,19.36,{fill:'#dfe3e0',stroke:'#7d8b83'});small(g,19.11,5.82,'TČ',{'font-size':10,fill:C.txt,'font-weight':700});small(g,19.6,6.9,'venkovní jednotka',{'font-size':9.5,'text-anchor':'start',transform:`rotate(-90 ${X(19.6)} ${Y(6.9)})`});
- line(g,[[18.86,5.6],[18.3,5.6],[17.6,4.6],[17.4,2.6]],C.sup,3);line(g,[[18.86,5.9],[18.3,5.9],[17.7,4.9],[17.6,2.6]],C.ret,3);
+ // outdoor unit where C2 and D1.2 put it: behind the technical gable about 2 m from the driveway-side corner, right behind TV 300 and AKU
+ rect(g,1.22,2.32,19.1,19.5,{fill:'#dfe3e0',stroke:'#7d8b83'});small(g,19.32,1.82,'TČ',{'font-size':10,fill:C.txt,'font-weight':700});small(g,19.68,2.9,'venkovní jednotka',{'font-size':9.5,'text-anchor':'start',transform:`rotate(-90 ${X(19.68)} ${Y(2.9)})`});
+ line(g,[[19.1,1.56],[18.3,1.56],[17.3,1.56],[17.3,2.7]],C.sup,3);line(g,[[19.1,1.74],[18.3,1.74],[17.46,1.74],[17.46,2.75]],C.ret,3);
  // main pipes leave the plant room upwards, run through the loft over the passage to R2 and come down the riser B to R1
- line(g,[[17.4,2.6],[17.0,3.4],[16.75,3.55]],C.sup,3);line(g,[[17.6,2.6],[17.1,3.65],[16.75,3.7]],C.ret,3);
+ line(g,[[17.3,2.7],[17.0,3.4],[16.75,3.55]],C.sup,3);line(g,[[17.46,2.75],[17.1,3.65],[16.75,3.7]],C.ret,3);
  el(g,'circle',{cx:X(16.72),cy:Y(3.62),r:8,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(g,16.72,3.67,'↑',{'font-size':10,fill:C.sup,'font-weight':700});
  small(g,14.1,3.2,'přívod vede vrchem',{'font-size':10.5,fill:'#8a5a17','font-weight':600});small(g,14.1,3.47,'přes půdu nad průjezdem',{'font-size':10,fill:'#8a5a17'});
  line(g,[[10.95,2.7],[10.9,2.95]],C.sup,3);
