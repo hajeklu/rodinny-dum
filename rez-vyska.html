@@ -185,6 +185,29 @@ svg .dl{stroke:#496957;stroke-width:1.2;fill:none}svg .ext{stroke:#9fb0a4;stroke
     </details>
   </section>
 
+  <section class="card" id="venec">
+    <h2>Věnec nad HS · příčný řez, kastlík a izolace</h2>
+    <p class="desc">Řez stěnou B kolmo na fasádu uprostřed HS, pohled od předního štítu. Vlevo interiér se sníženým podhledem, vpravo fasáda EPS 200 a kastlík venkovní žaluzie. Nad otvorem nahrazuje věnec dvojice IPE 240, armokoš tam není (výztuž věnce se napojí na konce IPE, viz půdorys níže). Výšky se berou z vybrané varianty nahoře. Hodnoty s * potvrdit se statikem a dodavatelem žaluzií.</p>
+    <div class="scroll"><svg id="ringView" viewBox="0 0 1120 600" role="img" aria-labelledby="ringTitle ringDesc">
+      <title id="ringTitle">Příčný řez věncem nad HS ve dvou variantách uložení IPE</title>
+      <desc id="ringDesc">Vlevo IPE u obou líců zdi s betonem mezi stojinami a jen 20 mm PIR za kastlíkem před pásnicemi. Vpravo IPE u sebe u vnitřního líce s mezerou 20 mm na zálivku a izolací PIR 40 mm ve věnci, před pásnicemi pak 60 mm PIR.</desc>
+      <g id="ringLayer"></g>
+    </svg></div>
+    <div class="checks" id="ringChecks" style="margin-top:12px"></div>
+    <h3 style="margin-top:18px">Napojení výztuže věnce na konec IPE · půdorys nad polštářem</h3>
+    <div class="scroll"><svg id="joinView" viewBox="0 0 1120 410" role="img" aria-labelledby="joinTitle joinDesc">
+      <title id="joinTitle">Půdorys napojení armokoše věnce na konce dvojice IPE</title>
+      <desc id="joinDesc">Pohled shora na věnec u pravého uložení: dvojice IPE končí 300 mm za otvorem na polštáři, pruty armokoše se před koncem IPE zalomí dovnitř mezi stojiny a v délce 120 mm se přivaří ke stojinám.</desc>
+      <g id="joinLayer"></g>
+    </svg></div>
+    <div class="notes" style="margin-top:14px">
+      <div class="note"><strong>Varianta 1 · IPE u líců (dnešní předpoklad):</strong> mezi pásnicemi zůstane štěrbina 60 mm, beton věnce zateče mezi stojiny. Venkovní a vnitřní žlábek nosníku jsou z boku zavřené bedněním a pásnicí, beton do nich nezateče: venkovní vyplnit PIR 57 mm ještě před bedněním, vnitřní maltou nebo pásky pórobetonu. Před hranami pásnic je jen 20 mm PIR za kastlíkem.</div>
+      <div class="note"><strong>Varianta 2 · IPE u sebe u vnitřního líce:</strong> nosníky spojené přes rozpěrky 20 mm (svorníky nebo přivařené příložky dle statika), štěrbina 20 mm se zaleje tekutou zálivkovou maltou. Z venku ztracené bednění PIR 40 mm bez hliníkové fólie, celou výšku věnce a dál kolem rohu nad fixem. Před pásnicemi 60 mm PIR, před stojinou 117 mm. Staticky stejná únosnost, mění se jen poloha nosníků ve zdi.</div>
+      <div class="note"><strong>Kastlík:</strong> pro C80 a rám 2 400 mm počítáno s boxem asi 180 × 280 mm*, sedí na úrovni hlavy rámu a zakryje celou výšku IPE. Každý centimetr, o který bude box mělčí (některé mají 140–150 mm), přidá centimetr izolace za ním. Místo 20 mm PIR jde za box dát vakuový panel VIP 20 mm (izoluje asi jako 60 mm PIR), kotvy boxu mimo panel.</div>
+      <div class="note"><strong>Snížený podhled:</strong> podhled v rohu je na +2 640 = vršek rámu HS a je uzavřený. Dutina nad ním musí být vzduchotěsně oddělená od venku (páska kolem rámu z interiéru, utěsněný průchod kabelu motoru žaluzie). Na vnitřní líc věnce nedávat izolaci, aby ocel zůstala v teplé části zdi.</div>
+    </div>
+  </section>
+
   <section class="card">
     <h2>Rozhodující kóty a pracovní předpoklady</h2>
     <div class="grid">
@@ -194,7 +217,7 @@ svg .dl{stroke:#496957;stroke-width:1.2;fill:none}svg .ext{stroke:#9fb0a4;stroke
       <div class="fact"><b>Střecha a věnec</b><span>Věnec 300 mm, sklon 45°, krokve 120 × 200 mm, pozednice 160 × 140 mm a hřeben 2×U200 jsou pracovní hodnoty z podkladů. Výška střechy a detaily styku ověřit podle statiky a skladby střechy.</span></div>
     </div>
     <div class="notes" style="margin-top:14px">
-      <div class="note"><strong>Šířka věnce s IPE:</strong> dva IPE 240 vedle sebe mají asi 250 mm (2 × 120 + mezera), stěna 300. Do věncovky s EPS se nevejdou. Nad HS a na uloženích proto bednit věnec na celou šířku 300 a tepelný most nechat na ETICS, případně jiné uspořádání ověřit se statikem.</div>
+      <div class="note"><strong>Šířka věnce s IPE:</strong> dva IPE 240 mají 2 × 120 mm, stěna 300. Do věncovky s EPS se nevejdou. Nad HS a na uloženích se věnec bední na celou šířku 300; buď s IPE u obou líců, nebo s IPE u sebe a PIR 40 mm z venku. Obě varianty jsou okótované v kartě <a href="#venec">Věnec nad HS</a>.</div>
       <div class="note"><strong>Stejně na všech stěnách:</strong> věnec se vylévá na jednu kótu po celém obvodu pod panely, protože panely potřebují jednu rovinu. Horní líc věnce stáhnout podle nivelace přesně na výšku horního líce IPE.</div>
       <div class="note"><strong>Podlaha 250 a práh HS:</strong> pokud se potvrdí skladba P1 asi 250 mm, rám HS se zvedne o 10 mm. Ve variantě A zbude spára 25 mm, ve variantě B musí mít rám nejvýš 2 380. Pokud výrobce osazuje rám pod úroveň hotové podlahy (zapuštěný práh), zvětší se spára nahoře přesně o tuto hodnotu.</div>
       <div class="note"><strong>Roh FIX–HS:</strong> FIX má hrubý otvor 2 040 mm, víc než 1,8 m, do kterých statika připouští překlady Ytong NOP. Pokud bude i nad FIX ocel, potkají se oba páry IPE na ZB rohu ve stejné výšce uvnitř věnce. Jeden pár pak musí rohem projít a druhý skončit u jeho boku; vyřešit se statikem. Půdorys rohu je na stránce <a href="./zalozeni-zdiva.html">První řada zdiva</a>.</div>
@@ -385,6 +408,112 @@ function drawDetail(r){
   T(g,24,yb+26,'← otvor HS','tiny');
 }
 
+
+// Cross-section through wall B over the HS (u = mm from the inner face of the masonry toward the outside), two IPE layouts.
+const RS={eps:200,box:180,boxH:280,pir:20,ipeB:120,tw:6.2,recess:56.9,sdk:12.5,frameD:200,frameU:100,plaster:10};
+function drawRing(r){
+  const g=document.getElementById('ringLayer');g.replaceChildren();
+  const k=.5,zTop=r.panelTop+70,zBot=r.frameTop-250,Y=z=>64+(zTop-z)*k;
+  const variants=[
+    {ox:20,title:'Varianta 1 · IPE u obou líců, beton mezi',ipe:[0,300-RS.ipeB],gap:300-2*RS.ipeB,fill:'beton',pirW:0},
+    {ox:550,title:'Varianta 2 · IPE u sebe, PIR 40 ve věnci',ipe:[0,RS.ipeB+20],gap:20,fill:'zálivka',pirW:40}
+  ];
+  for(const v of variants){
+    const X=u=>v.ox+140+u*k,R=(u0,u1,z0,z1,a)=>el('rect',{x:X(u0),y:Y(z1),width:Math.max(0,(u1-u0)*k),height:Math.max(0,(z1-z0)*k),...a},g);
+    const L=(u0,z0,u1,z1,a)=>el('line',{x1:X(u0),y1:Y(z0),x2:X(u1),y2:Y(z1),...a},g);
+    T(g,v.ox+10,26,v.title,'label');
+    const outer=v.ipe[1]+RS.ipeB,steelOut=300-v.pirW;
+    // Room side, ceiling panels and the dropped ceiling.
+    R(-270,0,zBot,zTop,{fill:'#f7f8f5'});
+    R(-270,150,r.panelBottom,r.panelTop,{fill:'#b4bdb8',stroke:'#65736a'});
+    el('circle',{cx:X(-110),cy:Y(r.panelBottom+125),r:80*k,fill:'#cad1cc',stroke:'#98a49c','stroke-width':.6},g);
+    R(150,300,r.panelBottom,r.panelTop,{fill:'url(#pRing)',stroke:'#65736a'});
+    R(-270,300,r.ringTop,r.panelBottom,{fill:'#5f6762'});
+    R(-270,0,r.frameTop,r.frameTop+RS.sdk,{fill:'#e9ece8',stroke:'#7d8a81'});
+    // Ring beam zone: concrete only where it can get in, insulation and fillers elsewhere.
+    R(0,300,r.ipeBottom,r.ipeTop,{fill:'#eef1ec',stroke:'#4f5a53','stroke-width':1.2});
+    const tf=K.tf,web=i=>v.ipe[i]+RS.ipeB/2,z0=r.ipeBottom,z1=r.ipeTop;
+    R(web(0)+RS.tw/2,web(1)-RS.tw/2,z0+tf,z1-tf,{fill:'url(#pRing)'});R(v.ipe[0]+RS.ipeB,v.ipe[1],z0,z1,{fill:'url(#pRing)'});
+    R(v.ipe[0],web(0)-RS.tw/2,z0+tf,z1-tf,{fill:'#d8d2c4'});
+    R(web(1)+RS.tw/2,outer,z0+tf,z1-tf,{fill:'#e7d77a'});
+    if(v.pirW)R(steelOut,300,z0,z1,{fill:'#e7d77a',stroke:'#a58f2f'});
+    for(const i of [0,1]){const a=v.ipe[i];R(a,a+RS.ipeB,z1-tf,z1,{fill:'#5f7080',stroke:'#26313a'});R(a,a+RS.ipeB,z0,z0+tf,{fill:'#5f7080',stroke:'#26313a'});R(web(i)-RS.tw/2,web(i)+RS.tw/2,z0+tf,z1-tf,{fill:'#5f7080',stroke:'#26313a'});}
+    // Masonry below the ring beam is the opening: the HS frame head.
+    R(RS.frameU,RS.frameU+RS.frameD,zBot,r.frameTop,{fill:'#d9e9ee',stroke:'#26718a','stroke-width':1.6});
+    // Facade: EPS 200, blind box with PIR behind it, the slats hanging in front of the frame.
+    const zb=r.frameTop+RS.boxH;
+    R(300,300+RS.eps,zb,zTop,{fill:'#f2f2ec',stroke:'#b9b9a8'});
+    R(300,300+RS.pir,r.frameTop,zb,{fill:'#e7d77a',stroke:'#a58f2f'});
+    R(300+RS.pir,300+RS.eps,r.frameTop,zb,{fill:'#fff',stroke:'#26313a','stroke-width':1.3});
+    R(300+RS.pir+20,300+RS.eps-20,r.frameTop+20,zb-20,{fill:'#eceeea',stroke:'#9aa39d'});
+    L(300+RS.eps-60,zBot,300+RS.eps-60,r.frameTop,{stroke:'#7b8a80','stroke-width':1.2,'stroke-dasharray':'2 3'});
+    R(300,300+RS.eps,zBot,r.frameTop,{fill:'none',stroke:'#c9cfca','stroke-dasharray':'4 3'});
+    // Labels.
+    T(g,X(-266),Y(r.frameTop)-6,`podhled ${lvl(r.frameTop)}, uzavřený`,'tiny halo');
+    T(g,X(-262),Y((r.panelBottom+r.panelTop)/2)+4,'panely 250','tiny halo');
+    T(g,X(-266),Y(zBot+90),'interiér','tiny');
+    T(g,X(RS.frameU+RS.frameD/2),Y(zBot+120),'rám HS*','tiny',{'text-anchor':'middle'});
+    T(g,X(300+RS.eps/2),Y(zBot+120),'lamely C80','tiny',{'text-anchor':'middle'});
+    T(g,X(300+RS.eps/2),Y((r.frameTop+zb)/2)+4,'kastlík*','tiny',{'text-anchor':'middle','font-weight':700});
+    T(g,X(300+RS.eps/2),Y(zTop-40),'EPS 200','tiny',{'text-anchor':'middle'});
+    // Callouts in the void above the dropped ceiling, one row each, leaders to the parts.
+    const zm=(z0+z1)/2,rows=[[(v.ipe[0]+web(0))/2,zm-60,'malta ve žlábku'],[(web(0)+web(1))/2,zm+60,`${v.fill} mezi`],[outer-25,zm-20,'PIR 57 ve žlábku'],...(v.pirW?[[300-20,zm+30,'PIR 40 bednění']]:[])];
+    rows.forEach(([u,z,t],i)=>{const y=Y(r.panelBottom)+20+i*17,xt=X(-266);T(g,xt,y,t,'tiny halo');el('path',{d:`M${xt+t.length*5.6+4} ${y-4}H${X(-20)}L${X(u)} ${Y(z)}`,class:'lead'},g);el('circle',{cx:X(u),cy:Y(z),r:2,fill:'#26313a'},g);});
+    // Horizontal chain under the drawing (masonry and facade), steel chain above the ring beam.
+    const yd=Y(zBot)+26;
+    for(const u of [0,300,300+RS.pir,300+RS.eps])el('line',{x1:X(u),y1:Y(zBot)+4,x2:X(u),y2:yd+30,class:'ext'},g);
+    hdim(g,yd,X(0),X(300),'stěna 300');hdim(g,yd,X(300),X(300+RS.pir),'');hdim(g,yd,X(300+RS.pir),X(300+RS.eps),`box ${RS.box}*`);
+    T(g,X(300+RS.pir/2),yd+16,`${RS.pir}`,'dimtxt',{'text-anchor':'middle'});
+    hdim(g,yd+28,X(300),X(300+RS.eps),'EPS 200');
+    const ys=Y(r.ipeTop)-14,stops=v.pirW?[0,RS.ipeB,RS.ipeB+20,steelOut,300]:[0,RS.ipeB,300-RS.ipeB,300];
+    for(const u of stops)el('line',{x1:X(u),y1:Y(r.ipeTop),x2:X(u),y2:ys-4,class:'ext'},g);
+    for(let i=0;i<stops.length-1;i++){const a=stops[i],b=stops[i+1];el('line',{x1:X(a),y1:ys,x2:X(b),y2:ys,class:'dl'},g);for(const x of [X(a),X(b)])el('path',{d:`M${x-3} ${ys+3}l6 -6`,class:'dl'},g);T(g,(X(a)+X(b))/2,ys-4,fmt(b-a),'dimtxt halo',{'text-anchor':'middle'});}
+    // Levels on the right.
+    const xr=X(300+RS.eps)+8,lev=[[r.panelTop,'vrch panelů'],[r.panelBottom,'panely'],[r.ipeTop,'vršek IPE'],[zb,`box ${RS.boxH}*`],[r.ipeBottom,'spodek IPE'],[r.frameTop,'rám HS']];
+    let prev=-1e9;for(const [z,t] of lev.sort((a,b)=>b[0]-a[0])){const y0=Y(z),y=Math.max(y0+4,prev+15);prev=y;el('path',{d:`M${X(300+RS.eps)} ${y0}H${xr}L${xr+6} ${y-4}`,class:'lead'},g);const tx=el('text',{x:xr+9,y,class:'tiny'},g);el('tspan',{class:'lv'},tx,lvl(z)+' ');el('tspan',{},tx,t);}
+  }
+  const front1=RS.pir,front2=40+RS.pir;
+  document.getElementById('ringChecks').innerHTML=[
+    ['warn',`varianta 1: před hranami pásnic jen ${front1} mm PIR`],['ok',`varianta 2: před pásnicemi ${front2} mm PIR, před stojinou ${front2+57} mm`],
+    ['info','VIP 20 mm za boxem ≈ 60 mm PIR'],['info',`box hloubka ${RS.box}* · každý cm méně = cm izolace navíc`]
+  ].map(([k,t])=>`<span class="${k}">${t}</span>`).join('');
+}
+
+// Plan of the ring beam over the right bearing: the IPE pair (variant 1) ends 300 mm past the opening on the pad; the cage bars
+// are cranked in between the webs before the end and welded to the webs over 10 diameters.
+function drawJoin(){
+  const g=document.getElementById('joinLayer');g.replaceChildren();
+  const s0=2900,s1=4560,k=.6,X=s=>120+(s-s0)*k,Y=u=>118+(300-u)*k,b=RS.ipeB,cov=44,lap=120;
+  const R=(sa,sb,u0,u1,a)=>el('rect',{x:X(sa),y:Y(u1),width:(sb-sa)*k,height:(u1-u0)*k,...a},g);
+  const L=(sa,ua,sb,ub,a)=>el('line',{x1:X(sa),y1:Y(ua),x2:X(sb),y2:Y(ub),...a},g);
+  T(g,20,24,'Pohled shora na věnec u pravého uložení · s = vzdálenost od rohu u předního štítu · kóty v mm');
+  R(s0,s1,0,300,{fill:'url(#pRing)',stroke:'#4f5a53','stroke-width':1.2});
+  R(K.openB,K.padB,0,300,{fill:'none',stroke:'#6b4a2f','stroke-width':1.2,'stroke-dasharray':'7 4'});
+  for(const [u0,u1] of [[0,b],[300-b,300]])R(s0,K.ipeEnd,u0,u1,{fill:'#5f7080',stroke:'#26313a','stroke-width':1.2});
+  for(const u of [b/2,300-b/2])L(s0,u,K.ipeEnd,u,{stroke:'#cfd7dc','stroke-width':1,'stroke-dasharray':'6 4'});
+  // Cage: four bars (two per face seen from above), stirrups every 200 mm; the bars crank in to sit against the webs.
+  const wIn=b/2+RS.tw/2+6,wOut=300-b/2-RS.tw/2-6,crank=K.ipeEnd+150,sEnd=K.ipeEnd-lap;
+  for(const [uf,uw] of [[cov,wIn],[300-cov,wOut]]){
+    el('path',{d:`M${X(s1)} ${Y(uf)}H${X(crank+120)}L${X(crank)} ${Y(uw)}H${X(sEnd)}`,fill:'none',stroke:'#c0502b','stroke-width':2.4},g);
+    L(sEnd,uw,K.ipeEnd,uw,{stroke:'#712b13','stroke-width':5});
+  }
+  for(let s=crank+200;s<s1-20;s+=200)L(s,cov-14,s,300-cov+14,{stroke:'#c0502b','stroke-width':1.2});
+  // Labels.
+  T(g,X(s0)+6,Y(300)-8,'exteriér','tiny');T(g,X(s0)+6,Y(0)+16,'interiér','tiny');
+  T(g,X(3150),Y(150)+4,'nad otvorem jen 2× IPE, beton mezi','tiny halo',{'text-anchor':'middle'});
+  T(g,X(4250),Y(150)+4,'armokoš věnce 4 Ø 12*','tiny halo',{'text-anchor':'middle','font-weight':700});
+  // Dimensions.
+  const yt=Y(300)-34;
+  for(const s of [K.openB,sEnd,K.ipeEnd,crank,K.padB])el('line',{x1:X(s),y1:Y(300)-2,x2:X(s),y2:yt-6,class:'ext'},g);
+  hdim(g,yt,X(K.openB),X(K.ipeEnd),'uložení 300');hdim(g,yt-22,X(sEnd),X(K.ipeEnd),'svar 120 = 10 Ø*');hdim(g,yt,X(K.ipeEnd),X(crank),'zalomení 150');
+  const yb=Y(0)+40;for(const s of [K.openB,K.padB])el('line',{x1:X(s),y1:Y(0)+2,x2:X(s),y2:yb+4,class:'ext'},g);
+  hdim(g,yb,X(K.openB),X(K.padB),'polštář 590 pod IPE (o řadu níž)');
+  T(g,X(K.openB),yb+20,`líc otvoru s = ${fmt(K.openB)}`,'tiny',{'text-anchor':'middle'});
+  const xr=X(s1)+14;el('line',{x1:xr,y1:Y(300),x2:xr,y2:Y(0),class:'dl'},g);for(const u of [0,300])el('path',{d:`M${xr-4} ${Y(u)+4}l8 -8`,class:'dl'},g);
+  T(g,xr+8,Y(150)+4,'300','dimtxt');T(g,xr+8,Y(300-cov/2)+4,`krytí ${cov}*`,'tiny');
+  T(g,20,Y(0)+90,'V rohu nad ZB sloupem stejně: obě dvojice IPE (HS a fix) tahově spojit přes výztuž sloupu a věnce, ne tuhým svařeným rámem. Detail rohu navrhne statik.','tiny');
+}
+
 function fillPole(r){
   const A=r.variant==='A',tb=document.getElementById('pole');tb.replaceChildren();
   const add=(a,b,z,cls='')=>{const tr=document.createElement('tr');if(cls)tr.className=cls;for(const v of [a,b,lvl(z)]){const td=document.createElement('td');td.textContent=v;tr.appendChild(td)}tb.appendChild(tr)};
@@ -443,7 +572,7 @@ function render(){
   document.getElementById('vA').textContent=`spodek panelů ${lvl(a.panelBottom)} · rám HS ${fmt(a.frameH)} · spára ${fmt(a.gap)} · věnec ${fmt(a.ringH)}`;
   document.getElementById('vB').textContent=`spodek panelů ${lvl(b.panelBottom)} · rám HS ${fmt(b.frameH)} · spára ${fmt(b.gap)} · věnec ${fmt(b.ringH)}`;
   document.querySelectorAll('.variant button').forEach(btn=>btn.setAttribute('aria-checked',String(btn.dataset.v===variant)));
-  drawElevation(r);drawDetail(r);fillPole(r);fillSteps(r);fillChecks(r);fillLevels(r);
+  drawElevation(r);drawDetail(r);drawRing(r);drawJoin();fillPole(r);fillSteps(r);fillChecks(r);fillLevels(r);
 }
 
 document.querySelectorAll('.variant button').forEach(btn=>btn.addEventListener('click',()=>{
