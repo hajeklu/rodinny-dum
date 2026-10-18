@@ -5,7 +5,8 @@
   'use strict';
   const GROUPS=[
     {name:'Stavba',pages:[['zalozeni-zdiva','První řada zdiva'],['rez-vyska','Výškový řez'],['krov','Krov']]},
-    {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení']]}
+    {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení']]},
+    {name:'Peníze',pages:[['finance','Financování stavby']]}
   ];
   const KEY='hajek-podklady';
   const nav=document.querySelector('nav[data-nav]');
