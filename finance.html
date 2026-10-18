@@ -235,7 +235,7 @@ const dumFinanceLogic=(()=>{
  // at a word start of its name (first match wins, in this order), else "Ostatní"
  const STAGES=['Příprava a projekt','Přípojky a staveniště','Základy a spodní stavba','Hrubá stavba','Střecha','Okna a dveře','Instalace a technika',
   'Vnitřní práce a podlahy','Fasáda','Dokončení interiéru','Venkovní objekty a kolaudace','Po kolaudaci','Rezerva'].map((name,i)=>({n:i+1,name})),OTHER='Ostatní';
- const STAGE_KEYS=[[13,'rezerv'],[11,'cov destov vsak kolaud'],[12,'exter teren oploc plot'],[1,'projekt dozor posud geodet'],[2,'pripojk studn staveni'],[3,'zaklad'],
+ const STAGE_KEYS=[[13,'rezerv'],[11,'cov destov vsak kolaud'],[12,'exter teren oploc plot'],[1,'projekt dozor posud geodet'],[2,'pripojk staveni'],[3,'zaklad'],
   [4,'svisl zdiv strop schod'],[5,'krov krytin klemp strech'],[6,'okn dver vrata zaluzi'],[7,'elektr zti vytap tzb rekuper klimat vzduchotech'],[8,'podlah vnitrni omitk sdk'],
   [9,'fasad etics'],[10,'koupel kuchyn interier']].map(([n,k])=>[n,new RegExp('\\b(?:'+k.replace(/ /g,'|')+')')]);
  // -> {key,n,name,src}; n = null for a stage named only by text and for "Ostatní"; src 'cell' | 'name' | 'none'
