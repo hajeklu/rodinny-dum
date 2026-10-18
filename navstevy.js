@@ -7,7 +7,7 @@
 // script loads.
 (function(){
   'use strict';
-  const API=''; // web app URL ending in /exec (Nasadit → Webová aplikace); empty = nothing is logged and finance.html stays offline
+  const API='https://script.google.com/macros/s/AKfycbya9mCaxBiOJtGS4Oc8-eh6d98_YclMC7BADq6OUQBmNiwWwc-nKh0-8MLyQek7IOwtoA/exec'; // web app URL ending in /exec (Nasadit → Webová aplikace); empty = nothing is logged and finance.html stays offline
   window.DUM_API=window.DUM_API||API;
   const api=window.DUM_API,nav=navigator,ua=String(nav.userAgent||''),uad=nav.userAgentData;
   const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
