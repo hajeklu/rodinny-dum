@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nákup na zdění · Dům Hájek</title>
+<meta name="description" content="Nákupní seznam na zdění domu Hájek: tvárnice SOLBET, lepidlo Baumit PlanoFix, překlady SOLBET NS a ocelové IPE 240.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#23332e;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #d8dfd9;padding:20px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(22px,3vw,34px);line-height:1.15;margin:5px 0 6px;color:#1f332a}header p,.muted{color:#69776f;font-size:13px;margin:0}
+a{color:#24533d}button{font:inherit;cursor:pointer;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:6px 11px;font-size:12.5px}button:hover{background:#eef4ef}
+main{max-width:980px;margin:0 auto;padding:20px clamp(12px,3vw,36px) 48px}.card{background:#fff;border:1px solid #dbe2dc;border-radius:12px;box-shadow:0 3px 16px #1c33240a;overflow:hidden}
+.card-head{padding:15px 18px 11px;border-bottom:1px solid #e4e9e4;display:flex;align-items:flex-start;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}.card-head h2{margin:0;font-size:17px;color:#1f332a}.card-head p{margin:4px 0 0;font-size:12px;color:#6b7971}
+.done-count{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#56665d;white-space:nowrap}
+.note{padding:13px 15px;background:#fff8e8;border:1px solid #ead6a7;border-radius:9px;color:#604b20;font-size:13px;margin:15px 0}.note strong{color:#503d16}.note ul{margin:6px 0 0;padding-left:18px}.note li+li{margin-top:3px}
+.danger{background:#fff1eb;border-color:#e6b9a8;color:#6d3a2b}.danger strong{color:#5a2c1f}.plain{background:#fff;border-color:#dbe2dc;color:#4d5c54}.plain strong{color:#284638}
+[hidden]{display:none!important}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 16px}.kpi{padding:14px 16px;display:flex;flex-direction:column}.kpi-label{font-size:12.5px;font-weight:600;color:#56665d}.kpi-value{font-size:clamp(20px,2.4vw,26px);font-weight:700;line-height:1.2;color:#1f332a;margin:6px 0 2px;white-space:nowrap;letter-spacing:-.01em;font-variant-numeric:tabular-nums}.kpi-sub{font-size:12px;color:#6b7971}
+.kpi.accent{background:#254d3a;border-color:#254d3a}.kpi.accent .kpi-label,.kpi.accent .kpi-sub{color:#cfe0d5}.kpi.accent .kpi-value{color:#fff}
+/* shopping list */
+.list{width:100%;border-collapse:collapse;font-size:14px}.list th{font-size:10.5px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:#64766b;text-align:left;padding:10px 12px 8px;border-bottom:1px solid #dbe2dc;white-space:nowrap}
+.list td{padding:11px 12px;border-bottom:1px solid #edf0ed;vertical-align:top}.list .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.list .c-chk{width:40px;padding-right:0}.list input[type=checkbox]{width:19px;height:19px;margin:1px 0 0;accent-color:#254d3a;cursor:pointer}
+.list .name{font-weight:650;color:#1f332a}.list .sub{display:block;margin-top:2px;font-size:12px;line-height:1.45;color:#748179}.list .sub code{font:11.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#5d6b63}
+.list .qty{font-weight:700;color:#1f332a;font-size:15px}.list .qty small{display:block;font-weight:400;font-size:11.5px;color:#7a877f}
+.list tr.grp th{background:#f3f6f3;color:#284638;font-size:11px;padding:9px 12px;border-top:1px solid #dbe2dc;white-space:normal}.list tr.grp th.num{letter-spacing:0;text-transform:none;font-size:12.5px}.list tr.grp span{display:block;margin-top:2px;font-weight:400;letter-spacing:0;text-transform:none;font-size:12px;color:#6b7971}
+.list tr.bought td{background:#f7f9f7}.list tr.bought .name,.list tr.bought .qty{color:#8a958e;text-decoration:line-through}.list tr.bought .sub{opacity:.7}
+.list tr.total td{font-weight:750;font-size:15px;color:#1f332a;background:#f3f6f3;border-top:2px solid #254d3a;border-bottom:0}.list tr.total small{display:block;font-weight:400;font-size:12px;color:#6b7971}
+.ask{color:#8a6a24;font-weight:600}.list .qty small.m-sum{display:none;margin-top:2px;font-size:12px;color:#5d6b63}.list .qty small.m-sum.ask{color:#8a6a24}
+footer{margin-top:20px;color:#78847c;font-size:12px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.list{font-size:13.5px}.list th,.list td{padding:9px 6px}.list .c-chk{width:30px}.list .qty{font-size:14px}.list .c-sum{display:none}.list .qty small.m-sum{display:block}.card-head{padding:13px 14px 10px}.kpi{padding:12px 13px}}
+@media print{:root{background:#fff}header{padding:0 0 10px}.card{box-shadow:none}.kpis{grid-template-columns:repeat(4,1fr)}.done-count button{display:none}.list tr.bought td{background:none}}
+</style>
+<script src="./nav.js" defer></script>
+<script src="./navstevy.js" defer></script>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Nákup na zdění</h1><p>Co teď objednat na zdivo: tvárnice, lepidlo, překlady a ocel nad velké otvory.</p></div>
+  <nav data-nav="nakup-zdeni"></nav>
+</header>
+<main>
+  <div class="kpis">
+    <div class="card kpi accent"><span class="kpi-label">Košík SOLBET + Baumit</span><span class="kpi-value">241 377 Kč</span><span class="kpi-sub">s DPH, bez IPE</span></div>
+    <div class="card kpi"><span class="kpi-label">Tvárnice</span><span class="kpi-value">1 560 ks</span><span class="kpi-sub">≈ 220 m² zdi</span></div>
+    <div class="card kpi"><span class="kpi-label">Překlady SOLBET</span><span class="kpi-value">24 ks</span><span class="kpi-sub">12 sad 12 + 18 cm</span></div>
+    <div class="card kpi"><span class="kpi-label">Ocel IPE 240</span><span class="kpi-value">12 ks · 44 m</span><span class="kpi-sub">≈ 1,35 t, cenu poptat</span></div>
+  </div>
+
+  <section class="card">
+    <div class="card-head">
+      <div><h2>Nákupní seznam</h2><p>Ceny s DPH podle košíku. Zaškrtnutí si pamatuje tento prohlížeč.</p></div>
+      <div class="done-count"><span id="doneCount">Koupeno 0 z 9</span><button type="button" id="resetBtn" hidden>Zrušit zaškrtnutí</button></div>
+    </div>
+    <table class="list">
+      <thead><tr><th class="c-chk"><span hidden>Koupeno</span></th><th>Položka</th><th class="num">Množství</th><th class="num c-sum">Celkem</th></tr></thead>
+      <tbody>
+        <tr class="grp"><th colspan="2">1 · Tvárnice</th><th class="num" colspan="2">205 333 Kč</th></tr>
+        <tr data-id="sbpd30"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: SOLBET tvárnice"></td>
+          <td><span class="name">SOLBET tvárnice bílá</span><span class="sub">590 × 240 × 300 mm · pero-drážka + kapsa · 131,62 Kč/ks · <code>sbpd30</code></span></td>
+          <td class="num qty">1 560 ks</td><td class="num c-sum">205 333,13 Kč</td></tr>
+
+        <tr class="grp"><th colspan="2">2 · Lepidlo na zdivo</th><th class="num" colspan="2">4 311 Kč</th></tr>
+        <tr data-id="b613310V-25"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: Baumit PlanoFix"></td>
+          <td><span class="name">BAUMIT PlanoFix 25 kg</span><span class="sub">tenkovrstvá zdicí malta · 5,75 Kč/kg · <code>b613310V-25</code></span></td>
+          <td class="num qty">30 pytlů<small>750 kg</small></td><td class="num c-sum">4 310,63 Kč</td></tr>
+
+        <tr class="grp"><th colspan="2">3 · Překlady SOLBET NS<span>Na zeď 300 mm se kladou dva vedle sebe: 120 + 180 mm. 11 sad 1,4 m a 1 sada 2,3 m.</span></th><th class="num" colspan="2">31 734 Kč</th></tr>
+        <tr data-id="sbpr140"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 140/12"></td>
+          <td><span class="name">Překlad NS 140/12</span><span class="sub">délka 1 400 · šířka 120 · výška 240 mm · 1 194,73 Kč/ks · <code>sbpr140</code></span></td>
+          <td class="num qty">11 ks</td><td class="num c-sum">13 142,03 Kč</td></tr>
+        <tr data-id="sbpr18140"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 140/18"></td>
+          <td><span class="name">Překlad NS 140/18</span><span class="sub">délka 1 400 · šířka 180 · výška 240 mm · 1 367,64 Kč/ks · <code>sbpr18140</code></span></td>
+          <td class="num qty">11 ks</td><td class="num c-sum">15 044,03 Kč</td></tr>
+        <tr data-id="sbpr230"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 230/12"></td>
+          <td><span class="name">Překlad NS 230/12</span><span class="sub">délka 2 300 · šířka 120 · výška 240 mm · <code>sbpr230</code></span></td>
+          <td class="num qty">1 ks</td><td class="num c-sum">1 652,46 Kč</td></tr>
+        <tr data-id="sbpr18230"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 230/18"></td>
+          <td><span class="name">Překlad NS 230/18</span><span class="sub">délka 2 300 · šířka 180 · výška 240 mm · <code>sbpr18230</code></span></td>
+          <td class="num qty">1 ks</td><td class="num c-sum">1 895,11 Kč</td></tr>
+
+        <tr class="grp"><th colspan="2">4 · Ocel IPE 240 na překlady<span>Statika: 2× IPE 240 nad otvory 3 m a nad průjezdem. 30,7 kg/m.</span></th><th class="num ask" colspan="2">poptat</th></tr>
+        <tr data-id="ipe-4500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 4,5 m"></td>
+          <td><span class="name">IPE 240 · délka 4,5 m</span><span class="sub">18 m · ≈ 553 kg</span></td>
+          <td class="num qty">4 ks</td><td class="num c-sum ask">poptat</td></tr>
+        <tr data-id="ipe-3500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 3,5 m"></td>
+          <td><span class="name">IPE 240 · délka 3,5 m</span><span class="sub">21 m · ≈ 645 kg</span></td>
+          <td class="num qty">6 ks</td><td class="num c-sum ask">poptat</td></tr>
+        <tr data-id="ipe-2500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 2,5 m"></td>
+          <td><span class="name">IPE 240 · délka 2,5 m</span><span class="sub">5 m · ≈ 154 kg</span></td>
+          <td class="num qty">2 ks</td><td class="num c-sum ask">poptat</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="total"><td></td><td>Celkem s DPH<small>bez IPE 240</small></td><td class="num" colspan="2">241 377,38 Kč</td></tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <div class="note danger"><strong>Délky IPE ověřit před objednáním.</strong> Výškový řez počítá nad HS s délkou <b>3 640 mm</b> (300 mm na ZB rohu + otvor 3 040 + 300 mm na polštáři). Z kusu 3,5 m zbude na každé straně jen 230 mm. Nad průjezdem (4 200 mm) zbude z kusu 4,5 m jen 150 mm na stranu. Minimální uložení potvrdit u statika, případně dva kusy pro HS objednat na 3,65 m. Viz <a href="./rez-vyska.html">Výškový řez</a>.</div>
+
+  <div class="note plain"><strong>Mimo košík, ověřit, jestli už je:</strong>
+    <ul>
+      <li>zakládací malta pod první řadu (viz <a href="./zalozeni-zdiva.html">První řada zdiva</a>)</li>
+      <li>ztracené bednění ZB 300 × 500 mm na roh FIX–HS</li>
+      <li>svorníky a rozpěrky ke spojení dvojic IPE</li>
+    </ul>
+  </div>
+
+  <footer>Ceny s DPH podle košíku e-shopu, stav k 19. 10. 2026. Hmotnost IPE 240 je 30,7 kg/m.</footer>
+</main>
+<script>
+'use strict';
+// "Bought" ticks are a per-browser convenience only; the list renders the same without storage.
+(function(){
+  const KEY='hajek-nakup-zdeni';
+  const rows=[...document.querySelectorAll('tr[data-id]')];
+  const count=document.getElementById('doneCount'),reset=document.getElementById('resetBtn');
+  let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}};
+  const paint=()=>{let n=0;for(const r of rows){const on=!!done[r.dataset.id];r.classList.toggle('bought',on);r.querySelector('input').checked=on;if(on)n++}
+    count.textContent=`Koupeno ${n} z ${rows.length}`;reset.hidden=n===0};
+  for(const r of rows)r.querySelector('input').addEventListener('change',e=>{
+    if(e.target.checked)done[r.dataset.id]=1;else delete done[r.dataset.id];save();paint()});
+  reset.addEventListener('click',()=>{done={};save();paint()});
+  // narrow screens hide the Celkem column and show the row total under the quantity instead
+  for(const r of rows){const s=r.querySelector('.c-sum'),m=document.createElement('small');m.className='m-sum'+(s.classList.contains('ask')?' ask':'');m.textContent=s.textContent;r.querySelector('.qty').appendChild(m)}
+  paint();
+})();
+</script>
+</body>
+</html>

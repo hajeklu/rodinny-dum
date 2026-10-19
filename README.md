@@ -5,6 +5,7 @@ Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrác
 ## Obsah
 - `index.html` — otočný 3D model s přepínači matné engoby a lesklé glazury i dvou rozsahů terasy
 - `zalozeni-zdiva.html`, `rez-vyska.html`, `krov.html`, `kanalizace.html`, `vytapeni.html` — pracovní podklady (první řada zdiva, výškový řez, krov, kanalizace, topení)
+- `nakup-zdeni.html` — nákupní seznam na zdění (tvárnice, lepidlo, překlady SOLBET, IPE 240) se zaškrtáváním koupených položek
 - `nav.js` — společné menu „Podklady“; na 3D modelu je skryté a ukáže se po otevření adresy s `#podklady`
 - `povoleni/` — složka pro stavební povolení; zatím je v ní pouze informace, že podklad nebyl k dispozici
 - `dokumentace/` — výkresy DSP: D1.2 půdorys 1NP a D1.3 půdorys 2NP (PDF)

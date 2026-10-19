@@ -4,7 +4,7 @@
 (function(){
   'use strict';
   const GROUPS=[
-    {name:'Stavba',pages:[['zalozeni-zdiva','První řada zdiva'],['rez-vyska','Výškový řez'],['krov','Krov']]},
+    {name:'Stavba',pages:[['zalozeni-zdiva','První řada zdiva'],['nakup-zdeni','Nákup na zdění'],['rez-vyska','Výškový řez'],['krov','Krov']]},
     {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení']]},
     {name:'Peníze',pages:[['finance','Financování stavby']]}
   ];
