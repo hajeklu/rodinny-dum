@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rozvod vody · Dům Hájek</title>
+<meta name="description" content="Návrh rozvodu studené a teplé vody: vstup a příprava teplé vody v technické místnosti, trasa přes půdu spolu s topením, cirkulační smyčka přes obě patra, stoupačky, půdorysy a čekání na teplou vodu.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:920px;margin:8px 0 18px;color:#526359}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}.notice ol{margin:8px 0 0;padding-left:20px}.notice li{margin:4px 0}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card h3{font-size:15px;margin:18px 0 6px;color:#2b4236}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}.tbl th,.tbl td{text-align:left;padding:8px 9px;border-bottom:1px solid #e4e9e5;vertical-align:top}.tbl th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:#f6f8f5}.tbl td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.tbl tr.sum td{font-weight:700;border-top:2px solid #cfd8d1;background:#f6f8f5}.tbl tr.grp td{background:#eef3ee;font-weight:700;color:#2b4236}
+.tbl td.bad{color:#a33224;font-weight:600}.tbl td.ok{color:#2f7a45;font-weight:600}
+.tbl .sym{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#33443b;color:#fff;font-size:11px;font-weight:800;margin-right:7px;vertical-align:-1px}
+.wrap{overflow-x:auto}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c28a2c;background:#fbf6ea}.note.risk strong{color:#5d4313}
+.note ul,.note ol{margin:6px 0 0;padding-left:18px}.note li{margin:3px 0}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px}.kpi{border:1px solid #dce4dd;border-radius:10px;padding:10px 12px;background:#fbfcfa}.kpi b{display:block;font-size:20px;color:#23382d;font-variant-numeric:tabular-nums}.kpi span{font-size:12px;color:#66756b}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;display:grid;gap:10px}.steps li{position:relative;padding:10px 14px 10px 50px;background:#f3f6f2;border-radius:10px;font-size:13px;color:#4f5f55}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:13px;top:10px;width:26px;height:26px;border-radius:50%;background:#264b39;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}.steps strong{color:#2b4236}
+.isolist{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 22px;font-size:13px;color:#4f5f55}.isolist li{display:flex;gap:9px;align-items:flex-start}.isolist b{flex:0 0 22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}.isolist strong{color:#2b4236}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+@media(max-width:760px){.notes,.verdict,.isolist{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.tbl{font-size:12px}.tbl th,.tbl td{padding:7px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+<meta name="robots" content="noindex,nofollow">
+<script src="./schema.js"></script>
+<script src="./nav.js" defer></script>
+<script src="./navstevy.js" defer></script>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Rozvod vody</h1><p>Studená a teplá voda z technické místnosti · zásobník TV 300 l · cirkulační smyčka přes obě patra</p></div>
+  <nav data-nav="voda"></nav>
+</header>
+<main>
+  <div class="eyebrow">Podklad: ZTI ZT03, ZT04 a technická zpráva (DSP 02/2024), vytápění D.1.4 (zásobník TV 300 l), stránky Topení, Kanalizace a Rekuperace · dispozice z 3D modelu (přízemí „optimalizovaná“, podkroví „zadní část neobytná“) · návrh k předání instalatérovi, stav 10/2026</div>
+  <p class="lead">Projekt ZTI přivádí vodu trubkou HDPE 32 v zemi do technické místnosti 1.02. Tam je hlavní uzávěr a zásobník teplé vody 300 l, který ohřívá tepelné čerpadlo. Odtud vede studená a teplá voda stoupačkou V1 do podkroví a stoupačkou V2 u K1/K2 do přízemí. Cirkulaci projekt nemá. Zásobník je ale za průjezdem, na opačném konci domu než koupelny a kuchyň, a voda do domu vede vrchem přes půdu. <strong>K nejbližší koupelně je to asi <span data-k="near">17</span> m trubky, ke kuchyni <span data-k="kitchen">27</span> m. Bez cirkulace by se na teplou vodu čekalo <span data-k="wait">půl minuty až minutu</span> a pokaždé by do odpadu odteklo několik litrů vody. Cirkulace je tu proto potřeba.</strong> Navrhuji ji jako smyčku: teplá voda vede kolem všech koupelen a kuchyně a vratkou se vrací do zásobníku. Malé čerpadlo ji spustí jen na chvíli, když je teplá voda potřeba.</p>
+
+  <div class="notice"><strong>Co rozhodnout hned, dokud stojí jen deska:</strong><ol>
+    <li><strong>Vstup přípojky do technické místnosti.</strong> Výkres základů ani ZTI chráničku pro přípojku vody neukazují. Zkontroluj, jestli je v desce technické místnosti v rohu u stěny na straně příjezdu, u průjezdu. Když tam není, je potřeba udělat otvor asi 30 × 30 cm v desce, výkop pod ní k základovému pasu a jádrový vrt pasem v nezámrzné hloubce (asi −1,3 m). Pak chránička s obloukem, zásyp a zabetonování. Protiradonovou izolaci kolem prostupu zaplátovat manžetou. Je lepší to udělat teď než po podlahách.</li>
+    <li><strong>Dvě nové stoupačky vody do seznamu prostupů pro výrobce panelů:</strong> V3 v pilíři vedle S2 (SV a TV, Ø ~110) a V2 u K1/K2 (vratka cirkulace, Ø ~60), viz výkres P-01. Nahoru na půdu jde voda prostupem C spolu s topením a Ø 200 jí stačí.</li>
+    <li><strong>Vratku cirkulace položit hned s ostatními trubkami.</strong> Čerpadlo se dá osadit kdykoli později, trubka v podlaze ne.</li></ol></div>
+
+  <div class="verdict">
+    <div class="fact"><b>1 · Cirkulace ano, na vyžádání</b><span>Smyčka teplé vody kolem všech mokrých místností a vratka do zásobníku. Čerpadlo spouští Home Assistant: pohyb v koupelně nebo kuchyni, tlačítko u sprchy, ranní okno. Vypne ho teplota vratky. Trvalý chod by ztrácel kolem <span data-k="contW">400</span> W, to se nevyplatí.</span></div>
+    <div class="fact"><b>2 · Jedna smyčka přes obě patra</b><span>Z technické místnosti s topením přes půdu do chodby podkroví, k prádelně a koupelně u ložnice, stoupačkou V3 v pilíři u S2 dolů do kuchyně, podlahou do koupelny 1.05 a WC a stoupačkou V2 u K1/K2 zpátky nahoru. Každý výtok je na krátké odbočce do půl litru.</span></div>
+    <div class="fact"><b>3 · Zásobník 300 l z TČ, 48–50 °C</b><span>Nižší teplota znamená vyšší COP. Jednou týdně v noci 60 °C proti legionele, při tom poběží i cirkulace, aby se prohřála celá smyčka. Ve sprchách a u vany termostatické baterie.</span></div>
+    <div class="fact"><b>4 · Domovní sestava u vstupu</b><span>Hlavní uzávěr, podružný vodoměr s impulzním výstupem, filtr s proplachem, redukční ventil a motorový uzávěr řízený HA. K tomu čidla zaplavení u pračky, myčky, zásobníku a vstupu vody.</span></div>
+    <div class="fact"><b>5 · Vícevrstvé trubky jako u topení</b><span>Lisované PE-RT/Al/PE-RT se stejnou lisovačkou jako hlavní rozvody topení. Studená páteř 26×3, teplá smyčka 20×2, odbočky a vratka 16×2. Do podlahy podkroví (EPS 50) se vejdou i s izolací. ZTI má PPR PN 20, to jde taky.</span></div>
+    <div class="fact"><b>6 · Venku dva nezámrzné ventily</b><span>Z1 v průjezdu na stěně technické místnosti (auto, kola) a Z2 u terasy ze stěny koupelny 1.05 (zahrada). ZTI má jeden. Ventil musí být dlouhý jako stěna, tedy 0,5 m (zdivo 300 + EPS 200).</span></div>
+  </div>
+
+  <section class="card">
+    <h2>Prostorové schéma · celý dům</h2>
+    <p class="desc">Rozložený pohled ze strany terasy, stejný jako na stránce <a href="./vytapeni.html">Topení</a>: dole přízemí s technickou místností, nahoře podkroví a půda odsunuté výš. Modře studená voda (SV), červeně teplá (TV), oranžově vratka cirkulace. Čárkované svislé čáry mezi patry jsou stoupačky C, V3 a V2. Bez měřítka, čísla odkazují na seznam pod schématem.</p>
+    <div class="wrap"><svg id="iso" viewBox="0 0 1110 470" role="img" aria-label="Prostorové schéma rozvodu vody v domě"></svg></div>
+    <ol class="isolist" id="isoList"></ol>
+  </section>
+
+  <section class="card">
+    <h2>Přízemí a technická místnost · W-01</h2>
+    <p class="desc">Pohled shora, nahoře strana kuchyně (příjezd), vlevo přední štít, vpravo průjezd a technická místnost. V přízemí leží trubky v EPS podlahy na desce, pod podlahovkou. Do zdí a předstěn vedou jen k výtokům. Písmena jsou výtoky: U umyvadlo, S sprcha, V vana, D dřez, W WC, M myčka, P pračka, L výlevka, Z venkovní ventil.</p>
+    <div class="wrap"><svg id="ground" viewBox="0 0 1200 744" role="img" aria-label="Půdorys přízemí s rozvodem vody"></svg></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>A · Vstup, domovní sestava a zásobník</strong><br>Přípojka HDPE 32 vstoupí do rohu u stěny na straně příjezdu, u průjezdu, jako v ZTI. Na stěně k průjezdu jsou za sebou hlavní uzávěr, vodoměr, filtr, redukční ventil a motorový uzávěr. Studená voda pak vede pod stropem k prostupu C a cestou má odbočky k zásobníku, k napouštění topení, k výlevce a k ventilu Z1 do průjezdu. Teplá voda ze zásobníku vede po štítu k C. Vratka se vrací souběžně do čerpadla u zásobníku. Podrobně viz W-03.</div>
+      <div class="note"><strong>B · Kuchyň, koupelna 1.05 a WC</strong><br>Stoupačka V3 sejde v pilíři mezi okny vedle S2, za lamelovou předstěnou. Smyčka pak vede pod linkou k dřezu a myčce, mezi ostrůvkem a vysokou skříní přes kuchyň a chodbu, dveřmi do koupelny, podél stěny s umyvadly a podél stěny u terasy do rohu u WC. Tam stoupá V2, ve které je už jen vratka. Vana, sprcha nad ní a umyvadlo ve WC mají krátké odbočky v příčce mezi koupelnou a WC. Ventil Z2 na terasu je ve stěně koupelny vedle okna.</div>
+      <div class="note"><strong>C · Pokládka v přízemí</strong><br>Všechno v EPS na desce přes ochrannou vrstvu, aby se nepoškodily protiradonové pásy, stejně jako hlavní trubky topení. Příčkami jen dveřmi, nebo nad podlahou v předstěně. Pod linkou se voda potká s odpadem S2 → K3, který leží ve spádu. Voda vede vedle něj, ne pod ním.</div>
+      <div class="note"><strong>Uzávěry skupin</strong><br>ZTI chce uzávěr před každou skupinou výtoků. Přízemí: rohové ventily pod dřezem, uzávěry koupelny a WC za revizními dvířky v předstěně WC u V2. Podkroví: uzávěry za dvířky v prádelně u dveří (smyčka dál k V3 a odbočka do koupelny dětí). Technická místnost: kulové kohouty u zásobníku a na vratce.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Podkroví a půda · W-02</h2>
+    <p class="desc">Varianta „zadní část neobytná“. Z prostupu C vede voda po stropních panelech půdy spolu s topením a otvorem na konci chodby do chodby podkroví. Podél ní vede v drážce v EPS podlahy (50 mm). Na půdě jsou topení a teplá voda v izolačním boxu, studená voda a vratka vedou vedle něj, každá trubka ve vlastní izolaci.</p>
+    <div class="wrap"><svg id="attic" viewBox="0 0 1200 744" role="img" aria-label="Půdorys podkroví s rozvodem vody"></svg></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>D · Prádelna a koupelna u ložnice</strong><br>Smyčka vede dveřmi do prádelny a dál v drážce v instalační stěně mezi prádelnou a koupelnou. Z jedné strany na ni jsou napojené výlevka a pračka, z druhé umyvadlo. Sprcha má odbočku podél stěny do chodby. Na konci smyčka vejde do předstěny WC u nadezdívky a tam sejde stoupačkou V3.</div>
+      <div class="note"><strong>E · Koupelna dětí a vratka</strong><br>Koupelna dětí má odbočku dveřmi z chodby a v ní je méně než půl litru vody. Vratka přijde stoupačkou V2 v šachtě K1 + K2 pod šikminou dětského pokoje 2, vede podlahou ke dveřím a chodbou zpátky na půdu. V podlaze podkroví se kříží jen jednou: odbočka teplé vody do koupelny dětí přes studenou. V místě křížení stačí izolace 6 mm.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Technická místnost · principové schéma W-03</h2>
+    <p class="desc">Bez měřítka. Pořadí armatur na vstupu, zabezpečení zásobníku podle ČSN 06 0830 a návodu výrobce a zapojení cirkulace. Ohřev zásobníku z TČ je na stránce <a href="./vytapeni.html">Topení</a> (hydraulické schéma).</p>
+    <div class="wrap"><svg id="plant" viewBox="0 0 1000 480" role="img" aria-label="Principové schéma vody v technické místnosti"></svg></div>
+    <div class="notes" style="margin-top:14px">
+      <div class="note"><strong>Vstup a domovní sestava</strong><br>Hlavní uzávěr hned nad podlahou, pak podružný vodoměr s impulzním výstupem, filtr s proplachem 90–100 µm a manometrem a redukční ventil nastavený na 3,5–4 bar. Za ním motorový kulový ventil, který HA zavře při zaplavení nebo průtoku v noci. Za filtrem nechat místo a odbočku na případný změkčovač podle tvrdosti vody.</div>
+      <div class="note"><strong>Zabezpečení zásobníku</strong><br>Na vstupu studené vody: kulový ventil, zpětná klapka, pojistný ventil 6 bar (podle štítku zásobníku, odpad přes nálevku se sifonem do K4) a vypouštění, jak má ZTI. Navíc expanzní nádoba na pitnou vodu 18–25 l, průtočná. Bez ní pojistný ventil při každém ohřevu odpustí 3–5 l vody.</div>
+      <div class="note"><strong>Teplota a legionela</strong><br>TČ ohřívá vodu na 48–50 °C. Jednou týdně v noci 60 °C a při tom 10 minut běží cirkulace, aby se prohřála i smyčka. Kvůli opaření po tomto ohřevu termostatické baterie ve sprchách a u vany. Centrální termostatický ventil na výstupu jen tehdy, kdyby voda byla trvale nad 55 °C.</div>
+      <div class="note"><strong>Napouštění topení</strong><br>Topná voda musí být od pitné oddělená (ČSN EN 1717). Buď oddělovač BA, nebo napouštěcí sestava a hadice, která se po napuštění odpojí. ZTI s tímto odběrem počítá („přívod vody pro topení“).</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Cirkulace · kolik se čeká na teplou vodu</h2>
+    <p class="desc">Délka trubky od zásobníku k výtoku po trase smyčky, kolik vody v ní je a jak dlouho trvá, než přiteče teplá. Počítá se 6 l/min, tedy úsporná baterie. Ohřátí studené trubky přidá dalších asi 20–30 %. Když cirkulace proběhne, zbude jen voda v krátké odbočce. Délky jsou spočítané z tras na výkresech W-01 a W-02 včetně svislých úseků.</p>
+    <div class="wrap"><table class="tbl" id="waits"></table></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>Jak cirkulaci řídit</strong><ul>
+        <li>HA spustí čerpadlo při pohybu v koupelnách a v kuchyni (stejná čidla jako pro světla nebo rekuperaci), tlačítkem u sprchy a ve všední dny v ranním okně 6:00–7:30.</li>
+        <li>Vypne ho, když teploměr na vratce u čerpadla ukáže 40 °C, nejdéle po 5 minutách. Pak aspoň 20 minut pauza.</li>
+        <li>Jednou týdně při ohřevu na 60 °C poběží 10 minut kvůli legionele.</li>
+        <li>Když HA nejede, čerpadlo jede podle vlastního časovače (ráno a večer).</li></ul></div>
+      <div class="note"><strong>Kolik to stojí</strong><br><span id="costText"></span></div>
+      <div class="note"><strong>Proč smyčka a ne vratka vedle trubky</strong><br>Obvyklá cirkulace vede vratku souběžně s teplou vodou až k poslednímu výtoku a zpátky. Tady by měřila přes 35 m. Smyčka vede teplou vodu jednou cestou kolem všech výtoků a vrací se nejkratší cestou stoupačkou V2 přes chodbu a půdu. Vratka tak má jen <span data-k="cLen">20</span> m a žádná odbočka nemá víc než půl litru.</div>
+      <div class="note"><strong>Čerpadlo a vyvážení</strong><br>Čerpadlo na pitnou vodu (nerez nebo bronz) s EC motorem 5–10 W a zpětnou klapkou, na vratce u zásobníku. Smyčka je jen jedna, takže stačí jeden vyvažovací nebo termostatický cirkulační ventil před čerpadlem. Nastaví se tak, aby vratka byla teplá do 2–3 minut.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Prostupy stropem přízemí</h2>
+    <p class="desc">Společný výkres pro výrobce panelů, stejný jako na stránkách <a href="./vytapeni.html">Topení</a> a <a href="./rekuperace.html">Rekuperace</a>. Pro vodu přibyly V2 (vratka cirkulace u K1/K2) a V3 (SV a TV vedle S2). Voda nahoru na půdu jde prostupem C s topením. Do Ø 200 se vejdou dvě trubky topení 32, TV 20 a SV 26 s izolací, vratka 16 a chránička pro data.</p>
+    <div class="wrap"><svg id="pen" viewBox="0 0 1200 744" role="img" aria-label="Výkres prostupů stropem přízemí"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>Home Assistant a kabely</h2>
+    <p class="desc">Řízení cirkulace a hlídání úniku vody. ESP32 v technické místnosti je stejný modul, na kterém visí teploměry 1-Wire z <a href="./vytapeni.html">Topení</a> (bod 11), data jdou do SLP stejnou trasou jako Modbus TČ.</p>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Co</th><th>Kde</th><th>Kabel</th><th>Poznámka</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Cirkulační čerpadlo</strong></td><td>vratka u zásobníku</td><td>CYKY-J 3×1,5 z rozvaděče, spíná relé ESP32</td><td>Bez HA běží podle časovače v čerpadle. Příkon 5–10 W.</td></tr>
+        <tr><td>2</td><td><strong>Teploměry</strong> na výstupu TV a na vratce</td><td>trubky u zásobníku</td><td>DS18B20, sběrnice 1-Wire (pár v Cat6)</td><td>Teplota vratky čerpadlo vypíná. Výstup TV hlídá ohřev a týdenní ohřev na 60 °C.</td></tr>
+        <tr><td>3</td><td><strong>Podružný vodoměr</strong> s impulzním výstupem</td><td>domovní sestava</td><td>2 žíly do ESP32</td><td>Spotřeba po hodinách. Průtok v noci, když nikdo nic nepouští, znamená únik.</td></tr>
+        <tr><td>4</td><td><strong>Motorový kulový ventil</strong> DN 25</td><td>za filtrem</td><td>podle pohonu 3–5 žil, 230 V nebo 24 V</td><td>Při výpadku proudu musí zůstat otevřený, aby dům nezůstal bez vody. Ruční ovládání. HA ho zavře při zaplavení nebo úniku.</td></tr>
+        <tr><td>5</td><td><strong>Čidla zaplavení</strong> (6 ks)</td><td>pračka v podkroví, myčka, pod dřezem, u zásobníku, u vstupu vody, za předstěnou WC 1.04</td><td>Zigbee na baterie, bez kabelu</td><td>Pračka je v podkroví nad kuchyní. Proto k ní ještě hadice s aquastopem, případně vanička s odtokem.</td></tr>
+        <tr><td>6</td><td><strong>Spouštění cirkulace</strong></td><td>koupelny, WC 1.04, kuchyň</td><td>pohybová čidla a tlačítka Zigbee</td><td>Stejná čidla mohou ovládat světlo a intenzitu rekuperace.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Co z projektu ZTI měním a proč</h2>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Téma</th><th>Projekt ZTI</th><th>Návrh</th><th>Proč</th></tr></thead>
+      <tbody>
+        <tr><td>Cirkulace</td><td>není</td><td>smyčka přes obě patra, čerpadlo na vyžádání z HA</td><td>Zásobník je od výtoků 17–40 m po trase. Bez cirkulace se čeká 30–80 s a pokaždé odteče několik litrů vody.</td></tr>
+        <tr><td>Trasa do podkroví</td><td>V1 pod stropem technické místnosti, dál v podlaze pokoje 2.08 nad průjezdem</td><td>prostupem C spolu s topením, po neobytné půdě vedle izolačního boxu do chodby podkroví</td><td>Pokoj 2.08 ve variantě „zadní část neobytná“ není, nad průjezdem je nevytápěná půda. Trasa s topením je nejkratší a prostup už je navržený.</td></tr>
+        <tr><td>Stoupačky do přízemí</td><td>V2 u K1/K2 (SV a TV DN 20)</td><td>V3 v pilíři u S2 (SV a TV), V2 u K1/K2 jen pro vratku</td><td>V3 obslouží kuchyň i koupelnu u ložnice přímo nad sebou, V2 uzavře smyčku nejkratší cestou.</td></tr>
+        <tr><td>Materiál</td><td>PPR PN 20 (Ekoplastik), svařované</td><td>vícevrstvé PE-RT/Al/PE-RT, lisované (PPR jde taky)</td><td>Menší vnější průměr (v podlaze podkroví je jen 50 mm EPS), malá roztažnost teplé vody, stejná lisovačka jako na hlavní rozvody topení.</td></tr>
+        <tr><td>Izolace</td><td>Mirelon, SV 6 mm, TV 20 mm</td><td>TV a vratka 20 mm, v podlaze podkroví 13 mm. SV 9 mm, na půdě 13 mm a mimo box.</td><td>Do EPS 50 se 20 mm izolace nevejde. SV se nesmí ohřívat od teplé vody a topení (nad 25 °C v ní rostou bakterie).</td></tr>
+        <tr><td>Domovní sestava</td><td>hlavní uzávěr (vodoměr v šachtě na pozemku)</td><td>+ filtr s proplachem, redukční ventil, podružný vodoměr s impulzem, motorový uzávěr</td><td>Ochrana zásobníku a baterií, hlídání úniku z HA.</td></tr>
+        <tr><td>Zabezpečení zásobníku</td><td>pojistný ventil, kulový ventil, zpětná klapka, filtr, vypouštění</td><td>stejně + expanzní nádoba na pitnou vodu 18–25 l</td><td>Bez ní pojistný ventil při každém ohřevu odpustí 3–5 l.</td></tr>
+        <tr><td>Výtoky</td><td>8 umyvadel, 3 WC, 2 vany, sprcha, 2 pračky, myčka, výtok na zahradě</td><td>podle modelu: 5 umyvadel, 3 WC, vana se sprchou, 2 sprchy, dřez, myčka, pračka, 2 výlevky, 2 venkovní ventily</td><td>Dispozice podle 3D modelu. Pračka a sušička jsou v prádelně v podkroví, v koupelně 1.05 už nejsou.</td></tr>
+        <tr><td>Venkovní výtoky</td><td>1 na zahradě</td><td>2 nezámrzné: Z1 v průjezdu, Z2 u terasy</td><td>Mytí auta a kol v průjezdu, zalévání u terasy. Obě odbočky jsou krátké, takže voda v nich nestojí.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Postup</h2>
+    <ol class="steps">
+      <li><strong>Teď (deska):</strong> ověřit chráničku pro přípojku v desce technické místnosti, a když chybí, udělat vstup (viz rámeček nahoře). Potvrdit polohu stoupaček V2 a V3 a trasu přes půdu spolu s topením.</li>
+      <li><strong>Před objednáním stropních panelů:</strong> V2 a V3 přidat do seznamu prostupů (výkres P-01). V3 do stejné dobetonávky jako S2, V2 vedle K1/K2 u stěny na straně terasy. Polohu u uložení panelů musí potvrdit výrobce panelů.</li>
+      <li><strong>Hrubá stavba a elektro:</strong> instalační předstěny a moduly WC, drážka v instalační stěně mezi prádelnou a koupelnou u ložnice, kastlík V3 v pilíři. Elektrikáři předat: přívod pro čerpadlo a motorový ventil v technické místnosti, krabice pro tlačítka u sprch.</li>
+      <li><strong>Před podlahami:</strong> rozvody v EPS přízemí a v drážkách podlahy podkroví, nástěnky do výšek (umyvadlo 0,55 m, dřez 0,5 m, vana 0,75 m, sprcha 1,1 m, pračka 0,9 m nad hotovou podlahou), izolace. Tlaková zkouška podle výrobce systému a ČSN EN 806-4, zápis, všechno vyfotit a okótovat. Teprve potom EPS, podlahovka a potěr.</li>
+      <li><strong>Uvedení do provozu:</strong> proplach a dezinfekce (ZTI 7.9), protokol. Na TČ nastavit TV 48–50 °C a týdenní ohřev na 60 °C, v HA spouštění cirkulace. První měsíc sledovat teplotu vratky a spotřebu.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Materiál · orientačně</h2>
+    <p class="desc">Délky jsou spočítané z tras na výkresech s rezervou 10 %. Přesné množství dá kladečský plán dodavatele systému.</p>
+    <div class="wrap"><table class="tbl" id="material"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Svépomoc · co sám a co firma</h2>
+    <div class="notes">
+      <div class="note"><strong>Zvládneš sám</strong><ul>
+        <li>Rozvody z vícevrstvých trubek: řezat kolmo, kalibrovat, odhrotovat a lisovat. Lisovačku s čelistmi pro daný systém si půjčíš spolu s tou na topení.</li>
+        <li>Instalační předstěny s moduly WC, nástěnky, izolace.</li>
+        <li>Tlakovou zkoušku podle výrobce systému. Protokol podepíše stavební dozor.</li>
+        <li>Čidla, ESP32 a automatizace v HA.</li></ul></div>
+      <div class="note risk"><strong>Raději firma nebo kontrola</strong><ul>
+        <li>Zabezpečení zásobníku (pojistný ventil, expanzní nádoba) a napojení na TČ při uvedení TČ do provozu servisem. Bez toho hrozí ztráta záruky.</li>
+        <li>Vstup přípojky do domu a prostup deskou proti radonu.</li>
+        <li>Proplach s dezinfekcí a protokol o tlakové zkoušce pro kolaudaci (ZTI 7.9 a 7.10).</li></ul></div>
+      <div class="note"><strong>Postup montáže</strong><ol>
+        <li>Trasy vyznačit na desce a stěnách podle výkresů W-01 a W-02.</li>
+        <li>Předstěny, moduly WC, nástěnky do výšek.</li>
+        <li>Páteř SV, smyčka TV a vratka, pak odbočky. Spoje v podlaze jen tam, kde to jinak nejde, a každý vyfotit.</li>
+        <li>Tlaková zkouška, fotky, kóty.</li>
+        <li>Izolace, EPS, podlahovka, potěr.</li>
+        <li>Proplach, dezinfekce, čerpadlo, nastavení HA.</li></ol></div>
+      <div class="note risk"><strong>Nejčastější chyby</strong><ul>
+        <li>Studená voda bez izolace vedle teplé nebo v boxu s topením.</li>
+        <li>Zapomenutá vratka, kterou pak nejde doplnit.</li>
+        <li>Chybějící expanzní nádoba na teplou vodu.</li>
+        <li>Pračka v patře bez aquastopu a čidla zaplavení.</li>
+        <li>Spoj zalitý v potěru bez fotky a kóty.</li>
+        <li>Nezámrzný ventil kratší než stěna. Pak zamrzne.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rizika a poznámky</h2>
+    <div class="notes">
+      <div class="note risk"><strong>Vstup přípojky a radon</strong><br>Deska má protiradonové pásy. Každý prostup deskou musí mít systémovou manžetu navařenou na izolaci. Přípojka musí vstupovat v nezámrzné hloubce, základové pasy jsou podle D1.1 v hloubce aspoň 1,2 m pod terénem.</div>
+      <div class="note risk"><strong>Prostupy V2 a V3 u uložení panelů</strong><br>Obě stoupačky jsou blízko podélných zdí, stejně jako S2, K1 a K2. Otvory musí být ve výrobním výkresu panelů nebo v dobetonávce. Pokud V3 nepůjde vedle S2, posune se dál od zdi a kastlík v pilíři bude hlubší.</div>
+      <div class="note risk"><strong>Ohřátá studená voda</strong><br>Na půdě vede studená voda mimo box s topením a teplou vodou. V chodbě podkroví je s teplou vodou v podlaze souběžně, každá trubka ale ve vlastní izolaci. Kdyby SV v létě na půdě přesto teplala, stačí jí silnější izolace (19 mm).</div>
+      <div class="note risk"><strong>Legionela</strong><br>48–50 °C je dolní hranice. Proto týdenní ohřev na 60 °C i se smyčkou a krátké odbočky (do půl litru). Málo používané výtoky (výlevka v technické místnosti, Z1, Z2) jsou na krátkých odbočkách a občas je stačí pustit.</div>
+      <div class="note risk"><strong>Varianta podkroví podle D1.3</strong><br>Kdyby zůstaly pokoje nad průjezdem, vede voda v jejich vytápěné podlaze jako v ZTI a přibudou koupelny 2.05–2.07. Smyčka se tím prodlouží a V2 by obsloužila i je.</div>
+      <div class="note risk"><strong>Kanalizace varianta B</strong><br>Bez S2 v pilíři (varianta B na stránce <a href="./kanalizace.html">Kanalizace</a>) potřebuje V3 vlastní kastlík v pilíři, asi 15 cm. Druhá možnost je napojit kuchyň podlahou z koupelny 1.05 a vést vratku zpátky souběžně, to je asi o 15 m trubky víc.</div>
+      <div class="note"><strong>Tlak</strong><br>Tlak v přípojce zatím neznám. Redukční ventil je v sestavě vždy, nastavuje se na 3,5–4 bar, aby pojistný ventil zásobníku (6 bar) neodpouštěl.</div>
+      <div class="note"><strong>Hluk</strong><br>Lisované vícevrstvé trubky jsou tiché, čerpadlo EC je neslyšné. Trubky vedené v instalační stěně u ložnice ukotvit přes pryžové objímky.</div>
+    </div>
+  </section>
+
+  <footer>Návrh k předání instalatérovi a projektantovi ZTI. Nenahrazuje prováděcí projekt (dimenzování podle ČSN EN 806-3 a ČSN 75 5455, zabezpečovací zařízení podle ČSN 06 0830). Podklady: DSP 02/2024 – ZTI ZT03, ZT04 a technická zpráva, vytápění D.1.4, základy D1.1. Dispozice a souřadnice z 3D modelu s přesností asi ±10 cm, délky trubek jsou z výkresů a mají stejnou přesnost.</footer>
+</main>
+<script>
+// Plans use the shared drawing kit (schema.js) in the model's pre-mirror coordinates: z along the house (0 = inside of the front gable),
+// x across (0.3 = inner face of the kitchen-side wall, 7.7 = inner face of the terrace-side wall). Routes are 3D points [z, x, y, name],
+// y the pipe height: plant room under the ceiling +2.45, loft and attic floor +3.00, ground floor in the EPS -0.15.
+const PAL=Dum.PAL,el=Dum.el,f1=Dum.f1;
+const W={sv:'#1f6fc4',tv:'#d1362b',c:'#e3861a',fx:'#33443b',box:'#c79a5a',boxF:'#f2d9b6',heat:'#c5ccc7',kan:'#2f8a4c'};
+const PIPE={26:{n:'26×3',id:20},20:{n:'20×2',id:16},16:{n:'16×2',id:12}};
+const lpm=d=>Math.PI*(PIPE[d].id/2)**2/1000;           // litres per metre
+const fmt=(n,d=1)=>n.toFixed(d).replace('.',',');
+const FLOW=.1;                                         // 6 l/min
+const CHOLE=[18.1,3.35];                               // penetration C in the plant-room ceiling (shared with heating)
+
+// ---------- routes ----------
+// Hot water supply: tank → under the ceiling along the gable → C → loft → attic corridor → utility and en-suite → V3 → kitchen → bathroom 1.05 → WC (V2).
+const TV_TM=[[17.6,1.0,1.85,'tank'],[17.6,1.0,2.45],[18.22,1.0,2.45],[18.22,3.32,2.45,'tmL'],[18.1,3.32,2.45],[18.1,3.32,3.0,'C']];
+const TV_LOFT=[[17.5,3.32],[17.3,3.88]];
+const TV_A=[[13.0,3.88,'chodba'],[8.75,3.88,'KB'],[7.05,3.88],[7.05,3.2],[6.65,3.2,'ES'],[6.65,2.87,'UL'],[6.65,2.25,'UP'],[6.65,1.65,'EV'],[6.65,.45],[5.55,.45,'V3a']];
+const TV_G=[[5.55,.45,'V3'],[7.7,.45,'KD'],[8.3,.45,'KM'],[8.8,.95],[8.8,5.32],[7.7,5.32],[7.7,5.775,'B1'],[7.7,6.425,'B2'],[7.7,7.5],[9.55,7.5,'Z2'],[10.3,7.5,'BV'],[10.75,7.45,'V2']];
+const lift=(a,y)=>a.map(q=>[q[0],q[1],y,q[2]]);
+const TVP=[...TV_TM,...lift(TV_LOFT,3.0),...lift(TV_A,3.0),...lift(TV_G,-.15)];
+// Offset of a plan polyline: d > 0 to the left of the direction of travel.
+function off(p,d){const n=[];for(let i=0;i<p.length-1;i++){const dz=p[i+1][0]-p[i][0],dx=p[i+1][1]-p[i][1],l=Math.hypot(dz,dx)||1;n.push([-dx/l,dz/l]);}
+ return p.map((q,i)=>{let m;if(i===0)m=n[0];else if(i===p.length-1)m=n[n.length-1];else{const a=n[i-1],b=n[i],s=[a[0]+b[0],a[1]+b[1]],sl=Math.hypot(...s)||1,u=[s[0]/sl,s[1]/sl],k=u[0]*b[0]+u[1]*b[1];m=[u[0]/k,u[1]/k];}
+  return [q[0]+m[0]*d,q[1]+m[1]*d,...q.slice(2)];});}
+// Cold water: entry and house set in the plant room, under the ceiling to C, in the loft beside the box, in the house next to the hot water.
+const SV_TM=[[16.62,.45,-.4,'in'],[16.62,.45,1.0],[16.62,1.65,1.0,'sestava'],[16.62,1.65,2.45],[16.62,3.05,2.45],[18.0,3.05,2.45],[18.1,3.4,2.45],[18.1,3.4,3.0]];
+const SV_LOFT=[[17.65,3.4],[17.35,4.15],[13.2,4.15]];
+const SV_A=off(TV_A,-.12),SV_G=off(TV_G,.12);
+const SVP=[...SV_TM,...lift(SV_LOFT,3.0),...lift(SV_A,3.0),...lift(SV_G,-.15),[11.1,7.62,-.15,'end']];
+// Circulation return: up V2 in the K1 + K2 shaft, across the floor of kids' room 2, up the corridor, through the loft to C and back to the tank.
+const C_A=[[10.75,7.45],[10.75,7.22],[10.1,7.22],[10.1,4.35],[13.2,4.35],[17.85,4.35],[18.15,3.45]];
+const CP=[[10.75,7.45,-.15,'V2'],...lift(C_A,3.0),[18.15,3.45,2.45,'C'],[18.08,3.3,2.45],[18.08,1.75,2.45],[18.08,1.75,1.2,'pump'],[17.85,1.38,1.0,'port']];
+// Plant-room cold-water branches (not draw-offs): tank inlet, heating fill.
+const SV_TMB=[{p:[[16.62,1.3],[17.2,1.3]],y:1.0,t:'do zásobníku'},{p:[[17.7,3.05],[17.7,2.42]],y:2.45,t:'napouštění topení'}];
+
+// Draw-offs: stub from the hot-water node `at` (or the cold main), s symbol, up = rise to the outlet. cold: cold water only.
+const FX=[
+ {s:'U',t:'Umyvadlo',r:'koupelna dětí',lv:'a',at:'KB',p:[[8.75,3.88],[8.75,4.9],[7.5,4.9],[7.5,5.55]],up:.55},
+ {s:'S',t:'Sprcha',r:'koupelna dětí',lv:'a',at:'KB',p:[[8.75,3.88],[8.75,4.9],[9.33,4.9],[9.33,6.0]],up:1.1},
+ {s:'W',t:'WC',r:'koupelna dětí',lv:'a',cold:1,p:[[8.63,4.0],[8.63,4.82],[7.42,4.82],[7.42,7.3],[8.05,7.55]],up:.8},
+ {s:'S',t:'Sprcha',r:'koupelna u ložnice',lv:'a',at:'ES',p:[[6.65,3.2],[6.3,3.2],[6.3,3.27],[5.88,3.27]],up:1.1},
+ {s:'L',t:'Výlevka',r:'prádelna',lv:'a',at:'UL',p:[[6.65,2.87],[6.6,2.87]],up:.55},
+ {s:'P',t:'Pračka',r:'prádelna',lv:'a',cold:1,p:[[6.53,2.25],[6.6,2.25]],up:.9},
+ {s:'U',t:'Umyvadlo',r:'koupelna u ložnice',lv:'a',at:'EV',p:[[6.65,1.65],[6.37,1.65]],up:.55},
+ {s:'W',t:'WC',r:'koupelna u ložnice',lv:'a',cold:1,p:[[5.55,.57],[5.1,.5]],up:.8},
+ {s:'D',t:'Dřez',r:'kuchyň',lv:'g',at:'KD',p:[[7.7,.45],[7.7,.52]],up:.5},
+ {s:'M',t:'Myčka',r:'kuchyň',lv:'g',cold:1,p:[[8.25,.57],[8.25,.78]],up:.3},
+ {s:'U',t:'Umyvadlo 1',r:'koupelna 1.05',lv:'g',at:'B1',p:[[7.7,5.775],[7.6,5.775]],up:.55},
+ {s:'U',t:'Umyvadlo 2',r:'koupelna 1.05',lv:'g',at:'B2',p:[[7.7,6.425],[7.6,6.425]],up:.55},
+ {s:'V',t:'Vana',r:'koupelna 1.05',lv:'g',at:'BV',p:[[10.3,7.5],[10.3,6.05]],up:.75},
+ {s:'S',t:'Sprcha nad vanou',r:'koupelna 1.05',lv:'g',at:'BV',p:[[10.3,7.5],[10.3,6.05],[10.3,5.35]],up:1.1},
+ {s:'U',t:'Umyvadlo',r:'WC 1.04',lv:'g',at:'V2',p:[[10.75,7.45],[10.68,7.36],[10.68,6.25]],up:.7},
+ {s:'W',t:'WC',r:'WC 1.04',lv:'g',cold:1,p:[[10.75,7.57],[11.1,7.62]],up:.8},
+ {s:'Z',t:'Venkovní ventil Z2',r:'terasa',lv:'g',cold:1,p:[[9.55,7.62],[9.55,8.2]],up:.5},
+ {s:'L',t:'Výlevka',r:'technická m.',lv:'t',at:'tmL',p:[[18.22,3.32],[18.22,4.3]],up:-1.55,svp:[[17.9,3.05],[17.9,4.22],[18.14,4.3]]},
+ {s:'Z',t:'Venkovní ventil Z1',r:'průjezd',lv:'t',cold:1,p:[[16.62,2.5],[16.05,2.5]],up:-1.95}];
+
+// ---------- lengths ----------
+const d3=(a,b)=>Math.hypot(b[0]-a[0],b[1]-a[1],b[2]-a[2]);
+const cum=p=>p.reduce((c,q,i)=>(c.push(i?c[i-1]+d3(p[i-1],q):0),c),[]);
+const len2=p=>p.reduce((t,q,i)=>i?t+Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1]):0,0);
+const len3=p=>p.reduce((t,q,i)=>i?t+d3(p[i-1],q):0,0);
+const TVC=cum(TVP),node=n=>TVC[TVP.findIndex(q=>q[3]===n)];
+const L_TV=len3(TVP),L_C=len3(CP),L_SV=len3(SVP);
+for(const f of FX){f.stub=len2(f.p)+Math.abs(f.up);if(!f.cold){f.main=node(f.at);f.L=f.main+f.stub;f.V=f.main*lpm(20)+f.stub*lpm(16);f.Vs=f.stub*lpm(16);}}
+const V_LOOP=L_TV*lpm(20)+L_C*lpm(16);
+
+// ---------- plan helpers ----------
+// Plan projection of the parts of a 3D route that satisfy pred (both ends), as separate runs.
+function runs(path,pred){const out=[];let cur=null;for(let i=1;i<path.length;i++){const a=path[i-1],b=path[i];
+ if(pred(a)&&pred(b)){if(!cur){cur=[[a[0],a[1]]];out.push(cur);}const l=cur[cur.length-1];if(Math.hypot(b[0]-l[0],b[1]-l[1])>1e-6)cur.push([b[0],b[1]]);}else cur=null;}
+ return out.filter(r=>r.length>1);}
+const closest=(poly,pt)=>{let best=null,bd=1e9;for(let i=1;i<poly.length;i++){const a=poly[i-1],b=poly[i],vz=b[0]-a[0],vx=b[1]-a[1],L=vz*vz+vx*vx||1;
+ let t=((pt[0]-a[0])*vz+(pt[1]-a[1])*vx)/L;t=Math.max(0,Math.min(1,t));const q=[a[0]+t*vz,a[1]+t*vx],d=Math.hypot(q[0]-pt[0],q[1]-pt[1]);if(d<bd){bd=d;best=q;}}return best;};
+const LEV={g:q=>q[2]<.5,t:q=>q[0]>16.3&&q[2]>.5&&q[2]<2.9,a:q=>q[2]>2.9};
+function svPlan(lv){return runs(SVP,LEV[lv]).flat();}
+// Cold stub beside a hot stub: offset to the side of the cold main, first point snapped onto it.
+function coldStub(f){if(f.svp)return f.svp;const sv=f.lv==='t'?runs(SVP,LEV.t).flat():svPlan(f.lv);if(f.cold)return [closest(sv,f.p[0]),...f.p.slice(1)];
+ const a=off(f.p,.055),b=off(f.p,-.055),pick=Math.hypot(...[0,1].map(i=>closest(sv,a[0])[i]-a[0][i]))<Math.hypot(...[0,1].map(i=>closest(sv,b[0])[i]-b[0][i]))?a:b;
+ return [closest(sv,pick[0]),...pick.slice(1)];}
+function pipes(g,lv,o={}){
+ const pr=LEV[lv]||(q=>LEV.g(q)||LEV.t(q));
+ for(const r of runs(SVP,pr))g.duct(r,W.sv,2.8);
+ for(const r of runs(TVP,pr))g.duct(r,W.tv,2.8);
+ for(const r of runs(CP,pr))g.duct(r,W.c,2.4,{'stroke-dasharray':'6 3'});}
+function stubs(g,lvs){for(const f of FX){if(!lvs.includes(f.lv))continue;
+ g.duct(coldStub(f),W.sv,1.6);if(!f.cold)g.duct(f.p,W.tv,1.6);}
+ for(const f of FX){if(!lvs.includes(f.lv))continue;const e=f.p[f.p.length-1];g.circle(e[0],e[1],7.5,{fill:W.fx,stroke:'#fff','stroke-width':1.6});
+  g.el('text',{x:g.X(e[0]),y:g.Y(e[1])+3.6,'text-anchor':'middle','font-size':10,'font-weight':800,fill:'#fff'},f.s);}}
+function riser(g,z,x,t,col,lz,lx,anchor='middle'){g.circle(z,x,8,{fill:'#fff',stroke:col,'stroke-width':2.4});g.el('text',{x:g.X(z),y:g.Y(x)+4,'text-anchor':'middle','font-size':10,'font-weight':800,fill:col},'↕');
+ if(t)g.text(lz,lx,t,{'font-size':11,'font-weight':800,fill:col,'text-anchor':anchor});}
+// sewer stacks the water runs beside (kanalizace.html), drawn over the pipes
+const sewers=g=>{for(const [z,x,t,lz,lx] of [[5.85,.5,'S2',5.95,.82],[10.37,7.55,'K2',10.15,7.25],[11.45,7.55,'K1',11.45,7.25]]){g.circle(z,x,5,{fill:'#fff',stroke:W.kan,'stroke-width':2});g.text(lz,lx,t,{'font-size':9,'font-weight':700,fill:W.kan});}};
+const fixO=(g,r,a={})=>g.rect(...r,Object.assign({fill:'none',stroke:'#b7c0ba','stroke-width':1},a));
+const LEG=()=>[{k:'line',c:W.sv,w:3,t:'studená voda SV (páteř 26×3)'},{k:'line',c:W.tv,w:3,t:'teplá voda TV (smyčka 20×2)'},{k:'dash',c:W.c,w:2.6,t:'vratka cirkulace (16×2)'},{k:'line',c:'#7d8b83',w:1.6,t:'odbočka k výtoku (16×2)'},
+ {k:'tag',c:W.fx,s:'U',t:'výtok (U, S, V, D, W, M, P, L, Z)'},{k:'riser',c:W.tv,s:'↕',t:'stoupačka (C, V2, V3)'},{k:'fill',c:W.box,f:W.boxF,t:'izolační box: topení + TV'},{k:'disc',c:W.kan,t:'odpady S2, K1, K2 (kanalizace)'},
+ {k:'sq',c:W.fx,t:'domovní sestava, čerpadlo'},{k:'line',c:W.heat,w:3,t:'topení (viz Topení)'}];
+
+// ---------- W-01 ground floor and plant room ----------
+function drawGround(){const s=document.getElementById('ground');
+ const g=Dum.plan(s,{title:'Přízemí a technická místnost · rozvod vody',sub:'Pohled shora · nahoře strana příjezdu, dole terasa (HS), vlevo přední štít · trubky v EPS podlahy, v technické místnosti pod stropem',code:'W-01'});
+ Dum.groundBase(g,{under:()=>{
+  // fixtures the water goes to (the base draws the run, island, bath and built-in wardrobe)
+  fixO(g,[5.3,6.9,7.56,8.04]);fixO(g,[7.46,7.7,10.58,11.7],{fill:'#eef0ee'});fixO(g,[6.93,7.46,10.96,11.32],{rx:6});fixO(g,[6.04,6.46,10.6,10.82]);fixO(g,[.4,.82,7.35,8.05],{rx:3});
+  g.rect(.3,.65,4.27,6.08,{fill:'#f3efe6',stroke:'#c9bda5','stroke-dasharray':'4 3'});g.text(5.2,1.0,'lamelová předstěna',{'font-size':9,fill:PAL.sub,'text-anchor':'start'});
+  fixO(g,[4.0,4.5,17.85,18.3]);}});
+ // heating in the plant room, faint, for coordination
+ g.line([[19.1,1.56],[17.3,1.56],[17.3,3.28],[18.05,3.28]],W.heat,2.4);g.line([[19.1,1.74],[17.46,1.74],[17.46,3.42],[18.05,3.42]],W.heat,2.4);
+ // house water set on the passage wall
+ g.rect(.38,1.62,16.5,16.74,{fill:'#fff',stroke:W.fx,'stroke-width':1.6,rx:2});
+ pipes(g,'gt');stubs(g,['g','t']);
+ for(const b of SV_TMB)g.duct(b.p,W.sv,1.8);
+ for(const x of [.62,.9,1.15,1.4])g.rect(x-.05,x+.05,16.57,16.67,{fill:W.fx});
+ sewers(g);
+ // pump on the return by the tank
+ g.circle(18.08,1.75,6.5,{fill:'#fff',stroke:W.c,'stroke-width':2.2});g.poly([[18.0,1.7],[18.16,1.75],[18.0,1.8]],{fill:W.c});
+ // risers and the entry
+ g.circle(16.62,.45,6,{fill:W.sv,stroke:'#fff','stroke-width':1.5});
+ riser(g,...CHOLE,'C',W.tv,17.62,3.95);riser(g,5.55,.5,'V3',W.tv,5.2,1.25);riser(g,10.75,7.45,'V2',W.c,10.75,6.95);
+ // labels: the plant-room ones sit in the passage, next to the wall they describe
+ const L=(z,x,t,a={})=>g.text(z,x,t,Object.assign({'font-size':9.5,fill:PAL.sub},a));
+ g.text(15.9,.3,'přípojka HDPE 32 ze země (ZTI)',{'font-size':9.5,fill:W.sv,'font-weight':700,'text-anchor':'end'});
+ for(const [x,t] of [[.62,'domovní sestava na stěně:'],[.9,'uzávěr, vodoměr, filtr,'],[1.18,'redukční v., motorový uzávěr']])L(15.9,x,t,{'text-anchor':'end'});
+ L(15.9,2.55,'Z1 do průjezdu',{'text-anchor':'end',fill:W.fx,'font-weight':700});
+ L(16.8,2.68,'napouštění',{'font-size':9,'text-anchor':'start'});L(18.0,4.6,'výlevka',{'font-size':9,'text-anchor':'end'});
+ L(14.1,2.85,'voda i topení vedou',{'font-size':10.5,fill:'#8a5a17','font-weight':600});L(14.1,3.15,'vrchem přes půdu (W-02)',{'font-size':10,fill:'#8a5a17'});
+ L(7.0,1.25,'pod linkou',{'font-size':9.5});L(8.55,3.6,'mezi ostrůvkem a skříní',{'font-size':9});L(9.75,8.4,'Z2 na terasu',{'font-size':9.5,fill:W.fx,'font-weight':700,'text-anchor':'start'});
+ Dum.dims(g,[-.2,12.2,16.0,18.8],8.62);Dum.dimX(g,-.55,-.2,8.2);
+ Dum.roomTags(g,'g',{noArea:true,over:{'1.05':[9.0,6.2],'1.04':[11.35,5.7],'1.07':[6.85,1.6],'1.02':[17.0,6.6],'1.06':[7.0,4.15],'1.09':[5.95,6.75]},stack:['1.02']});
+ Dum.finish(g,LEG(),{title:'Přízemí · rozvod vody',sub:'SV, TV a cirkulace, technická m.',code:'W-01'});}
+
+// ---------- W-02 attic and loft ----------
+const HEAT_SUP=[[18.1,3.3],[17.25,3.3],[17.25,3.55],[13.0,3.55],[10.8,3.55],[10.72,3.66]],HEAT_RET=[[18.1,3.42],[17.4,3.42],[17.4,3.7],[13.0,3.7],[10.8,3.7],[10.72,3.74]];
+function drawAttic(){const s=document.getElementById('attic');
+ const g=Dum.plan(s,{title:'Podkroví a půda · rozvod vody',sub:'Pohled shora, varianta „zadní část neobytná“ · v drážkách v EPS podlahy (50 mm), na půdě po stropních panelech vedle topení',code:'W-02'});
+ Dum.atticBase(g,'compact',{flat:false,under:()=>{
+  fixO(g,[.3,.55,4.75,5.45],{fill:'#eef0ee'});fixO(g,[.55,1.08,4.92,5.28],{rx:6});fixO(g,[1.05,2.25,5.92,6.39]);fixO(g,[1.95,2.55,6.6,7.2]);fixO(g,[2.6,3.15,6.6,7.05]);
+  fixO(g,[5.0,6.1,7.38,7.85]);fixO(g,[7.45,7.7,7.85,8.5],{fill:'#eef0ee'});fixO(g,[6.92,7.45,7.99,8.35],{rx:6});
+  g.rect(7.3,7.7,10.15,11.7,{fill:'#e3e8e4',stroke:'#9aa79f'});
+  // insulated box with the heating mains and the hot water, from C to the end of the corridor
+  g.line([[18.1,3.62],[17.4,3.62],[13.27,3.62]],W.boxF,40,{'stroke-linecap':'butt'});g.line([[18.1,3.62],[17.4,3.62],[13.27,3.62]],W.box,1,{'stroke-dasharray':'5 4'});}});
+ g.line(HEAT_SUP,W.heat,2.6);g.line(HEAT_RET,W.heat,2.6);
+ g.rect(3.62,3.8,9.92,10.72,{fill:'#263a30',rx:2});g.text(10.32,3.42,'R2',{'font-size':10,'font-weight':800,fill:'#263a30'});
+ pipes(g,'a');stubs(g,['a']);sewers(g);
+ riser(g,...CHOLE,'C',W.tv,17.62,2.95);riser(g,5.55,.5,'V3',W.tv,5.15,1.25);riser(g,10.75,7.45,'V2',W.c,10.35,6.95,'end');
+ const L=(z,x,t,a={})=>g.text(z,x,t,Object.assign({'font-size':9.5,fill:PAL.sub},a));
+ L(15.4,2.62,'izolační box: topení + TV',{'font-size':10,fill:'#8a5a17','font-weight':600});L(15.4,4.75,'SV a vratka vedle boxu',{'font-size':10,fill:'#8a5a17','font-weight':600});L(15.4,5.05,'každá trubka ve vlastní izolaci',{'font-size':9.5,fill:'#8a5a17'});
+ L(11.25,6.95,'šachta K1 + K2',{'font-size':9,'text-anchor':'start'});L(10.25,6.2,'vratka v podlaze',{'font-size':9,fill:W.c,'text-anchor':'start'});L(15.8,5.55,'nevytápěná, v zateplené obálce',{'font-size':9.5,fill:PAL.sub});L(7.3,1.25,'instalační stěna',{'font-size':9});
+ L(8.25,4.25,'křížení',{'font-size':8.5,'text-anchor':'end'});
+ Dum.roomTags(g,'compact',{noArea:true,over:{'2.02':[2.6,6.6],'2.03':[5.0,2.2],'Úklid':[7.25,1.0],'Dětský pokoj 1':[9.6,1.5],'Koupelna dětí':[8.95,6.95],'Dětský pokoj 2':[12.1,6.0]},hide:['2.01']});
+ Dum.finish(g,LEG(),{title:'Podkroví · rozvod vody',sub:'půda, chodba, koupelny, prádelna',code:'W-02'});}
+
+// ---------- exploded oblique view ----------
+function drawIso(){const s=document.getElementById('iso'),E1=1.7,lev=y=>y<=2.95?y:y+E1;
+ const I=Dum.iso(s,{W:1110,H:470,K:40,OX:165,OY:398,cx:.42,cy:.3,lev}),P=I.P;
+ const q=p=>[p[1],p[2]>2.9?p[2]+.1:p[2],p[0]];
+ const room=(x,y,z,t)=>I.text(x,y,z,t,{'font-style':'italic','font-size':10.5,fill:'#7b8a80'});
+ // a route as pipes on each level and dashed connectors where it crosses between the storeys
+ const path3=(pts,col,w,at={})=>{let run=[q(pts[0])];const flush=()=>{if(run.length>1)I.pipe(run,col,w,at);};
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i];if((a[2]<=2.95)!==(b[2]<=2.95)){flush();I.line([q(a),q(b)],col,1.6,{'stroke-dasharray':'5 4'});run=[q(b)];}else run.push(q(b));}flush();};
+ // ground floor
+ I.plate(-.2,8.2,-.2,12.2,0,{fill:'#e9ede8',stroke:'#c3ccc5'});I.plate(.3,7.7,.3,11.7,0,{fill:'#fbfcfa',stroke:'#a8b3ac'});
+ I.plate(-.2,8.2,12.2,16.0,-.03,{fill:'#f1f2ee',stroke:'#c3ccc5','stroke-dasharray':'5 4'});
+ I.plate(-.2,8.2,16.0,18.8,0,{fill:'#e9ede8',stroke:'#c3ccc5'});I.plate(.3,7.7,16.5,18.3,0,{fill:'#fbfcfa',stroke:'#a8b3ac'});
+ I.walls(Dum.PARTS.g,0);
+ for(const [x,z,t] of [[6.4,5.8,'schodiště'],[4.0,14.1,'průjezd'],[1.6,6.8,'kuchyň'],[6.4,9.0,'koupelna'],[3.6,2.0,'obývák']])room(x,0,z,t);
+ I.cyl(1.0,17.6,0,1.85,.45,'#f4f5f3');I.cyl(2.15,17.85,0,1.0,.27,'#f4f5f3');I.box(1.22,2.32,.14,.96,19.1,19.5,'#dfe3e0');I.text(1.77,1.05,19.3,'TČ',{'font-size':10,fill:PAL.txt,'font-weight':700});
+ I.box(.38,1.62,.6,1.3,16.5,16.68,'#33443b');
+ // attic and loft
+ I.plate(-.2,8.2,-.2,18.8,3.06,{fill:'#eef1ed','fill-opacity':.8,stroke:'#c3ccc5'});I.plate(.3,7.7,.3,13.0,3.06,{fill:'#fbfcfa','fill-opacity':.88,stroke:'#a8b3ac'});
+ I.plate(.3,7.7,13.27,18.3,3.06,{fill:'#f3efe3','fill-opacity':.88,stroke:'#cfc6ac'});I.line([[.3,3.06,13.13],[7.7,3.06,13.13]],'#cfc6ac',4);
+ I.walls(Dum.PARTS.compact,3.06);
+ for(const [x,z,t] of [[4.0,15.8,'půda – neobytná'],[6.4,6.3,'schodiště'],[1.5,9.5,'dětský 1'],[6.3,11.6,'dětský 2']])room(x,3.06,z,t);
+ I.line([[3.62,3.12,13.27],[3.62,3.12,17.4],[3.62,3.12,18.1]],W.boxF,18,{opacity:.85});
+ I.line(HEAT_SUP.map(([z,x])=>[x,3.13,z]),'#c5ccc7',2.4);
+ // pipes
+ path3(SVP,W.sv,2.8);path3(TVP,W.tv,2.8);path3(CP,W.c,2.4,{'stroke-dasharray':'6 3'});
+ for(const f of FX){const y=f.lv==='a'?3.0:f.lv==='g'?-.15:2.45,e=f.p[f.p.length-1],top=y+f.up;
+  const st=f.p.map(([z,x])=>q([z,x,y]));I.line(st,f.cold?W.sv:W.tv,1.5);I.line([q([e[0],e[1],y]),q([e[0],e[1],top])],f.cold?W.sv:W.tv,1.5);
+  const [px,py]=P(...q([e[0],e[1],top]));el(s,'circle',{cx:px,cy:py,r:3.2,fill:W.fx,stroke:'#fff','stroke-width':1});}
+ for(const [y,t] of [[.2,'přízemí'],[3.2,'podkroví']]){const [x,yy]=P(8.2,lev(y),-.35);el(s,'text',{x:x-6,y:yy+4,'font-size':12,'font-weight':700,fill:'#8a978e','text-anchor':'end'},t);}
+ const [fx,fy]=P(8.2,0,6.0);el(s,'text',{x:fx,y:fy+62,'font-size':11,fill:'#8a978e','text-anchor':'middle'},'strana terasy (HS) · vlevo přední štít · vpravo technická místnost');
+ I.text(1.0,.9,17.6,'TV 300',{'font-size':9.5,fill:PAL.sub});
+ I.mark([.42,1.3,16.9],-30,24,1,W.sv,'<strong>Přípojka a domovní sestava</strong> v technické místnosti: hlavní uzávěr, vodoměr, filtr, redukční ventil, motorový uzávěr.');
+ I.mark([1.0,1.85,17.6],30,30,2,W.tv,'<strong>Zásobník TV 300 l</strong> ohřívaný z TČ, pojistná sestava, expanzní nádoba a cirkulační čerpadlo na vratce.');
+ I.mark([3.35,2.7,18.1],40,-6,3,W.tv,'<strong>Prostup C</strong> u štítu: SV, TV a vratka spolu s topením nahoru na půdu.');
+ I.mark([3.88,3.1,15.4],0,-36,4,'#8a5a17','<strong>Půda</strong>: TV v izolačním boxu s topením, SV a vratka vedle něj.');
+ I.mark([4.9,3.1,8.75],34,-24,5,W.tv,'<strong>Koupelna dětí</strong>: odbočka z chodby, pod půl litru.');
+ I.mark([2.2,3.1,6.6],-30,-30,6,W.tv,'<strong>Prádelna a koupelna u ložnice</strong>: smyčka v instalační stěně mezi nimi.');
+ I.mark([.45,1.6,5.55],-34,0,7,W.tv,'<strong>Stoupačka V3</strong> v pilíři mezi okny vedle S2, za lamelovou předstěnou.');
+ I.mark([.45,-.15,7.7],-34,22,8,W.tv,'<strong>Kuchyň</strong>: dřez a myčka, smyčka pod linkou.');
+ I.mark([6.4,-.15,7.7],-10,36,9,W.tv,'<strong>Koupelna 1.05 a WC 1.04</strong>: smyčka kolem umyvadel, vana a WC na krátkých odbočkách.');
+ I.mark([7.45,1.6,10.75],38,8,10,W.c,'<strong>Stoupačka V2</strong> u K1/K2: vratka nahoru do šachty v dětském pokoji 2, chodbou a přes půdu zpět do zásobníku.');
+ I.mark([7.8,.5,9.55],40,26,11,W.sv,'<strong>Z2</strong> nezámrzný ventil u terasy, <strong>Z1</strong> v průjezdu na stěně technické místnosti.');
+ I.marks(document.getElementById('isoList'));}
+
+// ---------- W-03 plant room principle ----------
+function drawPlant(){const s=document.getElementById('plant');s.replaceChildren();Dum.defs(s);
+ const T=(x,y,t,a={})=>el(s,'text',Object.assign({x,y,'font-size':11,fill:PAL.txt},a),t);
+ const R=(x,y,w,h,a)=>el(s,'rect',Object.assign({x,y,width:w,height:h},a));
+ const L=(p,c,w=3.4,a={})=>el(s,'polyline',Object.assign({points:p.map(q=>q.join(',')).join(' '),fill:'none',stroke:c,'stroke-width':w,'stroke-linejoin':'round','stroke-linecap':'round'},a));
+ const D=(p,c,w=3.4,a={})=>{L(p,'#fff',w+4);L(p,c,w,a);};
+ // fittings on a horizontal (h) or vertical (v) pipe at x,y
+ const valve=(x,y,o='h')=>{const a=o==='h'?`${x-9},${y-6} ${x+9},${y+6} ${x+9},${y-6} ${x-9},${y+6}`:`${x-6},${y-9} ${x+6},${y+9} ${x-6},${y+9} ${x+6},${y-9}`;el(s,'polygon',{points:a,fill:'#fff',stroke:PAL.ink,'stroke-width':1.4,'stroke-linejoin':'round'});};
+ const check=(x,y,o='h')=>{if(o==='h'){el(s,'polygon',{points:`${x-8},${y-6} ${x+6},${y} ${x-8},${y+6}`,fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});L([[x+7,y-7],[x+7,y+7]],PAL.ink,1.6);}
+  else{el(s,'polygon',{points:`${x-6},${y-8} ${x},${y+6} ${x+6},${y-8}`,fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});L([[x-7,y+7],[x+7,y+7]],PAL.ink,1.6);}};
+ const sen=(x,y,t='T')=>{el(s,'circle',{cx:x,cy:y,r:8.5,fill:'#fff',stroke:PAL.sen,'stroke-width':2});T(x,y+3.6,t,{'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:PAL.sen});};
+ const lab=(x,y,a,b,anchor='middle')=>{T(x,y,a,{'text-anchor':anchor,'font-size':10.5,'font-weight':700});if(b)T(x,y+13,b,{'text-anchor':anchor,'font-size':9.5,fill:PAL.sub});};
+ const arrow=(x,y,c,up=true)=>el(s,'polygon',{points:up?`${x-7},${y+12} ${x},${y} ${x+7},${y+12}`:`${x-7},${y} ${x},${y+12} ${x+7},${y}`,fill:c});
+ // zones
+ R(20,40,865,392,{fill:'#f6f8f5',stroke:'#c9d1cb',rx:10});T(450,62,'technická místnost 1.02',{'text-anchor':'middle',fill:PAL.sub,'font-size':12});
+ R(897,40,83,392,{fill:'#f6efe2',stroke:'#dcc7a2',rx:10,'stroke-dasharray':'5 4'});
+ for(const [y,t] of [[300,'prostup C'],[315,'→ půda'],[330,'→ dům'],[347,'W-02, W-01']])T(938,y,t,{'text-anchor':'middle',fill:'#8a5a17','font-size':y<340?11:9.5,'font-weight':y===300?700:400});
+ L([[20,404],[885,404]],'#b7bdb9',6);T(100,422,'deska, protiradonová izolace',{'font-size':9.5,fill:PAL.sub});
+ // entry and the house set on the cold header (y 130)
+ D([[70,478],[70,130],[912,130],[912,84]],W.sv,3.6);arrow(912,72,W.sv);
+ R(58,398,24,14,{fill:'#fff',stroke:'#7d8b83'});T(100,440,'přípojka HDPE 32 ze země (ZTI) v chráničce, manžeta proti radonu',{'font-size':9.5,fill:PAL.sub});
+ valve(95,130);lab(95,158,'hlavní','uzávěr');
+ el(s,'circle',{cx:145,cy:130,r:10,fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});T(145,134,'m³',{'text-anchor':'middle','font-size':8.5,'font-weight':700});lab(145,96,'vodoměr','s impulzem');
+ R(182,119,26,22,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});for(const [a,b,c,d] of [[186,123,204,137],[192,123,204,133],[186,129,198,137]])L([[a,b],[c,d]],PAL.ink,1);
+ L([[195,119],[195,114]],PAL.ink,1.2);el(s,'circle',{cx:195,cy:108,r:6,fill:'#fff',stroke:PAL.ink,'stroke-width':1.2});lab(195,160,'filtr','s proplachem');
+ valve(245,130);L([[245,124],[245,112]],PAL.ink,1.2);L([[239,113],[251,109],[239,105],[251,101]],PAL.ink,1.2);lab(245,82,'redukční','3,5–4 bar');
+ valve(295,130);R(287,104,16,14,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.2});T(295,115,'M',{'text-anchor':'middle','font-size':9,'font-weight':800});L([[295,118],[295,124]],PAL.ink,1.2);lab(295,160,'motorový','uzávěr (HA)');
+ // outdoor tap Z1
+ D([[345,130],[345,200]],W.sv,2.6);valve(345,170,'v');R(337,200,16,26,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.4,rx:3});lab(345,244,'Z1 nezámrzný','do průjezdu');
+ // heating fill with a BA backflow preventer
+ D([[395,130],[395,290],[407,290]],W.sv,2.6);valve(395,168,'v');R(385,196,20,26,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});T(395,213,'BA',{'text-anchor':'middle','font-size':9,'font-weight':800});valve(395,250,'v');
+ L([[407,290],[420,290]],W.heat,3);lab(395,312,'napouštění','topení (EN 1717)');
+ // safety group to the cold inlet of the tank
+ D([[465,130],[465,380],[600,380]],W.sv,3);valve(465,165,'v');check(465,198,'v');
+ L([[465,232],[493,232]],W.sv,2.4);R(493,222,16,22,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.4});L([[501,244],[501,262]],PAL.ink,1.2,{'stroke-dasharray':'3 2'});el(s,'polygon',{points:'491,262 511,262 501,276',fill:'#fff',stroke:PAL.ink,'stroke-width':1.2});
+ T(517,229,'pojistný',{'font-size':10.5,'font-weight':700});T(517,242,'ventil 6 bar',{'font-size':9.5,fill:PAL.sub});T(517,274,'nálevka → K4',{'font-size':9.5,fill:PAL.sub});
+ L([[465,312],[525,312],[525,328]],W.sv,2.4);el(s,'ellipse',{cx:525,cy:349,rx:14,ry:20,fill:'#e9eef2',stroke:PAL.ink,'stroke-width':1.2});T(545,346,'expanzní',{'font-size':10.5,'font-weight':700});T(545,359,'18–25 l',{'font-size':9.5,fill:PAL.sub});
+ L([[465,362],[449,362]],W.sv,2.2);valve(441,362);T(428,366,'vypouštění',{'text-anchor':'end','font-size':9.5,fill:PAL.sub});
+ // tank
+ R(600,170,110,210,{fill:'#fff',stroke:'#7d8b83','stroke-width':1.6,rx:18});T(655,262,'TV 300 l',{'text-anchor':'middle','font-weight':800,'font-size':13});T(655,279,'ohřev z TČ',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});
+ el(s,'path',{d:'M620 344 q35 -14 70 0 q-35 14 -70 0',fill:'none',stroke:PAL.hs,'stroke-width':1.6});L([[710,336],[736,336]],'#d9a49b',2.4);L([[710,352],[736,352]],'#9db9d6',2.4);T(741,348,'z TČ',{'font-size':9.5,fill:PAL.sub});
+ sen(690,196);T(655,398,'čidlo zaplavení pod zásobníkem',{'text-anchor':'middle','font-size':9,fill:PAL.sen});
+ // hot water out of the top, optional central mixer
+ D([[655,170],[655,160],[937,160],[937,84]],W.tv,3.6);arrow(937,72,W.tv);
+ sen(735,160);R(776,150,28,20,{fill:'#fff',stroke:PAL.ink,'stroke-width':1.2,'stroke-dasharray':'3 2'});T(790,164,'TM',{'text-anchor':'middle','font-size':8.5,'font-weight':700});
+ T(790,186,'termostatický směšovač,',{'text-anchor':'middle','font-size':9,fill:PAL.sub});T(790,198,'jen když TV nad 55 °C',{'text-anchor':'middle','font-size':9,fill:PAL.sub});
+ // circulation return into the tank
+ D([[962,84],[962,240],[710,240]],W.c,3,{'stroke-dasharray':'7 4'});arrow(962,72,W.c,false);
+ valve(860,240);sen(825,240);el(s,'circle',{cx:790,cy:240,r:13,fill:'#fff',stroke:W.c,'stroke-width':2.4});el(s,'polygon',{points:'783,233 799,240 783,247',fill:W.c});check(752,240);valve(728,240);
+ T(860,268,'vyvažovací',{'text-anchor':'middle','font-size':9.5,fill:PAL.sub});T(752,268,'klapka',{'text-anchor':'middle','font-size':9.5,fill:PAL.sub});lab(790,290,'čerpadlo','EC 5–10 W, HA');
+ for(const [x,t,c] of [[912,'SV',W.sv],[937,'TV',W.tv],[962,'C',W.c]])T(x,62,t,{'text-anchor':'middle','font-size':11,'font-weight':800,fill:c});
+ for(const [y,t,b] of [[338,'smyčka TV:',1],[352,'podkroví → V3 →'],[365,'kuchyň → 1.05 → WC'],[378,'→ V2 → zpět']])T(790,y,t,{'font-size':10,fill:'#8a5a17','font-weight':b?700:400});
+ T(100,470,'TV 48–50 °C, jednou týdně 60 °C i s cirkulací. Pojistný ventil otevírá nad tlakem za redukčním ventilem. T = teploměr 1-Wire (ESP32 v technické místnosti).',{'font-size':10.5,fill:PAL.sub});}
+
+// ---------- tables ----------
+function tables(){const w=document.getElementById('waits'),hot=FX.filter(f=>!f.cold).sort((a,b)=>a.L-b.L);
+ const s=v=>Math.round(v/FLOW/5)*5;
+ w.innerHTML='<thead><tr><th>Výtok</th><th>Místnost</th><th>Trubka od zásobníku</th><th>Voda v trubce</th><th>Bez cirkulace</th><th>S cirkulací</th></tr></thead><tbody>'
+  +hot.map(f=>`<tr><td><span class="sym">${f.s}</span>${f.t}</td><td>${f.r}</td><td class="n">${fmt(f.L)} m</td><td class="n">${fmt(f.V)} l</td><td class="n ${f.V>3?'bad':''}">${s(f.V)} s</td><td class="n ok">${Math.max(1,Math.round(f.Vs/FLOW))} s</td></tr>`).join('')+'</tbody>';
+ const contW=L_TV*7+L_C*6,cyc=V_LOOP*1.163*25*1.4/1000;
+ document.getElementById('kpis').innerHTML=[[`${Math.round(L_TV+L_C)} m`,`smyčka: teplá ${Math.round(L_TV)} m + vratka ${Math.round(L_C)} m`],[`${fmt(V_LOOP)} l`,'vody ve smyčce'],[`~${Math.round(contW/10)*10} W`,`trvalý chod, ${fmt(contW*24/1000)} kWh tepla denně`],[`~${fmt(cyc*10)} kWh`,'tepla denně na vyžádání (10 spuštění)']]
+  .map(([b,t])=>`<div class="kpi"><b>${b}</b><span>${t}</span></div>`).join('');
+ const avg=hot.filter(f=>f.lv!=='t').reduce((t,f)=>t+f.V,0)/hot.filter(f=>f.lv!=='t').length;
+ document.getElementById('costText').textContent=`Trvalý chod by ztrácel asi ${Math.round(contW/10)*10} W, tedy ${fmt(contW*24/1000)} kWh tepla denně, a to se nevyplatí. Na vyžádání se smyčka ohřeje asi 10× denně, to je kolem ${fmt(cyc*10)} kWh tepla, ze zásobníku ohřívaného TČ asi ${fmt(cyc*10/2.7)} kWh elektřiny denně (zhruba ${Math.round(cyc*10/2.7*365/50)*50} kWh za rok). Bez cirkulace by ztráta tepla byla podobná, protože trubka po každém odběru vychladne. K tomu by ale při 15 odběrech teplé vody denně odteklo kolem ${Math.round(avg*15/5)*5} l vody (${Math.round(avg*15*365/1000)} m³ za rok) a pokaždé by se čekalo.`;
+ const set=(k,v)=>document.querySelectorAll(`[data-k="${k}"]`).forEach(e=>e.textContent=v);
+ const ground=hot.filter(f=>f.lv==='g'),attic=hot.filter(f=>f.lv==='a');
+ set('near',Math.round(Math.min(...attic.map(f=>f.L))));set('kitchen',Math.round(FX.find(f=>f.s==='D').L));set('contW',Math.round(contW/50)*50);set('cLen',Math.round(L_C));
+ set('wait',`${s(Math.min(...hot.filter(f=>f.lv!=='t').map(f=>f.V)))}–${s(Math.max(...hot.map(f=>f.V)))} s`);
+ // material
+ const stubsTV=FX.filter(f=>!f.cold).reduce((t,f)=>t+f.stub,0),stubsSV=FX.reduce((t,f)=>t+len2(coldStub(f))+Math.abs(f.up),0)+SV_TMB.reduce((t,b)=>t+len2(b.p)+.5,0);
+ const r10=v=>Math.ceil(v*1.1/5)*5,nOut=FX.length;
+ const rows=[['Vícevrstvá trubka PE-RT/Al/PE-RT 26×3 (studená páteř)',`~${r10(L_SV)} m`,'technická m. → půda → chodba → V3 → přízemí → WC 1.04'],
+  ['Vícevrstvá trubka 20×2 (teplá smyčka)',`~${r10(L_TV)} m`,'zásobník → … → V2'],
+  ['Vícevrstvá trubka 16×2 (vratka a odbočky)',`~${r10(L_C+stubsTV+stubsSV)} m`,`vratka ~${Math.round(L_C)} m, odbočky TV ~${Math.round(stubsTV)} m, SV ~${Math.round(stubsSV)} m`],
+  ['Izolace PE 20 mm / 13 mm / 9 mm',`~${r10(L_TV*.45+L_C*.6)} / ${r10(L_TV*.55+L_C*.4+stubsTV)} / ${r10(L_SV+stubsSV)} m`,'20 mm TV a vratka v technické m., na půdě a v přízemí, 13 mm v podlaze podkroví a odbočky TV, 9 mm SV (na půdě 13 mm)'],
+  ['Lisovací tvarovky: T-kusy, kolena, přechody',`~${nOut+12} T, ~${nOut*2+20} kolen`,'podle systému, ze stejné řady jako trubky'],
+  ['Nástěnky a rohové ventily',`~${FX.filter(f=>!f.cold).length*2+FX.filter(f=>f.cold).length} ks`,'nástěnky ve dvojicích pro baterie, rohové ventily pod umyvadly a dřezem'],
+  ['Domovní sestava DN 25',`1`,'hlavní uzávěr, podružný vodoměr s impulzem, filtr s proplachem a manometrem, redukční ventil, motorový kulový ventil'],
+  ['Zabezpečení zásobníku',`1`,'kulový ventil, zpětná klapka, pojistný ventil 6 bar, vypouštění, expanzní nádoba na pitnou vodu 18–25 l, nálevka se sifonem'],
+  ['Cirkulace','1','čerpadlo na pitnou vodu s EC motorem, 2 kulové kohouty, zpětná klapka, vyvažovací ventil, 2 teploměry DS18B20'],
+  ['Nezámrzné venkovní ventily','2','délka 0,5 m podle stěny, se zpětnou klapkou a vypouštěním'],
+  ['Instalační moduly WC a revizní dvířka','3 + 3','WC 1.04, koupelna u ložnice, koupelna dětí, dvířka u V2, v prádelně a u V3'],
+  ['Čidla zaplavení a spouštění cirkulace','6 + 4','Zigbee, viz tabulka HA']];
+ document.getElementById('material').innerHTML='<thead><tr><th>Položka</th><th>Množství</th><th>Poznámka</th></tr></thead><tbody>'+rows.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td>${r[2]}</td></tr>`).join('')+'</tbody>';}
+
+drawIso();drawGround();drawAttic();drawPlant();tables();Dum.penetrations(document.getElementById('pen'));
+</script>
+</body>
+</html>

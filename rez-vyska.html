@@ -209,6 +209,17 @@ svg .dl{stroke:#496957;stroke-width:1.2;fill:none}svg .ext{stroke:#9fb0a4;stroke
     </div>
   </section>
 
+  <section class="card" id="podhled">
+    <h2>Snížený podhled u HS · rekuperace</h2>
+    <p class="desc">Řez stěnou B kolmo na fasádu přes štěrbinu rekuperace u HS (asi 2,5 m od předního štítu), pohled od předního štítu. Vlevo obývák, vpravo HS a fasáda. Klimatizace v přízemí není, je jen v podkroví. Kapsa na záclony tu není: podhled jde v kuse ke sklu, stíní venkovní žaluzie a u skla je jen zapuštěná záclonová kolejnice. Štěrbina přívodu má asi 20 mm a vede 1,0 m souběžně s HS. Nad ní leží na roštu izolovaný box asi 150 mm vysoký. Vlevo končí pás u HS osvětlenou římsou: čelo 140 mm ve stěrce, nad ním štěrbina k vyššímu stropu, LED na dně žlabu a zadní stěna, která uzavírá dutinu. Trubka rekuperace Ø 90 přichází kastlíkem z ložnice a vede pásem podél předního štítu, tedy před rovinou řezu (čárkovaně), do čela boxu. Výšky se berou z vybrané varianty nahoře.</p>
+    <div class="scroll"><svg id="podView" viewBox="0 0 1240 440" role="img" aria-labelledby="podTitle podDesc">
+      <title id="podTitle">Příčný řez sníženým podhledem u HS se štěrbinou rekuperace</title>
+      <desc id="podDesc">Stropní panely, věnec nad HS, podhled na vršku rámu HS, zapuštěná záclonová kolejnice, štěrbina přívodu rekuperace s izolovaným boxem na roštu a před řezem trubka Ø 90. Kóty dutiny, roštu, boxu a rezervy.</desc>
+      <defs><marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#26313a"/></marker></defs><g id="podLayer"></g>
+    </svg></div>
+    <div class="checks" id="podChecks" style="margin-top:12px"></div>
+  </section>
+
   <section class="card">
     <h2>Rozhodující kóty a pracovní předpoklady</h2>
     <div class="grid">
@@ -568,12 +579,59 @@ function fillLevels(r){
   document.getElementById('aaRing').textContent=fmt(r.ringH);
 }
 
+// Dropped ceiling by the HS: section across wall B through the MVHR supply slot (no AC on the ground floor, the cassette is in the attic
+// hallway). u = 0 is the inner face of wall B, negative into the room. Slot about 20 mm at x 6.35, insulated box 160 × 150 on the grid;
+// ceiling board 12.5 + CD 27. The Ø 90 pipe comes along the band by the front gable, in front of the section plane.
+function drawPodhled(r){
+  const g=document.getElementById('podLayer');g.replaceChildren();
+  const k=.4,u0=-2480,zBot=r.frameTop-230,zTop=r.panelTop+60,X=u=>40+(u-u0)*k,Y=z=>40+(zTop-z)*k;
+  const R=(a,b,z0,z1,at)=>el('rect',{x:X(a),y:Y(z1),width:Math.max(0,(b-a)*k),height:Math.max(0,(z1-z0)*k),...at},g);
+  const L=(a,z0,b,z1,at)=>el('line',{x1:X(a),y1:Y(z0),x2:X(b),y2:Y(z1),...at},g);
+  const SL=-1350,BX0=-1430,BX1=-1270,BH=150;   // slot axis (x 6.35) and the plenum box (x 6.27–6.43)
+  const P=r.frameTop,G=P+12.5+27,BT=G+BH,spare=r.panelBottom-BT,cav=r.panelBottom-P;
+  R(u0,0,zBot,r.panelBottom,{fill:'#f7f8f5'});const EDGE=-2240,BACK=-2090,LIP=140;   // free edge of the HS band (x 5.46, in line with the fix reveal) and the light cove
+  R(u0,150,r.panelBottom,r.panelTop,{fill:'#b4bdb8',stroke:'#65736a'});R(150,300,r.panelBottom,r.panelTop,{fill:'url(#pRing)',stroke:'#65736a'});
+  R(0,300,r.ipeBottom,r.panelBottom,{fill:'url(#pRing)',stroke:'#4f5a53'});
+  T(g,X(150),Y((r.ipeBottom+r.ipeTop)/2)+4,'věnec + 2× IPE 240','tiny halo',{'text-anchor':'middle'});
+  R(RS.frameU,RS.frameU+RS.frameD,zBot,P,{fill:'#d9e9ee',stroke:'#26718a','stroke-width':1.6});
+  R(300,300+RS.eps,P+RS.boxH,zTop,{fill:'#f2f2ec',stroke:'#b9b9a8'});R(300+RS.pir,300+RS.eps,P,P+RS.boxH,{fill:'#fff',stroke:'#26313a','stroke-width':1.3});
+  T(g,X(300+RS.eps/2),Y(P+RS.boxH/2)+4,'kastlík žaluzie','tiny',{'text-anchor':'middle'});
+  // Ceiling: board everywhere except the slot, CD profiles above it clear of the slot neck.
+  R(EDGE,SL-10,P,P+12.5,{fill:'#e9ece8',stroke:'#7d8a81'});R(SL+10,-10,P,P+12.5,{fill:'#e9ece8',stroke:'#7d8a81'});
+  for(let u=BACK+40;u<-100;u+=400)R(u,u+60,P+12.5,G,{fill:'#c7cec9',stroke:'#7d8a81','stroke-width':.6});
+  // Light cove at the free edge: 140 mm lip in the plaster, LED on the floor of the trough, slot to the higher ceiling, back wall closing the void.
+  R(EDGE,BACK,P,P+LIP,{fill:'#e9ece8',stroke:'#7d8a81'});R(BACK,BACK+12.5,P+LIP,r.panelBottom,{fill:'#e9ece8',stroke:'#7d8a81'});
+  R(BACK-40,BACK-10,P+LIP,P+LIP+8,{fill:'#f0b84a',stroke:'#9a6a12','stroke-width':.6});
+  el('path',{d:`M${X(BACK-30)} ${Y(P+LIP+10)} L ${X(EDGE-260)} ${Y(r.panelBottom)+2}`,fill:'none',stroke:'#e0a63a','stroke-width':1.2,'stroke-dasharray':'4 3'},g);
+  T(g,X(EDGE-10),Y(P+LIP)-14,'osvětlená římsa','tiny halo',{'text-anchor':'end'});
+  // Flush curtain track by the reveal; MVHR supply: slot, neck through the grid, insulated box on the grid.
+  R(-90,-60,P,P+12.5,{fill:'#26313a'});
+  R(SL-25,SL+25,P+12.5,G,{fill:'#dde3e0',stroke:'#7d8a81'});R(SL-10,SL+10,P,P+12.5,{fill:'#111'});
+  R(BX0,BX1,G,BT,{fill:'#e3ecf8',stroke:'#2f6fc8','stroke-width':1.4});R(BX0+15,BX1-15,G+15,BT-15,{fill:'#f6f9fd',stroke:'#2f6fc8','stroke-width':.6});
+  el('path',{d:`M${X(SL)} ${Y(P)+4} q -10 24 -60 30`,fill:'none',stroke:'#2f6fc8','stroke-width':1.6,'marker-end':'url(#arrP)'},g);
+  // In front of the section plane, along the band by the front gable: the Ø 90 pipe from the riser box, turning into the end of the box.
+  const dz=G+5+45;R(BACK+20,SL,dz-45,dz+45,{fill:'none',stroke:'#2f6fc8','stroke-width':1.4,'stroke-dasharray':'7 4'});
+  el('circle',{cx:X(SL),cy:Y(dz),r:45*k,fill:'none',stroke:'#2f6fc8','stroke-width':1.2,'stroke-dasharray':'4 3'},g);
+  T(g,X(BACK+30),Y(dz)+4,'RK Ø 90 (před řezem)','tiny halo',{fill:'#2f6fc8'});
+  // Labels and dimensions.
+  T(g,X(EDGE+10),Y(P)+16,`podhled ${lvl(P)} = vršek rámu HS`,'tiny');
+  T(g,X(u0+10),Y(r.panelBottom)-6,`spodek panelů ${lvl(r.panelBottom)}`,'tiny halo');
+  T(g,X((BX0+BX1)/2),Y(BT)-6,'box štěrbiny','tiny halo',{'text-anchor':'middle'});
+  T(g,X(SL),Y(P)+48,'štěrbina ~20 · přívod','tiny',{'text-anchor':'middle'});T(g,X(-75),Y(zBot)-8,'kolejnice na záclony','tiny',{'text-anchor':'middle'});
+  vchain(g,X(-1000),[P,G,BT,r.panelBottom],['rošt 40',`box ${BH}`,`rezerva ${fmt(spare)}`],Y,X(BX1));
+  vchain(g,X(EDGE-200),[P,r.panelBottom],[`dutina ${fmt(cav)}`],Y,X(EDGE));vchain(g,X(EDGE-80),[P,P+LIP,r.panelBottom],['čelo 140',`štěrbina ${fmt(r.panelBottom-P-LIP)}`],Y,X(EDGE));
+  document.getElementById('podChecks').innerHTML=[
+   spare>=20?`<span class="ok">Box štěrbiny ${BH} mm se vejde, nad ním zbývá ${fmt(spare)} mm k panelům.</span>`:spare>=0?`<span class="warn">Box štěrbiny ${BH} mm se vejde jen těsně: nad ním zbývá ${fmt(spare)} mm. Varianta A dává víc.</span>`:`<span class="warn">Box štěrbiny ${BH} mm se nevejde, chybí ${fmt(-spare)} mm.</span>`,
+   `<span class="ok">Trubka rekuperace Ø 90 nad roštem: rezerva ${fmt(r.panelBottom-G-90)} mm.</span>`,
+   `<span class="info">Dutina ${fmt(cav)} mm = spodek panelů ${lvl(r.panelBottom)} − podhled ${lvl(P)}.</span>`].join('');
+}
+
 function render(){
   const a=calc('A'),b=calc('B'),r=variant==='A'?a:b;
   document.getElementById('vA').textContent=`spodek panelů ${lvl(a.panelBottom)} · rám HS ${fmt(a.frameH)} · spára ${fmt(a.gap)} · věnec ${fmt(a.ringH)}`;
   document.getElementById('vB').textContent=`spodek panelů ${lvl(b.panelBottom)} · rám HS ${fmt(b.frameH)} · spára ${fmt(b.gap)} · věnec ${fmt(b.ringH)}`;
   document.querySelectorAll('.variant button').forEach(btn=>btn.setAttribute('aria-checked',String(btn.dataset.v===variant)));
-  drawElevation(r);drawDetail(r);drawRing(r);drawJoin();fillPole(r);fillSteps(r);fillChecks(r);fillLevels(r);
+  drawElevation(r);drawDetail(r);drawRing(r);drawPodhled(r);drawJoin();fillPole(r);fillSteps(r);fillChecks(r);fillLevels(r);
 }
 
 document.querySelectorAll('.variant button').forEach(btn=>btn.addEventListener('click',()=>{

@@ -1,7 +1,8 @@
 /** @OnlyCurrentDoc */
-// Backend of the house website: finance.html (key-protected budget overview) and navstevy.js (anonymous visit log).
-// Bound to the builder's finance spreadsheet, deployed as a web app. No secrets live here: keys are rows of the
-// "Přístupy" sheet and the spreadsheet itself stays private.
+// Backend of the house website: finance.html (key-protected budget overview), nakup-zdeni.html (encrypted shopping list,
+// opened with the same key) and navstevy.js (anonymous visit log). Bound to the builder's finance spreadsheet, deployed
+// as a web app. No secrets live here: keys are rows of the "Přístupy" sheet, the content key is a script property and
+// the spreadsheet itself stays private.
 //
 // Nasazení (jednou):
 //  1. V tabulce Rozšíření → Apps Script, smazat obsah Code.gs, vložit celý tento soubor, Uložit.
@@ -9,6 +10,8 @@
 //  3. Autorizovat přístup (jen k této tabulce, díky @OnlyCurrentDoc) a zkopírovat URL končící /exec.
 //  4. URL vložit do navstevy.js (const API='…'). Test: otevřít URL /exec v prohlížeči → {"ok":true,"service":"dum"}.
 //  5. Znovu načíst tabulku → objeví se menu „Web domu“ (odkazy s klíčem, kategorie plateb, vzorce Reality).
+//  6. Nákup na zdění: Nastavení projektu (ozubené kolo) → Vlastnosti skriptu → Přidat vlastnost skriptu, název OBSAH_KLIC,
+//     hodnota = obsah souboru soukrome/klic.txt (vytvoří ho node tools/zamek.mjs, git ho ignoruje) → Uložit.
 // Změna kódu: vložit nový kód, Uložit, Nasadit → Spravovat nasazení → upravit (tužka) → Verze: Nová verze → Nasadit.
 // URL /exec zůstane stejná.
 // POZOR: tabulka nesmí být sdílená odkazem („Kdokoli s odkazem“) – kdokoli s odkazem by viděl klíče i návštěvy.
@@ -16,7 +19,7 @@
 // Návštěvy se přestanou zapisovat po 20 000 řádcích (aby list nezpomaloval tabulku) – staré řádky smaž.
 
 const SHEETS=['Cena','Odhad ceny'];                       // the only sheets the finance action returns
-const KEYS='Přístupy',VISITS='Návštěvy';
+const KEYS='Přístupy',VISITS='Návštěvy',CONTENT_PROP='OBSAH_KLIC'; // CONTENT_PROP: script property with the content key
 const KEYS_HEAD=['Komu','Klíč','Platí do','Plný přehled','Naposledy otevřeno','Počet otevření'];
 const VISITS_HEAD=['Čas','Kdo','Návštěvník','Stránka','Zařízení','Systém','Prohlížeč','Obrazovka','Jazyk','Časová zóna','Odkud','Doba (s)','ID'];
 const VISIT_FIELDS=['','who','visitor','page','device','os','browser','screen','lang','tz','ref','','id']; // body field per VISITS_HEAD column
@@ -32,6 +35,7 @@ function doPost(e){
     const b=JSON.parse(e&&e.postData&&e.postData.contents||'{}')||{};
     switch(b.action){
       case 'finance':return json_(finance_(b));
+      case 'obsah':return json_(content_(b));
       case 'visit':return json_(visit_(b));
       case 'duration':return json_(duration_(b));
       default:return json_({ok:false,error:'action'});
@@ -39,15 +43,22 @@ function doPost(e){
   }catch(err){console.error(err&&err.stack||err);return json_({ok:false,error:'server'})}
 }
 
-function finance_(b){
+// A valid key → {ss,tz,now,sh,c,v: values of "Přístupy",r: its row in v}; null = unknown or expired key
+function access_(b){
   const key=String(b.key==null?'':b.key).trim();
-  if(key.length<MIN_KEY)return {ok:false,error:'key'};
+  if(key.length<MIN_KEY)return null;
   const ss=SpreadsheetApp.getActive(),tz=ss.getSpreadsheetTimeZone(),now=new Date();
   const {sh,c}=sheet_(ss,KEYS,KEYS_HEAD),v=sh.getDataRange().getValues();
   let r=-1;for(let i=1;i<v.length;i++)if(String(v[i][c[1]]).trim()===key){r=i;break}
-  if(r<0)return {ok:false,error:'key'};
+  if(r<0)return null;
   const until=day_(v[r][c[2]],tz);
-  if(until===null||(until&&until<Utilities.formatDate(now,tz,'yyyy-MM-dd')))return {ok:false,error:'key'}; // valid through the end of that day
+  if(until===null||(until&&until<Utilities.formatDate(now,tz,'yyyy-MM-dd')))return null; // valid through the end of that day
+  return {ss,tz,now,sh,c,v,r};
+}
+
+function finance_(b){
+  const a=access_(b);if(!a)return {ok:false,error:'key'};
+  const {ss,tz,now,sh,c,v,r}=a;
   const lock=LockService.getScriptLock();                  // usage stats are best effort, never block the data
   if(lock.tryLock(5000))try{
     sh.getRange(r+1,c[4]+1).setValue(now);
@@ -56,6 +67,16 @@ function finance_(b){
   const sheets={};
   for(const name of SHEETS){const s=ss.getSheetByName(name);sheets[name]=s?trim_(s.getDataRange().getValues()).map(row=>row.map(x=>cell_(x,tz))):[]}
   return {ok:true,who:String(v[r][c[0]]).trim(),owner:v[r][c[3]]===true,asOf:Utilities.formatDate(now,tz,"yyyy-MM-dd'T'HH:mm:ssXXX"),tz,sheets};
+}
+
+// Encrypted pages (nakup-zdeni.html, see tools/zamek.mjs) get their decryption key for any valid access key.
+// Not counted in "Naposledy otevřeno" / "Počet otevření", those stay about finance.html.
+function content_(b){
+  const a=access_(b);if(!a)return {ok:false,error:'key'};
+  const k=PropertiesService.getScriptProperties().getProperty(CONTENT_PROP);
+  if(!k)return {ok:false,error:'setup'};
+  const row=a.v[a.r];
+  return {ok:true,who:String(row[a.c[0]]).trim(),owner:row[a.c[3]]===true,contentKey:k.trim()};
 }
 
 function visit_(b){

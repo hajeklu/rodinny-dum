@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nákup na zdění · Dům Hájek</title>
-<meta name="description" content="Nákupní seznam na zdění domu Hájek: tvárnice SOLBET, lepidlo Baumit PlanoFix, překlady SOLBET NS a ocelové IPE 240.">
+<meta name="description" content="Nákupní seznam na zdění domu Hájek, dostupný s přístupovým klíčem.">
 <meta name="robots" content="noindex,nofollow">
 <style>
 :root{font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#23332e;background:#f1f4f0}
@@ -17,6 +17,14 @@ main{max-width:980px;margin:0 auto;padding:20px clamp(12px,3vw,36px) 48px}.card{
 .note{padding:13px 15px;background:#fff8e8;border:1px solid #ead6a7;border-radius:9px;color:#604b20;font-size:13px;margin:15px 0}.note strong{color:#503d16}.note ul{margin:6px 0 0;padding-left:18px}.note li+li{margin-top:3px}
 .danger{background:#fff1eb;border-color:#e6b9a8;color:#6d3a2b}.danger strong{color:#5a2c1f}.plain{background:#fff;border-color:#dbe2dc;color:#4d5c54}.plain strong{color:#284638}
 [hidden]{display:none!important}
+/* locked + loading, as in finance.html */
+.lock{max-width:520px;margin:28px auto;padding:28px 28px 24px}.lock-icon{width:44px;height:44px;border-radius:12px;background:#e5ede7;color:#254d3a;display:grid;place-items:center}.lock h2{margin:14px 0 6px;font-size:21px;color:#1f332a}.lock>p{color:#56645c;font-size:14px;margin:0 0 18px}
+.lock form{display:grid;gap:10px}.lock label{font-size:13px;font-weight:600;color:#284638}.lock .check{display:flex;gap:8px;align-items:center;font-weight:400;color:#4d5c54}
+.lock input[type=text]{width:100%;font:14px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#23332e;border:1px solid #cad6cc;background:#fff;border-radius:8px;padding:11px 12px}.lock input:focus,button:focus-visible{outline:2px solid #2f6b4d;outline-offset:1px}
+.lock button{justify-self:start;padding:10px 22px;font-size:14px}button.primary{background:#254d3a;color:#fff;border-color:#254d3a}button.primary:hover{background:#1d3f2f}
+.err{margin:4px 0 0;padding:10px 12px;border-radius:8px;background:#fff1eb;border:1px solid #e6b9a8;color:#6d3a2b;font-size:13px}
+.loading{max-width:520px;margin:28px auto;padding:20px 24px;display:flex;align-items:center;gap:12px;color:#4d5c54}.spin{flex:none;width:18px;height:18px;border:2px solid #cad6cc;border-top-color:#254d3a;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.spin{animation-duration:3s}}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 14px}.toolbar b{color:#284638}
 /* KPIs */
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 16px}.kpi{padding:14px 16px;display:flex;flex-direction:column}.kpi-label{font-size:12.5px;font-weight:600;color:#56665d}.kpi-value{font-size:clamp(20px,2.4vw,26px);font-weight:700;line-height:1.2;color:#1f332a;margin:6px 0 2px;white-space:nowrap;letter-spacing:-.01em;font-variant-numeric:tabular-nums}.kpi-sub{font-size:12px;color:#6b7971}
 .kpi.accent{background:#254d3a;border-color:#254d3a}.kpi.accent .kpi-label,.kpi.accent .kpi-sub{color:#cfe0d5}.kpi.accent .kpi-value{color:#fff}
@@ -33,102 +41,228 @@ main{max-width:980px;margin:0 auto;padding:20px clamp(12px,3vw,36px) 48px}.card{
 footer{margin-top:20px;color:#78847c;font-size:12px}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.list{font-size:13.5px}.list th,.list td{padding:9px 6px}.list .c-chk{width:30px}.list .qty{font-size:14px}.list .c-sum{display:none}.list .qty small.m-sum{display:block}.card-head{padding:13px 14px 10px}.kpi{padding:12px 13px}}
-@media print{:root{background:#fff}header{padding:0 0 10px}.card{box-shadow:none}.kpis{grid-template-columns:repeat(4,1fr)}.done-count button{display:none}.list tr.bought td{background:none}}
+@media print{:root{background:#fff}header{padding:0 0 10px}.card{box-shadow:none}.kpis{grid-template-columns:repeat(4,1fr)}.done-count button,.no-print,#lock,#loading{display:none!important}.list tr.bought td{background:none}}
 </style>
 <script src="./nav.js" defer></script>
 <script src="./navstevy.js" defer></script>
 </head>
 <body>
 <header>
-  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Nákup na zdění</h1><p>Co teď objednat na zdivo: tvárnice, lepidlo, překlady a ocel nad velké otvory.</p></div>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Nákup na zdění</h1><p>Co teď objednat na zdivo: tvárnice, lepidlo, překlady a ocel nad velké otvory. Ocel na krov je tu taky, ať jde objednat najednou.</p></div>
   <nav data-nav="nakup-zdeni"></nav>
 </header>
 <main>
-  <div class="kpis">
-    <div class="card kpi accent"><span class="kpi-label">Košík SOLBET + Baumit</span><span class="kpi-value">241 377 Kč</span><span class="kpi-sub">s DPH, bez IPE</span></div>
-    <div class="card kpi"><span class="kpi-label">Tvárnice</span><span class="kpi-value">1 560 ks</span><span class="kpi-sub">≈ 220 m² zdi</span></div>
-    <div class="card kpi"><span class="kpi-label">Překlady SOLBET</span><span class="kpi-value">24 ks</span><span class="kpi-sub">12 sad 12 + 18 cm</span></div>
-    <div class="card kpi"><span class="kpi-label">Ocel IPE 240</span><span class="kpi-value">12 ks · 44 m</span><span class="kpi-sub">≈ 1,35 t, cenu poptat</span></div>
-  </div>
-
-  <section class="card">
-    <div class="card-head">
-      <div><h2>Nákupní seznam</h2><p>Ceny s DPH podle košíku. Zaškrtnutí si pamatuje tento prohlížeč.</p></div>
-      <div class="done-count"><span id="doneCount">Koupeno 0 z 9</span><button type="button" id="resetBtn" hidden>Zrušit zaškrtnutí</button></div>
-    </div>
-    <table class="list">
-      <thead><tr><th class="c-chk"><span hidden>Koupeno</span></th><th>Položka</th><th class="num">Množství</th><th class="num c-sum">Celkem</th></tr></thead>
-      <tbody>
-        <tr class="grp"><th colspan="2">1 · Tvárnice</th><th class="num" colspan="2">205 333 Kč</th></tr>
-        <tr data-id="sbpd30"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: SOLBET tvárnice"></td>
-          <td><span class="name">SOLBET tvárnice bílá</span><span class="sub">590 × 240 × 300 mm · pero-drážka + kapsa · 131,62 Kč/ks · <code>sbpd30</code></span></td>
-          <td class="num qty">1 560 ks</td><td class="num c-sum">205 333,13 Kč</td></tr>
-
-        <tr class="grp"><th colspan="2">2 · Lepidlo na zdivo</th><th class="num" colspan="2">4 311 Kč</th></tr>
-        <tr data-id="b613310V-25"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: Baumit PlanoFix"></td>
-          <td><span class="name">BAUMIT PlanoFix 25 kg</span><span class="sub">tenkovrstvá zdicí malta · 5,75 Kč/kg · <code>b613310V-25</code></span></td>
-          <td class="num qty">30 pytlů<small>750 kg</small></td><td class="num c-sum">4 310,63 Kč</td></tr>
-
-        <tr class="grp"><th colspan="2">3 · Překlady SOLBET NS<span>Na zeď 300 mm se kladou dva vedle sebe: 120 + 180 mm. 11 sad 1,4 m a 1 sada 2,3 m.</span></th><th class="num" colspan="2">31 734 Kč</th></tr>
-        <tr data-id="sbpr140"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 140/12"></td>
-          <td><span class="name">Překlad NS 140/12</span><span class="sub">délka 1 400 · šířka 120 · výška 240 mm · 1 194,73 Kč/ks · <code>sbpr140</code></span></td>
-          <td class="num qty">11 ks</td><td class="num c-sum">13 142,03 Kč</td></tr>
-        <tr data-id="sbpr18140"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 140/18"></td>
-          <td><span class="name">Překlad NS 140/18</span><span class="sub">délka 1 400 · šířka 180 · výška 240 mm · 1 367,64 Kč/ks · <code>sbpr18140</code></span></td>
-          <td class="num qty">11 ks</td><td class="num c-sum">15 044,03 Kč</td></tr>
-        <tr data-id="sbpr230"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 230/12"></td>
-          <td><span class="name">Překlad NS 230/12</span><span class="sub">délka 2 300 · šířka 120 · výška 240 mm · <code>sbpr230</code></span></td>
-          <td class="num qty">1 ks</td><td class="num c-sum">1 652,46 Kč</td></tr>
-        <tr data-id="sbpr18230"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: překlad NS 230/18"></td>
-          <td><span class="name">Překlad NS 230/18</span><span class="sub">délka 2 300 · šířka 180 · výška 240 mm · <code>sbpr18230</code></span></td>
-          <td class="num qty">1 ks</td><td class="num c-sum">1 895,11 Kč</td></tr>
-
-        <tr class="grp"><th colspan="2">4 · Ocel IPE 240 na překlady<span>Statika: 2× IPE 240 nad otvory 3 m a nad průjezdem. 30,7 kg/m.</span></th><th class="num ask" colspan="2">poptat</th></tr>
-        <tr data-id="ipe-4500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 4,5 m"></td>
-          <td><span class="name">IPE 240 · délka 4,5 m</span><span class="sub">18 m · ≈ 553 kg</span></td>
-          <td class="num qty">4 ks</td><td class="num c-sum ask">poptat</td></tr>
-        <tr data-id="ipe-3500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 3,5 m"></td>
-          <td><span class="name">IPE 240 · délka 3,5 m</span><span class="sub">21 m · ≈ 645 kg</span></td>
-          <td class="num qty">6 ks</td><td class="num c-sum ask">poptat</td></tr>
-        <tr data-id="ipe-2500"><td class="c-chk"><input type="checkbox" aria-label="Koupeno: IPE 240 2,5 m"></td>
-          <td><span class="name">IPE 240 · délka 2,5 m</span><span class="sub">5 m · ≈ 154 kg</span></td>
-          <td class="num qty">2 ks</td><td class="num c-sum ask">poptat</td></tr>
-      </tbody>
-      <tfoot>
-        <tr class="total"><td></td><td>Celkem s DPH<small>bez IPE 240</small></td><td class="num" colspan="2">241 377,38 Kč</td></tr>
-      </tfoot>
-    </table>
+  <noscript><p class="note">Seznam potřebuje zapnutý JavaScript.</p></noscript>
+  <section class="card lock" id="lock" hidden>
+    <div class="lock-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></div>
+    <h2>Chráněný seznam</h2>
+    <p>Nákupní seznam je dostupný jen s přístupovým klíčem, stejným jako financování stavby. Kdo už financování v tomto okně otevřel, má seznam odemčený. Klíč nebo celý odkaz můžete vložit i sem.</p>
+    <form id="lockForm" autocomplete="off" novalidate>
+      <label for="key">Přístupový klíč</label>
+      <input id="key" name="key" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <label class="check"><input type="checkbox" id="remember"> Zapamatovat na tomto zařízení</label>
+      <button class="primary" type="submit">Otevřít</button>
+      <p class="err" id="lockErr" role="alert" hidden></p>
+    </form>
   </section>
-
-  <div class="note danger"><strong>Délky IPE ověřit před objednáním.</strong> Výškový řez počítá nad HS s délkou <b>3 640 mm</b> (300 mm na ZB rohu + otvor 3 040 + 300 mm na polštáři). Z kusu 3,5 m zbude na každé straně jen 230 mm. Nad průjezdem (4 200 mm) zbude z kusu 4,5 m jen 150 mm na stranu. Minimální uložení potvrdit u statika, případně dva kusy pro HS objednat na 3,65 m. Viz <a href="./rez-vyska.html">Výškový řez</a>.</div>
-
-  <div class="note plain"><strong>Mimo košík, ověřit, jestli už je:</strong>
-    <ul>
-      <li>zakládací malta pod první řadu (viz <a href="./zalozeni-zdiva.html">První řada zdiva</a>)</li>
-      <li>ztracené bednění ZB 300 × 500 mm na roh FIX–HS</li>
-      <li>svorníky a rozpěrky ke spojení dvojic IPE</li>
-    </ul>
+  <section class="card loading" id="loading" hidden aria-live="polite"><span class="spin" aria-hidden="true"></span>Odemykám seznam…</section>
+  <div id="view" hidden>
+    <div class="toolbar no-print"><div class="muted">Zobrazeno pro: <b id="who">—</b></div><button type="button" id="btnLogout">Odhlásit</button></div>
+    <div id="content"></div>
   </div>
-
-  <footer>Ceny s DPH podle košíku e-shopu, stav k 19. 10. 2026. Hmotnost IPE 240 je 30,7 kg/m.</footer>
 </main>
+<!-- the list itself, encrypted: source in soukrome/nakup-zdeni.html, regenerate with node tools/zamek.mjs zamknout nakup-zdeni -->
+<script type="text/plain" id="obsah">
+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
+JA==
+</script>
 <script>
 'use strict';
-// "Bought" ticks are a per-browser convenience only; the list renders the same without storage.
+// Nothing readable of the list is on Pages: the page asks the Apps Script for the content key with the same access key
+// as finance.html (same storage name, so one link or login opens both) and decrypts the list in the browser.
 (function(){
-  const KEY='hajek-nakup-zdeni';
-  const rows=[...document.querySelectorAll('tr[data-id]')];
-  const count=document.getElementById('doneCount'),reset=document.getElementById('resetBtn');
-  let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
-  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}};
-  const paint=()=>{let n=0;for(const r of rows){const on=!!done[r.dataset.id];r.classList.toggle('bought',on);r.querySelector('input').checked=on;if(on)n++}
-    count.textContent=`Koupeno ${n} z ${rows.length}`;reset.hidden=n===0};
-  for(const r of rows)r.querySelector('input').addEventListener('change',e=>{
-    if(e.target.checked)done[r.dataset.id]=1;else delete done[r.dataset.id];save();paint()});
-  reset.addEventListener('click',()=>{done={};save();paint()});
-  // narrow screens hide the Celkem column and show the row total under the quantity instead
-  for(const r of rows){const s=r.querySelector('.c-sum'),m=document.createElement('small');m.className='m-sum'+(s.classList.contains('ask')?' ask':'');m.textContent=s.textContent;r.querySelector('.qty').appendChild(m)}
-  paint();
+  const $=id=>document.getElementById(id),PAGE='nakup-zdeni';
+  const ERR={key:'Klíč neplatí nebo už vypršel.',api:'Napojení na tabulku zatím není nastavené.',
+    setup:'Seznam teď nejde odemknout, na serveru chybí nastavení.',server:'Seznam se nepodařilo načíst. Zkuste to za chvíli.'};
+  const KEY='dum-klic',sget=w=>{try{return window[w].getItem(KEY)||''}catch(e){return ''}},sset=(w,v)=>{try{v?window[w].setItem(KEY,v):window[w].removeItem(KEY)}catch(e){}};
+  let gen=0,inflight=null,key='';
+
+  function show(state){$('lock').hidden=state!=='lock';$('loading').hidden=state!=='loading';$('view').hidden=state!=='view'}
+  function showLock(code){show('lock');const e=$('lockErr');e.hidden=!code;e.textContent=code?ERR[code]||ERR.server:'';try{$('key').focus({preventScroll:true})}catch(x){}}
+
+  const bytes=s=>{s=String(s).replace(/\s+/g,'').replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return Uint8Array.from(atob(s),c=>c.charCodeAt(0))};
+  // content key (base64url) → HTML of the list; throws when the key does not fit this version of the page
+  async function decrypt(k){
+    const raw=bytes($('obsah').textContent),aes=await crypto.subtle.importKey('raw',bytes(k),'AES-GCM',false,['decrypt']);
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:raw.subarray(0,12),additionalData:new TextEncoder().encode(PAGE)},aes,raw.subarray(12));
+    return new TextDecoder().decode(pt)}
+
+  // every load takes a generation; a newer load or forget() makes an older answer stale, so it is dropped unseen
+  async function load(k){
+    const api=window.DUM_API||'';if(!api){showLock('api');return}
+    const g=++gen;show('loading');let res,html=null;
+    try{const ctl=typeof AbortController==='function'?new AbortController():null,t=setTimeout(()=>ctl&&ctl.abort(),30000);inflight=ctl;
+      const r=await fetch(api,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'obsah',key:k}),cache:'no-store',signal:ctl?ctl.signal:undefined});
+      clearTimeout(t);res=await r.json()}catch(e){res={ok:false,error:'server'}}
+    if(g!==gen)return;inflight=null;
+    if(res&&res.ok===true)try{html=await decrypt(res.contentKey)}catch(e){console.error(e);res={ok:false,error:'setup'}}
+    if(g!==gen)return;
+    if(html!==null){key=k;if(window.dumNavstevy&&typeof window.dumNavstevy.label==='function')window.dumNavstevy.label(res.who);render(html,res.who);return}
+    if(res&&res.error==='key'){forget();showLock('key');return}
+    // a script deployed before the obsah action answers "action"
+    $('key').value=k;showLock(res&&(res.error==='setup'||res.error==='action')?'setup':'server')}
+  function render(html,who){$('content').innerHTML=html;$('who').textContent=who||'—';show('view');ticks()}
+  // drop the key and the decrypted list (logout, invalid or expired key); a request still running is cancelled
+  function forget(){gen++;if(inflight){try{inflight.abort()}catch(e){}inflight=null}
+    sset('sessionStorage','');sset('localStorage','');key='';$('content').replaceChildren();$('key').value='';$('remember').checked=false}
+
+  // "Bought" ticks are a per-browser convenience only; the list renders the same without storage
+  function ticks(){
+    const TK='hajek-nakup-zdeni',rows=[...$('content').querySelectorAll('tr[data-id]')],count=$('doneCount'),reset=$('resetBtn');
+    if(!count||!reset)return;
+    let done={};try{done=JSON.parse(localStorage.getItem(TK)||'{}')||{}}catch(e){}
+    const save=()=>{try{localStorage.setItem(TK,JSON.stringify(done))}catch(e){}};
+    const paint=()=>{let n=0;for(const r of rows){const on=!!done[r.dataset.id];r.classList.toggle('bought',on);r.querySelector('input').checked=on;if(on)n++}
+      count.textContent=`Koupeno ${n} z ${rows.length}`;reset.hidden=n===0};
+    for(const r of rows)r.querySelector('input').addEventListener('change',e=>{
+      if(e.target.checked)done[r.dataset.id]=1;else delete done[r.dataset.id];save();paint()});
+    reset.addEventListener('click',()=>{done={};save();paint()});
+    // narrow screens hide the Celkem column and show the row total under the quantity instead
+    for(const r of rows){const s=r.querySelector('.c-sum'),m=document.createElement('small');m.className='m-sum'+(s.classList.contains('ask')?' ask':'');m.textContent=s.textContent;r.querySelector('.qty').appendChild(m)}
+    paint()}
+
+  $('lockForm').addEventListener('submit',e=>{e.preventDefault();let v=$('key').value.trim();const m=/[#&?]k=([^&#\s]+)/.exec(v);if(m){try{v=decodeURIComponent(m[1])}catch(x){v=m[1]}}
+    if(!window.DUM_API){showLock('api');return}if(v.length<20){showLock('key');return}
+    sset('sessionStorage',v);sset('localStorage',$('remember').checked?v:'');load(v)});
+  $('btnLogout').addEventListener('click',()=>{forget();showLock()});
+  // key from a shared link (#k=…): read it and drop it from the address bar and history at once; null = no key in the hash
+  function hashKey(){const m=/(?:^#|&)k=([^&]+)/.exec(location.hash);if(!m)return null;let k;try{k=decodeURIComponent(m[1]).trim()}catch(e){k=m[1]}
+    history.replaceState(null,'',location.pathname+location.search);return k}
+  document.addEventListener('DOMContentLoaded',()=>{
+    let k=hashKey()||'';if(k)sset('sessionStorage',k);
+    k=k||sget('sessionStorage')||sget('localStorage');
+    if(!window.DUM_API)showLock('api');else if(k)load(k);else showLock()});
+  window.addEventListener('hashchange',()=>{
+    const k=hashKey();if(!k||k===key&&!$('view').hidden)return;
+    forget();sset('sessionStorage',k);load(k)});
 })();
 </script>
 </body>

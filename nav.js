@@ -4,8 +4,8 @@
 (function(){
   'use strict';
   const GROUPS=[
-    {name:'Stavba',pages:[['zalozeni-zdiva','První řada zdiva'],['nakup-zdeni','Nákup na zdění'],['rez-vyska','Výškový řez'],['krov','Krov']]},
-    {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení']]},
+    {name:'Stavba',pages:[['pudorys-1np','Půdorys 1NP'],['zalozeni-zdiva','První řada zdiva'],['nakup-zdeni','Nákup na zdění'],['rez-vyska','Výškový řez'],['krov','Krov']]},
+    {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení'],['voda','Voda'],['rekuperace','Rekuperace']]},
     {name:'Peníze',pages:[['finance','Financování stavby']]}
   ];
   const KEY='hajek-podklady';
