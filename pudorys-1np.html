@@ -101,7 +101,7 @@ const SIDE={
 const rough=o=>[o.a-20,o.b+20];
 // Partitions 150 mm (pórobeton) with door gaps; doors: [a,b] along the wall, hinge end, swing side (+1 = higher coordinate across the wall).
 const PARTS_IN=[
- {x0:300,x1:2440,s0:9770,s1:9920,gaps:[[1600,2300]]},
+ {x0:300,x1:2440,s0:9970,s1:10120,gaps:[[1600,2300]]},
  {x0:2440,x1:2590,s0:9770,s1:11700},
  {x0:2590,x1:5020,s0:9770,s1:9920,gaps:[[3300,4300]]},
  {x0:5020,x1:5170,s0:7390,s1:11700,gaps:[[8300,9000],[10950,11650]]},
@@ -116,9 +116,9 @@ const PARTS_IN=[
 ];
 // Setting out of the partitions: x and s of the wall body (as on the page První řada zdiva) and a check distance from the nearest finished masonry face.
 const PSET=[
- ['P1','kuchyně / komora','300–2 440','9 770–9 920',150,'1 780 od vnitřního líce vstupní stěny','DV4 700, 1 300 od levé stěny'],
+ ['P1','kuchyně / komora','300–2 440','9 970–10 120',150,'1 580 od vnitřního líce vstupní stěny','DV4 700, 1 300 od levé stěny'],
  ['P2','komora / předsíň','2 440–2 590','9 770–11 700',150,'2 140 od vnitřního líce levé stěny',''],
- ['P3','předsíň / chodba','2 590–5 020','9 770–9 920',150,'v jedné linii s P1','DV1 1 000, 710 od P2'],
+ ['P3','předsíň / chodba','2 590–5 020','9 770–9 920',150,'200 před P1 (P1 je kvůli lednici posunutá do komory)','DV1 1 000, 710 od P2'],
  ['P4','chodba / koupelna a WC','5 020–5 170','7 390–11 700',150,'2 530 od vnitřního líce pravé stěny','DV2 700, 910 od P6 · DV3 700, 50 od vstupní stěny'],
  ['P5','koupelna / WC','5 170–7 700','10 430–10 580',150,'1 120 od vnitřního líce vstupní stěny',''],
  ['P6','schodiště / koupelna','5 170–7 700','7 390–7 540',150,'2 890 od P5',''],
@@ -131,7 +131,7 @@ const DOORS=[
  {id:'DV1',hinge:[4300,9770],closed:[3340,9770],open:[4300,8810],w:1000,label:'1000/2100',where:'předsíň → chodba, otevírá do chodby, panty u WC'},
  {id:'DV2',hinge:[5170,9000],closed:[5170,8340],open:[5830,9000],w:700,label:'700/2100',where:'chodba → koupelna, otevírá do koupelny, panty blíž ke vstupu'},
  {id:'DV3',hinge:[5170,11650],closed:[5170,10990],open:[5830,11650],w:700,label:'700/2100',where:'chodba → WC, otevírá do WC, panty u obvodové stěny'},
- {id:'DV4',hinge:[2300,9920],closed:[1640,9920],open:[2300,10580],w:700,label:'700/2100',where:'kuchyně → komora, skryté dveře v obkladu linky, otevírá do komory'}
+ {id:'DV4',hinge:[2300,10120],closed:[1640,10120],open:[2300,10780],w:700,label:'700/2100',where:'kuchyně → komora, skryté dveře v obkladu linky, otevírá do komory'}
 ];
 const ROOMS=[
  ['1.02','Technická místnost',[[300,7700,16500,18300]],13,'dlažba',[2300,17450],3.0],
@@ -139,15 +139,15 @@ const ROOMS=[
  ['1.04','WC',[[5170,7700,10580,11700]],3,'dlažba',[6300,11380],2.4],
  ['1.05','Koupelna',[[5170,7700,7540,10430]],7,'dlažba',[6150,9250],2.8],
  ['1.06','Chodba',[[2900,5020,6200,9770]],8,'dlažba 60×120',[4150,7750],3.0],
- ['1.07','Kuchyně',[[300,2900,6200,9770]],9,'dlažba 60×120',[1375,8350],2.6],
- ['1.08','Komora',[[300,2440,9920,11700]],4,'dlažba',[1500,11050],2.8],
+ ['1.07','Kuchyně',[[300,2900,6200,9770],[300,2440,9770,9970]],9,'dlažba 60×120',[1375,8350],2.6],
+ ['1.08','Komora',[[300,2440,10120,11700]],4,'dlažba',[1500,11050],2.8],
  ['1.09','Schodiště a krb',[[5100,7700,4200,7390]],5,'dub, schody dub',[6250,6900],2.6],
  ['1.10','Jídelna',[[300,5100,4200,6200]],9,'dub',[2700,5250],3.0],
  ['1.11','Obývací pokoj',[[300,7700,300,4200]],29,'dub',[2300,2950],3.0]
 ];
 const area=r=>r[2].reduce((t,[a,b,c,d])=>t+(b-a)*(d-c),0)/1e6;
 // Sewer outlets cast in the slab (page Kanalizace, ZT02) and the new stack S2 in the pier casing (variant A).
-const SEW=[['K1',7550,11450,-300,-60],['K2',7550,10370,-300,-60],['K3',450,7900,520,-280],['S2',500,5300,280,-330]];
+const SEW=[['K1',7550,11450,-300,-60],['K2',7550,10370,-300,-60],['K3',450,7900,520,-280],['S2',500,5850,280,-330]];
 
 // ---------------- Drawing: envelope ----------------
 const ring=(o,i,a)=>el('path',{d:[o,i].map(([x0,x1,s0,s1])=>`M${X(x0)} ${Y(s0)}H${X(x1)}V${Y(s1)}H${X(x0)}Z`).join(''),'fill-rule':'evenodd',...a});
@@ -250,7 +250,7 @@ R(3700,3920,1170,1480,{fill:'none',stroke:'#b8402f','stroke-width':W.mid},gIn);L
 T(3980,1350,'prostup stropem 220 × 310',{'font-size':1.1,fill:'#b8402f','text-anchor':'start'},gIn);T(3980,1170,'rekuperace 2× Ø 90',{'font-size':1.05,fill:'#b8402f','text-anchor':'start'},gIn);
 // Fittings in grey: kitchen, bathroom, WC, hall wardrobe, pier casing, riser boxing.
 const F={fill:'none',stroke:'#8a8f8c','stroke-width':W.thin},FS={fill:'#ececec',stroke:'#6f7571','stroke-width':W.thin};
-R(300,900,6200,9220,F,gIn);R(300,900,9220,9770,F,gIn);L([[300,9220],[900,9770]],F,gIn);L([[300,9770],[900,9220]],F,gIn);
+R(300,900,6200,9200,F,gIn);R(300,900,9200,9800,F,gIn);L([[300,9200],[900,9800]],F,gIn);L([[300,9800],[900,9200]],F,gIn);R(300,900,9800,9970,F,gIn);
 R(400,820,7350,8050,F,gIn);R(1850,2900,6650,8750,F,gIn);R(2050,2570,7390,8010,F,gIn);
 for(const [x,s] of [[2180,7520],[2440,7520],[2180,7880],[2440,7880]])el('circle',{cx:X(x),cy:Y(s),r:.5,...F},gIn);
 R(5200,6900,9720,10420,F,gIn);el('rect',{x:X(5300),y:Y(10340),width:1.5,height:.54,rx:.25,...F},gIn);
@@ -358,7 +358,7 @@ dimH(Y(18050),[300,7700],{size:1.35});
 dimV(X(7100),[7540,10430],{size:1.35});
 dimV(X(6880),[10580,11700],{size:1.2});
 dimV(X(4950),[4200,5200,7390],{size:1.25});
-dimV(X(1000),[300,4200,6200,9770,9920,11700],{size:1.35});
+dimV(X(1000),[300,4200,6200,9970,10120,11700],{size:1.35});
 dimV(X(4780),[7390,8300,9000,9770],{size:1.2});
 dimV(X(4950),[9920,10950,11650,11700],{size:1.2});
 dimV(X(7250),[16500,18300],{size:1.35});
@@ -446,7 +446,8 @@ side.innerHTML=`<style>
   <li class="warn">Příčka předsíň a chodba / WC a koupelna má líc na 5 020 (D1.2: 5 100). Světlík pak končí v rohu u WC, předsíň a chodba jsou o 80 mm užší, WC a koupelna o 80 mm širší. Pokud chceš držet D1.2, posuň příčku a oboje dveře o 80 mm.</li>
   <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Stoupačka K2 v rohu obložená. WC s předstěnou 240 přes čelo (D1.2: předstěna 165 podél obvodové stěny).</li>
   <li>Schodiště 18 × 170 mm, konstrukční výška 3 060 podle výškového řezu (D1.2: 18 × 166,7). Výroba podle zaměření.</li>
-  <li>Pilíř mezi O2 a O3: předstěna 350 se stoupačkou S2 do K3 (Kanalizace, varianta A), u ostění O3 vestavná lednice 600.</li>
+  <li>Pilíř mezi O2 a O3: předstěna 350 se stoupačkou S2 do K3 (Kanalizace, varianta A).</li>
+  <li><b>Příčka P1 kuchyně / komora o 200 dál v komoře</b> (D1.2: v linii s P3). V rohu kuchyně se tak vejde vestavná lednice 600 hned za oknem O3 a distanční lišta 170 u stěny, aby šly dveře přes 90°. Komora má 1 580 místo 1 780, ostrůvek je od skrytých dveří 1 150.</li>
   <li>Krb v rohu schodiště, k obýváku dubové lamely a nika na dřevo pod posledními stupni.</li>
  </ol>
  <h3>Poznámky</h3>

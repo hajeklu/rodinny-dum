@@ -370,7 +370,7 @@ const plen=p=>p.reduce((t,q,i)=>i?t+Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1]):0,
 // collector SK in the hall ceiling over the built-in wardrobe; V3 rises from there next to the heating riser B.
 const SK=[2.65,3.3,10.0,10.75],V3=[10.4,2.95],RB=[10.9,2.95];
 const G_VALVES=[
- {id:'kuch',room:'Kuchyň 1.07',kind:'out',q:50,n:2,at:[9.7,1.95],wall:true,slot:[1.6,2.3],qat:[-.45,0],el:'skrytá štěrbina 20 mm u stropu nad dveřmi do komory, za panelem box s tukovým filtrem',r:[[9.7,1.95],[10.3,1.95],[10.3,2.65]]},
+ {id:'kuch',room:'Kuchyň 1.07',kind:'out',q:50,n:2,at:[9.9,1.95],wall:true,slot:[1.6,2.3],qat:[-.45,0],el:'skrytá štěrbina 20 mm u stropu nad dveřmi do komory, za panelem box s tukovým filtrem',r:[[9.9,1.95],[10.3,1.95],[10.3,2.65]]},
  {id:'kom',room:'Komora 1.08',kind:'out',q:10,n:1,at:[10.55,1.05],qat:[0,-.33],el:'talířový ventil Ø 100 v podhledu',r:[[10.55,1.05],[10.55,2.65]]},
  {id:'pred',room:'Předsíň 1.03',kind:'out',q:15,n:1,at:[11.2,3.65],qat:[.38,0],el:'talířový ventil Ø 100 v podhledu',r:[[11.2,3.65],[11.2,3.1],[10.75,3.1]]},
  {id:'kou',room:'Koupelna 1.05',kind:'out',q:35,n:1,at:[9.3,7.1],qat:[0,.4],el:'talířový ventil Ø 125 v podhledu u vany',r:[[9.3,7.1],[9.3,5.75],[10.05,5.75],[10.05,3.3]]},
@@ -408,7 +408,7 @@ const MAIN={sup:[P1S,[17.4,3.72],[17.4,3.15],[9.05,3.15],[8.65,3.15]],ext:[[18.1
 const LIV_UP=[V2,[1.32,2.15],[7.6,2.15],[7.6,2.95],[7.95,2.95]];   // clear of the en-suite and utility valves
 const RP=[2.85,3.45,7.95,8.65],RO=[4.75,5.35,7.95,8.65],HATCH=[3.7,4.4,8.0,8.8];
 const FC=[3.99,4.61],FCZ=[5.29,5.91];   // AC cassette panel 620 × 620 in the landing ceiling (x, z), the only AC in the house
-const WET=[[5.17,7.7,7.54,10.43],[5.17,7.7,10.58,11.7],[2.59,5.02,9.92,11.7],[.3,2.44,9.92,11.7]];
+const WET=[[5.17,7.7,7.54,10.43],[5.17,7.7,10.58,11.7],[2.59,5.02,9.92,11.7],[.3,2.44,10.12,11.7]];
 // Lengths (m): plant-room runs + rise to the duct level above the attic ceiling (+6.0 supply, +6.25 extract), V2 / V3 down to the
 // ground-floor ceiling cavity (+2.53).
 const lengths=()=>({ms:plen(TECHR.sup)+.38+3.67+plen(MAIN.sup),me:plen(TECHR.ext)+.38+3.92+plen(MAIN.ext),
