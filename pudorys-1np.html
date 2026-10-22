@@ -264,6 +264,8 @@ R(7450,7700,10180,10430,FS,gIn);
 R(2600,3200,10000,10950,F,gIn);L([[2600,10000],[3200,10950]],F,gIn);L([[2600,10950],[3200,10000]],F,gIn);R(2600,3200,10950,11680,{...F,stroke:'#9a7a4f'},gIn);
 R(2600,2780,10020,10950,{fill:'#3b4a42',stroke:'#111','stroke-width':W.thin},gIn);T(2690,10500,'R1',{'font-size':1.1,fill:'#fff',transform:`rotate(-90 ${X(2690)} ${Y(10500)})`},gIn);
 el('circle',{cx:X(2950),cy:Y(10900),r:.55,fill:'#fff',stroke:'#b8402f','stroke-width':W.thin},gIn);T(2950,10650,'B',{'font-size':1.1,fill:'#b8402f'},gIn);
+// Kitchen extract valve in the ceiling by the hall door, its Ø 125 straight up through P9 (rekuperace.html).
+el('circle',{cx:X(2800),cy:Y(9650),r:.7,fill:'#fff',stroke:'#b8402f','stroke-width':W.thin},gIn);T(2900,9390,'P9',{'font-size':1.1,fill:'#b8402f','text-anchor':'start'},gIn);
 R(300,650,4400,6200,FS,gIn);
 R(1100,3700,300,360,{fill:'#dccbab',stroke:'#7a5a33','stroke-width':W.thin},gIn);T(2400,470,'TV stěna · lamely na podkladu',{'font-size':1.05,fill:'#7a5a33'},gIn);
 // Floor change oak / large tiles at the end of the pier and the open-plan zone lines.
@@ -461,6 +463,7 @@ side.innerHTML=`<style>
   <li>Pracovní výkres z vizualizační studie, ne realizační dokumentace. Před zděním kóty zkontrolovat na desce a vůči vývodům K1–K3.</li>
   <li>Nosné prvky podle statiky (Ing. Khol, 04/2024): překlady 2× IPE 240, ZB roh FIX–HS, uložení panelů a výměna u schodiště. Délky IPE ověřit před objednáním.</li>
   <li class="warn">Prostup stropem 220 × 310 (x 3 700–3 920, s 1 170–1 480) pro dvě trubky rekuperace Ø 90 z kastlíku na předním konci dělicí stěny ložnice: vývrt do dutin panelu uprostřed rozpětí, musí být na výrobním výkresu panelů.</li>
+  <li class="warn">Prostup P9 Ø 140 ve stropě kuchyně u dveří do předsíně (x 2 800, s 9 650) pro odvod kuchyně Ø 125 svisle do skříně pokoje 2.04 k V3. Do výrobního výkresu panelů spolu s ostatními (stránka Rekuperace).</li>
   <li>Vývody K1–K3 jsou v desce hotové (ZT02, stránka Kanalizace). Před zděním příček je zaměřit.</li>
   <li>R1 = rozdělovač podlahovky ve vestavěné skříni, B = stoupačka topení R2 → R1 a chráničky. <span class="warn">R-A (elektrorozvaděč) je v D1.2 na stěně u komory vedle vstupu, kde je teď sedací nika. Polohu sladit s PD elektro.</span></li>
   <li class="warn">Zárubeň DV3 (WC) je jen 50 mm od rohu. Ověřit podle typu zárubně, případně dveře posunout o 100 mm.</li>
