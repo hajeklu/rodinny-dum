@@ -147,7 +147,7 @@ const ROOMS=[
 ];
 const area=r=>r[2].reduce((t,[a,b,c,d])=>t+(b-a)*(d-c),0)/1e6;
 // Sewer outlets cast in the slab (page Kanalizace, ZT02) and the new stack S2 in the pier casing (variant A).
-const SEW=[['K1',7550,11450,-300,-60],['K2',7550,10370,-300,-60],['K3',450,7900,520,-280],['S2',500,5850,280,-330]];
+const SEW=[['K1',7550,11450,-300,-60],['K2',7550,10370,-300,-60],['K3',450,7900,520,-280],['S2',500,5300,280,-330]];
 
 // ---------------- Drawing: envelope ----------------
 const ring=(o,i,a)=>el('path',{d:[o,i].map(([x0,x1,s0,s1])=>`M${X(x0)} ${Y(s0)}H${X(x1)}V${Y(s1)}H${X(x0)}Z`).join(''),'fill-rule':'evenodd',...a});
@@ -446,7 +446,7 @@ side.innerHTML=`<style>
   <li class="warn">Příčka předsíň a chodba / WC a koupelna má líc na 5 020 (D1.2: 5 100). Světlík pak končí v rohu u WC, předsíň a chodba jsou o 80 mm užší, WC a koupelna o 80 mm širší. Pokud chceš držet D1.2, posuň příčku a oboje dveře o 80 mm.</li>
   <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Stoupačka K2 v rohu obložená. WC s předstěnou 240 přes čelo (D1.2: předstěna 165 podél obvodové stěny).</li>
   <li>Schodiště 18 × 170 mm, konstrukční výška 3 060 podle výškového řezu (D1.2: 18 × 166,7). Výroba podle zaměření.</li>
-  <li>Pilíř mezi O2 a O3: předstěna 350 se stoupačkou S2 do K3 (Kanalizace, varianta A).</li>
+  <li>Pilíř mezi O2 a O3: předstěna 350 se stoupačkou S2 do K3 (Kanalizace, varianta A), u ostění O3 vestavná lednice 600.</li>
   <li>Krb v rohu schodiště, k obýváku dubové lamely a nika na dřevo pod posledními stupni.</li>
  </ol>
  <h3>Poznámky</h3>

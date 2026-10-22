@@ -71,7 +71,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <div class="wrap"><svg id="ground" viewBox="0 0 1200 744" role="img" aria-label="Půdorys přízemí s rozvodem vody"></svg></div>
     <div class="notes" style="margin-top:12px">
       <div class="note"><strong>A · Vstup, domovní sestava a zásobník</strong><br>Přípojka HDPE 32 vstoupí do rohu u stěny na straně příjezdu, u průjezdu, jako v ZTI. Na stěně k průjezdu jsou za sebou hlavní uzávěr, vodoměr, filtr, redukční ventil a motorový uzávěr. Studená voda pak vede pod stropem k prostupu C a cestou má odbočky k zásobníku, k napouštění topení, k výlevce a k ventilu Z1 do průjezdu. Teplá voda ze zásobníku vede po štítu k C. Vratka se vrací souběžně do čerpadla u zásobníku. Podrobně viz W-03.</div>
-      <div class="note"><strong>B · Kuchyň, koupelna 1.05 a WC</strong><br>Stoupačka V3 sejde v pilíři mezi okny vedle S2, za lamelovou předstěnou. Smyčka pak vede pod linkou k dřezu a myčce, mezi ostrůvkem a vysokou skříní přes kuchyň a chodbu, dveřmi do koupelny, podél stěny s umyvadly a podél stěny u terasy do rohu u WC. Tam stoupá V2, ve které je už jen vratka. Vana, sprcha nad ní a umyvadlo ve WC mají krátké odbočky v příčce mezi koupelnou a WC. Ventil Z2 na terasu je ve stěně koupelny vedle okna.</div>
+      <div class="note"><strong>B · Kuchyň, koupelna 1.05 a WC</strong><br>Stoupačka V3 sejde v pilíři mezi okny mezi S2 a vestavnou lednicí, za lamelovou předstěnou. Smyčka pak vede pod linkou k dřezu a myčce, mezi ostrůvkem a vysokou skříní přes kuchyň a chodbu, dveřmi do koupelny, podél stěny s umyvadly a podél stěny u terasy do rohu u WC. Tam stoupá V2, ve které je už jen vratka. Vana, sprcha nad ní a umyvadlo ve WC mají krátké odbočky v příčce mezi koupelnou a WC. Ventil Z2 na terasu je ve stěně koupelny vedle okna.</div>
       <div class="note"><strong>C · Pokládka v přízemí</strong><br>Všechno v EPS na desce přes ochrannou vrstvu, aby se nepoškodily protiradonové pásy, stejně jako hlavní trubky topení. Příčkami jen dveřmi, nebo nad podlahou v předstěně. Pod linkou se voda potká s odpadem S2 → K3, který leží ve spádu. Voda vede vedle něj, ne pod ním.</div>
       <div class="note"><strong>Uzávěry skupin</strong><br>ZTI chce uzávěr před každou skupinou výtoků. Přízemí: rohové ventily pod dřezem, uzávěry koupelny a WC za revizními dvířky v předstěně WC u V2. Podkroví: uzávěry za dvířky v prádelně u dveří (smyčka dál k V3 a odbočka do koupelny dětí). Technická místnost: kulové kohouty u zásobníku a na vratce.</div>
     </div>
@@ -234,8 +234,8 @@ const CHOLE=[18.1,3.35];                               // penetration C in the p
 // Hot water supply: tank → under the ceiling along the gable → C → loft → attic corridor → utility and en-suite → V3 → kitchen → bathroom 1.05 → WC (V2).
 const TV_TM=[[17.6,1.0,1.85,'tank'],[17.6,1.0,2.45],[18.22,1.0,2.45],[18.22,3.32,2.45,'tmL'],[18.1,3.32,2.45],[18.1,3.32,3.0,'C']];
 const TV_LOFT=[[17.5,3.32],[17.3,3.88]];
-const TV_A=[[13.0,3.88,'chodba'],[8.75,3.88,'KB'],[7.05,3.88],[7.05,3.2],[6.65,3.2,'ES'],[6.65,2.87,'UL'],[6.65,2.25,'UP'],[6.65,1.65,'EV'],[6.65,.45],[5.55,.45,'V3a']];
-const TV_G=[[5.55,.45,'V3'],[7.7,.45,'KD'],[8.3,.45,'KM'],[8.8,.95],[8.8,5.32],[7.7,5.32],[7.7,5.775,'B1'],[7.7,6.425,'B2'],[7.7,7.5],[9.55,7.5,'Z2'],[10.3,7.5,'BV'],[10.75,7.45,'V2']];
+const TV_A=[[13.0,3.88,'chodba'],[8.75,3.88,'KB'],[7.05,3.88],[7.05,3.2],[6.65,3.2,'ES'],[6.65,2.87,'UL'],[6.65,2.25,'UP'],[6.65,1.65,'EV'],[6.65,.45],[5.5,.45,'V3a']];
+const TV_G=[[5.5,.45,'V3'],[7.7,.45,'KD'],[8.3,.45,'KM'],[8.8,.95],[8.8,5.32],[7.7,5.32],[7.7,5.775,'B1'],[7.7,6.425,'B2'],[7.7,7.5],[9.55,7.5,'Z2'],[10.3,7.5,'BV'],[10.75,7.45,'V2']];
 const lift=(a,y)=>a.map(q=>[q[0],q[1],y,q[2]]);
 const TVP=[...TV_TM,...lift(TV_LOFT,3.0),...lift(TV_A,3.0),...lift(TV_G,-.15)];
 // Offset of a plan polyline: d > 0 to the left of the direction of travel.
@@ -262,7 +262,7 @@ const FX=[
  {s:'L',t:'Výlevka',r:'prádelna',lv:'a',at:'UL',p:[[6.65,2.87],[6.6,2.87]],up:.55},
  {s:'P',t:'Pračka',r:'prádelna',lv:'a',cold:1,p:[[6.53,2.25],[6.6,2.25]],up:.9},
  {s:'U',t:'Umyvadlo',r:'koupelna u ložnice',lv:'a',at:'EV',p:[[6.65,1.65],[6.37,1.65]],up:.55},
- {s:'W',t:'WC',r:'koupelna u ložnice',lv:'a',cold:1,p:[[5.55,.57],[5.1,.5]],up:.8},
+ {s:'W',t:'WC',r:'koupelna u ložnice',lv:'a',cold:1,p:[[5.5,.57],[5.1,.5]],up:.8},
  {s:'D',t:'Dřez',r:'kuchyň',lv:'g',at:'KD',p:[[7.7,.45],[7.7,.52]],up:.5},
  {s:'M',t:'Myčka',r:'kuchyň',lv:'g',cold:1,p:[[8.25,.57],[8.25,.78]],up:.3},
  {s:'U',t:'Umyvadlo 1',r:'koupelna 1.05',lv:'g',at:'B1',p:[[7.7,5.775],[7.6,5.775]],up:.55},
@@ -310,7 +310,7 @@ function stubs(g,lvs){for(const f of FX){if(!lvs.includes(f.lv))continue;
 function riser(g,z,x,t,col,lz,lx,anchor='middle'){g.circle(z,x,8,{fill:'#fff',stroke:col,'stroke-width':2.4});g.el('text',{x:g.X(z),y:g.Y(x)+4,'text-anchor':'middle','font-size':10,'font-weight':800,fill:col},'↕');
  if(t)g.text(lz,lx,t,{'font-size':11,'font-weight':800,fill:col,'text-anchor':anchor});}
 // sewer stacks the water runs beside (kanalizace.html), drawn over the pipes
-const sewers=g=>{for(const [z,x,t,lz,lx] of [[5.85,.5,'S2',5.95,.82],[10.37,7.55,'K2',10.15,7.25],[11.45,7.55,'K1',11.45,7.25]]){g.circle(z,x,5,{fill:'#fff',stroke:W.kan,'stroke-width':2});g.text(lz,lx,t,{'font-size':9,'font-weight':700,fill:W.kan});}};
+const sewers=g=>{for(const [z,x,t,lz,lx] of [[5.3,.5,'S2',5.05,.82],[10.37,7.55,'K2',10.15,7.25],[11.45,7.55,'K1',11.45,7.25]]){g.circle(z,x,5,{fill:'#fff',stroke:W.kan,'stroke-width':2});g.text(lz,lx,t,{'font-size':9,'font-weight':700,fill:W.kan});}};
 const fixO=(g,r,a={})=>g.rect(...r,Object.assign({fill:'none',stroke:'#b7c0ba','stroke-width':1},a));
 const LEG=()=>[{k:'line',c:W.sv,w:3,t:'studená voda SV (páteř 26×3)'},{k:'line',c:W.tv,w:3,t:'teplá voda TV (smyčka 20×2)'},{k:'dash',c:W.c,w:2.6,t:'vratka cirkulace (16×2)'},{k:'line',c:'#7d8b83',w:1.6,t:'odbočka k výtoku (16×2)'},
  {k:'tag',c:W.fx,s:'U',t:'výtok (U, S, V, D, W, M, P, L, Z)'},{k:'riser',c:W.tv,s:'↕',t:'stoupačka (C, V2, V3)'},{k:'fill',c:W.box,f:W.boxF,t:'izolační box: topení + TV'},{k:'disc',c:W.kan,t:'odpady S2, K1, K2 (kanalizace)'},
@@ -336,7 +336,7 @@ function drawGround(){const s=document.getElementById('ground');
  g.circle(18.08,1.75,6.5,{fill:'#fff',stroke:W.c,'stroke-width':2.2});g.poly([[18.0,1.7],[18.16,1.75],[18.0,1.8]],{fill:W.c});
  // risers and the entry
  g.circle(16.62,.45,6,{fill:W.sv,stroke:'#fff','stroke-width':1.5});
- riser(g,...CHOLE,'C',W.tv,17.62,3.95);riser(g,5.55,.5,'V3',W.tv,5.2,1.25);riser(g,10.75,7.45,'V2',W.c,10.75,6.95);
+ riser(g,...CHOLE,'C',W.tv,17.62,3.95);riser(g,5.5,.5,'V3',W.tv,5.75,1.25);riser(g,10.75,7.45,'V2',W.c,10.75,6.95);
  // labels: the plant-room ones sit in the passage, next to the wall they describe
  const L=(z,x,t,a={})=>g.text(z,x,t,Object.assign({'font-size':9.5,fill:PAL.sub},a));
  g.text(15.9,.3,'přípojka HDPE 32 ze země (ZTI)',{'font-size':9.5,fill:W.sv,'font-weight':700,'text-anchor':'end'});
@@ -362,7 +362,7 @@ function drawAttic(){const s=document.getElementById('attic');
  g.line(HEAT_SUP,W.heat,2.6);g.line(HEAT_RET,W.heat,2.6);
  g.rect(3.62,3.8,9.92,10.72,{fill:'#263a30',rx:2});g.text(10.32,3.42,'R2',{'font-size':10,'font-weight':800,fill:'#263a30'});
  pipes(g,'a');stubs(g,['a']);sewers(g);
- riser(g,...CHOLE,'C',W.tv,17.62,2.95);riser(g,5.55,.5,'V3',W.tv,5.15,1.25);riser(g,10.75,7.45,'V2',W.c,10.35,6.95,'end');
+ riser(g,...CHOLE,'C',W.tv,17.62,2.95);riser(g,5.5,.5,'V3',W.tv,5.75,1.25);riser(g,10.75,7.45,'V2',W.c,10.35,6.95,'end');
  const L=(z,x,t,a={})=>g.text(z,x,t,Object.assign({'font-size':9.5,fill:PAL.sub},a));
  L(15.4,2.62,'izolační box: topení + TV',{'font-size':10,fill:'#8a5a17','font-weight':600});L(15.4,4.75,'SV a vratka vedle boxu',{'font-size':10,fill:'#8a5a17','font-weight':600});L(15.4,5.05,'každá trubka ve vlastní izolaci',{'font-size':9.5,fill:'#8a5a17'});
  L(11.25,6.95,'šachta K1 + K2',{'font-size':9,'text-anchor':'start'});L(10.25,6.2,'vratka v podlaze',{'font-size':9,fill:W.c,'text-anchor':'start'});L(15.8,5.55,'nevytápěná, v zateplené obálce',{'font-size':9.5,fill:PAL.sub});L(7.3,1.25,'instalační stěna',{'font-size':9});
@@ -407,7 +407,7 @@ function drawIso(){const s=document.getElementById('iso'),E1=1.7,lev=y=>y<=2.95?
  I.mark([3.88,3.1,15.4],0,-36,4,'#8a5a17','<strong>Půda</strong>: TV v izolačním boxu s topením, SV a vratka vedle něj.');
  I.mark([4.9,3.1,8.75],34,-24,5,W.tv,'<strong>Koupelna dětí</strong>: odbočka z chodby, pod půl litru.');
  I.mark([2.2,3.1,6.6],-30,-30,6,W.tv,'<strong>Prádelna a koupelna u ložnice</strong>: smyčka v instalační stěně mezi nimi.');
- I.mark([.45,1.6,5.55],-34,0,7,W.tv,'<strong>Stoupačka V3</strong> v pilíři mezi okny vedle S2, za lamelovou předstěnou.');
+ I.mark([.45,1.6,5.5],-34,0,7,W.tv,'<strong>Stoupačka V3</strong> v pilíři mezi okny vedle S2, za lamelovou předstěnou.');
  I.mark([.45,-.15,7.7],-34,22,8,W.tv,'<strong>Kuchyň</strong>: dřez a myčka, smyčka pod linkou.');
  I.mark([6.4,-.15,7.7],-10,36,9,W.tv,'<strong>Koupelna 1.05 a WC 1.04</strong>: smyčka kolem umyvadel, vana a WC na krátkých odbočkách.');
  I.mark([7.45,1.6,10.75],38,8,10,W.c,'<strong>Stoupačka V2</strong> u K1/K2: vratka nahoru do šachty v dětském pokoji 2, chodbou a přes půdu zpět do zásobníku.');

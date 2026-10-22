@@ -48,8 +48,8 @@ const PEN=[
  {id:'P1',who:'vzt',at:[18.1,3.72],d:.23,t:'přívod Ø 180 (V1)'},{id:'P1',who:'vzt',at:[18.1,4.08],d:.23,t:'odvod Ø 180 (V1)'},{id:'C',who:'top',at:[18.1,3.35],d:.2,t:'topení 2× 32, voda, data'},
  {id:'P2',who:'vzt',at:[1.22,3.84],d:.11,t:'přívod obýváku Ø 90 (ventil u TV)'},{id:'P2',who:'vzt',at:[1.42,3.84],d:.11,t:'přívod obýváku Ø 90 (ventil u HS)'},
  {id:'P3',who:'vzt',at:[10.4,2.95],d:.14,t:'odvod přízemí Ø 125 (V3)'},{id:'B',who:'top',at:[10.9,2.95],d:.16,t:'stoupačka R2 → R1 + 2 chráničky'},
- {id:'S2',who:'kan',at:[5.85,.5],d:.13,t:'odpad DN 110 z koupelny u ložnice'},{id:'K2',who:'kan',at:[10.37,7.55],d:.13,t:'stoupačka K2 (ZTI)'},{id:'K1',who:'kan',at:[11.45,7.55],d:.13,t:'stoupačka K1 (ZTI)'},
- {id:'V3',who:'top',at:[5.55,.5],d:.11,t:'stoupačka vody V3 (SV 26 + TV 20) vedle S2'},{id:'V2',who:'top',at:[10.75,7.45],d:.06,t:'stoupačka vody V2 (vratka cirkulace 16) u K1/K2'}];
+ {id:'S2',who:'kan',at:[5.3,.5],d:.13,t:'odpad DN 110 z koupelny u ložnice'},{id:'K2',who:'kan',at:[10.37,7.55],d:.13,t:'stoupačka K2 (ZTI)'},{id:'K1',who:'kan',at:[11.45,7.55],d:.13,t:'stoupačka K1 (ZTI)'},
+ {id:'V3',who:'top',at:[5.5,.5],d:.11,t:'stoupačka vody V3 (SV 26 + TV 20) vedle S2'},{id:'V2',who:'top',at:[10.75,7.45],d:.06,t:'stoupačka vody V2 (vratka cirkulace 16) u K1/K2'}];
 const area=r=>r.reduce((t,[x0,x1,z0,z1])=>t+(x1-x0)*(z1-z0),0);
 
 // ---------------------------------------------------------------- plan sheet
@@ -213,11 +213,11 @@ function penetrations(svg){const g=plan(svg,{title:'Prostupy stropem přízemí 
  // dimension each penetration from the inner wall faces
  const dz=(z,x,z0)=>{g.line([[z0,x],[z,x]],PAL.ink,.7,{'stroke-dasharray':'2 2'});g.text((z+z0)/2,x-.1,f2(Math.abs(z-z0)),{'font-size':9.5,fill:PAL.ink});};
  const dx=(z,x,x0)=>{g.line([[z,x0],[z,x]],PAL.ink,.7,{'stroke-dasharray':'2 2'});g.text(z+.12,(x+x0)/2,f2(Math.abs(x-x0)),{'font-size':9.5,fill:PAL.ink,'text-anchor':'start'});};
- dz(1.22,3.84,.3);dz(1.42,4.12,.3);dx(1.22,3.84,.3);dz(10.4,2.95,11.7);dz(10.9,3.15,11.7);dx(10.4,2.95,.3);dz(5.85,.5,.3);dx(5.85,.5,.3);dx(10.37,7.55,7.7);dz(11.45,7.75,11.7);
+ dz(1.22,3.84,.3);dz(1.42,4.12,.3);dx(1.22,3.84,.3);dz(10.4,2.95,11.7);dz(10.9,3.15,11.7);dx(10.4,2.95,.3);dz(5.3,.5,.3);dx(5.3,.5,.3);dx(10.37,7.55,7.7);dz(11.45,7.75,11.7);
  for(const [x,t] of [[5.35,'P1 + C u štítu technické m.:'],[5.65,'osy C 3,05 · P1 3,42 a 3,78 m'],[5.95,'od líce stěny na straně příjezdu,'],[6.25,'0,20 m od líce štítu']])g.text(14.1,x,t,{'font-size':9.5,fill:PAL.ink});
  const lab=(z,x,t,c,anchor='middle')=>g.text(z,x,t,{'font-size':11,'font-weight':800,fill:c,'text-anchor':anchor});
  lab(17.62,3.3,'C',WHO.top[0]);lab(17.62,3.92,'P1',WHO.vzt[0]);lab(1.75,3.84,'P2',WHO.vzt[0]);lab(10.4,2.5,'P3',WHO.vzt[0]);lab(10.9,2.5,'B',WHO.top[0]);
- lab(6.25,.62,'S2',WHO.kan[0],'start');lab(10.37,7.2,'K2',WHO.kan[0]);lab(11.45,7.2,'K1',WHO.kan[0]);lab(5.3,.62,'V3',WHO.top[0],'end');lab(10.8,7.15,'V2',WHO.top[0]);g.text(5.3,.9,'0,30 od S2',{'font-size':9,fill:PAL.ink,'text-anchor':'end'});
+ lab(4.95,.62,'S2',WHO.kan[0],'end');lab(10.37,7.2,'K2',WHO.kan[0]);lab(11.45,7.2,'K1',WHO.kan[0]);lab(5.85,.62,'V3',WHO.top[0],'start');lab(10.8,7.15,'V2',WHO.top[0]);g.text(5.3,.9,'0,30 od S2',{'font-size':9,fill:PAL.ink,'text-anchor':'end'});
  g.text(14.1,6.6,'v dobetonávce (oranžově)',{'font-size':9.5,fill:'#8a5a17'});
  roomTags(g,'g',{noArea:true,hide:['1.02']});
  finish(g,[{k:'disc',c:WHO.vzt[0],t:'rekuperace (P1–P3)'},{k:'disc',c:WHO.top[0],t:'topení, voda, data (B, C, V2, V3)'},{k:'disc',c:WHO.kan[0],t:'kanalizace (S2, K1, K2 podle ZTI)'},
