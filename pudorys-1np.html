@@ -17,6 +17,7 @@ main{max-width:1500px;margin:auto;padding:clamp(16px,3vw,32px)}
 .bar button:hover,.bar a:hover{background:#eef4ef}
 .sheetwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;border:1px solid #dce4dd;border-radius:12px;box-shadow:0 5px 20px #1b352309}
 #sheet{display:block;width:100%;min-width:1100px;height:auto;background:#fff}
+body.a4 #sheet{min-width:0;max-width:760px;margin:auto}
 @page{size:420mm 297mm;margin:0}
 @media print{
  :root{background:#fff}header,.lead,.bar{display:none!important}main{padding:0;max-width:none}
@@ -32,7 +33,7 @@ main{max-width:1500px;margin:auto;padding:clamp(16px,3vw,32px)}
 </header>
 <main>
   <p class="lead">Výkres je vygenerovaný ze stejných rozměrů jako 3D model. Obvodové otvory jsou okótované jako hrubé otvory ve zdivu, rámy, parapety, prahy a překlady jsou ve výpisu otvorů vpravo. Při tisku na A3 na šířku bez zmenšení (100 %) vychází přesně 1 : 100.</p>
-  <div class="bar"><button type="button" id="print">Tisk / uložit jako PDF (A3 na šířku)</button><a href="./pudorys-1np.pdf" download>Stáhnout PDF</a></div>
+  <div class="bar"><button type="button" id="print">Tisk / uložit jako PDF (A3 na šířku)</button><a href="./pudorys-1np.pdf" download>Stáhnout PDF</a><a href="?a4" id="mode">Jen výkres na A4</a><a href="./pudorys-1np-a4.pdf" download>Stáhnout výkres A4</a></div>
   <div class="sheetwrap">
 <svg id="sheet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 297" aria-label="Půdorys 1NP v měřítku 1:100">
  <defs>
@@ -44,7 +45,7 @@ main{max-width:1500px;margin:auto;padding:clamp(16px,3vw,32px)}
   <marker id="arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="2.4" markerHeight="2.4" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#222"/></marker>
  </defs>
  <g id="plan"></g>
- <foreignObject x="158" y="9" width="253" height="279"><div xmlns="http://www.w3.org/1999/xhtml" id="side"></div></foreignObject>
+ <g transform="translate(158 9) scale(.1)"><foreignObject x="0" y="0" width="2530" height="2790"><div xmlns="http://www.w3.org/1999/xhtml" id="side"></div></foreignObject></g>
 </svg>
   </div>
 </main>
@@ -52,6 +53,8 @@ main{max-width:1500px;margin:auto;padding:clamp(16px,3vw,32px)}
 <script src="./navstevy.js" defer></script>
 <script>
 'use strict';
+// ?a4 = the drawing alone on A4 portrait with its own presentation style (bottom of the script).
+const A4=new URLSearchParams(location.search).has('a4');
 // Plan coordinates in real millimetres, as in the 3D model before its mirror and on the page První řada zdiva:
 // x = 0 at the outer face of the masonry on the kitchen (driveway) side, growing toward the HS side;
 // s = 0 at the outer face of the masonry of the front gable, growing toward the plant room.
@@ -313,13 +316,13 @@ OPEN.forEach(tag);
 // ---------------- Dimensions ----------------
 const gDim=g({id:'dims'});
 const DA={stroke:'#111','stroke-width':W.hair};
-function dimH(py,xs,{ext=null,size=1.55,X=window.X,parent=gDim}={}){const gDim=parent;xs=[...new Set(xs)].sort((a,b)=>a-b);
+function dimH(py,xs,{ext=null,size=1.55,X=window.X,parent=gDim}={}){const gDim=parent;if(A4)size*=1.13;xs=[...new Set(xs)].sort((a,b)=>a-b);
  el('line',{x1:X(xs[0])-1,y1:py,x2:X(xs[xs.length-1])+1,y2:py,...DA},gDim);
  for(const x of xs){const px=X(x);el('line',{x1:px-.6,y1:py+.6,x2:px+.6,y2:py-.6,stroke:'#111','stroke-width':.16},gDim);el('line',{x1:px,y1:py-1,x2:px,y2:py+1,...DA},gDim);
   if(ext!==null)el('line',{x1:px,y1:Math.min(py,ext),x2:px,y2:Math.max(py,ext),stroke:'#999','stroke-width':.05},gDim);}
  let flip=0;for(let i=0;i<xs.length-1;i++){const a=X(xs[i]),b=X(xs[i+1]),v=fmt(xs[i+1]-xs[i]),w=v.length*size*.5;
   const narrow=b-a<w+.6;const y=narrow&&(flip++%2)?py+size+.4:py-.45;TP((a+b)/2,y,v,{'font-size':size},gDim);}}
-function dimV(px,ss,{ext=null,size=1.55,right=false,Y=window.Y,parent=gDim}={}){const gDim=parent;ss=[...new Set(ss)].sort((a,b)=>a-b);
+function dimV(px,ss,{ext=null,size=1.55,right=false,Y=window.Y,parent=gDim}={}){const gDim=parent;if(A4)size*=1.13;ss=[...new Set(ss)].sort((a,b)=>a-b);
  el('line',{x1:px,y1:Y(ss[0])+1,x2:px,y2:Y(ss[ss.length-1])-1,...DA},gDim);
  for(const s of ss){const py=Y(s);el('line',{x1:px-.6,y1:py+.6,x2:px+.6,y2:py-.6,stroke:'#111','stroke-width':.16},gDim);el('line',{x1:px-1,y1:py,x2:px+1,y2:py,...DA},gDim);
   if(ext!==null)el('line',{x1:Math.min(px,ext),y1:py,x2:Math.max(px,ext),y2:py,stroke:'#999','stroke-width':.05},gDim);}
@@ -327,23 +330,25 @@ function dimV(px,ss,{ext=null,size=1.55,right=false,Y=window.Y,parent=gDim}={}){
   const narrow=a-b<w+.6;const x=narrow&&(flip++%2)?(right?px-size-.4:px+size+.4):(right?px+.45+size*.75:px-.45);
   TP(x,(a+b)/2,v,{'font-size':size,transform:`rotate(-90 ${x} ${(a+b)/2})`},gDim);}}
 const env=[-200,0,300,7700,8000,8200];
+// Outer chains; on the A4 sheet with extension lines from 1.5 mm off the building.
+const exB=A4?Y(-200)+1.5:null,exT=A4?Y(18800)-1.5:null,exL=A4?X(-200)-1.5:null,exR=A4?X(8200)+1.5:null;
 // Front gable (bottom).
-dimH(Y(-200)+8,[-200,0,5460,7500,8000,8200]);
-dimH(Y(-200)+14,env);
-dimH(Y(-200)+20,[-200,8200]);
+dimH(Y(-200)+8,[-200,0,5460,7500,8000,8200],{ext:exB});
+dimH(Y(-200)+14,env,{ext:exB});
+dimH(Y(-200)+20,[-200,8200],{ext:exB});
 // Plant room back (top).
-dimH(Y(18800)-8,[-200,0,980,2020,3480,4520,5980,7020,8000,8200]);
-dimH(Y(18800)-14,env);
-dimH(Y(18800)-20,[-200,8200]);
+dimH(Y(18800)-8,[-200,0,980,2020,3480,4520,5980,7020,8000,8200],{ext:exT});
+dimH(Y(18800)-14,env,{ext:exT});
+dimH(Y(18800)-20,[-200,8200],{ext:exT});
 // Left side (driveway).
 const lenStruct=[-200,0,300,11700,12000,12200,16000,16200,16500,18300,18600,18800];
-dimV(X(-200)-8,[-200,0,1380,4420,6180,9220,12000,12200,16000,16200,18600,18800]);
-dimV(X(-200)-14,lenStruct);
-dimV(X(-200)-20,[-200,12200,16000,18800]);
+dimV(X(-200)-8,[-200,0,1380,4420,6180,9220,12000,12200,16000,16200,18600,18800],{ext:exL});
+dimV(X(-200)-14,lenStruct,{ext:exL});
+dimV(X(-200)-20,[-200,12200,16000,18800],{ext:exL});
 // Right side (terrace).
-dimV(X(8200)+8,[-200,0,300,3340,7980,9020,12000,12200,16000,16200,18600,18800],{right:true});
-dimV(X(8200)+14,lenStruct,{right:true});
-dimV(X(8200)+20,[-200,18800],{right:true});
+dimV(X(8200)+8,[-200,0,300,3340,7980,9020,12000,12200,16000,16200,18600,18800],{right:true,ext:exR});
+dimV(X(8200)+14,lenStruct,{right:true,ext:exR});
+dimV(X(8200)+20,[-200,18800],{right:true,ext:exR});
 // Passage: entrance wall and plant room wall facing it.
 dimH(Y(12200)-7,[0,980,2020,3180,5020,5980,7020,8000]);
 dimH(Y(16000)+7,[0,5780,6820,8000]);
@@ -403,11 +408,12 @@ el('rect',{x:5,y:5,width:410,height:287,fill:'none',stroke:'#111','stroke-width'
  TP(x0,y0+5,'Měřítko 1 : 100 · kóty v mm · ±0,000 = hotová podlaha 1NP = 351,700 m n. m. Bpv · horní líc hrubé desky −0,240',{'font-size':1.55,'text-anchor':'start'},gOv);}
 
 // ---------------- Side panel: legend, schedules, changes, notes, title block ----------------
+// The panel is laid out at 10× and shrunk by the SVG group around its foreignObject, not by a CSS transform, which WebKit draws at the wrong place.
 const side=document.getElementById('side');
 const tot=ROOMS.reduce((t,r)=>t+area(r),0),totD=ROOMS.reduce((t,r)=>t+r[3],0);
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 side.innerHTML=`<style>
-#side{font:20.5px/1.3 "Arial Narrow",Arial,Helvetica,sans-serif;color:#111;width:2530px;height:2790px;transform:scale(.1);transform-origin:0 0;display:grid;grid-template-columns:1230px 1230px;grid-template-rows:auto 1fr auto;gap:30px 70px}
+#side{font:20.5px/1.3 "Arial Narrow",Arial,Helvetica,sans-serif;color:#111;width:2530px;height:2790px;display:grid;grid-template-columns:1230px 1230px;grid-template-rows:auto 1fr auto;gap:30px 70px}
 #side h2{font-size:31px;margin:0 0 10px;letter-spacing:.5px}#side h3{font-size:23.5px;margin:16px 0 8px;text-transform:uppercase;letter-spacing:1.2px}
 #side table{width:100%;border-collapse:collapse}#side td,#side th{border:1.2px solid #111;padding:3.5px 6px;vertical-align:top;text-align:left}
 #side th{background:#eee;font-weight:700}#side .n{text-align:right;white-space:nowrap}
@@ -476,6 +482,28 @@ side.innerHTML=`<style>
  </table>
 </div>`;
 
+// Drawing only (?a4): the plan with its dimensions at 1 : 100 on A4 portrait, without the side panel, the corner detail, the sheet frame,
+// room and opening labels, notes, installation marks (ceiling outlines, penetrations, outlets) and the dashed open-plan zone lines.
+// Presentation style: solid poché instead of the hatches (masonry dark, concrete darker, partitions mid grey, insulation light),
+// fittings in light grey, dimensions in a condensed face a size up (dimH, dimV).
+if(A4){
+ document.body.classList.add('a4');
+ for(const id of ['labels','detail','overlay'])document.getElementById(id).remove();
+ document.querySelector('#sheet foreignObject').remove();
+ plan.querySelectorAll('text').forEach(t=>{if(!t.closest('#dims'))t.remove();});
+ plan.querySelectorAll('[stroke="#3d6db3"],[stroke="#b8402f"],[fill="#2f7a43"],#passage [marker-end],[stroke="#777"][stroke-dasharray]').forEach(e=>e.remove());
+ document.head.insertAdjacentHTML('beforeend',`<style>
+  #plan [fill="url(#pM)"]{fill:#474747}#plan [fill="url(#pZ)"]{fill:#1f1f1f}#plan [fill="url(#pP)"]{fill:#9d9d9d}#plan [fill="url(#pE)"]{fill:#ededed}
+  #plan [stroke="#8a8f8c"],#plan [stroke="#9a7a4f"]{stroke:#a3a3a3;stroke-width:.1}#plan [fill="#3b4a42"]{fill:#dcdcdc;stroke:#a3a3a3;stroke-width:.1}
+  #dims text{font-family:"Avenir Next Condensed","Arial Narrow",Arial,sans-serif;font-weight:500;fill:#1c1c1c}
+  #dims line{stroke:#262626}#dims line[stroke="#999"]{stroke:#a0a0a0;stroke-width:.07}
+ </style>`);
+ const sh=document.getElementById('sheet');sh.setAttribute('viewBox','-21 17.5 210 297');sh.setAttribute('aria-label','Půdorys 1NP v měřítku 1:100, jen výkres s kótami');
+ document.head.insertAdjacentHTML('beforeend','<style>@page{size:210mm 297mm;margin:0}@media print{#sheet{width:210mm;height:297mm}}</style>');
+ document.getElementById('print').textContent='Tisk / uložit jako PDF (A4 na výšku)';
+ const m=document.getElementById('mode');m.textContent='Celý výkres A3';m.href=location.pathname;
+ document.querySelector('.lead').textContent='Jen výkres s kótami, bez tabulek a popisků. Při tisku na A4 na výšku bez zmenšení (100 %) vychází přesně 1 : 100.';
+}
 document.getElementById('print').addEventListener('click',()=>window.print());
 </script>
 </body>
