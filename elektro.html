@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elektroinstalace · Dům Hájek</title>
+<meta name="description" content="Návrh elektroinstalace: hlavní rozvaděč v technické místnosti, rozvaděč domu v předsíni, dva systémy světel (hlavní 230 V a noční 24 V), zásuvky, spotřebiče, žaluzie, venkovní okruhy, trasy, prostupy a ovládání v Home Assistantu.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:920px;margin:8px 0 18px;color:#526359}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}.notice ol{margin:8px 0 0;padding-left:20px}.notice li{margin:4px 0}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card h3{font-size:15px;margin:18px 0 6px;color:#2b4236}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;font-size:12px;color:#526359}.legend span{display:inline-flex;align-items:center;gap:7px}.legend i{display:inline-block;width:26px;height:0;border-top:4px solid}.legend i.thin{border-top-width:2px}.legend i.thick{border-top-width:7px}.legend i.dash{border-top-style:dashed;border-top-width:2px}.legend b{display:inline-block;width:14px;height:14px;border-radius:50%;border:2.5px solid;background:#fff}.legend b.sq{border-radius:3px}.legend em{display:inline-block;width:18px;height:12px;border:1px solid #b7c2d3;background:#e6ebf2}.legend u{display:inline-block;width:18px;height:6px;border-radius:1px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}.tbl th,.tbl td{text-align:left;padding:8px 9px;border-bottom:1px solid #e4e9e5;vertical-align:top}.tbl th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:#f6f8f5}.tbl td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.tbl tr.sum td{font-weight:700;border-top:2px solid #cfd8d1;background:#f6f8f5}.tbl tr.grp td{background:#f1f4f0;font-weight:700;color:#30463a;font-size:12px;letter-spacing:.03em}
+.pill{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:700;white-space:nowrap}.pill.in{background:#e2ecfb;color:#2357a8}.pill.out{background:#fcebdc;color:#a0520f}.pill.pass{background:#eef1ee;color:#5f6e64}.pill.both{background:#efe8f8;color:#6a46a8}
+.wrap{overflow-x:auto}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c28a2c;background:#fbf6ea}.note.risk strong{color:#5d4313}
+.note ul,.note ol{margin:6px 0 0;padding-left:18px}.note li{margin:3px 0}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;display:grid;gap:10px}.steps li{position:relative;padding:10px 14px 10px 50px;background:#f3f6f2;border-radius:10px;font-size:13px;color:#4f5f55}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:13px;top:10px;width:26px;height:26px;border-radius:50%;background:#264b39;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}.steps strong{color:#2b4236}
+.switch{display:inline-flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px;align-items:center}.switch>span{font-size:13px;color:#526359;margin-right:2px}.switch button{font:inherit;font-size:13px;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:8px 12px;cursor:pointer}.switch button[aria-pressed=true]{background:#264b39;border-color:#264b39;color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px}.kpi{border:1px solid #dce4dd;border-radius:10px;padding:10px 12px;background:#fbfcfa}.kpi b{display:block;font-size:20px;color:#23382d;font-variant-numeric:tabular-nums}.kpi span{font-size:12px;color:#66756b}
+.isolist{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 22px;font-size:13px;color:#4f5f55}.isolist li{display:flex;gap:9px;align-items:flex-start}.isolist b{flex:0 0 22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}.isolist strong{color:#2b4236}
+@media(max-width:760px){.isolist{grid-template-columns:1fr}}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+@media(max-width:760px){.notes,.verdict{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.tbl{font-size:12px}.tbl th,.tbl td{padding:7px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}.switch{display:none}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+.sym{display:inline-block;vertical-align:middle;border:0;background:none;border-radius:0;width:30px;height:20px}
+.legend.syms span{min-width:200px}
+.cid{display:inline-block;min-width:30px;font-weight:800}
+</style>
+<meta name="robots" content="noindex,nofollow">
+<script src="./schema.js"></script>
+<script src="./elektro.js"></script>
+<script src="./nav.js" defer></script>
+<script src="./navstevy.js" defer></script>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Elektroinstalace</h1><p>Hlavní rozvaděč v technické místnosti · rozvaděč domu v předsíni · dva systémy světel · zásuvky, spotřebiče, žaluzie a venkovní okruhy</p></div>
+  <nav data-nav="elektro"></nav>
+</header>
+<main>
+  <div class="eyebrow">Podklad: DSP elektro 05/2024 (Jaromír Bednář, D.1.4.E: technická zpráva, schéma napájení, půdorysy, rozvaděče RD a vytápění), 3D model (přízemí „optimalizovaná“, podkroví podle D1.3), stránky Topení, Voda a Rekuperace · pracovní návrh k předání elektrikáři, stav 10/2026</div>
+  <p class="lead">Přívod z elektroměrového pilíře už končí v technické místnosti 1.02 a kabel k bráně je natažený. <strong>Návrh: hlavní rozvaděč HR zůstává v technické místnosti a napájí rozvaděč domu RD v předsíni</strong>, na stejném místě, kde měl DSP hlavní rozvaděč. Z RD vede do každé místnosti vlastní kabel. Světla jsou ve dvou samostatných systémech: <strong>hlavní světlo 230 V</strong> spínané relé a stmívači v RD a <strong>noční a orientační světlo 24 V</strong> se zálohou z baterie. Tlačítka a čidla jsou na Cat6, takže světla fungují i bez Home Assistantu. Světla a žaluzie vedou nahoru, zásuvky a spotřebiče dolů do podlahy.</p>
+
+  <div class="notice"><strong>Co rozhodnout teď, dokud se neobjednaly stropní panely a nelije se potěr:</strong>
+    <ol>
+      <li><strong>Prostupy E1 a E2 do výrobního výkresu panelů</strong> (výkres P-01 níže): E1 v dobetonávce u štítu technické místnosti vedle C a P1, E2 2× Ø 110 v předsíni ve vestavěné skříni vedle stoupačky B a odvodu P3. Dodatečné vrty jen se souhlasem výrobce panelů.</li>
+      <li><strong>Přesné místo HR</strong> na stěně technické místnosti k průjezdu (asi 2,5–3,3 m od líce stěny na straně příjezdu) podle toho, kde už vychází přívod z pilíře. Vedle HR nechat volné místo na wallbox a ČOV.</li>
+      <li><strong>Hluboké krabice s nulovým vodičem N</strong> všude, kde bude vypínač nebo tlačítko. Jde to předělat i na klasické vypínače nebo moduly v krabici.</li>
+      <li><strong>Chráničky v EPS podlahy</strong> (přízemí 150 mm, podkroví 50 mm) položit před podlahovým topením a potěrem, každou s protahovacím drátem. Kabely ke stropním světlům přízemí uložit v podlaze podkroví dřív, než přijde EPS.</li>
+      <li><strong>Změny proti DSP</strong> zapsat do prováděcí dokumentace elektra. Bez výchozí revize se instalace nesmí uvést do provozu.</li>
+    </ol>
+  </div>
+
+  <div class="verdict">
+    <div class="fact"><b>1 · HR v technické místnosti, RD v předsíni</b><span>Přívod už je v technické místnosti, tam zůstává hlavní vypínač, svodiče, HDO, TČ a venkovní okruhy. Dům napájí jeden kabel CYKY-J 5×10 do RD za sedací nikou v předsíni, vedle R1 a SLP.</span></div>
+    <div class="fact"><b>2 · Každá místnost vlastní kabel</b><span>Z RD paprskově do každé místnosti. Relé a stmívače jsou na DIN liště v RD, tlačítka vedou Cat6 do vstupů ESPHome. Když spadne Home Assistant nebo Wi-Fi, tlačítka spínají dál.</span></div>
+    <div class="fact"><b>3 · Dva systémy světel</b><span>Hlavní světlo 230 V (okruhy L1–L4) a noční orientační světlo 24 V (N1, N2) se zálohou z baterie. Když vypadne jistič hlavních světel nebo proud, v noci se dál svítí na cestu.</span></div>
+    <div class="fact"><b>4 · Světla nahoře, zásuvky dole</b><span>V podkroví vedou světla nad rovným stropem, v přízemí podlahou podkroví a vývrtem do dutiny panelu nebo v podhledech 2,40 m. Zásuvky a spotřebiče vedou v chráničkách v EPS podlahy a nahoru stěnou.</span></div>
+    <div class="fact"><b>5 · Spotřebiče na vlastních okruzích</b><span>Varná deska 400 V a trouba v ostrůvku, myčka, lednice a mrazák s vlastním chráničem, pračka a sušička v prádelně, tři elektrické žebříky přes relé.</span></div>
+    <div class="fact"><b>6 · Venku z HR</b><span>Světla v průjezdu, sloupky u příjezdovky, LED pod terasou a schody, zásuvky v průjezdu a na terase, ČOV, čerpadlo retenční nádrže, brána (hotovo) a kabel na wallbox.</span></div>
+  </div>
+
+  <section class="card">
+    <h2>Prostorové schéma · celý dům</h2>
+    <p class="desc">Rozložený pohled ze strany terasy: dole přízemí s technickou místností a průjezdem, nad ním podkroví a nahoře prostor nad rovným stropem podkroví, kde vede páteř světel a napáječ RD. Šedé jsou svazky kabelů v chráničkách, barevné jednotlivé kabely k prvkům. Bez měřítka, čísla odkazují na seznam pod obrázkem.</p>
+    <div class="wrap"><svg id="iso" viewBox="0 0 1110 620" role="img" aria-label="Prostorové schéma elektroinstalace v domě"></svg></div>
+    <div class="legend" id="legIso"></div>
+    <ol class="isolist" id="isoList"></ol>
+  </section>
+
+  <section class="card">
+    <h2>Přízemí · E-01</h2>
+    <p class="desc">Plné čáry vedou v podlaze (chráničky v EPS 150 pod potěrem s topením), čárkované shora: v podlaze podkroví s vývrtem do dutiny panelu, v podhledech 2,40 m a v pásu podhledu v obýváku. Tečkovaně jsou kabely v zemi. Zásuvky a tlačítka jsou nakreslené na líci stěny, krabice 10 cm od zárubně.</p>
+    <div class="switch" role="group" aria-label="Zobrazit"><span>Zobrazit:</span><button type="button" data-show="all" aria-pressed="true">Vše</button><button type="button" data-show="light" aria-pressed="false">Světla a ovládání</button><button type="button" data-show="power" aria-pressed="false">Zásuvky a spotřebiče</button><button type="button" data-show="other" aria-pressed="false">Žaluzie, technika, venku</button></div>
+    <div class="wrap"><svg id="ground" viewBox="0 0 1200 744" role="img" aria-label="Půdorys přízemí s elektroinstalací"></svg></div>
+    <div class="legend syms" id="legSym"></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>A · Rozvaděč domu RD a SLP v předsíni</strong><br>RD visí na příčce ke komoře za zadní stěnou sedací niky, která se udělá jako servisní dvířka (nika bude asi o 15 cm mělčí). Vedle je ve vestavěné skříni R1 s regulátorem a nad ním SLP. Z RD vedou dolů chráničky do podlahy a nahoru stoupačka E2 do rohu vestavěné skříně pokoje 2.04.</div>
+      <div class="note"><strong>B · Obývák, jídelna a kuchyň</strong><br>Bodovky, římsy, LED u lamelové stěny a oblouk vajíčka napájí krabice v pásu podhledu u TV. Zdroje 24 V pro římsy a lamely jsou v podhledu u revizního otvoru. Mechové svítidlo, Sofian nad stolem a bodovky nad linkou mají vývrt do dutiny panelu z podlahy podkroví. Varná deska, trouba a výsuvná zásuvka jdou do ostrůvku podlahou.</div>
+      <div class="note"><strong>C · Koupelna, WC, předsíň a komora</strong><br>Světla jsou v podhledech 2,40 m, kde vede i odvod rekuperace. Zásuvka u umyvadla ve výšce 1,2 m mimo zóny 0–2, žebřík na vlastním okruhu přes relé, vývod 0,6 m nad podlahou. WC a komora se rozsvěcují čidlem přítomnosti a kontaktem dveří.</div>
+      <div class="note"><strong>D · Technická místnost a průjezd</strong><br>HR na stěně k průjezdu, pod stropem žlab k prostupu E1 a k TČ, záložnímu ohřevu a rekuperaci. Do průjezdu vedou světla v podhledu a zásuvka přímo stěnou, kabel na wallbox ve stěně. Do země vede chránička pod průjezdem ke světlům na nárožích a dál k příjezdovce a terase.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Podkroví · E-02</h2>
+    <p class="desc">Čárkovaně nad rovným stropem (2,60 m nad podlahou podkroví, v teplém prostoru pod hřebenem), plně v podlaze (chráničky v EPS 50 pod anhydritem). Páteř nad stropem vede souběžně s chodbou asi 0,15 m od stěny k terase, mimo rozdělovače rekuperace a kazetu klimatizace. Nakreslená je dispozice podle D1.3, varianta „Zadní část neobytná“ by potřebovala vlastní výkres.</p>
+    <div class="wrap"><svg id="attic" viewBox="0 0 1200 744" role="img" aria-label="Půdorys podkroví s elektroinstalací"></svg></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>Napáječ RD</strong><br>CYKY-J 5×10 z HR stoupá prostupem E1 do vestavěné skříně pokoje 2.08 (stejný kastlík jako rekuperace V1), vede nad rovným stropem podél páteře k rohu skříně pokoje 2.04 a stoupačkou E2 dolů do RD. <span id="feedLen"></span></div>
+      <div class="note"><strong>Ložnice</strong><br>Jedna krabice nad stropem napájí strop, šatnu, obě nástěnná u postele a LED nad lamelami. U postele jsou po obou stranách dvojzásuvka a tlačítka Světlo a Noc. Pod plovoucí postelí a u dveří je noční světlo, čidlo pohybu míří na podlahu u dveří, ne na postel.</div>
+      <div class="note"><strong>Koupelny a prádelna</strong><br>Pračka a sušička mají vlastní okruhy, zásuvky nad pracovní deskou. Zrcadla jsou na okruhu světel, žebříky na S7. V koupelnách IP44 a zásuvky mimo zóny 0–2. LED pod umyvadly a WC jsou noční světlo, rozsvítí je pohyb.</div>
+      <div class="note"><strong>Střešní okna</strong><br>K horní hraně všech šesti střešních oken vede rezerva CYKY-J 4×1,5 z okruhu Ž2. Hodí se na elektrické otevírání nebo markýzu. Se solární markýzou zůstane kabel zaizolovaný v krabici.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Venku a technická místnost · E-03</h2>
+    <p class="desc">Trasy v zemi kolem domu (tečkovaně, v pískovém loži 60 cm pod terénem, pod pojezdovými plochami 1 m v chráničce Kopoflex, nad nimi výstražná fólie a zemnicí pásek FeZn 30/4 podle technické zprávy DSP). Šedě je to, co už je hotové. Trasu přívodu z pilíře a kabelu k bráně tady jen předpokládám podél příjezdovky, platí skutečnost.</p>
+    <div class="wrap"><svg id="out" viewBox="0 0 900 660" role="img" aria-label="Venkovní trasy elektroinstalace kolem domu"></svg></div>
+    <div class="wrap"><table class="tbl" id="outTbl"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Rozvaděče a okruhy</h2>
+    <p class="desc">Jističe a kabely podle technické zprávy DSP (síť TN-C-S, 3 × 230/400 V, hlavní jistič v pilíři 3 × 32 A, dvoutarif s HDO). Zásuvky, spotřebiče a venkovní okruhy mají proudový chránič 30 mA, lednice a SLP vlastní jistič s chráničem. Počet vývodů je spočítaný z prvků v modelu.</p>
+    <div class="kpis" id="kpis"></div>
+    <h3>Hlavní rozvaděč HR · technická místnost 1.02</h3>
+    <p class="desc" id="hrNote"></p>
+    <div class="wrap"><table class="tbl" id="tblHR"></table></div>
+    <h3>Rozvaděč domu RD · předsíň 1.03</h3>
+    <p class="desc" id="rdNote"></p>
+    <div class="wrap"><table class="tbl" id="tblRD"></table></div>
+    <div class="notes" style="margin-top:14px">
+      <div class="note"><strong>Proč dva rozvaděče</strong><br>Technická místnost nemá dveře do domu, jistič by se v noci shazoval přes průjezd. Z předsíně jsou kabely do místností krátké (nejdál asi 17 m) a RD je vedle R1 a SLP, kde se sbíhají i Cat6 z tlačítek. Jeden rozvaděč v technické místnosti by znamenal asi 70 kabelů přes E1 a prostor nad stropem podkroví a každý okruh o 13–20 m delší.</div>
+      <div class="note"><strong>Co je v RD kromě jističů</strong><br>Hlavní vypínač, svodič přepětí typu 2, chrániče a jističe s chráničem, relé a stmívače hlavních světel (asi 30 kanálů), 8 ovladačů žaluzií, dva zdroje 24 V se záložní baterií (DIN UPS), PWM stmívače nočního světla a moduly ESPHome pro tlačítka a čidla. Asi 6 řad po 24 modulech, s větracími mřížkami, relé a zdroje hřejí.</div>
+      <div class="note"><strong>HDO a tarif</strong><br>Ovládání sazby 3×1,5 z pilíře končí v HR na relé KA1 jako v DSP. Kontakt blokuje záložní ohřev, druhý kontakt jde do SLP, aby HA věděl, kdy je nízký tarif (topení, bod 13).</div>
+      <div class="note"><strong>Návaznost na ostatní stránky</strong><br>Kabely pro topení (čidla, termopohony, R1/R2, TČ Modbus, kalorimetr, HDO), vodu (cirkulace, ventil, vodoměr) a rekuperaci (jednotka, čidla CO₂, tlakový hlídač krbu) zůstávají podle seznamů na stránkách <a href="./vytapeni.html">Topení</a>, <a href="./voda.html">Voda</a> a <a href="./rekuperace.html">Rekuperace</a>. Tady jsou jen jejich jističe (T1, H2–H5).</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Světla · dva okruhy a ovládání</h2>
+    <p class="desc">Hlavní světlo a noční světlo jsou dva oddělené systémy s vlastními jističi, zdroji i stmívači. Noční světlo je to, co ukazuje přepínač „Noční světlo“ v 3D modelu: jantarová světla ve stěně 30 cm nad podlahou, LED pod schody, soklem linky, postelí, umyvadly a WC.</p>
+    <div class="notes">
+      <div class="note"><strong>A · Hlavní světlo 230 V (L1–L4)</strong><br>Z RD vede do každé místnosti CYKY-J 5×1,5 nebo 3×1,5 do krabice u svítidel. Na DIN liště jsou relé a stmívače (fázová regulace pro LED, nebo DALI). Bodovky, římsy a mechové svítidlo se stmívají, ostatní se jen spínají. Večerní scény (římsy, Sofian, koule nad ostrůvkem, LED u lamel) jsou na stejných okruzích.</div>
+      <div class="note"><strong>B · Noční a orientační světlo 24 V (N1, N2)</strong><br>Dva zdroje 24 V (přízemí a podkroví, po 60–100 W) za DIN UPS s baterií, PWM kanály na ESPHome a ke každé zóně kabel 2×1,5 (SELV, vedený odděleně od 230 V nebo s izolací na 230 V). Pásky a světla mají 2200 K nebo jantar. Při výpadku proudu svítí z baterie několik hodin na pár procent jako nouzové orientační světlo.</div>
+      <div class="note"><strong>Ovládání</strong><br>U dveří tlačítka (krátce světlo, dlouze vše v místnosti vypnout, dvojklik jen noční světlo). U vchodu panel s Odchodem a Nocí, v obýváku scény a žaluzie HS a fixu, u postele Světlo a Noc. Čidla pohybu jsou drátová (Cat6, 12–24 V) a vedou do stejného modulu jako noční světlo, takže noční režim funguje i bez HA.</div>
+      <div class="note"><strong>Noční režim</strong><br>Od 22:00 do 6:30, nebo po stisku Noc: pohyb rozsvítí jantarová světla v dané zóně na 5–10 % na 2–3 minuty. Hlavní světla se v noci samy nikdy nerozsvítí. Koule nad ostrůvkem (L1) zůstanou ztlumené jako noční světlo kuchyně. Večer svítí noční světla na chodbách a schodech na 30 %, než se zhasne.</div>
+    </div>
+    <h3>Zóny nočního světla</h3>
+    <div class="wrap"><table class="tbl" id="tblNight"></table></div>
+    <h3>Tlačítka a čidla</h3>
+    <div class="wrap"><table class="tbl" id="tblCtl"></table></div>
+    <h3>Situace</h3>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Situace</th><th>Co se stane</th></tr></thead>
+      <tbody>
+        <tr><td>Večer, příchod domů</td><td>Panel u vchodu rozsvítí předsíň a chodbu. Po západu slunce svítí noční světla na chodbách a schodech na 30 %.</td></tr>
+        <tr><td>Noc, cesta na WC</td><td>Pohyb u postele rozsvítí LED pod postelí a u dveří, dál chodba a WC na 5–10 %. Za 2–3 minuty po posledním pohybu zhasne.</td></tr>
+        <tr><td>Tlačítko Noc (u postele, u vchodu)</td><td>Zhasne všechna hlavní světla, zapne noční režim, stáhne žaluzie, zkontroluje zamčení a okna (HA).</td></tr>
+        <tr><td>Tlačítko Odchod (u vchodu)</td><td>Zhasne vše, žaluzie podle slunce a teploty, rekuperace do útlumu, upozorní na otevřené okno nebo běžící spotřebič.</td></tr>
+        <tr><td>Vítr nad mez</td><td>Čidlo větru na fasádě vytáhne venkovní žaluzie C80 (v ESPHome modulu, bez HA).</td></tr>
+        <tr><td>Výpadek HA nebo Wi-Fi</td><td>Tlačítka spínají relé přímo v modulech ESPHome, noční režim běží podle hodin a pohybu v modulu.</td></tr>
+        <tr><td>Výpadek proudu</td><td>Noční světla svítí z baterie na pár procent. SLP s HA a routerem běží z UPS.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Prostupy a příprava</h2>
+    <p class="desc">Prostupy elektra stropem přízemí jsou na společném výkresu P-01 fialově, spolu s rekuperací, topením a kanalizací. Polohy se měří od vnitřních líců zdí, strana kuchyně je strana příjezdu.</p>
+    <div class="wrap"><svg id="pen" viewBox="0 0 1200 744" role="img" aria-label="Výkres prostupů stropem přízemí"></svg></div>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Kde</th><th>Co</th><th>Rozměr</th><th>Kdy a jak</th></tr></thead>
+      <tbody>
+        <tr><td><b>E1</b></td><td>strop technické místnosti u štítu, v dobetonávce vedle C a P1: osa 0,2 m od líce štítu a 4,15 m od líce stěny na straně příjezdu</td><td>napáječ RD CYKY-J 5×10, rezerva</td><td>chránička Ø 110 (případně 2× Ø 50)</td><td>Vložit do dobetonávky spolu s C a P1, dobetonávku rozšířit asi o 0,3 m ke straně terasy. Nahoře končí ve vestavěné skříni pokoje 2.08.</td></tr>
+        <tr><td><b>E2</b></td><td>strop předsíně ve vestavěné skříni, osa 2,65 m od líce stěny na straně příjezdu a 0,40 m od líce vstupní stěny</td><td>všechny kabely z RD do podkroví a ke stropním světlům přízemí, napáječ shora</td><td>2× vývrt Ø 110 v sousedních dutinách</td><td>Spolu s P3 a B podle výrobního výkresu. Nahoře v rohu vestavěné skříně pokoje 2.04 u chodby, odtud nad strop a do podlahy podkroví.</td></tr>
+        <tr><td>—</td><td>stropní světla přízemí na holém panelu (mech, Sofian, bodovky v kuchyni a chodbě)</td><td>vývod světla</td><td>vývrt Ø 20–25 do dutiny</td><td>Kabel leží v podlaze podkroví (chránička v EPS 50), shora i zespodu vývrt do stejné dutiny. Poloha podle dutin, ±10 cm.</td></tr>
+        <tr><td>—</td><td>obvodové zdi u oken se žaluziemi, venkovní svítidla a zásuvky</td><td>průchod kabelu k motoru, k fasádě</td><td>chránička Ø 20</td><td>Před zateplením, s těsnicí manžetou na vzduchotěsnou vrstvu. Motor žaluzie je v nadpraží v zateplení.</td></tr>
+        <tr><td>—</td><td>podlaha přízemí a podkroví</td><td>zásuvky, spotřebiče, noční světlo</td><td>chráničky Ø 20–32</td><td>V EPS pod potěrem, mimo smyčky topení u rozdělovačů, křížení kolmo. Konce chrániček vyfotit a zaměřit.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Co měním proti DSP elektro</h2>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Téma</th><th>DSP 05/2024</th><th>Návrh</th><th>Proč</th></tr></thead>
+      <tbody>
+        <tr><td>Hlavní rozvaděč</td><td>RD v předsíni (Hager 96 modulů), podružný rozvaděč vytápění v technické místnosti</td><td>HR v technické místnosti, RD v předsíni napájený z HR kabelem 5×10</td><td>Přívod z pilíře už končí v technické místnosti. Pořadí rozvaděčů se otočí, RD zůstává, kde byl.</td></tr>
+        <tr><td>Garáž</td><td>rozvaděč garáže SO-02, kabel 5×6</td><td>odpadá</td><td>Dům je bez garáže. Kabel 5×6 se hodí na wallbox v průjezdu.</td></tr>
+        <tr><td>Světla</td><td>4 okruhy, vypínače a přepínače, svítidla na vývodech podle investora</td><td>hlavní světlo L1–L4 paprskově po místnostech přes relé v RD a samostatný systém nočního světla 24 V N1, N2</td><td>Dva oddělené systémy, ovládání z HA i bez něj, noční světlo i při výpadku.</td></tr>
+        <tr><td>Vypínače</td><td>230 V vypínače, schodišťové a křížové přepínače</td><td>tlačítka na Cat6 do vstupů ESPHome v RD, v krabicích i N</td><td>Libovolné ovládání z více míst bez křížových přepínačů. Krabice se dají osadit i klasikou.</td></tr>
+        <tr><td>Žaluzie</td><td>nejsou</td><td>8 motorů (HS, fix, okna obýváku a kuchyně, balkonové dveře, okna 2.08), rezerva ke 6 střešním oknům, čidlo větru</td><td>Venkovní žaluzie C80 z modelu, chlazení přízemí stojí na stínění.</td></tr>
+        <tr><td>Ventilátory v koupelnách a WC</td><td>vývody VZT</td><td>odpadají</td><td>Odvod dělá rekuperace (viz Rekuperace).</td></tr>
+        <tr><td>Pračka a sušička</td><td>v koupelně 1.05</td><td>v prádelně 2.05 v podkroví</td><td>Optimalizovaná dispozice.</td></tr>
+        <tr><td>Žebříky</td><td>zásuvky v koupelnách 2.05 a 2.07</td><td>pevné vývody v 1.05, koupelně u ložnice a 2.07 přes relé</td><td>Dispozice D1.3 s úpravou, řízení z HA (Topení, bod 12).</td></tr>
+        <tr><td>Venkovní osvětlení</td><td>okruh pro venkovní osvětlení bez návrhu</td><td>V1 průjezd (podhled, nároží), V2 příjezdovka, terasa, schody do zahrady</td><td>Podle 3D modelu.</td></tr>
+        <tr><td>ČOV, retenční nádrž</td><td>ČOV z RD, čerpadlo z rozvaděče garáže</td><td>obojí z HR</td><td>Kratší trasa, garáž odpadá.</td></tr>
+        <tr><td>Domácí telefon</td><td>dvoudrát, zdroj v RD, TCEKPFLE k tablu</td><td>IP tablo na PoE, Cat6 (venkovní) ve výkopu</td><td>Obraz a ovládání brány v HA a v telefonu.</td></tr>
+        <tr><td>Slaboproud</td><td>„řeší investor“</td><td>SLP v předsíni, Cat6 k tlačítkům, čidlům, TČ, rekuperaci, tablu</td><td>Viz Topení, Voda a Rekuperace.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Postup</h2>
+    <ol class="steps">
+      <li><strong>Před objednáním panelů:</strong> E1 a E2 do výrobního výkresu spolu s P1–P3, P9, B a C.</li>
+      <li><strong>Hrubá stavba:</strong> chráničky přes obvodové zdi k motorům žaluzií a k venkovním světlům a zásuvkám, před zateplením. Výkop pod průjezdem a podél příjezdovky, dokud není dlažba.</li>
+      <li><strong>Technická místnost:</strong> HR na stěnu, připojit stávající přívod a HDO. Prozatímní staveništní zásuvky z HR.</li>
+      <li><strong>Podkroví před SDK stropem:</strong> páteř nad stropem, napáječ RD, krabice světel a rezervy ke střešním oknům.</li>
+      <li><strong>Podlahy:</strong> v podlaze podkroví kabely ke stropním světlům přízemí s vývrty do dutin, pak chráničky zásuvek a spotřebičů v obou podlažích. Teprve potom topení a potěr.</li>
+      <li><strong>Stěny:</strong> drážky v instalačních zónách, hluboké krabice s N, Cat6 k tlačítkům a čidlům. Každý kabel popsat na obou koncích, vše vyfotit a zaměřit od rohů, než přijde omítka.</li>
+      <li><strong>RD a SLP:</strong> zapojit rozvaděč, výchozí revize, pak kompletace vypínačů, zásuvek a svítidel.</li>
+      <li><strong>Ovládání:</strong> moduly ESPHome (tlačítka, relé, noční světlo) nastavit tak, aby fungovaly samy, a teprve potom napojit Home Assistant.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Materiál a cena · orientačně</h2>
+    <p class="desc">Délky kabelů jsou z tras v modelu + 15 %. Zásuvky jsou počítané paprskově, takže je to spíš horní odhad. Ceny v tisících Kč s DPH podle běžných e-shopů 2026, bez designových svítidel a bez práce, kterou udělám sám.</p>
+    <div class="wrap"><table class="tbl" id="bom"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Svépomoc · co sám a co firma</h2>
+    <div class="notes">
+      <div class="note"><strong>Sám (s elektrikářem, který na práci dohlíží a podepíše ji)</strong><ul>
+        <li>Drážky, krabice, chráničky v podlaze a protahovací dráty.</li>
+        <li>Natažení kabelů podle výkresu, popisy a fotodokumentace.</li>
+        <li>Cat6 a slaboproud, SLP, ESPHome a Home Assistant.</li>
+        <li>Výkopy, písek, fólie a chráničky venku.</li></ul></div>
+      <div class="note risk"><strong>Jen elektrikář s oprávněním</strong><ul>
+        <li>Zapojení HR a RD, připojení přívodu a HDO.</li>
+        <li>Měření a připojení spotřebičů 400 V (TČ, deska, záložní ohřev).</li>
+        <li>Výchozí revize podle ČSN 33 1500 a ČSN 33 2000-6. Bez ní se instalace nesmí uvést do provozu a nepůjde kolaudace.</li>
+        <li>Zásahy v elektroměrovém pilíři dělá distributor nebo elektrikář s jeho souhlasem.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Rizika a poznámky</h2>
+    <div class="notes">
+      <div class="note risk"><strong>Koupelny</strong><br>Zóny podle ČSN 33 2000-7-701: zásuvky jen mimo zóny 0–2, svítidla nad vanou a ve sprše IP65 nebo SELV, doplňující pospojování. Žebříky pevně připojené, ne zásuvka u vany.</div>
+      <div class="note risk"><strong>SELV 24 V</strong><br>Kabely nočního světla vést odděleně od 230 V, nebo použít kabel s izolací na 230 V. Zdroje 24 V s bezpečnostním transformátorem, ne levné LED zdroje bez certifikace.</div>
+      <div class="note risk"><strong>Chrániče a selektivita</strong><br>Všechny zásuvky, koupelny a venkovní okruhy na chránič 30 mA. Chrániče rozdělit, aby porucha nevypnula půl domu. Napáječ RD 3 × 25 A pod hlavním jističem 3 × 32 A v pilíři selektivní není, při zkratu může vypadnout pilíř. Zvážit s elektrikářem.</div>
+      <div class="note risk"><strong>Teplo v RD</strong><br>Relé, stmívače a zdroje hřejí. RD nesmí být zavřený bez větrání v plné skříni. Dvířka niky s mřížkou a mezera nad rozvaděčem.</div>
+      <div class="note"><strong>Bez Wi-Fi v krabicích</strong><br>Všechno spínání je v RD na drátě. Případné moduly v krabicích (Shelly, Zigbee) jen jako doplněk, ne jako jediná cesta k rozsvícení.</div>
+      <div class="note"><strong>Výkon a tarif</strong><br>Hlavní jistič 3 × 32 A. TČ, záložní ohřev 9 kW, deska a později wallbox najednou ho mohou shodit. Záložní ohřev blokuje HDO, wallbox potřebuje řízení výkonu podle odběru (měření v HR, HA).</div>
+      <div class="note"><strong>Rozvod je pracovní návrh</strong><br>Polohy prvků a tras jsou z 3D modelu s přesností asi ±10 cm. Dimenzování, selektivitu, úbytky napětí a ochrany potvrdí prováděcí projekt nebo elektrikář.</div>
+      <div class="note"><strong>Varianta podkroví</strong><br>Nakreslená je dispozice podle D1.3. Ve variantě „Zadní část neobytná“ zůstává HR, E1, E2 i páteř nad stropem, mění se jen vývody v podkroví.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Technická místnost · detail</h2>
+    <p class="desc">Společný výkres V-04 se stránkami Rekuperace a Topení. HR je na stěně k průjezdu (vlevo od dveří při pohledu dovnitř), prostup E1 je v dobetonávce u štítu vedle C a P1.</p>
+    <div class="wrap"><svg id="plant" viewBox="0 0 1120 980" role="img" aria-label="Štít a půdorys technické místnosti"></svg></div>
+  </section>
+
+  <footer>Pracovní návrh k předání elektrikáři. Nenahrazuje prováděcí projekt elektroinstalace (dimenzování, selektivita, úbytky napětí, ochrany podle ČSN 33 2000) ani výchozí revizi. Podklady: DSP elektro 05/2024 (D.1.4.E, Jaromír Bednář), technická zpráva, schéma napájení, rozvaděče RD a vytápění, půdorysy 1.NP a 2.NP, situace. Dispozice a souřadnice z 3D modelu s přesností asi ±10 cm.</footer>
+</main>
+<script>
+'use strict';
+// Plans use the model's pre-mirror coordinates through schema.js (Dum): z along the house, x across, points are [z, x].
+// elektro.js keeps the 3D model's heights (ground floor at +0.24); the exploded view converts them to ±0 like the other pages.
+const $=id=>document.getElementById(id),A=Dum.PAL,el=Dum.el,f1=Dum.f1,fk=n=>Math.round(n).toLocaleString('cs-CZ');
+const E=Elektro,CAT=E.CAT,col=k=>CAT[k].c,lvl=y=>y-.24,TRUNK='#9aa49e';
+let SHOW='all';
+const GROUPS={light:['light','night','ctl'],power:['sock','appl'],other:['blind','tech','out']};
+const shown=k=>SHOW==='all'||k==='feed'||k==='done'||GROUPS[SHOW].includes(k);
+const dedupe=p=>p.filter((q,i)=>i===0||Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1])>1e-6);
+const len3=p=>p.reduce((t,q,i)=>i?t+Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1],q[2]-p[i-1][2]):0,0);
+const len2=p=>p.reduce((t,q,i)=>i?t+Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1]):0,0);
+
+// ---------- symbols ----------
+// Letters for appliances and technology boxes, by their label.
+const LET=[[/^Varná/,'VD'],[/^Trouba/,'T'],[/^Myčka/,'M'],[/^Lednice/,'L'],[/^Mrazák/,'Mr'],[/^Pračka/,'P'],[/^Sušička/,'S'],[/[Žž]ebřík/,'Ž'],[/^Digestoř/,'Di'],
+ [/^Venkovní jednotka TČ/,'TČ'],[/^Záložní/,'ZO'],[/^Rekuperační/,'VZT'],[/^ESP32/,'E'],[/regulátor R1/,'R1'],[/regulátor R2/,'R2'],[/fancoil/,'FC'],[/ČOV/,'ČOV'],[/retenční/,'RN'],[/^Wallbox/,'EV']];
+const letter=d=>(LET.find(([r])=>r.test(d.t))||[0,''])[1];
+// Device symbol at screen point (X, Y). Facing n = [nx, nz] in the model maps to screen (nz, nx): z runs right, x runs down.
+function sym(par,X,Y,d,sc=1){const c=E.color(d),k=d.k,n=d.n||[0,1],dx=n[1],dy=n[0],tx=-dy,ty=dx,s=sc;
+ const C=(x,y,r,a)=>el(par,'circle',Object.assign({cx:x,cy:y,r},a)),R=(x,y,w,h,a)=>el(par,'rect',Object.assign({x:x-w/2,y:y-h/2,width:w,height:h},a));
+ const T=(x,y,t,size,fill)=>el(par,'text',{x,y:y+size*.36,'text-anchor':'middle','font-size':size,'font-weight':800,fill},t);
+ const semi=(cx,cy)=>{const p=[];for(let i=0;i<=8;i++){const a=Math.PI*i/8;p.push([cx+(tx*Math.cos(a)+dx*Math.sin(a))*6*s,cy+(ty*Math.cos(a)+dy*Math.sin(a))*6*s]);}
+  el(par,'polygon',{points:p.map(q=>q.map(v=>v.toFixed(1)).join(',')).join(' '),fill:'#fff',stroke:c,'stroke-width':1.8});
+  el(par,'line',{x1:cx+dx*6*s,y1:cy+dy*6*s,x2:cx+dx*10*s,y2:cy+dy*10*s,stroke:c,'stroke-width':1.8});};
+ if(k==='ceil'){C(X,Y,7*s,{fill:'#fff',stroke:c,'stroke-width':2});const q=4.9*s;for(const [a,b] of [[1,1],[1,-1]])el(par,'line',{x1:X-q*a,y1:Y-q*b,x2:X+q*a,y2:Y+q*b,stroke:c,'stroke-width':1.5});}
+ else if(k==='spot')C(X,Y,4.2*s,{fill:c,stroke:'#fff','stroke-width':1});
+ else if(k==='pend'){C(X,Y,6*s,{fill:'#fff',stroke:c,'stroke-width':2});C(X,Y,2.4*s,{fill:c});}
+ else if(k==='wall'){el(par,'line',{x1:X-tx*7*s,y1:Y-ty*7*s,x2:X+tx*7*s,y2:Y+ty*7*s,stroke:c,'stroke-width':2.6});C(X+dx*5*s,Y+dy*5*s,4.5*s,{fill:'#fff',stroke:c,'stroke-width':2});}
+ else if(k==='step')R(X+dx*3*s,Y+dy*3*s,7*s,7*s,{fill:c,stroke:'#fff','stroke-width':.8});
+ else if(k==='sock')semi(X,Y);
+ else if(k==='sock2'){semi(X-tx*5*s,Y-ty*5*s);semi(X+tx*5*s,Y+ty*5*s);}
+ else if(k==='btn'){R(X+dx*3*s,Y+dy*3*s,8*s,8*s,{fill:'#fff',stroke:c,'stroke-width':1.8,rx:1.5});C(X+dx*3*s,Y+dy*3*s,1.6*s,{fill:c});}
+ else if(k==='pir')el(par,'polygon',{points:[[0,-5],[5,0],[0,5],[-5,0]].map(([a,b])=>(X+a*s).toFixed(1)+','+(Y+b*s).toFixed(1)).join(' '),fill:c,stroke:'#fff','stroke-width':1});
+ else if(k==='motor'){const w=11*s,h=4*s;el(par,'polygon',{points:[[-w,-h],[w,-h],[w,h],[-w,h]].map(([a,b])=>(X+tx*a+dx*b).toFixed(1)+','+(Y+ty*a+dy*b).toFixed(1)).join(' '),fill:c,stroke:'#fff','stroke-width':1});T(X,Y,'M',6.5*s,'#fff');}
+ else if(k==='rez')C(X,Y,4.2*s,{fill:'#fff',stroke:c,'stroke-width':1.6,'stroke-dasharray':'2 1.5'});
+ else if(k==='appl'||k==='ev'){R(X,Y,15*s,15*s,{fill:'#fff',stroke:c,'stroke-width':2,rx:2});T(X,Y,letter(d)||'S',(letter(d).length>1?7:9)*s,c);}
+ else if(k==='tech'){const t=letter(d)||'T';R(X,Y,(t.length>2?20:15)*s,15*s,{fill:c,stroke:'#fff','stroke-width':1,rx:2});T(X,Y,t,(t.length>1?7:9)*s,'#fff');}
+ else if(k==='up'){C(X,Y,5.5*s,{fill:'#fff',stroke:c,'stroke-width':2});C(X,Y,2.2*s,{fill:c});}
+ else if(k==='boll'){C(X,Y,5*s,{fill:c,stroke:'#fff','stroke-width':1.2});C(X,Y,1.8*s,{fill:'#fff'});}
+ else if(k==='gate'){R(X,Y,14*s,10*s,{fill:'#fff',stroke:c,'stroke-width':2});T(X,Y,'M',8*s,c);}
+ else if(k==='re'){R(X,Y,14*s,18*s,{fill:c,stroke:'#fff','stroke-width':1});T(X,Y,'RE',6.5*s,'#fff');}}
+const KIND_TXT=[['ceil','stropní svítidlo'],['spot','bodovka'],['pend','závěsné svítidlo'],['wall','nástěnné, zrcadlo'],['strip','LED pásek, profil'],['step','orientační světlo ve stěně'],
+ ['sock','zásuvka'],['sock2','dvojzásuvka'],['appl','spotřebič (vývod)'],['motor','motor žaluzie'],['rez','rezerva (střešní okno)'],['tech','technika'],['btn','tlačítko, panel'],['pir','čidlo pohybu, větru']];
+function symLegend(){const cats={ceil:'light',spot:'light',pend:'light',wall:'light',strip:'night',step:'night',sock:'sock',sock2:'sock',appl:'appl',motor:'blind',rez:'blind',tech:'tech',btn:'ctl',pir:'ctl'};
+ $('legSym').innerHTML='';for(const [k,t] of KIND_TXT){const span=document.createElement('span'),s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 30 20');s.setAttribute('class','sym');
+  const d={k,c:'',t:k==='appl'?'Pračka':k==='tech'?'Rekuperační':'',n:[1,0]},cat=cats[k];d.c=E.CIRCUITS.find(c=>c.cat===cat)?.id||'ctl';
+  if(k==='strip')el(s,'line',{x1:4,y1:10,x2:26,y2:10,stroke:col(cat),'stroke-width':3.2,'stroke-linecap':'round'});else sym(s,15,k==='sock'||k==='sock2'||k==='wall'||k==='step'||k==='btn'?6:10,d,.9);
+  span.appendChild(s);span.appendChild(document.createTextNode(t));$('legSym').appendChild(span);}}
+
+// ---------- routes ----------
+// Route of a device projected to the plan: points [z, x] and how it runs (f floor, c ceiling, g ground).
+function planRoute(d){const r=E.route(d);if(!r)return null;
+ if(r.ground)return {pts:dedupe(r.ground.map(([x,z])=>[z,x])),mode:'g'};
+ return {pts:dedupe(r.pts.map(q=>[q[2],q[0]])),mode:E.modeOf(d)};}
+const DASH={c:'5 3',f:null,g:'1.5 3'};
+const onPlan=(fl,d)=>fl==='a'?E.floorOf(d)==='a':['g','t','o'].includes(E.floorOf(d));
+function drawPlan(svgId,fl){const ground=fl==='g',g=Dum.plan($(svgId),ground?
+  {title:'Přízemí · elektroinstalace',sub:'Pohled shora · nahoře strana příjezdu, dole terasa (HS), vlevo přední štít · technická místnost a průjezd vpravo',code:'E-01'}:
+  {title:'Podkroví · elektroinstalace',sub:'Dispozice podle D1.3 · páteř světel nad rovným stropem, zásuvky v podlaze · napáječ HR → RD přes E1 a E2',code:'E-02'});
+ if(ground)Dum.groundBase(g,{under:g=>{for(const r of [[.3,7.7,.3,1.65],[5.46,7.7,1.65,4.2],[1.85,2.9,6.65,8.75],[5.17,7.7,7.54,10.43],[5.17,7.7,10.58,11.7],[2.59,5.02,9.92,11.7],[.3,2.44,10.12,11.7]])g.rect(...r,{fill:g.url('drop'),stroke:A.dropEdge,'stroke-width':.6,'stroke-dasharray':'4 3'});}});
+ else Dum.atticBase(g,'d13');   // no ridge frames: their R1–R3 tags would read as the heating regulators
+ // everything installed is clipped to the drawing area, so ground routes stop at the sheet edge
+ const cp=el(g.svg.querySelector('defs'),'clipPath',{id:svgId+'-clip'});el(cp,'rect',{x:8,y:66,width:1184,height:560});
+ const L=el(g.svg,'g',{'clip-path':`url(#${svgId}-clip)`});
+ // trunks: bundles of conduits
+ for(const t of E.TRUNKS){const ok=fl==='a'?t.fl==='a':t.fl!=='a';if(!ok||!t.mode)continue;
+  const p=t.ground?t.pts.map(([x,z])=>[z,x]):t.pts.map(q=>[q[2],q[0]]);
+  g.line(p,TRUNK,t.mode==='f'?6:4.5,{'stroke-opacity':t.mode==='f'?.5:.45,'stroke-dasharray':t.mode==='c'?'9 5':t.mode==='g'?'2 4':null},L);}
+ // existing feeder and gate cable (ground floor only)
+ if(ground)for(const dn of E.DONE){g.line(dn.ground.map(([x,z])=>[z,x]),col('done'),2.4,{'stroke-dasharray':'7 4'},L);if(dn.pts)g.line(dedupe(dn.pts.map(q=>[q[2],q[0]])),col('done'),2.4,{'stroke-dasharray':'7 4'},L);}
+ // branches
+ const devs=E.DEVICES.filter(d=>onPlan(fl,d));
+ for(const d of devs){const k=E.catOf(d);if(k==='ctl'||k==='done'||!shown(k))continue;const r=planRoute(d);if(!r)continue;
+  g.line(r.pts,E.color(d),1.4,{'stroke-dasharray':DASH[r.mode],'stroke-opacity':.9},L);
+  if(d.g)g.line(d.g.map(([x,z])=>[z,x]),E.color(d),1.4,{'stroke-dasharray':DASH.g},L);}
+ // junction boxes and their feeds
+ if(shown('light'))for(const J of E.JUNCTIONS)if(J.fl===(ground?'g':'a')){g.line(dedupe(E.junctionRoute(J).map(q=>[q[2],q[0]])),col('light'),2.2,{'stroke-dasharray':'5 3'},L);
+  g.rect(J.p[0]-.09,J.p[0]+.09,J.p[2]-.09,J.p[2]+.09,{fill:'#fff',stroke:'#3d4744','stroke-width':1.4},L);}
+ // feeder HR → RD: plant-room part and the drop to RD on the ground floor, the run above the ceiling in the attic
+ const F=E.FEED;for(let i=1;i<F.length;i++){const a=F[i-1],b=F[i],up=a[1]>3.3&&b[1]>3.3,dn=a[1]<3.3&&b[1]<3.3;
+  if(ground?dn:up)g.line(dedupe([[a[2],a[0]],[b[2],b[0]]]),col('feed'),2.8,{'stroke-dasharray':up?'10 4':null},L);}
+ // boards
+ for(const b of E.BOARDS){if(!ground)continue;const [x0,x1,,,z0,z1]=b.box,slp=b.id==='SLP';
+  g.rect(x0,x1,z0,z1,{fill:slp?'#fff':'#263a30',stroke:'#263a30','stroke-width':1.4},L);}
+ // devices
+ for(const d of devs){const k=E.catOf(d);if(!shown(k))continue;
+  if(d.k==='strip'){const p=d.pts.map(q=>[q[2],q[0]]);g.line(p,'#fff',5.5,{},L);g.line(p,E.color(d),3,{},L);continue;}
+  sym(L,g.X(d.p[2]),g.Y(d.p[0]),d);
+  if(d.far)sym(L,g.X(d.far[2]),g.Y(d.far[0]),Object.assign({},d,{k:'tech'}));
+  if(['sock','sock2','appl','motor'].includes(d.k)&&E.catOf(d)!=='out'){const n=d.n||[0,1];g.text(d.p[2]+n[1]*.36+(n[1]?0:.28),d.p[0]+n[0]*.36+.05,d.c,{'font-size':8.5,'font-weight':700,fill:E.color(d),'stroke-width':2.4},L);}}
+ // risers E1 and E2, board labels
+ const riser=(z,x,t,lz,lx)=>{g.circle(z,x,8.5,{fill:'#fff',stroke:col('feed'),'stroke-width':2.4},L);g.text(z,x+.07,'↕',{'font-size':11,'font-weight':800,fill:col('feed'),stroke:'none'},L);g.text(lz,lx,t,{'font-size':10.5,'font-weight':800,fill:col('feed')},L);};
+ for(const p of E.PEN){const [z,x]=p.at;if(ground||true)riser(z,x,p.id,z+(p.id==='E2'?.42:-.1),x+(p.id==='E2'?.05:-.3));}
+ if(ground){g.text(16.4,2.9,'HR',{'font-size':12,'font-weight':800,fill:'#263a30'});g.text(11.35,2.15,'RD',{'font-size':12,'font-weight':800,fill:'#263a30','text-anchor':'end'});
+  g.text(10.45,3.5,'SLP · R1',{'font-size':9.5,'font-weight':700,fill:A.sub,'text-anchor':'start'});}
+ else{g.text(18.1,3.55,'skříň 2.08 · E1',{'font-size':9.5,fill:A.sub,'text-anchor':'end'});g.text(11.3,2.35,'skříň 2.04 · E2',{'font-size':9.5,fill:A.sub,'text-anchor':'end'});}
+ Dum.roomTags(g,ground?'g':'d13',ground?{over:{'1.11':[3.0,4.4],'1.06':[7.6,4.05],'1.03':[11.15,4.05],'1.05':[8.9,6.6],'1.02':[16.95,6.55]},noArea:true}:{over:{'2.01':[11.0,4.05]},noArea:true});
+ Dum.finish(g,[{k:'line',c:col('light'),w:2,t:'hlavní světlo 230 V'},{k:'line',c:col('night'),w:2,t:'noční světlo 24 V'},{k:'line',c:col('sock'),w:2,t:'zásuvky'},{k:'line',c:col('appl'),w:2,t:'spotřebiče'},{k:'line',c:col('blind'),w:2,t:'žaluzie, střešní okna'},
+  {k:'line',c:col('tech'),w:2,t:'technika (TČ, VZT, R1/R2)'},{k:'line',c:col('out'),w:2,t:'venku'},{k:'line',c:TRUNK,w:6,t:ground?'svazek v podlaze':'svazek v podlaze podkroví'},{k:'dash',c:TRUNK,w:3,t:ground?'shora (podlaha podkroví, podhled)':'nad rovným stropem'},{k:'line',c:col('feed'),w:3,t:'napáječ HR → RD, CYKY-J 5×10'},
+  {k:'riser',c:col('feed'),s:'↕',t:'stoupačky E1, E2'},{k:'sq',c:'#3d4744',t:'krabice (odbočení v místnosti)'},{k:'sq',c:col('ctl'),t:'tlačítka, čidla: Cat6 do RD'},{k:'fill',c:'#263a30',f:'#263a30',t:'rozvaděč HR, RD'},{k:'dash',c:col('done'),w:2.4,t:'hotovo: přívod, HDO, brána'}],
+  {title:ground?'Elektro · přízemí':'Elektro · podkroví',sub:ground?'HR, RD, světla, zásuvky, žaluzie':'světla nad stropem, zásuvky v podlaze',code:ground?'E-01':'E-02'});}
+
+// ---------- outdoors: own sheet with a smaller scale ----------
+function drawOut(){const s=$('out');s.replaceChildren();Dum.defs(s);const K=25,X=z=>40+(z+8)*K,Y=x=>110+(x+7)*K,id=s.id;
+ const P=p=>p.map(([z,x])=>X(z).toFixed(1)+','+Y(x).toFixed(1)).join(' ');
+ const R=(x0,x1,z0,z1,a)=>el(s,'rect',Object.assign({x:X(Math.min(z0,z1)),y:Y(Math.min(x0,x1)),width:Math.abs(z1-z0)*K,height:Math.abs(x1-x0)*K},a));
+ const L=(p,c,w,a={})=>el(s,'polyline',Object.assign({points:P(p),fill:'none',stroke:c,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round'},a));
+ const T=(z,x,t,a={})=>el(s,'text',Object.assign({x:X(z),y:Y(x),'font-size':11,fill:A.txt,'text-anchor':'middle','paint-order':'stroke',stroke:'#fff','stroke-width':3,'stroke-linejoin':'round'},a),t);
+ el(s,'rect',{x:4,y:4,width:892,height:652,fill:'#fff',stroke:A.frame,'stroke-width':1.2,rx:8});
+ el(s,'text',{x:24,y:36,'font-size':18,'font-weight':800,fill:A.ink},'Venku · trasy v zemi');
+ el(s,'text',{x:24,y:57,'font-size':12,fill:A.sub},'Pohled shora · nahoře příjezdovka, dole terasa, vlevo silnice a brána · měřítko asi 1 : 200');
+ el(s,'rect',{x:804,y:18,width:76,height:30,rx:6,fill:A.ink});el(s,'text',{x:842,y:38,'text-anchor':'middle','font-size':14,'font-weight':800,fill:'#fff'},'E-03');
+ // ground, driveway, passage, house, terrace
+ R(-7,12.4,-7.6,24.6,{fill:'#eef2ec'});R(-5.2,-.2,-7.0,18.8,{fill:'#dcdedf',stroke:'#c3c7c9'});R(-.2,8.2,12.2,16.0,{fill:'#e9e7e2',stroke:'#c9c4b8','stroke-dasharray':'5 4'});
+ R(8.2,11.5,-.25,6.75,{fill:'#e7d6bd',stroke:'#c99a5b'});for(const [x0,x1,z0,z1] of [[-.2,8.2,-.2,12.2],[-.2,8.2,16.0,18.8]])R(x0,x1,z0,z1,{fill:'#fbfcfa',stroke:A.wallEdge,'stroke-width':1.4});
+ R(1.22,2.32,19.1,19.5,{fill:'#e3e7e4',stroke:'#7d8b83'});T(19.3,.95,'TČ',{'font-size':10,'font-weight':700});
+ el(s,'circle',{cx:X(23.0),cy:Y(9.6),r:.9*K,fill:'#fff',stroke:'#7d8b83'});T(23.0,9.65,'ČOV',{'font-size':10,'font-weight':700});
+ el(s,'circle',{cx:X(23.5),cy:Y(-3.0),r:1.0*K,fill:'#fff',stroke:'#7d8b83'});T(23.5,-2.95,'retenční',{'font-size':9.5});
+ L([[-6.95,-5.2],[-6.95,-.2]],'#5f6d65',3);T(-7.25,-3.6,'brána',{'font-size':10,'text-anchor':'end'});
+ for(const [z,x,t] of [[6,4,'přízemí · obytná část'],[14.1,4,'průjezd'],[17.4,4,'technická m.'],[3.2,9.85,'terasa'],[3,-2.7,'příjezdovka']])T(z,x,t,{fill:A.sub,'font-size':11,'font-style':'italic'});
+ // trenches and outdoor routes
+ for(const t of E.TRUNKS)if(t.ground)L(t.pts.map(([x,z])=>[z,x]),TRUNK,5,{'stroke-opacity':.55});
+ for(const dn of E.DONE)L(dn.ground.map(([x,z])=>[z,x]),col('done'),2.6,{'stroke-dasharray':'7 4'});
+ const outs=E.DEVICES.filter(d=>(E.floorOf(d)==='o'||d.g)&&E.catOf(d)!=='ctl');
+ for(const d of outs){const k=E.catOf(d);if(k==='done')continue;const r=E.route(d);
+  if(r&&r.ground)L(r.ground.map(([x,z])=>[z,x]),E.color(d),1.6,{'stroke-dasharray':'2 3'});
+  if(d.g)L(d.g.map(([x,z])=>[z,x]),E.color(d),1.6,{'stroke-dasharray':'2 3'});}
+ for(const d of E.DEVICES.filter(d=>E.floorOf(d)==='o'||d.g)){
+  if(d.k==='strip'){const p=d.pts.map(q=>[q[2],q[0]]);L(p,'#fff',5);L(p,E.color(d),3);continue;}
+  sym(s,X(d.p[2]),Y(d.p[0]),d,.9);}
+ // boards
+ const hr=E.BOARDS[0].box;R(hr[0],hr[1],hr[4],hr[5],{fill:'#263a30'});T(16.6,2.0,'HR',{'font-size':11,'font-weight':800});
+ // labels of what is where
+ for(const [z,x,t,a] of [[-5.9,-6.75,'pilíř RE (poloha podle situace)','start'],[8.7,-6.2,'sloupková světla 60 cm, po 5 m','start'],[14.1,-1.1,'zemní světla na nárožích','middle'],[14.1,9.55,'LED pod schody do zahrady','middle'],
+  [3.2,12.05,'LED pod okrajem terasy a pod schodem','middle'],[16.8,-6.3,'stávající přívod a HDO, kabel k bráně (hotovo)','start'],[21.7,10.8,'ČOV (rozvaděč na štítu)','middle']])T(z,x,t,{'font-size':10,fill:A.sub,'text-anchor':a});
+ // legend and scale
+ const lg=[[col('out'),'venkovní okruhy V1–V7','2 3'],[col('done'),'hotovo','7 4'],[TRUNK,'společná chránička / výkop',null]];
+ lg.forEach(([c,t,da],i)=>{const x=24+i*210,y=630;el(s,'line',{x1:x,y1:y,x2:x+28,y2:y,stroke:c,'stroke-width':da?2.6:5,'stroke-dasharray':da,'stroke-linecap':'round'});el(s,'text',{x:x+36,y:y+4,'font-size':10.5,fill:A.txt},t);});
+ for(let i=0;i<5;i++)el(s,'rect',{x:700+i*K,y:624,width:K,height:6,fill:i%2?'#fff':A.ink,stroke:A.ink,'stroke-width':.8});el(s,'text',{x:700+5*K+6,y:631,'font-size':9.5,fill:A.txt},'5 m');
+ // table of outdoor items
+ const rows=E.CIRCUITS.filter(c=>c.b==='HR'&&c.id!=='H1').map(c=>{const n=E.DEVICES.filter(d=>d.c===c.id);
+  return `<tr><td class="cid" style="color:${col(c.cat)}">${c.id}</td><td>${c.t}${c.n?' · '+c.n:''}</td><td>${[...new Set(n.map(d=>d.t))].join('; ')||'–'}</td><td>${c.cab}</td></tr>`;}).join('');
+ $('outTbl').innerHTML='<thead><tr><th>Okruh</th><th>Co</th><th>Prvky</th><th>Kabel</th></tr></thead><tbody>'+rows+'</tbody>';}
+
+// ---------- exploded oblique view ----------
+// Levels: up to 3.0 the ground floor (the top of the stair LED is 2.96), then the attic; the flat attic ceiling (5.66) and above it go up to the
+// warm space, so the ceiling lights sit on its plate like the MVHR valves on rekuperace.html.
+function drawIso(){const s=$('iso'),E1=1.4,E2=2.4,lev=y=>y<=3.0?y:y<5.6?y+E1:y+E2;
+ const I=Dum.iso(s,{W:1110,H:620,K:40,OX:165,OY:572,cx:.42,cy:.3,lev}),P=I.P,Q=p=>p.map(([x,y,z])=>[x,lvl(y),z]);
+ const room=(x,y,z,t)=>I.text(x,y,z,t,{'font-style':'italic','font-size':10.5,fill:'#7b8a80'});
+ const dot=(q,c,r=2.6)=>{const [x,y]=P(...Q([q])[0]);el(s,'circle',{cx:x,cy:y,r,fill:c,stroke:'#fff','stroke-width':.8});};
+ // ground floor, passage, plant room
+ I.plate(-.2,8.2,-.2,12.2,0,{fill:'#e9ede8',stroke:'#c3ccc5'});I.plate(.3,7.7,.3,11.7,0,{fill:'#fbfcfa',stroke:'#a8b3ac'});
+ I.plate(-.2,8.2,12.2,16.0,-.03,{fill:'#f1f2ee',stroke:'#c3ccc5','stroke-dasharray':'5 4'});
+ I.plate(-.2,8.2,16.0,18.8,0,{fill:'#e9ede8',stroke:'#c3ccc5'});I.plate(.3,7.7,16.5,18.3,0,{fill:'#fbfcfa',stroke:'#a8b3ac'});
+ I.walls(Dum.PARTS.g,0);
+ for(const [x,z,t] of [[4.6,2.6,'obývák'],[2.6,5.2,'jídelna'],[1.0,8.0,'kuchyň'],[6.5,8.6,'koupelna'],[6.5,11.25,'WC'],[3.9,11.3,'předsíň'],[1.3,11.0,'komora'],[4.0,14.1,'průjezd'],[1.6,17.0,'technická m.']])room(x,0,z,t);
+ I.cyl(1.0,17.6,0,1.85,.45,'#f4f5f3');I.cyl(2.15,17.85,0,1.0,.27,'#f4f5f3');I.box(1.22,2.32,.14,.96,19.1,19.5,'#dfe3e0');I.text(1.77,1.05,19.3,'TČ',{'font-size':10,fill:A.txt,'font-weight':700});
+ I.box(4.95,5.7,1.1,1.95,17.74,18.3,'#cfd6d1');
+ // attic floor and the warm space above the flat ceiling
+ I.plate(-.2,8.2,-.2,18.8,3.06,{fill:'#eef1ed','fill-opacity':.75,stroke:'#c3ccc5'});I.plate(.3,7.7,.3,18.3,3.06,{fill:'#fbfcfa','fill-opacity':.85,stroke:'#a8b3ac'});
+ I.plate(5.1,7.7,5.57,7.23,3.06,{fill:'#e3e7e3',stroke:'#b9c2bc'});I.walls(Dum.PARTS.d13,3.06);
+ for(const [x,z,t] of [[5.8,1.2,'ložnice'],[1.6,5.4,'koupelna'],[1.6,9.0,'pokoj 2.04'],[6.3,8.6,'prádelna'],[6.3,12.8,'koupelna'],[5.6,16.4,'pokoj 2.08']])room(x,3.06,z,t);
+ I.plate(Dum.FLAT[0],Dum.FLAT[1],.3,18.3,5.69,{fill:A.warm,'fill-opacity':.85,stroke:A.warmEdge,'stroke-width':1.2});
+ for(const z of [.3,18.3])I.line([[Dum.FLAT[0],5.69,z],[4.0,7.91,z],[Dum.FLAT[1],5.69,z]],'#c9b37a',1.3,{'stroke-dasharray':'6 4'});I.line([[4.0,7.91,.3],[4.0,7.91,18.3]],'#c9b37a',1.3,{'stroke-dasharray':'6 4'});
+ // boxes for the risers (translucent): wardrobes of 2.04 and 2.08
+ for(const r of [[2.72,3.32,10.8,11.55],[3.3,4.7,17.7,18.3]])I.box(r[0],r[1],3.06,5.66,r[2],r[3],'#ffffff',.45);
+ // trunks, existing feeder, branches
+ for(const t of E.TRUNKS)if(!t.ground)I.pipe(Q(t.pts),TRUNK,3);
+ if(E.DONE[0].pts)I.line(Q(E.DONE[0].pts),col('done'),2,{'stroke-dasharray':'5 4'});
+ const devs=E.DEVICES.filter(d=>E.catOf(d)!=='ctl'&&E.catOf(d)!=='done'&&(E.floorOf(d)!=='o'||E.modeOf(d)==='c'||d.r));
+ for(const J of E.JUNCTIONS)I.line(Q(E.junctionRoute(J)),col('light'),1.6);
+ for(const d of devs){const r=E.route(d);if(r&&r.pts)I.line(Q(r.pts),E.color(d),1.1,{opacity:.9});}
+ I.pipe(Q(E.FEED),col('feed'),2.6);
+ // devices
+ for(const d of devs){if(d.k==='strip'){I.line(Q(d.pts),E.color(d),2.6);continue;}dot(d.p,E.color(d),['appl','tech','motor'].includes(d.k)?3.4:2.4);}
+ for(const d of E.DEVICES)if(E.catOf(d)==='ctl'&&E.floorOf(d)!=='o')dot(d.p,col('ctl'),1.8);
+ for(const b of E.BOARDS){const [x0,x1,y0,y1,z0,z1]=b.box;I.box(x0,x1,lvl(y0),lvl(y1),z0,z1,b.id==='SLP'?'#dfe7f2':'#263a30');}
+ // level labels
+ for(const [y,t] of [[.2,'přízemí'],[3.2,'podkroví'],[5.8,'nad stropem podkroví']]){const [x,yy]=P(8.2,y,-.35);el(s,'text',{x:x-6,y:yy+4,'font-size':12,'font-weight':700,fill:'#8a978e','text-anchor':'end'},t);}
+ const [fx,fy]=P(8.2,0,6.0);el(s,'text',{x:fx,y:fy+22,'font-size':11,fill:'#8a978e','text-anchor':'middle'},'strana terasy (HS) · vlevo přední štít · vpravo technická místnost');
+ // numbered callouts
+ const ink='#263a30';
+ I.mark([2.9,1.4,16.57],-40,40,1,ink,'<strong>HR</strong> v technické místnosti na stěně k průjezdu. Sem už vede přívod z pilíře a HDO (šedě čárkovaně). Odtud TČ, záložní ohřev, rekuperace, venkovní okruhy a napáječ RD.');
+ I.mark([4.5,2.6,18.12],34,10,2,col('feed'),'<strong>Prostup E1</strong> v dobetonávce u štítu vedle C a P1. Napáječ CYKY-J 5×10 stoupá ve vestavěné skříni pokoje 2.08.');
+ I.mark([4.82,5.79,14.5],18,-34,3,col('feed'),'<strong>Nad rovným stropem podkroví</strong> vede páteř světel a žaluzií podkroví a napáječ RD, v teplém prostoru pod hřebenem.');
+ I.mark([2.95,4.6,11.3],-44,-24,4,col('feed'),'<strong>Stoupačka E2</strong> v rohu skříně pokoje 2.04 a ve vestavěné skříni předsíně: napáječ dolů, okruhy podkroví nahoru.');
+ I.mark([2.66,1.2,11.3],-48,30,5,ink,'<strong>RD</strong> v předsíni za sedací nikou, vedle R1 a SLP. Relé a stmívače světel, ovladače žaluzií, zdroje 24 V se zálohou, moduly ESPHome.');
+ I.mark([3.5,2.95,4.0],-28,-30,6,col('light'),'<strong>Světla přízemí shora</strong>: kabely v podlaze podkroví, vývrt do dutiny panelu nebo krabice v podhledu (pás v obýváku, ostrůvek, koupelna, předsíň).');
+ I.mark([3.85,0,6.0],-10,40,7,col('sock'),'<strong>Zásuvky a spotřebiče dole</strong>: chráničky v EPS 150 pod potěrem, k ostrůvku deska 400 V, trouba a výsuvná zásuvka.');
+ I.mark([5.3,.25,7.05],30,36,8,col('night'),'<strong>Noční světlo 24 V</strong>: světla ve stěně 30 cm nad podlahou, LED pod schody, soklem linky, postelí, umyvadly a WC.');
+ I.mark([8.3,2.48,1.82],-34,34,9,col('blind'),'<strong>Žaluzie</strong>: motor v nadpraží, každý vlastní kabel 4×1,5 z RD, čidlo větru na fasádě.');
+ I.mark([5,2.62,15.1],30,-18,10,col('out'),'<strong>Průjezd</strong>: bodovky v podhledu a zemní světla na nárožích (V1), zásuvka a kabel na wallbox ve stěně technické místnosti.');
+ I.marks($('isoList'));
+ $('legIso').innerHTML=['light','night','sock','appl','blind','tech','out','feed','done'].map(k=>`<span><i style="border-color:${col(k)}${k==='done'?';border-top-style:dashed':''}"></i>${CAT[k].t}</span>`).join('')+`<span><i class="thick" style="border-color:${TRUNK}"></i>${CAT.trunk.t}</span>`;}
+
+// ---------- tables ----------
+const count=id=>E.DEVICES.filter(d=>d.c===id).length;
+const GRP_RD=[['L','Hlavní světlo 230 V'],['N','Noční a orientační světlo 24 V'],['Z','Zásuvky'],['S','Spotřebiče'],['Ž','Žaluzie'],['T','Technika']],GRP_HR=[['H','Technika a napáječ'],['V','Venku']];
+function boardTable(id,b,groups){const row=c=>`<tr><td class="cid" style="color:${col(c.cat)}">${c.id}</td><td>${c.t}${c.n?`<br><span style="color:#66756b;font-size:12px">${c.n}</span>`:''}</td><td>${c.brk}</td><td>${c.cab}</td><td class="n">${count(c.id)||'–'}</td></tr>`;
+ $(id).innerHTML='<thead><tr><th>Okruh</th><th>Co</th><th>Jistič</th><th>Kabel</th><th class="n">Vývodů</th></tr></thead><tbody>'+groups.map(([p,t])=>{const cs=E.CIRCUITS.filter(c=>c.b===b&&c.id.startsWith(p));
+  return cs.length?`<tr class="grp"><td colspan="5">${t}</td></tr>`+cs.map(row).join(''):'';}).join('')+'</tbody>';}
+function tables(){boardTable('tblHR','HR',GRP_HR);boardTable('tblRD','RD',GRP_RD);
+ $('hrNote').textContent=E.BOARDS[0].note;$('rdNote').textContent=E.BOARDS[1].note;
+ const fl3=len3(E.FEED);$('feedLen').textContent=`Podle tras v modelu ${f1(fl3)} m, s rezervou asi ${Math.ceil(fl3*1.15)} m. Úbytek napětí při 25 A asi ${f1(Math.sqrt(3)*25*fl3*.0178/10/4)} %.`;
+ const by=k=>E.DEVICES.filter(d=>E.catOf(d)===k),socks=E.DEVICES.filter(d=>d.k==='sock'||d.k==='sock2').reduce((t,d)=>t+(d.k==='sock2'?2:1),0);
+ $('kpis').innerHTML=[[`${E.CIRCUITS.filter(c=>c.b==='RD').length} + ${E.CIRCUITS.filter(c=>c.b==='HR').length}`,'okruhů v RD a HR'],[`${by('light').length} / ${by('night').length}`,'vývodů hlavního / nočního světla'],
+  [`${socks}`,'zásuvek (dvojzásuvka = 2)'],[`${E.DEVICES.filter(d=>d.k==='btn').length} + ${E.DEVICES.filter(d=>d.k==='pir').length}`,'tlačítek a čidel na Cat6']].map(([b,t])=>`<div class="kpi"><b>${b}</b><span>${t}</span></div>`).join('');
+ // night zones: N1 and N2 devices grouped by what they are
+ const grp=list=>{const m=new Map();for(const d of list)m.set(d.t,(m.get(d.t)||0)+1);return [...m].map(([t,n])=>`${t}${n>1?' ('+n+'×)':''}`);};
+ const zone=(id,t)=>`<tr class="grp"><td colspan="2">${id} · ${t}</td></tr>`+grp(E.DEVICES.filter(d=>d.c===id)).map(t=>`<tr><td></td><td>${t}</td></tr>`).join('');
+ $('tblNight').innerHTML='<thead><tr><th style="width:60px">Okruh</th><th>Prvky</th></tr></thead><tbody>'+zone('N1','přízemí')+zone('N2','podkroví')+
+  '<tr><td></td><td><em>Navíc v noci: koule nad ostrůvkem ztlumené přes L1.</em></td></tr></tbody>';
+ const fl={g:'přízemí',a:'podkroví',t:'technická m.',o:'venku'};
+ $('tblCtl').innerHTML='<thead><tr><th>Patro</th><th>Prvek</th><th>Kde a co ovládá</th></tr></thead><tbody>'+E.DEVICES.filter(d=>d.c==='ctl').map(d=>{const [w,...r]=d.t.split(/: /);
+  return `<tr><td>${fl[E.floorOf(d)]}</td><td>${d.k==='btn'?'tlačítko / panel':'čidlo'}</td><td>${r.length?`<strong>${w}</strong>: ${r.join(': ')}`:d.t}</td></tr>`;}).join('')+'</tbody>';}
+
+// Cable lengths from the drawn routes: each branch plus the run from its board to where it leaves the trunk (rectilinear), + 15 %.
+// Branches from a junction count only from the junction; the junction's own cable counts once.
+const BOARD_AT={RD:[2.66,1.4,11.3],HR:[2.9,1.64,16.575]};
+const manh=(a,b)=>Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1])+Math.abs(a[2]-b[2]);
+const cabType=c=>(c.cab.match(/\d×[\d,]+/)||['3×1,5'])[0];
+function cableLengths(){const tot={},add=(t,m)=>{tot[t]=(tot[t]||0)+m;};
+ for(const d of E.DEVICES){const k=E.catOf(d);if(k==='ctl'||k==='done')continue;const c=E.circuit(d.c),r=E.route(d);if(!r)continue;
+  let m;if(r.ground)m=len2(r.ground)+1.5+manh(BOARD_AT[c.b],[r.ground[0][0],.1,r.ground[0][1]]);else m=len3(r.pts)+(d.j?0:manh(BOARD_AT[c.b],r.pts[0]));
+  if(d.g)m+=len2(d.g);add(d.j&&k==='light'?'3×1,5':cabType(c),m);}
+ for(const J of E.JUNCTIONS){const p=E.junctionRoute(J);add('5×1,5',len3(p)+manh(BOARD_AT.RD,p[0]));}
+ add('5×10',len3(E.FEED));
+ let cat6=0;for(const d of E.DEVICES)if(d.c==='ctl'&&E.floorOf(d)!=='o')cat6+=manh(BOARD_AT.RD,d.p)+2;
+ for(const k in tot)tot[k]*=1.15;return {tot,cat6:cat6*1.15+90};}   // + data from vytapeni/voda/rekuperace runs not drawn here
+function bomTable(){const {tot,cat6}=cableLengths(),m=t=>Math.round((tot[t]||0)/10)*10,sum=(...t)=>t.reduce((a,b)=>a+m(b),0);
+ const nL=E.DEVICES.filter(d=>E.catOf(d)==='light'&&d.k!=='strip').length,nN=E.DEVICES.filter(d=>E.catOf(d)==='night').length,nM=E.DEVICES.filter(d=>d.k==='motor').length,nS=E.DEVICES.filter(d=>d.k==='sock'||d.k==='sock2').length,nB=E.DEVICES.filter(d=>d.k==='btn').length;
+ const items=[
+  ['Rozvaděč HR: skříň 4 × 24 modulů, hlavní vypínač, svodič T1+T2, relé HDO, jističe a chrániče','1 ks',[18,30]],
+  ['Rozvaděč RD: skříň 6 × 24 modulů s větráním, svodič T2, chrániče, jističe s chráničem','1 ks',[30,50]],
+  ['Relé a stmívače hlavních světel na DIN (Shelly Pro, DALI nebo ESPHome), ovladače žaluzií','~30 kanálů, '+nM+' motorů',[25,50]],
+  ['Noční světlo: 2 zdroje 24 V, DIN UPS s baterií, PWM moduly ESPHome, pásky a světla do stěny',nN+' vývodů',[15,30]],
+  ['Moduly vstupů ESPHome, čidla pohybu (drátová), čidlo větru','',[8,15]],
+  [`Kabely CYKY-J 3×1,5 a 5×1,5 (světla, technika)`,`~${fk(sum('3×1,5','5×1,5'))} m`,[.012*sum('3×1,5','5×1,5'),.02*sum('3×1,5','5×1,5')]],
+  [`Kabely CYKY-J 3×2,5 a 5×2,5 (zásuvky, spotřebiče, venku)`,`~${fk(sum('3×2,5','5×2,5'))} m`,[.02*sum('3×2,5','5×2,5'),.032*sum('3×2,5','5×2,5')]],
+  ['Kabely 4×1,5 k žaluziím, 2×1,5 k nočnímu světlu',`~${fk(sum('4×1,5'))} + ${fk(sum('2×1,5'))} m`,[.012*sum('4×1,5','2×1,5'),.02*sum('4×1,5','2×1,5')]],
+  ['Napáječ RD CYKY-J 5×10, kabel na wallbox 5×6',`~${fk(m('5×10'))} m + ~5 m`,[5,9]],
+  ['Cat6 U/UTP k tlačítkům a čidlům (bez kabelů topení, vody a rekuperace)',`~${fk(Math.round(cat6/10)*10)} m`,[.009*cat6,.015*cat6]],
+  ['Krabice (hluboké, do SDK, přístrojové), chráničky 20–32 mm, protahovací dráty, svorky',`~${nS+nB+nL+40} krabic`,[12,20]],
+  ['Vypínače, tlačítka a zásuvky (běžná designová řada)',`${nB} tlačítek, ${nS} zásuvek`,[20,45]],
+  ['Venku: sloupková a zemní světla, LED pod terasou a schody, venkovní zásuvky, zemní kabely, Kopoflex, fólie',`${E.DEVICES.filter(d=>E.floorOf(d)==='o').length} prvků`,[25,50]],
+  ['Svítidla v interiéru bez designových kusů: bodovky, profily, zdroje 24 V do podhledů',nL+' vývodů',[40,90]],
+  ['Elektrikář: zapojení HR a RD, připojení 400 V, dozor nad svépomocí','',[30,60]],
+  ['Výchozí revize','',[8,15]]];
+ let a=0,b=0;for(const it of items){a+=it[2][0];b+=it[2][1];}
+ $('bom').innerHTML='<thead><tr><th>Položka</th><th>Množství</th><th class="n">tis. Kč</th></tr></thead><tbody>'+items.map(([t,q,[lo,hi]])=>`<tr><td>${t}</td><td>${q}</td><td class="n">${fk(lo)}–${fk(hi)}</td></tr>`).join('')+
+  `<tr class="sum"><td colspan="2">Celkem orientačně</td><td class="n">${fk(a)}–${fk(b)}</td></tr></tbody>`;}
+
+// ---------- render ----------
+function plans(){drawPlan('ground','g');drawPlan('attic','a');}
+for(const b of document.querySelectorAll('[data-show]'))b.addEventListener('click',()=>{SHOW=b.dataset.show;for(const o of document.querySelectorAll('[data-show]'))o.setAttribute('aria-pressed',String(o===b));plans();});
+drawIso();plans();symLegend();drawOut();tables();bomTable();
+Dum.penetrations($('pen'));Dum.plantRoom($('plant'));
+</script>
+</body>
+</html>
