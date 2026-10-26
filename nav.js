@@ -4,7 +4,7 @@
 (function(){
   'use strict';
   const GROUPS=[
-    {name:'Stavba',pages:[['pudorys-1np','Půdorys 1NP'],['zalozeni-zdiva','První řada zdiva'],['nakup-zdeni','Nákup na zdění'],['rez-vyska','Výškový řez'],['krov','Krov']]},
+    {name:'Stavba',pages:[['pudorys-1np','Půdorys 1NP'],['pudorys-2np','Půdorys 2NP'],['zalozeni-zdiva','První řada zdiva'],['nakup-zdeni','Nákup na zdění'],['rez-vyska','Výškový řez'],['krov','Krov']]},
     {name:'Instalace',pages:[['kanalizace','Kanalizace'],['vytapeni','Topení'],['voda','Voda'],['rekuperace','Rekuperace']]},
     {name:'Peníze',pages:[['finance','Financování stavby']]}
   ];
