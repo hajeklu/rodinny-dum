@@ -22,12 +22,11 @@
 .hnav a.hnav-home:hover,.hnav summary:hover{background:#eef4ef}
 .hnav summary::-webkit-details-marker{display:none}.hnav summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);margin-left:2px}
 .hnav details{position:relative}.hnav details[open] summary{background:#264b39;border-color:#264b39;color:#fff}
-.hnav-panel{position:absolute;right:0;top:calc(100% + 6px);z-index:1000;background:#fff;border:1px solid #d8dfd9;border-radius:12px;box-shadow:0 14px 34px #1b352330;padding:8px;min-width:230px;display:grid;gap:6px}
+.hnav-panel{position:absolute;right:0;top:calc(100% + 6px);z-index:1000;background:#fff;border:1px solid #d8dfd9;border-radius:12px;box-shadow:0 14px 34px #1b352330;padding:8px;min-width:230px;max-width:calc(100vw - 16px);box-sizing:border-box;display:grid;gap:6px}
 .hnav-panel b{display:block;font:700 10.5px/1.2 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#64766b;margin:8px 8px 4px}
 .hnav-panel a{display:block;padding:8px 10px;border-radius:7px;color:#26352f;text-decoration:none;font:14px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif}
 .hnav-panel a:hover{background:#eef4ef}.hnav-panel a[aria-current=page]{background:#264b39;color:#fff}
 .hnav-panel button{font:12px system-ui,sans-serif;color:#738078;background:none;border:0;border-top:1px solid #e4e9e5;margin-top:4px;padding:8px 10px 4px;text-align:left;cursor:pointer}
-@media(max-width:520px){.hnav-panel{right:auto;left:0}}
 @media print{.hnav{display:none!important}}`;
   const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
@@ -40,6 +39,12 @@
     for(const [id,label] of g.pages){const a=document.createElement('a');a.href=`./${id}.html`;a.textContent=label;if(id===cur)a.setAttribute('aria-current','page');panel.appendChild(a)}}
   if(cur==='index'){const hide=document.createElement('button');hide.type='button';hide.textContent='Skrýt podklady v tomto prohlížeči';hide.addEventListener('click',()=>{store(null);nav.hidden=true});panel.appendChild(hide)}
   det.append(sum,panel);nav.appendChild(det);
+  // The panel hangs from the button's right edge; on a phone the button can sit anywhere, so shift it back inside the screen.
+  const place=()=>{panel.style.transform='';if(!det.open)return;
+    const pad=8,vw=document.documentElement.clientWidth,r=panel.getBoundingClientRect();
+    let dx=Math.min(0,vw-pad-r.right);if(r.left+dx<pad)dx=pad-r.left;
+    if(dx)panel.style.transform=`translateX(${Math.round(dx)}px)`};
+  sum.addEventListener('click',()=>requestAnimationFrame(place));addEventListener('resize',place);
   document.addEventListener('click',e=>{if(det.open&&!det.contains(e.target))det.open=false});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')det.open=false});
 })();
