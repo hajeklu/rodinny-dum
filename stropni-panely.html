@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stropní panely · Dům Hájek</title>
+<meta name="description" content="Návrh kladečského plánu stropu nad přízemím z předpjatých dutinových panelů 250 mm: rozdělení na panely, otvor schodiště s ocelovými výměnami, výřez pro komín, prostupy všech profesí, zatížení pro výrobce, věnce a ztužidla, detaily uložení a postup montáže s jeřábem.">
+<style>
+:root{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#26352f;background:#f1f4f0}
+*{box-sizing:border-box}body{margin:0}a{color:#24533d}
+header{background:#fff;border-bottom:1px solid #d8dfd9;padding:18px clamp(16px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#64766b}h1{font-size:clamp(25px,4vw,38px);line-height:1.13;margin:7px 0;color:#1f332a}header p{color:#69776f;margin:0;font-size:13px}
+main{max-width:1200px;margin:auto;padding:clamp(16px,3vw,32px)}.eyebrow{font-size:11px;letter-spacing:.14em;color:#64766b;text-transform:uppercase;font-weight:700}
+.lead{max-width:920px;margin:8px 0 18px;color:#526359}
+.notice{border:1px solid #e2d4b7;background:#fbf6ea;border-radius:10px;padding:14px 16px;margin:18px 0 22px;color:#514a3d}.notice strong{color:#42351d}.notice ol{margin:8px 0 0;padding-left:20px}.notice li{margin:4px 0}
+.card{background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:clamp(14px,2.2vw,24px);margin:18px 0;box-shadow:0 5px 20px #1b352309}
+.card h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#23382d}.card h3{font-size:15px;margin:18px 0 6px;color:#2b4236}.card .desc{margin:0 0 14px;color:#66756b;font-size:13px}
+svg{display:block;width:100%;height:auto;background:#fbfcfa;border:1px solid #e2e8e2;border-radius:10px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}.tbl th,.tbl td{text-align:left;padding:8px 9px;border-bottom:1px solid #e4e9e5;vertical-align:top}.tbl th{color:#526359;font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:#f6f8f5}.tbl td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.tbl tr.sum td{font-weight:700;border-top:2px solid #cfd8d1;background:#f6f8f5}.tbl tr.grp td{background:#eef3ee;font-weight:700;color:#2b4236}
+.tbl td.warn{color:#8a5a17}.tbl .sym{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 5px;border-radius:10px;background:#33443b;color:#fff;font-size:11px;font-weight:800;margin-right:6px;vertical-align:-1px}
+.wrap{overflow-x:auto}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{border-left:3px solid #75917b;background:#f3f6f2;padding:12px 14px;border-radius:0 9px 9px 0;color:#58675d;font-size:13px}.note strong{color:#30463a}.note.risk{border-left-color:#c28a2c;background:#fbf6ea}.note.risk strong{color:#5d4313}
+.note ul,.note ol{margin:6px 0 0;padding-left:18px}.note li{margin:3px 0}
+.verdict{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fact{border-radius:10px;background:#f2f5f1;padding:13px 15px}.fact b{display:block;color:#294636;margin-bottom:3px}.fact span{font-size:13px;color:#59685e}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px}.kpi{border:1px solid #dce4dd;border-radius:10px;padding:10px 12px;background:#fbfcfa}.kpi b{display:block;font-size:20px;color:#23382d;font-variant-numeric:tabular-nums}.kpi span{font-size:12px;color:#66756b}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;display:grid;gap:10px}.steps li{position:relative;padding:10px 14px 10px 50px;background:#f3f6f2;border-radius:10px;font-size:13px;color:#4f5f55}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:13px;top:10px;width:26px;height:26px;border-radius:50%;background:#264b39;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}.steps strong{color:#2b4236}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.dgrid figure{margin:0}.dgrid figcaption{font-size:12.5px;color:#5c6b61;margin-top:6px}.dgrid figcaption b{color:#2b4236}
+.seg{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;font-size:13px;color:#526359}.seg button{font:inherit;border:1px solid #cad6cc;background:#fff;color:#284638;border-radius:8px;padding:8px 12px;cursor:pointer}.seg button:hover{background:#eef4ef}.seg button[aria-pressed=true]{background:#264b39;border-color:#264b39;color:#fff}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0 4px}.flow div{background:#f3f6f2;border-radius:10px;padding:11px 13px;font-size:13px;color:#4f5f55;position:relative}.flow b{display:block;color:#264b39;margin-bottom:2px}.flow small{display:block;margin-top:4px;color:#7a877f;font-size:11.5px}
+footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#738078;font-size:12px}
+@media(max-width:760px){.notes,.verdict,.dgrid,.flow{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.tbl{font-size:12px}.tbl th,.tbl td{padding:7px 6px}header{align-items:flex-start}}
+@media print{body{background:#fff}main{max-width:none;padding:8mm}.card{box-shadow:none;break-inside:avoid}svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+<meta name="robots" content="noindex,nofollow">
+<script src="./schema.js"></script>
+<script src="./nav.js" defer></script>
+<script src="./navstevy.js" defer></script>
+</head>
+<body>
+<header>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Stropní panely nad přízemím</h1><p>Návrh kladečského plánu · předpjaté dutinové panely 250 mm · otvory, výměny, prostupy, věnce a montáž</p></div>
+  <nav data-nav="stropni-panely"></nav>
+</header>
+<main>
+  <div class="eyebrow">Podklad: statické posouzení Ing. Khol 04/2024 (panely 250 mm, u schodiště HEB 140 nebo U 300, 2× IPE 240 nad otvory 3 m a průjezdem), DSP D1.2, D1.3, D1.6, stránky Výškový řez (varianta A), Krov (rámy R1–R3), výkres prostupů P-01, příručka SPIROLL Prefa Brno a technický list PSP Prefa Praha · návrh k poptávce u výrobce, stav 11/2026</div>
+  <p class="lead">Projekt a statika říkají jen „předpjaté dutinové panely 250 mm“. Kladečský plán (výkres skladby stropu) a statický výpočet panelů dělá u těchto stropů <strong>výrobce panelů</strong>. Pošle se mu půdorys nosných zdí, otvory, prostupy a zatížení. On rozdělí strop na panely, zvolí jejich vyztužení a vrátí výrobní výkres ke schválení. Tahle stránka je ten podklad, rozpracovaný tak daleko, aby výrobce dostal úplné zadání a na nic se nezapomnělo. Nejdražší chyba je zapomenutý prostup, protože do hotových předpjatých panelů se dodatečně vrtat nesmí. Kótuji v milimetrech, výšky jsou od horního líce hrubé desky jako na stránce <a href="./rez-vyska.html">Výškový řez</a>.</p>
+
+  <div class="flow">
+    <div><b>1 · Podklady výrobci</b>Tento plán, půdorys 1NP, řez, seznam prostupů a zatížení.<small>poptávka u 2–3 výrobců</small></div>
+    <div><b>2 · Výrobní výkres a statika</b>Výrobce vrátí kladečský plán s pozicemi, typy panelů a výřezy.<small>kontrola proti tomuto návrhu, potvrdí statik stavby</small></div>
+    <div><b>3 · Výroba a montáž</b>Panely se vyrábí na míru (délka po 10 mm). Montážní četa výrobce je položí jeřábem za jeden den.<small>montáž dělá firma s oprávněním</small></div>
+    <div><b>4 · Zálivka a věnce</b>Výztuž spár, ucpávky, bednění ztužidel, jedna betonáž, ošetřování.<small>svépomocí nebo s výrobcem</small></div>
+  </div>
+
+  <div class="notice"><strong>Co vyřešit před poptávkou:</strong><ol>
+    <li><strong>Otvor schodiště.</strong> Navrhuji variantu A: tři krátké panely na dvou ocelových výměnách VM1 a VM2, podesta u komína je panel 05. VM1 vzadu leží na stěně P9 mezi komínem a schodištěm, ta pak musí být nosná a postavená ještě před panely. Varianta B podle statiky DSP (jeden HEB 140 přes celý otvor a monolitická podesta) je popsaná níže.</li>
+    <li><strong>Pole nad průjezdem.</strong> Statika DSP dává nad průjezd 2× IPE 240. Když na nich leží panely napříč, vychází mi únosnost na 99–106 % a průhyb asi L/250 (pod nadezdívkou se chce kolem L/500), takže nevyhoví. Proto jsou nad průjezdem dvě možnosti, přepíná se u výkresu S-01. <b>1</b>: panely napříč na 2× IPE 300. <b>2</b>: panely podél průjezdu mezi stěnou domu a stěnou technické místnosti, 2× IPE 240 pak stačí. Nad HS a okny kuchyně (3 m) 2× IPE 240 vyhoví. Statik vybere možnost a potvrdí i stojky rámů R1–R3, které stojí na panelech.</li>
+    <li><strong>Prostupy jen z výroby.</strong> Seznam níže (z výkresu P-01) jde výrobci celý. Několik prostupů je u uložení nebo u spáry, výrobce je posune do dutiny nebo udělá výřez.</li>
+    <li><strong>S panely objednat ucpávky dutin a odvodňovací otvory.</strong> Strop bude několik měsíců bez střechy a voda v dutinách v zimě zamrzá.</li>
+    <li><strong>Požární odolnost.</strong> Požární zpráva popisuje strop jako monolitický 200 mm s REI 60. Panel 250 má podle výrobce kolem REI 50, víc s omítkou. Ověřit s požárním specialistou, co strop v RD opravdu potřebuje, a doklad chtít od výrobce.</li></ol></div>
+
+  <div class="verdict">
+    <div class="fact"><b>1 · Panely napříč domem ve třech polích</b><span>Panely vedou mezi podélnými zdmi (světle 7 400, délka panelu 7 650, uložení 125 mm). Pole A je hlavní dům, pole C technická místnost. Pole B nad průjezdem má dvě možnosti: panely napříč na 2× IPE 300, nebo panely podél průjezdu (rozpětí 4,3 m) na stěnách k průjezdu. Nad příčnými zdmi mezi poli jsou ztužidla Z1–Z3.</span></div>
+    <div class="fact"><b>2 · Otvor schodiště 2 800 × 2 635</b><span>Spáry panelů lícují s hranami otvoru. Panel 05 nese podestu u komína a končí na výměně VM1. Panely 06 a 07 končí na VM2. Výměny jsou ocelové úhelníky, patky mají na sousedních panelech a VM1 navíc na stěně P9.</span></div>
+    <div class="fact"><b>3 · Doplnění do modulu 1,2 m</b><span>Čtyři podélně řezané panely (390, 350, 940 a 690 mm, u panelů 250 mm jdou jen šířky 350–390, 650–690 a 940–980) a jedna dobetonávka DB u štítu technické místnosti. V DB jsou prostupy P1, C a E1, jak počítá výkres P-01.</span></div>
+    <div class="fact"><b>4 · Uložení na dolní věnec, jedna betonáž</b><span>Panely leží v maltovém loži na ŽB věnci místo 12. řady (výškový řez, varianta A, spodek panelů +2 925). Po montáži se najednou betonují horní věnce, ztužidla, DB a zálivky spár.</span></div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+
+  <section class="card">
+    <h2>S-01 · Kladečský plán</h2>
+    <p class="desc">Pohled shora na strop nad přízemím. Šedé jsou panely, oranžový beton se lije na stavbě (horní věnce, ztužidla Z1–Z3, dobetonávka DB a spáry). Čárkovaná ocel leží pod panely. Fialově jsou příčky podkroví podle D1.3, které strop zatěžují. Čísla v kroužku jsou pozice panelů, čísla v tmavém čtverečku pořadí montáže. Kolečka D1–D7 odkazují na detaily níže. Souřadnice x (napříč) a s (podél domu) v textu jsou od vnějšího líce zdiva jako v 3D modelu a na půdorysu 2NP, v tabulkách od vnitřních líců jako na výkresu P-01.</p>
+    <div class="seg" role="group" aria-label="Pole nad průjezdem"><span>Pole nad průjezdem:</span><button type="button" data-vb="1" aria-pressed="true">1 · panely napříč, 2× IPE 300</button><button type="button" data-vb="2" aria-pressed="false">2 · panely podél průjezdu, 2× IPE 240</button></div>
+    <svg id="s01" role="img" aria-label="Kladečský plán stropních panelů nad přízemím"></svg>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>Jak číst rozměry</strong><ul>
+        <li>Horní řada: světlé délky polí mezi líci zdí. Druhá řada: šířky panelů (celý panel 1 190, spáry 10 mm, u řezaných hran aspoň 50 mm).</li>
+        <li>Dolní řada: osy spár od vnitřního líce štítu A (pole A), od líce stěny domu k průjezdu (pole B) a od líce stěny technické místnosti (pole C). Podle nich se rozměří spáry na věnci. Záporné číslo nebo číslo větší než světlá délka pole znamená, že okraj panelu leží na zdi (přesah 45–85 mm).</li>
+        <li>Vpravo: panel 7 650 = světle 7 400 + 2 × 125 uložení, zbylých 175 do líce zdiva je horní věnec s věncovkou.</li>
+        <li>V možnosti 2 vedou panely nad průjezdem podél domu. Jejich šířka a délka jsou napsané v panelu, uložení je 100 mm na každé stěně.</li></ul></div>
+      <div class="note risk"><strong>Co je na výkrese pracovní</strong><ul>
+        <li>Souřadnice jsou z 3D modelu a stránek půdorysů s přesností asi ±10 mm. Před objednáním je přeměřit na skutečně vyzděném 11. řádku a na věnci.</li>
+        <li>Rozdělení může výrobce optimalizovat podle svých šířek. Hrany otvoru schodiště ale musí zůstat.</li>
+        <li>Typ vyztužení panelů zvolí výrobce. Předběžně stačí na rovnoměrné zatížení nejslabší typ (PPD …/256 snese při 7,7 m asi 6 kN/m² navíc k podlaze), u panelů 04, 05, 10 a 14 se stojkami rámů a výměnami spíš vyšší typ.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Pole nad průjezdem · možnost 1, nebo 2</h2>
+    <p class="desc">Statika DSP dává nad průjezd (otvor 4,2 m) 2× IPE 240. Pod panely napříč domem nesou nosníky asi 30 kN/m od stropu, k tomu nadezdívku, krov a polovinu rámu R3. Podle mého kontrolního výpočtu tak 2× IPE 240 nevyhoví. Možnost 1 to řeší silnějším nosníkem, možnost 2 otočením panelů, takže nosník strop nenese. Výkres, výpis panelů, zatížení i množství betonu se přepínají tlačítky u výkresu S-01.</p>
+    <div class="wrap"><table class="tbl" id="tVar"></table></div>
+    <div class="notes" style="margin-top:12px">
+      <div class="note"><strong>Co z toho vychází</strong><ul>
+        <li>Obě možnosti fungují, cenový rozdíl je proti ceně stropu malý. Možnost 1 přidá asi 220 kg oceli. Možnost 2 přidá 3 panely a 3 zdvihy a místo překladu NOP nad vchodem ŽB překlad, panely jsou ale lehčí a stačí na ně nejslabší typ.</li>
+        <li>Doporučuji možnost 2, pokud ji statik schválí. Ocel ze statiky platí beze změny a nosník pod nadezdívkou se skoro neprohne, takže nadezdívka nebude praskat. Strop nad průjezdem nese stěna domu a stěna technické místnosti, které jsou nosné a mají základy.</li></ul></div>
+      <div class="note risk"><strong>Proč nestačí, že panely leží jen na vnitřním IPE</strong><ul>
+        <li>Panely leží 125 mm jen na vnitřním nosníku, nadezdívka na obou. Výpočet počítá oba IPE jako jeden spojený nosník (beton mezi stojinami, svorníky). To je pro ně nejvýhodnější případ.</li>
+        <li>Kdyby spojené nebyly, nesl by vnitřní IPE 240 panely sám a vyšel by asi na 170 %. Nosníky proto musí být spojené v obou možnostech.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Výpis panelů</h2>
+    <p class="desc">Podle zvolené možnosti nad průjezdem. Šířka 1 190 mm je celý panel Spiroll 250 (Prefa Brno, skladebně 1 200). Délky jsou zaokrouhlené na 10 mm, jak se vyrábí. Hmotnost je podle výrobce 415 kg na metr celého panelu.</p>
+    <div class="wrap"><table class="tbl" id="tPanels"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Prostupy a výřezy pro výrobní výkres</h2>
+    <p class="desc">Ze společného výkresu <a href="./rekuperace.html">P-01</a> (rekuperace, topení a voda, kanalizace, elektro), doplněné o komín a schodiště. x je kolmo na dům od vnitřního líce stěny na straně příjezdu, s je podél domu od vnitřního líce štítu A. Výrobce dělá otvory v čerstvém betonu (tolerance ±20 mm) nebo vývrty diamantem a polohu posune k nejbližší dutině. Malé vývrty Ø 20–25 mm do dutin pro stropní světla přízemí podle stránky <a href="./elektro.html">Elektro</a> jdou na stavbě a v seznamu nejsou.</p>
+    <div class="wrap"><table class="tbl" id="tPen"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Zatížení pro statický výpočet výrobce</h2>
+    <p class="desc">Výrobce počítá panely na zatížení navíc k vlastní tíze. Jeho tabulky už obsahují 1,5 kN/m² na podlahu. Bodové a liniové síly musí dostat zvlášť i s polohou. Hodnoty označené ~ jsou můj odhad pro poptávku, přesné hodnoty dá statik krovu a schodiště.</p>
+    <div class="wrap"><table class="tbl" id="tLoads"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Otvor schodiště · dvě varianty</h2>
+    <p class="desc">Schodiště je točité do U s dvěma rameny a podestou nahoře u komína (D1.3, půdorys 2NP). V podkroví potřebuje otvor x 6 095–7 700 u horních stupňů a x 5 065–7 700 nad spodním ramenem, kde musí zůstat podchodná výška. Spodní líc panelů je asi 2,69 m nad hotovou podlahou, takže nad spodním ramenem smí strop končit nejdál asi 0,9 m od prvního stupně.</p>
+    <div class="notes">
+      <div class="note"><strong>A · dvě výměny, podesta z panelu (doporučuji, je ve výkrese)</strong><ul>
+        <li>05 vede od zdi na straně příjezdu až k x 6 095 a tvoří podestu. Konec leží na VM1, výřez pro komín je z výroby.</li>
+        <li>VM1 (úhelník, rozpětí asi 0,8 m) má vpředu patku na panelu 04 a vzadu leží na stěně P9 mezi komínem a schodištěm. P9 se postaví z SOLBET nebo jako ocelový sloupek před montáží panelů.</li>
+        <li>VM2 (úhelník, rozpětí 1,6 m) má patky na panelech 05 a 08 a nese konce 06 a 07.</li>
+        <li>Žádný beton na stavbě kolem schodiště, krátké a lehké výměny, které výrobce běžně dodává. Montáž: 04, VM1, 05, 08, VM2, 06, 07.</li></ul></div>
+      <div class="note"><strong>B · jeden nosník přes celý otvor (statika DSP)</strong><ul>
+        <li>05, 06 a 07 jsou stejně dlouhé (4 890) a končí na jednom nosníku x 5 065 přes celých 2 800. Statika DSP píše HEB 140 pod konci panelů nebo konce vložené do U 300 s horní pásnicí na sousedních panelech.</li>
+        <li>Podesta u komína (x 5 065–6 100) by byla monolitická, součást ŽB schodiště, s bedněním a vlastní statikou. Uložení na nosníku a na P9.</li>
+        <li>Panely jsou jednodušší, bez výřezu pro komín. Víc práce je ale na stavbě, nosník je těžší a s podestou musí počítat ten, kdo dělá schodiště.</li></ul></div>
+      <div class="note risk"><strong>Co platí pro obě varianty</strong><ul>
+        <li>Horní konec ŽB schodiště se opře o strop u x 6 095 (A: o konec 05 a VM1). Reakci schodiště musí výrobce znát.</li>
+        <li>Zábradlí kolem otvoru kotvit z boku do čela panelů nebo do výměny, ne do dutin shora. Příčka PP7 v podkroví musí začít až za hranou otvoru (s ≥ 7 245, model má 7 230).</li>
+        <li>Komín se stropu nedotýká: spára 50 mm kolem dokola vyplněná nehořlavou minerální vlnou.</li></ul></div>
+      <div class="note risk"><strong>Proč ne jinak</strong><ul>
+        <li>Spáru nelze dát doprostřed otvoru: výřez přes víc než polovinu šířky panelu na délku 2,6 m výrobce neudělá a panel by se musel stejně podepřít.</li>
+        <li>Otvor nejde zúžit na 2 400. Hrana by byla 45 mm od osy chůze spodního ramene.</li>
+        <li>Na 3 600 ho rozšířit také nejde, vzalo by to 0,8 m prádelně 2.05 v podkroví.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Detaily</h2>
+    <p class="desc">Schematické řezy v měřítku asi 1 : 10 (spára 1 : 5). Výztuž věnců, ztužidel a DB je návrh k potvrzení statikem.</p>
+    <div class="dgrid">
+      <figure><svg id="d1"></svg><figcaption><b>D1 · Uložení na podélnou obvodovou zeď.</b> Panel leží 125 mm na dolním věnci v maltovém loži. Zbylých 175 mm do líce zdiva tvoří horní věnec s věncovkou. Na konce panelů a horní věnec se pak zdí nadezdívka.</figcaption></figure>
+      <figure><svg id="d2"></svg><figcaption><b>D2 · Ztužidlo nad stěnou mezi domem a průjezdem (možnost 1).</b> Rovnoběžná zeď panely nenese. Okraje na ní leží jen 45–85 mm, výrobce uvádí 50–100 mm, mezi nimi je ztužidlo. U štítu A je místo přesahu mezera 145 mm, bední se zespodu prknem.</figcaption></figure>
+      <figure><svg id="d3"></svg><figcaption><b>D3 · Podélná spára.</b> Zálivka spojí panely, aby spolupůsobily (soused převezme asi 15 % bodové síly). U řezané hrany musí být spára aspoň 50 mm, aby se zálivka zaklínila.</figcaption></figure>
+      <figure><svg id="d4"></svg><figcaption><b>D4 · Ocelová výměna VM2 u schodiště.</b> Úhelník visí patkami na panelech 05 a 08, konce 06 a 07 leží na jeho vodorovném rameni. Výměny se osazují až po panelech, na které se opírají.</figcaption></figure>
+      <figure><svg id="d5"></svg><figcaption><b>D5 · Průjezd, možnost 1: uložení na 2× IPE 300.</b> Dva IPE 300 vedle sebe vyplní celou tloušťku zdi. Jsou o 60 mm vyšší než věnec a spodek se schová v zateplení podhledu průjezdu. Panel leží 125 mm na vnitřním nosníku, nosníky jsou spojené svorníky.</figcaption></figure>
+      <figure><svg id="d9"></svg><figcaption><b>D9 · Průjezd, možnost 2: panely na stěně domu nad vchodem.</b> Panely průjezdu leží 100 mm na dolním věnci stěny domu, druhým koncem na stěně technické místnosti. Nad vstupními dveřmi se 11. řada a věnec vylijí najednou jako ŽB překlad 300 × 480.</figcaption></figure>
+      <figure><svg id="d6"></svg><figcaption><b>D6 · Komín a podesta, půdorys.</b> Výřez v panelu 05 je z výroby, 50 mm kolem komína. VM1 leží pod koncem 05 na stěně P9, patka VM2 je na panelu 05 hned vedle výřezu.</figcaption></figure>
+      <figure><svg id="d7"></svg><figcaption><b>D7 · Dobetonávka DB u štítu technické místnosti.</b> Pás 650 mm doplní šířku pole C a nese prostupy P1, C a E1 v chráničkách. Bední se zespodu na podpěrách. Horní výztuž se kotví do štítu, protože pás je ze štítu vyložený.</figcaption></figure>
+      <figure><svg id="d8"></svg><figcaption><b>Postup kladení.</b> Pole se kladou od kraje. U schodiště nejdřív panely, o které se výměny opírají (04, 08), pak výměny a nakonec krátké panely. Pole B a C jsou samostatná.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Beton, výztuž a ocel na stavbě</h2>
+    <p class="desc">Orientační množství pro objednávku betonu a výztuže. Profil výměn a výztuž ztužidel a DB navrhne statik, výměny obvykle dodá i výrobce panelů.</p>
+    <div class="wrap"><table class="tbl" id="tSite"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Montáž krok za krokem</h2>
+    <p class="desc">Podle montážních pokynů Prefa Brno a Prefa Praha, přizpůsobeno tomuto domu. D je den montáže panelů.</p>
+    <ol class="steps">
+      <li><strong>D −10 až −6 týdnů · poptávka.</strong> Poslat 2–3 výrobcům podklady ze seznamu níže. Spiroll 250 vyrábí Prefa Brno (závod Kuřim). Jiní výrobci mají jiné tloušťky (Prefa Praha 265, polští výrobci HC 265), výška stropu by se pak změnila o 15 mm a s ní výškový řez i schodiště. Chtít nabídku zvlášť na panely, dopravu, montáž s jeřábem, výměny, ucpávky a zálivku s věnci.</li>
+      <li><strong>D −6 až −4 týdny · výrobní výkres.</strong> Výrobce pošle kladečský plán se statikou. Zkontrolovat proti tomuto návrhu: hrany otvoru, výřez pro komín, všechny prostupy, délky, přesahy na ztužidla, typy panelů se stojkami rámů. Statik stavby potvrdí věnce, výměny, IPE a P9. Pak objednávka a termín.</li>
+      <li><strong>D −3 týdny · zdivo a P9.</strong> Dozdít 11. řadu a změřit skutečnou výšku i rozměry (úhlopříčky, rovnoběžnost podélných zdí). Ve variantě A postavit nosnou stěnu P9 až pod VM1 a nahoře ji vyrovnat betonem.</li>
+      <li><strong>D −2 týdny · dolní věnec a IPE.</strong> Osadit 2× IPE 240 nad HS a okny kuchyně. Nad průjezdem v možnosti 1 2× IPE 300, v možnosti 2 2× IPE 240, vždy spojené svorníky a na betonových polštářích. V možnosti 2 zabednit nad vstupními dveřmi ŽB překlad (11. řada a věnec). Pak vybetonovat dolní věnec po celém obvodu (místo 12. řady). Horní líc stáhnout nivelací na +2 915 ±5 mm, ať panely leží v jedné rovině. Do věnce nechat kotevní výztuž podle statika. Panely lze klást, až má věnec aspoň 70 % pevnosti (obvykle 7 dní).</li>
+      <li><strong>D −1 týden · příprava staveniště.</strong> Zpevnit příjezd pro kamion a stanoviště jeřábu, mimo zásypy rýh, šachty a potrubí. Lešení nebo ochranné zábradlí po obvodu (práce nad 1,5 m). Na věnci vyznačit osy spár podle dolní řady kót. Připravit maltu, klíny, páčidlo, hydraulický zvedák, ucpávky a výztuž.</li>
+      <li><strong>D −1 den · přejímka.</strong> Šéfmontér s tebou zkontroluje rozměry, rovinu věnce a kotevní výztuž a zapíše to do montážního deníku. Ověřit předpověď: při větru nad 10 m/s, v mlze a husté srážce se montáž přerušuje.</li>
+      <li><strong>D · montáž.</strong> Kamiony přijedou podle pořadí montáže, panely jdou přímo z návěsu na místo. Jeřáb je bere samosvornými kleštěmi, které zapůjčí výrobce. Pod každý panel se těsně předem nanese lože MC 10–30 tl. 10–15 mm. Panel se usadí, srovná páčidlem a klíny a zkontroluje se výška a spára k sousedovi. Pořadí je ve výkrese. U schodiště se ve správný okamžik osadí VM1 a VM2. Všech 16 panelů (v možnosti 2 jich je 19) a dvě výměny zvládne četa (šéfmontér, 2 montážníci, jeřábník) za půl až celý den.</li>
+      <li><strong>D +1 až +3 · výztuž a bednění.</strong> Zatlačit ucpávky do dutin na koncích panelů. Do každé podélné spáry dát výztuž zakotvenou do věnců. Vyvázat výztuž horních věnců, ztužidel Z1–Z3 a DB. Zespodu zabednit mezeru u štítu A a DB s podpěrami po ~1 m, kolem komína vložit minerální vlnu, do DB osadit chráničky P1, C a E1, u otvoru zabednit čela spár. Spáry vyčistit, nic do nich nezametat.</li>
+      <li><strong>D +3 · betonáž.</strong> Spáry navlhčit a vylít najednou s věnci, ztužidly a DB. Beton jemnozrnný (zrno do 8 mm), měkký, s plastifikátorem, asi 6 m³ z autodomíchávače s čerpadlem. Spáry zhutnit prknem, věnce a DB vibrovat. Pod +5 °C jen zimní směs, jinak betonáž odložit.</li>
+      <li><strong>D +3 až +10 · ošetřování.</strong> 2–3 dny vlhčit a zakrýt fólií, v létě chránit před vyschnutím. Strop se smí zatížit až při 70 % pevnosti zálivky, obvykle po 3–4 dnech. Palety tvárnic na nadezdívku stavět nad zdmi, ne doprostřed pole. Podpěry DB a mezery u štítu odstranit až podle statika (obvykle po 7–10 dnech).</li>
+      <li><strong>Potom.</strong> Nadezdívka, horní věnec a krov. Než bude střecha, provrtat dutiny zespodu u obou konců (Ø 10 mm), pokud odvodňovací otvory nebyly z výroby, a vodu nechat vytéct. Spáry v podhledu se nakonec přetmelí a přestěrkují. Dodatečně se vrtá jen se souhlasem výrobce, nikdy se nesekat.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Jeřáb a doprava</h2>
+    <div class="notes">
+      <div class="note"><strong>Jeřáb</strong><ul>
+        <li>Nejtěžší panel (7 650 × 1 190) má asi <span data-k="maxT">3,2</span> t, s kleštěmi asi 3,4 t.</li>
+        <li>Ze stanoviště na příjezdové straně uprostřed domu (asi 6 m od fasády) je k těžišti nejvzdálenějšího panelu asi 13–14 m. To obvykle znamená autojeřáb třídy 40–60 t. Přesný typ určí jeřábník z tabulky nosnosti podle stanoviště.</li>
+        <li>Podpěry jeřábu patří na únosný podklad s podložkami. Ne na čerstvé zásypy kanalizace, retenční nádrže, vsaku ani ČOV. Zkontrolovat vedení nad pozemkem.</li>
+        <li>Asi 18–21 zdvihů (16 nebo 19 panelů podle možnosti nad průjezdem a 2 výměny). Jeřáb se platí od příjezdu do odjezdu, proto panely jdou přímo z návěsu bez skládky.</li></ul></div>
+      <div class="note"><strong>Doprava</strong><ul>
+        <li>Celkem asi <span data-k="sumT">42</span> t, tedy dvě soupravy s návěsem 13,6 m. Panely se vozí vodorovně na prokladech v 1/10 délky od čel.</li>
+        <li>Ověřit, že k pozemku projede a otočí se kamion s návěsem. Jinak menší auta a víc jízd.</li>
+        <li>Když se přímá montáž nestihne, skládka na rovném, zpevněném a odvodněném místě, proklady nad sebou, mezi stohy průchod aspoň 0,8 m. Na panely se nestoupá.</li>
+        <li>Montáž svépomocí výrobci nedovolí. Jeho četa má kleště, oprávnění a ručí za uložení. Zálivku, věnce a bednění je možné udělat svépomocí.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Co poslat výrobci a co potvrdí statik</h2>
+    <div class="notes">
+      <div class="note"><strong>Podklady pro poptávku</strong><ol>
+        <li>Tento kladečský plán S-01 se zvolenou možností nad průjezdem a výpis panelů jako návrh skladby.</li>
+        <li>Půdorys přízemí s nosnými zdmi a otvory (<a href="./pudorys-1np.html">Půdorys 1NP</a>, A4 PDF) a podkroví s příčkami (<a href="./pudorys-2np.html">Půdorys 2NP</a>).</li>
+        <li>Výškový řez: uložení na ŽB věnec, spodek panelů +2 925, maltové lože 10 mm.</li>
+        <li>Seznam prostupů a výřezů z této stránky a výkres P-01.</li>
+        <li>Zatížení z tabulky, hlavně stojky rámů R1–R3, příčky podkroví a schodiště.</li>
+        <li>Panely nad průjezdem mají spodní líc venku (zateplený). Výrobce ověří prostředí a krytí lan.</li>
+        <li>Požadovaná požární odolnost (doplnit podle požárního specialisty).</li>
+        <li>Odvodňovací otvory z výroby, ucpávky dutin, výměny VM1 a VM2 s patkami, zapůjčení kleští.</li>
+        <li>Adresa, přístup pro kamion, předpokládaný termín, montáž s jeřábem ano.</li></ol></div>
+      <div class="note"><strong>Otázky na statika (Ing. Khol)</strong><ol>
+        <li>Nad průjezdem: možnost 1 (panely napříč, 2× IPE 300 místo 240, protože 2× IPE 240 mi s panely vychází na 99–106 % a L/250), nebo možnost 2 (panely podél průjezdu, IPE 240 zůstane, stěny k průjezdu nosné a ŽB překlad nad vchodem)?</li>
+        <li>Varianta schodiště A (VM1, VM2, nosná P9), nebo B (HEB 140 / U 300 a monolitická podesta)?</li>
+        <li>Stojky rámů R1–R3 na panelech: roznášecí prvek? U R1 sedí stojky 70 mm od spáry 04 | 05.</li>
+        <li>Výztuž horních věnců, ztužidel Z1–Z3 a DB, kotvení spár, odstranění podpěr.</li>
+        <li>Kotvení horního konce ŽB schodiště do stropu.</li>
+        <li>Dolní věnec: výztuž a napojení na IPE (už otevřené na stránce Výškový řez).</li>
+        <li>Platí statika i s taškami místo plechu (krov +0,5 kN/m²)?</li></ol></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Návaznosti a rizika</h2>
+    <div class="notes">
+      <div class="note"><strong>Návaznosti na ostatní stránky</strong><ul>
+        <li><a href="./rez-vyska.html">Výškový řez</a>: dolní věnec místo 12. řady a IPE ve věnci platí. Plán počítá s variantou A (panely +2 925, podlaha podkroví +3 085 od ±0). Nad průjezdem v možnosti 1 IPE 300, spodek o 60 mm níž.</li>
+        <li><a href="./krov.html">Krov</a>: rámy R1 (s 4 365), R2 (10 010) a R3 (14 305) mají stojky v příčkách chodby, x 3 415 a 4 675.</li>
+        <li><a href="./rekuperace.html">Rekuperace</a>, <a href="./vytapeni.html">Topení</a>, <a href="./voda.html">Voda</a>, <a href="./elektro.html">Elektro</a> a <a href="./kanalizace.html">Kanalizace</a>: prostupy beze změny, jen S2 a V3 se posouvají do společného výřezu ve spáře 05 | 06 (S2 o 110 mm ke V3).</li>
+        <li><a href="./pudorys-2np.html">Půdorys 2NP</a>: hrana otvoru schodiště 7 245 místo 7 230 a zábradlí podél x 5 065.</li></ul></div>
+      <div class="note risk"><strong>Rizika</strong><ul>
+        <li>Rovina věnce. Rozdíly nad ±5 mm se projeví schodem mezi panely, a tím v potěru i ve stěrce podhledu.</li>
+        <li>Vzepětí. Předpjaté panely jsou uprostřed nadzvednuté o několik mm až cm. Sousední panely se mohou lišit až o 10 mm. Krátké panely u schodiště budou rovnější než dlouhé, rozdíl vyrovná potěr. V podhledu pomůže stěrka.</li>
+        <li>Voda v dutinách. Bez odvodnění vytéká ještě po měsících a ničí omítky.</li>
+        <li>Dodatečné otvory. Vrt, který přesekne lano, panel oslabí a výrobce za něj neručí.</li></ul></div>
+    </div>
+  </section>
+
+  <footer>Pracovní návrh kladečského plánu podle 3D studie v09, DSP a statiky. Není to výrobní dokumentace: rozdělení, typy panelů, výřezy a výměny určí výrobce svým výpočtem a potvrdí statik stavby. Zdroje: SPIROLL uživatelská příručka (Prefa Brno a.s.), Všeobecný technický list PSP (Prefa Praha a.s.).</footer>
+</main>
+
+<script>
+(function(){
+'use strict';
+const D=window.Dum,PAL=D.PAL,el=D.el,M=v=>v/1000;
+const nb=v=>Math.round(v).toLocaleString('cs-CZ');
+const f1=v=>v.toLocaleString('cs-CZ',{minimumFractionDigits:1,maximumFractionDigits:1});
+const f2=v=>v.toLocaleString('cs-CZ',{minimumFractionDigits:2,maximumFractionDigits:2});
+const WHO={vzt:['#2a6fd6','rekuperace'],top:['#c0392b','topení a voda'],kan:['#2f8a4c','kanalizace'],ele:['#8e44ad','elektro']};
+const C={panel:'#eceee9',cut:'#e2e8f2',edge:'#34413a',conc:'#f6e2c7',concEdge:'#c79a5a',plate:'#e3ddd0',load:'#b0303a',ord:'#264b39',part:'#8e74ad'};
+
+// ---------------------------------------------------------------- geometry (mm)
+// x across the house from the outer masonry face on the driveway side (inner faces 300 and 7 700),
+// s along the house from the outer face of the front gable A (inner face 300). Same frame as the 3D model and P-01.
+// Field B over the passage has two options. 1: panels across the house on 2× IPE 300 (2× IPE 240 from the structural
+// report fails with the panel load). 2: panels along the house between the house wall and the plant-room wall (span 4.3 m),
+// the lintels keep 2× IPE 240 and carry only the knee wall and the roof.
+const LT=.415;                                   // t per metre of a full 1 190 mm Spiroll 250 panel
+const FIELD_A=[
+ {id:'01',s0:445,s1:835,cut:1,ord:1,note:'řezaná hrana ke štítu A, mezera 145 → ztužidlo Z1'},
+ {id:'02',s0:845,s1:2035,ord:2},
+ {id:'03',s0:2045,s1:3235,ord:3},
+ {id:'04',s0:3245,s1:4435,ord:4,note:'nese patku VM1 a příčku PP1, stojky R1 jsou u spáry s 05'},
+ {id:'05',s0:4445,s1:5635,x1:6095,ord:5,note:'podesta u komína, konec na VM1, nese patku VM2'},
+ {id:'06',s0:5645,s1:6835,x1:5065,ord:7,note:'konec na VM2'},
+ {id:'07',s0:6845,s1:7195,x1:5065,cut:1,ord:8,note:'konec na VM2, spára 50 k panelu 08'},
+ {id:'08',s0:7245,s1:8185,cut:1,ord:6,note:'řezaná hrana k otvoru, nese patku VM2 a příčku PP7'},
+ {id:'09',s0:8195,s1:9385,ord:9},
+ {id:'10',s0:9395,s1:10585,ord:10},
+ {id:'11',s0:10595,s1:11785,ord:11,note:'přesah 85 na stěnu k průjezdu'}].map(p=>({...p,f:'A'}));
+const FIELD_B={
+ 1:[{s0:11955,s1:12645,cut:1,note:'řezaná hrana na stěnu k průjezdu, přesah 45'},{s0:12655,s1:13845},{s0:13855,s1:15045},{s0:15055,s1:16245,note:'přesah 45 na stěnu technické místnosti'}],
+ 2:[{x0:205,x1:1395,note:'podél průjezdu, okraj 95 mm na linii IPE u příjezdu'},{x0:1405,x1:2595,note:'podél průjezdu'},{x0:2605,x1:3795,note:'podél průjezdu'},{x0:3805,x1:4995,note:'podél průjezdu'},
+  {x0:5005,x1:6195,note:'podél průjezdu'},{x0:6205,x1:7395,note:'podél průjezdu'},{x0:7405,x1:7795,cut:1,note:'podél průjezdu, řezaná hrana k linii IPE u HS, okraj 95 mm na ní'}].map(p=>({...p,dir:'s',s0:11900,s1:16300}))};
+const FIELD_C={s0:16455,s1:17645,note:'přesah 45 na stěnu technické místnosti, spára s DB'};
+function build(v){
+ const list=[...FIELD_A.map(p=>({...p})),...FIELD_B[v].map(p=>({...p,f:'B'})),{...FIELD_C,f:'C'}];
+ list.forEach((p,i)=>{p.id=p.id||String(i+1).padStart(2,'0');p.ord=p.ord||i+1;p.dir=p.dir||'x';
+  if(p.dir==='x'){p.x0=p.x0||175;p.x1=p.x1||7825;p.w=p.s1-p.s0;p.L=p.x1-p.x0;}else{p.w=p.x1-p.x0;p.L=p.s1-p.s0;}
+  p.t=LT*p.L/1000*p.w/1190;p.a=p.w*p.L/1e6;});
+ return list;}
+const bands=v=>[
+ {id:'Z1',t:'ztužidlo u štítu A',s:[50,445]},
+ {id:'Z2',t:'ztužidlo nad stěnou domu k průjezdu',s:v===1?[11785,11955]:[11785,11900]},
+ {id:'Z3',t:'ztužidlo nad stěnou technické místnosti',s:v===1?[16245,16455]:[16300,16455]},
+ {id:'DB',t:'dobetonávka u štítu technické místnosti',s:[17645,18550]}];
+// Check of the lintels over the passage (my estimate, snow zone III–IV, snow guards): utilisation and deflection.
+const IPE={1:{p:'2× IPE 300',u:'~60 %',d:'L/520'},2:{p:'2× IPE 240',u:'~35 %',d:'L/730'},fail:{p:'2× IPE 240',u:'99–106 %',d:'L/250'}};
+let VB=new URLSearchParams(location.search).get('pruchod')==='2'?2:1,PANELS=build(VB),BANDS=bands(VB);
+const FIELD={A:'hlavní dům',B:'nad průjezdem',C:'technická m.'};
+const OPEN=[[6095,4445],[7700,4445],[7700,7245],[5065,7245],[5065,5635],[6095,5635]];   // stair opening [x,s]
+const NOTCH_CH=[5070,5550,5150,5635];            // chimney cut-out in 05 [x0,x1,s0,s1], 50 mm around the chimney
+const CHIM=[5120,5500,5200,5600];
+const NOTCH_SV=[380,620,5440,5840];              // shared cut-out for S2 + V3 in the joint 05|06
+const VM1={x:[5995,6105],s:[4440,5635],pad:[4290,4440]};
+const VM2={x:[4965,5077],s:[5640,7240],pads:[[5495,5700],[7180,7385]]};
+const P9=[5950,6100,5200,5950];
+const LEGS=[3415,4675];                          // frame legs in the corridor partitions PP4 and PP6
+// Penetrations from P-01 (schema.js) in mm; S2 and V3 move into the shared cut-out in the joint 05|06.
+const MOVE={S2:[5740,500],V3:[5540,500]};
+const PEN=D.PEN.map(p=>{const m=MOVE[p.id],at=m?m:[p.at[0]*1000,p.at[1]*1000];return {...p,s:at[0],x:at[1],moved:!!m};});
+
+const inPanel=(s,x)=>PANELS.find(p=>s>=p.s0&&s<=p.s1&&x>=p.x0&&x<=p.x1);
+const inBand=s=>BANDS.find(b=>s>=b.s[0]&&s<=b.s[1]);
+
+// ---------------------------------------------------------------- S-01 plan
+function planS01(svg){
+ const g=D.plan(svg,{title:'Kladečský plán stropních panelů nad přízemím',sub:`Pohled shora na strop, panely Spiroll 250 mm. Nad průjezdem možnost ${VB}: ${VB===1?'panely napříč domem na 2× IPE 300.':'panely podél průjezdu mezi stěnami, 2× IPE 240 nese jen nadezdívku a krov.'}`,code:'S-01'});
+ const X=D.PX.X,Y=D.PX.Y,K=D.PX.K,defs=svg.querySelector('defs'),id=svg.id;
+ {const p=el(defs,'pattern',{id:`${id}-conc`,width:7,height:7,patternUnits:'userSpaceOnUse'});el(p,'rect',{width:7,height:7,fill:C.conc});el(p,'circle',{cx:2,cy:2,r:.8,fill:'#d4ad78'});el(p,'circle',{cx:5.5,cy:5,r:.6,fill:'#d4ad78'});}
+ const R=(x0,x1,s0,s1,a)=>g.rect(M(x0),M(x1),M(s0),M(s1),a);
+ const T=(s,x,t,a={})=>g.text(M(s),M(x),t,a);
+ const rot=(s,x)=>`rotate(-90 ${X(M(s))} ${Y(M(x))})`;
+ // walls under the slab, passage outline
+ g.rect(-.2,8.2,12.2,16.0,{fill:'#f3f4f1',stroke:PAL.epsEdge,'stroke-dasharray':'5 4'});
+ D.shell(g,[-.2,8.2,-.2,12.2],{fade:true});D.shell(g,[-.2,8.2,16.0,18.8],{fade:true});
+ // slab: věncovka at the outer face, everything else cast on site unless a panel covers it
+ R(0,8000,0,18600,{fill:C.plate,stroke:'#9a8f7b','stroke-width':.8});
+ R(50,7950,50,18550,{fill:`url(#${id}-conc)`,stroke:C.concEdge,'stroke-width':.8});
+ // stair opening
+ g.poly(OPEN.map(([x,s])=>[M(s),M(x)]),{fill:'#fff'});g.poly(OPEN.map(([x,s])=>[M(s),M(x)]),{fill:g.url('h'),stroke:C.edge,'stroke-width':1.3});
+ // panels
+ for(const p of PANELS){R(p.x0,p.x1,p.s0,p.s1,{fill:p.cut?C.cut:C.panel,stroke:C.edge,'stroke-width':1.1});
+  g.line(p.dir==='x'?[[M(p.s0),M(p.x0)],[M(p.s1),M(p.x1)]]:[[M(p.s0),M(p.x1)],[M(p.s1),M(p.x0)]],'#b3bcb6',.7);}
+ // cut-outs: chimney with mineral wool, S2 + V3 in the joint
+ R(...NOTCH_CH,{fill:'#fff',stroke:C.edge,'stroke-width':1});R(...NOTCH_CH,{fill:g.url('ins')});R(...CHIM,{fill:'#7b5a46'});
+ R(...NOTCH_SV,{fill:'#fff',stroke:C.edge,'stroke-width':.9,'stroke-dasharray':'3 2'});
+ // krb below (hidden), P9 below, steel under the panels
+ R(5100,6100,3850,5200,{fill:'none',stroke:'#8d958f','stroke-width':.8,'stroke-dasharray':'2 3'});T(4100,5600,'krb (pod stropem)',{'font-size':8.5,fill:PAL.sub});
+ R(...P9,{fill:'#d8d0c2','fill-opacity':.7,stroke:'#7d746a','stroke-width':.9,'stroke-dasharray':'3 2'});
+ const steel={fill:PAL.steel,'fill-opacity':.22,stroke:PAL.steel,'stroke-width':1.5,'stroke-dasharray':'5 3'};
+ R(VM1.x[0],VM1.x[1],VM1.s[0],VM1.s[1],steel);R(VM1.x[0],VM1.x[1],VM1.pad[0],VM1.pad[1],{fill:PAL.steel});
+ R(VM2.x[0],VM2.x[1],VM2.s[0],VM2.s[1],steel);for(const [a,b] of VM2.pads)R(VM2.x[0],5065,a,b,{fill:PAL.steel});
+ // steel in the lower ring beam: 3 m openings in the long walls, the passage; the entrance lintel in option 2
+ const lint=[...D.OPEN.g.filter(o=>(o[0]==='k'||o[0]==='t')&&o[2]-o[1]>=2.5).map(o=>[o[0],o[1]*1000-300,o[2]*1000+300,'2× IPE 240']),
+  ...['k','t'].map(sd=>[sd,11700,16500,VB===1?'2× IPE 300 (návrh místo 240)':'2× IPE 240 (jen nadezdívka a krov)'])];
+ for(const [side,a,b,txt] of lint){for(const x of side==='k'?[70,230]:[7770,7930])g.line([[M(a),M(x)],[M(b),M(x)]],PAL.steel,a>11000&&VB===1?2.8:2,{'stroke-dasharray':'8 4'});
+  T(a+120,side==='k'?-90:8090,txt,{'font-size':8.5,fill:PAL.steel,'font-weight':700,'text-anchor':'start'});}
+ if(VB===2){R(2950,5250,11700,12000,{fill:'none',stroke:'#8a5a17','stroke-width':1.6,'stroke-dasharray':'6 3'});
+  T(11600,4100,'ŽB překlad nad vchodem',{'font-size':8.5,'font-weight':700,fill:'#8a5a17',transform:rot(11600,4100)});}
+ // attic partitions (D1.3) standing on the slab
+ for(const [x0,x1,z0,z1] of D.PARTS.d13)g.rect(x0,x1,z0,z1,{fill:C.part,'fill-opacity':.16,stroke:C.part,'stroke-width':.6});
+ // penetrations
+ for(const p of PEN){const c=WHO[p.who][0],r=Math.max(4.2,p.d/2*K);g.circle(M(p.s),M(p.x),r,{fill:'#fff',stroke:c,'stroke-width':2.2});
+  g.line([[M(p.s)-.12,M(p.x)],[M(p.s)+.12,M(p.x)]],c,.7);g.line([[M(p.s),M(p.x)-.12],[M(p.s),M(p.x)+.12]],c,.7);}
+ const lab=(s,x,t,c,anc='start')=>T(s,x,t,{'font-size':10,'font-weight':800,fill:c,'text-anchor':anc});
+ const seen=new Set();for(const p of PEN){if(seen.has(p.id)||p.moved)continue;seen.add(p.id);const c=WHO[p.who][0];
+  if(p.s>17500)lab(p.s-170,p.id==='P1'?3940:p.x+40,p.id,c,'end');
+  else if(p.id==='P2')lab(p.s+100,p.x+250,p.id,c,'middle');
+  else if(p.x>7000)lab(p.s-140,p.x+40,p.id,c,'end');
+  else if(p.x<1000)lab(p.s,p.x-170,p.id,c,'middle');
+  else lab(p.s+150,p.x+40,p.id,c);}
+ // frames of the roof: legs stand on the panels
+ for(const [n,z] of D.FRAMES){const s=z*1000;g.line([[M(s),M(LEGS[0])],[M(s),M(LEGS[1])]],PAL.steel,1.4,{'stroke-dasharray':'6 3'});
+  for(const x of LEGS){const cx=X(M(s)),cy=Y(M(x));el(svg,'path',{d:`M${cx-6} ${cy-5}L${cx+6} ${cy-5}L${cx} ${cy+6}Z`,fill:C.load,stroke:'#fff','stroke-width':1});}
+  T(s+130,4045,n,{'font-size':9.5,'font-weight':800,fill:C.load,'text-anchor':'start'});}
+ // panel tags, sizes, laying order
+ const tag=(s,x,t,r,fs)=>{g.circle(M(s),M(x),r,{fill:'#fff',stroke:C.edge,'stroke-width':1.4});el(svg,'text',{x:X(M(s)),y:Y(M(x))+3.8,'text-anchor':'middle','font-size':fs,'font-weight':800,fill:C.edge},t);};
+ const ordTag=(s,x,t)=>{el(svg,'rect',{x:X(M(s))-7.5,y:Y(M(x))-7.5,width:15,height:15,rx:3,fill:C.ord});el(svg,'text',{x:X(M(s)),y:Y(M(x))+3.6,'text-anchor':'middle','font-size':9,'font-weight':800,fill:'#fff'},t);};
+ for(const p of PANELS){const sc=(p.s0+p.s1)/2,xc=(p.x0+p.x1)/2,small=p.w<500;
+  if(p.dir==='x'){tag(sc,980,p.id,small?8.5:10.5,small?9:10.5);T(sc,1900,nb(p.L),{'font-size':10,fill:C.edge,transform:rot(sc,1900)});ordTag(sc,p.x1>7000?7300:p.x1-900,p.ord);}
+  else{tag(p.s0+480,xc,p.id,small?8.5:10.5,small?9:10.5);T(p.s0+800,xc+(small?40:60),`${nb(p.w)} × ${nb(p.L)}`,{'font-size':small?8.5:9.5,fill:C.edge,'text-anchor':'start'});ordTag(p.s1-420,xc,p.ord);}}
+ // labels of the cast and steel parts
+ T(6650,6500,'otvor schodiště',{'font-size':10.5,'font-weight':700,fill:PAL.ink});T(6650,6780,'2 800 × 2 635 / 1 605',{'font-size':9,fill:PAL.sub});
+ T(5050,6420,'VM1',{'font-size':9.5,'font-weight':800,fill:PAL.steel});T(6450,4790,'VM2',{'font-size':9.5,'font-weight':800,fill:PAL.steel});
+ T(5575,6280,'P9',{'font-size':8.5,'font-weight':700,fill:'#6d6459','text-anchor':'start'});
+ T(5640,250,'S2+V3',{'font-size':8,fill:WHO.kan[0],'font-weight':700});
+ for(const b of BANDS){const sc=(b.s[0]+b.s[1])/2;T(sc,b.id==='DB'?6200:6600,b.id,{'font-size':9.5,'font-weight':800,fill:'#8a5a17',transform:rot(sc,b.id==='DB'?6200:6600)});}
+ // detail callouts
+ const call=(s,x,t)=>{g.circle(M(s),M(x),10.5,{fill:'#fffdf6',stroke:'#8a5a17','stroke-width':1.3});el(svg,'text',{x:X(M(s)),y:Y(M(x))+3.6,'text-anchor':'middle','font-size':9,'font-weight':800,fill:'#8a5a17'},t);};
+ call(2640,-30,'D1');call(3240,5200,'D3');call(6440,5300,'D4');call(5380,4700,'D6');call(18080,1100,'D7');
+ if(VB===1){call(11870,1900,'D2');call(14400,7980,'D5');}else call(11850,5700,'D9');
+ // dimensions: fields (top), panel widths (second row), joint axes (bottom), across (right)
+ const tick=(s,x)=>g.line([[M(s)-.07,M(x)+.07],[M(s)+.07,M(x)-.07]],PAL.ink,1.1);
+ const row1=-690,faces=[0,300,11700,12000,16200,16500,18300,18600];
+ g.line([[0,M(row1)],[18.6,M(row1)]],PAL.ink,.7);faces.forEach(s=>tick(s,row1));
+ const fl=['300','11 400 · pole A · hlavní dům','300','4 200 · pole B · průjezd','300','1 800 · C','300'];
+ for(let i=1;i<faces.length;i++)T((faces[i]+faces[i-1])/2,row1-60,fl[i-1],{'font-size':9.5,fill:PAL.ink});
+ const row2=-420,PX_=PANELS.filter(p=>p.dir==='x');g.line([[0,M(row2)],[18.6,M(row2)]],PAL.faint,.6);
+ for(const p of PX_){tick(p.s0,row2);tick(p.s1,row2);T((p.s0+p.s1)/2,row2-55,nb(p.w),{'font-size':8.8,fill:p.cut?'#2f5d9a':PAL.ink,'font-weight':p.cut?700:400});}
+ if(VB===2){tick(11900,row2);tick(16300,row2);T(14100,row2-55,'panely podél, délka 4 400',{'font-size':8.8,fill:PAL.ink});}
+ for(const b of BANDS){T((b.s[0]+b.s[1])/2,row2-55,b.id==='DB'?'650 DB':b.id==='Z1'?'145':'',{'font-size':8,fill:'#8a5a17'});}
+ const row3=8470,axes=[],ref={A:300,B:12000,C:16500};
+ for(let i=0;i<PX_.length;i++){const p=PX_[i],n=PX_[i+1];if(i===0||PX_[i-1].f!==p.f)axes.push([p.s0,p.f]);if(n&&n.f===p.f)axes.push([(p.s1+n.s0)/2,p.f]);else axes.push([p.s1,p.f]);}
+ if(VB===2)axes.push([11900,'B'],[16300,'B']);
+ g.line([[0,M(row3)],[18.6,M(row3)]],PAL.faint,.6);
+ for(const [s,f] of axes){tick(s,row3);T(s,row3+150,nb(s-ref[f]),{'font-size':8,fill:PAL.ink,transform:rot(s,row3+150),'text-anchor':'end'});}
+ const vd=(zs,list,labels)=>{const z=zs;g.line([[z,M(list[0])],[z,M(list[list.length-1])]],PAL.ink,.7);for(const x of list)g.line([[z-.07,M(x)+.07],[z+.07,M(x)-.07]],PAL.ink,1.1);
+  for(let i=1;i<list.length;i++){const xm=(list[i]+list[i-1])/2;g.text(z-.09,M(xm),labels[i-1],{'font-size':9,fill:PAL.ink,transform:`rotate(-90 ${X(z-.09)} ${Y(M(xm))})`});}};
+ vd(19.12,[0,175,7825,8000],['175','panel 7 650','175']);vd(19.5,[0,300,7700,8000],['300','světle 7 400','300']);
+ D.finish(g,[{k:'fill',c:C.edge,f:C.panel,t:'panel Spiroll 250, šířka 1 190'},{k:'fill',c:C.edge,f:C.cut,t:'panel podélně řezaný'},{k:'fill',c:C.concEdge,f:C.conc,t:'beton na stavbě: věnce, Z1–Z3, DB'},
+  {k:'fill',c:'#9a8f7b',f:C.plate,t:'věncovka 50 mm (ztracené bednění)'},{k:'dash',c:PAL.steel,w:3,t:'ocel pod panely: VM1, VM2, 2× IPE'},
+  {k:'fill',c:C.part,f:'#e5ddef',t:'příčky podkroví (zatížení stropu)'},{k:'tag',c:C.load,s:'▼',t:'stojka rámu krovu R1–R3'},{k:'tag',c:C.ord,s:'5',t:'pořadí montáže'},
+  {k:'disc',c:WHO.vzt[0],t:'prostup rekuperace'},{k:'disc',c:WHO.top[0],t:'topení, voda, data'},{k:'disc',c:WHO.kan[0],t:'kanalizace'},{k:'disc',c:WHO.ele[0],t:'elektro'}],
+  {title:'Kladečský plán stropu',sub:`návrh · schodiště A · průjezd ${VB}`,code:'S-01'});
+ T(200,row3+150,'osy spár od líce',{'font-size':8,fill:PAL.sub,transform:rot(200,row3+150),'text-anchor':'end'});
+}
+
+// ---------------------------------------------------------------- detail kit
+// Section sheets in millimetres: X(h) horizontal, Y(v) vertical upwards. Labels sit in a column on the right.
+function sheet(svg,o){svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${o.w} ${o.h}`);const id=svg.id,d=el(svg,'defs');
+ const pat=(n,w,h,tr,fn)=>{const p=el(d,'pattern',{id:`${id}-${n}`,width:w,height:h,patternUnits:'userSpaceOnUse',patternTransform:tr});fn(p);};
+ pat('aac',7,7,'rotate(45)',p=>{el(p,'rect',{width:7,height:7,fill:'#ede7db'});el(p,'line',{x1:0,y1:0,x2:0,y2:7,stroke:'#cfc2a9','stroke-width':1.1});});
+ pat('conc',7,7,null,p=>{el(p,'rect',{width:7,height:7,fill:'#f3e3cc'});el(p,'circle',{cx:2,cy:2,r:.8,fill:'#b99a6c'});el(p,'circle',{cx:5.4,cy:5.2,r:.6,fill:'#b99a6c'});el(p,'path',{d:'M4 1.2l1 1.6h-2z',fill:'#c8ab80'});});
+ pat('eps',6,6,null,p=>{el(p,'rect',{width:6,height:6,fill:'#f6f7f3'});el(p,'circle',{cx:3,cy:3,r:.7,fill:'#c2cac4'});});
+ pat('ins',7,7,'rotate(-45)',p=>{el(p,'rect',{width:7,height:7,fill:'#fbf3dc'});el(p,'line',{x1:0,y1:0,x2:0,y2:7,stroke:'#e2c98a','stroke-width':2.2});});
+ pat('pir',6,6,'rotate(45)',p=>{el(p,'rect',{width:6,height:6,fill:'#fff6c8'});el(p,'line',{x1:0,y1:0,x2:0,y2:6,stroke:'#e6d37a','stroke-width':1});});
+ pat('scr',5,5,null,p=>{el(p,'rect',{width:5,height:5,fill:'#e9e9e4'});el(p,'circle',{cx:1.5,cy:1.5,r:.5,fill:'#a9aaa2'});el(p,'circle',{cx:4,cy:3.8,r:.4,fill:'#a9aaa2'});});
+ pat('wood',10,4,null,p=>{el(p,'rect',{width:10,height:4,fill:'#dcbc8c'});el(p,'line',{x1:0,y1:2,x2:10,y2:2,stroke:'#c49a64','stroke-width':.6});});
+ pat('hatch',6,6,'rotate(45)',p=>{el(p,'rect',{width:6,height:6,fill:'#fff'});el(p,'line',{x1:0,y1:0,x2:0,y2:6,stroke:'#d0d6d1','stroke-width':1.2});});
+ el(svg,'rect',{x:3,y:3,width:o.w-6,height:o.h-6,rx:8,fill:'#fff',stroke:PAL.frame,'stroke-width':1.1});
+ el(svg,'text',{x:20,y:30,'font-size':15,'font-weight':800,fill:PAL.ink},o.title);
+ if(o.sub)el(svg,'text',{x:20,y:48,'font-size':10.5,fill:PAL.sub},o.sub);
+ el(svg,'rect',{x:o.w-66,y:14,width:50,height:24,rx:5,fill:'#8a5a17'});el(svg,'text',{x:o.w-41,y:31,'text-anchor':'middle','font-size':12.5,'font-weight':800,fill:'#fff'},o.code);
+ const k=o.k,X=h=>o.flip?o.ox-(h-o.h0)*k:o.ox+(h-o.h0)*k,Y=v=>o.oy-(v-o.v0)*k,u=n=>`url(#${id}-${n})`;
+ const S={svg,X,Y,k,u};
+ S.R=(h0,v0,h1,v1,a={})=>el(svg,'rect',Object.assign({x:Math.min(X(h0),X(h1)),y:Y(Math.max(v0,v1)),width:Math.abs(h1-h0)*k,height:Math.abs(v1-v0)*k},a));
+ S.P=(pts,a={})=>el(svg,'polygon',Object.assign({points:pts.map(([h,v])=>X(h).toFixed(1)+','+Y(v).toFixed(1)).join(' ')},a));
+ S.L=(pts,c='#33413a',w=1,a={})=>el(svg,'polyline',Object.assign({points:pts.map(([h,v])=>X(h).toFixed(1)+','+Y(v).toFixed(1)).join(' '),fill:'none',stroke:c,'stroke-width':w,'stroke-linejoin':'round'},a));
+ S.C=(h,v,r,a={})=>el(svg,'circle',Object.assign({cx:X(h),cy:Y(v),r:r*k},a));
+ S.bar=(h,v)=>el(svg,'circle',{cx:X(h),cy:Y(v),r:Math.max(2.2,6*k),fill:'#2d2d2d'});
+ S.T=(x,y,t,a={})=>el(svg,'text',Object.assign({x,y,'font-size':10,fill:PAL.txt,'paint-order':'stroke',stroke:'#fff','stroke-width':3,'stroke-linejoin':'round'},a),t);
+ // leader from a point in mm to a label line in px (labels may be arrays of lines)
+ S.lab=(h,v,lx,ly,t)=>{const px=X(h),py=Y(v);el(svg,'circle',{cx:px,cy:py,r:2.2,fill:'#3a4740'});el(svg,'polyline',{points:`${px},${py} ${lx-6},${ly-3.5} ${lx-2},${ly-3.5}`,fill:'none',stroke:'#3a4740','stroke-width':.7});
+  (Array.isArray(t)?t:[t]).forEach((s,i)=>el(svg,'text',{x:lx,y:ly+i*12,'font-size':10,fill:PAL.txt,'paint-order':'stroke',stroke:'#fff','stroke-width':3,'stroke-linejoin':'round'},s));};
+ S.dimH=(h0,h1,v,t,dy=-4)=>{S.L([[h0,v],[h1,v]],'#55625a',.7);for(const h of [h0,h1]){const x=X(h),y=Y(v);el(svg,'line',{x1:x-3.5,y1:y+3.5,x2:x+3.5,y2:y-3.5,stroke:'#55625a','stroke-width':1});}
+  S.T((X(h0)+X(h1))/2,Y(v)+dy,t,{'text-anchor':'middle','font-size':9});};
+ S.dimV=(v0,v1,h,t)=>{S.L([[h,v0],[h,v1]],'#55625a',.7);for(const v of [v0,v1]){const x=X(h),y=Y(v);el(svg,'line',{x1:x-3.5,y1:y+3.5,x2:x+3.5,y2:y-3.5,stroke:'#55625a','stroke-width':1});}
+  const x=X(h)-4,y=(Y(v0)+Y(v1))/2;S.T(x,y,t,{'text-anchor':'middle','font-size':9,transform:`rotate(-90 ${x} ${y})`});};
+ // vertical chain of levels at px x, labels to the left
+ S.levels=(x,list)=>{const ys=list.map(([v])=>Y(v));el(svg,'line',{x1:x,y1:Math.min(...ys),x2:x,y2:Math.max(...ys),stroke:'#55625a','stroke-width':.7});
+  list.forEach(([v,t],i)=>{const y=Y(v);el(svg,'path',{d:`M${x} ${y}l-4 -6h8z`,fill:'#55625a'});S.T(x-7,y+3.5+(list[i].dy||0),t,{'font-size':9,'text-anchor':'end'});});};
+ S.brk=(h,v0,v1)=>{const x=X(h),y0=Y(v1),y1=Y(v0),m=(y0+y1)/2;el(svg,'polyline',{points:`${x},${y0-6} ${x},${m-7} ${x-5},${m-2} ${x+5},${m+2} ${x},${m+7} ${x},${y1+6}`,fill:'none',stroke:'#33413a','stroke-width':.9});};
+ // precast panel cut along its span (shows one core), cut across (shows cores)
+ S.panelLong=(h0,h1,v0,endPlug)=>{S.R(h0,v0,h1,v0+250,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});S.R(h0,v0+38,h1,v0+212,{fill:'#fff',stroke:'#7f8b84','stroke-width':.6,'stroke-dasharray':'4 3'});
+  if(endPlug!=null){const e=endPlug,dir=e<(h0+h1)/2?1:-1;S.R(e,v0+38,e+dir*50,v0+212,{fill:u('conc'),stroke:'none'});S.R(e+dir*50,v0+38,e+dir*62,v0+212,{fill:'#6f7a74'});}};
+ S.panelCross=(h0,h1,v0,cores,a={})=>{S.R(h0,v0,h1,v0+250,Object.assign({fill:'#dcdfdb',stroke:'#34413a','stroke-width':1},a));for(const c of cores)S.C(c,v0+125,80,{fill:'#fff',stroke:'#7f8b84','stroke-width':.7,'stroke-dasharray':a['stroke-dasharray']||null});};
+ S.floor=(h0,h1,v0,edge)=>{if(edge!=null)S.R(edge,v0,edge+10,v0+150,{fill:'#d9d9ef'});const a=edge!=null?edge+10:h0;
+  S.R(a,v0,h1,v0+50,{fill:u('eps'),stroke:'#b9c2bc','stroke-width':.5});S.R(a,v0+50,h1,v0+82,{fill:'#cfdbe7',stroke:'#9fb0c0','stroke-width':.5});
+  for(let h=a+90;h<h1-20;h+=150)S.C(h,v0+66,8.5,{fill:'#fff',stroke:'#c0392b','stroke-width':.9});
+  S.R(a,v0+82,h1,v0+132,{fill:u('scr'),stroke:'#a9aaa2','stroke-width':.5});S.R(a,v0+132,h1,v0+150,{fill:u('wood'),stroke:'#b0864f','stroke-width':.5});};
+ return S;}
+
+// D1 · bearing on a long external wall
+function d1(svg){const S=sheet(svg,{w:660,h:470,title:'D1 · Uložení na podélnou obvodovou zeď',sub:'řez kolmo na zeď, výšky od hrubé desky (varianta A)',code:'D1',k:.3,ox:440,oy:420,h0:-200,v0:2400,flip:1});
+ const {R,L}=S,E=850;
+ R(-200,2400,0,3480,{fill:S.u('eps'),stroke:'#b9c2bc'});
+ R(0,2400,300,2433,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(0,2435,300,2675,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});
+ R(0,2675,300,2915,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});R(30,2705,270,2885,{fill:'none',stroke:'#555','stroke-width':.7});for(const [h,v] of [[45,2720],[255,2720],[45,2870],[255,2870]])S.bar(h,v);
+ R(0,2915,50,3175,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(50,2915,175,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});S.bar(112,2965);S.bar(112,3125);
+ R(175,2915,300,2925,{fill:'#8d8679'});
+ S.panelLong(175,E,2925,175);S.brk(E,2925,3175);
+ L([[E,3075],[105,3075],[105,2990]],'#2d2d2d',1.1,{'stroke-dasharray':'6 3'});
+ R(0,3175,300,3417,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(0,3419,300,3480,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});
+ S.floor(300,E,3175,300);R(300,2400,312,2925,{fill:'#f4f4f0',stroke:'#c9cec9','stroke-width':.5});R(312,2913,E,2925,{fill:'#f4f4f0',stroke:'#c9cec9','stroke-width':.5});
+ S.dimH(-200,0,2385,'200');S.dimH(0,50,2385,'50',12);S.dimH(50,175,2385,'125');S.dimH(175,300,2385,'125');S.T((S.X(175)+S.X(300))/2,S.Y(2385)+22,'uložení',{'text-anchor':'middle','font-size':9,fill:PAL.sub});
+ S.levels(S.X(885),[[2675,'+2 675'],[2925,'+2 925'],[3175,'+3 175'],[3325,'+3 325']]);
+ S.lab(700,3318,140,66,['podlaha podkroví P6 150 (dub, potěr 50','s topením, deska, EPS 50), od ±0 +3 085']);
+ S.lab(600,3050,140,322,['panel Spiroll 250, L = 7 650','(dutina čárkovaně)']);S.lab(480,3075,140,362,['výztuž spáry Ø 8–10 za řezem,','konec zahnutý do věnce']);
+ const c=470;S.lab(150,3400,c,128,'nadezdívka SOLBET 300');S.lab(25,3150,c,160,['věncovka 50 mm','(ztracené bednění)']);
+ S.lab(112,3080,c,196,['horní věnec 125 × 250, 2× Ø 12,','betonuje se po montáži']);S.lab(231,3040,c,232,['ucpávka, beton věnce zateče','do dutiny asi 50 mm']);
+ S.lab(260,2920,c,270,'maltové lože MC 10, tl. 10');S.lab(150,2800,c,298,['dolní ŽB věnec 300 × 240 místo','12. řady, vršek +2 915 ±5 mm']);
+ S.lab(150,2560,c,346,'SOLBET 300, 11. řada');S.lab(-100,2470,c,384,'EPS 200 přes věnce');}
+
+// D2 · tie beam over the wall between the house and the passage
+function d2(svg){const S=sheet(svg,{w:660,h:470,title:'D2 · Ztužidlo Z2 nad stěnou domu k průjezdu',sub:'řez podél domu, okraje panelů 11 a 12 leží na věnci',code:'D2',k:.33,ox:50,oy:440,h0:11350,v0:2400});
+ const {R}=S;
+ R(11350,2400,11700,2925,{fill:'#fff'});
+ R(11700,2400,12000,2433,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(11700,2435,12000,2675,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});
+ R(11700,2675,12000,2915,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});R(11730,2705,11970,2885,{fill:'none',stroke:'#555','stroke-width':.7});for(const [h,v] of [[11745,2720],[11955,2720],[11745,2870],[11955,2870]])S.bar(h,v);
+ R(12000,2400,12200,2925,{fill:S.u('eps'),stroke:'#b9c2bc'});R(12200,2525,12450,2925,{fill:S.u('eps'),stroke:'#b9c2bc'});R(12200,2505,12450,2525,{fill:S.u('wood'),stroke:'#b0864f','stroke-width':.5});
+ R(11700,2915,11785,2925,{fill:'#8d8679'});R(11955,2915,12000,2925,{fill:'#8d8679'});
+ S.panelCross(11350,11785,2925,[11485,11675]);S.brk(11350,2925,3175);
+ R(11785,2915,11955,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});R(11800,2950,11940,3140,{fill:'none',stroke:'#555','stroke-width':.7});for(const [h,v] of [[11815,2965],[11925,2965],[11815,3125],[11925,3125]])S.bar(h,v);
+ S.R(11955,2925,12450,3175,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});S.C(11955,3050,80,{fill:S.u('conc'),stroke:'#7f8b84','stroke-width':.7});S.R(11875,2930,11955,3170,{fill:S.u('conc'),stroke:'none'});
+ for(const c of [12135,12325])S.C(c,3050,80,{fill:'#fff',stroke:'#7f8b84','stroke-width':.7});S.brk(12450,2925,3175);
+ S.floor(11350,12450,3175,null);R(11350,2913,11700,2925,{fill:'#f4f4f0',stroke:'#c9cec9','stroke-width':.5});
+ S.dimH(11700,11785,2385,'85',12);S.dimH(11785,11955,2385,'170');S.dimH(11955,12000,2385,'45',12);S.dimH(11700,12000,2350,'stěna 300',-4);
+ S.T(S.X(11500),S.Y(2600),'přízemí',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});S.T(S.X(12300),S.Y(2460),'průjezd',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});
+ const c=455;S.lab(12300,3316,c,108,'podlaha podkroví P6 150');S.lab(11560,3100,c,140,['panel 11, tovární hrana,','leží 85 mm na věnci v MC 10']);
+ S.lab(11870,3125,c,176,['ztužidlo Z2 170 × 250, 4× Ø 10','a třmínky, betonuje se se spárami']);S.lab(11955,3000,c,212,['panel 12, řezaná hrana přes dutinu,','leží 45 mm, dutinu vyplní beton']);
+ S.lab(11850,2800,c,248,['dolní ŽB věnec 300 × 240','(před montáží)']);S.lab(11850,2560,c,284,['SOLBET 300, stěna mezi','domem a průjezdem']);
+ S.lab(12100,2470,c,320,'EPS 200 na straně průjezdu');S.lab(12300,2700,c,352,['zateplení podhledu průjezdu','(PO1, tloušťka podle PENB)']);S.lab(12350,2515,c,388,'dřevěný obklad stropu průjezdu');}
+
+// D3 · longitudinal joint
+function d3(svg){const S=sheet(svg,{w:660,h:400,title:'D3 · Podélná spára mezi panely',sub:'řez napříč spárou, 1 : 5',code:'D3',k:.9,ox:220,oy:335,h0:0,v0:0});
+ const right=[[12,0],[200,0],[200,250],[24,250],[18,232],[18,163],[30,150],[30,118],[18,105],[18,65],[5,40],[5,8]];
+ const left=right.map(([h,v])=>[-h,v]);
+ S.P([[-5,8],[5,8],[5,40],[18,65],[18,105],[30,118],[30,150],[18,163],[18,232],[24,250],[-24,250],[-18,232],[-18,163],[-30,150],[-30,118],[-18,105],[-18,65],[-5,40]],{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.8});
+ S.P(right,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1.1});S.P(left,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1.1});
+ for(const c of [125,-125])S.C(c,125,78,{fill:'#fff',stroke:'#7f8b84','stroke-width':.8});
+ S.bar(0,134);S.brk(200,0,250);S.brk(-200,0,250);
+ S.R(-30,-6,30,0,{fill:'#f4f4f0',stroke:'#c9cec9','stroke-width':.5});
+ S.dimH(-24,24,268,'~ 48',-4);S.dimH(-5,5,-24,'~ 10',14);
+ const c=430;S.lab(-10,215,c,92,['zálivka C 20/25, zrno max. 8 mm,','měkká, s plastifikátorem']);S.lab(0,134,c,128,['výztuž spáry Ø 8–10 (B500B),','zakotvená do věnců']);
+ S.lab(24,140,c,164,['zámek v boku panelu: boky očistit,','navlhčit, nic do spáry nezametat']);S.lab(125,190,c,200,'dutina panelu');
+ S.lab(0,-3,c,224,['spodní spára ~10 mm, v podhledu','tmel nebo páska a stěrka']);
+ // inset: joint at a cut edge
+ const o=(h,v)=>[470+(h+100)*.4,375-v*.4];
+ const r=(h0,v0,h1,v1,a)=>{const [x0,y0]=o(h0,v1),[x1,y1]=o(h1,v0);return el(svg,'rect',Object.assign({x:x0,y:y0,width:x1-x0,height:y1-y0},a));};
+ r(-100,0,0,250,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});r(60,0,200,250,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});r(0,0,60,250,{fill:`url(#${svg.id}-conc)`,stroke:'#9a7d55','stroke-width':.8});
+ {const [x,y]=o(30,125);el(svg,'circle',{cx:x,cy:y,r:2.4,fill:'#2d2d2d'});}
+ {const [x,y]=o(-100,250);S.T(x,y-22,'u řezané hrany spára ≥ 50 mm',{'font-size':9.5,'font-weight':700});S.T(x,y-9,'(řez je rovný, bez zámku)',{'font-size':9,fill:PAL.sub});}
+ {const [x0,y0]=o(0,0),[x1]=o(60,0);el(svg,'line',{x1:x0,y1:y0+8,x2:x1,y2:y0+8,stroke:'#55625a','stroke-width':.7});S.T((x0+x1)/2,y0+19,'50–100',{'text-anchor':'middle','font-size':8.5});}}
+
+// D4 · steel trimmer VM2
+function d4(svg){const S=sheet(svg,{w:660,h:470,title:'D4 · Ocelová výměna VM2',sub:'nahoře pohled od schodiště podél výměny, dole řez napříč (úhelník a patky navrhne výrobce nebo statik)',code:'D4',k:.19,ox:30,oy:185,h0:5300,v0:2850});
+ const {R}=S;
+ S.panelCross(5300,5635,2925,[5315,5505]);S.brk(5300,2925,3175);
+ S.R(7245,2925,7600,3175,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});for(const c of [7425,7590])S.C(c,3050,80,{fill:'#fff',stroke:'#7f8b84','stroke-width':.7});S.brk(7600,2925,3175);
+ S.panelCross(5645,6835,2925,[5755,5945,6135,6325,6515,6705],{fill:'none','stroke-dasharray':'4 3'});S.panelCross(6845,7195,2925,[6955,7140],{fill:'none','stroke-dasharray':'4 3'});
+ R(7195,2925,7245,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.8});
+ R(5640,2905,7240,3175,{fill:PAL.steel,'fill-opacity':.85});R(5495,3175,5700,3187,{fill:'#2c353a'});R(7180,3175,7385,3187,{fill:'#2c353a'});
+ S.dimH(5640,7240,2870,'1 600 = otvor mezi panely 05 a 08',14);S.dimH(5495,5640,3230,'145');S.dimH(7240,7385,3230,'145');
+ S.lab(5560,3181,470,74,'patka na panelu 05');S.lab(7300,3181,470,90,'patka na panelu 08');S.lab(6400,3040,470,108,['úhelník VM2, zespodu','viditelný v podhledu']);
+ S.lab(6200,2950,470,140,['konce 06 a 07 za úhelníkem','leží na vodorovném rameni']);S.lab(7220,3100,470,172,'spára 50 mm 07 | 08');
+ // section across
+ const T={k:.42,ox:40,oy:440,h0:4600,v0:2850},X=h=>T.ox+(h-T.h0)*T.k,Y=v=>T.oy-(v-T.v0)*T.k;
+ const r=(h0,v0,h1,v1,a)=>el(svg,'rect',Object.assign({x:X(h0),y:Y(v1),width:(h1-h0)*T.k,height:(v1-v0)*T.k},a));
+ el(svg,'line',{x1:20,y1:236,x2:640,y2:236,stroke:'#e2e8e2','stroke-width':1});
+ r(4600,2925,5065,3175,{fill:'#dcdfdb',stroke:'#34413a','stroke-width':1});r(4600,2963,5000,3137,{fill:'#fff',stroke:'#7f8b84','stroke-width':.6,'stroke-dasharray':'4 3'});r(5000,2963,5012,3137,{fill:'#6f7a74'});r(5012,2963,5065,3137,{fill:`url(#${svg.id}-conc)`});
+ r(5065,2905,5077,3187,{fill:PAL.steel});r(4965,2905,5077,2917,{fill:PAL.steel});r(4965,2917,5065,2925,{fill:'#8d8679'});
+ r(4600,3175,5065,3325,{fill:`url(#${svg.id}-scr)`,stroke:'#a9aaa2','stroke-width':.5});
+ r(5077,3150,5097,3330,{fill:'#7a5a33'});el(svg,'circle',{cx:X(5087),cy:Y(3110),r:3,fill:'#2c353a'});
+ el(svg,'text',{x:X(5300),y:Y(3000),'font-size':10.5,fill:PAL.sub},'otvor schodiště');
+ {const x0=X(4965),x1=X(5065),y=Y(2880);el(svg,'line',{x1:x0,y1:y,x2:x1,y2:y,stroke:'#55625a','stroke-width':.7});S.T((x0+x1)/2,y+12,'≥ 100',{'text-anchor':'middle','font-size':9});}
+ const lab=(h,v,lx,ly,t)=>{const px=X(h),py=Y(v);el(svg,'circle',{cx:px,cy:py,r:2.2,fill:'#3a4740'});el(svg,'polyline',{points:`${px},${py} ${lx-6},${ly-3.5} ${lx-2},${ly-3.5}`,fill:'none',stroke:'#3a4740','stroke-width':.7});(Array.isArray(t)?t:[t]).forEach((s,i)=>el(svg,'text',{x:lx,y:ly+i*12,'font-size':10,fill:PAL.txt},s));};
+ lab(4800,3060,470,262,'panel 06, konec na VM2');lab(5006,3100,470,286,['ucpávka a zálivka','na volném konci dutin']);lab(5015,2921,470,322,['neopren nebo MC,','uložení aspoň 100 mm']);
+ lab(5071,3000,470,358,['úhelník VM2 (DSP: HEB 140','pod konci nebo U 300)']);lab(5087,3280,470,394,['sloupek zábradlí kotvený','z boku do výměny']);}
+
+// D5 · option 1: bearing on 2× IPE 300 over the passage
+function d5(svg){const S=sheet(svg,{w:660,h:470,title:'D5 · Průjezd, možnost 1: uložení na 2× IPE 300',sub:'řez kolmo na podélnou stěnu v průjezdu; 2× IPE 240 ze statiky s panely napříč nevyhoví',code:'D5',k:.3,ox:440,oy:420,h0:-200,v0:2400,flip:1});
+ const {R,P}=S,E=850;
+ const ipe=h=>P([[h,2615],[h+150,2615],[h+150,2626],[h+78.5,2626],[h+78.5,2904],[h+150,2904],[h+150,2915],[h,2915],[h,2904],[h+71.5,2904],[h+71.5,2626],[h,2626]],{fill:PAL.steel});
+ R(0,2626,71.5,2904,{fill:S.u('pir'),stroke:'none'});R(78.5,2626,221.5,2904,{fill:'#c9c4b8',stroke:'none'});R(228.5,2626,300,2904,{fill:S.u('aac'),stroke:'none'});ipe(0);ipe(150);
+ S.bar(150,2770);
+ R(-200,2505,0,3480,{fill:S.u('eps'),stroke:'#b9c2bc'});R(-200,2505,E,2615,{fill:S.u('eps'),stroke:'#b9c2bc'});R(300,2615,E,2925,{fill:S.u('eps'),stroke:'#b9c2bc'});
+ R(-200,2485,E,2505,{fill:S.u('wood'),stroke:'#b0864f','stroke-width':.5});
+ R(0,2915,50,3175,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(50,2915,175,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});S.bar(112,2965);S.bar(112,3125);
+ R(175,2915,300,2925,{fill:'#8d8679'});S.panelLong(175,E,2925,175);S.brk(E,2925,3175);
+ R(0,3175,300,3417,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(0,3419,300,3480,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});
+ S.floor(300,E,3175,300);
+ S.T(S.X(330),S.Y(2445),'průjezd · venkovní prostor',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});
+ S.levels(S.X(885),[[2615,'+2 615'],[2925,'+2 925'],[3175,'+3 175']]);
+ S.lab(700,3318,140,66,'podlaha podkroví P6 150');
+ S.lab(600,3050,140,322,['panel nad průjezdem L = 7 650,','uložení 125 na vnitřním IPE']);
+ const c=470;S.lab(150,3400,c,128,'nadezdívka SOLBET 300');S.lab(25,3150,c,154,'věncovka 50');S.lab(112,3080,c,180,'horní věnec 125 × 250, 2× Ø 12');
+ S.lab(260,2920,c,208,['MC 10 nebo neoprenový pás','5–10 mm na oceli']);S.lab(225,2820,c,246,['2× IPE 300 S235 vedle sebe (300 mm),','~60 %, průhyb ~L/520, délka 4 800']);
+ S.lab(150,2770,c,284,['nosníky spojit svorníky po ~0,6 m,','dutinu mezi nimi vyplnit maltou']);S.lab(30,2700,c,320,'PIR ve venkovní kapse IPE');
+ S.lab(400,2560,c,346,['zateplení podhledu průjezdu','pod panely i pod IPE (PO1)']);S.lab(150,2495,c,384,'dřevěný obklad stropu průjezdu');S.lab(-100,2560,c,408,['EPS 200 fasáda; konce IPE na','betonových polštářích (~150 kN)']);}
+
+// D9 · option 2: passage panels bearing on the house wall over the entrance
+function d9(svg){const S=sheet(svg,{w:660,h:470,title:'D9 · Průjezd, možnost 2: panely na stěně domu nad vchodem',sub:'řez podél domu osou vstupních dveří; panely průjezdu vedou podél domu, rozpětí 4,3 m',code:'D9',k:.3,ox:50,oy:440,h0:11350,v0:2300});
+ const {R}=S;
+ R(11700,2435,12000,2915,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});R(11730,2460,11970,2885,{fill:'none',stroke:'#555','stroke-width':.7});
+ for(const h of [11745,11850,11955])S.bar(h,2480);for(const h of [11745,11955])S.bar(h,2870);
+ R(11780,2300,11880,2425,{fill:'#3b4248'});R(11700,2425,12000,2435,{fill:'#8d8679'});
+ R(12000,2435,12200,2925,{fill:S.u('eps'),stroke:'#b9c2bc'});R(12200,2525,12550,2925,{fill:S.u('eps'),stroke:'#b9c2bc'});R(12200,2505,12550,2525,{fill:S.u('wood'),stroke:'#b0864f','stroke-width':.5});
+ R(11700,2915,11785,2925,{fill:'#8d8679'});R(11900,2915,12000,2925,{fill:'#8d8679'});
+ S.panelCross(11350,11785,2925,[11485,11675]);S.brk(11350,2925,3175);
+ R(11785,2915,11900,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});S.bar(11842,2965);S.bar(11842,3125);
+ S.panelLong(11900,12550,2925,11900);S.brk(12550,2925,3175);
+ S.floor(11350,12550,3175,null);R(11350,2913,11700,2925,{fill:'#f4f4f0',stroke:'#c9cec9','stroke-width':.5});
+ S.dimH(11700,11785,2270,'85',12);S.dimH(11785,11900,2270,'115');S.dimH(11900,12000,2270,'100',12);
+ S.dimV(2435,2915,11660,'480');
+ S.T(S.X(11500),S.Y(2650),'předsíň',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});S.T(S.X(12380),S.Y(2420),'průjezd',{'text-anchor':'middle','font-size':10.5,fill:PAL.sub});
+ const c=440;S.lab(12450,3318,c,84,'podlaha podkroví P6 150');S.lab(12300,3050,c,108,['panel nad průjezdem L = 4 400,','leží 100 mm na věnci, ucpávka']);
+ S.lab(11842,3125,c,144,['ztužidlo Z2 115 × 250, 2× Ø 10,','betonuje se se spárami']);S.lab(11560,3080,c,180,['panel 11 (pole A), tovární hrana,','přesah 85 na věnec']);
+ S.lab(11850,2700,c,216,['ŽB překlad nad vchodem 300 × 480:','11. řada a dolní věnec najednou,','spodní výztuž ~3× Ø 14 (statik)']);
+ S.lab(11850,2480,c,264,['nese panely ~17 kN/m a dvě','stojky R3 po ~12 kN, M ≈ 20 kNm']);
+ S.lab(12100,2700,c,300,'EPS 200 na straně průjezdu');S.lab(12400,2700,c,324,['zateplení podhledu průjezdu','a dřevěný obklad']);
+ S.lab(11830,2360,c,360,['vstupní dveře, otvor 1 800','(dveře 1 200 + světlík 600)']);}
+
+// D6 · chimney and landing, plan
+function d6(svg){const S=sheet(svg,{w:660,h:500,title:'D6 · Komín a podesta u schodiště',sub:'půdorys, pohled shora, s vodorovně jako na S-01',code:'D6',k:.215,ox:40,oy:0,h0:4300,v0:0});
+ const X=s=>40+(s-4300)*.215,Y=x=>70+(x-4600)*.215;
+ const r=(x0,x1,s0,s1,a)=>el(svg,'rect',Object.assign({x:X(s0),y:Y(x0),width:(s1-s0)*.215,height:(x1-x0)*.215},a));
+ const hatch=`url(#${svg.id}-hatch)`;
+ r(4600,6400,4300,6300,{fill:'#fff'});r(6095,6400,4445,5635,{fill:hatch});r(5065,6400,5635,6300,{fill:hatch});
+ r(4600,6400,4300,4435,{fill:'#eceee9',stroke:'#34413a','stroke-width':1.1});
+ r(4600,6095,4445,5635,{fill:'#eceee9',stroke:'#34413a','stroke-width':1.1});
+ r(4600,5065,5645,6300,{fill:'#eceee9',stroke:'#34413a','stroke-width':1.1});
+ r(5070,5550,5150,5635,{fill:`url(#${svg.id}-ins)`,stroke:'#34413a','stroke-width':1});r(5120,5500,5200,5600,{fill:'#7b5a46'});
+ el(svg,'circle',{cx:X(5400),cy:Y(5310),r:100*.215,fill:'#fff',stroke:'#4a3428','stroke-width':1});
+ r(5100,6100,4300,5200,{fill:'none',stroke:'#8d958f','stroke-width':.9,'stroke-dasharray':'2 3'});
+ r(5950,6100,5200,5950,{fill:'#d8d0c2','fill-opacity':.7,stroke:'#7d746a','stroke-width':.9,'stroke-dasharray':'3 2'});
+ r(5995,6105,4440,5635,{fill:PAL.steel,'fill-opacity':.25,stroke:PAL.steel,'stroke-width':1.5,'stroke-dasharray':'5 3'});r(5995,6105,4300,4440,{fill:PAL.steel});
+ r(4965,5077,5640,6300,{fill:PAL.steel,'fill-opacity':.25,stroke:PAL.steel,'stroke-width':1.5,'stroke-dasharray':'5 3'});r(4965,5065,5495,5700,{fill:PAL.steel});
+ const T=(s,x,t,a={})=>el(svg,'text',Object.assign({x:X(s),y:Y(x),'font-size':10,fill:PAL.txt,'paint-order':'stroke',stroke:'#fff','stroke-width':3},a),t);
+ T(4880,4720,'05',{'font-size':12,'font-weight':800});T(4330,4720,'04',{'font-size':12,'font-weight':800});T(5900,4720,'06',{'font-size':12,'font-weight':800});
+ T(6000,6250,'otvor schodiště',{'font-size':10.5,fill:PAL.sub,'text-anchor':'middle'});T(4560,5460,'krb pod stropem',{'font-size':9,fill:PAL.sub});
+ const dimS=(s0,s1,x,t)=>{el(svg,'line',{x1:X(s0),y1:Y(x),x2:X(s1),y2:Y(x),stroke:'#55625a','stroke-width':.7});for(const s of [s0,s1])el(svg,'line',{x1:X(s)-3,y1:Y(x)+3,x2:X(s)+3,y2:Y(x)-3,stroke:'#55625a','stroke-width':1});T((s0+s1)/2,x-25,t,{'font-size':9,'text-anchor':'middle'});};
+ const dimX=(x0,x1,s,t)=>{el(svg,'line',{x1:X(s),y1:Y(x0),x2:X(s),y2:Y(x1),stroke:'#55625a','stroke-width':.7});for(const x of [x0,x1])el(svg,'line',{x1:X(s)-3,y1:Y(x)+3,x2:X(s)+3,y2:Y(x)-3,stroke:'#55625a','stroke-width':1});const xx=X(s)-5,yy=(Y(x0)+Y(x1))/2;el(svg,'text',{x:xx,y:yy,'font-size':9,'text-anchor':'middle',transform:`rotate(-90 ${xx} ${yy})`},t);};
+ dimS(5150,5635,4980,'485');dimX(5070,5550,5100,'480');dimS(5150,5200,5700,'50');
+ const lab=(s,x,lx,ly,t)=>{const px=X(s),py=Y(x);el(svg,'circle',{cx:px,cy:py,r:2.2,fill:'#3a4740'});el(svg,'polyline',{points:`${px},${py} ${lx-6},${ly-3.5} ${lx-2},${ly-3.5}`,fill:'none',stroke:'#3a4740','stroke-width':.7});(Array.isArray(t)?t:[t]).forEach((q,i)=>el(svg,'text',{x:lx,y:ly+i*12,'font-size':10,fill:PAL.txt},q));};
+ const c=500;lab(5300,5160,c,80,['výřez v panelu 05 z výroby,','480 × 485 (komín + 50)']);lab(5525,5400,c,116,['spára 50 mm: minerální vlna A1,','komín se stropu nedotýká']);
+ lab(5400,5310,c,152,['komín krbu, samonosný,','na vlastním základu']);lab(5000,6050,c,188,['VM1 pod koncem 05,','vpředu patka na 04']);
+ lab(5800,6025,c,224,['P9 pod VM1, nosná','stěna (varianta A)']);lab(5600,5015,c,260,'patka VM2 na panelu 05');lab(6100,5020,c,284,['VM2 nese konce 06 a 07,','vzadu patka na 08']);}
+
+// D7 · cast strip DB at the plant-room gable
+function d7(svg){const S=sheet(svg,{w:660,h:470,title:'D7 · Dobetonávka DB u štítu technické místnosti',sub:'řez podél domu, pás vyložený ze štítu, chráničky prostupů P1, C, E1',code:'D7',k:.26,ox:40,oy:420,h0:17250,v0:2500});
+ const {R}=S;
+ S.panelCross(17250,17645,2925,[17345,17535]);S.brk(17250,2925,3175);
+ R(17645,2925,18550,3175,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});R(18300,2915,18550,2925,{fill:S.u('conc'),stroke:'none'});
+ R(18300,2500,18600,2675,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(18300,2675,18600,2915,{fill:S.u('conc'),stroke:'#9a7d55','stroke-width':.9});for(const [h,v] of [[18345,2720],[18555,2720],[18345,2870],[18555,2870]])S.bar(h,v);
+ R(18550,2915,18600,3175,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(18300,3175,18600,3480,{fill:S.u('aac'),stroke:'#8f8571','stroke-width':.8});R(18600,2500,18800,3480,{fill:S.u('eps'),stroke:'#b9c2bc'});
+ R(17985,2925,18215,3175,{fill:'#fff',stroke:'#2a6fd6','stroke-width':1.3});S.L([[18100,2900],[18100,3200]],'#2a6fd6',.8,{'stroke-dasharray':'5 3'});
+ for(let h=17700;h<=18500;h+=100)if(h<17985||h>18215)S.bar(h,2960);
+ S.L([[17700,3135],[18520,3135],[18520,2990]],'#2d2d2d',1.4);for(let h=17700;h<=18500;h+=100)if(h<17985||h>18215)S.bar(h,3125);
+ R(17645,2900,18300,2925,{fill:S.u('wood'),stroke:'#b0864f','stroke-width':.5});for(const h of [17760,18160])R(h,2820,h+80,2900,{fill:'#d2b07c',stroke:'#9b7a4a','stroke-width':.6});
+ for(const h of [17800,18200]){S.L([[h,2820],[h,2560]],'#555',2.2);S.L([[h-40,2560],[h+40,2560]],'#555',1.5);}
+ S.floor(17250,18290,3175,null);R(18290,3175,18300,3325,{fill:'#d9d9ef'});
+ S.dimH(17645,18300,2470,'650');S.dimH(18300,18600,2470,'štít 300');S.dimV(2925,3175,17200,'250');
+ const c=455;S.lab(17450,3100,c,96,['panel 16, spára s DB','se lije najednou']);S.lab(18100,3060,c,132,['chráničky P1 2× Ø 230, C Ø 200,','E1 Ø 110, osy 200 od líce štítu']);
+ S.lab(18450,3135,c,168,['horní výztuž zakotvit do štítu,','pás je vyložený (podle statika)']);S.lab(17900,2960,c,204,['DB 650 + štít, tl. 250,','beton jako zálivky']);
+ S.lab(18450,2800,c,240,'dolní věnec štítu');S.lab(18450,3300,c,264,'štít SOLBET 300 pokračuje nahoru');S.lab(18700,2600,c,288,'EPS 200');
+ S.lab(17900,2912,c,324,['bednění zespodu, podpěry po ~1 m,','odstranit podle statika']);}
+
+// Laying order schematic
+function d8(svg){svg.replaceChildren();svg.setAttribute('viewBox','0 0 660 520');
+ el(svg,'rect',{x:3,y:3,width:654,height:514,rx:8,fill:'#fff',stroke:PAL.frame,'stroke-width':1.1});
+ el(svg,'text',{x:20,y:30,'font-size':15,'font-weight':800,fill:PAL.ink},`Pořadí montáže · průjezd možnost ${VB}`);el(svg,'text',{x:20,y:48,'font-size':10.5,fill:PAL.sub},'jeřáb na příjezdové straně, panely jdou z návěsu přímo na místo (schéma)');
+ const k=.03,X=s=>40+s*k,Y=x=>140+x*k;
+ el(svg,'rect',{x:X(0),y:Y(0),width:18600*k,height:8000*k,fill:'#f6e2c7',stroke:'#c79a5a'});
+ el(svg,'polygon',{points:OPEN.map(([x,s])=>`${X(s)},${Y(x)}`).join(' '),fill:'#fff',stroke:'#34413a'});
+ for(const p of PANELS){el(svg,'rect',{x:X(p.s0),y:Y(p.x0),width:(p.s1-p.s0)*k,height:(p.x1-p.x0)*k,fill:p.cut?C.cut:C.panel,stroke:C.edge,'stroke-width':.9});
+  const [ls,lx]=p.dir==='x'?[(p.s0+p.s1)/2,3300]:[(p.s0+p.s1)/2,(p.x0+p.x1)/2];
+  el(svg,'text',{x:X(ls),y:Y(lx)+4,'text-anchor':'middle','font-size':p.w<500?8.5:11,'font-weight':800,fill:C.ord},p.ord);}
+ for(const [x0,x1,s0,s1] of [[...VM1.x,...VM1.s],[...VM2.x,...VM2.s]])el(svg,'rect',{x:X(s0),y:Y(x0),width:(s1-s0)*k,height:Math.max(3,(x1-x0)*k),fill:PAL.steel});
+ el(svg,'text',{x:X(4700),y:Y(6550),'font-size':9,'font-weight':700,fill:PAL.steel},'VM1');el(svg,'text',{x:X(5700),y:Y(4800),'font-size':9,'font-weight':700,fill:PAL.steel},'VM2');
+ const cx=X(9300),cy=Y(-2200),last=PANELS[PANELS.length-1];
+ for(const p of [PANELS[0],last])el(svg,'line',{x1:cx,y1:cy,x2:X((p.s0+p.s1)/2),y2:Y(3925),stroke:'#c0392b','stroke-width':.9,'stroke-dasharray':'5 4'});
+ el(svg,'circle',{cx,cy,r:13,fill:'#fff',stroke:'#c0392b','stroke-width':2});el(svg,'text',{x:cx,y:cy+4,'text-anchor':'middle','font-size':10,'font-weight':800,fill:'#c0392b'},'J');
+ el(svg,'text',{x:cx+20,y:cy+4,'font-size':9.5,fill:'#8a2c22'},'autojeřáb asi 6 m od fasády, k těžišti krajních panelů ~13–14 m');
+ el(svg,'text',{x:X(0),y:Y(8000)+15,'font-size':9.5,fill:PAL.sub},'strana HS a terasy');el(svg,'text',{x:X(0),y:Y(0)-6,'font-size':9.5,fill:PAL.sub},'příjezd');
+ const B=PANELS.filter(p=>p.f==='B');
+ const lines=['1–4    pole A od štítu A, panel 01 145 mm od líce štítu','       → osadit VM1 (patka na 04, vzadu na P9)','5      panel 05 na VM1 (podesta, výřez pro komín)','6      panel 08 přesně na hranu otvoru (s 7 245)','       → osadit VM2 (patky na 05 a 08)','7–8    krátké panely 06 a 07 na VM2','9–11   zbytek pole A ke stěně k průjezdu',
+  VB===1?`${B[0].ord}–${B[B.length-1].ord}  pole B od stěny domu, nakonec ${last.ord} pole C`:`${B[0].ord}–${B[B.length-1].ord}  pole B podél průjezdu od příjezdu, ${last.ord} pole C`];
+ lines.forEach((t,i)=>el(svg,'text',{x:24,y:Y(8000)+40+i*15,'font-size':10.5,fill:PAL.txt,'font-family':'ui-monospace,Menlo,monospace',style:'white-space:pre'},t));}
+
+// ---------------------------------------------------------------- tables
+const sym=t=>`<span class="sym">${t}</span>`;
+const cutW=n=>n>=2&&n<=4?'řezané':'řezaných';
+const cores=p=>Math.max(1,Math.round(6*p.w/1190));
+function joints(list){const jl=[];for(let i=0;i<list.length-1;i++){const a=list[i],b=list[i+1];if(a.f!==b.f||a.dir!==b.dir)continue;
+  jl.push([a.id+'|'+b.id,Math.min(a.L,b.L),a.dir==='x'?b.s0-a.s1:b.x0-a.x1]);}return jl;}
+function concrete(v){const bs=bands(v),w=id=>{const b=bs.find(q=>q.id===id);return (b.s[1]-b.s[0])/1000;},jl=joints(build(v));
+ const jVol=jl.reduce((t,[,L,g])=>t+L/1000*(g>20?g/1000*.25:.0113),0),jLen=jl.reduce((t,[,L])=>t+L/1000,0);
+ const lw=v===1?2*18.6*.125*.25:(2*(18.6-4.4)*.125+2*4.4*.155)*.25;
+ return {jl,jLen,items:[['Horní věnce podél podélných zdí',lw,v===1?'2 × 18,6 m, 125 × 250 mm':'2 × 18,6 m, 125 × 250, nad průjezdem 155 × 250'],['Ztužidlo Z1 u štítu A',7.65*(w('Z1'))*.25,'395 × 250, z toho 145 nad místností (bednit zespodu)'],
+  ['Ztužidlo Z2 nad stěnou k průjezdu',7.65*w('Z2')*.25,`${nb(w('Z2')*1000)} × 250`],['Ztužidlo Z3 nad stěnou technické místnosti',7.65*w('Z3')*.25,`${nb(w('Z3')*1000)} × 250`],['Dobetonávka DB u štítu TM',7.65*w('DB')*.25,'905 × 250 (650 do místnosti), bednění a podpěry'],
+  ['Zálivky podélných spár',jVol,`${jl.length} spár, celkem ${f1(jLen)} m`],['Doplnění u stěny HS v otvoru schodiště',.125*.25*2.8,'pás 125 mm v místě uložení, kde není panel'],
+  ...(v===2?[['Překlad nad vchodem (beton místo 11. řady)',.3*.24*2.4,'300 × 240 × 2 400, lije se s dolním věncem']]:[])]};}
+function tables(){
+ // panels
+ const pens=PANELS.map(()=>[]);PEN.forEach(p=>{const q=inPanel(p.s,p.x);if(q)pens[PANELS.indexOf(q)].push(p.id);});
+ const loads={};for(const [n,z] of D.FRAMES)for(const x of LEGS){const q=inPanel(z*1000,x);if(q&&!(loads[q.id]||[]).includes(n))(loads[q.id]=loads[q.id]||[]).push(n);}
+ let rows='<tr><th>Poz.</th><th>Pole</th><th class="n">Šířka</th><th class="n">Délka</th><th class="n">Plocha m²</th><th class="n">Hmotnost t</th><th class="n">Montáž</th><th>Úpravy a poznámka</th></tr>',sa=0,st=0;
+ for(const [i,p] of PANELS.entries()){sa+=p.a;st+=p.t;
+  const adds=[];if(p.cut)adds.push(`podélně řezaný na ${nb(p.w)}`);if(p.id==='05')adds.push('výřez 480 × 485 pro komín');if(p.id==='05'||p.id==='06')adds.push('výřez ve spáře pro S2 + V3');
+  const pl=[...new Set(pens[i])].filter(x=>!['S2','V3'].includes(x));if(pl.length)adds.push('prostupy '+pl.join(', '));if(loads[p.id])adds.push('stojky '+loads[p.id].join(', '));
+  rows+=`<tr><td>${sym(p.id)}</td><td>${p.f} · ${FIELD[p.f]}</td><td class="n">${nb(p.w)}</td><td class="n">${nb(p.L)}</td><td class="n">${f2(p.a)}</td><td class="n">${f2(p.t)}</td><td class="n">${p.ord}.</td><td>${[adds.join(', '),p.note].filter(Boolean).join(' · ')}</td></tr>`;}
+ const nCut=PANELS.filter(p=>p.cut).length;
+ rows+=`<tr class="sum"><td colspan="4">${PANELS.length} panelů (${nCut} podélně ${cutW(nCut)}, 3 zkrácené u schodiště)</td><td class="n">${f1(sa)}</td><td class="n">${f1(st)}</td><td colspan="2">+ výměny VM1 a VM2 s patkami</td></tr>`;
+ document.getElementById('tPanels').innerHTML=rows;
+ // penetrations (field B has none, the table is the same for both options)
+ let pr='<tr><th>Ozn.</th><th>Profese</th><th>Co</th><th class="n">Ø</th><th class="n">x / s</th><th>Kde</th><th class="n">od spáry</th><th class="n">od uložení</th><th>Pro výrobce</th></tr>';
+ for(const p of PEN){const q=inPanel(p.s,p.x),b=inBand(p.s),inSV=p.x>=NOTCH_SV[0]&&p.x<=NOTCH_SV[1]&&p.s>=NOTCH_SV[2]&&p.s<=NOTCH_SV[3];
+  let where,de='–',dl='–',todo;
+  if(inSV){where='výřez ve spáře 05 | 06';todo='společný výřez 400 × 240 přes spáru (každý panel 200 mm), zbytek se zalije se spárou';}
+  else if(b){where=b.id;todo='chránička vložená před betonáží DB';}
+  else if(q){where='panel '+q.id;const e=Math.min(p.s-q.s0,q.s1-p.s),l=Math.min(p.x-q.x0,q.x1-p.x);de=nb(e);dl=nb(l);
+   const lim=Math.min(1000,q.L/8),w=[];if(e<100+p.d*500)w.push('blízko spáry, posunout do dutiny');if(l<lim)w.push('v oblasti uložení, posoudí výrobce');todo=w.length?w.join('; '):'vývrt v ose dutiny podle výkresu výrobce';}
+  else{where='?';todo='mimo panely';}
+  const warn=/posoudí|blízko/.test(todo);
+  pr+=`<tr><td>${sym(p.id)}</td><td>${WHO[p.who][1]}</td><td>${p.t}${p.moved?' · <b>posun</b> do výřezu':''}</td><td class="n">${nb(p.d*1000)}</td><td class="n">${nb(p.x-300)} / ${nb(p.s-300)}</td><td>${where}</td><td class="n">${de}</td><td class="n">${dl}</td><td class="${warn?'warn':''}">${todo}</td></tr>`;}
+ pr+=`<tr class="grp"><td colspan="9">Výřezy a otvory</td></tr>`;
+ pr+=`<tr><td>${sym('K')}</td><td>komín</td><td>výřez přes celý průřez panelu 05 na zadní hraně</td><td class="n">–</td><td class="n">${nb(NOTCH_CH[0]-300)} / ${nb(NOTCH_CH[2]-300)}</td><td>panel 05</td><td class="n">0</td><td class="n">${nb(6095-NOTCH_CH[1])}</td><td class="warn">480 × 485, komín 380 × 400 + spára 50, oslabení posoudí výrobce</td></tr>`;
+ pr+=`<tr><td>${sym('O')}</td><td>schodiště</td><td>otvor ze zkrácených panelů 05, 06, 07 na výměnách VM1 a VM2</td><td class="n">–</td><td class="n">${nb(5065-300)} / ${nb(4445-300)}</td><td>05–08</td><td class="n">–</td><td class="n">–</td><td>od vnějších líců zdiva: s 4 445–7 245, x 6 095 (podesta) a 5 065</td></tr>`;
+ document.getElementById('tPen').innerHTML=pr;
+ // loads
+ let lr='<tr><th>Zatížení</th><th>Hodnota</th><th>Kde</th><th>Poznámka</th></tr>';
+ lr+='<tr class="grp"><td colspan="4">Plošná (navíc k vlastní tíze panelu ~4,0 kN/m²)</td></tr>';
+ lr+='<tr><td>Podlaha podkroví P6 (dub 10, potěr 50 s topením, systémová deska 32, EPS 50)</td><td>~1,3 kN/m², koupelny ~1,5</td><td>celý strop</td><td>v tabulkách výrobce je 1,5 kN/m² už započteno</td></tr>';
+ lr+='<tr><td>Podhled a omítka zespodu</td><td>~0,2 kN/m², nad průjezdem ~0,3</td><td>přízemí / průjezd</td><td>snížený podhled v obýváku SDK ~0,3</td></tr>';
+ lr+='<tr><td>Užitné, obytné místnosti (kat. A)</td><td>1,5 kN/m²</td><td>celý strop</td><td>ČSN EN 1991-1-1</td></tr>';
+ lr+='<tr><td>Přemístitelné příčky</td><td>0,8–1,2 kN/m²</td><td>celý strop</td><td>jen když se zděné příčky nezadají jako liniové zatížení</td></tr>';
+ lr+='<tr class="grp"><td colspan="4">Bodová · stojky ocelových rámů krovu 2U140 (stránka Krov)</td></tr>';
+ for(const [n,z] of D.FRAMES){const s=z*1000,qs=LEGS.map(x=>inPanel(s,x)),es=LEGS.map((x,i)=>{const q=qs[i];return q?(q.dir==='x'?Math.min(s-q.s0,q.s1-s):Math.min(x-q.x0,q.x1-x)):0;}),e=Math.min(...es);
+  const on=[...new Set(qs.filter(Boolean).map(q=>q.id))].join(' a ');
+  lr+=`<tr><td>Rám ${n}, 2 stojky</td><td>~20–25 kN na stojku (charakteristicky)</td><td>s ${nb(s-300)}, x ${nb(LEGS[0]-300)} a ${nb(LEGS[1]-300)} · panel ${on||'?'}</td><td class="${e<150?'warn':''}">${e<150?`stojky ${nb(e)} mm od spáry: roznášecí deska přes spáru`:qs[0]&&qs[0].dir==='s'?'uprostřed rozpětí 4,3 m, roznese se do stěn k průjezdu':'uprostřed šířky panelu'}</td></tr>`;}
+ lr+='<tr class="grp"><td colspan="4">Liniová · zděné příčky podkroví rovnoběžně s panely (D1.3, pórobeton 150, ~2,5–3 kN/m)</td></tr>';
+ for(const [x0,x1,z0,z1,,axis] of D.PARTS.d13){const along=axis==='z'?'s':'x',r=[x0*1000,x1*1000,z0*1000,z1*1000];if((along==='x'?r[1]-r[0]:r[3]-r[2])<1000)continue;
+  const on=PANELS.filter(p=>p.dir===along&&p.x1>r[0]&&p.x0<r[1]&&p.s1>r[2]&&p.s0<r[3]).map(p=>p.id);if(!on.length)continue;
+  const sR=along==='s'?[Math.max(r[2],11900),Math.min(r[3],16300)]:[r[2],r[3]];
+  lr+=`<tr><td>Příčka ${along==='x'?'napříč':'podél domu'}, s ${nb(sR[0]-300)}–${nb(sR[1]-300)}</td><td>~2,5–3 kN/m</td><td>x ${nb(r[0]-300)}–${nb(r[1]-300)} · panel ${on.join(', ')}</td><td>leží na jednom panelu, nejvíc ho namáhá</td></tr>`;}
+ lr+='<tr><td>Ostatní příčky (kolmo na panely)</td><td>~2,5–3 kN/m</td><td>napříč přes panely</td><td>roznesou se na víc panelů. SDK příčky by zatížení snížily asi na 0,5 kN/m</td></tr>';
+ lr+='<tr class="grp"><td colspan="4">Ostatní</td></tr>';
+ lr+='<tr><td>Horní konec ŽB schodiště</td><td>spočítá statik schodiště</td><td>u hrany podesty, panel 05 a VM1</td><td>ve variantě B na podestě</td></tr>';
+ lr+='<tr><td>Výměny VM1 a VM2</td><td>reakce z panelů 05–07</td><td>patky na 04, 05 a 08, VM1 na P9</td><td>výrobce počítá s tím, jak výměny navrhne</td></tr>';
+ lr+='<tr><td>Nadezdívka 4 řady, horní věnec, pozednice a krov</td><td>přes uložení do zdi</td><td>konce panelů nad podélnými zdmi</td><td>do rozpětí nevstupuje, ale tlačí na uložení</td></tr>';
+ if(VB===2)lr+='<tr><td>Panely nad průjezdem na stěnách k průjezdu (pro statika)</td><td>~13,4 + 3,2 kN/m, stojky R3 ~12 kN na stěnu domu a ~15 kN na stěnu TM</td><td>stěna domu k průjezdu (překlad nad vchodem) a stěna technické místnosti</td><td>panely průjezdu výrobci stačí nejslabší typ, rozpětí jen 4,3 m</td></tr>';
+ lr+='<tr><td>Krbový komín</td><td>0</td><td>výřez v 05</td><td>samonosný, strop se ho nedotýká</td></tr>';
+ document.getElementById('tLoads').innerHTML=lr;
+ // site work quantities
+ const cq=concrete(VB);let vt=0,sr='<tr><th>Položka</th><th class="n">m³</th><th>Poznámka</th></tr>';
+ for(const [t,v,n] of cq.items){vt+=v;sr+=`<tr><td>${t}</td><td class="n">${f2(v)}</td><td>${n}</td></tr>`;}
+ sr+=`<tr class="sum"><td>Beton celkem jednou betonáží</td><td class="n">${f1(vt)}</td><td>objednat asi ${Math.ceil(vt+.5)} m³ jemnozrnného betonu C 25/30 (zrno do 8 mm, S4 až S5, s plastifikátorem) a čerpadlo</td></tr>`;
+ sr+=`<tr class="grp"><td colspan="3">Výztuž a ocel (k potvrzení statikem)</td></tr>`;
+ sr+=VB===1?'<tr><td>Nosníky nad průjezdem 2× IPE 300 S235</td><td class="n">4 × 4,8 m</td><td>místo 2× IPE 240 ze statiky, asi +220 kg oceli; spojit svorníky, konce na betonových polštářích</td></tr>'
+  :'<tr><td>Nosníky nad průjezdem 2× IPE 240</td><td class="n">4 × 4,8 m</td><td>podle statiky beze změny, nesou jen nadezdívku a krov; konce na betonových polštářích</td></tr><tr><td>Překlad nad vchodem, výztuž</td><td class="n">~3× Ø 14 + 2× Ø 12</td><td>11. řada a dolní věnec se lijí najednou (300 × 480), třmínky po 200, délka 2,4 m</td></tr>';
+ sr+=`<tr><td>Výztuž podélných spár Ø 8–10, B500B</td><td class="n">~${Math.round(cq.jLen+cq.jl.length*1.2)} m</td><td>v každé spáře průběžně, oba konce zahnuté do věnců (pro malé stavby výrobce připouští pruty 1 m u krajů)</td></tr>`;
+ sr+=`<tr><td>Horní věnce 2× Ø 12 + spony</td><td class="n">~${Math.round(2*18.6*2*1.1)} m</td><td>přesahy 50 Ø, v rozích rohové pruty</td></tr>`;
+ sr+=`<tr><td>Ztužidla Z1–Z3 ${VB===1?'4× Ø 10':'2–4× Ø 10'} + třmínky Ø 6 po 250</td><td class="n">~${Math.round(3*4*7.65*1.1)} m</td><td>pruty zakotvit do horních věnců</td></tr>`;
+ sr+='<tr><td>Dobetonávka DB</td><td class="n">dle statika</td><td>dolní a horní síť, horní pruty kotvit do štítu</td></tr>';
+ sr+='<tr><td>Výměna VM1 (úhelník s patkou, ~1,4 m)</td><td class="n">1 ks</td><td>vpředu patka na 04, vzadu uložení na P9, protikorozní nátěr</td></tr>';
+ sr+='<tr><td>Výměna VM2 (úhelník se 2 patkami, ~1,9 m)</td><td class="n">1 ks</td><td>patky na 05 a 08</td></tr>';
+ sr+=`<tr><td>Ucpávky dutin</td><td class="n">~${Math.round(PANELS.reduce((t,p)=>t+2*cores(p),0)/10)*10} ks</td><td>na obou koncích každé dutiny u věnců, ztužidel a výměn. Nejsou v dodávce panelů, objednat zvlášť</td></tr>`;
+ sr+='<tr><td>Maltové lože MC 10–30</td><td class="n">~0,1 m³</td><td>uložení na věncích a výměnách 10–15 mm, asi 5–8 pytlů po 25 kg</td></tr>';
+ document.getElementById('tSite').innerHTML=sr;
+ // KPIs
+ const maxT=Math.max(...PANELS.map(p=>p.t));
+ document.getElementById('kpis').innerHTML=[[PANELS.length,`panelů Spiroll 250 (${nCut} ${cutW(nCut)})`],[f1(sa)+' m²','plocha panelů'],[f1(st)+' t','celkem, 2 soupravy'],[f1(maxT)+' t','nejtěžší panel 7 650'],
+  ['7 400','světlé rozpětí, mm'],['125 mm','uložení na věnci'],['~'+Math.ceil(vt+.5)+' m³','betonu na stavbě'],['1 den','montáž jeřábem']].map(([b,s])=>`<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join('');
+ document.querySelectorAll('[data-k="maxT"]').forEach(e=>e.textContent=f1(maxT));document.querySelectorAll('[data-k="sumT"]').forEach(e=>e.textContent=Math.round(st));}
+
+// comparison of the two options over the passage
+function compare(){const o=[1,2].map(v=>{const P=build(v),B=P.filter(p=>p.f==='B'),cq=concrete(v);
+  return {v,n:P.length,nb:B.length,L:B[0].L,tB:Math.max(...B.map(p=>p.t)),aB:B.reduce((t,p)=>t+p.a,0),t:P.reduce((t,p)=>t+p.t,0),cut:P.filter(p=>p.cut).length,
+   conc:cq.items.reduce((t,i)=>t+i[1],0),z2:bands(v)[1].s,z3:bands(v)[2].s,plugs:P.reduce((t,p)=>t+2*cores(p),0)};});
+ const [a,b]=o,row=(h,x,y,cls='')=>`<tr><td>${h}</td><td class="${cls}">${x}</td><td class="${cls}">${y}</td></tr>`;
+ let r='<tr><th></th><th>1 · panely napříč domem</th><th>2 · panely podél průjezdu</th></tr>';
+ r+=row('Panely nad průjezdem',`${a.nb} ks · délka ${nb(a.L)} · nejtěžší ${f1(a.tB)} t`,`${b.nb} ks · délka ${nb(b.L)} · nejtěžší ${f1(b.tB)} t`);
+ r+=row('Plocha panelů nad průjezdem',`${f1(a.aB)} m²`,`${f1(b.aB)} m²`);
+ r+=row('Celý strop',`${a.n} panelů, ${a.cut} ${cutW(a.cut)}, ${f1(a.t)} t`,`${b.n} panelů, ${b.cut} ${cutW(b.cut)}, ${f1(b.t)} t`);
+ r+=row('Na čem panely nad průjezdem leží','na 2× IPE v podélných zdech','na stěně domu k průjezdu a na stěně technické místnosti');
+ r+=row('Nosníky nad průjezdem (4,2 m)',`${IPE[1].p}: ${IPE[1].u}, průhyb ${IPE[1].d}. Ze statiky ${IPE.fail.p} vychází na ${IPE.fail.u} a ${IPE.fail.d}.`,`${IPE[2].p} podle statiky: ${IPE[2].u}, průhyb ${IPE[2].d}. Nesou jen nadezdívku a krov.`);
+ r+=row('Překlad nad vchodem (1,8 m)','NOP podle statiky, nenese strop','ŽB 300 × 480 (11. řada + dolní věnec), M ≈ 20 kNm, unese asi 85 kNm');
+ r+=row('Stojky rámu R3','uprostřed panelů 7,5 m, a tím i na IPE','uprostřed panelů 4,3 m, do stěn k průjezdu');
+ r+=row('Ztužidla Z2 / Z3',`${nb(a.z2[1]-a.z2[0])} / ${nb(a.z3[1]-a.z3[0])} mm`,`${nb(b.z2[1]-b.z2[0])} / ${nb(b.z3[1]-b.z3[0])} mm`);
+ r+=row('Beton na stavbě',`~${f1(a.conc)} m³`,`~${f1(b.conc)} m³`);
+ r+=row('Ocel navíc proti statice','4 × 4,8 m IPE 300 místo IPE 240, asi +220 kg, hlubší kapsy u uložení','žádná, jen výztuž překladu nad vchodem');
+ r+=row('Zdvihy jeřábem',`${a.n+2}`,`${b.n+2}`);
+ r+=row('Ucpávky dutin',`~${Math.round(a.plugs/10)*10}`,`~${Math.round(b.plugs/10)*10}`);
+ r+=row('Co musí schválit statik','silnější nosník nad průjezdem, polštáře','jiný směr panelů nad průjezdem, stěny k průjezdu jako nosné, překlad nad vchodem');
+ r+=row('Výhody','všude stejný směr a délka panelů, méně kusů, stěny k průjezdu nic nenesou','ocel ze statiky platí, nosník pod nadezdívkou se skoro neprohne, lehčí panely, nejslabší typ panelu stačí');
+ r+=row('Nevýhody','o 220 kg oceli víc, nosník je o 60 mm vyšší a dutina mezi nosníky je uzavřená','o 3 panely a 3 zdvihy víc, dva směry panelů v jednom stropě, užší ztužidlo Z2');
+ document.getElementById('tVar').innerHTML=r;}
+
+function render(){planS01(document.getElementById('s01'));d8(document.getElementById('d8'));tables();
+ document.querySelectorAll('[data-vb]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.vb===VB)));}
+document.querySelectorAll('[data-vb]').forEach(b=>b.addEventListener('click',()=>{VB=+b.dataset.vb;PANELS=build(VB);BANDS=bands(VB);
+ const u=new URL(location.href);if(VB===2)u.searchParams.set('pruchod','2');else u.searchParams.delete('pruchod');history.replaceState(null,'',u);render();}));
+d1(document.getElementById('d1'));d2(document.getElementById('d2'));d3(document.getElementById('d3'));d4(document.getElementById('d4'));
+d5(document.getElementById('d5'));d9(document.getElementById('d9'));d6(document.getElementById('d6'));d7(document.getElementById('d7'));compare();render();
+})();
+</script>
+</body>
+</html>
