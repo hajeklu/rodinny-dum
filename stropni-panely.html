@@ -72,7 +72,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
 
   <section class="card wide">
     <h2>S-01 · Kladečský plán</h2>
-    <p class="desc">Pohled shora na strop nad přízemím. Šedé jsou panely, oranžový beton se lije na stavbě (horní věnce, ztužidla Z1–Z3, dobetonávka DB a spáry). Čárkovaná ocel leží pod panely. Fialově jsou příčky podkroví podle D1.3, které strop zatěžují. Čísla v kroužku jsou pozice panelů, čísla v tmavém čtverečku pořadí montáže. Kolečka D1–D6 odkazují na detaily níže. Souřadnice x (napříč) a s (podél domu) v textu jsou od vnějšího líce zdiva jako v 3D modelu a na půdorysu 2NP, v tabulkách od vnitřních líců jako na výkresu P-01.</p>
+    <p class="desc">Pohled shora na strop nad přízemím. Šedé jsou panely, oranžový beton se lije na stavbě (horní věnce, ztužidla Z1 a Z3, instalační pás Z2, dobetonávka DB a spáry). Čárkovaná ocel leží pod panely. Fialově jsou příčky podkroví podle D1.3, které strop zatěžují. Čísla v kroužku jsou pozice panelů, čísla v tmavém čtverečku pořadí montáže. Kolečka D1–D7 odkazují na detaily níže. Souřadnice x (napříč) a s (podél domu) v textu jsou od vnějšího líce zdiva jako v 3D modelu a na půdorysu 2NP, v tabulkách od vnitřních líců jako na výkresu P-01.</p>
     <svg id="s01" role="img" aria-label="Kladečský plán stropních panelů nad přízemím"></svg>
     <div class="notes" style="margin-top:12px">
       <div class="note"><strong>Jak číst rozměry</strong><ul>
@@ -424,7 +424,7 @@ function planS01(svg){
   for(let i=1;i<list.length;i++){const xm=(list[i]+list[i-1])/2;g.text(z-.09,M(xm),labels[i-1],{'font-size':9,fill:PAL.ink,transform:`rotate(-90 ${X(z-.09)} ${Y(M(xm))})`});}};
  vd(19.12,[0,175,8125,8300],['175','panel 7 950','175']);vd(19.5,[0,300,8000,8300],['300','světle 7 700','300']);
  const n0=svg.childNodes.length;
- D.finish(g,[{k:'fill',c:C.edge,f:C.panel,t:'panel Spiroll 250, šířka 1 190'},{k:'fill',c:C.edge,f:C.cut,t:'panel podélně řezaný'},{k:'fill',c:C.concEdge,f:C.conc,t:'beton na stavbě: věnce, Z1–Z3, DB'},
+ D.finish(g,[{k:'fill',c:C.edge,f:C.panel,t:'panel Spiroll 250, šířka 1 190'},{k:'fill',c:C.edge,f:C.cut,t:'panel podélně řezaný'},{k:'fill',c:C.concEdge,f:C.conc,t:'beton na stavbě: věnce, Z1–Z3 (Z2 instalační pás), DB'},
   {k:'fill',c:'#9a8f7b',f:C.plate,t:'věncovka 50 mm (ztracené bednění)'},{k:'dash',c:PAL.steel,w:3,t:'ocel pod panely: VM1, VM2, 2× IPE'},
   {k:'fill',c:C.part,f:'#e5ddef',t:'příčky podkroví (zatížení stropu)'},{k:'tag',c:C.load,s:'▼',t:'stojka rámu krovu R1–R3'},{k:'tag',c:C.ord,s:'5',t:'pořadí montáže'},
   {k:'disc',c:WHO.vzt[0],t:'prostup rekuperace'},{k:'disc',c:WHO.top[0],t:'topení, voda, data'},{k:'disc',c:WHO.kan[0],t:'kanalizace'},{k:'disc',c:WHO.ele[0],t:'elektro'}],
