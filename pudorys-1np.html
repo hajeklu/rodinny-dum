@@ -113,7 +113,7 @@ const PARTS_IN=[
  // stair and fireplace walls from the model
  {x0:6600,x1:6700,s0:5570,s1:6200},
  {x0:5100,x1:6600,s0:5950,s1:6200},
- {x0:5950,x1:6100,s0:5200,s1:5950},
+ {x0:5900,x1:6100,s0:5200,s1:5950},
  {x0:6100,x1:6200,s0:4300,s1:4450},
  {x0:7600,x1:7700,s0:4300,s1:4450}
 ];
@@ -127,7 +127,7 @@ const PSET=[
  ['P6','schodiště / koupelna','5 170–7 700','7 390–7 540',150,'2 890 od P5',''],
  ['P7','pod 1. ramenem, ke krbu','5 100–6 600','5 950–6 200',250,'',''],
  ['P8','střední stěna schodiště','6 600–6 700','5 570–6 200',100,'',''],
- ['P9','komín / schodiště','5 950–6 100','5 200–5 950',150,'',''],
+ ['P9','komín / schodiště, nosná pod VM1','5 900–6 100','5 200–5 950',200,'',''],
  ['P10','pilířky u niky na dřevo','6 100–6 200, 7 600–7 700','4 300–4 450',100,'','mezi nimi dubové lamely']
 ];
 const DOORS=[
@@ -215,7 +215,7 @@ for(const d of DOORS){
  el('path',{d:`M${X(cx)} ${Y(cs)}A${r*K} ${r*K} 0 0 ${sweep} ${X(ox)} ${Y(os)}`,fill:'none',stroke:'#111','stroke-width':W.hair},gIn);
 }
 // Partition tags matching the setting-out table.
-for(const [id,x,sv,rot] of [['P1',620,9845],['P2',2515,11250,1],['P3',4660,9845],['P4',5095,10150,1],['P5',6450,10505],['P6',6000,7465],['P7',5800,6075],['P8',6650,5885,1],['P9',6025,5560,1],['P10',6150,4375,1]]){
+for(const [id,x,sv,rot] of [['P1',620,9845],['P2',2515,11250,1],['P3',4660,9845],['P4',5095,10150,1],['P5',6450,10505],['P6',6000,7465],['P7',5800,6075],['P8',6650,5885,1],['P9',6000,5560,1],['P10',6150,4375,1]]){
  const a={'font-size':.95,'font-weight':700,fill:'#7a1f12',stroke:'#fff','stroke-width':.5,'paint-order':'stroke',dy:.33};if(rot)a.transform=`rotate(-90 ${X(x)} ${Y(sv)})`;T(x,sv,id,a,gIn);}
 // Fireplace, flue, firewood niche and the oak slat screen toward the living room.
 R(5100,6100,4200,5200,{fill:'#5b5b5b',stroke:'#111','stroke-width':W.mid},gIn);T(5600,4640,'KRB',{fill:'#fff','font-size':1.6,'font-weight':700},gIn);
@@ -474,7 +474,7 @@ side.innerHTML=`<style>
  ${PSET.map(r=>`<tr><td><b>${r[0]}</b></td><td>${esc(r[1])}</td><td class="n">${r[2]}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td><td>${esc(r[5])}</td><td>${esc(r[6])}</td></tr>`).join('')}</table>
  <div class="muted" style="margin-top:6px">x od vnějšího líce zdiva na straně příjezdu, s od vnějšího líce zdiva předního štítu, stejně jako na stránce První řada zdiva. Kontrolní míra je k líci příčky na straně uvedené místnosti.</div>
  <h3>Legenda materiálů</h3>
- <div class="lg"><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pM)" stroke="#111" stroke-width=".12"/></svg>nosné zdivo SOLBET 590 × 240 × 300 na tenkovrstvé lepidlo</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pE)" stroke="#111" stroke-width=".12"/></svg>EPS 200 (fasáda)</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pZ)" stroke="#111" stroke-width=".12"/></svg>železobeton (ZB roh FIX–HS), komín</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pP)" stroke="#111" stroke-width=".12"/></svg>příčka pórobeton 150 (stěny schodiště 100 a 250)</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="#ececec" stroke="#111" stroke-width=".12"/></svg>předstěna, obklad stoupačky (SDK)</div><div><svg class="sw" viewBox="0 0 6 2.2"><circle cx="1.2" cy="1.1" r=".7" fill="#2f7a43" stroke="#1d4f2b" stroke-width=".12"/><circle cx="4" cy="1.1" r=".7" fill="#fff" stroke="#b8402f" stroke-width=".12"/></svg>K1–K3 hotové vývody DN 110 · <span style="color:#b8402f;font-weight:700">S2</span> nová stoupačka</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#111" stroke-width=".13" stroke-dasharray="1.6 .6"/></svg>otvor ve stropě nad schodištěm</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#3d6db3" stroke-width=".13" stroke-dasharray="2 .5 .3 .5"/></svg>snížený podhled, světlá výška 2 400</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#777" stroke-width=".08" stroke-dasharray="1 .6"/></svg>hranice místností bez stěny</div></div>
+ <div class="lg"><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pM)" stroke="#111" stroke-width=".12"/></svg>nosné zdivo SOLBET 590 × 240 × 300 na tenkovrstvé lepidlo</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pE)" stroke="#111" stroke-width=".12"/></svg>EPS 200 (fasáda)</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pZ)" stroke="#111" stroke-width=".12"/></svg>železobeton (ZB roh FIX–HS), komín</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pP)" stroke="#111" stroke-width=".12"/></svg>příčka pórobeton 150 (stěny schodiště 100 a 250, nosná P9 200)</div><div><svg class="sw" viewBox="0 0 6 2.2"><rect x=".05" y=".05" width="5.9" height="2.1" fill="#ececec" stroke="#111" stroke-width=".12"/></svg>předstěna, obklad stoupačky (SDK)</div><div><svg class="sw" viewBox="0 0 6 2.2"><circle cx="1.2" cy="1.1" r=".7" fill="#2f7a43" stroke="#1d4f2b" stroke-width=".12"/><circle cx="4" cy="1.1" r=".7" fill="#fff" stroke="#b8402f" stroke-width=".12"/></svg>K1–K3 hotové vývody DN 110 · <span style="color:#b8402f;font-weight:700">S2</span> nová stoupačka</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#111" stroke-width=".13" stroke-dasharray="1.6 .6"/></svg>otvor ve stropě nad schodištěm</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#3d6db3" stroke-width=".13" stroke-dasharray="2 .5 .3 .5"/></svg>snížený podhled, světlá výška 2 400</div><div><svg class="sw" viewBox="0 0 6 2.2"><path d="M.2 1.1H5.8" stroke="#777" stroke-width=".08" stroke-dasharray="1 .6"/></svg>hranice místností bez stěny</div></div>
 </div>
 <div class="foot">
  <table class="tb">
