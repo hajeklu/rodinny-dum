@@ -1,7 +1,9 @@
 // Electrical installation shared by the 3D model (index.html, toggle "Elektro") and the page elektro.html.
-// Coordinates are the 3D model's pre-mirror space: x across the house (0.3 = inner face of the kitchen/driveway-side wall, 7.7 = inner face
+// Coordinates are the 3D model's pre-mirror space: x across the house (0.3 = inner face of the kitchen/driveway-side wall, 8.0 = inner face
 // of the HS/terrace-side wall), z along it (0.3 = inner face of the front gable), y up with the ground floor finished floor at +0.24, the attic
 // floor at +3.30 and the flat attic ceiling at +5.90. schema.js uses the same plan [z, x] with heights from ±0, so the page subtracts 0.24.
+// All positions are as built (slab measured at 8.3 × 11.9 m): the interior layout as designed, 0.15 m further from the driveway-side wall,
+// things on the terrace-side wall and outside it 0.3 m, everything from z 9.7 on 0.1 m closer to the front gable. The 3D model takes them as they are.
 //
 // Concept (stav 10/2026): the main feeder from the meter pillar already ends in the plant room 1.02, so the main board HR is there (TČ,
 // back-up heater, MVHR, outdoor circuits, gate, ČOV, retention pump, a wallbox spare) and feeds the house board RD in the hall 1.03 (behind
@@ -32,11 +34,11 @@ const CAT={
 
 // Boards. box: [x0,x1,y0,y1,z0,z1].
 const BOARDS=[
- {id:'HR',t:'Hlavní rozvaděč HR',where:'technická místnost 1.02, stěna k průjezdu',box:[2.5,3.3,1.04,2.24,16.5,16.65],
+ {id:'HR',t:'Hlavní rozvaděč HR',where:'technická místnost 1.02, stěna k průjezdu',box:[2.65,3.45,1.04,2.24,16.4,16.55],
   note:'Nástěnný, 4 řady × 24 modulů. Hlavní vypínač, svodiče přepětí T1+T2, relé HDO, jističe TČ, záložního ohřevu, rekuperace, technické místnosti a venkovních okruhů, napáječ RD.'},
- {id:'RD',t:'Rozvaděč domu RD',where:'předsíň 1.03, za zadní stěnou sedací niky (servisní dvířka)',box:[2.59,2.74,.7,2.1,10.98,11.62],
+ {id:'RD',t:'Rozvaděč domu RD',where:'předsíň 1.03, za zadní stěnou sedací niky (servisní dvířka)',box:[2.74,2.89,.7,2.1,10.88,11.52],
   note:'Na příčce ke komoře vedle R1, 6 řad × 24 modulů: chrániče a jističe s chráničem, relé a stmívače světel, ovladače žaluzií, dva zdroje 24 V s bateriovou zálohou, moduly ESPHome pro tlačítka a čidla.'},
- {id:'SLP',t:'Slaboproud SLP',where:'předsíň 1.03, vestavěná skříň nad R1',box:[2.6,2.9,1.55,2.55,10.05,10.9],
+ {id:'SLP',t:'Slaboproud SLP',where:'předsíň 1.03, vestavěná skříň nad R1',box:[2.75,3.05,1.55,2.55,9.95,10.8],
   note:'Router, switch s PoE, mini-PC s Home Assistantem, UPS. Sem vede Cat6 z tlačítek, čidel, TČ, rekuperace a tabla u branky.'}];
 
 // Circuits: board, category, breaker, cable, description. Lighting is two systems: L (mains) and N (24 V night lights).
@@ -92,231 +94,232 @@ const CIRCUITS=[
 const T=(y,p)=>p.map(([x,z])=>[x,y,z]);
 const TRUNKS=[
  // risers and connectors
- {id:'E2',fl:'g',pts:[[2.66,2.1,11.25],[2.66,2.75,11.25],[2.95,2.75,11.3],[2.95,H.aC,11.3]],t:'stoupačka E2: z RD do podkroví (skříň v předsíni, vývrt stropem, roh skříně pokoje 2.04)'},
- {id:'gF0',fl:'g',pts:[[2.66,.7,11.3],[2.66,H.gF,11.3]]},
+ {id:'E2',fl:'g',pts:[[2.81,2.1,11.15],[2.81,2.75,11.15],[3.1,2.75,11.2],[3.1,H.aC,11.2]],t:'stoupačka E2: z RD do podkroví (skříň v předsíni, vývrt stropem, roh skříně pokoje 2.04)'},
+ {id:'gF0',fl:'g',pts:[[2.81,.7,11.2],[2.81,H.gF,11.2]]},
  // ground floor: floor build-up from RD, attic floor build-up for the ceiling
- {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.66,11.3],[3.85,11.3],[3.85,1.2]])},
- {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[3.85,9.35],[5.6,9.35]])},
- {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[3.85,7.05],[1.0,7.05]])},
- {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.66,11.3],[1.3,11.3]])},
- {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[2.95,11.3],[3.5,11.3],[3.5,.8]])},
- {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[3.5,10.0],[6.4,10.0]])},
+ {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.81,11.2],[4.0,11.2],[4.0,1.2]])},
+ {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[4.0,9.35],[5.75,9.35]])},
+ {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[4.0,7.05],[1.0,7.05]])},
+ {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.81,11.2],[1.45,11.2]])},
+ {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[3.1,11.2],[3.65,11.2],[3.65,.8]])},
+ {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[3.65,9.9],[6.55,9.9]])},
  // attic: floor and above the flat ceiling (warm space under the ridge)
- {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[2.95,11.3],[4.05,11.3]])},
- {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[4.05,3.8],[4.05,14.8]])},
- {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[2.95,11.3],[4.75,11.3]])},
- {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[4.75,.9],[4.75,18.05]])},
+ {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[3.1,11.2],[4.2,11.2]])},
+ {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[4.2,3.8],[4.2,14.7]])},
+ {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[3.1,11.2],[4.9,11.2]])},
+ {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[4.9,.9],[4.9,17.95]])},
  // plant room: under the ceiling, from the top of HR
- {id:'tC0',fl:'t',pts:[[2.9,2.24,16.575],[2.9,H.tC,16.68]]},
- {id:'tC',fl:'t',mode:'c',pts:T(H.tC,[[.6,16.68],[7.4,16.68]])},
- {id:'tC',fl:'t',mode:'c',pts:T(H.tC,[[2.9,16.68],[2.9,18.15]])},
+ {id:'tC0',fl:'t',pts:[[3.05,2.24,16.475],[3.05,H.tC,16.58]]},
+ {id:'tC',fl:'t',mode:'c',pts:T(H.tC,[[.6,16.58],[7.7,16.58]])},
+ {id:'tC',fl:'t',mode:'c',pts:T(H.tC,[[3.05,16.58],[3.05,18.05]])},
  // outdoor: passage soffit and trenches
- {id:'oP0',fl:'o',pts:[[2.9,H.tC,16.68],[2.9,H.oP,16.4],[2.9,H.oP,15.95],[2.0,H.oP,15.95]]},
- {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[2.0,15.95],[2.0,13.45]])},
- {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[1.0,15.45],[7.0,15.45]])},
- {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[1.0,13.45],[7.0,13.45]])},
- {id:'oG0',fl:'o',pts:[[2.9,1.04,16.56],[2.9,.05,16.56],[2.9,.05,15.9]]},
- {id:'oG',fl:'o',mode:'g',ground:true,pts:[[2.9,15.9],[-.45,15.9],[-.45,12.05]]},
- {id:'oG',fl:'o',mode:'g',ground:true,pts:[[2.9,15.9],[8.45,15.9],[8.45,6.95],[11.2,6.95]]},
- {id:'oG',fl:'o',mode:'g',ground:true,pts:[[-.45,15.9],[-5.45,15.9],[-5.45,-5.8]]}];
+ {id:'oP0',fl:'o',pts:[[3.05,H.tC,16.58],[3.05,H.oP,16.3],[3.05,H.oP,15.85],[2.15,H.oP,15.85]]},
+ {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[2.15,15.85],[2.15,13.35]])},
+ {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[1.15,15.35],[7.15,15.35]])},
+ {id:'oP',fl:'o',mode:'c',pts:T(H.oP,[[1.15,13.35],[7.15,13.35]])},
+ {id:'oG0',fl:'o',pts:[[3.05,1.04,16.46],[3.05,.05,16.46],[3.05,.05,15.8]]},
+ {id:'oG',fl:'o',mode:'g',ground:true,pts:[[3.05,15.8],[-.45,15.8],[-.45,11.95]]},
+ {id:'oG',fl:'o',mode:'g',ground:true,pts:[[3.05,15.8],[8.75,15.8],[8.75,6.95],[11.5,6.95]]},
+ {id:'oG',fl:'o',mode:'g',ground:true,pts:[[-.45,15.8],[-5.45,15.8],[-5.45,-5.8]]}];
 
 // Done: feeder from the meter pillar with the HDO pair, the gate cable in the same trench. Route by the actual trench (assumed here).
 const DONE=[
- {t:'Přívod z elektroměrového pilíře CYKY-J 4×10 a HDO 3×1,5 (hotovo, trasa podle skutečnosti)',ground:[[-5.85,-7.0],[-5.85,16.75],[-.2,16.75]],pts:[[-.2,.05,16.75],[.4,.05,16.75],[.4,.05,16.6],[2.55,.05,16.6],[2.55,1.04,16.6]]},
- {t:'Kabel k bráně CYKY-J 5×2,5 (hotovo)',ground:[[-5.7,16.75],[-5.7,-6.9],[-5.5,-6.9]]}];
+ {t:'Přívod z elektroměrového pilíře CYKY-J 4×10 a HDO 3×1,5 (hotovo, trasa podle skutečnosti)',ground:[[-5.85,-7.0],[-5.85,16.65],[-.2,16.65]],pts:[[-.2,.05,16.65],[.4,.05,16.65],[.4,.05,16.5],[2.7,.05,16.5],[2.7,1.04,16.5]]},
+ {t:'Kabel k bráně CYKY-J 5×2,5 (hotovo)',ground:[[-5.7,16.65],[-5.7,-6.9],[-5.5,-6.9]]}];
 
 // Junctions (boxes where a room cable branches): id, floor, feed mode, point.
 const JUNCTIONS=[
- {id:'Jband',fl:'g',mode:'c',p:[3.5,2.8,1.3],t:'krabice v pásu podhledu u TV'},
- {id:'Jisl',fl:'g',mode:'c',p:[2.375,2.8,7.7],t:'krabice v podhledu nad ostrůvkem'},
- {id:'Jhall',fl:'g',mode:'c',p:[4.3,2.78,10.85],t:'krabice v podhledu předsíně'},
- {id:'Jbath',fl:'g',mode:'c',p:[6.1,2.78,9.15],t:'krabice v podhledu koupelny'},
- {id:'Jbed',fl:'a',mode:'c',p:[4.6,H.aC,2.4],t:'krabice nad stropem ložnice'}];
+ {id:'Jband',fl:'g',mode:'c',p:[3.65,2.8,1.3],t:'krabice v pásu podhledu u TV'},
+ {id:'Jisl',fl:'g',mode:'c',p:[2.525,2.8,7.7],t:'krabice v podhledu nad ostrůvkem'},
+ {id:'Jhall',fl:'g',mode:'c',p:[4.45,2.78,10.75],t:'krabice v podhledu předsíně'},
+ {id:'Jbath',fl:'g',mode:'c',p:[6.25,2.78,9.15],t:'krabice v podhledu koupelny'},
+ {id:'Jbed',fl:'a',mode:'c',p:[4.75,H.aC,2.4],t:'krabice nad stropem ložnice'}];
 
 // Devices: id, circuit, kind, position, options {n:[nx,nz] facing, t label, j junction, via [[x,z]] waypoints, drop [x,z] where the cable
 // turns vertical, pts for strips, r explicit 3D route, far + g for remote equipment reached by a ground route, mode 'f'|'c'|'g' override}.
 // Kinds: ceil, spot, pend, wall, strip, step, sock, sock2, btn, pir, appl, motor, rez, tech, up, boll, gate, re, cov, ret, ev.
 const DEVICES=[];
 const D=(c,k,p,o={})=>DEVICES.push(Object.assign({c,k,p},o));
-const arc=(y,s=1,n=7)=>Array.from({length:n},(_,i)=>{const t=1.8*i/(n-1);return [6.48-1.15*s*Math.cos(t),y,.3+1.35*s*Math.sin(t)];});
+// Reading egg in front of the fix (it moves with the fix and the terrace-side wall).
+const arc=(y,s=1,n=7)=>Array.from({length:n},(_,i)=>{const t=1.8*i/(n-1);return [6.78-1.15*s*Math.cos(t),y,.3+1.35*s*Math.sin(t)];});
 
 // ---------------- ground floor
 // L1 living, dining, kitchen
-for(const x of [.9,1.9,2.9,3.9,4.9])D('L1','spot',[x,PY,.975],{j:'Jband',t:'Bodovka v pásu u TV stěny (5×, stmívané)'});
-for(const z of [1.975,2.975,3.975])D('L1','spot',[5.9,PY,z],{j:'Jband',t:'Bodovka v pásu u HS (3×)'});
-D('L1','strip',null,{pts:[[.35,2.62,1.7],[5.42,2.62,1.7],[5.42,2.62,4.15]],j:'Jband',t:'Osvětlená římsa obýváku, LED 24 V, zdroj a stmívač v podhledu'});
-D('L1','strip',null,{pts:[[1.08,.32,.33],[1.08,2.6,.33]],j:'Jband',t:'LED profil na boku lamelové stěny'});
-D('L1','strip',null,{pts:[[3.72,.32,.33],[3.72,2.6,.33]],j:'Jband',t:'LED profil na boku lamelové stěny'});
+for(const x of [1.05,2.05,3.05,4.05,5.05])D('L1','spot',[x,PY,.975],{j:'Jband',t:'Bodovka v pásu u TV stěny (5×, stmívané)'});
+for(const z of [1.975,2.975,3.975])D('L1','spot',[6.2,PY,z],{j:'Jband',t:'Bodovka v pásu u HS (3×)'});
+D('L1','strip',null,{pts:[[.35,2.62,1.7],[5.72,2.62,1.7],[5.72,2.62,4.15]],j:'Jband',t:'Osvětlená římsa obýváku, LED 24 V, zdroj a stmívač v podhledu'});
+D('L1','strip',null,{pts:[[1.23,.32,.33],[1.23,2.6,.33]],j:'Jband',t:'LED profil na boku lamelové stěny'});
+D('L1','strip',null,{pts:[[3.87,.32,.33],[3.87,2.6,.33]],j:'Jband',t:'LED profil na boku lamelové stěny'});
 D('L1','strip',null,{pts:arc(2.62,.97),j:'Jband',t:'LED v podhledu kopíruje oblouk vajíčka'});
-D('L1','ceil',[2.4,Y1,2.75],{t:'Mechové svítidlo nad sedačkou (stmívání ve 3 krocích)'});
-D('L1','pend',[2.875,Y1,5.25],{t:'Závěsné Sofian nad stolem'});
-D('L1','strip',null,{pts:[[1.15,2.88,3.83],[3.65,2.88,3.83]],t:'Lišta s LED pro rostliny nad přepážkou (časovač)'});
+D('L1','ceil',[2.55,Y1,2.75],{t:'Mechové svítidlo nad sedačkou (stmívání ve 3 krocích)'});
+D('L1','pend',[3.025,Y1,5.25],{t:'Závěsné Sofian nad stolem'});
+D('L1','strip',null,{pts:[[1.3,2.88,3.83],[3.8,2.88,3.83]],t:'Lišta s LED pro rostliny nad přepážkou (časovač)'});
 D('L1','strip',null,{pts:[[.62,1.95,4.85],[.62,1.95,5.75]],t:'LED ve vitríně v obkladu pilíře'});
 for(const z of [6.85,8.65])D('L1','spot',[1.3,Y1,z],{t:'Přisazená bodovka nad linkou (vývrt do dutiny panelu)'});
 D('L1','strip',null,{pts:[[.45,1.75,6.25],[.45,1.75,9.15]],t:'LED pod horními skříňkami'});
-for(const z of [6.95,8.45])D('L1','pend',[2.375,PY,z],{j:'Jisl',t:'Jantarová koule nad ostrůvkem (v noci ztlumená)'});
-D('L1','strip',null,{pts:[[1.85,2.62,6.65],[1.85,2.62,8.75]],j:'Jisl',t:'Římsa kolem podhledu nad ostrůvkem'});
+for(const z of [6.95,8.45])D('L1','pend',[2.525,PY,z],{j:'Jisl',t:'Jantarová koule nad ostrůvkem (v noci ztlumená)'});
+D('L1','strip',null,{pts:[[2.0,2.62,6.65],[2.0,2.62,8.75]],j:'Jisl',t:'Římsa kolem podhledu nad ostrůvkem'});
 // L2 hall, corridor, stair, bathroom, WC, pantry
-for(const z of [10.35,11.35])D('L2','spot',[4.3,PY,z],{j:'Jhall',t:'Bodovka v podhledu předsíně'});
-D('L2','strip',null,{pts:[[2.78,2.15,11.0],[2.78,2.15,11.62]],j:'Jhall',t:'LED ve stropě sedací niky'});
-for(const z of [7.0,8.9])D('L2','spot',[3.95,Y1,z],{t:'Přisazená bodovka v chodbě'});
-D('L2','wall',[7.68,2.55,6.3],{n:[-1,0],t:'Nástěnné svítidlo nad schodištěm'});
-for(const z of [8.5,9.8])D('L2','spot',[6.1,PY,z],{j:'Jbath',t:'Bodovka v podhledu koupelny (IP44)'});
-D('L2','wall',[6.1,1.6,7.575],{n:[0,1],j:'Jbath',t:'Podsvícené zrcadlo'});
-D('L2','strip',null,{pts:[[5.4,1.75,10.41],[6.8,1.75,10.41]],j:'Jbath',t:'LED v nice nad vanou'});
-D('L2','spot',[6.3,PY,11.15],{t:'Bodovka v podhledu WC'});
-D('L2','ceil',[1.6,PY,10.95],{t:'Světlo v komoře (spíná kontakt dveří)'});
+for(const z of [10.25,11.25])D('L2','spot',[4.45,PY,z],{j:'Jhall',t:'Bodovka v podhledu předsíně'});
+D('L2','strip',null,{pts:[[2.93,2.15,10.9],[2.93,2.15,11.52]],j:'Jhall',t:'LED ve stropě sedací niky'});
+for(const z of [7.0,8.9])D('L2','spot',[4.1,Y1,z],{t:'Přisazená bodovka v chodbě'});
+D('L2','wall',[7.98,2.55,6.3],{n:[-1,0],t:'Nástěnné svítidlo nad schodištěm'});
+for(const z of [8.5,9.7])D('L2','spot',[6.25,PY,z],{j:'Jbath',t:'Bodovka v podhledu koupelny (IP44)'});
+D('L2','wall',[6.25,1.6,7.575],{n:[0,1],j:'Jbath',t:'Podsvícené zrcadlo'});
+D('L2','strip',null,{pts:[[5.55,1.75,10.31],[6.95,1.75,10.31]],j:'Jbath',t:'LED v nice nad vanou'});
+D('L2','spot',[6.45,PY,11.05],{t:'Bodovka v podhledu WC'});
+D('L2','ceil',[1.75,PY,10.85],{t:'Světlo v komoře (spíná kontakt dveří)'});
 // N1 night lights, fed through the floor
-for(const z of [7.9,9.4,10.4])D('N1','step',[5.01,Y0+.3,z],{n:[-1,0],t:'Orientační světlo ve stěně, 30 cm nad podlahou'});
+for(const z of [7.9,9.4,10.3])D('N1','step',[5.16,Y0+.3,z],{n:[-1,0],t:'Orientační světlo ve stěně, 30 cm nad podlahou'});
 D('N1','strip',null,{pts:[[.92,.27,6.25],[.92,.27,9.15]],t:'Dvoubarevný pásek v soklu linky (večer bílá, v noci jantar)'});
-for(const x of [1.88,2.72])D('N1','strip',null,{pts:[[x,.27,6.75],[x,.27,8.65]],t:'Pásek v soklu ostrůvku'});
-D('N1','strip',null,{pts:[[5.3,.45,7.05],[7.25,1.3,7.05],[7.35,1.95,5.6],[7.0,2.6,4.7],[6.1,3.2,4.85]],t:'LED pod hranou každého schodu'});
-D('N1','strip',null,{pts:[[1.5,.36,.55],[3.3,.36,.55]],t:'LED pod televizním stolkem'});
-D('N1','strip',null,{pts:[[1.2,.27,3.62],[3.6,.27,3.62]],t:'LED pod soklem květináče'});
+for(const x of [2.03,2.87])D('N1','strip',null,{pts:[[x,.27,6.75],[x,.27,8.65]],t:'Pásek v soklu ostrůvku'});
+D('N1','strip',null,{pts:[[5.45,.45,7.05],[7.48,1.3,7.05],[7.6,1.95,5.6],[7.2,2.6,4.7],[6.25,3.2,4.85]],t:'LED pod hranou každého schodu'});
+D('N1','strip',null,{pts:[[1.65,.36,.55],[3.45,.36,.55]],t:'LED pod televizním stolkem'});
+D('N1','strip',null,{pts:[[1.35,.27,3.62],[3.75,.27,3.62]],t:'LED pod soklem květináče'});
 D('N1','strip',null,{pts:arc(.27,.95),t:'LED v liště vajíčka, nasvítí lamely zespodu'});
 D('N1','strip',null,{pts:[[.95,.3,4.8],[.95,.3,5.8]],t:'LED pod plovoucí komodou'});
-D('N1','strip',null,{pts:[[5.35,.63,8.02],[6.85,.63,8.02]],t:'LED pod umyvadlovou skříňkou'});
-D('N1','strip',null,{pts:[[7.38,.5,10.98],[7.38,.5,11.3]],t:'LED pod závěsným WC'});
+D('N1','strip',null,{pts:[[5.5,.63,8.02],[7.0,.63,8.02]],t:'LED pod umyvadlovou skříňkou'});
+D('N1','strip',null,{pts:[[7.68,.5,10.88],[7.68,.5,11.2]],t:'LED pod závěsným WC'});
 // controls on the ground floor (Cat6 to RD, no route drawn)
-D('ctl','btn',[3.21,1.44,11.45],{n:[1,0],t:'Panel u vchodu: předsíň, chodba, Odchod (vše vypnout, žaluzie), Noc'});
-D('ctl','btn',[4.45,1.44,9.765],{n:[0,-1],t:'Panel u dveří z předsíně: chodba, kuchyň, jídelna'});
-D('ctl','btn',[7.2,1.44,4.19],{n:[0,-1],t:'Panel v obýváku: bodovky, římsa, mech, scény, žaluzie HS a fixu, terasa'});
-D('ctl','btn',[5.01,1.44,7.72],{n:[-1,0],t:'U schodů: schodiště, chodba v podkroví'});
-D('ctl','btn',[5.01,1.44,8.18],{n:[-1,0],t:'Koupelna 1.05 (u dveří zvenku)'});
-D('ctl','btn',[5.01,1.44,10.82],{n:[-1,0],t:'WC 1.04 (u dveří zvenku)'});
-D('ctl','pir',[4.1,PY,10.75],{t:'Čidlo pohybu · předsíň'});
-D('ctl','pir',[4.4,Y1,7.6],{t:'Čidlo pohybu · chodba a schody'});
-D('ctl','pir',[1.4,Y1,7.75],{t:'Čidlo pohybu · kuchyň'});
-D('ctl','pir',[6.7,PY,9.15],{t:'Čidlo pohybu · koupelna'});
-D('ctl','pir',[6.9,PY,11.15],{t:'Čidlo přítomnosti · WC'});
-D('ctl','pir',[8.3,2.95,4.2],{t:'Čidlo větru pro žaluzie (fasáda u HS)'});
+D('ctl','btn',[3.36,1.44,11.35],{n:[1,0],t:'Panel u vchodu: předsíň, chodba, Odchod (vše vypnout, žaluzie), Noc'});
+D('ctl','btn',[4.6,1.44,9.665],{n:[0,-1],t:'Panel u dveří z předsíně: chodba, kuchyň, jídelna'});
+D('ctl','btn',[7.4,1.44,4.19],{n:[0,-1],t:'Panel v obýváku: bodovky, římsa, mech, scény, žaluzie HS a fixu, terasa'});
+D('ctl','btn',[5.16,1.44,7.72],{n:[-1,0],t:'U schodů: schodiště, chodba v podkroví'});
+D('ctl','btn',[5.16,1.44,8.18],{n:[-1,0],t:'Koupelna 1.05 (u dveří zvenku)'});
+D('ctl','btn',[5.16,1.44,10.72],{n:[-1,0],t:'WC 1.04 (u dveří zvenku)'});
+D('ctl','pir',[4.25,PY,10.65],{t:'Čidlo pohybu · předsíň'});
+D('ctl','pir',[4.55,Y1,7.6],{t:'Čidlo pohybu · chodba a schody'});
+D('ctl','pir',[1.55,Y1,7.75],{t:'Čidlo pohybu · kuchyň'});
+D('ctl','pir',[6.85,PY,9.15],{t:'Čidlo pohybu · koupelna'});
+D('ctl','pir',[7.05,PY,11.05],{t:'Čidlo přítomnosti · WC'});
+D('ctl','pir',[8.6,2.95,4.2],{t:'Čidlo větru pro žaluzie (fasáda u HS)'});
 // Z sockets and S appliances, through the floor
-D('Z1','sock2',[2.4,1.15,.31],{n:[0,1],t:'Za televizí (2× + data)'});
-D('Z1','sock2',[1.8,.42,.31],{n:[0,1],t:'V televizním stolku'});
-D('Z1','sock2',[2.4,.33,3.67],{n:[0,-1],t:'V soklu květináče za sedačkou (+ USB)'});
+D('Z1','sock2',[2.55,1.15,.31],{n:[0,1],t:'Za televizí (2× + data)'});
+D('Z1','sock2',[1.95,.42,.31],{n:[0,1],t:'V televizním stolku'});
+D('Z1','sock2',[2.55,.33,3.67],{n:[0,-1],t:'V soklu květináče za sedačkou (+ USB)'});
 D('Z1','sock',[.31,Y0+.3,2.0],{n:[1,0],t:'Pod oknem obýváku'});
-D('Z1','sock',[5.42,Y0+.3,.31],{n:[0,1],t:'Ve vajíčku (lampa na čtení)'});
-D('Z1','sock',[7.69,Y0+.3,3.75],{n:[-1,0],t:'U HS'});
+D('Z1','sock',[5.72,Y0+.3,.31],{n:[0,1],t:'Ve vajíčku (lampa na čtení)'});
+D('Z1','sock',[7.99,Y0+.3,3.75],{n:[-1,0],t:'U HS'});
 D('Z1','sock2',[.66,Y0+.3,4.55],{n:[1,0],t:'U komody v jídelně'});
 D('Z2','sock2',[.5,1.29,6.19],{n:[0,1],t:'Linka u pilíře'});
 D('Z2','sock2',[.62,1.29,9.19],{n:[0,-1],t:'Linka u lednice'});
-D('Z3','sock2',[2.62,1.15,8.45],{up:true,t:'Výsuvná zásuvka v desce ostrůvku'});
-D('Z3','appl',[2.375,PY,7.7],{j:'Jisl',mode:'c',t:'Digestoř v podhledu nad ostrůvkem'});
-D('Z4','sock',[5.01,Y0+.3,10.05],{n:[-1,0],t:'Předsíň'});
-D('Z4','sock',[5.01,Y0+.3,7.5],{n:[-1,0],t:'Chodba (vysavač)'});
-D('Z4','sock',[2.43,Y0+.3,10.35],{n:[-1,0],t:'Komora (robotický vysavač, nabíječky)'});
-D('Z4','sock2',[7.05,1.44,7.555],{n:[0,1],t:'U umyvadla v koupelně (IP44, mimo zóny)'});
-D('S1','appl',[2.3,.75,7.7],{t:'Varná deska 400 V v ostrůvku'});
-D('S2','appl',[2.4,.3,8.2],{t:'Trouba pod varnou deskou'});
+D('Z3','sock2',[2.77,1.15,8.45],{up:true,t:'Výsuvná zásuvka v desce ostrůvku'});
+D('Z3','appl',[2.525,PY,7.7],{j:'Jisl',mode:'c',t:'Digestoř v podhledu nad ostrůvkem'});
+D('Z4','sock',[5.16,Y0+.3,9.95],{n:[-1,0],t:'Předsíň'});
+D('Z4','sock',[5.16,Y0+.3,7.5],{n:[-1,0],t:'Chodba (vysavač)'});
+D('Z4','sock',[2.58,Y0+.3,10.25],{n:[-1,0],t:'Komora (robotický vysavač, nabíječky)'});
+D('Z4','sock2',[7.2,1.44,7.555],{n:[0,1],t:'U umyvadla v koupelně (IP44, mimo zóny)'});
+D('S1','appl',[2.45,.75,7.7],{t:'Varná deska 400 V v ostrůvku'});
+D('S2','appl',[2.55,.3,8.2],{t:'Trouba pod varnou deskou'});
 D('S3','appl',[.33,.45,7.75],{n:[1,0],t:'Myčka (vývod ve skříňce dřezu)'});
 D('S4','appl',[.33,2.45,9.5],{n:[1,0],t:'Lednice (vývod nad vestavnou lednicí)'});
-D('S4','appl',[2.2,Y0+.3,11.69],{n:[0,-1],t:'Mrazák v komoře'});
-D('S7','appl',[5.19,1.0,9.38],{n:[1,0],t:'Elektrický žebřík v koupelně (přes relé)'});
+D('S4','appl',[2.35,Y0+.3,11.59],{n:[0,-1],t:'Mrazák v komoře'});
+D('S7','appl',[5.34,1.0,9.38],{n:[1,0],t:'Elektrický žebřík v koupelně (přes relé)'});
 // Ž1 ground-floor blinds: motor in the head box outside, cable down the wall
-D('Ž1','motor',[8.3,2.72,1.82],{j:'Jband',via:[[7.6,1.3],[7.6,1.82]],drop:[7.95,1.82],t:'Žaluzie HS, motor v nadpraží'});
-D('Ž1','motor',[6.48,2.72,-.33],{j:'Jband',via:[[6.48,1.3]],drop:[6.48,.05],t:'Žaluzie fixu'});
+D('Ž1','motor',[8.6,2.72,1.82],{j:'Jband',via:[[7.9,1.3],[7.9,1.82]],drop:[8.25,1.82],t:'Žaluzie HS, motor v nadpraží'});
+D('Ž1','motor',[6.78,2.72,-.33],{j:'Jband',via:[[6.78,1.3]],drop:[6.78,.05],t:'Žaluzie fixu'});
 D('Ž1','motor',[-.33,1.82,2.9],{drop:[.05,2.9],t:'Žaluzie okna obýváku'});
 D('Ž1','motor',[-.33,1.82,7.7],{drop:[.05,7.7],t:'Žaluzie okna kuchyně'});
 // T1 / T2 next to RD
-D('T1','tech',[2.61,1.3,10.45],{n:[1,0],r:[[2.66,1.3,10.98],[2.66,1.3,10.6],[2.61,1.3,10.45]],t:'Zónový regulátor R1 nad rozdělovačem'});
+D('T1','tech',[2.76,1.3,10.35],{n:[1,0],r:[[2.81,1.3,10.88],[2.81,1.3,10.5],[2.76,1.3,10.35]],t:'Zónový regulátor R1 nad rozdělovačem'});
 
 // ---------------- attic (D1.3 layout)
-D('L3','ceil',[5.2,Uc,2.25],{fl:'a',j:'Jbed',t:'Stropní svítidlo ložnice'});
-for(const z of [1.25,3.24])D('L3','wall',[4.14,U0+1.2,z],{fl:'a',n:[1,0],j:'Jbed',t:'Nástěnné u postele (jantarová koule)'});
-D('L3','strip',null,{fl:'a',pts:[[4.1,U0+2.3,1.15],[4.1,U0+2.3,3.35]],j:'Jbed',t:'LED nad lamelami za postelí'});
-D('L3','ceil',[2.6,Uc,2.6],{fl:'a',j:'Jbed',t:'Šatna v ložnici · strop'});
-D('L3','ceil',[2.1,Uc,4.95],{fl:'a',t:'Koupelna u ložnice · strop'});
-D('L3','wall',[1.77,U0+1.6,6.37],{fl:'a',n:[0,-1],t:'Podsvícené zrcadlo'});
-D('L3','ceil',[2.5,Uc,8.3],{fl:'a',t:'Pokoj 2.04 · strop'});
-D('L3','ceil',[2.5,Uc,13.0],{fl:'a',t:'Šatna 2.09 · strop'});
-D('L3','ceil',[4.9,Uc,16.3],{fl:'a',t:'Pokoj 2.08 · strop'});
-for(const z of [9.6,11.6,13.5])D('L4','spot',[4.05,Uc,z],{fl:'a',t:'Bodovka v chodbě'});
-D('L4','spot',[3.85,Uc,4.85],{fl:'a',t:'Bodovka na podestě'});D('L4','spot',[4.3,Uc,6.8],{fl:'a',t:'Bodovka na podestě'});
-D('L4','ceil',[5.4,Uc,8.9],{fl:'a',t:'Prádelna · strop'});
-D('L4','ceil',[5.3,Uc,10.7],{fl:'a',t:'WC 2.06 · strop'});
-D('L4','ceil',[5.5,Uc,12.2],{fl:'a',t:'Koupelna 2.07 · strop'});
-D('L4','wall',[4.76,U0+1.6,12.35],{fl:'a',n:[1,0],t:'Podsvícené zrcadlo'});
+D('L3','ceil',[5.35,Uc,2.25],{fl:'a',j:'Jbed',t:'Stropní svítidlo ložnice'});
+for(const z of [1.25,3.24])D('L3','wall',[4.29,U0+1.2,z],{fl:'a',n:[1,0],j:'Jbed',t:'Nástěnné u postele (jantarová koule)'});
+D('L3','strip',null,{fl:'a',pts:[[4.25,U0+2.3,1.15],[4.25,U0+2.3,3.35]],j:'Jbed',t:'LED nad lamelami za postelí'});
+D('L3','ceil',[2.75,Uc,2.6],{fl:'a',j:'Jbed',t:'Šatna v ložnici · strop'});
+D('L3','ceil',[2.25,Uc,4.95],{fl:'a',t:'Koupelna u ložnice · strop'});
+D('L3','wall',[1.92,U0+1.6,6.37],{fl:'a',n:[0,-1],t:'Podsvícené zrcadlo'});
+D('L3','ceil',[2.65,Uc,8.3],{fl:'a',t:'Pokoj 2.04 · strop'});
+D('L3','ceil',[2.65,Uc,12.9],{fl:'a',t:'Šatna 2.09 · strop'});
+D('L3','ceil',[5.05,Uc,16.2],{fl:'a',t:'Pokoj 2.08 · strop'});
+for(const z of [9.6,11.5,13.4])D('L4','spot',[4.2,Uc,z],{fl:'a',t:'Bodovka v chodbě'});
+D('L4','spot',[4.0,Uc,4.85],{fl:'a',t:'Bodovka na podestě'});D('L4','spot',[4.45,Uc,6.8],{fl:'a',t:'Bodovka na podestě'});
+D('L4','ceil',[5.55,Uc,8.9],{fl:'a',t:'Prádelna · strop'});
+D('L4','ceil',[5.45,Uc,10.6],{fl:'a',t:'WC 2.06 · strop'});
+D('L4','ceil',[5.65,Uc,12.1],{fl:'a',t:'Koupelna 2.07 · strop'});
+D('L4','wall',[4.91,U0+1.6,12.25],{fl:'a',n:[1,0],t:'Podsvícené zrcadlo'});
 // N2
-D('N2','strip',null,{fl:'a',pts:[[4.3,U0+.03,1.57],[6.05,U0+.03,1.57],[6.05,U0+.03,2.93],[4.3,U0+.03,2.93]],t:'LED pod plovoucí postelí'});
-for(const x of [3.0,5.0])D('N2','step',[x,U0+.3,4.28],{fl:'a',n:[0,-1],t:'Orientační světlo u dveří v ložnici'});
-for(const z of [5.6,9.8,13.6])D('N2','step',[3.5,U0+.3,z],{fl:'a',n:[1,0],t:'Orientační světlo v chodbě'});
-for(const z of [7.95,12.2])D('N2','step',[4.59,U0+.3,z],{fl:'a',n:[-1,0],t:'Orientační světlo v chodbě'});
-D('N2','step',[4.9,U0+.3,4.45],{fl:'a',n:[0,1],t:'Orientační světlo nahoře u schodů'});
+D('N2','strip',null,{fl:'a',pts:[[4.45,U0+.03,1.57],[6.2,U0+.03,1.57],[6.2,U0+.03,2.93],[4.45,U0+.03,2.93]],t:'LED pod plovoucí postelí'});
+for(const x of [3.15,5.15])D('N2','step',[x,U0+.3,4.28],{fl:'a',n:[0,-1],t:'Orientační světlo u dveří v ložnici'});
+for(const z of [5.6,9.7,13.5])D('N2','step',[3.65,U0+.3,z],{fl:'a',n:[1,0],t:'Orientační světlo v chodbě'});
+for(const z of [7.95,12.1])D('N2','step',[4.74,U0+.3,z],{fl:'a',n:[-1,0],t:'Orientační světlo v chodbě'});
+D('N2','step',[5.05,U0+.3,4.45],{fl:'a',n:[0,1],t:'Orientační světlo nahoře u schodů'});
 D('N2','strip',null,{fl:'a',pts:[[.6,U0+.28,4.94],[.6,U0+.28,5.26]],t:'LED pod WC v koupelně u ložnice'});
-D('N2','strip',null,{fl:'a',pts:[[5.22,U0+.39,11.7],[5.22,U0+.39,13.0]],t:'LED pod umyvadly 2.07'});
-D('N2','strip',null,{fl:'a',pts:[[7.4,U0+.28,13.64],[7.4,U0+.28,13.96]],t:'LED pod WC 2.07'});
-D('N2','strip',null,{fl:'a',pts:[[7.4,U0+.28,10.54],[7.4,U0+.28,10.86]],t:'LED pod WC 2.06'});
-D('N2','strip',null,{fl:'a',pts:[[1.38,U0+.03,8.95],[1.38,U0+.03,10.9]],t:'Pod postelí v pokoji 2.04 (příprava)'});
-D('N2','strip',null,{fl:'a',pts:[[5.7,U0+.03,17.03],[7.6,U0+.03,17.03]],t:'Pod postelí v pokoji 2.08 (příprava)'});
+D('N2','strip',null,{fl:'a',pts:[[5.37,U0+.39,11.6],[5.37,U0+.39,12.9]],t:'LED pod umyvadly 2.07'});
+D('N2','strip',null,{fl:'a',pts:[[7.7,U0+.28,13.54],[7.7,U0+.28,13.86]],t:'LED pod WC 2.07'});
+D('N2','strip',null,{fl:'a',pts:[[7.7,U0+.28,10.44],[7.7,U0+.28,10.76]],t:'LED pod WC 2.06'});
+D('N2','strip',null,{fl:'a',pts:[[1.38,U0+.03,8.85],[1.38,U0+.03,10.8]],t:'Pod postelí v pokoji 2.04 (příprava)'});
+D('N2','strip',null,{fl:'a',pts:[[6.0,U0+.03,16.93],[7.9,U0+.03,16.93]],t:'Pod postelí v pokoji 2.08 (příprava)'});
 // attic controls
-D('ctl','btn',[4.55,U0+1.2,4.28],{fl:'a',n:[0,-1],t:'Ložnice u dveří'});
-for(const z of [1.15,3.35])D('ctl','btn',[4.14,U0+.85,z],{fl:'a',n:[1,0],t:'U postele: světlo, Noc (vše vypnout), žaluzie'});
-D('ctl','btn',[2.5,U0+1.2,4.45],{fl:'a',n:[0,1],t:'Koupelna u ložnice'});
-D('ctl','btn',[3.5,U0+1.2,6.0],{fl:'a',n:[1,0],t:'Nahoře u schodů: chodba, schodiště'});
-D('ctl','btn',[3.33,U0+1.2,7.75],{fl:'a',n:[-1,0],t:'Pokoj 2.04'});
-D('ctl','btn',[2.5,U0+1.2,14.23],{fl:'a',n:[0,-1],t:'Šatna 2.09'});
-D('ctl','btn',[4.55,U0+1.2,14.38],{fl:'a',n:[0,1],t:'Pokoj 2.08'});
-D('ctl','btn',[4.76,U0+1.2,8.38],{fl:'a',n:[1,0],t:'Prádelna'});
-D('ctl','btn',[4.59,U0+1.2,11.2],{fl:'a',n:[-1,0],t:'WC 2.06 (zvenku)'});
-D('ctl','btn',[4.59,U0+1.2,13.25],{fl:'a',n:[-1,0],t:'Koupelna 2.07 (zvenku)'});
-for(const [p,t] of [[[3.9,Uc,6.2],'podesta'],[[4.05,Uc,12.6],'chodba'],[[4.3,Uc,3.9],'ložnice u dveří'],[[1.9,Uc,5.7],'koupelna u ložnice'],[[6.0,Uc,13.6],'koupelna 2.07'],[[6.4,Uc,10.7],'WC 2.06']])
+D('ctl','btn',[4.7,U0+1.2,4.28],{fl:'a',n:[0,-1],t:'Ložnice u dveří'});
+for(const z of [1.15,3.35])D('ctl','btn',[4.29,U0+.85,z],{fl:'a',n:[1,0],t:'U postele: světlo, Noc (vše vypnout), žaluzie'});
+D('ctl','btn',[2.65,U0+1.2,4.45],{fl:'a',n:[0,1],t:'Koupelna u ložnice'});
+D('ctl','btn',[3.65,U0+1.2,6.0],{fl:'a',n:[1,0],t:'Nahoře u schodů: chodba, schodiště'});
+D('ctl','btn',[3.48,U0+1.2,7.75],{fl:'a',n:[-1,0],t:'Pokoj 2.04'});
+D('ctl','btn',[2.65,U0+1.2,14.13],{fl:'a',n:[0,-1],t:'Šatna 2.09'});
+D('ctl','btn',[4.7,U0+1.2,14.28],{fl:'a',n:[0,1],t:'Pokoj 2.08'});
+D('ctl','btn',[4.91,U0+1.2,8.38],{fl:'a',n:[1,0],t:'Prádelna'});
+D('ctl','btn',[4.74,U0+1.2,11.1],{fl:'a',n:[-1,0],t:'WC 2.06 (zvenku)'});
+D('ctl','btn',[4.74,U0+1.2,13.15],{fl:'a',n:[-1,0],t:'Koupelna 2.07 (zvenku)'});
+for(const [p,t] of [[[4.05,Uc,6.2],'podesta'],[[4.2,Uc,12.5],'chodba'],[[4.45,Uc,3.9],'ložnice u dveří'],[[2.05,Uc,5.7],'koupelna u ložnice'],[[6.15,Uc,13.5],'koupelna 2.07'],[[6.55,Uc,10.6],'WC 2.06']])
  D('ctl','pir',p,{fl:'a',t:'Čidlo pohybu · '+t});
 // sockets, appliances
-for(const z of [1.3,3.2])D('Z5','sock2',[4.14,U0+.35,z],{fl:'a',n:[1,0],t:'U postele'});
-D('Z5','sock',[1.3,U0+.3,4.28],{fl:'a',n:[0,-1],t:'U dveří do koupelny'});
-D('Z5','sock',[6.9,U0+.3,4.28],{fl:'a',n:[0,-1],t:'U lavice'});
-D('Z5','sock',[4.0,U0+.3,.31],{fl:'a',n:[0,1],t:'Mezi balkonovými dveřmi'});
-D('Z5','sock',[1.0,U0+1.1,6.37],{fl:'a',n:[0,-1],t:'U umyvadla (IP44)'});
-D('Z6','sock2',[1.75,U0+.3,6.56],{fl:'a',n:[0,1],t:'Pokoj 2.04 · u stolu'});
+for(const z of [1.3,3.2])D('Z5','sock2',[4.29,U0+.35,z],{fl:'a',n:[1,0],t:'U postele'});
+D('Z5','sock',[1.45,U0+.3,4.28],{fl:'a',n:[0,-1],t:'U dveří do koupelny'});
+D('Z5','sock',[7.05,U0+.3,4.28],{fl:'a',n:[0,-1],t:'U lavice'});
+D('Z5','sock',[4.15,U0+.3,.31],{fl:'a',n:[0,1],t:'Mezi balkonovými dveřmi'});
+D('Z5','sock',[1.15,U0+1.1,6.37],{fl:'a',n:[0,-1],t:'U umyvadla (IP44)'});
+D('Z6','sock2',[1.9,U0+.3,6.56],{fl:'a',n:[0,1],t:'Pokoj 2.04 · u stolu'});
 D('Z6','sock',[.31,U0+.3,8.75],{fl:'a',n:[1,0],t:'Pokoj 2.04 · u postele'});
-D('Z6','sock',[3.33,U0+.3,8.2],{fl:'a',n:[-1,0],t:'Pokoj 2.04 · u dveří'});
-D('Z6','sock',[1.8,U0+.3,11.74],{fl:'a',n:[0,1],t:'Šatna 2.09'});
-for(const z of [15.25,17.15])D('Z6','sock',[7.69,U0+.3,z],{fl:'a',n:[-1,0],t:'Pokoj 2.08 · u postele'});
-D('Z6','sock2',[6.0,U0+.3,18.29],{fl:'a',n:[0,-1],t:'Pokoj 2.08 · u stolu'});
-D('Z6','sock',[.31,U0+.3,16.6],{fl:'a',n:[1,0],t:'Pokoj 2.08 · u křesla'});
-D('Z7','sock',[3.5,U0+.3,12.6],{fl:'a',n:[1,0],t:'Chodba'});
-D('Z7','sock',[4.59,U0+.3,9.6],{fl:'a',n:[-1,0],t:'Chodba'});
-D('Z7','sock',[7.0,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Prádelna (žehlička)'});
-D('Z7','sock2',[4.76,U0+1.15,13.2],{fl:'a',n:[1,0],t:'U umyvadel 2.07 (IP44)'});
-D('S5','appl',[5.3,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Pračka'});
-D('S6','appl',[5.92,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Sušička'});
-D('S7','appl',[3.32,U0+1.1,4.8],{fl:'a',n:[-1,0],t:'Žebřík v koupelně u ložnice'});
-D('S7','appl',[4.77,U0+1.3,13.22],{fl:'a',n:[1,0],t:'Žebřík v koupelně 2.07'});
-// Ž2 attic blinds and the roof-window spares, from above the ceiling
-for(const x of [2.75,5.25])D('Ž2','motor',[x,5.55,-.33],{fl:'a',drop:[x,.05],t:'Žaluzie balkonových dveří ložnice'});
-for(const x of [2.75,5.25])D('Ž2','motor',[x,5.55,18.93],{fl:'a',drop:[x,18.55],t:'Žaluzie okna v pokoji 2.08'});
-for(const z of [4.84,7.55,10.45,12.3])D('Ž2','rez',[6.15,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
-for(const z of [4.96,10.33])D('Ž2','rez',[1.85,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
-D('T1','tech',[4.3,Uc+.12,5.6],{fl:'a',t:'Kazetový fancoil FC'});
-D('T1','tech',[3.5,U0+1.4,10.95],{fl:'a',n:[1,0],t:'Zónový regulátor R2'});
+D('Z6','sock',[3.48,U0+.3,8.2],{fl:'a',n:[-1,0],t:'Pokoj 2.04 · u dveří'});
+D('Z6','sock',[1.95,U0+.3,11.64],{fl:'a',n:[0,1],t:'Šatna 2.09'});
+for(const z of [15.15,17.05])D('Z6','sock',[7.99,U0+.3,z],{fl:'a',n:[-1,0],t:'Pokoj 2.08 · u postele'});
+D('Z6','sock2',[6.15,U0+.3,18.19],{fl:'a',n:[0,-1],t:'Pokoj 2.08 · u stolu'});
+D('Z6','sock',[.31,U0+.3,16.5],{fl:'a',n:[1,0],t:'Pokoj 2.08 · u křesla'});
+D('Z7','sock',[3.65,U0+.3,12.5],{fl:'a',n:[1,0],t:'Chodba'});
+D('Z7','sock',[4.74,U0+.3,9.6],{fl:'a',n:[-1,0],t:'Chodba'});
+D('Z7','sock',[7.15,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Prádelna (žehlička)'});
+D('Z7','sock2',[4.91,U0+1.15,13.1],{fl:'a',n:[1,0],t:'U umyvadel 2.07 (IP44)'});
+D('S5','appl',[5.45,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Pračka'});
+D('S6','appl',[6.07,U0+1.05,7.39],{fl:'a',n:[0,1],t:'Sušička'});
+D('S7','appl',[3.47,U0+1.1,4.8],{fl:'a',n:[-1,0],t:'Žebřík v koupelně u ložnice'});
+D('S7','appl',[4.92,U0+1.3,13.12],{fl:'a',n:[1,0],t:'Žebřík v koupelně 2.07'});
+// Ž2 attic blinds and the roof-window spares, from above the ceiling (roof windows as in schema.js ROOFWIN.d13, +0.33 to the middle)
+for(const x of [2.9,5.4])D('Ž2','motor',[x,5.55,-.33],{fl:'a',drop:[x,.05],t:'Žaluzie balkonových dveří ložnice'});
+for(const x of [2.9,5.4])D('Ž2','motor',[x,5.55,18.83],{fl:'a',drop:[x,18.45],t:'Žaluzie okna v pokoji 2.08'});
+for(const z of [4.84,7.55,10.35,12.2])D('Ž2','rez',[6.45,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
+for(const z of [4.96,10.23])D('Ž2','rez',[1.85,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
+D('T1','tech',[4.45,Uc+.12,5.6],{fl:'a',t:'Kazetový fancoil FC'});
+D('T1','tech',[3.65,U0+1.4,10.85],{fl:'a',n:[1,0],t:'Zónový regulátor R2'});
 
 // ---------------- plant room and outdoors (HR)
-D('H2','tech',[1.77,.9,19.08],{fl:'t',drop:[1.77,18.2],t:'Venkovní jednotka TČ 400 V'});
-D('H3','tech',[2.6,1.3,18.28],{fl:'t',n:[0,-1],t:'Záložní ohřev 9 kW, blokovaný HDO'});
-D('H4','tech',[5.38,2.0,18.0],{fl:'t',t:'Rekuperační jednotka'});
-D('H5','tech',[1.55,1.5,18.28],{fl:'t',n:[0,-1],t:'ESP32, cirkulační čerpadlo, teploměry'});
-D('H5','ceil',[2.0,Y1,17.4],{fl:'t',t:'Světlo technické místnosti'});D('H5','ceil',[5.5,Y1,17.0],{fl:'t',t:'Světlo technické místnosti'});
-D('H5','sock',[4.3,1.44,16.66],{fl:'t',n:[0,1],t:'Zásuvka u HR'});D('H5','sock',[7.69,1.0,17.4],{fl:'t',n:[-1,0],t:'Zásuvka u rekuperace'});
-D('ctl','btn',[5.65,1.44,16.66],{fl:'t',n:[0,1],t:'Vypínač u dveří technické místnosti'});
-for(const x of [1,3,5,7])for(const z of [13.1,15.1])D('V1','spot',[x,2.86,z],{fl:'o',t:'Bodovka v podhledu průjezdu'});
-for(const [x,z] of [[-.45,12.05],[8.45,12.05],[-.45,16.15],[8.45,16.15]])D('V1','up',[x,-.1,z],{fl:'o',t:'Zemní světlo, nasvítí dřevo na nároží'});
-for(const z of [-5,0,5,10])D('V2','boll',[-5.45,-.095,z],{fl:'o',t:'Sloupkové světlo 60 cm u příjezdovky'});
-D('V2','strip',null,{fl:'o',pts:[[11.44,.08,.0],[11.44,.08,6.5]],t:'LED pod okrajem terasy'});
-D('V2','strip',null,{fl:'o',pts:[[11.84,-.03,.9],[11.84,-.03,5.4]],t:'LED pod plovoucím schodem terasy'});
-for(const x of [8.57,8.99])D('V2','strip',null,{fl:'o',pts:[[x,.03,12.35],[x,.03,15.85]],t:'LED pod hranou schodů do zahrady'});
-D('V3','sock',[4.6,.45,15.99],{fl:'o',n:[0,-1],t:'Venkovní zásuvka v průjezdu (IP44)'});
-D('V3','sock',[8.26,.45,3.7],{fl:'o',n:[1,0],t:'Venkovní zásuvka na terase (IP44)'});
+D('H2','tech',[1.92,.9,18.98],{fl:'t',drop:[1.92,18.1],t:'Venkovní jednotka TČ 400 V'});
+D('H3','tech',[2.75,1.3,18.18],{fl:'t',n:[0,-1],t:'Záložní ohřev 9 kW, blokovaný HDO'});
+D('H4','tech',[5.53,2.0,17.9],{fl:'t',t:'Rekuperační jednotka'});
+D('H5','tech',[1.7,1.5,18.18],{fl:'t',n:[0,-1],t:'ESP32, cirkulační čerpadlo, teploměry'});
+D('H5','ceil',[2.15,Y1,17.3],{fl:'t',t:'Světlo technické místnosti'});D('H5','ceil',[5.65,Y1,16.9],{fl:'t',t:'Světlo technické místnosti'});
+D('H5','sock',[4.45,1.44,16.56],{fl:'t',n:[0,1],t:'Zásuvka u HR'});D('H5','sock',[7.99,1.0,17.3],{fl:'t',n:[-1,0],t:'Zásuvka u rekuperace'});
+D('ctl','btn',[5.8,1.44,16.56],{fl:'t',n:[0,1],t:'Vypínač u dveří technické místnosti'});
+for(const x of [1.15,3.15,5.15,7.15])for(const z of [13.0,15.0])D('V1','spot',[x,2.86,z],{fl:'o',t:'Bodovka v podhledu průjezdu'});
+for(const [x,z] of [[-.45,11.95],[8.75,11.95],[-.45,16.05],[8.75,16.05]])D('V1','up',[x,-.1,z],{fl:'o',t:'Zemní světlo, nasvítí dřevo na nároží'});
+for(const z of [-5,0,5,9.9])D('V2','boll',[-5.45,-.095,z],{fl:'o',t:'Sloupkové světlo 60 cm u příjezdovky'});
+D('V2','strip',null,{fl:'o',pts:[[11.74,.08,.0],[11.74,.08,6.5]],t:'LED pod okrajem terasy'});
+D('V2','strip',null,{fl:'o',pts:[[12.14,-.03,.9],[12.14,-.03,5.4]],t:'LED pod plovoucím schodem terasy'});
+for(const x of [8.87,9.29])D('V2','strip',null,{fl:'o',pts:[[x,.03,12.25],[x,.03,15.75]],t:'LED pod hranou schodů do zahrady'});
+D('V3','sock',[4.75,.45,15.89],{fl:'o',n:[0,-1],t:'Venkovní zásuvka v průjezdu (IP44)'});
+D('V3','sock',[8.56,.45,3.7],{fl:'o',n:[1,0],t:'Venkovní zásuvka na terase (IP44)'});
 D('V4','gate',[-5.5,.25,-6.95],{fl:'o',t:'Pohon posuvné brány (natažené)'});
-D('V5','tech',[7.9,1.0,18.86],{fl:'t',n:[0,1],drop:[7.45,18.2],mode:'c',far:[9.6,-.16,23.0],g:[[7.9,18.9],[7.9,19.3],[9.6,19.3],[9.6,23.0]],t:'Rozvaděč ČOV na štítu, kabel k ČOV v zemi'});
-D('V6','tech',[-.25,.1,17.95],{fl:'t',n:[-1,0],drop:[.45,17.95],mode:'c',far:[-3.0,-.16,23.5],g:[[-.25,17.95],[-3.0,17.95],[-3.0,23.5]],t:'Čerpadlo retenční nádrže (kabel v zemi)'});
-D('V7','ev',[.9,1.3,15.98],{fl:'o',n:[0,-1],r:[[2.5,1.3,16.56],[2.5,1.3,16.25],[.9,1.3,16.25],[.9,1.3,15.98]],t:'Wallbox v průjezdu, zatím jen kabel 5×6'});
+D('V5','tech',[8.2,1.0,18.76],{fl:'t',n:[0,1],drop:[7.75,18.1],mode:'c',far:[9.9,-.16,22.9],g:[[8.2,18.8],[8.2,19.2],[9.9,19.2],[9.9,22.9]],t:'Rozvaděč ČOV na štítu, kabel k ČOV v zemi'});
+D('V6','tech',[-.25,.1,17.85],{fl:'t',n:[-1,0],drop:[.45,17.85],mode:'c',far:[-3.0,-.16,23.4],g:[[-.25,17.85],[-3.0,17.85],[-3.0,23.4]],t:'Čerpadlo retenční nádrže (kabel v zemi)'});
+D('V7','ev',[1.05,1.3,15.88],{fl:'o',n:[0,-1],r:[[2.65,1.3,16.46],[2.65,1.3,16.15],[1.05,1.3,16.15],[1.05,1.3,15.88]],t:'Wallbox v průjezdu, zatím jen kabel 5×6'});
 D('ctl','btn',[-.1,1.3,-6.95],{fl:'o',t:'Tablo zvonku u branky (IP, PoE, Cat6 ve výkopu)'});
 D('done','re',[-6.3,.6,-6.95],{fl:'o',t:'Elektroměrový pilíř u silnice (mimo model)'});
 
 // New penetrations for the panel drawing P-01 (all trades), [z, x] like schema.js PEN.
 const PEN=[
- {id:'E1',who:'ele',at:[18.1,4.45],d:.11,t:'elektro HR → podkroví (napáječ RD, rezerva) v dobetonávce u štítu'},
- {id:'E2',who:'ele',at:[11.3,2.95],d:.11,t:'elektro RD → podkroví, 2× Ø 110 v sousedních dutinách (vedle B a P3)'}];
+ {id:'E1',who:'ele',at:[18.0,4.6],d:.11,t:'elektro HR → podkroví (napáječ RD, rezerva) v dobetonávce u štítu'},
+ {id:'E2',who:'ele',at:[11.2,3.1],d:.11,t:'elektro RD → podkroví, 2× Ø 110 v sousedních dutinách (vedle B a P3)'}];
 
 // ---------------- routing
 const byId=id=>CIRCUITS.find(c=>c.id===id);
@@ -344,7 +347,7 @@ function route(d){if(d.r)return {pts:d.r};const fl=floorOf(d),mode=modeOf(d),p=a
  const pts=plan.map(([x,z])=>[x,y,z]);pts.push([target[0],p[1],target[1]]);if(d.drop)pts.push([p[0],p[1],p[2]]);return {pts:dedupe(pts)};}
 // Junction feeds: trunk → junction.
 function junctionRoute(J){const n=nearest(J.fl,J.mode,[J.p[0],J.p[2]]);const plan=ell(n.p,[J.p[0],J.p[2]],n.alongX);return dedupe([...plan.map(([x,z])=>[x,n.y,z]),J.p]);}
-const FEED=[[2.9,2.24,16.575],[2.9,2.84,16.62],[4.5,2.84,16.62],[4.5,2.84,18.12],[4.5,H.aC+.06,18.12],[4.82,H.aC+.06,18.12],[4.82,H.aC+.06,11.4],[3.02,H.aC+.06,11.4],[3.02,2.84,11.4],[2.7,2.84,11.4],[2.7,2.1,11.4]];
+const FEED=[[3.05,2.24,16.475],[3.05,2.84,16.52],[4.65,2.84,16.52],[4.65,2.84,18.02],[4.65,H.aC+.06,18.02],[4.97,H.aC+.06,18.02],[4.97,H.aC+.06,11.3],[3.17,H.aC+.06,11.3],[3.17,2.84,11.3],[2.85,2.84,11.3],[2.85,2.1,11.3]];
 const hex=h=>h.match(/\w\w/g).map(v=>parseInt(v,16)/255);
 window.Elektro={H,CAT,BOARDS,CIRCUITS,TRUNKS,DONE,JUNCTIONS,DEVICES,PEN,FEED,circuit:byId,catOf,floorOf,modeOf,route,junctionRoute,color:d=>CAT[catOf(d)].c,rgb:k=>hex(CAT[k].c),hex};
 })();

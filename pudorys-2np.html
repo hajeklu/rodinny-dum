@@ -29,7 +29,7 @@ main{max-width:1500px;margin:auto;padding:clamp(16px,3vw,32px)}
 </head>
 <body>
 <header>
-  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Půdorys 2NP</h1><p>Pracovní výkres podkroví podle 3D modelu v09 a D1.3 · měřítko 1 : 100 na A3</p></div>
+  <div><div class="brand">Krásný Les · rodinný dům Hájek</div><h1>Půdorys 2NP</h1><p>Pracovní výkres podkroví podle 3D modelu v09 a D1.3, skutečný rozměr domu 8,3 × 11,9 m · měřítko 1 : 100 na A3</p></div>
   <nav data-nav="pudorys-2np"></nav>
 </header>
 <main>
@@ -78,80 +78,81 @@ const W={thick:.35,mid:.25,thin:.13,hair:.08};
 let V=new URLSearchParams(location.search).get('varianta')==='compact'?'compact':'d13';
 
 // ---------------- Data ----------------
-// The attic runs over the whole length (main house, open passage, plant room): masonry ring 8 000 × 18 600, SOLBET 300, EPS 200 outside.
-const EPS=200,WALL=300,LEN=18600;
+// The attic runs over the whole length (main house, open passage, plant room): masonry ring 8 300 × 18 500 as built on the measured
+// slab (design 8 000 × 18 600), SOLBET 300, EPS 200 outside.
+const EPS=200,WALL=300,WID=8300,LEN=18500;
 // Heights relative to ±0,000 (finished ground floor). Model: attic floor U0 3.30, flat ceiling Uc 5.90, ground floor at 0.24,
-// underside of the insulated slope 4.118 + x on the driveway side and 12.118 − x on the HS side (metres), so the clear height above
-// the attic floor is 818 + x (mm) up to the flat ceiling, mirrored about the ridge at x 4 000.
+// underside of the insulated slope 4.118 + x on the driveway side and 12.418 − x on the HS side (metres), so the clear height above
+// the attic floor is 818 + x (mm) up to the flat ceiling, mirrored about the ridge at x 4 150.
 const FLOOR=3060,CEIL=5660,CLEAR=CEIL-FLOOR,KNEE=818;
-const xAtH=h=>h-KNEE;                         // x of a clear height on the driveway side; the HS side is 8 000 − x
+const xAtH=h=>h-KNEE;                         // x of a clear height on the driveway side; the HS side is 8 300 − x
 const L12=xAtH(1200),LF=xAtH(CLEAR),HKNEE=KNEE+WALL;   // 382, 1 782 and 1 118 at the inner face of the knee wall
-// Gable openings (model wall holes 2.25–3.25 and 4.75–5.75 in both gables, floor to +5.50): frame 1 000 × 2 200 from the attic floor,
-// Juliet rail outside (model rails at z −0.28; the back ones are mirrored here, the model has them inside the EPS at 18.68).
+// Gable openings (model wall holes 2.40–3.40 and 4.90–5.90 in both gables, floor to +5.50): frame 1 000 × 2 200 from the attic floor,
+// Juliet rail outside (model rails at z −0.28; the back ones are mirrored here, the model has them inside the EPS at 18.58).
 const OPEN=[
- {id:'O9',side:'front',a:2250,b:3250,where:'ložnice 2.02, šatní část'},
- {id:'O10',side:'front',a:4750,b:5750,where:'ložnice 2.02, spací část'},
- {id:'O11',side:'back',a:2250,b:3250,where:{d13:'pokoj 2.08',compact:'půda (neobytná)'}},
- {id:'O12',side:'back',a:4750,b:5750,where:{d13:'pokoj 2.08, nad stolem',compact:'půda (neobytná)'}}];
-const SIDE={front:{out:-EPS,inn:WALL,fr:[10,85],rail:-280},back:{out:LEN+EPS,inn:LEN-WALL,fr:[18515,18590],rail:LEN+280}};
+ {id:'O9',side:'front',a:2400,b:3400,where:'ložnice 2.02, šatní část'},
+ {id:'O10',side:'front',a:4900,b:5900,where:'ložnice 2.02, spací část'},
+ {id:'O11',side:'back',a:2400,b:3400,where:{d13:'pokoj 2.08',compact:'půda (neobytná)'}},
+ {id:'O12',side:'back',a:4900,b:5900,where:{d13:'pokoj 2.08, nad stolem',compact:'půda (neobytná)'}}];
+const SIDE={front:{out:-EPS,inn:WALL,fr:[10,85],rail:-280},back:{out:LEN+EPS,inn:LEN-WALL,fr:[18415,18490],rail:LEN+280}};
 // Roof windows VELUX FK08 66 × 140: frame start along the house (model roofWindowZ), k = driveway / north side (S), t = HS / south side (J).
-// In plan the dashed outline is the opening in the sloped ceiling lining, as on the model's eye-level ceiling (x 0.50–1.45 and 6.55–7.50).
-const RW={d13:{k:[4960,10330],t:[4840,7550,10450,12300]},compact:{k:[5500,8600,10800],t:[4800,8000,10450,11750]}};
-const RWX={k:[500,1450],t:[6550,7500]},RWW=660;
-const RWROOM={d13:{4960:'koupelna 2.03',10330:'pokoj 2.04',4840:'schodiště',7550:'prádelna 2.05',10450:'WC 2.06',12300:'koupelna 2.07'},
- compact:{5500:'koupelna 2.03',8600:'dětský pokoj 1',10800:'dětský pokoj 1',4800:'schodiště',8000:'koupelna dětí',10450:'dětský pokoj 2',11750:'dětský pokoj 2'}};
+// In plan the dashed outline is the opening in the sloped ceiling lining, as on the model's eye-level ceiling (x 0.50–1.45 and 6.85–7.80).
+const RW={d13:{k:[4960,10230],t:[4840,7550,10350,12200]},compact:{k:[5500,8600,10700],t:[4800,8000,10350,11650]}};
+const RWX={k:[500,1450],t:[6850,7800]},RWW=660;
+const RWROOM={d13:{4960:'koupelna 2.03',10230:'pokoj 2.04',4840:'schodiště',7550:'prádelna 2.05',10350:'WC 2.06',12200:'koupelna 2.07'},
+ compact:{5500:'koupelna 2.03',8600:'dětský pokoj 1',10700:'dětský pokoj 1',4800:'schodiště',8000:'koupelna dětí',10350:'dětský pokoj 2',11650:'dětský pokoj 2'}};
 const winList=()=>[...RW[V].k.map((s,i)=>({id:'S'+(i+1),side:'k',s})),...RW[V].t.map((s,i)=>({id:'J'+(i+1),side:'t',s}))];
 // Partitions 150 mm from the model (upperInterior), with a tag, the rooms either side, a check distance and the tag position on the plan.
 // Doors [a, b, swing, hinge, id, where, tag]: swing +1 = the leaf opens toward the higher coordinate across the wall, hinge 'a' or 'b' = the end
 // of the gap with the hinges (doorLeaf in index.html), swing 0 = not in the model; tag = label position when the swing area is taken.
 const WALLS_C=[
- {id:'PP1',between:'ložnice 2.02 / koupelna 2.03 a chodba',check:'3 990 od vnitřního líce předního štítu',at:[900,4365],
-  doors:[[3600,4400,-1,'b','DP1','chodba → ložnice 2.02, otevírá do ložnice, panty na straně spací části',[3930,4700]],[1550,2350,1,'b','DP2','šatna ložnice → koupelna 2.03, otevírá do koupelny, panty blíž ke chodbě']],x0:300,x1:7700,s0:4290,s1:4440},
- {id:'PP2',between:'dělicí stěna ložnice, volně stojící',check:'850 od vnitřního líce štítu, do rovného podhledu',at:[3995,2750],x0:3920,x1:4070,s0:1150,s1:3350},
- {id:'PP3',between:'koupelna 2.03 / pokoj 2.04',check:'1 960 od PP1',at:[1000,6475],x0:300,x1:3340,s0:6400,s1:6550}];
-const PP_STAIR={between:'schodiště / místnost za ním',check:'2 790 od PP1, 1 660 od hrany otvoru',x0:4600,x1:7700,s0:7230,s1:7380};
+ {id:'PP1',between:'ložnice 2.02 / koupelna 2.03 a chodba',check:'3 990 od vnitřního líce předního štítu',at:[1050,4365],
+  doors:[[3750,4550,-1,'b','DP1','chodba → ložnice 2.02, otevírá do ložnice, panty na straně spací části',[4080,4700]],[1700,2500,1,'b','DP2','šatna ložnice → koupelna 2.03, otevírá do koupelny, panty blíž ke chodbě']],x0:300,x1:8000,s0:4290,s1:4440},
+ {id:'PP2',between:'dělicí stěna ložnice, volně stojící',check:'850 od vnitřního líce štítu, do rovného podhledu',at:[4145,2750],x0:4070,x1:4220,s0:1150,s1:3350},
+ {id:'PP3',between:'koupelna 2.03 / pokoj 2.04',check:'1 960 od PP1',at:[1150,6475],x0:300,x1:3490,s0:6400,s1:6550}];
+const PP_STAIR={between:'schodiště / místnost za ním',check:'2 790 od PP1, 1 660 od hrany otvoru',x0:4750,x1:8000,s0:7230,s1:7380};
 const WALLS={
  d13:[...WALLS_C,
-  {id:'PP4',between:'pokoje 2.04, 2.09 / chodba',check:'3 040 od vnitřního líce nadezdívky (příjezd)',at:[3415,12100],x0:3340,x1:3490,s0:4440,s1:14240,doors:[[6800,7600,-1,'b','DP3','chodba → pokoj 2.04, otevírá do pokoje, panty dál od schodů']]},
-  {id:'PP5',between:'pokoj 2.04 / šatna 2.09',check:'5 030 od PP3',at:[1000,11655],x0:300,x1:3340,s0:11580,s1:11730},
-  {id:'PP6',between:'chodba / 2.05, 2.06, 2.07',check:'2 950 od vnitřního líce nadezdívky (HS)',at:[4675,12550],x0:4600,x1:4750,s0:7380,s1:14240,doors:[[8500,9200,1,'a','DP4','chodba → prádelna 2.05, otevírá do prádelny, panty blíž ke schodům'],[10350,11050,1,'b','DP5','chodba → WC 2.06, otevírá do WC, panty dál od schodů'],[13400,14100,1,'b','DP6','chodba → koupelna 2.07, otevírá do koupelny, panty u konce chodby (D1.3: vstup z ložnice 2.08)']]},
-  {id:'PP7',...PP_STAIR,between:'schodiště / prádelna 2.05',at:[6900,7305]},
-  {id:'PP8',between:'prádelna 2.05 / WC 2.06',check:'2 570 od PP7',at:[6900,10025],x0:4750,x1:7700,s0:9950,s1:10100},
-  {id:'PP9',between:'WC 2.06 / koupelna 2.07',check:'1 200 od PP8',at:[6300,11375],x0:4750,x1:7700,s0:11300,s1:11450},
-  {id:'PP10',between:'2.09, chodba, 2.07 / pokoj 2.08',check:'3 930 od vnitřního líce zadního štítu',at:[6300,14305],x0:300,x1:7700,s0:14240,s1:14370,doors:[[3600,4400,1,'b','DP7','chodba → pokoj 2.08, otevírá do pokoje, panty na straně HS'],[1600,2400,-1,'a','DP8','pokoj 2.08 → šatna 2.09, otevírá do šatny, panty blíž k nadezdívce']]}],
+  {id:'PP4',between:'pokoje 2.04, 2.09 / chodba',check:'3 190 od vnitřního líce nadezdívky (příjezd)',at:[3565,12000],x0:3490,x1:3640,s0:4440,s1:14140,doors:[[6800,7600,-1,'b','DP3','chodba → pokoj 2.04, otevírá do pokoje, panty dál od schodů']]},
+  {id:'PP5',between:'pokoj 2.04 / šatna 2.09',check:'4 930 od PP3',at:[1150,11555],x0:300,x1:3490,s0:11480,s1:11630},
+  {id:'PP6',between:'chodba / 2.05, 2.06, 2.07',check:'3 100 od vnitřního líce nadezdívky (HS)',at:[4825,12450],x0:4750,x1:4900,s0:7380,s1:14140,doors:[[8500,9200,1,'a','DP4','chodba → prádelna 2.05, otevírá do prádelny, panty blíž ke schodům'],[10250,10950,1,'b','DP5','chodba → WC 2.06, otevírá do WC, panty dál od schodů'],[13300,14000,1,'b','DP6','chodba → koupelna 2.07, otevírá do koupelny, panty u konce chodby (D1.3: vstup z ložnice 2.08)']]},
+  {id:'PP7',...PP_STAIR,between:'schodiště / prádelna 2.05',at:[7050,7305]},
+  {id:'PP8',between:'prádelna 2.05 / WC 2.06',check:'2 470 od PP7',at:[7050,9925],x0:4900,x1:8000,s0:9850,s1:10000},
+  {id:'PP9',between:'WC 2.06 / koupelna 2.07',check:'1 200 od PP8',at:[6450,11275],x0:4900,x1:8000,s0:11200,s1:11350},
+  {id:'PP10',between:'2.09, chodba, 2.07 / pokoj 2.08',check:'3 930 od vnitřního líce zadního štítu',at:[6450,14205],x0:300,x1:8000,s0:14140,s1:14270,doors:[[3750,4550,1,'b','DP7','chodba → pokoj 2.08, otevírá do pokoje, panty na straně HS'],[1750,2550,-1,'a','DP8','pokoj 2.08 → šatna 2.09, otevírá do šatny, panty blíž k nadezdívce']]}],
  compact:[...WALLS_C,
-  {id:'PP4',between:'úklid, dětský pokoj 1, komora / chodba',check:'3 040 od vnitřního líce nadezdívky (příjezd)',at:[3415,11500],x0:3340,x1:3490,s0:4440,s1:13000,doors:[[6700,7400,1,'a','DP3','chodba → úklid a prádelna, otevírá do chodby, panty blíž ke schodům'],[8400,9200,-1,'b','DP4','chodba → dětský pokoj 1, otevírá do pokoje, panty dál od schodů'],[12150,12850,-1,'a','DP5','chodba → komora, otevírá do komory, panty blíž ke schodům']]},
-  {id:'PP5',between:'úklid a prádelna / dětský pokoj 1',check:'1 050 od PP3',at:[1000,7675],x0:300,x1:3340,s0:7600,s1:7750},
-  {id:'PP6',between:'dětský pokoj 1 / komora',check:'4 150 od PP5',at:[1000,11975],x0:300,x1:3340,s0:11900,s1:12050},
-  {id:'PP7',between:'chodba / koupelna dětí, dětský pokoj 2',check:'2 950 od vnitřního líce nadezdívky (HS)',at:[4675,11500],x0:4600,x1:4750,s0:7380,s1:13000,doors:[[8400,9100,1,'a','DP6','chodba → koupelna dětí, otevírá do koupelny, panty blíž ke schodům'],[9700,10500,1,'a','DP7','chodba → dětský pokoj 2, otevírá do pokoje, panty blíž ke schodům']]},
-  {id:'PP8',...PP_STAIR,between:'schodiště / koupelna dětí',at:[6900,7305]},
-  {id:'PP9',between:'koupelna dětí / dětský pokoj 2',check:'2 020 od PP8',at:[6900,9475],x0:4750,x1:7700,s0:9400,s1:9550},
-  {id:'PP10',between:'obytné podkroví / půda, + izolace 120',check:'8 560 od PP1, 5 030 od vnitřního líce zadního štítu k izolaci',at:[6300,13075],x0:300,x1:7700,s0:13000,s1:13150,doors:[[3650,4450,0,'','DP8','chodba → půda, zateplené dveře v příčce s izolací; směr otevírání a práh ověřit',[4050,12600]]]}]};
+  {id:'PP4',between:'úklid, dětský pokoj 1, komora / chodba',check:'3 190 od vnitřního líce nadezdívky (příjezd)',at:[3565,11400],x0:3490,x1:3640,s0:4440,s1:12900,doors:[[6700,7400,1,'a','DP3','chodba → úklid a prádelna, otevírá do chodby, panty blíž ke schodům'],[8400,9200,-1,'b','DP4','chodba → dětský pokoj 1, otevírá do pokoje, panty dál od schodů'],[12050,12750,-1,'a','DP5','chodba → komora, otevírá do komory, panty blíž ke schodům']]},
+  {id:'PP5',between:'úklid a prádelna / dětský pokoj 1',check:'1 050 od PP3',at:[1150,7675],x0:300,x1:3490,s0:7600,s1:7750},
+  {id:'PP6',between:'dětský pokoj 1 / komora',check:'4 050 od PP5',at:[1150,11875],x0:300,x1:3490,s0:11800,s1:11950},
+  {id:'PP7',between:'chodba / koupelna dětí, dětský pokoj 2',check:'3 100 od vnitřního líce nadezdívky (HS)',at:[4825,11400],x0:4750,x1:4900,s0:7380,s1:12900,doors:[[8400,9100,1,'a','DP6','chodba → koupelna dětí, otevírá do koupelny, panty blíž ke schodům'],[9600,10400,1,'a','DP7','chodba → dětský pokoj 2, otevírá do pokoje, panty blíž ke schodům']]},
+  {id:'PP8',...PP_STAIR,between:'schodiště / koupelna dětí',at:[7050,7305]},
+  {id:'PP9',between:'koupelna dětí / dětský pokoj 2',check:'2 020 od PP8',at:[7050,9475],x0:4900,x1:8000,s0:9400,s1:9550},
+  {id:'PP10',between:'obytné podkroví / půda, + izolace 120',check:'8 460 od PP1, 5 030 od vnitřního líce zadního štítu k izolaci',at:[6450,12975],x0:300,x1:8000,s0:12900,s1:13050,doors:[[3800,4600,0,'','DP8','chodba → půda, zateplené dveře v příčce s izolací; směr otevírání a práh ověřit',[4200,12500]]]}]};
 // Rooms: id, name, rectangles [x0,x1,s0,s1], holes, floor, tag position [x,s], number size (0 = no number in the model), D1.3, unheated.
-const STAIR=[[5100,7700,5570,7230],[6100,7700,4440,5570],[5120,5500,5200,5570]];   // stair opening and chimney out of the corridor (model roomList)
-const R02=['2.02','Ložnice se šatnou',[[300,7700,300,4290]],[],'dub',[5450,3800],3.0,'25 m² · pokoj'],R03=['2.03','Koupelna u ložnice',[[300,3340,4440,6400]],[],'dlažba',[1550,5750],2.4,'6 m² · šatna'];
+const STAIR=[[5250,8000,5570,7230],[6250,8000,4440,5570],[5270,5650,5200,5570]];   // stair opening and chimney out of the corridor (model roomList)
+const R02=['2.02','Ložnice se šatnou',[[300,8000,300,4290]],[],'dub',[5600,3800],3.0,'25 m² · pokoj'],R03=['2.03','Koupelna u ložnice',[[300,3490,4440,6400]],[],'dlažba',[1700,5750],2.4,'6 m² · šatna'];
 const ROOMS={
  d13:[R02,R03,
-  ['2.04','Pokoj',[[300,3340,6550,11580]],[],'dub',[2060,9500],2.6,'15 m²'],
-  ['2.09','Šatna',[[300,3340,11730,14240]],[],'dub',[1800,13350],2.4,'7 m²'],
-  ['2.08','Pokoj',[[300,7700,14370,18300]],[],'dub',[3000,16950],3.0,'29 m² · ložnice'],
-  ['2.05','Prádelna',[[4750,7700,7380,9950]],[],'dlažba',[6250,9550],2.4,'7 m² · koupelna'],
-  ['2.06','WC',[[4750,7700,10100,11300]],[],'dlažba',[6000,11020],2.2,'3 m²'],
-  ['2.07','Koupelna',[[4750,7700,11450,14240]],[],'dlažba',[5950,13350],2.4,'7 m²'],
-  ['2.01','Chodba',[[3490,4600,7230,14240],[3490,7700,4440,7230]],STAIR,'dub',[4045,12750],2.2,'14 m²']],
+  ['2.04','Pokoj',[[300,3490,6550,11480]],[],'dub',[2210,9500],2.6,'15 m²'],
+  ['2.09','Šatna',[[300,3490,11630,14140]],[],'dub',[1950,13250],2.4,'7 m²'],
+  ['2.08','Pokoj',[[300,8000,14270,18200]],[],'dub',[3150,16850],3.0,'29 m² · ložnice'],
+  ['2.05','Prádelna',[[4900,8000,7380,9850]],[],'dlažba',[6400,9550],2.4,'7 m² · koupelna'],
+  ['2.06','WC',[[4900,8000,10000,11200]],[],'dlažba',[6150,10920],2.2,'3 m²'],
+  ['2.07','Koupelna',[[4900,8000,11350,14140]],[],'dlažba',[6100,13250],2.4,'7 m²'],
+  ['2.01','Chodba',[[3640,4750,7230,14140],[3640,8000,4440,7230]],STAIR,'dub',[4195,12650],2.2,'14 m²']],
  compact:[R02,R03,
-  ['','Úklid a prádelna',[[300,3340,6550,7600]],[],'dlažba',[1150,7380],0,'–'],
-  ['','Dětský pokoj 1',[[300,3340,7750,11900]],[],'dub',[2060,11150],0,'–'],
-  ['','Komora',[[300,3340,12050,13000]],[],'dub',[1600,12820],0,'–'],
-  ['','Koupelna dětí',[[4750,7700,7380,9400]],[],'dlažba',[5150,9230],0,'–'],
-  ['','Dětský pokoj 2',[[4750,7700,9550,13000]],[],'dub',[5650,11900],0,'–'],
-  ['2.01','Chodba',[[3490,4600,7230,13000],[3490,7700,4440,7230]],STAIR,'dub',[4045,11900],2.2,'14 m²'],
-  ['','Půda · neobytná',[[300,7700,13270,18300]],[],'OSB',null,0,'–',true]]};
+  ['','Úklid a prádelna',[[300,3490,6550,7600]],[],'dlažba',[1300,7380],0,'–'],
+  ['','Dětský pokoj 1',[[300,3490,7750,11800]],[],'dub',[2210,11050],0,'–'],
+  ['','Komora',[[300,3490,11950,12900]],[],'dub',[1750,12720],0,'–'],
+  ['','Koupelna dětí',[[4900,8000,7380,9400]],[],'dlažba',[5300,9230],0,'–'],
+  ['','Dětský pokoj 2',[[4900,8000,9550,12900]],[],'dub',[5800,11800],0,'–'],
+  ['2.01','Chodba',[[3640,4750,7230,12900],[3640,8000,4440,7230]],STAIR,'dub',[4195,11800],2.2,'14 m²'],
+  ['','Půda · neobytná',[[300,8000,13170,18200]],[],'OSB',null,0,'–',true]]};
 const sumR=(rs,lo=-1e9,hi=1e9)=>rs.reduce((t,[a,b,c,d])=>t+Math.max(0,Math.min(b,hi)-Math.max(a,lo))*(d-c),0);
 const area=r=>(sumR(r[2])-sumR(r[3]))/1e6;
-const area12=r=>(sumR(r[2],L12,8000-L12)-sumR(r[3],L12,8000-L12))/1e6;   // without the strip under 1.2 m along the knee walls
+const area12=r=>(sumR(r[2],L12,WID-L12)-sumR(r[3],L12,WID-L12))/1e6;   // without the strip under 1.2 m along the knee walls
 // Ridge frames of the roof (krov.html): R1 and R3 around the doors at the corridor ends, R2 with posts 2U140 in the corridor walls.
-const FRAMES=[['R1',4365,[[3440,3580],[4420,4560]],60],['R2',10010,[[3355,3475],[4615,4735]],70],['R3',14305,[[3440,3580],[4420,4560]],60]];
+const FRAMES=[['R1',4365,[[3590,3730],[4570,4710]],60],['R2',9910,[[3505,3625],[4765,4885]],70],['R3',14205,[[3590,3730],[4570,4710]],60]];
 
 // ---------------- Helpers ----------------
 const ring=(o,i,a,parent)=>el('path',{d:[o,i].map(([x0,x1,s0,s1])=>`M${X(x0)} ${Y(s0)}H${X(x1)}V${Y(s1)}H${X(x0)}Z`).join(''),'fill-rule':'evenodd',...a},parent);
@@ -179,14 +180,14 @@ function dimV(px,ss,{ext=null,size=1.55,right=false,Y=window.Y,parent=gDim}={}){
   const narrow=a-b<w+.6;const x=narrow&&(flip++%2)?(right?px-size-.4:px+size+.4):(right?px+.45+size*.75:px-.45);
   TP(x,(a+b)/2,v,{'font-size':size,transform:`rotate(-90 ${x} ${(a+b)/2})`},gDim);}}
 // Clip for everything seen through the stair opening (the stair below the attic floor).
-{const cp=el('clipPath',{id:'cStair'},document.querySelector('#sheet defs'));PG([[6100,4450],[7700,4450],[7700,7230],[5100,7230],[5100,5570],[6100,5570]],{},cp);}
+{const cp=el('clipPath',{id:'cStair'},document.querySelector('#sheet defs'));PG([[6250,4450],[8000,4450],[8000,7230],[5250,7230],[5250,5570],[6250,5570]],{},cp);}
 
 // ---------------- Drawing ----------------
 function draw(){
  plan.replaceChildren();const cmp=V==='compact',walls=WALLS[V],rooms=ROOMS[V];
  // Envelope: the gables and the knee walls (4 courses SOLBET + ring beam in the cut), EPS 200 outside, one ring over the whole length.
  const gEnv=g({id:'envelope'});
- {const eps=[-EPS,8000+EPS,-EPS,LEN+EPS],mas=[0,8000,0,LEN],inn=[WALL,8000-WALL,WALL,LEN-WALL];
+ {const eps=[-EPS,WID+EPS,-EPS,LEN+EPS],mas=[0,WID,0,LEN],inn=[WALL,WID-WALL,WALL,LEN-WALL];
   ring(eps,mas,{fill:'url(#pE)'},gEnv);ring(mas,inn,{fill:'url(#pM)'},gEnv);
   for(const r of [eps,mas,inn])R(r[0],r[1],r[2],r[3],{fill:'none',stroke:'#111','stroke-width':r===eps?W.thin:W.thick},gEnv);}
  // Gable openings: clear the wall band, jambs of the rough opening, frame band with the glass line, threshold line, Juliet rail outside.
@@ -203,54 +204,54 @@ function draw(){
   const fan=(c,r,a0,a1)=>{const hit=a=>{const d=[Math.cos(a),Math.sin(a)];let t=1e12;for(const [k,v] of [[0,r[0]],[0,r[1]],[1,r[2]],[1,r[3]]]){if(Math.abs(d[k])<1e-9)continue;const tt=(v-c[k])/d[k];if(tt>1e-6){const q=[c[0]+d[0]*tt,c[1]+d[1]*tt];if(q[0]>=r[0]-1e-3&&q[0]<=r[1]+1e-3&&q[1]>=r[2]-1e-3&&q[1]<=r[3]+1e-3)t=Math.min(t,tt);}}return [c[0]+d[0]*t,c[1]+d[1]*t];};
    const pts=[c,hit(a0)],corners=[[r[0],r[2]],[r[1],r[2]],[r[1],r[3]],[r[0],r[3]]].map(q=>[q,Math.atan2(q[1]-c[1],q[0]-c[0])]);
    const inside=a=>a1>a0?a>a0+1e-6&&a<a1-1e-6:a<a0-1e-6&&a>a1+1e-6;for(const [q,a] of corners.sort((u,v)=>a1>a0?u[1]-v[1]:v[1]-u[1]))if(inside(a))pts.push(q);pts.push(hit(a1));return pts;};
-  for(let i=0;i<6;i++)stairs.push(rect(5100+i*267,5100+(i+1)*267,6200,7390));
-  for(let k=0;k<4;k++)stairs.push(fan([6700,6200],[6700,7700,6200,7390],Math.PI/2-k*Math.PI/8,Math.PI/2-(k+1)*Math.PI/8));
-  for(let i=0;i<2;i++)stairs.push(rect(6700,7700,6200-(i+1)*315,6200-i*315));
-  for(let k=0;k<4;k++)stairs.push(fan([6700,5570],[6700,7700,4450,5570],-k*Math.PI/8,-(k+1)*Math.PI/8));
-  for(let i=0;i<2;i++)stairs.push(rect(6700-(i+1)*300,6700-i*300,4450,5570));
-  R(5100,7700,4450,7230,{fill:'#f6f6f4'},gSt);stairs.forEach(p=>PG(p,{fill:'none',stroke:'#555','stroke-width':W.thin},gSt));
-  R(6600,6700,5570,6200,{fill:'url(#pP)',stroke:'#555','stroke-width':W.thin},gSt);
+  for(let i=0;i<6;i++)stairs.push(rect(5250+i*267,5250+(i+1)*267,6200,7390));
+  for(let k=0;k<4;k++)stairs.push(fan([6850,6200],[6850,8000,6200,7390],Math.PI/2-k*Math.PI/8,Math.PI/2-(k+1)*Math.PI/8));
+  for(let i=0;i<2;i++)stairs.push(rect(6850,8000,6200-(i+1)*315,6200-i*315));
+  for(let k=0;k<4;k++)stairs.push(fan([6850,5570],[6850,8000,4450,5570],-k*Math.PI/8,-(k+1)*Math.PI/8));
+  for(let i=0;i<2;i++)stairs.push(rect(6850-(i+1)*300,6850-i*300,4450,5570));
+  R(5250,8000,4450,7230,{fill:'#f6f6f4'},gSt);stairs.forEach(p=>PG(p,{fill:'none',stroke:'#555','stroke-width':W.thin},gSt));
+  R(6750,6850,5570,6200,{fill:'url(#pP)',stroke:'#555','stroke-width':W.thin},gSt);
   const centroid=p=>[p.reduce((t,q)=>t+q[0],0)/p.length,p.reduce((t,q)=>t+q[1],0)/p.length],pol=(c,r,a)=>[c[0]+r*Math.cos(a),c[1]+r*Math.sin(a)];
-  const walk=stairs.map((p,k)=>{const c=centroid(p);if(k<6)return [c[0],6795];if(k<10)return pol([6700,6200],595,Math.PI/2-(k-6+.5)*Math.PI/8);if(k<12)return [7280,c[1]];if(k<16)return pol([6700,5570],560,-(k-12+.5)*Math.PI/8);return [c[0],5010];});
-  L([[6130,5010],...walk.slice().reverse(),[5130,6795]],{stroke:'#111','stroke-width':W.thin,'marker-end':'url(#arrU)'},gSt);el('circle',{cx:X(6130),cy:Y(5010),r:.45,fill:'#111'},gSt);}
+  const walk=stairs.map((p,k)=>{const c=centroid(p);if(k<6)return [c[0],6795];if(k<10)return pol([6850,6200],595,Math.PI/2-(k-6+.5)*Math.PI/8);if(k<12)return [7430,c[1]];if(k<16)return pol([6850,5570],560,-(k-12+.5)*Math.PI/8);return [c[0],5010];});
+  L([[6280,5010],...walk.slice().reverse(),[5280,6795]],{stroke:'#111','stroke-width':W.thin,'marker-end':'url(#arrU)'},gSt);el('circle',{cx:X(6280),cy:Y(5010),r:.45,fill:'#111'},gSt);}
  // Outline of the open passage below the attic floor: between these lines the floor is over the outside.
  const gIn=g({id:'interior'});
- for(const s of [12200,16000])L([[WALL,s],[8000-WALL,s]],{stroke:'#8d8d8d','stroke-width':W.hair,'stroke-dasharray':'2.4 .8 .4 .8'},gIn);
+ for(const s of [12100,15900])L([[WALL,s],[WID-WALL,s]],{stroke:'#8d8d8d','stroke-width':W.hair,'stroke-dasharray':'2.4 .8 .4 .8'},gIn);
  // Fittings and furniture in grey (model upperInterior): bedroom, en-suite, landing.
- R(4070,4130,1150,3350,{fill:'#dccbab',stroke:'#7a5a33','stroke-width':W.thin},gIn);            // lit oak slats on the bed side of the free-standing wall
- R(4130,6180,1450,3050,F,gIn);for(const [a,b] of [[1550,2170],[2300,2920]])R(4200,4650,a,b,F,gIn);L([[4800,1450],[4800,3050]],F,gIn);
- R(4130,4530,1080,1430,F,gIn);R(4130,4530,3070,3420,F,gIn);R(6300,6700,1550,2950,F,gIn);
- cross(3300,3900,1500,3350,F,gIn);R(350,850,1200,4100,F,gIn);R(1750,2650,1800,3100,F,gIn);
- R(3300,3920,1150,1500,FS,gIn);L([[3300,1150],[3920,1500]],{...FS,fill:'none'},gIn);L([[3300,1500],[3920,1150]],{...FS,fill:'none'},gIn);   // MVHR box over the 220 × 310 penetration
- wc(815,5100,[300,550,4750,5450],gIn);shower(2340,3340,5300,6400,gIn);glass([[2340,5300],[2340,6050]],gIn);R(1050,2250,5920,6390,F,gIn);basin(1400,1900,5980,6340,gIn);
- R(4690,5110,5720,6840,F,gIn);el('circle',{cx:X(4910),cy:Y(7030),r:1.7,...F},gIn);           // bench along the rail, fig in the corner
+ R(4220,4280,1150,3350,{fill:'#dccbab',stroke:'#7a5a33','stroke-width':W.thin},gIn);            // lit oak slats on the bed side of the free-standing wall
+ R(4280,6330,1450,3050,F,gIn);for(const [a,b] of [[1550,2170],[2300,2920]])R(4350,4800,a,b,F,gIn);L([[4950,1450],[4950,3050]],F,gIn);
+ R(4280,4680,1080,1430,F,gIn);R(4280,4680,3070,3420,F,gIn);R(6450,6850,1550,2950,F,gIn);
+ cross(3450,4050,1500,3350,F,gIn);R(350,850,1200,4100,F,gIn);R(1900,2800,1800,3100,F,gIn);
+ R(3450,4070,1150,1500,FS,gIn);L([[3450,1150],[4070,1500]],{...FS,fill:'none'},gIn);L([[3450,1500],[4070,1150]],{...FS,fill:'none'},gIn);   // MVHR box over the 220 × 310 penetration
+ wc(815,5100,[300,550,4750,5450],gIn);shower(2490,3490,5300,6400,gIn);glass([[2490,5300],[2490,6050]],gIn);R(1200,2400,5920,6390,F,gIn);basin(1550,2050,5980,6340,gIn);
+ R(4840,5260,5720,6840,F,gIn);el('circle',{cx:X(5060),cy:Y(7030),r:1.7,...F},gIn);           // bench along the rail, fig in the corner
  if(!cmp){
-  R(450,1400,8900,10950,F,gIn);R(500,1350,10500,10900,F,gIn);R(1400,2100,7000,8400,F,gIn);cross(2720,3320,9600,11550,F,gIn);   // 2.04
-  R(350,850,11780,14180,F,gIn);cross(2740,3340,11780,14180,F,gIn);                                      // 2.09
-  R(5680,7680,15350,17050,F,gIn);L([[7170,15350],[7170,17050]],F,gIn);cross(3300,4700,17700,18300,F,gIn);R(4720,5920,17700,18300,F,gIn);R(600,1400,16200,17000,F,gIn);L([[800,16200],[800,17000]],F,gIn);   // 2.08
-  R(6620,7380,11650,13350,F,gIn);el('rect',{x:X(6700),y:Y(13270),width:6,height:15.4,rx:2.6,...F},gIn);R(4750,5250,11650,13050,F,gIn);basin(4820,5180,11850,12300,gIn);basin(4820,5180,12550,13000,gIn);wc(7185,13800,[7450,7700,13500,14100],gIn);   // 2.07
-  wc(7185,10700,[7450,7700,10300,11100],gIn);basin(4780,5000,10200,10600,gIn);                         // 2.06
-  R(4780,7080,7380,8030,F,gIn);for(const x of [5300,5920])el('circle',{cx:X(x),cy:Y(7700),r:2.1,...F},gIn);basin(6400,6900,7450,7900,gIn);cross(4780,5380,9250,9930,F,gIn);   // 2.05 laundry
+  R(600,1550,8800,10850,F,gIn);R(650,1500,10400,10800,F,gIn);R(1550,2250,7000,8400,F,gIn);cross(2870,3470,9500,11450,F,gIn);   // 2.04
+  R(350,850,11680,14080,F,gIn);cross(2890,3490,11680,14080,F,gIn);                                      // 2.09
+  R(5980,7980,15250,16950,F,gIn);L([[7470,15250],[7470,16950]],F,gIn);cross(3450,4850,17600,18200,F,gIn);R(4870,6070,17600,18200,F,gIn);R(750,1550,16100,16900,F,gIn);L([[950,16100],[950,16900]],F,gIn);   // 2.08
+  R(6770,7530,11550,13250,F,gIn);el('rect',{x:X(6850),y:Y(13170),width:6,height:15.4,rx:2.6,...F},gIn);R(4900,5400,11550,12950,F,gIn);basin(4970,5330,11750,12200,gIn);basin(4970,5330,12450,12900,gIn);wc(7485,13700,[7750,8000,13400,14000],gIn);   // 2.07
+  wc(7485,10600,[7750,8000,10200,11000],gIn);basin(4930,5150,10100,10500,gIn);                         // 2.06
+  R(4930,7230,7380,8030,F,gIn);for(const x of [5450,6070])el('circle',{cx:X(x),cy:Y(7700),r:2.1,...F},gIn);basin(6550,7050,7450,7900,gIn);cross(4930,5530,9150,9830,F,gIn);   // 2.05 laundry
  }else{
-  machine(1950,2550,6600,7200,gIn);R(2600,3150,6600,7050,F,gIn);basin(2700,3050,6650,6980,gIn);R(350,1850,6600,7550,F,gIn);   // utility
-  R(5000,6100,7380,7850,F,gIn);basin(5300,5800,7450,7810,gIn);shower(5550,6450,8450,9400,gIn);glass([[5550,8450],[6450,8450]],gIn);wc(7185,8170,[7450,7700,7850,8500],gIn);   // kids' bathroom
-  R(450,1400,9750,11800,F,gIn);R(500,1350,11350,11750,F,gIn);R(1400,2100,8000,9400,F,gIn);cross(2720,3320,9500,11400,F,gIn);   // kids' room 1
-  R(350,2550,12100,12500,F,gIn);                                                                         // store shelves
-  cross(4800,6400,12380,12980,F,gIn);R(6600,7550,10450,12500,F,gIn);R(6650,7500,10500,10900,F,gIn);R(5600,7000,9600,10200,F,gIn);   // kids' room 2
-  R(1300,2000,16900,18100,{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.2 .6'},gIn);L([[1300,16900],[2000,18100]],{stroke:'#111','stroke-width':W.hair},gIn);   // optional folding loft ladder
-  R(3620,3920,13360,13660,FS,gIn);                                                                       // cooling mixing valve on the loft
+  machine(2100,2700,6600,7200,gIn);R(2750,3300,6600,7050,F,gIn);basin(2850,3200,6650,6980,gIn);R(350,2000,6600,7550,F,gIn);   // utility
+  R(5150,6250,7380,7850,F,gIn);basin(5450,5950,7450,7810,gIn);shower(5700,6600,8450,9400,gIn);glass([[5700,8450],[6600,8450]],gIn);wc(7485,8170,[7750,8000,7850,8500],gIn);   // kids' bathroom
+  R(600,1550,9650,11700,F,gIn);R(650,1500,11250,11650,F,gIn);R(1550,2250,8000,9400,F,gIn);cross(2870,3470,9400,11300,F,gIn);   // kids' room 1
+  R(350,2700,12000,12400,F,gIn);                                                                         // store shelves
+  cross(4950,6550,12280,12880,F,gIn);R(6750,7700,10350,12400,F,gIn);R(6800,7650,10400,10800,F,gIn);R(5750,7150,9600,10200,F,gIn);   // kids' room 2
+  R(1450,2150,16800,18000,{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.2 .6'},gIn);L([[1450,16800],[2150,18000]],{stroke:'#111','stroke-width':W.hair},gIn);   // optional folding loft ladder
+  R(3770,4070,13260,13560,FS,gIn);                                                                       // cooling mixing valve on the loft
  }
- PG([[6100,4450],[7700,4450],[7700,7230],[5100,7230],[5100,5570],[6100,5570]],{fill:'none',stroke:'#111','stroke-width':W.mid},gIn);
+ PG([[6250,4450],[8000,4450],[8000,7230],[5250,7230],[5250,5570],[6250,5570]],{fill:'none',stroke:'#111','stroke-width':W.mid},gIn);
  // Chimney, plastered in the attic; it is the newel where both runs of the oak slat balustrade (h 1 000) end.
- R(5120,5500,5200,5600,{fill:'url(#pZ)',stroke:'#111','stroke-width':W.mid},gIn);L([[5120,5200],[5500,5600]],{stroke:'#111','stroke-width':W.hair},gIn);L([[5120,5600],[5500,5200]],{stroke:'#111','stroke-width':W.hair},gIn);
- const RA={fill:'#dccbab',stroke:'#7a5a33','stroke-width':W.thin};R(5110,5190,5600,7230,RA,gIn);R(5500,6660,5520,5600,RA,gIn);R(6600,6660,5520,5600,{fill:'#7a5a33'},gIn);
+ R(5270,5650,5200,5600,{fill:'url(#pZ)',stroke:'#111','stroke-width':W.mid},gIn);L([[5270,5200],[5650,5600]],{stroke:'#111','stroke-width':W.hair},gIn);L([[5270,5600],[5650,5200]],{stroke:'#111','stroke-width':W.hair},gIn);
+ const RA={fill:'#dccbab',stroke:'#7a5a33','stroke-width':W.thin};R(5260,5340,5600,7230,RA,gIn);R(5650,6810,5520,5600,RA,gIn);R(6750,6810,5520,5600,{fill:'#7a5a33'},gIn);
  // Partitions with door gaps, the loft wall with its insulation, the R2 heating manifold recessed in a thickened corridor wall.
  for(const p of walls){const alongX=(p.x1-p.x0)>(p.s1-p.s0),cuts=[alongX?p.x0:p.s0,...(p.doors||[]).flatMap(d=>[d[0],d[1]]),alongX?p.x1:p.s1];
   for(let i=0;i<cuts.length-1;i+=2){const [a,b]=[cuts[i],cuts[i+1]];if(alongX)R(a,b,p.s0,p.s1,{fill:'url(#pP)',stroke:'#111','stroke-width':W.mid},gIn);else R(p.x0,p.x1,a,b,{fill:'url(#pP)',stroke:'#111','stroke-width':W.mid},gIn);}}
- if(cmp){for(const [a,b] of [[300,3650],[4450,7700]])R(a,b,13150,13270,{fill:'url(#pI)',stroke:'#111','stroke-width':W.thin},gIn);
-  R(3660,4440,13020,13120,{fill:'#fff',stroke:'#111','stroke-width':W.mid},gIn);}
- R(3490,3620,9900,10750,{fill:'url(#pP)',stroke:'#111','stroke-width':W.mid},gIn);R(3500,3620,9920,10720,{fill:'#3b4a42',stroke:'#111','stroke-width':W.thin},gIn);
- TR(3560,10320,'R2',-90,{'font-size':1.05,fill:'#fff','dy':.35},gIn);
+ if(cmp){for(const [a,b] of [[300,3800],[4600,8000]])R(a,b,13050,13170,{fill:'url(#pI)',stroke:'#111','stroke-width':W.thin},gIn);
+  R(3810,4590,12920,13020,{fill:'#fff',stroke:'#111','stroke-width':W.mid},gIn);}
+ R(3640,3770,9800,10650,{fill:'url(#pP)',stroke:'#111','stroke-width':W.mid},gIn);R(3650,3770,9820,10620,{fill:'#3b4a42',stroke:'#111','stroke-width':W.thin},gIn);
+ TR(3710,10220,'R2',-90,{'font-size':1.05,fill:'#fff','dy':.35},gIn);
  // Doors: leaf at the hinge, swing arc from the closed position.
  const doorTags=[];
  for(const p of walls)for(const [a,b,sw,hg,id,,at] of p.doors||[]){const alongX=(p.x1-p.x0)>(p.s1-p.s0);
@@ -266,16 +267,16 @@ function draw(){
   L([[posts[0][1],s],[posts[1][0],s]],{stroke:'#3c474f','stroke-width':W.thin,'stroke-dasharray':'.7 .45'},gIn);}
  // Installations that matter for setting out: stacks, risers in the wardrobes, AC cassette and the MVHR hatch in the ceiling.
  const gMep=g({id:'mep'});
- mark(500,5850,'#b8402f',null,gMep);for(const s of [10370,11450])mark(7550,s,'#1d4f2b','#2f7a43',gMep);
- for(const [x,s] of [[2950,10900],[2950,10400],[2800,9650],[3350,18100],[3720,18100],[4080,18100]])mark(x,s,'#b8402f',null,gMep);
- const FC='#1f6b8c';R(3990,4610,5290,5910,{fill:'none',stroke:FC,'stroke-width':W.mid,'stroke-dasharray':'.9 .5'},gMep);
- L([[4050,5390],[4050,5810]],{stroke:FC,'stroke-width':W.thick},gMep);for(const pts of [[[4140,5360],[4540,5360]],[[4140,5840],[4540,5840]],[[4540,5400],[4540,5800]]])L(pts,{stroke:FC,'stroke-width':W.thin},gMep);
- R(3700,4400,8000,8800,{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.2 .6'},gMep);L([[3700,8000],[4400,8800]],{stroke:'#111','stroke-width':W.hair},gMep);
+ mark(500,5850,'#b8402f',null,gMep);for(const s of [10270,11350])mark(7700,s,'#1d4f2b','#2f7a43',gMep);
+ for(const [x,s] of [[3100,10800],[3100,10300],[2950,9600],[3500,18000],[3870,18000],[4230,18000]])mark(x,s,'#b8402f',null,gMep);
+ const FC='#1f6b8c';R(4140,4760,5290,5910,{fill:'none',stroke:FC,'stroke-width':W.mid,'stroke-dasharray':'.9 .5'},gMep);
+ L([[4200,5390],[4200,5810]],{stroke:FC,'stroke-width':W.thick},gMep);for(const pts of [[[4290,5360],[4690,5360]],[[4290,5840],[4690,5840]],[[4690,5400],[4690,5800]]])L(pts,{stroke:FC,'stroke-width':W.thin},gMep);
+ R(3850,4550,8000,8800,{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.2 .6'},gMep);L([[3850,8000],[4550,8800]],{stroke:'#111','stroke-width':W.hair},gMep);
  // Roof lines (model slope): clear height 1.2 m (counts for floor area), edge of the flat ceiling, ridge; roof windows above the cut.
  const gRoof=g({id:'roof'});
- for(const x of [L12,8000-L12])L([[x,WALL],[x,LEN-WALL]],{stroke:'#c0661a','stroke-width':W.thin,'stroke-dasharray':'1.4 .7'},gRoof);
- for(const x of [LF,8000-LF])L([[x,WALL],[x,LEN-WALL]],{stroke:'#3d6db3','stroke-width':W.thin,'stroke-dasharray':'2 .5 .3 .5'},gRoof);
- L([[4000,WALL],[4000,LEN-WALL]],{stroke:'#555','stroke-width':W.hair,'stroke-dasharray':'3 .6 .4 .6 .4 .6'},gRoof);
+ for(const x of [L12,WID-L12])L([[x,WALL],[x,LEN-WALL]],{stroke:'#c0661a','stroke-width':W.thin,'stroke-dasharray':'1.4 .7'},gRoof);
+ for(const x of [LF,WID-LF])L([[x,WALL],[x,LEN-WALL]],{stroke:'#3d6db3','stroke-width':W.thin,'stroke-dasharray':'2 .5 .3 .5'},gRoof);
+ L([[WID/2,WALL],[WID/2,LEN-WALL]],{stroke:'#555','stroke-width':W.hair,'stroke-dasharray':'3 .6 .4 .6 .4 .6'},gRoof);
  for(const w of winList()){const [x0,x1]=RWX[w.side];R(x0,x1,w.s,w.s+RWW,{fill:'#eef4f8','fill-opacity':.55,stroke:'#1d3d7a','stroke-width':W.thin,'stroke-dasharray':'1 .5'},gRoof);
   L(w.side==='k'?[[x0,w.s],[x1,w.s+RWW/2],[x0,w.s+RWW]]:[[x1,w.s],[x0,w.s+RWW/2],[x1,w.s+RWW]],{stroke:'#1d3d7a','stroke-width':W.hair,'stroke-dasharray':'.6 .4'},gRoof);}
 
@@ -284,30 +285,30 @@ function draw(){
  for(const r of rooms){const [id,name,,,,at,fs]=r;if(!at)continue;let [x,s]=at;const a=area(r);
   if(id){T(x,s,id,{'font-size':fs,'font-weight':700,...halo},gTxt);s-=300;T(x,s,name,{'font-size':1.5,...halo},gTxt);T(x,s-220,dec(a)+' m²',{'font-size':1.35,fill:'#333',...halo},gTxt);}
   else{T(x,s,name,{'font-size':1.4,'font-weight':700,...halo},gTxt);T(x,s-210,dec(a)+' m²',{'font-size':1.3,fill:'#333',...halo},gTxt);}}
- if(cmp){const loft=rooms.find(r=>r[8]);T(4000,16300,'PŮDA · NEOBYTNÁ',{'font-size':2.4,'font-weight':700,'letter-spacing':.3,...halo},gTxt);
-  T(4000,15850,'nevytápěná, v zateplené obálce · podlaha OSB · '+dec(area(loft))+' m²',{'font-size':1.3,...halo},gTxt);
-  T(1650,16700,'případně skládací schody z TM',{'font-size':.95,fill:'#333',...halo},gTxt);
-  T(3770,13800,'směšovací ventil chlazení',{'font-size':.9,fill:'#555','text-anchor':'start',...halo},gTxt);}
+ if(cmp){const loft=rooms.find(r=>r[8]);T(4150,16200,'PŮDA · NEOBYTNÁ',{'font-size':2.4,'font-weight':700,'letter-spacing':.3,...halo},gTxt);
+  T(4150,15750,'nevytápěná, v zateplené obálce · podlaha OSB · '+dec(area(loft))+' m²',{'font-size':1.3,...halo},gTxt);
+  T(1800,16600,'případně skládací schody z TM',{'font-size':.95,fill:'#333',...halo},gTxt);
+  T(3920,13700,'směšovací ventil chlazení',{'font-size':.9,fill:'#555','text-anchor':'start',...halo},gTxt);}
  for(const [id,w,[x,s]] of doorTags){T(x,s+40,id,{'font-size':1.05,'font-weight':700,fill:'#7a1f12',...halo},gTxt);T(x,s-150,w+'/2100',{'font-size':1.0,fill:'#333',...halo},gTxt);}
  const lvl=(x,s,t)=>{const w=t.length*.78+1;el('rect',{x:X(x)-w/2,y:Y(s)-1.55,width:w,height:2.1,fill:'#fff',stroke:'#111','stroke-width':W.hair},gTxt);T(x,s,t,{'font-size':1.4},gTxt);};
- lvl(4100,6750,lv(FLOOR));lvl(5200,700,lv(FLOOR));if(cmp)lvl(2300,14200,lv(FLOOR));
+ lvl(4250,6750,lv(FLOOR));lvl(5350,700,lv(FLOOR));if(cmp)lvl(2450,14100,lv(FLOOR));
  // Roof line labels at the front gable, where the bedroom floor is free.
  const RL={'font-size':.95,...halo};
- TR(L12+70,750,'sv. výška 1 200',-90,{...RL,fill:'#c0661a'},gTxt);TR(8000-L12-70,750,'sv. výška 1 200',90,{...RL,fill:'#c0661a'},gTxt);
- TR(LF+70,780,'podhled '+lv(CEIL),-90,{...RL,fill:'#3d6db3'},gTxt);TR(8000-LF-70,780,'podhled '+lv(CEIL),90,{...RL,fill:'#3d6db3'},gTxt);
- TR(4070,700,'hřeben',-90,{...RL,fill:'#555'},gTxt);
- TR(380,12950,'líc nadezdívky · sv. výška '+nb(HKNEE),-90,{...RL,'font-size':.85,fill:'#333'},gTxt);
+ TR(L12+70,750,'sv. výška 1 200',-90,{...RL,fill:'#c0661a'},gTxt);TR(WID-L12-70,750,'sv. výška 1 200',90,{...RL,fill:'#c0661a'},gTxt);
+ TR(LF+70,780,'podhled '+lv(CEIL),-90,{...RL,fill:'#3d6db3'},gTxt);TR(WID-LF-70,780,'podhled '+lv(CEIL),90,{...RL,fill:'#3d6db3'},gTxt);
+ TR(WID/2+70,700,'hřeben',-90,{...RL,fill:'#555'},gTxt);
+ TR(380,12850,'líc nadezdívky · sv. výška '+nb(HKNEE),-90,{...RL,'font-size':.85,fill:'#333'},gTxt);
  const small=(x,s,t,a={})=>T(x,s,t,{'font-size':1.0,fill:'#333',...halo,...a},gTxt);
- small(2000,3450,'šatna',{fill:'#555'});small(3610,1330,'kastlík VZT',{'font-size':.85,'text-anchor':'end',fill:'#555'});
- small(5070,5330,'komín',{'font-size':.9,'text-anchor':'end'});small(4900,6250,'lavice',{'font-size':.85,fill:'#777',transform:`rotate(-90 ${X(4900)} ${Y(6250)})`});
- small(5300,6500,'zábradlí dub v. 1 000',{'font-size':.85,fill:'#7a5a33',transform:`rotate(-90 ${X(5300)} ${Y(6500)})`});
- small(6900,6250,'dolů 18 × 170',{'font-size':1.1,fill:'#111'});
- small(4300,5150,'FC 620 × 620',{'font-size':.9,fill:FC});small(4050,8400,'revizní otvor',{'font-size':.85});small(4050,8230,'VZT 700 × 800',{'font-size':.85});
- small(3700,10320,'rozdělovač',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});small(3700,10180,'topení',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});
+ small(2150,3450,'šatna',{fill:'#555'});small(3760,1330,'kastlík VZT',{'font-size':.85,'text-anchor':'end',fill:'#555'});
+ small(5220,5330,'komín',{'font-size':.9,'text-anchor':'end'});small(5050,6250,'lavice',{'font-size':.85,fill:'#777',transform:`rotate(-90 ${X(5050)} ${Y(6250)})`});
+ small(5450,6500,'zábradlí dub v. 1 000',{'font-size':.85,fill:'#7a5a33',transform:`rotate(-90 ${X(5450)} ${Y(6500)})`});
+ small(7050,6250,'dolů 18 × 170',{'font-size':1.1,fill:'#111'});
+ small(4450,5150,'FC 620 × 620',{'font-size':.9,fill:FC});small(4200,8400,'revizní otvor',{'font-size':.85});small(4200,8230,'VZT 700 × 800',{'font-size':.85});
+ small(3850,10220,'rozdělovač',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});small(3850,10080,'topení',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});
  small(660,5960,'S2',{'font-size':1.0,'font-weight':700,fill:'#b8402f','text-anchor':'start'});
- small(7480,10600,'K2',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});small(7480,11600,'K1',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});
- small(2700,10150,'B, V3, P9',{'font-size':.85,fill:'#b8402f','text-anchor':'end'});small(3700,17850,'V1, C',{'font-size':.85,fill:'#b8402f'});
- for(const [id,s,posts] of FRAMES)small(id==='R3'?4045:posts[1][1]+60,id==='R3'?14060:s+(id==='R2'?260:170),'rám '+id,{'font-size':.85,'font-weight':700,fill:'#3c474f','text-anchor':id==='R3'?'middle':'start'});
+ small(7630,10500,'K2',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});small(7630,11500,'K1',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});
+ small(2850,10050,'B, V3, P9',{'font-size':.85,fill:'#b8402f','text-anchor':'end'});small(3850,17750,'V1, C',{'font-size':.85,fill:'#b8402f'});
+ for(const [id,s,posts] of FRAMES)small(id==='R3'?4195:posts[1][1]+60,id==='R3'?13960:s+(id==='R2'?260:170),'rám '+id,{'font-size':.85,'font-weight':700,fill:'#3c474f','text-anchor':id==='R3'?'middle':'start'});
  // Partition tags matching the setting-out table.
  for(const p of walls){const [x,s]=p.at,a={'font-size':.95,'font-weight':700,fill:'#7a1f12',stroke:'#fff','stroke-width':.5,'paint-order':'stroke',dy:.33};if((p.x1-p.x0)<(p.s1-p.s0))a.transform=`rotate(-90 ${X(x)} ${Y(s)})`;T(x,s,p.id,a,gTxt);}
  // Gable opening tags outside the walls; roof window tags outside the knee walls; the parts over the passage and the plant room.
@@ -315,50 +316,50 @@ function draw(){
   TP(X(mid),o.side==='front'?Y(sd.out)+4.4:Y(sd.out)-3.0,txt,a,gTxt);}
  for(const w of winList()){const mid=w.s+RWW/2,a={'font-size':1.3,'font-weight':700,fill:'#1d3d7a'};
   if(w.side==='k')TP(X(-EPS)-3.2,Y(mid),w.id+' FK08',{...a,transform:`rotate(-90 ${X(-EPS)-3.2} ${Y(mid)})`},gTxt);
-  else TP(X(8000+EPS)+3.2,Y(mid),w.id+' FK08',{...a,transform:`rotate(90 ${X(8000+EPS)+3.2} ${Y(mid)})`},gTxt);}
- for(const [s0,s1,t] of [[12200,16000,'nad průjezdem'],[16000,18800,'nad technickou m.']]){const px=X(-EPS)-2.2;
+  else TP(X(WID+EPS)+3.2,Y(mid),w.id+' FK08',{...a,transform:`rotate(90 ${X(WID+EPS)+3.2} ${Y(mid)})`},gTxt);}
+ for(const [s0,s1,t] of [[12100,15900,'nad průjezdem'],[15900,18700,'nad technickou m.']]){const px=X(-EPS)-2.2;
   el('line',{x1:px,y1:Y(s0)-.4,x2:px,y2:Y(s1)+.4,stroke:'#777','stroke-width':W.hair},gTxt);for(const s of [s0,s1])el('line',{x1:px-.5,y1:Y(s),x2:px+.8,y2:Y(s),stroke:'#777','stroke-width':W.hair},gTxt);
   TP(px-1,Y((s0+s1)/2),t,{'font-size':1.15,fill:'#555',transform:`rotate(-90 ${px-1} ${Y((s0+s1)/2)})`},gTxt);}
 
  // ---------------- Dimensions ----------------
  gDim=g({id:'dims'});
- const gab=[-EPS,0,2230,3270,4730,5770,8000,8000+EPS],env=[-EPS,0,WALL,8000-WALL,8000,8000+EPS];
- dimH(Y(-EPS)+8,gab);dimH(Y(-EPS)+14,env);dimH(Y(-EPS)+20,[-EPS,8000+EPS]);
- dimH(Y(LEN+EPS)-8,gab);dimH(Y(LEN+EPS)-14,env);dimH(Y(LEN+EPS)-20,[-EPS,8000+EPS]);
+ const gab=[-EPS,0,2380,3420,4880,5920,WID,WID+EPS],env=[-EPS,0,WALL,WID-WALL,WID,WID+EPS];
+ dimH(Y(-EPS)+8,gab);dimH(Y(-EPS)+14,env);dimH(Y(-EPS)+20,[-EPS,WID+EPS]);
+ dimH(Y(LEN+EPS)-8,gab);dimH(Y(LEN+EPS)-14,env);dimH(Y(LEN+EPS)-20,[-EPS,WID+EPS]);
  const lenStruct=[-EPS,0,WALL,LEN-WALL,LEN,LEN+EPS],wins=side=>RW[V][side].flatMap(s=>[s,s+RWW]);
  dimV(X(-EPS)-8,[-EPS,0,...wins('k'),LEN,LEN+EPS]);dimV(X(-EPS)-14,lenStruct);dimV(X(-EPS)-20,[-EPS,LEN+EPS]);
- dimV(X(8000+EPS)+8,[-EPS,0,...wins('t'),LEN,LEN+EPS],{right:true});dimV(X(8000+EPS)+14,lenStruct,{right:true});dimV(X(8000+EPS)+20,[-EPS,LEN+EPS],{right:true});
+ dimV(X(WID+EPS)+8,[-EPS,0,...wins('t'),LEN,LEN+EPS],{right:true});dimV(X(WID+EPS)+14,lenStruct,{right:true});dimV(X(WID+EPS)+20,[-EPS,LEN+EPS],{right:true});
  // Inside: free-standing wall and the bedroom doors, partitions across the corridor, the roof lines, walls along both sides, doors along the corridor.
- dimH(Y(1000),[WALL,3920,4070,8000-WALL],{size:1.3});
- dimH(Y(4150),[WALL,1550,2350,3600,4400,8000-WALL],{size:1.2});
- dimH(Y(cmp?10700:8700),[WALL,3340,3490,4600,4750,8000-WALL],{size:1.3});
- dimH(Y(7090),[4600,5100,6100,8000-WALL],{size:1.15});dimV(X(7560),[4450,5570,7230],{size:1.15});
- if(!cmp){dimH(Y(14900),[WALL,1600,2400,3600,4400,8000-WALL],{size:1.2});dimH(Y(17350),[WALL,L12,LF,4000,8000-LF,8000-L12,8000-WALL],{size:1.1});
-  dimV(X(1150),[WALL,4290,4440,6400,6550,11580,11730,14240,14370,LEN-WALL],{size:1.25});
-  dimV(X(6450),[7230,7380,9950,10100,11300,11450,14240,14370,LEN-WALL],{size:1.25});
-  dimV(X(3640),[6550,6800,7600,11580],{size:1.1});dimV(X(4470),[7380,8500,9200,9950,10100,10350,11050,11300,11450,13400,14100,14240],{size:1.05,right:true});}
- else{dimH(Y(13480),[WALL,3650,4450,8000-WALL],{size:1.2});dimH(Y(14800),[WALL,L12,LF,4000,8000-LF,8000-L12,8000-WALL],{size:1.1});
-  dimV(X(1150),[WALL,4290,4440,6400,6550,7600,7750,11900,12050,13000,13270,LEN-WALL],{size:1.25});
-  dimV(X(6450),[7230,7380,9400,9550,13000,13270],{size:1.25});
-  dimV(X(3640),[6550,6700,7400,7600,7750,8400,9200,11900,12050,12150,12850,13000],{size:1.05});dimV(X(4470),[7380,8400,9100,9400,9550,9700,10500,13000],{size:1.05,right:true});}
+ dimH(Y(1000),[WALL,4070,4220,WID-WALL],{size:1.3});
+ dimH(Y(4150),[WALL,1700,2500,3750,4550,WID-WALL],{size:1.2});
+ dimH(Y(cmp?10600:8700),[WALL,3490,3640,4750,4900,WID-WALL],{size:1.3});
+ dimH(Y(7090),[4750,5250,6250,WID-WALL],{size:1.15});dimV(X(7860),[4450,5570,7230],{size:1.15});
+ if(!cmp){dimH(Y(14800),[WALL,1750,2550,3750,4550,WID-WALL],{size:1.2});dimH(Y(17250),[WALL,L12,LF,WID/2,WID-LF,WID-L12,WID-WALL],{size:1.1});
+  dimV(X(1300),[WALL,4290,4440,6400,6550,11480,11630,14140,14270,LEN-WALL],{size:1.25});
+  dimV(X(6600),[7230,7380,9850,10000,11200,11350,14140,14270,LEN-WALL],{size:1.25});
+  dimV(X(3790),[6550,6800,7600,11480],{size:1.1});dimV(X(4620),[7380,8500,9200,9850,10000,10250,10950,11200,11350,13300,14000,14140],{size:1.05,right:true});}
+ else{dimH(Y(13380),[WALL,3800,4600,WID-WALL],{size:1.2});dimH(Y(14700),[WALL,L12,LF,WID/2,WID-LF,WID-L12,WID-WALL],{size:1.1});
+  dimV(X(1300),[WALL,4290,4440,6400,6550,7600,7750,11800,11950,12900,13170,LEN-WALL],{size:1.25});
+  dimV(X(6600),[7230,7380,9400,9550,12900,13170],{size:1.25});
+  dimV(X(3790),[6550,6700,7400,7600,7750,8400,9200,11800,11950,12050,12750,12900],{size:1.05});dimV(X(4620),[7380,8400,9100,9400,9550,9600,10400,12900],{size:1.05,right:true});}
 
  // ---------------- Cross-section scheme 1 : 250, north arrow, scale bar, sheet frame ----------------
  const gOv=g({id:'overlay'});
  el('rect',{x:5,y:5,width:410,height:287,fill:'none',stroke:'#111','stroke-width':.35},gOv);
  {const S=1/250,ox=103,oy=42.5,XS=x=>ox+(x+1200)*S,YS=h=>oy-h*S,P=pts=>pts.map(([x,h])=>XS(x).toFixed(2)+','+YS(h).toFixed(2)).join(' ');
-  const pl=(pts,a)=>el('polyline',{points:P(pts),fill:'none',...a},gOv),top=5438;   // roof surface over the attic floor: 5 438 − |x − 4 000|
-  for(const [a,b] of [[-EPS,WALL],[8000-WALL,8000+EPS]])el('rect',{x:XS(a),y:YS(HKNEE),width:(b-a)*S,height:HKNEE*S,fill:'url(#pM)',stroke:'#111','stroke-width':.12},gOv);
-  el('rect',{x:XS(-EPS),y:YS(0),width:8400*S,height:400*S,fill:'#d6d6d6',stroke:'#111','stroke-width':.12},gOv);
-  pl([[-1200,238],[4000,top],[9200,238]],{stroke:'#111','stroke-width':.18});
-  pl([[WALL,HKNEE],[LF,CLEAR],[8000-LF,CLEAR],[8000-WALL,HKNEE]],{stroke:'#111','stroke-width':.25});
-  pl([[LF,CLEAR],[4000,KNEE+4000],[8000-LF,CLEAR]],{stroke:'#777','stroke-width':.1,'stroke-dasharray':'.6 .4'});
-  for(const x of [L12,8000-L12])pl([[x,0],[x,1200]],{stroke:'#c0661a','stroke-width':.13,'stroke-dasharray':'.7 .35'});
-  for(const x of [LF,8000-LF])pl([[x,0],[x,CLEAR]],{stroke:'#3d6db3','stroke-width':.13,'stroke-dasharray':'1 .3 .2 .3'});
-  pl([[4000,0],[4000,top]],{stroke:'#555','stroke-width':.08,'stroke-dasharray':'1.2 .3 .2 .3 .2 .3'});
+  const pl=(pts,a)=>el('polyline',{points:P(pts),fill:'none',...a},gOv),top=5588;   // roof surface over the attic floor: 5 588 − |x − 4 150|
+  for(const [a,b] of [[-EPS,WALL],[WID-WALL,WID+EPS]])el('rect',{x:XS(a),y:YS(HKNEE),width:(b-a)*S,height:HKNEE*S,fill:'url(#pM)',stroke:'#111','stroke-width':.12},gOv);
+  el('rect',{x:XS(-EPS),y:YS(0),width:(WID+2*EPS)*S,height:400*S,fill:'#d6d6d6',stroke:'#111','stroke-width':.12},gOv);
+  pl([[-1200,238],[WID/2,top],[WID+1200,238]],{stroke:'#111','stroke-width':.18});
+  pl([[WALL,HKNEE],[LF,CLEAR],[WID-LF,CLEAR],[WID-WALL,HKNEE]],{stroke:'#111','stroke-width':.25});
+  pl([[LF,CLEAR],[WID/2,KNEE+WID/2],[WID-LF,CLEAR]],{stroke:'#777','stroke-width':.1,'stroke-dasharray':'.6 .4'});
+  for(const x of [L12,WID-L12])pl([[x,0],[x,1200]],{stroke:'#c0661a','stroke-width':.13,'stroke-dasharray':'.7 .35'});
+  for(const x of [LF,WID-LF])pl([[x,0],[x,CLEAR]],{stroke:'#3d6db3','stroke-width':.13,'stroke-dasharray':'1 .3 .2 .3'});
+  pl([[WID/2,0],[WID/2,top]],{stroke:'#555','stroke-width':.08,'stroke-dasharray':'1.2 .3 .2 .3 .2 .3'});
   const t=(x,h,s,a={})=>TP(XS(x),YS(h),s,{'font-size':1.05,...a},gOv);
-  t(4000,CLEAR+130,'podhled '+lv(CEIL)+' · sv. výška '+nb(CLEAR),{'font-size':.95});t(4000,180,'podlaha '+lv(FLOOR),{'font-size':.95});t(L12+120,1260,'1 200',{fill:'#c0661a','text-anchor':'start','font-size':.95});
+  t(WID/2,CLEAR+130,'podhled '+lv(CEIL)+' · sv. výška '+nb(CLEAR),{'font-size':.95});t(WID/2,180,'podlaha '+lv(FLOOR),{'font-size':.95});t(L12+120,1260,'1 200',{fill:'#c0661a','text-anchor':'start','font-size':.95});
   t(-EPS-80,HKNEE-200,nb(HKNEE),{'text-anchor':'end','font-size':.95});t(LF,-720,'x '+nb(LF),{'font-size':.85,fill:'#3d6db3'});t(L12,-720,'x '+L12,{'font-size':.85,fill:'#c0661a','text-anchor':'end'});
-  t(8000-LF,-720,'x '+nb(8000-LF),{'font-size':.85,fill:'#3d6db3'});t(4000,-720,'hřeben x 4 000',{'font-size':.85,fill:'#555'});
+  t(WID-LF,-720,'x '+nb(WID-LF),{'font-size':.85,fill:'#3d6db3'});t(WID/2,-720,'hřeben x '+nb(WID/2),{'font-size':.85,fill:'#555'});
   TP(XS(-1200),YS(top)-1.6,'Příčný řez podkrovím · schéma 1 : 250',{'font-size':1.3,'font-weight':700,'text-anchor':'start'},gOv);}
  {const cx=22,cy=24;el('circle',{cx,cy,r:7,fill:'none',stroke:'#111','stroke-width':.18},gOv);
   const a=g({transform:`rotate(-74 ${cx} ${cy})`},gOv);el('path',{d:`M${cx} ${cy-6.4}L${cx+2} ${cy+2.4}L${cx} ${cy+1}L${cx-2} ${cy+2.4}Z`,fill:'#111'},a);
@@ -381,33 +382,35 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
  const name=cmp?'Zadní část neobytná':'Podle D1.3 upravené';
  const sw=(svg)=>`<svg class="sw" viewBox="0 0 6 2.2">${svg}</svg>`;
  const changes=[
-  `<b>Ložnice 2.02 v předním štítu</b> přes celou šířku 7 400 (D1.3: pokoj 25 m² mezi příčkami 450 od nadezdívek, ložnice byla 2.08 vzadu). Volně stojící stěna 150 do rovného podhledu (x 3 920–4 070, s 1 150–3 350) ji dělí na spací část a šatnu, průchod je na obou koncích.`,
+  `<b>Skutečný rozměr podle zaměřené desky</b>: zdivo 8 300 × 11 900, tedy o 300 širší a o 70 delší než DSP (8 000 × 11 830), hřeben o 150 výš. Dispozice zůstává v ose domu: pokoje u nadezdívek jsou o 150 širší, místnosti přes s 9 600 o 100 kratší a vše za nimi o 100 blíž.`,
+  `<b>Ložnice 2.02 v předním štítu</b> přes celou šířku 7 700 (D1.3: pokoj 25 m² mezi příčkami 450 od nadezdívek, ložnice byla 2.08 vzadu). Volně stojící stěna 150 do rovného podhledu (x 4 070–4 220, s 1 150–3 350) ji dělí na spací část a šatnu, průchod je na obou koncích.`,
   `<b>2.03 je koupelna k ložnici</b> místo šatny: sprcha 1 000 × 1 100, umyvadlo, WC na předstěně pod šikminou, vstup DP2 ze šatny. Odpad S2 do K3 (Kanalizace, varianta A).`,
   ...(cmp?[
-  `<b>Zadní část neobytná:</b> obytné podkroví končí na s 13 000, za příčkou 150 s izolací 120 je nevytápěná půda nad průjezdem a technickou místností. Dveře DP8 z konce chodby, případně skládací schody z technické místnosti. D1.3 tu má 2.07, 2.08 a 2.09.`,
+  `<b>Zadní část neobytná:</b> obytné podkroví končí na s 12 900, za příčkou 150 s izolací 120 je nevytápěná půda nad průjezdem a technickou místností. Dveře DP8 z konce chodby, případně skládací schody z technické místnosti. D1.3 tu má 2.07, 2.08 a 2.09.`,
   `Úklid a prádelna (pračka a sušička nad sebou, výlevka) u stoupaček vedle 2.03, koupelna dětí nad koupelnou 1.05 (sprcha, umyvadlo, WC pod šikminou do K2), dětský pokoj 1 pod severní a 2 pod jižní šikminou, komora z chodby. Čísla místností zatím nejsou.`]:[
   `<b>2.05 je prádelna</b> místo koupelny: pračka a sušička pod pracovní deskou, výlevka, vysoká skříň. V koupelně 1.05 pračka není.`,
   `<b>Koupelna 2.07 z chodby</b> dveřmi DP6 na konci chodby (D1.3: z ložnice 2.08). Pokoj 2.08 (D1.3 ložnice) se šatnou 2.09 zůstává.`]),
-  `Chodba 1 110 mezi příčkami, pokoje na straně příjezdu 3 040, na straně HS 2 950 až k nadezdívce, WC na předstěnách 250 (D1.3: 1 100, 3 000 a 2 700 + instalační předstěna 300).`,
+  `Chodba 1 110 mezi příčkami, pokoje na straně příjezdu 3 190, na straně HS 3 100 až k nadezdívce, WC na předstěnách 250 (D1.3: 1 100, 3 000 a 2 700 + instalační předstěna 300).`,
   `<b>Podlaha ${lv(FLOOR)}</b>, schodiště 18 × 170 (D1.3: +3,000 a 18 × 166,7). <b>Rovný podhled ${lv(CEIL)}</b>, světlá výška ${nb(CLEAR)} (DSP strop ve 3,0 m), kleštiny na každé vazbě (Krov).`,
   `Dubové zábradlí v. 1 000 kolem otvoru končí na omítnutém komíně, přední běh pokračuje podél horních stupňů ke střední stěně. Lavice podél zábradlí, průchod od schodů do chodby zůstává volný.`,
   `<b>Střešní okna VELUX FK08 66 × 140</b>: ${RW[V].t.length} na jižní straně (HS), ${RW[V].k.length} na severní (D1.3: 4 + 4 okna 800 × 1 200 souměrně). Mimo příčky nejméně 150 mm${cmp?'':' a mezi krokvemi podle Krovu'}.`,
   `Klimatizace: kazetový fancoil 620 × 620 v rovném podhledu chodby u schodiště, studená voda z TČ${cmp?' přes směšovací ventil na půdě':''}, kondenzát čerpadlem do sifonu umyvadla 2.03.`,
-  `Krov: třetí rám R2 se stojkami 2U140 v příčkách chodby (s 10 010), R1 a R3 kolem dveří na koncích chodby jako v D1.3${cmp?' (R3 stojí volně na půdě)':''}.`,
+  `Krov: třetí rám R2 se stojkami 2U140 v příčkách chodby (s 9 910), R1 a R3 kolem dveří na koncích chodby jako v D1.3${cmp?' (R3 stojí volně na půdě)':''}.`,
   `Rozdělovač topení R2 zapuštěný v zesílené příčce chodby nad R1 (projekt topení: v koupelně 2.05 u WC 2.06). Kastlík VZT 620 × 350 na předním konci dělicí stěny ložnice, revizní otvor v podhledu chodby s rozdělovači VZT nad ním.`];
  const levels=[['hotová podlaha podkroví',lv(FLOOR),'model, schodiště 18 × 170 (D1.3 +3,000)'],['vršek nadezdívky 4 řady / věnce 300',`${lv(3903)} / ${lv(4203)}`,'Výškový řez, var. A (věnec ověřit)'],
-  ['šikmina na líci nadezdívky',lv(FLOOR+HKNEE),`světlá výška ${nb(HKNEE)} (model)`],['čára světlé výšky 1,2 m',lv(FLOOR+1200),`x ${L12} a ${nb(8000-L12)}`],['vrch dveří',lv(FLOOR+2100),'křídla 2 100'],
-  ['vrch rámu otvorů ve štítech',lv(FLOOR+2200),'O9–O12'],['spodní hrana střešních oken v podhledu','≈ '+lv(FLOOR+1318),'model, ověřit podle ostění'],['rovný podhled',lv(CEIL),`světlá výška ${nb(CLEAR)}, x ${nb(LF)}–${nb(8000-LF)}`]];
+  ['šikmina na líci nadezdívky',lv(FLOOR+HKNEE),`světlá výška ${nb(HKNEE)} (model)`],['čára světlé výšky 1,2 m',lv(FLOOR+1200),`x ${L12} a ${nb(WID-L12)}`],['vrch dveří',lv(FLOOR+2100),'křídla 2 100'],
+  ['vrch rámu otvorů ve štítech',lv(FLOOR+2200),'O9–O12'],['spodní hrana střešních oken v podhledu','≈ '+lv(FLOOR+1318),'model, ověřit podle ostění'],['rovný podhled',lv(CEIL),`světlá výška ${nb(CLEAR)}, x ${nb(LF)}–${nb(WID-LF)}`]];
  const notes=[
   ['','Pracovní výkres z vizualizační studie (3D model v09), ne realizační dokumentace. Kóty jsou z modelu, před zděním příček je zkontrolovat na stropě a vůči stoupačkám a prostupům.'],
+  ['warn','Přepočteno na zaměřenou desku 8,3 × 11,9 m za předpokladu, že deska narostla o 150 na každou stranu a vnitřek je vytyčený jako v projektu (x + 150, za s 9 600 s − 100). Stoupačky, prostupy a komín jsou kreslené jako projekt + 150, polohu ověřit na stavbě.'],
   ['warn',`Podlaha ${lv(FLOOR)} odpovídá modelu a schodišti 18 × 170. Výškový řez ve variantě A (panely +2 925) dává s podlahou 150 mm +3,085 – ověřit a sladit se schodištěm.`],
-  ['',`Šikmina podle modelu: na líci nadezdívky světlá výška ${nb(HKNEE)}, čára 1 200 je ${L12-WALL} mm od líce (x ${L12} a ${nb(8000-L12)}), rovný podhled x ${nb(LF)}–${nb(8000-LF)}. Plocha „nad 1,2 m“ je bez pásu pod 1 200. D1.3 kreslí v = 1 200 na líci nadezdívky. Skladbu střechy a podhledu ověřit (Krov).`],
-  ['','Střešní okna čárkovaně jako otvor v podhledu podle modelu (x 500–1 450 a 6 550–7 500), spodní hrana asi 1 320 nad podlahou. Rám, výměny a ostění ověřit podle Krovu a typu ostění.'],
-  ['warn','Stojky rámů R1–R3 (2U140) stojí na stropních panelech, roznesení potvrdit statikem a výrobcem panelů. Stojka R2 v západní příčce chodby je v místě skříně rozdělovače R2 (s 9 900–10 750): ověřit, že se vejdou vedle sebe.'],
+  ['',`Šikmina podle modelu: na líci nadezdívky světlá výška ${nb(HKNEE)}, čára 1 200 je ${L12-WALL} mm od líce (x ${L12} a ${nb(WID-L12)}), rovný podhled x ${nb(LF)}–${nb(WID-LF)}. Plocha „nad 1,2 m“ je bez pásu pod 1 200. D1.3 kreslí v = 1 200 na líci nadezdívky. Skladbu střechy a podhledu ověřit (Krov).`],
+  ['','Střešní okna čárkovaně jako otvor v podhledu podle modelu (x 500–1 450 a 6 850–7 800), spodní hrana asi 1 320 nad podlahou. Rám, výměny a ostění ověřit podle Krovu a typu ostění.'],
+  ['warn','Stojky rámů R1–R3 (2U140) stojí na stropních panelech, roznesení potvrdit statikem a výrobcem panelů. Stojka R2 v západní příčce chodby je v místě skříně rozdělovače R2 (s 9 800–10 650): ověřit, že se vejdou vedle sebe.'],
   ['',cmp?'Stoupačky K1, K2 (ZTI) vedou dětským pokojem 2 v nízké šachtě pod šikminou, S2 v předstěně WC koupelny 2.03. B, V3 a P9 jsou ve skříni dětského pokoje 1, V1 (VZT 2× Ø 180) a C (topení, voda) vycházejí na půdě.'
    :'S2 je v předstěně WC koupelny 2.03, K2 v předstěně WC 2.06. B, V3 a P9 jsou ve skříni pokoje 2.04, V1 (VZT 2× Ø 180) a C (topení, voda) ve skříni pokoje 2.08 mezi okny.'],
   ...(cmp?[['warn','Půda je nevytápěná: příčka s izolací a dveře DP8 jsou hranice vytápěného prostoru. Topení a voda na půdě v izolačním boxu (Topení). Skladbu příčky a dveří ověřit podle PENB.']]
-   :[['warn','K1 vychází v koupelně 2.07 v rohu u vany (s 11 450), obložit. Polohu ověřit na stropě.'],['warn','Podlaha 2.07, 2.09 a 2.08 nad průjezdem (s 12 200–16 000) je nad exteriérem: zateplení zespodu ověřit podle PENB.']]),
+   :[['warn','K1 vychází v koupelně 2.07 v rohu u vany (s 11 350), obložit. K1 a K2 jsou teď asi 300 od vnitřního líce nadezdívky (dřív 150). Polohu ověřit na stropě.'],['warn','Podlaha 2.07, 2.09 a 2.08 nad průjezdem (s 12 100–15 900) je nad exteriérem: zateplení zespodu ověřit podle PENB.']]),
   ['','Revizní otvor VZT podle modelu 700 × 800 (Rekuperace uvádí 600 × 800). Otvory ve štítech: překlady a kotvení francouzského zábradlí ověřit, v modelu nejsou.'],
   ['','Změny proti D1.3 projednat se stavebním úřadem (změna stavby před dokončením).']];
  side.innerHTML=`<style>
@@ -422,7 +425,7 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
 #side .c1{grid-column:1}#side .c2{grid-column:2}#side .foot{grid-column:1 / span 2}
 #side .muted{color:#444}#side .lg{columns:2;column-gap:30px}#side .lg div{margin:0 0 5px;break-inside:avoid}#side .var{font-weight:700;color:#264b39}
 </style>
-<div class="head"><h2>PŮDORYS 2NP · pracovní výkres pro stavbu · <span class="var">varianta „${esc(name)}“</span></h2><div class="muted">Podle 3D modelu v09 (index.html, podkroví ${cmp?'„Zadní část neobytná“':'podle D1.3 s úpravami'}) a výkresu D1.3 DSP (02/2024). Otvory ve štítech jsou okótované jako hrubý otvor (rám + 2 × 20 mm), výšky jsou od ±0,000 = hotová podlaha 1NP, s od vnějšího líce zdiva předního štítu.</div></div>
+<div class="head"><h2>PŮDORYS 2NP · pracovní výkres pro stavbu · <span class="var">varianta „${esc(name)}“</span></h2><div class="muted">Podle 3D modelu v09 (index.html, podkroví ${cmp?'„Zadní část neobytná“':'podle D1.3 s úpravami'}) a výkresu D1.3 DSP (02/2024), přepočteno na skutečný rozměr domu 8 300 × 11 900. Otvory ve štítech jsou okótované jako hrubý otvor (rám + 2 × 20 mm), výšky jsou od ±0,000 = hotová podlaha 1NP, s od vnějšího líce zdiva předního štítu.</div></div>
 <div class="c1">
  <h3>Legenda místností 2NP</h3>
  <table><tr><th>Ozn.</th><th>Název</th><th class="n">Plocha</th><th class="n">nad 1,2 m</th><th>D1.3</th><th>Podlaha</th></tr>
@@ -437,7 +440,7 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
  <h3>Otvory ve štítech</h3>
  <table><tr><th>Ozn.</th><th>Místo</th><th class="n">Rám š × v</th><th class="n">Otvor š</th><th class="n">Práh</th><th class="n">Vrch rámu</th><th>Pozn.</th></tr>
  ${OPEN.map(o=>`<tr><td><b>${o.id}</b></td><td>${o.side==='front'?'přední':'zadní'} štít, ${esc(typeof o.where==='string'?o.where:o.where[V])}</td><td class="n">1000 × 2200</td><td class="n">1040</td><td class="n">${lv(FLOOR)}</td><td class="n">${lv(FLOOR+2200)}</td><td>francouzské zábradlí v. 1 050</td></tr>`).join('')}</table>
- <div class="muted" style="margin-top:6px">x ${nb(2250)}–${nb(3250)} a ${nb(4750)}–${nb(5750)} od líce zdiva na straně příjezdu v obou štítech, jako v D1.3 (1 000 × 2 200, práh 0). Otevírání a překlady ověřit.</div>
+ <div class="muted" style="margin-top:6px">x ${nb(2400)}–${nb(3400)} a ${nb(4900)}–${nb(5900)} od líce zdiva na straně příjezdu v obou štítech, jako v D1.3 (1 000 × 2 200, práh 0). Otevírání a překlady ověřit.</div>
  <h3>Vnitřní dveře</h3>
  <table><tr><th>Ozn.</th><th class="n">Křídlo š/v</th><th class="n">Otvor</th><th>Místo a otevírání</th></tr>
  ${doors.map(d=>`<tr><td><b>${d[4]}</b></td><td class="n">${d[1]-d[0]}/2100</td><td class="n">${nb(d[0])}–${nb(d[1])}</td><td>${esc(d[5])}</td></tr>`).join('')}</table>
@@ -454,7 +457,7 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
  <h3>Vytyčení příček</h3>
  <table><tr><th>Ozn.</th><th>Mezi</th><th class="n">x</th><th class="n">s</th><th class="n">Tl.</th><th>Kontrola</th><th>Otvory</th></tr>
  ${WALLS[V].map(p=>`<tr><td><b>${p.id}</b></td><td>${esc(p.between)}</td><td class="n">${nb(p.x0)}–${nb(p.x1)}</td><td class="n">${nb(p.s0)}–${nb(p.s1)}</td><td class="n">150</td><td>${esc(p.check)}</td><td>${(p.doors||[]).map(d=>d[4]+' '+(d[1]-d[0])).join(', ')}</td></tr>`).join('')}</table>
- <div class="muted" style="margin-top:6px">x od vnějšího líce zdiva na straně příjezdu, s od vnějšího líce zdiva předního štítu, jako na Půdorysu 1NP. PP4 je u rozdělovače R2 zesílená o 130 do chodby (s 9 900–10 750, Topení). Příčky končí na šikminách a na rovném podhledu.</div>
+ <div class="muted" style="margin-top:6px">x od vnějšího líce zdiva na straně příjezdu, s od vnějšího líce zdiva předního štítu, jako na Půdorysu 1NP. PP4 je u rozdělovače R2 zesílená o 130 do chodby (s 9 800–10 650, Topení). Příčky končí na šikminách a na rovném podhledu.</div>
  <h3>Legenda</h3>
  <div class="lg"><div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pM)" stroke="#111" stroke-width=".12"/>')}štíty a nadezdívka SOLBET 300</div><div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pE)" stroke="#111" stroke-width=".12"/>')}EPS 200 (fasáda)</div><div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pP)" stroke="#111" stroke-width=".12"/>')}příčka 150</div>${cmp?`<div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pI)" stroke="#111" stroke-width=".12"/>')}izolace příčky k půdě 120</div>`:''}<div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="#ececec" stroke="#111" stroke-width=".12"/>')}předstěna, kastlík (SDK)</div><div>${sw('<rect x=".05" y=".05" width="5.9" height="2.1" fill="url(#pZ)" stroke="#111" stroke-width=".12"/>')}komín (omítnutý)</div><div>${sw('<rect x="2" y=".3" width="1.4" height="1.6" fill="#3c474f"/><path d="M3.4 1.1H5.8" stroke="#3c474f" stroke-width=".13" stroke-dasharray=".7 .45"/>')}stojky rámů krovu 2U140</div><div>${sw('<path d="M.2 1.1H5.8" stroke="#c0661a" stroke-width=".14" stroke-dasharray="1.4 .7"/>')}světlá výška 1 200 (plocha)</div><div>${sw('<path d="M.2 1.1H5.8" stroke="#3d6db3" stroke-width=".14" stroke-dasharray="2 .5 .3 .5"/>')}hrana rovného podhledu</div><div>${sw('<path d="M.2 1.1H5.8" stroke="#555" stroke-width=".1" stroke-dasharray="1.6 .4 .3 .4 .3 .4"/>')}hřeben, vaznice nad podhledem</div><div>${sw('<rect x=".4" y=".3" width="5.2" height="1.6" fill="#eef4f8" stroke="#1d3d7a" stroke-width=".12" stroke-dasharray="1 .5"/>')}střešní okno (otvor v podhledu)</div><div>${sw('<path d="M.2 1.1H5.8" stroke="#111" stroke-width=".12" stroke-dasharray="1.2 .6"/>')}${cmp?'v podhledu nebo skládací schody':'v podhledu (revizní otvor)'}</div><div>${sw('<path d="M.2 1.1H5.8" stroke="#8d8d8d" stroke-width=".1" stroke-dasharray="2.4 .8 .4 .8"/>')}obrys průjezdu pod podlahou</div><div>${sw('<circle cx="1.2" cy="1.1" r=".6" fill="#2f7a43" stroke="#1d4f2b" stroke-width=".12"/><circle cx="3" cy="1.1" r=".6" fill="#fff" stroke="#b8402f" stroke-width=".12"/><rect x="4.3" y=".4" width="1.4" height="1.4" fill="#3b4a42"/>')}K1, K2 · nové prostupy · R2</div></div>
 </div>
@@ -462,7 +465,7 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
  <table class="tb">
   <tr><td style="width:26%">Stavba</td><td colspan="3"><b>Novostavba rodinného domu Hájek</b> · p. p. č. 49/5, k. ú. Krásný Les u Frýdlantu</td></tr>
   <tr><td>Investor</td><td>Ing. Luboš Hájek</td><td>Měřítko</td><td>1 : 100 (A3)</td></tr>
-  <tr><td>Podklady</td><td>D1.3 DSP (Ing. Dávid Jurčo, 02/2024), 3D studie v09, Výškový řez, Krov, Topení, Rekuperace, Kanalizace</td><td>Datum</td><td>26. 10. 2026</td></tr>
+  <tr><td>Podklady</td><td>D1.3 DSP (Ing. Dávid Jurčo, 02/2024), 3D studie v09, Výškový řez, Krov, Topení, Rekuperace, Kanalizace</td><td>Datum</td><td>3. 11. 2026</td></tr>
   <tr><td>Zpracoval</td><td>— Claude (AI asistent)</td><td>Výkres</td><td><span class="big">Půdorys 2NP</span><br>varianta „${esc(name)}“</td></tr>
  </table>
 </div>`;}
