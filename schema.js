@@ -44,14 +44,16 @@ const CHIMNEY=[5.27,5.65,5.2,5.6];
 const ROOFWIN={compact:{k:[5.5,8.6,10.7],t:[4.8,8.0,10.35,11.65]},d13:{k:[4.96,10.23],t:[4.84,7.55,10.35,12.2]}};
 // Plant room: tanks, the heat pump outdoor unit, the MVHR unit.
 const PLANT={tv:[17.5,1.15,.45],aku:[17.75,2.3,.27],rtl:[3.15,4.05,17.85,18.15],ctl:[1.9,2.2,16.55,17.15],hp:[1.37,2.47,19.0,19.4],unit:[5.1,5.85,17.64,18.2]};
-// Ceiling penetrations of the ground floor (all trades). at [z,x], d diameter (m), who: vzt, top, kan, ele.
+// Ceiling penetrations of the ground floor (all trades). at [z,x], d diameter (m), who: vzt, top, kan, ele. Grouped as on stropni-panely:
+// P1, C, E1 in the cast strip DB at the plant-room gable; B, P3, E2, K1, V2 in the installation strip Z2 at the wall to the passage
+// (z 10.835–11.6 over the rooms); S2 + V3 in a cut-out on the edge of panel 06; P2, P9 and K2 are core holes in the middle of a panel.
 const PEN=[
  {id:'P1',who:'vzt',at:[18.0,3.87],d:.23,t:'přívod Ø 180 (V1)'},{id:'P1',who:'vzt',at:[18.0,4.23],d:.23,t:'odvod Ø 180 (V1)'},{id:'C',who:'top',at:[18.0,3.5],d:.2,t:'topení 2× 32, voda, data'},
  {id:'P2',who:'vzt',at:[1.22,3.99],d:.11,t:'přívod obýváku Ø 90 (ventil u TV)'},{id:'P2',who:'vzt',at:[1.42,3.99],d:.11,t:'přívod obýváku Ø 90 (ventil u HS)'},
- {id:'P3',who:'vzt',at:[10.3,3.1],d:.14,t:'odvod přízemí Ø 125 (V3)'},{id:'P9',who:'vzt',at:[9.55,2.95],d:.14,t:'odvod kuchyně Ø 125 (ventil ve stropě)'},{id:'B',who:'top',at:[10.8,3.1],d:.16,t:'stoupačka R2 → R1 + 2 chráničky'},
- {id:'S2',who:'kan',at:[5.85,.5],d:.13,t:'odpad DN 110 z koupelny u ložnice'},{id:'K2',who:'kan',at:[10.27,7.7],d:.13,t:'stoupačka K2 (ZTI)'},{id:'K1',who:'kan',at:[11.35,7.7],d:.13,t:'stoupačka K1 (ZTI)'},
- {id:'V3',who:'top',at:[5.55,.5],d:.11,t:'stoupačka vody V3 (SV 26 + TV 20) vedle S2'},{id:'V2',who:'top',at:[10.65,7.6],d:.06,t:'stoupačka vody V2 (vratka cirkulace 16) u K1/K2'},
- {id:'E1',who:'ele',at:[18.0,4.6],d:.11,t:'elektro HR → podkroví (napáječ RD) v dobetonávce u štítu'},{id:'E2',who:'ele',at:[11.2,3.1],d:.11,t:'elektro RD → podkroví, 2× Ø 110 v sousedních dutinách'}];
+ {id:'P3',who:'vzt',at:[11.0,3.25],d:.14,t:'odvod přízemí Ø 125 (V3) v pásu Z2'},{id:'P9',who:'vzt',at:[9.45,2.95],d:.14,t:'odvod kuchyně Ø 125 (ventil ve stropě)'},{id:'B',who:'top',at:[11.0,3.06],d:.16,t:'stoupačka R2 → R1 + 2 chráničky v pásu Z2'},
+ {id:'S2',who:'kan',at:[5.85,.5],d:.13,t:'odpad DN 110 z koupelny u ložnice'},{id:'K2',who:'kan',at:[10.27,7.7],d:.13,t:'stoupačka K2 (ZTI)'},{id:'K1',who:'kan',at:[11.42,7.7],d:.13,t:'stoupačka K1 (ZTI) v pásu Z2'},
+ {id:'V3',who:'top',at:[5.71,.5],d:.11,t:'stoupačka vody V3 (SV 26 + TV 20) vedle S2'},{id:'V2',who:'top',at:[11.42,7.88],d:.06,t:'stoupačka vody V2 (vratka cirkulace 16) vedle K1'},
+ {id:'E1',who:'ele',at:[18.0,4.6],d:.11,t:'elektro HR → podkroví (napáječ RD) v dobetonávce u štítu'},{id:'E2',who:'ele',at:[11.3,2.95],d:.11,t:'elektro RD → podkroví, chránička Ø 110 nad RD'},{id:'E2',who:'ele',at:[11.3,3.11],d:.11,t:'elektro RD → podkroví, druhá chránička Ø 110'}];
 const area=r=>r.reduce((t,[x0,x1,z0,z1])=>t+(x1-x0)*(z1-z0),0);
 
 // ---------------------------------------------------------------- plan sheet
@@ -209,21 +211,23 @@ function penetrations(svg){const g=plan(svg,{title:'Prostupy stropem přízemí 
  // panels span across the house between the long walls
  g.line([[13.1,.4],[13.1,7.9]],'#9aa59f',1.2,{'marker-end':g.url('ink'),'marker-start':g.url('ink')});
  for(const [x,t] of [[1.15,'panely vedou napříč domem,'],[1.45,'nesou je podélné zdi,'],[1.75,'rozpětí ~7,7 m']])g.text(14.3,x,t,{'font-size':9.5,fill:PAL.sub});
- // dobetonávka at the plant-room gable for P1 + C + E1
- g.rect(3.35,4.75,17.85,18.2,{fill:'#f6e2c7',stroke:'#c79a5a','stroke-dasharray':'4 3'});
+ // cast strips: DB at the plant-room gable for P1 + C + E1, Z2 at the wall to the passage; cut-out for S2 + V3 on the edge of panel 06
+ g.rect(3.35,4.75,17.85,18.2,{fill:'#f6e2c7',stroke:'#c79a5a','stroke-dasharray':'4 3'});g.rect(.3,8.0,10.835,11.6,{fill:'#f6e2c7',stroke:'#c79a5a','stroke-dasharray':'4 3'});
+ g.rect(.38,.62,5.645,5.945,{fill:'#fff',stroke:'#c79a5a','stroke-dasharray':'3 2'});
  for(const p of PEN){const c=WHO[p.who][0];g.circle(...p.at,Math.max(4.5,p.d/2*PX.K),{fill:'#fff',stroke:c,'stroke-width':2.4});g.line([[p.at[0]-.16,p.at[1]],[p.at[0]+.16,p.at[1]]],c,.8);g.line([[p.at[0],p.at[1]-.16],[p.at[0],p.at[1]+.16]],c,.8);}
  // dimension each penetration from the inner wall faces
  const dz=(z,x,z0)=>{g.line([[z0,x],[z,x]],PAL.ink,.7,{'stroke-dasharray':'2 2'});g.text((z+z0)/2,x-.1,f2(Math.abs(z-z0)),{'font-size':9.5,fill:PAL.ink});};
  const dx=(z,x,x0)=>{g.line([[z,x0],[z,x]],PAL.ink,.7,{'stroke-dasharray':'2 2'});g.text(z+.12,(x+x0)/2,f2(Math.abs(x-x0)),{'font-size':9.5,fill:PAL.ink,'text-anchor':'start'});};
- dz(1.22,3.99,.3);dz(1.42,4.27,.3);dx(1.22,3.99,.3);dz(10.3,3.1,11.6);dz(10.8,3.45,11.6);dx(10.3,3.1,.3);dx(9.55,2.95,.3);dz(5.85,.5,.3);dx(5.85,.5,.3);dx(10.27,7.7,8.0);dz(11.35,7.9,11.6);
+ dz(1.22,3.99,.3);dz(1.42,4.27,.3);dx(1.22,3.99,.3);dz(11.0,3.75,11.6);dz(11.3,2.6,11.6);dx(9.45,2.95,.3);dz(5.85,.5,.3);dx(5.85,.5,.3);dx(10.27,7.7,8.0);
+ for(const [x,t] of [[2.6,'pás Z2 u zadní stěny (z 10,84–11,60):'],[2.9,'osy B 2,76 · P3 2,95 · E2 2,65 a 2,81 m'],[3.2,'od líce stěny na straně příjezdu,'],[3.5,'K1 0,30 a V2 0,12 m od líce u terasy']])g.text(14.0,x,t,{'font-size':9.5,fill:PAL.ink});
  for(const [x,t] of [[5.5,'P1 + C + E1 u štítu technické m.:'],[5.8,'osy C 3,20 · P1 3,57 a 3,93 · E1 4,30 m'],[6.1,'od líce stěny na straně příjezdu,'],[6.4,'0,20 m od líce štítu']])g.text(14.0,x,t,{'font-size':9.5,fill:PAL.ink});
  const lab=(z,x,t,c,anchor='middle')=>g.text(z,x,t,{'font-size':11,'font-weight':800,fill:c,'text-anchor':anchor});
- lab(17.52,3.45,'C',WHO.top[0]);lab(17.52,4.07,'P1',WHO.vzt[0]);lab(1.75,3.99,'P2',WHO.vzt[0]);lab(10.3,2.65,'P3',WHO.vzt[0]);lab(9.15,2.95,'P9',WHO.vzt[0],'end');lab(10.8,2.65,'B',WHO.top[0]);lab(17.52,4.7,'E1',WHO.ele[0]);lab(11.26,2.65,'E2',WHO.ele[0]);
- lab(6.25,.62,'S2',WHO.kan[0],'start');lab(10.27,7.35,'K2',WHO.kan[0]);lab(11.35,7.35,'K1',WHO.kan[0]);lab(5.3,.62,'V3',WHO.top[0],'end');lab(10.7,7.3,'V2',WHO.top[0]);g.text(5.3,.9,'0,30 od S2',{'font-size':9,fill:PAL.ink,'text-anchor':'end'});
- g.text(14.0,6.75,'v dobetonávce (oranžově)',{'font-size':9.5,fill:'#8a5a17'});
+ lab(17.52,3.45,'C',WHO.top[0]);lab(17.52,4.07,'P1',WHO.vzt[0]);lab(1.75,3.99,'P2',WHO.vzt[0]);lab(11.0,3.55,'P3',WHO.vzt[0]);lab(9.05,2.99,'P9',WHO.vzt[0],'end');lab(10.86,3.12,'B',WHO.top[0],'end');lab(17.52,4.7,'E1',WHO.ele[0]);lab(11.3,2.82,'E2',WHO.ele[0]);
+ lab(6.25,.62,'S2',WHO.kan[0],'start');lab(10.27,7.35,'K2',WHO.kan[0]);lab(11.42,7.5,'K1',WHO.kan[0]);lab(5.55,.62,'V3',WHO.top[0],'end');lab(11.3,7.98,'V2',WHO.top[0],'end');g.text(5.55,.9,'0,14 od S2',{'font-size':9,fill:PAL.ink,'text-anchor':'end'});
+ g.text(14.0,6.75,'v dobetonávce (oranžově)',{'font-size':9.5,fill:'#8a5a17'});g.text(14.0,3.8,'v pásu Z2 (oranžově), chráničky před betonáží',{'font-size':9.5,fill:'#8a5a17'});
  roomTags(g,'g',{noArea:true,hide:['1.02']});
  finish(g,[{k:'disc',c:WHO.vzt[0],t:'rekuperace (P1–P3)'},{k:'disc',c:WHO.top[0],t:'topení, voda, data (B, C, V2, V3)'},{k:'disc',c:WHO.kan[0],t:'kanalizace (S2, K1, K2 podle ZTI)'},{k:'disc',c:WHO.ele[0],t:'elektro (E1, E2)'},
-  {k:'fill',c:'#c79a5a',f:'#f6e2c7',t:'monolitická dobetonávka'},{k:'line',c:'#b9c2bc',w:1.4,t:'směr rozpětí panelů'},{k:'dash',c:PAL.ink,w:1,t:'kóta od líce zdi (m)'}],
+  {k:'fill',c:'#c79a5a',f:'#f6e2c7',t:'beton na stavbě (DB, pás Z2)'},{k:'line',c:'#b9c2bc',w:1.4,t:'směr rozpětí panelů'},{k:'dash',c:PAL.ink,w:1,t:'kóta od líce zdi (m)'}],
   {title:'Prostupy stropem přízemí',sub:'všechny profese, pro výrobce panelů',code:'P-01'});}
 
 // ---------------------------------------------------------------- shared drawing: plant room detail (elevation of the gable + plan)

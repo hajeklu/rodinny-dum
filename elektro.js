@@ -94,19 +94,19 @@ const CIRCUITS=[
 const T=(y,p)=>p.map(([x,z])=>[x,y,z]);
 const TRUNKS=[
  // risers and connectors
- {id:'E2',fl:'g',pts:[[2.81,2.1,11.15],[2.81,2.75,11.15],[3.1,2.75,11.2],[3.1,H.aC,11.2]],t:'stoupačka E2: z RD do podkroví (skříň v předsíni, vývrt stropem, roh skříně pokoje 2.04)'},
+ {id:'E2',fl:'g',pts:[[2.81,2.1,11.15],[2.81,2.75,11.15],[2.95,2.75,11.3],[2.95,H.aC,11.3]],t:'stoupačka E2: z RD do podkroví (za zadní stěnou sedací niky, 2 chráničky v instalačním pásu Z2, roh skříně pokoje 2.04)'},
  {id:'gF0',fl:'g',pts:[[2.81,.7,11.2],[2.81,H.gF,11.2]]},
  // ground floor: floor build-up from RD, attic floor build-up for the ceiling
  {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.81,11.2],[4.0,11.2],[4.0,1.2]])},
  {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[4.0,9.35],[5.75,9.35]])},
  {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[4.0,7.05],[1.0,7.05]])},
  {id:'gF',fl:'g',mode:'f',pts:T(H.gF,[[2.81,11.2],[1.45,11.2]])},
- {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[3.1,11.2],[3.65,11.2],[3.65,.8]])},
+ {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[2.95,11.3],[3.65,11.3],[3.65,.8]])},
  {id:'gC',fl:'g',mode:'c',pts:T(H.gC,[[3.65,9.9],[6.55,9.9]])},
  // attic: floor and above the flat ceiling (warm space under the ridge)
- {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[3.1,11.2],[4.2,11.2]])},
+ {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[2.95,11.3],[4.2,11.3]])},
  {id:'aF',fl:'a',mode:'f',pts:T(H.aF,[[4.2,3.8],[4.2,14.7]])},
- {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[3.1,11.2],[4.9,11.2]])},
+ {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[2.95,11.3],[4.9,11.3]])},
  {id:'aC',fl:'a',mode:'c',pts:T(H.aC,[[4.9,.9],[4.9,17.95]])},
  // plant room: under the ceiling, from the top of HR
  {id:'tC0',fl:'t',pts:[[3.05,2.24,16.475],[3.05,H.tC,16.58]]},
@@ -319,7 +319,7 @@ D('done','re',[-6.3,.6,-6.95],{fl:'o',t:'Elektroměrový pilíř u silnice (mimo
 // New penetrations for the panel drawing P-01 (all trades), [z, x] like schema.js PEN.
 const PEN=[
  {id:'E1',who:'ele',at:[18.0,4.6],d:.11,t:'elektro HR → podkroví (napáječ RD, rezerva) v dobetonávce u štítu'},
- {id:'E2',who:'ele',at:[11.2,3.1],d:.11,t:'elektro RD → podkroví, 2× Ø 110 v sousedních dutinách (vedle B a P3)'}];
+ {id:'E2',who:'ele',at:[11.3,2.95],d:.11,t:'elektro RD → podkroví, chránička Ø 110 v pásu Z2 nad RD'},{id:'E2',who:'ele',at:[11.3,3.11],d:.11,t:'elektro RD → podkroví, druhá chránička Ø 110'}];
 
 // ---------------- routing
 const byId=id=>CIRCUITS.find(c=>c.id===id);

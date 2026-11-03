@@ -226,7 +226,7 @@ function draw(){
  wc(815,5100,[300,550,4750,5450],gIn);shower(2490,3490,5300,6400,gIn);glass([[2490,5300],[2490,6050]],gIn);R(1200,2400,5920,6390,F,gIn);basin(1550,2050,5980,6340,gIn);
  R(4840,5260,5720,6840,F,gIn);el('circle',{cx:X(5060),cy:Y(7030),r:1.7,...F},gIn);           // bench along the rail, fig in the corner
  if(!cmp){
-  R(600,1550,8800,10850,F,gIn);R(650,1500,10400,10800,F,gIn);R(1550,2250,7000,8400,F,gIn);cross(2870,3470,9500,11450,F,gIn);   // 2.04
+  R(600,1550,8800,10850,F,gIn);R(650,1500,10400,10800,F,gIn);R(1550,2250,7000,8400,F,gIn);cross(2870,3470,9350,11450,F,gIn);   // 2.04 (from s 9 350, so the kitchen extract P9 rises inside it)
   R(350,850,11680,14080,F,gIn);cross(2890,3490,11680,14080,F,gIn);                                      // 2.09
   R(5980,7980,15250,16950,F,gIn);L([[7470,15250],[7470,16950]],F,gIn);cross(3450,4850,17600,18200,F,gIn);R(4870,6070,17600,18200,F,gIn);R(750,1550,16100,16900,F,gIn);L([[950,16100],[950,16900]],F,gIn);   // 2.08
   R(6770,7530,11550,13250,F,gIn);el('rect',{x:X(6850),y:Y(13170),width:6,height:15.4,rx:2.6,...F},gIn);R(4900,5400,11550,12950,F,gIn);basin(4970,5330,11750,12200,gIn);basin(4970,5330,12450,12900,gIn);wc(7485,13700,[7750,8000,13400,14000],gIn);   // 2.07
@@ -267,8 +267,8 @@ function draw(){
   L([[posts[0][1],s],[posts[1][0],s]],{stroke:'#3c474f','stroke-width':W.thin,'stroke-dasharray':'.7 .45'},gIn);}
  // Installations that matter for setting out: stacks, risers in the wardrobes, AC cassette and the MVHR hatch in the ceiling.
  const gMep=g({id:'mep'});
- mark(500,5850,'#b8402f',null,gMep);for(const s of [10270,11350])mark(7700,s,'#1d4f2b','#2f7a43',gMep);
- for(const [x,s] of [[3100,10800],[3100,10300],[2950,9600],[3500,18000],[3870,18000],[4230,18000]])mark(x,s,'#b8402f',null,gMep);
+ mark(500,5850,'#b8402f',null,gMep);for(const s of [10270,11420])mark(7700,s,'#1d4f2b','#2f7a43',gMep);
+ for(const [x,s] of [[3060,11000],[3250,11000],[2950,11300],[3110,11300],[2950,9450],[3500,18000],[3870,18000],[4230,18000]])mark(x,s,'#b8402f',null,gMep);   // B, V3, E2 ×2 in Z2, P9, C, P1
  const FC='#1f6b8c';R(4140,4760,5290,5910,{fill:'none',stroke:FC,'stroke-width':W.mid,'stroke-dasharray':'.9 .5'},gMep);
  L([[4200,5390],[4200,5810]],{stroke:FC,'stroke-width':W.thick},gMep);for(const pts of [[[4290,5360],[4690,5360]],[[4290,5840],[4690,5840]],[[4690,5400],[4690,5800]]])L(pts,{stroke:FC,'stroke-width':W.thin},gMep);
  R(3850,4550,8000,8800,{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.2 .6'},gMep);L([[3850,8000],[4550,8800]],{stroke:'#111','stroke-width':W.hair},gMep);
@@ -307,7 +307,7 @@ function draw(){
  small(3850,10220,'rozdělovač',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});small(3850,10080,'topení',{'font-size':.8,'text-anchor':'start',fill:'#b8402f'});
  small(660,5960,'S2',{'font-size':1.0,'font-weight':700,fill:'#b8402f','text-anchor':'start'});
  small(7630,10500,'K2',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});small(7630,11500,'K1',{'font-size':1.0,'font-weight':700,fill:'#1d4f2b','text-anchor':'end'});
- small(2850,10050,'B, V3, P9',{'font-size':.85,fill:'#b8402f','text-anchor':'end'});small(3850,17750,'V1, C',{'font-size':.85,fill:'#b8402f'});
+ small(2830,10950,'B, V3, E2',{'font-size':.85,fill:'#b8402f','text-anchor':'end'});small(2880,9400,'P9',{'font-size':.85,fill:'#b8402f','text-anchor':'end'});small(3850,17750,'V1, C',{'font-size':.85,fill:'#b8402f'});
  for(const [id,s,posts] of FRAMES)small(id==='R3'?4195:posts[1][1]+60,id==='R3'?13960:s+(id==='R2'?260:170),'rám '+id,{'font-size':.85,'font-weight':700,fill:'#3c474f','text-anchor':id==='R3'?'middle':'start'});
  // Partition tags matching the setting-out table.
  for(const p of walls){const [x,s]=p.at,a={'font-size':.95,'font-weight':700,fill:'#7a1f12',stroke:'#fff','stroke-width':.5,'paint-order':'stroke',dy:.33};if((p.x1-p.x0)<(p.s1-p.s0))a.transform=`rotate(-90 ${X(x)} ${Y(s)})`;T(x,s,p.id,a,gTxt);}
