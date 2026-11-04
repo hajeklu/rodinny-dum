@@ -329,8 +329,9 @@ function slabLayer(){const m=v=>v/1000,holes=SLAB_HOLES.map(h=>h.map(m)),Y=2.9,H
  for(const [a,b,c,d] of [[-.2,8.5,-.2,0],[-.2,8.5,18.5,18.7],[-.2,0,0,18.5],[8.3,8.5,0,18.5]])box('Upper_slab','upper',C.wall,a,Y,c,b-a,H,d-c);   // EPS band stays with the upper floor
  for(const [a,b,c,d] of rectMinus([0,8.3,0,18.5],holes))box('Slab_cast','slab',SLAB_COL.conc,a,Y,c,b-a,H-.01,d-c);
  slabPanels().forEach((p,i)=>{for(const [a,b,c,d] of rectMinus([m(p.x0),m(p.x1),m(p.s0),m(p.s1)],holes))box('Slab_panel_'+p.id,'slab',p.cut?SLAB_COL.cut:SLAB_COL.full[i%2],a,Y-.001,c,b-a,H+.001,d-c);});
- // VM1 and VM2 with their pads on the neighbouring panels, a hair proud of the panels so they read on top
- for(const [x0,x1,s0,s1] of [[6145,6255,4290,5635],[5115,5227,5495,7385]])box('Slab_trimmer','slab',SLAB_COL.steel,m(x0),Y-.005,m(s0),m(x1-x0),H+.01,m(s1-s0));}
+ // VM1 and VM2 with their pads, a hair proud of the panels so they read on top. VM2 rests on P7, runs along the chimney
+ // cut-out under the strip of 05 and has its only pad on 08.
+ for(const [x0,x1,s0,s1] of [[6145,6255,4290,5635],[5115,5227,5150,7385]])box('Slab_trimmer','slab',SLAB_COL.steel,m(x0),Y-.005,m(s0),m(x1-x0),H+.01,m(s1-s0));}
 function roofWindowZ(side){return atticLayout==='compact'?(side===1?[4.8,8.0,10.45,11.75]:[5.5,8.6,10.8]):(side===1?[4.84,7.55,10.45,12.3]:[4.96,10.33]);}
 // Wavy tile (roofProfile 'wave') between za and zb: one wave across the 0.30 m cover width, troughs at the side joints (z0 = -1 of
 // roofPanel) and the crest WAVE_H higher (vertical, about 3 cm square to the 45° slope), in WAVE_N facets. Only the top and the
@@ -722,7 +723,7 @@ function interior(){const G='interior',Y0=.24,Y1=2.9,H=Y1-Y0,DH=2.12,white=[.95,
    c=poly.reduce((s,p)=>[s[0]+p[0]/poly.length,s[1]+p[1]/poly.length],[0,0]);let n=[a[1]-b[1],b[0]-a[0]];const L=Math.hypot(...n);n=n.map(v=>v/L);
   if((c[0]-a[0])*n[0]+(c[1]-a[1])*n[1]>0)n=n.map(v=>-v);amberLine(G,a,b,n,top-.03,top-rise-.006,.2);});
  box('Stair_core_wall',G,white,6.6,Y0,5.57,.1,H,.63);            // slim central wall (~100 mm) the stair turns around
- box('Stair_wall_fireplace',G,white,5.1,Y0,5.95,1.5,H,.25);      // between first flight and fireplace niche
+ box('Stair_wall_fireplace',G,white,4.95,Y0,5.95,1.65,H,.25);      // P7 between first flight and fireplace niche, load-bearing under VM2, 150 past the first step
  // Wall toward living room 1.11 starts behind the corner fireplace and has an open firewood niche under the top steps.
  box('Stair_wall_living_back',G,[.18,.14,.11],6.1,Y0,4.3,.1,H,.15);box('Stair_wall_living_back',G,[.18,.14,.11],7.6,Y0,4.3,.1,H,.15);
  box('Firewood_niche_back',G,[.30,.26,.22],6.2,Y0,5.52,1.4,1.66,.05);box('Firewood_niche_floor',G,[.22,.23,.24],6.2,Y0,4.2,1.4,.03,1.32);
