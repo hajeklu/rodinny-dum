@@ -1,6 +1,43 @@
-# Rodinný dům Hájek · model v09
+# Rodinný dům Hájek · Krásný Les
+
+Interaktivní 3D studie a pracovní podklady ke stavbě rodinného domu: model, půdorysy, krov, stropní panely, rekuperace, topení, voda, kanalizace a elektro. Je to statický web bez sestavování, běží na GitHub Pages a model funguje i bez internetu.
+
+**Web:** https://hajeklu.github.io/rodinny-dum/ · ostatní podklady jsou v menu Podklady (na modelu se ukáže po otevření adresy s `#podklady`)
+
+<a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-dum.webp" alt="3D model domu, celkový pohled od terasy"></a>
+
+## 3D model · varianta v09
 
 Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrácenou orientaci, střechu 45°, okapní přesah 1,00 m (dříve 1,20 m) a štítový 0,80 m. Střešní okna: VELUX FK08 66 × 140 cm, čtyři na jižní a dvě na severní straně.
+
+<table>
+<tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-interier-prizemi.webp" alt="Přízemí bez střechy: kuchyň, obývák s krbem a schodiště"></a><br><sub>Přízemí bez střechy: kuchyň, obývák s krbem a schodiště</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-interier-podkrovi.webp" alt="Podkroví: ložnice se šatnou, dva pokoje, koupelny a prádelna"></a><br><sub>Podkroví: ložnice se šatnou, dva pokoje, koupelny a prádelna</sub></td></tr>
+<tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-oci-sedacka.webp" alt="Pohled z očí ze sedačky přes jídelnu do kuchyně"></a><br><sub>Pohled z očí ze sedačky přes jídelnu do kuchyně</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-oci-terasa.webp" alt="Z terasy přes HS portál do obýváku"></a><br><sub>Z terasy přes HS portál do obýváku</sub></td></tr>
+<tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-vecer.webp" alt="Večer: rozsvícená okna, terasa a průjezd"></a><br><sub>Večer: rozsvícená okna, terasa a průjezd</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-stropni-panely.webp" alt="Stropní panely Spiroll podle kladečského plánu S-01"></a><br><sub>Stropní panely Spiroll podle kladečského plánu S-01</sub></td></tr>
+</table>
+
+## Výkresy a podklady
+
+Výkresy se kreslí v prohlížeči ze stejných dat jako model (`schema.js`, `elektro.js`), takže změna v datech se projeví v modelu i ve výkresech zároveň. Stránky se tisknou rovnou z prohlížeče na A3 nebo A4, PDF půdorysu 1NP a stropních panelů jsou i v repozitáři.
+
+<table>
+<tr><td width="50%" rowspan="2"><a href="https://hajeklu.github.io/rodinny-dum/pudorys-1np.html"><img src="screenshots/pudorys-1np.webp" alt="Půdorys 1NP pro stavbu (A3, 1 : 100)"></a><br><sub>Půdorys 1NP pro stavbu (A3, 1 : 100)</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/stropni-panely.html"><img src="screenshots/stropni-panely-s01.webp" alt="Kladečský plán stropních panelů S-01"></a><br><sub>Kladečský plán stropních panelů S-01</sub></td></tr>
+<tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/krov.html"><img src="screenshots/krov-rez.webp" alt="Krov: příčný řez u rámu R2"></a><br><sub>Krov: příčný řez u rámu R2</sub></td></tr>
+<tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/rekuperace.html"><img src="screenshots/rekuperace-schema.webp" alt="Rekuperace: prostorové schéma celého domu"></a><br><sub>Rekuperace: prostorové schéma celého domu</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/elektro.html"><img src="screenshots/elektro-schema.webp" alt="Elektro: rozvaděče, okruhy a trasy kabelů"></a><br><sub>Elektro: rozvaděče, okruhy a trasy kabelů</sub></td></tr>
+<tr><td colspan="2"><a href="https://hajeklu.github.io/rodinny-dum/vytapeni.html"><img src="screenshots/topeni-schema.webp" alt="Topení: okruhy podlahového topení v obou patrech"></a><br><sub>Topení: okruhy podlahového topení v obou patrech</sub></td></tr>
+</table>
+
+## Spuštění na počítači
+
+Stačí libovolný statický server ve složce repozitáře, například:
+
+```bash
+python3 -m http.server 8765
+```
+
+Pak otevři http://localhost:8765/.
+
+## Skutečný rozměr podle desky
 
 Rozměr domu je podle skutečné desky: změřená deska je 8,3 × 11,9 m a obvodové zdi stojí na její hraně. Zdivo domu je tedy 8,3 × 11,9 m, s EPS 8,7 × 12,3 m, uvnitř 7,7 × 11,3 m. Celá stavba s průjezdem a technickou místností je s EPS 8,7 × 18,9 m. DSP má zdivo 8,0 × 11,83 m. Výkresy i model předpokládají, že se deska rozšířila rovnoměrně o 150 mm na každou stranu a vnitřek je vytyčený podle projektu (příčky, schodiště, komín, vývody K1–K3). Polohu toho, co je v desce zabetonované, je potřeba ověřit na stavbě.
 - Obvodové zdi jsou o 150 mm dál od středu, místnosti u nich jsou o 150 mm hlubší.
@@ -8,7 +45,7 @@ Rozměr domu je podle skutečné desky: změřená deska je 8,3 × 11,9 m a obvo
 - Hřeben je o 150 mm výš, rovný podhled podkroví zůstává na +5,660 a je o 300 mm širší.
 - Model je dál kreslený v souřadnicích projektu (zdivo 8,0 × 12,0 m). Funkce `asBuilt()` v `index.html` ho při sestavení přepočítá: levá podélná zeď zůstane, vnitřek se posune o 0,15 m, pravá zeď o 0,3 m a od z 9,6 m dál je vše o 0,1 m blíž přednímu štítu. Nábytek se posouvá celý se zdí, u které stojí. Střecha, stropní panely a elektro (`elektro.js`) jsou zadané rovnou ve skutečných rozměrech.
 
-## Obsah
+## Soubory
 - `index.html` — otočný 3D model s přepínači rovné nebo vlnité tašky, matné engoby a lesklé glazury i dvou rozsahů terasy. Panel vpravo má nahoře vždy viditelné „Zobrazení“ jako přepínací tlačítka (střecha, podkroví a strop, okna a dveře, terasa a okolí, večer, noční světlo, žaluzie stažené, popisky místností, rekuperace, elektro, kanalizace, stropní panely, hluk TČ, otáčení) a pod ním sbalitelné skupiny Pohledy, řez a slunce · Interiér přízemí · Interiér podkroví · Exteriér · Rekuperace a plochy · Elektroinstalace · Kanalizace · Stropní panely · O modelu; které skupiny jsou otevřené, si pamatuje prohlížeč. Dlouhé popisy jsou schované pod rozbalovacím odkazem.
 - `pudorys-1np.html` — pracovní půdorys 1NP pro stavbu podle modelu a D1.2 (A3, 1 : 100): zdivo SOLBET 300 + EPS 200, příčky P1–P10 s tabulkou vytyčení, otvory s hrubými otvory, parapety a překlady, vnitřní dveře, schodiště 18 × 170, vývody K1–K3, legenda místností, změny proti D1.2 a detail rohu FIX–HS 1 : 20; `pudorys-1np.pdf` je jeho tisková verze a `pudorys-1np-a4.pdf` jen samotný výkres s kótami bez tabulek a popisků na A4 na výšku (také 1 : 100, na stránce s `?a4`)
 - `pudorys-2np.html` — pracovní půdorys podkroví (2NP) podle modelu a D1.3 (A3, 1 : 100) s přepínačem varianty (upravená D1.3 nebo neobytná zadní část, adresa `?varianta=compact`): štíty a nadezdívky SOLBET 300 + EPS 200 s otvory O9–O12, v půdorysu zakreslené šikminy (čára světlé výšky 1,2 m, hrana rovného podhledu +5,660, hřeben) se schématem řezu, střešní okna, příčky PP1–PP10 s tabulkou vytyčení, dveře DP1–DP8, schodišťový otvor se zábradlím, sloupky krovu R1–R3, kazeta klimatizace, rozdělovač R2, prostupy a stoupačky, legenda místností s plochami nad 1,2 m proti D1.3 a změny proti povolení; nejasnosti mezi modelem a D1.3 (úroveň podlahy podkroví +3,060, poloha střešních oken napříč, R2 ve stěně se sloupkem krovu) jsou na výkresu označené „ověřit“
