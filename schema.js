@@ -243,9 +243,11 @@ function plantRoom(svg){svg.replaceChildren();svg.setAttribute('viewBox','0 0 11
  el(svg,'text',{x:24,y:54,'font-size':12,fill:PAL.sub},'Nahoře štítová stěna zevnitř (okna ve výšce 1,50–2,20 m), dole půdorys se štítem nahoře. Vlevo strana příjezdu, vpravo strana terasy.');
  // ---- elevation
  R(EX(-.2),EY(3.06),8.7*K,(3.06-2.91)*K,{fill:'#eef0ed'});R(EX(-.2),EY(2.91),8.7*K,.25*K,{fill:'#9aa3a0'});T(EX(1.35),EY(2.74),'stropní panel 250',{'font-size':9.5,fill:'#fff',stroke:'none','text-anchor':'start'});
- R(EX(.3),EY(2.66),7.7*K,2.66*K,{fill:'#fbfcfa',stroke:PAL.wallEdge});R(EX(-.2),EY(2.66),.5*K,2.91*K,{fill:PAL.wall});R(EX(8.0),EY(2.66),.5*K,2.91*K,{fill:PAL.wall});R(EX(-.2),EY(0),8.7*K,.25*K,{fill:'#c9cfcb'});
+ R(EX(.3),EY(2.66),7.7*K,2.66*K,{fill:'#fbfcfa',stroke:PAL.wallEdge});R(EX(-.2),EY(2.66),.5*K,2.91*K,{fill:PAL.wall});R(EX(8.0),EY(2.66),.5*K,2.91*K,{fill:PAL.wall});
+ // ring beam in the cut side walls (bottom +2.435 above the floor): the ceiling panels bear on it, so P4 and P5 pass under it
+ for(const x of [-.2,8.0])R(EX(x),EY(2.66),.5*K,(2.66-2.435)*K,{fill:'#7d8784',stroke:PAL.wallEdge});T(EX(8.25),EY(2.55)+4,'věnec',{'text-anchor':'middle','font-size':9,fill:'#fff',stroke:'none'});R(EX(-.2),EY(0),8.7*K,.25*K,{fill:'#c9cfcb'});
  for(const [a,b] of [[1.15,2.15],[3.65,4.65],[6.15,7.15]])R(EX(a),EY(2.2),(b-a)*K,.7*K,{fill:'#e3eef3',stroke:PAL.glass,'stroke-width':1.4});
- L([[EX(.3),EY(2.2)],[EX(8.0),EY(2.2)]],PAL.faint,.8,{'stroke-dasharray':'4 4'});T(EX(.35),EY(2.2)-4,'nadpraží oken +2,20',{'font-size':9.5,fill:PAL.sub});
+ L([[EX(.3),EY(2.2)],[EX(8.0),EY(2.2)]],PAL.faint,.8,{'stroke-dasharray':'4 4'});T(EX(2.3),EY(2.2)-4,'nadpraží oken +2,20',{'font-size':9.5,fill:PAL.sub});
  // tanks and heat pump group (schematic)
  R(EX(.7),EY(1.85),.9*K,1.85*K,{fill:'#fff',stroke:'#8e9a93',rx:10});T(EX(1.15),EY(.95),'TV 300',{'text-anchor':'middle','font-size':10,fill:PAL.sub});
  R(EX(2.03),EY(1.0),.54*K,1.0*K,{fill:'#fff',stroke:'#8e9a93',rx:8});T(EX(2.3),EY(.5),'AKU',{'text-anchor':'middle','font-size':10,fill:PAL.sub});
@@ -253,20 +255,20 @@ function plantRoom(svg){svg.replaceChildren();svg.setAttribute('viewBox','0 0 11
  // heating: from the heat pump through the gable low down, to the plant, up through C
  L([[EX(1.75),EY(.45)],[EX(2.85),EY(.45)],[EX(2.85),EY(1.25)],[EX(3.43),EY(1.25)],[EX(3.43),EY(2.91)]],PAL.hs,3);L([[EX(1.9),EY(.32)],[EX(3.0),EY(.32)],[EX(3.0),EY(1.12)],[EX(3.57),EY(1.12)],[EX(3.57),EY(2.91)]],PAL.hr,3);
  for(const x of [1.75,1.9])el(svg,'circle',{cx:EX(x),cy:EY(x===1.75?.45:.32),r:4,fill:'#fff',stroke:PAL.ink});T(EX(1.81),EY(.1),'z TČ',{'font-size':9.5,fill:PAL.sub,'text-anchor':'middle'});
- // MVHR unit and ducts: mains and their bends stay above the window heads, the exhaust crosses over them
+ // MVHR unit and ducts: mains and their bends stay above the window heads, the exhaust crosses over them; the exhaust and the intake
+ // drop just before their side wall and pass through it under the ring beam.
  R(EX(5.1),EY(1.95),.75*K,.85*K,{fill:'#263a30',rx:4});T(EX(5.48),EY(1.5),'jednotka',{'text-anchor':'middle',fill:'#fff',stroke:'none','font-weight':700,'font-size':10.5});
  D([[EX(5.45),EY(1.95)],[EX(5.45),EY(2.33)],[EX(3.87),EY(2.33)],[EX(3.87),EY(2.91)]],PAL.sup,7);
  L([[EX(5.65),EY(1.95)],[EX(5.65),EY(2.33)],[EX(4.23),EY(2.33)],[EX(4.23),EY(2.91)]],PAL.ext,6,{'stroke-dasharray':'7 4'});
- D([[EX(5.25),EY(1.95)],[EX(5.25),EY(2.55)],[EX(-.35),EY(2.55)]],PAL.eha,7);D([[EX(5.85),EY(1.95)],[EX(5.85),EY(2.38)],[EX(7.55),EY(2.38)]],PAL.oda,7);
- el(svg,'circle',{cx:EX(7.55),cy:EY(2.38),r:11,fill:'#fff',stroke:PAL.oda,'stroke-width':3});el(svg,'circle',{cx:EX(7.55),cy:EY(2.38),r:3,fill:PAL.oda});
- R(EX(-.45),EY(2.67),.25*K,.24*K,{fill:PAL.eha,rx:3});
+ D([[EX(5.25),EY(1.95)],[EX(5.25),EY(2.55)],[EX(1.0),EY(2.55)],[EX(.7),EY(2.25)],[EX(-.35),EY(2.25)]],PAL.eha,7);D([[EX(5.85),EY(1.95)],[EX(5.85),EY(2.38)],[EX(7.25),EY(2.38)],[EX(7.45),EY(2.25)],[EX(8.6),EY(2.25)]],PAL.oda,7);
+ R(EX(-.45),EY(2.37),.25*K,.24*K,{fill:PAL.eha,rx:3});R(EX(8.5),EY(2.37),.25*K,.24*K,{fill:PAL.oda,rx:3});
  for(const [x,c] of [[3.87,PAL.sup],[4.23,PAL.ext],[3.5,PAL.hs],[4.6,WHO.ele[0]]])R(EX(x-.11),EY(3.06),.22*K,.4*K,{fill:'#fff',stroke:c,'stroke-width':1.6,'stroke-dasharray':'3 2'});
  T(EX(3.87),EY(3.2),'P1',{'text-anchor':'middle','font-weight':800,fill:PAL.sup});T(EX(4.27),EY(3.2),'P1',{'text-anchor':'middle','font-weight':800,fill:PAL.ext});T(EX(3.45),EY(3.2),'C',{'text-anchor':'middle','font-weight':800,fill:PAL.hs});T(EX(4.67),EY(3.2),'E1',{'text-anchor':'middle','font-weight':800,fill:WHO.ele[0]});
- T(EX(7.55),EY(2.38)-17,'P4 sání do štítu',{'text-anchor':'middle','font-weight':700,fill:PAL.oda});T(EX(-.3),EY(2.55)-12,'P5 výfuk bokem',{'text-anchor':'start','font-weight':700,fill:PAL.eha});
+ T(EX(7.97),EY(2.0)+4,'P4 sání bokem',{'text-anchor':'end','font-weight':700,fill:PAL.oda});T(EX(-.3),EY(2.25)-13,'P5 výfuk bokem',{'text-anchor':'start','font-weight':700,fill:PAL.eha});
  // vertical dimensions on the right
- const vd=(h0,h1,t)=>{const x=EX(8.5)+16;L([[x,EY(h0)],[x,EY(h1)]],PAL.ink,.8);for(const h of [h0,h1])L([[x-5,EY(h)+5],[x+5,EY(h)-5]],PAL.ink,1.2);T(x+8,(EY(h0)+EY(h1))/2+4,t,{'font-size':10});};
+ const vd=(h0,h1,t)=>{const x=EX(8.5)+36;L([[x,EY(h0)],[x,EY(h1)]],PAL.ink,.8);for(const h of [h0,h1])L([[x-5,EY(h)+5],[x+5,EY(h)-5]],PAL.ink,1.2);T(x+8,(EY(h0)+EY(h1))/2+4,t,{'font-size':10});};
  vd(0,1.5,'1,50');vd(1.5,2.2,'0,70 okno');vd(2.2,2.66,'0,46 rozvody');
- T(EX(6.0),EY(1.3),'přívod a odvod Ø 180',{'font-size':10,fill:PAL.sub});T(EX(6.0),EY(1.3)+14,'vedou nad okny k P1',{'font-size':10,fill:PAL.sub});T(EX(6.0),EY(1.3)+28,'(odvod za přívodem)',{'font-size':10,fill:PAL.sub});T(EX(.4),EY(2.55)+15,'výfuk nad nimi, pod stropem',{'font-size':10,fill:PAL.sub});
+ T(EX(6.0),EY(1.3),'přívod a odvod Ø 180',{'font-size':10,fill:PAL.sub});T(EX(6.0),EY(1.3)+14,'vedou nad okny k P1',{'font-size':10,fill:PAL.sub});T(EX(6.0),EY(1.3)+28,'(odvod za přívodem)',{'font-size':10,fill:PAL.sub});T(EX(1.2),EY(2.55)+15,'výfuk nad nimi, u stěny pod věnec',{'font-size':10,fill:PAL.sub});
  // ---- plan
  const PR=(x0,x1,z0,z1,a)=>R(PXx(x0),PYz(z1),(x1-x0)*K,(z1-z0)*K,a);
  PR(-.2,8.5,15.9,18.7,{fill:`url(#${svg.id}-eps)`,stroke:PAL.epsEdge});PR(0,8.3,16.1,18.5,{fill:PAL.wall,stroke:PAL.wallEdge});PR(.3,8.0,16.4,18.2,{fill:'#fff',stroke:PAL.wallEdge});
@@ -280,8 +282,8 @@ function plantRoom(svg){svg.replaceChildren();svg.setAttribute('viewBox','0 0 11
  L([[PXx(1.71),PYz(19.0)],[PXx(1.71),PYz(17.2)],[PXx(3.43),PYz(17.2)],[PXx(3.43),PYz(17.95)]],PAL.hs,3);L([[PXx(1.89),PYz(19.0)],[PXx(1.89),PYz(17.36)],[PXx(3.57),PYz(17.36)],[PXx(3.57),PYz(17.95)]],PAL.hr,3);
  PR(5.1,5.85,17.64,18.2,{fill:'#263a30',rx:3});
  D([[PXx(5.45),PYz(17.9)],[PXx(5.45),PYz(17.7)],[PXx(3.87),PYz(17.7)],[PXx(3.87),PYz(18.0)]],PAL.sup,7);D([[PXx(5.65),PYz(17.9)],[PXx(5.65),PYz(18.05)],[PXx(4.23),PYz(18.05)]],PAL.ext,7);
- D([[PXx(5.25),PYz(17.9)],[PXx(5.25),PYz(17.25)],[PXx(.7),PYz(17.25)],[PXx(.7),PYz(17.1)],[PXx(-.33),PYz(17.1)]],PAL.eha,7);D([[PXx(5.85),PYz(17.9)],[PXx(7.55),PYz(17.9)],[PXx(7.55),PYz(18.85)]],PAL.oda,7);
- R(PXx(-.47),PYz(17.22),.26*K,.24*K,{fill:PAL.eha,rx:3});R(PXx(7.42),PYz(18.97),.26*K,.24*K,{fill:PAL.oda,rx:3});
+ D([[PXx(5.25),PYz(17.9)],[PXx(5.25),PYz(17.25)],[PXx(.7),PYz(17.25)],[PXx(.7),PYz(17.1)],[PXx(-.33),PYz(17.1)]],PAL.eha,7);D([[PXx(5.85),PYz(17.9)],[PXx(8.63),PYz(17.9)]],PAL.oda,7);
+ R(PXx(-.47),PYz(17.22),.26*K,.24*K,{fill:PAL.eha,rx:3});R(PXx(8.5),PYz(18.02),.26*K,.24*K,{fill:PAL.oda,rx:3});
  for(const [x,z,c,t] of [[3.87,18.0,PAL.sup,'↑'],[4.23,18.05,PAL.ext,'↑'],[3.5,18.0,PAL.hs,'↑'],[4.6,18.0,WHO.ele[0],'↑']]){el(svg,'circle',{cx:PXx(x),cy:PYz(z),r:9,fill:'#fff',stroke:c,'stroke-width':2.4});T(PXx(x),PYz(z)+4,t,{'text-anchor':'middle','font-weight':800,fill:c,stroke:'none'});}
  // short branches for the room itself and the condensate
  L([[PXx(4.9),PYz(17.7)],[PXx(4.9),PYz(17.45)]],PAL.sup,2.4);L([[PXx(5.65),PYz(17.9)],[PXx(5.65),PYz(17.52)],[PXx(6.35),PYz(17.52)],[PXx(6.35),PYz(17.45)]],PAL.ext,2.4);
@@ -292,10 +294,10 @@ function plantRoom(svg){svg.replaceChildren();svg.setAttribute('viewBox','0 0 11
  PR(2.65,3.45,16.4,16.55,{fill:'#263a30'});T(PXx(3.05),PYz(16.55)-8,'HR',{'text-anchor':'middle','font-size':11,'font-weight':800,fill:'#263a30'});
  T(PXx(4.05),PYz(18.2)-8,'dobetonávka P1 + C + E1',{'text-anchor':'middle','font-size':10,fill:'#8a5a17','font-weight':700});
  const hd=(x0,x1,z,t)=>{L([[PXx(x0),PYz(z)],[PXx(x1),PYz(z)]],PAL.ink,.8);for(const x of [x0,x1])L([[PXx(x)-5,PYz(z)+5],[PXx(x)+5,PYz(z)-5]],PAL.ink,1.2);T((PXx(x0)+PXx(x1))/2,PYz(z)-5,t,{'text-anchor':'middle','font-size':10});};
- hd(.3,3.5,15.65,'3,20');hd(3.5,3.87,15.65,'0,37');hd(3.87,4.23,15.65,'0,36');hd(4.23,7.55,15.65,'3,32 k sání');
+ hd(.3,3.5,15.65,'3,20');hd(3.5,3.87,15.65,'0,37');hd(3.87,4.23,15.65,'0,36');hd(4.23,8.0,15.65,'3,77');
  for(const x of [3.5,3.87,4.23,4.6])L([[PXx(x),PYz(17.85)],[PXx(x),PYz(15.6)]],PAL.faint,.6,{'stroke-dasharray':'2 3'});
  T(PXx(.35),PYz(15.85),'osy prostupů od líce stěny na straně příjezdu (m)',{'font-size':10,fill:PAL.sub});
- T(PXx(-.33),PYz(17.1)+24,'P5',{'font-weight':800,fill:PAL.eha,'text-anchor':'middle'});T(PXx(8.1),PYz(18.97)-6,'P4',{'font-weight':800,fill:PAL.oda,'text-anchor':'middle'});
+ T(PXx(-.33),PYz(17.1)+24,'P5',{'font-weight':800,fill:PAL.eha,'text-anchor':'middle'});T(PXx(8.63),PYz(17.9)+24,'P4',{'font-weight':800,fill:PAL.oda,'text-anchor':'middle'});T(PXx(8.63),PYz(17.9)+38,'0,30 od líce štítu',{'font-size':9.5,fill:PAL.sub,'text-anchor':'middle'});
  // projection lines between plan and elevation for the penetrations
  for(const x of [3.5,3.87,4.23,4.6])L([[EX(x),EY(3.06)],[EX(x),PYz(18.7)]],PAL.faint,.6,{'stroke-dasharray':'1 4'});
  // legend
