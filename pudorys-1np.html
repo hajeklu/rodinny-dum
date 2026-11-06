@@ -84,8 +84,8 @@ const OPEN=[
  {id:'FIX',side:'front',a:5780,b:7780,w:2000,h:2400,sill:0,head:2400,kind:'fix',where:'přední štít u rohu, 1.11',lintel:'2× IPE 240, L ≈ 2 500 (podle nákupu), uložení na ZB rohu potvrdit statikem',note:'pevné zasklení'},
  {id:'HS',side:'right',a:320,b:3320,w:3000,h:2400,sill:0,head:2400,kind:'hs',where:'boční stěna k terase, 1.11',lintel:'2× IPE 240, L 3 640 (statika Ing. Khol)',note:'zvedací posuvné, práh ±0'},
  {id:'O1',side:'right',a:8000,b:9000,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'koupelna 1.05',lintel:'SOLBET NS 140 (120 + 180)'},
- {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',where:'obývák 1.11',lintel:'2× IPE 240, L 3 500'},
- {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 500',note:'deska linky zajíždí do špalety jako parapet'},
+ {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',where:'obývák 1.11',lintel:'2× IPE 240, L 3 500',note:'pevné zasklení v rámu, dvě pole se sloupkem'},
+ {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 500',note:'pevné zasklení v rámu, dvě pole se sloupkem; deska linky zajíždí do špalety jako parapet'},
  {id:'O4',side:'entry',a:1150,b:2150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'komora 1.08',lintel:'SOLBET NS 140 (120 + 180)'},
  {id:'D1',side:'entry',a:3350,b:5150,w:1800,h:2200,sill:0,head:2200,kind:'entry',where:'vstup do předsíně 1.03',lintel:'SOLBET NS 230 (120 + 180)',note:'křídlo 1 200 + světlík 600 na straně WC, panty u světlíku'},
  {id:'O5',side:'entry',a:6150,b:7150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'WC 1.04',lintel:'SOLBET NS 140 (120 + 180)'},
@@ -461,7 +461,7 @@ side.innerHTML=`<style>
   <li>Bez garáže 1.01. Technická místnost 1.02 zůstává za otevřeným průjezdem (8 300 × 2 400).</li>
   <li><b>HS 3 000 × 2 400</b> hned u předního rohu (D1.2: HS 2 000 × 2 200 ve vzdálenosti 1 420 od rohu a dveře 1 000 × 2 200 u schodiště, ty jsou zrušené).</li>
   <li><b>FIX 2 000 × 2 400</b> v předním štítu u stejného rohu, roh ze ZB 300 × 500 (D1.2: tři francouzská okna 1 000 × 2 200 ve štítu).</li>
-  <li>Okna O2, O3 <b>3 000 × 600, P 900</b> (D1.2: 3 000 × 900, P 900). Poloha beze změny.</li>
+  <li>Okna O2, O3 <b>3 000 × 600, P 900</b> (D1.2: 3 000 × 900, P 900). Poloha beze změny. Obě <b>pevně zasklená</b>.</li>
   <li>Vstup D1 ve stejném otvoru 1 800, nově křídlo 1 200 + světlík 600. Dveře předsíň → chodba jednokřídlé 1 000 v ose vstupu (D1.2: 1 600 dvoukřídlé).</li>
   <li class="warn">Příčka předsíň a chodba / WC a koupelna má líc na 5 170 (D1.2: 5 100, po rozšíření domu 5 250). Světlík pak končí v rohu u WC, předsíň a chodba jsou o 80 mm užší, WC a koupelna o 80 mm širší. Pokud chceš držet D1.2, posuň příčku a oboje dveře o 80 mm.</li>
   <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Stoupačka K2 v rohu obložená. WC s předstěnou 390 přes čelo, schová K1 a V2 (D1.2: předstěna 165 podél obvodové stěny).</li>
