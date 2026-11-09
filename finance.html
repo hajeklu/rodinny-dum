@@ -49,6 +49,17 @@ tr.detail td{background:#f8faf8;padding:4px 12px 10px}.pays{list-style:none;marg
 .filters{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding:12px 18px;border-bottom:1px solid #e4e9e4;background:#fafbfa}.filters select,.filters input[type=search]{padding:7px 10px;font-size:13.5px}.filters input[type=search]{flex:1 1 180px;min-width:0}.filters .check{display:flex;gap:6px;align-items:center;font-size:13px;color:#4d5c54;white-space:nowrap}
 .ledger .c-date{width:104px;white-space:nowrap;font-variant-numeric:tabular-nums;color:#4d5c54}.ledger td.c-sec{font-size:12.5px;color:#5d6b63}.ledger .m-sec{display:none;font-size:11.5px;color:#7a877f}.fin tr.ev td{background:#fffaf0;color:#6d5a2c}.fin tr.ev .c-item{font-style:italic}.fin tr.inv .c-date{color:#a23b22}
 .empty{padding:16px 18px;margin:0;color:#6b7971;font-size:13px}
+/* own-funds payments: KPI link, "what the money went for" summary, list by month */
+a.kpi-link{text-decoration:none;color:inherit;transition:border-color .15s,background-color .15s}a.kpi-link:hover{border-color:#9cbca8;background:#fbfdfb}a.kpi-link:focus-visible{outline:2px solid #2f6b4d;outline-offset:1px}.kpi-go{font-size:12px;font-weight:600;color:#24533d;padding-top:5px}
+#platby{scroll-margin-top:12px}.psum{padding:4px 10px 12px;border-bottom:1px solid #e4e9e4}.psum-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 8px 6px}.psum-h h3{margin:0;font-size:13px;color:#284638}.psum-h span{font-size:12px;color:#7a877f}
+.ps{display:grid;grid-template-columns:minmax(0,1fr) minmax(90px,30%) 112px 50px;align-items:center;gap:4px 14px;width:100%;text-align:left;border:0;border-radius:8px;background:none;padding:7px 8px;color:#23332e}.ps:hover{background:#f3f7f4}.ps[aria-pressed=true]{background:#e6efe9;box-shadow:inset 3px 0 0 #254d3a}
+.ps-nm{min-width:0;font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ps-nm small{font-weight:400;font-size:12px;color:#7a877f;margin-left:7px}.ps-bar{height:8px;border-radius:4px;background:#e7ece8;overflow:hidden}.ps-bar i{display:block;height:100%;min-width:2px;border-radius:4px;background:#2f6b4d}.ps-bar i.out{background:#c4512f}.ps-bar i.none{background:#9aa69e}
+.ps-a{text-align:right;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}.ps-p{text-align:right;font-size:12px;color:#6b7971;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pm{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 18px 7px;background:#f3f6f3;border-bottom:1px solid #e4e9e4}.pm+.pys{border-top:0}.pys+.pm{border-top:1px solid #dbe2dc}.pm>b{font-size:13px;color:#1f332a}.pm>span{font-size:12px;color:#6b7971;white-space:nowrap;font-variant-numeric:tabular-nums}.pm>span b{color:#284638}
+.pys{list-style:none;margin:0;padding:0}.py{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:2px 14px;align-items:baseline;padding:9px 18px;border-bottom:1px solid #edf0ed}.pys .py:last-child{border-bottom:0}
+.py-d{font-size:12.5px;color:#6b7971;font-variant-numeric:tabular-nums;white-space:nowrap}.py-i{min-width:0;font-size:14px;color:#23332e}.py-t{display:block;width:fit-content;max-width:100%;margin-top:3px;padding:0 8px;border-radius:99px;background:#e9f0eb;color:#35594a;font-size:11px;font-weight:600;line-height:1.55;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.py-t.out{background:#fbe4dc;color:#a23b22}.py-t.none{background:#eef1ee;color:#68766e}
+.py-a{text-align:right;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap;color:#1f332a}.py.ev{background:#fffaf0}.py.ev .py-i{font-style:italic;color:#6d5a2c}.py.inv .py-d{color:#a23b22}.py.wide{grid-template-columns:92px minmax(0,1fr) auto}
+.pmore{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid #e4e9e4}.pfoot{display:flex;justify-content:space-between;gap:10px;padding:11px 18px;background:#f3f6f3;border-top:2px solid #254d3a;font-weight:750;color:#1f332a}.pfoot .num{font-variant-numeric:tabular-nums;white-space:nowrap}
 /* data checks (owner only) */
 .chk{padding:12px 18px;border-bottom:1px solid #edf0ed}.chk:last-child{border-bottom:0}.chk-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.chk-h b{font-size:14px;color:#23332e}.chk-s{flex:none;font-size:11.5px;font-weight:650;padding:1px 9px;border-radius:99px}.chk.ok .chk-s{background:#e1f0e5;color:#22663f}.chk.warn .chk-s{background:#fbefd3;color:#7f5a0d}.chk ul{margin:8px 0 0;padding-left:18px;font-size:13px;color:#3d4c44}.chk li+li{margin-top:3px}.chk-x{font-size:11.5px;padding:1px 8px;border-radius:99px;margin-left:4px;color:#4d6457;vertical-align:1px}.chk-n{margin:6px 0 0;font-size:12.5px;color:#6b7971}
 .foot{margin-top:18px;color:#78847c;font-size:12px}.foot p{margin:0}.sign{margin-top:30px!important;color:#3d4c44;font-size:12px}
@@ -60,11 +71,13 @@ tr.detail td{background:#f8faf8;padding:4px 12px 10px}.pays{list-style:none;marg
  .fin.stages,.stages tbody,.stages tfoot{display:block}.stages thead{display:none}.stages tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"nm nm bud" "bar bar bar" "pct cum paid";gap:3px 10px;padding:10px 14px;border-bottom:1px solid #edf0ed}
  .fin.stages td,.fin.stages tr.total td{padding:0;border:0;background:none}.stages tr.total{background:#f3f6f3;border-top:2px solid #254d3a;border-bottom:0}.stages .s-nm{grid-area:nm;align-self:end}.stages .s-bud{grid-area:bud}.stages .c-bar{grid-area:bar;width:auto;padding:2px 0}.stages .s-pct{grid-area:pct;text-align:left}.stages .s-cum{grid-area:cum;text-align:left}.stages .s-paid{grid-area:paid}
  .m-lab{display:block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#7a877f}.ph{display:table;margin:3px 0 0;white-space:normal;border-radius:6px}}
+@media screen and (max-width:640px){.psum{padding:2px 6px 10px}.ps{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"nm a" "bar p";gap:5px 12px;padding:8px}.ps-nm{grid-area:nm;white-space:normal}.ps-nm small{display:block;margin:1px 0 0}.ps-a{grid-area:a}.ps-bar{grid-area:bar}.ps-p{grid-area:p}
+ .pm,.py,.pmore,.pfoot{padding-left:14px;padding-right:14px}.py,.py.wide{grid-template-columns:50px minmax(0,1fr) auto;gap:2px 10px}.py.wide .py-d{grid-column:1/-1}.py-i{font-size:13.5px}}
 @media screen and (max-width:560px){.kpis{grid-template-columns:1fr}.tools{width:100%}.tools button{flex:1;padding:9px 8px}.filters select{flex:1 1 100%}.pays li{grid-template-columns:76px minmax(0,1fr) auto;gap:8px}}
 @page{size:A4;margin:13mm 12mm 15mm}
 @media print{
 :root{background:#fff;font-size:10.5px}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}header{padding:0 0 10px;border-bottom:2px solid #254d3a}main{max-width:none;padding:12px 0 0}
-.no-print,.screen-only,#lock,#loading,.detail,.m-prog,.m-sec{display:none!important}.print-only{display:block!important}
+.no-print,.screen-only,#lock,#loading,.detail,.m-prog,.m-sec{display:none!important}.print-only{display:block!important}.kpi-go{display:none}.ps{padding:3px 8px;break-inside:avoid}.ps-nm,.ps-a{font-size:10.5px}.psum-h h3{font-size:11px}
 .card{box-shadow:none;border-color:#cdd6cf;border-radius:8px}.idcard,.kpi,.chart-card,.stage-card,tr{break-inside:avoid}tr.stg{break-after:avoid}.card-head{break-after:avoid}.card-head h2{font-size:14px}.sec{margin-top:12px}
 .kpis{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px}.kpi{padding:10px 12px}.kpi-value{font-size:17px}.kpi-label,.kpi-sub{font-size:10px}
 .tbl-wrap{overflow:visible}.fin{font-size:10.5px}.fin th,.fin td{padding:5px 8px}.fin th{font-size:9px}thead{display:table-header-group}tfoot{display:table-row-group}.sec-desc{font-size:9.5px}.c-prog{width:110px}tr.exp .sec-cnt::after{display:none}
@@ -110,9 +123,21 @@ tr.detail td{background:#f8faf8;padding:4px 12px 10px}.pays{list-style:none;marg
     <p class="note danger" id="dataErr" role="alert" hidden></p>
     <div id="content">
       <div class="kpis" id="kpis"></div>
+      <section class="card sec" id="platby">
+        <div class="card-head"><h2>Uhrazeno z vlastních zdrojů</h2><p id="paysDesc"></p></div>
+        <div class="psum" id="paySum" hidden></div>
+        <div class="filters no-print">
+          <select id="fSec" aria-label="Oddíl"></select>
+          <input type="search" id="fQ" placeholder="Hledat položku…" aria-label="Hledat položku" autocomplete="off">
+          <select id="fSort" aria-label="Řazení"><option value="new">Nejnovější</option><option value="old">Nejstarší</option><option value="amt">Nejvyšší částka</option></select>
+          <label class="check"><input type="checkbox" id="fEv" checked> Zobrazit milníky</label>
+        </div>
+        <div class="screen-only" id="ledger"></div>
+        <div class="print-only" id="ledgerPrint"></div>
+      </section>
       <section class="card sec">
-        <div class="card-head tg"><div><h2 id="budgetTitle">Rozpočet podle etap</h2><p id="budgetDesc"></p></div>
-          <div class="seg no-print" role="group" aria-label="Seskupení rozpočtu"><button type="button" id="gStage" aria-pressed="true">Podle etap</button><button type="button" id="gSheet" aria-pressed="false">Podle rozpočtu</button></div></div>
+        <div class="card-head tg"><div><h2 id="budgetTitle">Rozpočet podle oddílů</h2><p id="budgetDesc"></p></div>
+          <div class="seg no-print" role="group" aria-label="Seskupení rozpočtu"><button type="button" id="gSheet" aria-pressed="true">Podle rozpočtu</button><button type="button" id="gStage" aria-pressed="false">Podle etap</button></div></div>
         <p class="m-kc">Částky v Kč</p><div class="tbl-wrap" id="budget"></div>
         <p class="tnote" id="budgetNote" hidden></p>
       </section>
@@ -126,17 +151,6 @@ tr.detail td{background:#f8faf8;padding:4px 12px 10px}.pays{list-style:none;marg
         <div class="chart" id="chart"></div>
         <div class="legend" aria-hidden="true"><span><i class="lg-line"></i>Uhrazeno celkem</span><span><i class="lg-bar"></i>Platby v jednotlivých měsících</span><span><i class="lg-ev"></i>Milník</span></div>
         <p class="split" id="split"></p>
-      </section>
-      <section class="card sec">
-        <div class="card-head"><h2>Evidence plateb</h2><p>Platby zapsané stavebníkem v pořadí, jak byly uhrazeny, včetně milníků stavby.</p></div>
-        <div class="filters no-print">
-          <select id="fSec" aria-label="Oddíl"></select>
-          <input type="search" id="fQ" placeholder="Hledat položku…" aria-label="Hledat položku" autocomplete="off">
-          <select id="fSort" aria-label="Řazení"><option value="new">Nejnovější</option><option value="old">Nejstarší</option><option value="amt">Nejvyšší částka</option></select>
-          <label class="check"><input type="checkbox" id="fEv" checked> Zobrazit události</label>
-        </div>
-        <div class="tbl-wrap screen-only" id="ledger"></div>
-        <div class="print-only" id="ledgerPrint"></div>
       </section>
       <section class="card sec no-print" id="checks" hidden>
         <div class="card-head"><h2>Kontrola dat</h2><p>Vidíte jen vy (plný přehled); do tisku se nedostane. Čísla řádků odpovídají řádkům v tabulce.</p></div>
@@ -346,9 +360,11 @@ if(typeof module==='object'&&module.exports){module.exports=dumFinanceLogic}else
  const S=(tag,at,parent)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);if(parent)parent.appendChild(e);return e};
  const f1=n=>Math.round(n*10)/10;
  let M=null,last=null,key='',hook=false,chartW=0,gen=0,inflight=null;
- const LS={f:'all',q:'',sort:'new',ev:true};
- // budget grouping: 'stage' (construction stages, default) or 'sheet' (sections as in the sheet); remembered per browser
- const GK='dum-finance-group';let group=(()=>{try{return localStorage.getItem(GK)==='sheet'?'sheet':'stage'}catch(e){return 'stage'}})();
+ // payment list state; all = show every payment, not just the newest months
+ const LS={f:'all',q:'',sort:'new',ev:true,all:false};
+ // budget grouping: 'sheet' (sections as in the sheet, default) or 'stage' (construction stages); remembered per browser.
+ // New storage key, so a choice saved while stages were the default does not hide the new default.
+ const GK='dum-finance-seskupeni';let group=(()=>{try{return localStorage.getItem(GK)==='stage'?'stage':'sheet'}catch(e){return 'sheet'}})();
 
  function show(state){$('lock').hidden=state!=='lock';$('loading').hidden=state!=='loading';$('view').hidden=state!=='view'}
  function showLock(code){show('lock');const e=$('lockErr');e.hidden=!code;e.textContent=code?ERR[code]||ERR.server:'';try{$('key').focus({preventScroll:true})}catch(x){}}
@@ -373,23 +389,27 @@ if(typeof module==='object'&&module.exports){module.exports=dumFinanceLogic}else
  // drop the key and everything rendered from the sheet (logout, invalid or expired key); a request still running is cancelled
  function forget(){gen++;if(inflight){try{inflight.abort()}catch(e){}inflight=null}reloadIdle();$('toolMsg').textContent='';
   sset('sessionStorage','');sset('localStorage','');key='';M=null;last=null;
-  for(const id of ['kpis','budget','stages','stagesNote','chart','split','fSec','ledger','ledgerPrint','checkList'])$(id).replaceChildren();$('key').value='';$('remember').checked=false}
+  for(const id of ['kpis','paysDesc','paySum','budget','stages','stagesNote','chart','split','fSec','ledger','ledgerPrint','checkList'])$(id).replaceChildren();$('key').value='';$('remember').checked=false}
 
  function renderAll(){
   $('who').textContent=(M.who||'—')+(M.owner?' · plný přehled':'');$('asOf').textContent=fmtDate(M.asOf);
   $('source').textContent=`Částky v Kč tak, jak byly uhrazeny (vč. DPH). Zdroj: evidence stavebníka v Google Sheets, načteno ${F.fmtStamp(M.asOf)}.`;
   const err=$('dataErr');err.hidden=!M.errors.length;err.textContent=M.errors.join(' ');$('content').hidden=!!M.errors.length;
   if(M.errors.length)return;
-  try{renderKpis();renderBudget();renderStages();drawChart($('chart').clientWidth||900);setupLedger();renderLedger();renderLedgerPrint();renderChecks()}
+  try{renderKpis();setupLedger();renderPaySum();renderLedger();renderLedgerPrint();renderBudget();renderStages();drawChart($('chart').clientWidth||900);renderChecks()}
   catch(e){console.error(e);err.hidden=false;err.textContent='Přehled se nepodařilo vykreslit, data v tabulce mají nečekaný tvar.'}}
 
  function renderKpis(){
   const kpi=(label,value,sub,cls,extra)=>{const d=h('div','card kpi'+(cls?' '+cls:''));d.append(h('div','kpi-label',label),h('div','kpi-value',value));if(extra)d.append(extra);if(sub)d.append(h('div','kpi-sub',sub));return d};
+  // own funds: the whole card links to the payment list right below the KPIs
+  const paid=kpi('Uhrazeno z vlastních zdrojů',fmtKc(M.paidTotal),M.paidCount?countPay(M.paidCount)+(M.firstDate?' od '+fmtDate(M.firstDate):''):'zatím žádné platby'),link=h('a',paid.className+' kpi-link');
+  link.href='#platby';link.append(...paid.childNodes);if(M.paidCount)link.append(h('div','kpi-go','Seznam plateb ↓'));
+  link.addEventListener('click',e=>{e.preventDefault();$('platby').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
   const meter=h('div','meter'),mi=h('i');mi.style.width=Math.min(100,Math.max(0,(M.drawdown||0)*100))+'%';meter.append(mi);
   meter.setAttribute('role','progressbar');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.setAttribute('aria-valuenow',String(Math.round((M.drawdown||0)*100)));
   $('kpis').replaceChildren(
    kpi('Rozpočet základní stavby',fmtKc(M.coreBudget),M.restBudget>0?`+ ${fmtKc(M.restBudget)} ${M.restLabel}`:''),
-   kpi('Uhrazeno z vlastních zdrojů',fmtKc(M.paidTotal),M.paidCount?countPay(M.paidCount)+(M.firstDate?' od '+fmtDate(M.firstDate):''):'zatím žádné platby'),
+   link,
    kpi('Zbývá dofinancovat',fmtKc(M.loan),'požadavek na úvěr, základní stavba','accent'),
    kpi('Čerpání rozpočtu',M.drawdown==null?'—':fmtPct(M.drawdown),`${fmtKc(M.corePaid)} z ${fmtKc(M.coreBudget)} základní stavby`,'',meter))}
 
@@ -498,24 +518,75 @@ if(typeof module==='object'&&module.exports){module.exports=dumFinanceLogic}else
   if(T.undated.count)part('Bez platného data (není v grafu)',fmtKc(T.undated.sum));sp.hidden=!sp.childNodes.length}
 
  // ---- ledger
- function ledgerTable(o){
-  const cat=M.categorized,t=h('table','fin ledger'),hr=h('tr');
-  for(const [x,c] of [['Datum','c-date'],['Položka',''],...(cat?[['Oddíl','c-sec']]:[]),['Částka','num']]){const th=h('th',c,x);th.scope='col';hr.append(th)}
-  t.appendChild(h('thead')).append(hr);
+ // payments, milestones and unreadable rows that match the filter, sorted; pays = just the payments
+ function ledgerRows(o){
   const q=norm(o.q),match=r=>!q||norm(r.item).includes(q)||norm(r.category).includes(q);
   const pays=M.payments.filter(r=>match(r)&&(o.f==='all'||(o.f==='none'?!r.category:o.f.startsWith('o:')?r.outside&&'o:'+norm(r.category)===o.f:r.section&&'s'+r.section.n===o.f)));
   // rows with an unreadable amount stay visible under "all" (amount '—'), whether or not events are shown
   const evs=o.ev&&o.f==='all'?M.events.filter(match):[],bad=o.f==='all'?M.invalid.filter(match):[],rows=pays.concat(evs,bad);
   rows.sort(o.sort==='amt'?(a,b)=>b.amount-a.amount||byDate(-1)(a,b):byDate(o.sort==='old'?1:-1));
-  const tb=h('tbody');
+  return {pays,rows}}
+ const total=a=>a.reduce((s,r)=>s+r.amount,0);
+ // print: one plain table of everything, oldest first
+ function ledgerTable(o){
+  const cat=M.categorized,t=h('table','fin ledger'),hr=h('tr');
+  for(const [x,c] of [['Datum','c-date'],['Položka',''],...(cat?[['Oddíl','c-sec']]:[]),['Částka','num']]){const th=h('th',c,x);th.scope='col';hr.append(th)}
+  t.appendChild(h('thead')).append(hr);
+  const {pays,rows}=ledgerRows(o),tb=h('tbody');
   for(const r of rows){const ev=r.kind==='event',pay=r.kind==='payment',tr=h('tr',(ev?'ev':'')+(r.date?'':' inv')),it=h('td','c-item');
    if(ev)it.append(h('span','chip ev','milník'));it.append(document.createTextNode(r.item||'(bez položky)'));if(cat&&pay)it.append(h('span','m-sec',secLabel(r)));
    tr.append(h('td','c-date',fmtDate(r.date)),it);if(cat)tr.append(h('td','c-sec',pay?secLabel(r):''));
    const am=h('td','num',pay?fmtKc(r.amount):ev?'':'—');if(r.kind==='invalid')am.title='Částku v evidenci nelze přečíst: '+r.amountRaw;tr.append(am);tb.append(tr)}
   if(!rows.length){const tr=h('tr'),td=h('td','empty','Filtru neodpovídá žádná platba.');td.colSpan=2;tr.append(td);if(cat)tr.append(h('td','c-sec'));tr.append(h('td','num'));tb.append(tr)}
   t.append(tb);
-  const tf=h('tfoot'),tr=h('tr','total'),lab=h('td',null,(pays.length===M.payments.length?'Celkem ':'Vybráno ')+countPay(pays.length));lab.colSpan=2;tr.append(lab);if(cat)tr.append(h('td','c-sec'));tr.append(h('td','num',fmtKc(pays.reduce((s,r)=>s+r.amount,0))));tf.append(tr);t.append(tf);
+  const tf=h('tfoot'),tr=h('tr','total'),lab=h('td',null,(pays.length===M.payments.length?'Celkem ':'Vybráno ')+countPay(pays.length));lab.colSpan=2;tr.append(lab);if(cat)tr.append(h('td','c-sec'));tr.append(h('td','num',fmtKc(total(pays))));tf.append(tr);t.append(tf);
   return t}
+
+ // screen: "what the money went for" (budget sections with payments, largest first); a row filters the list below
+ function payGroups(){
+  const g=M.sections.filter(s=>s.payments.length).map(s=>({key:'s'+s.n,label:s.name||'(bez názvu)',n:s.payments.length,paid:s.paid,cls:''}));
+  for(const x of M.extra)for(const r of x.rows)g.push({key:r.key,label:x.kind==='none'?'Nezařazeno':r.label+' (mimo rozpočet)',n:r.payments.length,paid:r.paid,cls:x.kind==='none'?'none':'out'});
+  return g.sort((a,b)=>b.paid-a.paid)}
+ function renderPaySum(){
+  $('paysDesc').textContent=M.paidCount?`Platby zapsané v evidenci stavebníka, od nejnovější, s milníky stavby.${M.categorized?' Kliknutím na oddíl v souhrnu zobrazíte jen jeho platby.':''}`:'Zatím nejsou zapsané žádné platby.';
+  const box=$('paySum');box.replaceChildren();box.hidden=!M.categorized||!M.payments.length;if(box.hidden)return;
+  const G=payGroups(),mx=Math.max(0,...G.map(g=>g.paid)),all=M.paidTotal,hd=h('div','psum-h');
+  hd.append(h('h3',null,'Na co peníze šly'),h('span',null,'podíl z '+fmtKc(all)));box.append(hd);
+  for(const g of G){const b=h('button','ps'),nm=h('span','ps-nm',g.label),bar=h('span','ps-bar'),i=h('i',g.cls);
+   b.type='button';b.dataset.k=g.key;b.dataset.l=g.label;nm.append(h('small',null,countPay(g.n)));i.style.width=(mx>0?g.paid/mx*100:0)+'%';bar.append(i);
+   b.append(nm,bar,h('span','ps-a',fmtKc(g.paid)),h('span','ps-p',all>0?pct1(g.paid/all):''));
+   b.addEventListener('click',()=>{LS.f=LS.f===g.key?'all':g.key;$('fSec').value=LS.f;renderLedger()});box.append(b)}
+  syncSum()}
+ function syncSum(){for(const b of $('paySum').querySelectorAll('.ps')){const on=b.dataset.k===LS.f;b.setAttribute('aria-pressed',String(on));b.title=on?'Zobrazit všechny platby':'Zobrazit jen platby: '+b.dataset.l}}
+
+ // screen: payments by month (newest first by default) with month subtotals, the section as a tag under each item;
+ // unfiltered, only whole months up to the newest ~10 payments, the rest behind a button
+ const MON=F.MONTHS.map(m=>m[0].toUpperCase()+m.slice(1)),LIMIT=10;
+ function payRow(r,full,tag){
+  const ev=r.kind==='event',li=h('li','py'+(ev?' ev':'')+(r.date?'':' inv')+(full?' wide':'')),it=h('div','py-i');
+  if(ev)it.append(h('span','chip ev','milník'));it.append(document.createTextNode(r.item||'(bez položky)'));
+  if(tag&&r.kind==='payment')it.append(h('span','py-t'+(r.section?'':r.outside?' out':' none'),r.section?r.section.name:r.outside?r.category+' · mimo rozpočet':'nezařazeno'));
+  const a=h('div','py-a',r.kind==='payment'?fmtKc(r.amount):ev?'':'—');if(r.kind==='invalid')a.title='Částku v evidenci nelze přečíst: '+r.amountRaw;
+  li.append(h('div','py-d',!r.date?'—':full?fmtDate(r.date):r.date.d+'. '+r.date.m+'.'),it,a);return li}
+ function ledgerList(o){
+  const {pays,rows}=ledgerRows(o),wrap=h('div','plist'),filtered=o.f!=='all'||!!norm(o.q),flat=o.sort==='amt',groups=[];
+  if(flat)groups.push({label:null,rows});
+  else for(const r of rows){const k=r.date?r.date.y*100+r.date.m:0;let g=groups[groups.length-1];if(!g||g.k!==k){g={k,label:r.date?MON[r.date.m-1]+' '+r.date.y:'Bez platného data',rows:[]};groups.push(g)}g.rows.push(r)}
+  let shown=0,cut=false;
+  for(const g of groups){
+   if(!o.all&&!filtered&&shown>=LIMIT){cut=true;break}
+   let rs=g.rows;if(flat&&!o.all&&!filtered&&rs.length>LIMIT){rs=rs.slice(0,LIMIT);cut=true}
+   const ps=rs.filter(r=>r.kind==='payment');shown+=ps.length;
+   if(g.label){const hd=h('div','pm'),r=h('span');if(ps.length)r.append(countPay(ps.length)+' · ',h('b',null,fmtKc(total(ps))));hd.append(h('b',null,g.label),r);wrap.append(hd)}
+   const ul=h('ul','pys');for(const r of rs)ul.append(payRow(r,flat,M.categorized&&o.f==='all'));wrap.append(ul)}
+  if(!rows.length)wrap.append(h('p','empty','Filtru neodpovídá žádná platba.'));
+  const more=h('div','pmore'),btn=(t,f)=>{const b=h('button',null,t);b.type='button';b.addEventListener('click',f);more.append(b)};
+  if(cut)btn(`Zobrazit všechny platby (${pays.length})`,()=>{LS.all=true;renderLedger()});
+  else if(o.all&&!filtered&&pays.length>LIMIT)btn('Sbalit seznam',()=>{LS.all=false;renderLedger();const c=$('platby');if(c.getBoundingClientRect().top<0)c.scrollIntoView({block:'start'})});
+  if(o.f!=='all')btn('Zobrazit všechny oddíly',()=>{LS.f='all';$('fSec').value='all';renderLedger()});
+  if(more.childNodes.length)wrap.append(more);
+  const ft=h('div','pfoot');ft.append(h('span',null,(pays.length===M.payments.length?'Celkem ':'Vybráno ')+countPay(pays.length)),h('span','num',fmtKc(total(pays))));wrap.append(ft);
+  return wrap}
  function setupLedger(){
   const sel=$('fSec'),opt=(v,t,p)=>{const o=h('option',null,t);o.value=v;(p||sel).append(o)};sel.replaceChildren();opt('all','Všechny oddíly');
   for(const g of M.stages){const og=h('optgroup');og.label=g.label;for(const s of g.sections)opt('s'+s.n,s.n+' · '+s.name,og);sel.append(og)}
@@ -523,7 +594,7 @@ if(typeof module==='object'&&module.exports){module.exports=dumFinanceLogic}else
   if(M.extra.length){const og=h('optgroup');og.label='Mimo etapy';for(const x of M.extra)for(const r of x.rows)opt(r.key,x.kind==='none'?'Nezařazeno':'Mimo rozpočet: '+r.label,og);sel.append(og)}
   if(![...sel.options].some(o=>o.value===LS.f))LS.f='all';sel.value=LS.f;sel.hidden=!M.categorized;
   $('fQ').value=LS.q;$('fSort').value=LS.sort;$('fEv').checked=LS.ev}
- function renderLedger(){if(M&&!M.errors.length)$('ledger').replaceChildren(ledgerTable(LS))}
+ function renderLedger(){if(M&&!M.errors.length){$('ledger').replaceChildren(ledgerList(LS));syncSum()}}
  function renderLedgerPrint(){$('ledgerPrint').replaceChildren(ledgerTable({f:'all',q:'',sort:'old',ev:true}))}
 
  // findings the owner marked "Není chyba"; kept per browser by signature (see runChecks), never sent anywhere
