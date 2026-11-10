@@ -51,7 +51,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
   <div class="verdict">
     <div class="fact"><b>1 · Nízká teplota 35/30 °C místo 40/32 °C</b><span>Hustší pokládka (10 cm u prosklení a v koupelnách, jinak 15 cm) a dubová podlaha s tepelným odporem do 0,10 m²K/W. Každý stupeň vody dolů je zhruba +2,5 % účinnosti TČ.</span></div>
     <div class="fact"><b>2 · Rozdělovače nad sebou</b><span>R2 v chodbě podkroví u dětského pokoje 1, R1 ve vestavěné skříni v předsíni přímo pod ním. Stoupačka mezi nimi má jen 3 m a páteřní trubky v tenké podlaze podkroví (150 mm) vedou jen kousek podél stěny chodby.</span></div>
-    <div class="fact"><b>3 · Přívod vrchem, rovnou do R2</b><span>Jako v projektu: z technické místnosti pod stropem nahoru a půdou nad průjezdem přímo k R2, odtud stoupačkou dolů do R1. Na neobytné půdě v izolačním boxu, spolu s vodou a chráničkou pro data.</span></div>
+    <div class="fact"><b>3 · Přívod vrchem, rovnou do R2</b><span>Jako v projektu: z technické místnosti pod stropem nahoru a půdou nad průjezdem přímo k R2, odtud stoupačkou dolů do R1. Neobytná půda je studená, a tak tam trubky vedou v zatepleném boxu (aspoň 150 mm) spolu s vodou a chráničkou pro data. Topení v boxu drží vodu nad nulou.</span></div>
     <div class="fact"><b>4 · 6 zón, zbytek otevřený</b><span>Dole obytná část, koupelna a WC, nahoře ložnice a dva dětské pokoje. Předsíň, koupelny v podkroví, úklid a chodba jsou trvale otevřené, takže TČ má vždy průtok a necykluje. Teplotu drží ekvitermní křivka, zóny jen dolaďují.</span></div>
     <div class="fact"><b>5 · Koupelny: podlaha, stěna a elektrický žebřík</b><span>Na 24 °C podlaha s 35 °C vodou nestačí. Doplní ji stěnové topení na jedné stěně a elektrický žebřík, který ráno a večer přitopí a v létě suší ručníky.</span></div>
     <div class="fact"><b>6 · Kabel všude, čidla jen v zónách</b><span>Cat6 z každé místnosti k rozdělovači (levné, na později), osazených 6 čidel: obývák, koupelna, WC, ložnice a dětské pokoje. Regulátory na ESPHome (lokálně, bez cloudu), TČ přes Modbus, elektroměr a kalorimetr pro skutečný COP.</span></div>
@@ -121,8 +121,8 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <h2>Rekuperace a dveře bez prahů</h2>
     <p class="desc">Rekuperace mění pár věcí, se kterými je potřeba počítat ještě před stropy a podlahou.</p>
     <div class="notes">
-      <div class="note"><strong>Jednotka v technické místnosti</strong><br>Celý návrh je na stránce <a href="./rekuperace.html">Rekuperace</a>. Jednotka visí na štítu technické místnosti, sání a výfuk vedou fasádami, kondenzát do odpadu v technické místnosti. Hlavní rozvody jdou stropem technické místnosti (P1) do prostoru nad rovným stropem podkroví, který je díky zateplení ve sklonu střechy v teple. 230 V a Cat6 do SLP stejnou trasou jako data TČ.</div>
-      <div class="note"><strong>Rozvody</strong><br>Podkroví: rozdělovače nad stropem chodby a ventily v rovném stropě. Přízemí: přívod do obýváku kastlíkem v ložnici a štěrbinami ve sníženém podhledu, odvod z kuchyně, komory, předsíně, koupelny a WC podhledy ve výšce 2,40 m do sběrné komory v koupelně 1.05 a šachtou nahoru. <strong>V podlaze ani v potěru nevede nic</strong>, podlahové vyústě nejsou.</div>
+      <div class="note"><strong>Jednotka v technické místnosti</strong><br>Celý návrh je na stránce <a href="./rekuperace.html">Rekuperace</a>. Jednotka visí na štítu technické místnosti, sání a výfuk vedou fasádami, kondenzát do odpadu v technické místnosti. Hlavní rozvody jdou stropem technické místnosti (P1) nad rovný strop podkroví. Nad stropem je studená půda, takže potrubí leží na kleštinách v izolaci stropu. 230 V a Cat6 do SLP stejnou trasou jako data TČ.</div>
+      <div class="note"><strong>Rozvody</strong><br>Podkroví: rozdělovače nad stropem chodby a ventily v rovném stropě. Přízemí: přívod do obýváku kastlíkem v ložnici a štěrbinami ve sníženém podhledu, odvod z kuchyně, komory, předsíně, koupelny a WC podhledy ve výšce 2,40 m do sběrné komory v předsíni a šachtou nahoru. <strong>V podlaze ani v potěru nevede nic</strong>, podlahové vyústě nejsou.</div>
       <div class="note risk"><strong>Koordinace s podlahovkou a panely</strong><br>Do EPS přízemí jde nanejvýš přívod spalovacího vzduchu ke krbu (Ø 125, jen když komín nebude mít vzduchovou šachtu). Prostupy panely pro rekuperaci (P1 u štítu technické místnosti, P2 v obýváku, P3 v koupelně 1.05) přidat do seznamu pro dodavatele panelů spolu s prostupy topení. Vývrty P2 a P3 projdou i podlahou podkroví, před anhydritem tam nechat chráničky.</div>
       <div class="note"><strong>Dveře bez prahů</strong><br>Vzduch proudí pod dveřmi, takže dveře podříznout o 10–15 mm (nebo větrací mřížka). Dlažba (8 + lepidlo 5 mm) a dub (10 + lepidlo ~3 mm) vyjdou na stejnou výšku. Dilatační spára v potěru pod dveřmi ale zůstává: zakryje ji plochý profil v úrovni podlahy nebo pružný tmel ve spáře dlažby.</div>
     </div>
@@ -137,7 +137,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
 
   <section class="card">
     <h2>Hydraulické schéma</h2>
-    <p class="desc">Monoblok LG venku topí i chladí, v technické místnosti je akumulace a zásobník teplé vody. Do domu vede jedna větev. Na půdě z ní odbočuje kazetový fancoil FC na chodbě v podkroví a za odbočkou je směšovací ventil, který v létě drží podlahu nad rosným bodem a v zimě je naplno otevřený. Teplotu vody řídí TČ podle venkovní teploty.</p>
+    <p class="desc">Monoblok LG venku topí i chladí, v technické místnosti je akumulace a zásobník teplé vody. Do domu vede jedna větev. U rozdělovače R2 z ní odbočuje kazetový fancoil FC na chodbě v podkroví a za odbočkou je směšovací ventil, který v létě drží podlahu nad rosným bodem a v zimě je naplno otevřený. Teplotu vody řídí TČ podle venkovní teploty.</p>
     <div class="wrap"><svg id="hydro" viewBox="0 0 1000 525" role="img" aria-label="Hydraulické schéma vytápění"></svg></div>
     <div class="notes" style="margin-top:14px">
       <div class="note"><strong>Akumulace 100 l sériově ve zpátečce</strong><br>Projekt ji má jako oddělovač se samostatným čerpadlem. Pokud to zvolené TČ dovolí, je lepší zapojit ji sériově do zpátečky jako objem pro odtávání. Jedno čerpadlo (v TČ), žádné míchání výstupu se zpátečkou, a tím o 1–2 K nižší teplota výstupu. Musí to potvrdit dodavatel TČ. Když zůstane paralelní zapojení, průtok do domu musí být aspoň stejný jako průtok z TČ.</div>
@@ -189,8 +189,8 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
         <tr><td>14</td><td><strong>Krb</strong> – teplota</td><td>kouřovod / plášť vložky → krabice čidla obývacího prostoru</td><td>silikonový kabel u krbu, dál Cat6</td><td>HA pozná, že se topí, a ubere obývák i křivku. Pokud bude mít krb klapku přívodu vzduchu, stejná trasa.</td></tr>
         <tr><td>15</td><td><strong>Okenní kontakty</strong> (volitelně, s EZS)</td><td>HS, fix, balkonové dveře, střešní okna → SLP</td><td>sdělovací kabel podle EZS</td><td>Při otevření HA pozastaví zónu.</td></tr>
         <tr><td>16</td><td><strong>Rekuperační jednotka</strong></td><td>technická místnost → SLP, rozvaděč</td><td>Cat6 (Modbus TCP / RS-485 podle jednotky) + CYKY-J 3×1,5</td><td>Do HA: intenzita podle vlhkosti v koupelnách a CO₂ v ložnicích, letní bypass, stav filtrů. Odsávací ventilátory v koupelnách z elektro projektu pak odpadají.</td></tr>
-        <tr><td>17</td><td><strong>Kazetový fancoil</strong> FC</td><td>rozvaděč a regulátor R2 → nad rovným stropem → FC ve stropě chodby u schodiště</td><td>CYKY-J 3×1,5 + J-Y(St)Y 2×2×0,8</td><td>Samostatný jistič. Řízení ventilátoru a ventilu přes RS-485 (Modbus) nebo 0–10 V podle typu fancoilu, stejnou trasou jako trubky. Čerpadlo kondenzátu je v kazetě a napájí se z ní.</td></tr>
-        <tr><td>18</td><td><strong>Směšovací ventil chlazení</strong></td><td>regulátor R2 → box na půdě u příčky</td><td>J-Y(St)Y 2×2×0,8</td><td>Servo 24 V se signálem 0–10 V a čidlo teploty vody za ventilem. Vedle kazety nad stropem a u ventilu čidla zaplavení, stačí Zigbee na baterii.</td></tr>
+        <tr><td>17</td><td><strong>Kazetový fancoil</strong> FC</td><td>rozvaděč a regulátor R2 → nad rovný strop, v izolaci → FC ve stropě chodby u schodiště</td><td>CYKY-J 3×1,5 + J-Y(St)Y 2×2×0,8</td><td>Samostatný jistič. Řízení ventilátoru a ventilu přes RS-485 (Modbus) nebo 0–10 V podle typu fancoilu, stejnou trasou jako trubky. Čerpadlo kondenzátu je v kazetě a napájí se z ní.</td></tr>
+        <tr><td>18</td><td><strong>Směšovací ventil chlazení</strong></td><td>regulátor R2 → ventil ve skříňce R2 (krátký kabel)</td><td>J-Y(St)Y 2×2×0,8</td><td>Servo 24 V se signálem 0–10 V a čidlo teploty vody za ventilem. V krabici kazety a ve skříňce R2 čidla zaplavení, stačí Zigbee na baterii.</td></tr>
         <tr><td>19</td><td><strong>Rezerva</strong></td><td>SLP → podkroví, SLP → technická místnost, R1/R2 → SLP</td><td>prázdná chránička 25–32 mm</td><td>FVE, rekuperace, displeje. Natáhnout teď stojí málo, později hodně.</td></tr>
       </tbody>
     </table></div>
@@ -205,7 +205,8 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
         <tr><td>Chlazení</td><td>není, PENB upozorňuje na letní přehřívání</td><td>kazetový fancoil z TČ ve stropě chodby v podkroví, podlaha přes směšovací ventil (přízemí chladí jen ona), markýzy na jižních střešních oknech</td><td>LG chladí bez další venkovní jednotky a bez technika na chladivo a nepřidá hluk k hranici 25 dB. Kazeta na chodbě je mimo ložnice a do přízemí nic nevede.</td></tr>
         <tr><td>Teplota vody</td><td>40/32 °C</td><td>35/30 °C</td><td>Vyšší COP. Podlaha je při ztrátě ~50 W/m² teplá jen do 26 °C, takže je i příjemnější.</td></tr>
         <tr><td>Rozdělovače</td><td>1 na patro, v přízemí v předsíni u rozvaděče, v podkroví v koupelně 2.05 u WC 2.06</td><td>R1 na stejném místě, R2 v chodbě podkroví přímo nad ním</td><td>Krátká stoupačka, žádné páteřní trubky v podlaze podkroví (150 mm), obojí přístupné bez bourání.</td></tr>
-        <tr><td>Přívod z technické místnosti</td><td>pod stropem t. m. a podlahou podkroví nad průjezdem k R2, dál do 1.NP</td><td>stejně, prostupem C u štítu (společně s rekuperací) přímo k R2 v chodbě podkroví, stoupačka R2 → R1 v předsíni</td><td>Nejkratší trasa. Na neobytné půdě ale vedou trubky mimo vytápěný prostor, proto izolační box (viz rizika).</td></tr>
+        <tr><td>Přívod z technické místnosti</td><td>pod stropem t. m. a podlahou podkroví nad průjezdem k R2, dál do 1.NP</td><td>stejně, prostupem C u štítu (společně s rekuperací) přímo k R2 v chodbě podkroví, stoupačka R2 → R1 v předsíni</td><td>Nejkratší trasa. Neobytná půda je ale studená, proto zateplený box spolu s vodou (viz rizika).</td></tr>
+        <tr><td>Odbočka ke kazetě a směšovací ventil</td><td>dřívější návrh: v boxu na půdě u příčky</td><td>ve skříňce R2 v chodbě podkroví</td><td>Na studené půdě by v zimě stála voda ve větvi ke kazetě a hrozilo by zamrznutí. U R2 je teplo a ventil je po ruce. Skříňka R2 musí být o kus větší.</td></tr>
         <tr><td>Potěr</td><td>beton 50 mm včetně trubek</td><td>litý anhydrit 50 mm</td><td>Beton potřebuje aspoň 45 mm nad trubkou, 50 mm celkem je málo a praská. Anhydrit stejné tloušťky vyhoví, je rovný pod lepený dub a lépe vede teplo.</td></tr>
         <tr><td>Větrání</td><td>přirozené (PENB), ventilátory v koupelnách</td><td>rekuperace s jednotkou v technické místnosti (viz <a href="./rekuperace.html">Rekuperace</a>)</td><td>Menší ztráta větráním, čerstvý vzduch bez otevírání oken, intenzitu řídí HA podle vlhkosti a CO₂.</td></tr>
         <tr><td>Akumulace</td><td>oddělovač s druhým čerpadlem</td><td>sériově ve zpátečce (ověřit s dodavatelem TČ)</td><td>Bez míchání výstupu se zpátečkou, jedno čerpadlo.</td></tr>
@@ -225,7 +226,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <li><strong>Před objednáním stropních panelů:</strong> předat výrobci seznam prostupů. Stoupačka topení R2 → R1 (2× Ø 80 nebo 1× Ø 160) a 2 chráničky Ø 32 v předsíni nad sedací nikou vedle vestavěné skříně, asi 2,76 m od líce stěny u kuchyně a 0,6 m od líce stěny u vstupu (bod B v plánku). Je v instalačním pásu Z2, betonu na stavbě u zadní stěny, takže chránička se osadí před betonáží a do panelu se nevrtá. K tomu S2 z kanalizace (Ø 130) a prostup C ze stropu technické místnosti do půdy (asi Ø 200 pro topení, vodu a chráničky) v dobetonávce u štítu spolu s P1 rekuperace. Vedle stoupačky B přidat prostup P3 rekuperace a v obýváku P2 rekuperace (výkres P-01, <a href="./rekuperace.html">Rekuperace</a>). Otvory jen dutinami podle výkresu dodavatele, mimo sloupky na koncích chodby.</li>
       <li><strong>Hrubá stavba a elektro:</strong> elektrikáři předat změny proti elektro projektu (vývod 230 V pro R2 na nové místo, žebříky do 1.05 a obou koupelen v podkroví přes relé, volný kontakt HDO relé do SLP, ventilátory přes relé). Krabice čidel KU 68 ve výšce 1,5 m, Cat6 hvězdou do R1 a R2, venkovní čidlo, kabely v technické místnosti. Skříně rozdělovačů: R1 ve vestavěné skříni předsíně (min. 80 cm šířka), R2 zapuštěný do zesílené příčky chodby (hloubka 120 mm).</li>
       <li><strong>Před potěrem:</strong> nejdřív rozvody v EPS (voda, odpad, chráničky, případně vzduch ke krbu), pak pokládka podle plánku (10/15/20 cm), i pod linkou a ostrůvkem, ne pod vestavnými skříněmi a vanou. Chráničky podlahových sond, tlaková zkouška, vše vyfotit a okótovat, ať víš, kam pak nevrtat. Anhydrit lít pod tlakem v trubkách.</li>
-      <li><strong>Chlazení, než se zavře strop podkroví:</strong> trubky ke kazetě 20×2 nad rovným stropem v pryžové izolaci s lepenými spoji, odbočka a směšovací ventil v boxu na půdě s revizním přístupem, kazeta zavěšená nad stropem chodby, kondenzát z jejího čerpadla se spádem do sifonu umyvadla v koupelně u ložnice. Tlaková zkouška, pak <strong>zkouška orosení</strong>: pár teplých dní chladit na 10 °C a projít všechny spoje, ventily a objímky. Teprve potom zavřít strop.</li>
+      <li><strong>Chlazení, než se zavře strop podkroví:</strong> odbočka a směšovací ventil ve skříňce R2, trubky ke kazetě 20×2 odtud nad rovný strop v pryžové izolaci s lepenými spoji, položené na kleštinách tak, aby je izolace stropu kryla aspoň 200 mm, kazeta zavěšená nad stropem chodby v krabici obalené parozábranou, kondenzát z jejího čerpadla se spádem do sifonu umyvadla v koupelně u ložnice. Tlaková zkouška, pak <strong>zkouška orosení</strong>: pár teplých dní chladit na 10 °C a projít všechny spoje, ventily a objímky. Teprve potom zavřít strop a foukat izolaci.</li>
       <li><strong>Uvedení do provozu:</strong> natápěcí protokol podle typu potěru (anhydrit / beton), vyvážení průtokoměrů podle tabulky, startovní ekvitermní křivka a pak týdenní snižování. HA nejdřív jen měří, zóny zapínat až po první zimě.</li>
     </ol>
   </section>
@@ -243,10 +244,10 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
         <tr><td>Termopohony 24 V NC</td><td class="n">12 ks (+ 2 rezerva)</td><td>obytná část 5, koupelna, WC, ložnice 3, dětské pokoje 2</td></tr>
         <tr><td>Ochranné trubky (husí krk) a dilatační profily</td><td class="n">~40 m trubky, ~10 profilů</td><td>u rozdělovačů, přes dveře a dilatační spáry</td></tr>
         <tr><td>Vícevrstvé potrubí 32×3 + izolace, 26×3 na stoupačku</td><td class="n">~15 m + ~5 m</td><td>technická místnost → půda → R2, R2 → R1</td></tr>
-        <tr><td>Kazetový fancoil 4cestný 600 × 600 s EC motorem, ventilem a čerpadlem kondenzátu</td><td class="n">1 ks</td><td>ve stropě chodby v podkroví u schodiště, panel 620 × 620, tělo 250–300 mm nad rovným stropem. Asi 2 kW při vodě 10–12 °C, orientačně 18–25 tis. Kč.</td></tr>
-        <tr><td>Vícevrstvé potrubí 20×2 ke kazetě</td><td class="n">~22 m</td><td>z odbočky na půdě nad rovným stropem podkroví podél stěny chodby ke kazetě</td></tr>
-        <tr><td>Pryžová izolace Armaflex AF nebo K-Flex ST, lepidlo 520, objímky s vložkou</td><td class="n">~60 m (13 mm), ~15 m (19 mm na půdě)</td><td>celá studená trasa od TČ, akumulace a oddělovač parotěsně</td></tr>
-        <tr><td>Směšovací ventil 3cestný se servem 24 V (0–10 V)</td><td class="n">1</td><td>na půdě za odbočkou ke kazetě, drží podlahu nad rosným bodem</td></tr>
+        <tr><td>Kazetový fancoil 4cestný 600 × 600 s EC motorem, ventilem a čerpadlem kondenzátu</td><td class="n">1 ks</td><td>ve stropě chodby v podkroví u schodiště, panel 620 × 620, tělo 250–300 mm nad rovným stropem v krabici obalené parozábranou a zasypané izolací stropu. Asi 2 kW při vodě 10–12 °C, orientačně 18–25 tis. Kč.</td></tr>
+        <tr><td>Vícevrstvé potrubí 20×2 ke kazetě</td><td class="n">~14 m</td><td>z odbočky u R2 nad rovný strop a po kleštinách podél stěny chodby ke kazetě, v izolaci stropu</td></tr>
+        <tr><td>Pryžová izolace Armaflex AF nebo K-Flex ST, lepidlo 520, objímky s vložkou</td><td class="n">~60 m (13 mm), ~15 m (19 mm nad stropem)</td><td>celá studená trasa od TČ, akumulace a oddělovač parotěsně</td></tr>
+        <tr><td>Směšovací ventil 3cestný se servem 24 V (0–10 V)</td><td class="n">1</td><td>ve skříňce R2 za odbočkou ke kazetě, drží podlahu nad rosným bodem</td></tr>
         <tr><td>Sifon umyvadla s přípojkou kondenzátu, čidla zaplavení</td><td class="n">1 + 2</td><td>čerpadlo kondenzátu je v kazetě, dál samospádem do koupelny u ložnice</td></tr>
         <tr><td>Anhydritový litý potěr 50 mm</td><td class="n">~9 m³</td><td>včetně technické místnosti</td></tr>
         <tr><td>Čidla teploty a vlhkosti, podlahové sondy</td><td class="n">6 + 2</td><td>krabice KU 68 i do místností bez čidla</td></tr>
@@ -293,10 +294,11 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <div class="notes">
       <div class="note risk"><strong>Dubová podlaha</strong><br>Projekt má dub 10 mm celoplošně lepený (~0,07 m²K/W), to je pro podlahovku ideální. Nezaměnit za plovoucí podlahu s podložkou nebo tlustší dřevo nad 0,10 m²K/W, žádné silné koberce v zóně u HS, nábytek na nožičkách. Lepit až po natápění a změření vlhkosti potěru.</div>
       <div class="note risk"><strong>Varianta podkroví podle D1.3</strong><br>Pokud zůstanou pokoje 2.07–2.09 nad průjezdem, přibudou na R2 tři okruhy (rozdělovač na 12 vývodů). Podlaha nad průjezdem pak potřebuje silnou izolaci pod podlahovkou, protože pod ní je venkovní prostor.</div>
-      <div class="note risk"><strong>Trasa přes neobytnou půdu</strong><br>Střecha je podle projektu zateplená 400 mm minerální vaty po celé délce, i nad průjezdem a technickou místností, a strop průjezdu má 400 mm EPS. Půda tak zůstane uvnitř zateplené obálky, jen nevytápěná (v zimě odhadem 10–15 °C) a zamrznutí nehrozí. Trubky vést <strong>nahoře na stropních panelech, v podlaze půdy</strong> (vrstva EPS 50 pod podlahou z OSB), ne v 400 mm EPS podhledu průjezdu, který je na venkovní straně. Izolace trubek 13 mm, pryžová s uzavřenými buňkami a lepenými spoji (v létě tudy poteče studená voda ke kazetě), aby se vešly do drážky v EPS, trasa uprostřed šířky průjezdu, mimo uložení panelů a ocelové překlady u podélných zdí. Vypouštění u venkovní jednotky TČ zůstává podle projektu.</div>
+      <div class="note risk"><strong>Trasa přes studenou půdu</strong><br>Projekt měl střechu zateplenou po celé délce, takže půda nad průjezdem byla v obálce. Od 10. 11. 2026 se střecha zateplí jen po rovný strop podkroví (kvůli ocelové hřebenové vaznici), a půda tak bude v mrazu skoro jako venku. Trubky proto vést <strong>nahoře na stropních panelech v zatepleném boxu</strong>: aspoň 150 mm minerální vaty nebo EPS kolem dokola, nebo předizolovaná dvojtrubka jako k venkovní jednotce TČ. Voda patří do stejného boxu jako topení, které ji v zimě drží nad nulou, nikdy sama. Na obou koncích úseku dát vypouštěcí ventily: při delším výpadku proudu v mrazu se úsek vypustí stejně jako přípojka venkovní jednotky. Trasa uprostřed šířky průjezdu, mimo uložení panelů a ocelové překlady u podélných zdí, ne v 400 mm EPS podhledu průjezdu. Kdyby se střecha nad půdou přece jen zateplila ve sklonu, je půda zase v obálce a stačí původní izolace 13 mm v podlaze půdy. Od studeného prostoru nad stropem podkroví ji ale pak musí oddělit zateplená vzduchotěsná stěna až pod hřeben.</div>
       <div class="note risk"><strong>Stropní panely a prostupy</strong><br>Panely 250 mm vedou přes celou šířku domu a leží na podélných obvodových zdech. Otvory vrtat dutinami podle výrobního výkresu dodavatele. Nevrtat u ocelových sloupků 2U140 na koncích chodby v podkroví, které nesou hřebenovou vaznici. Stoupačka B není v panelu: vede chráničkou v instalačním pásu Z2 u zadní stěny spolu s odvodem rekuperace P3 a elektrem E2. S2 z kanalizace je 0,2 m od podélné zdi ve výřezu na hraně panelu 06, který musí odsouhlasit dodavatel panelů (viz stránka Stropní panely).</div>
       <div class="note risk"><strong>Letní přehřívání</strong><br>PENB na něj upozorňuje. Nejvíc pomůže stínění zvenku: venkovní žaluzie (v projektu Z90) řízené z HA podle slunce a teploty a markýzy VELUX MHL na čtyřech jižních střešních oknech. K tomu noční bypass rekuperace, chlazení podlahou a kazetový fancoil z TČ na chodbě v podkroví. Přízemí chladí jen podlaha, takže žaluzie na fixu a HS musí HA stahovat sám.</div>
-      <div class="note risk"><strong>Rosení trubek chlazení</strong><br>Voda 10–12 °C se na holé trubce rosí. Celá studená trasa od TČ po kazetu musí mít pryžovou izolaci s uzavřenými buňkami. Spoje lepit lepidlem výrobce, ne jen páskou, objímky s izolační vložkou, ventily a tvarovky obalit. Akumulaci a oddělovač v chlazení izolovat parotěsně. Jinak se voda sráží pod izolací, kape na sádrokarton a ten plesniví. Před zavřením stropu udělat zkoušku orosení a vedle kazety nad strop dát čidlo zaplavení do HA.</div>
+      <div class="note risk"><strong>Rosení trubek chlazení</strong><br>Voda 10–12 °C se na holé trubce rosí. Celá studená trasa od TČ po kazetu musí mít pryžovou izolaci s uzavřenými buňkami. Spoje lepit lepidlem výrobce, ne jen páskou, objímky s izolační vložkou, ventily a tvarovky obalit. Akumulaci a oddělovač v chlazení izolovat parotěsně. Jinak se voda sráží pod izolací, kape na sádrokarton a ten plesniví. Před zavřením stropu udělat zkoušku orosení a do krabice kazety dát čidlo zaplavení do HA.</div>
+      <div class="note risk"><strong>Kazeta pod studenou půdou</strong><br>Tělo kazety je 250–300 mm nad stropem, tedy v izolaci, nad kterou je studená půda. Kolem těla postavit krabici z OSB nebo SDK, parozábranu stropu přetáhnout přes ni a navrch dát izolaci jako jinde. Trubky 20×2 a kondenzát vést na kleštinách v izolaci, nikdy navrchu. Větev ke kazetě v zimě stojí, proto je odbočka i směšovací ventil ve skříňce R2 v chodbě, kde je teplo.</div>
       <div class="note risk"><strong>Koupelny na 24 °C</strong><br>Z vody spolehlivě 22–23 °C, zbytek ráno a večer přitopí elektrický žebřík (krátce, ~1 kWh denně na koupelnu v zimě). Kdo chce 24 °C nonstop jen z vody, potřebuje vyšší teplotu pro celý dům, a to se nevyplatí.</div>
       <div class="note risk"><strong>Předsíň při −15 °C</strong><br>I s dlažbou a roztečí 10 cm vyjde při extrémním mrazu spíš 17–18 °C, protože ztráta dveřmi je velká. Pro předsíň je to v pořádku.</div>
       <div class="note"><strong>Krb</strong><br>Krbová vložka v otevřeném prostoru dá víc, než je ztráta obýváku. Bez regulace se přetopí. HA podle čidla krbu a čidla v obýváku zavře okruhy obýváku a jídelny 1.1–1.4 a sníží křivku a TČ díky otevřeným okruhům jinde dál bezpečně běží.</div>
@@ -391,14 +393,15 @@ let MODE='lay';
 // insulated box to R2, down the riser B to R1.
 const C_PEN=[18.0,3.5];
 const MAINS_A={sup:[[18.0,3.45],[17.15,3.45],[17.15,3.7],[12.9,3.7],[10.7,3.7],[10.62,3.81]],ret:[[18.0,3.57],[17.3,3.57],[17.3,3.85],[12.9,3.85],[10.7,3.85],[10.62,3.89]]};
-// Cooling: one cassette fan coil FC in the flat ceiling over the landing at the stair head (panel 620 × 620 [x0,x1,z0,z1]), 20×2 above
-// the flat attic ceiling from the tee on the mains in the loft along the corridor wall (drawn apart from the mains), condensate by
+// Cooling: one cassette fan coil FC in the flat ceiling over the landing at the stair head (panel 620 × 620 [x0,x1,z0,z1]), 20×2 from
+// the tee and mixing valve in the R2 cabinet up over the flat attic ceiling (inside its insulation, the attic above is cold) and along
+// the corridor wall (drawn apart from the mains), condensate by
 // gravity to the trap of the en-suite basin. Points [z,x].
 const FC=[4.14,4.76,5.29,5.91],FCC='#1f6b8c';
-const FC_SUP=[[13.5,3.7],[13.5,3.55],[5.45,3.55],[5.45,4.14]],FC_RET=[[5.75,4.14],[5.75,3.63],[13.35,3.63],[13.35,3.85]],FC_COND=[[5.6,4.14],[5.6,2.05],[6.47,2.05]];
+const FC_SUP=[[10.35,3.86],[10.35,3.55],[5.45,3.55],[5.45,4.14]],FC_RET=[[5.75,4.14],[5.75,3.63],[10.2,3.63],[10.2,3.86]],FC_COND=[[5.6,4.14],[5.6,2.05],[6.47,2.05]];
 const LEG_HEAT=()=>[{k:'line',c:pal[0],w:1.5,t:'trubka okruhu (barva podle okruhu)'},{k:'line',c:pal[0],w:5,t:'připojení okruhu k rozdělovači'},{k:'line',c:C.sup,w:3,t:'hlavní přívod'},{k:'line',c:C.ret,w:3,t:'hlavní zpátečka'},
  {k:'fill',c:'#a9b3ad',f:'#eef1ee',t:'nevytápí se (skříně, vana, schodiště)'},{k:'disc',c:C.sen,t:'čidlo teploty a vlhkosti (1,5 m)'},{k:'dash',c:C.sen,w:1.6,t:'Cat6 k regulátoru'},{k:'line',c:'#e0b04a',w:4,t:'stěnové topení v koupelně'},
- {k:'riser',c:C.sup,s:'↕',t:'stoupačka B / prostup C'},{k:'fill',c:'#c79a5a',f:'#f2d9b6',t:'izolační box na půdě'},{k:'tag',c:'#263a30',s:'A',t:'poznámky A–C pod výkresem'}];
+ {k:'riser',c:C.sup,s:'↕',t:'stoupačka B / prostup C'},{k:'fill',c:'#c79a5a',f:'#f2d9b6',t:'zateplený box na studené půdě'},{k:'tag',c:'#263a30',s:'A',t:'poznámky A–C pod výkresem'}];
 
 function drawGround(){const s=document.getElementById('ground'),lay=MODE==='lay';
  const g=Dum.plan(s,{title:'Přízemí · podlahové topení',sub:'Pohled shora · nahoře strana příjezdu, dole terasa (HS), vlevo přední štít · '+(lay?'pokládka trubek v měřítku, šneky po 10 a 15 cm':'okruhy, čidla a kabely k regulátoru'),code:'T-01'});
@@ -444,7 +447,7 @@ function drawAttic(){const s=document.getElementById('attic'),lay=MODE==='lay';
  g.line(MAINS_A.sup,'#f2d9b6',24,{'stroke-opacity':.75});g.line(MAINS_A.sup,'#c79a5a',1,{'stroke-dasharray':'5 4'});
  line(s,MAINS_A.sup,C.sup,3.2);line(s,MAINS_A.ret,C.ret,3.2);
  el(s,'circle',{cx:X(C_PEN[0]),cy:Y(C_PEN[1]),r:8,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(s,C_PEN[0],C_PEN[1]+.06,'↑',{'font-size':10,fill:C.sup,'font-weight':700});
- g.text(15.2,2.75,'přívod z technické místnosti v izolačním boxu',{'font-size':10,fill:'#8a5a17','font-weight':600});g.text(15.2,3.05,'(+ TV/SV a chránička pro data)',{'font-size':9.5,fill:'#8a5a17'});
+ g.text(15.2,2.75,'přívod z technické místnosti v zatepleném boxu',{'font-size':10,fill:'#8a5a17','font-weight':600});g.text(15.2,3.05,'(studená půda, + TV/SV a chránička pro data)',{'font-size':9.5,fill:'#8a5a17'});
  line(s,[[11.0,3.06],[11.0,3.45],[10.55,3.64]],C.sup,3);el(s,'circle',{cx:X(11.0),cy:Y(3.06),r:7,fill:'#fff',stroke:C.sup,'stroke-width':2.5});small(s,11.0,3.11,'↕',{'font-size':10,fill:C.sup,'font-weight':700});
  drawFeeds(s,R2,lay?4.2:3.4);
  manifold(s,3.77,3.95,9.82,10.62,'R2');
@@ -460,7 +463,7 @@ function drawAttic(){const s=document.getElementById('attic'),lay=MODE==='lay';
   sensor(s,2.6,4.3);sensor(s,9.6,3.4);sensor(s,10.9,4.97);}
  drawLabels(s,R2);
  Dum.roomTags(g,'compact',{over:{'2.02':[3.35,7.0],'2.03':[5.85,3.0],'Úklid':[7.0,2.35],'Dětský pokoj 1':[8.9,1.55],'Koupelna dětí':[8.65,7.2],'Dětský pokoj 2':[12.1,7.3]},hide:['2.01']});
- Dum.finish(g,[...LEG_HEAT(),{k:'dash',c:FCC,w:2.2,t:'chlazení nad stropem: kazeta FC, 20×2'},{k:'dash',c:'#7d8b83',w:1.4,t:'kondenzát do sifonu umyvadla'}],{title:'Podkroví · podlahové topení',sub:'R2, 9 okruhů, rozdělovač v chodbě',code:'T-02'});}
+ Dum.finish(g,[...LEG_HEAT(),{k:'dash',c:FCC,w:2.2,t:'chlazení z R2: kazeta FC, 20×2'},{k:'dash',c:'#7d8b83',w:1.4,t:'kondenzát do sifonu umyvadla'}],{title:'Podkroví · podlahové topení',sub:'R2, 9 okruhů, rozdělovač v chodbě',code:'T-02'});}
 
 // Exploded oblique view of the heating: circuits as coloured floor zones, manifolds, mains from the heat pump through C and the loft to R2,
 // riser B down to R1.
@@ -488,7 +491,7 @@ function drawIso(){const s=document.getElementById('iso'),E1=1.7,lev=y=>y<=2.95?
  I.line(MAINS_A.sup.map(([z,x])=>[x,3.1,z]),'#f2d9b6',16,{opacity:.8});
  I.line([[3.43,2.9,17.95],[3.45,3.12,18.0],...MAINS_A.sup.slice(1).map(([z,x])=>[x,3.12,z])],C.sup,3.2);I.line([[3.57,2.9,17.95],[3.57,3.14,18.0],...MAINS_A.ret.slice(1).map(([z,x])=>[x,3.14,z])],C.ret,3.2);
  feeds(R2,3.08);I.box(3.77,3.95,3.36,4.2,9.82,10.62,'#263a30');
- // cooling: the cassette FC in the flat ceiling over the landing, drawn on the floor under it (dashed) with its 20×2 from the tee in the loft
+ // cooling: the cassette FC in the flat ceiling over the landing, drawn on the floor under it (dashed) with its 20×2 from the tee at R2
  {const up=([z,x])=>[x,3.1,z];for(const p of [FC_SUP,FC_RET])I.line(p.map(up),FCC,2.2,{'stroke-dasharray':'6 4'});
   I.plate(FC[0],FC[1],FC[2],FC[3],3.1,{fill:'#d8ebf2',stroke:FCC,'stroke-width':1.4,'stroke-dasharray':'4 3'});}
  I.line([[3.1,1.3,10.8],[3.1,3.4,10.8]],C.sup,3.2);I.line([[3.2,1.3,10.85],[3.2,3.4,10.85]],C.ret,3.2);
@@ -498,14 +501,14 @@ function drawIso(){const s=document.getElementById('iso'),E1=1.7,lev=y=>y<=2.95?
  I.mark([1.92,.96,19.2],36,8,1,A.ink,'<strong>TČ vzduch–voda</strong> venku za štítem technické místnosti, na konzoli na betonovém základu.');
  I.mark([1.75,1.4,17.5],-36,-20,2,A.ink,'<strong>Technická místnost</strong>: zásobník TV 300 l, akumulace 100 l sériově ve zpátečce, podlahovka místnosti přes RTL.');
  I.mark([3.5,2.66,17.98],36,-18,3,C.sup,'<strong>Prostup C</strong> ve stropě technické místnosti u štítu, ve stejné dobetonávce jako prostup rekuperace P1.');
- I.mark([3.7,3.12,14.9],0,-34,4,'#8a5a17','<strong>Přívod přes neobytnou půdu</strong> po stropních panelech v izolačním boxu (topení 2× 32, voda, chránička pro data).');
- I.mark([3.86,4.2,10.2],30,-30,5,C.sup,'<strong>R2</strong> zapuštěný v příčce chodby u dětského pokoje 1, 9 okruhů + rezerva.');
+ I.mark([3.7,3.12,14.9],0,-34,4,'#8a5a17','<strong>Přívod přes studenou neobytnou půdu</strong> po stropních panelech v zatepleném boxu, aspoň 150 mm (topení 2× 32, voda, chránička pro data).');
+ I.mark([3.86,4.2,10.2],30,-30,5,C.sup,'<strong>R2</strong> zapuštěný v příčce chodby u dětského pokoje 1, 9 okruhů + rezerva. Ve skříňce je i odbočka ke kazetě a směšovací ventil.');
  I.mark([3.06,2.2,11.0],-34,-8,6,C.sup,'<strong>Stoupačka B</strong> R2 → R1 z vestavěné skříně do skříňky nad sedací nikou a stropem v pásu Z2, vedle šachty rekuperace V3 (prostupy B a P3).');
  I.mark([2.84,.9,10.4],-34,22,7,A.ink,'<strong>R1</strong> ve vestavěné skříni v předsíni u rozvaděče, 8 okruhů + 2 rezervy.');
  I.mark([4.15,.02,2.2],-30,26,8,pal[1],'<strong>Okruhy přízemí 1.1–1.8</strong>: barevné plochy jsou vytápěné plochy, tenké čáry připojení k R1.');
  I.mark([4.15,3.07,2.2],-30,-26,9,pal[0],'<strong>Okruhy podkroví 2.1–2.9</strong>: chodba a podesta se vytápějí připojovacími trubkami.');
  I.mark([6.35,.02,8.4],34,26,10,'#e0b04a','<strong>Koupelny</strong>: podlaha po 10 cm + stěnové topení + elektrický žebřík.');
- I.mark([4.45,3.1,5.6],-30,-34,11,FCC,'<strong>Kazetový fancoil FC</strong> ve stropě chodby u schodiště (kreslený pod ním), jediná klimatizace v domě. Voda z TČ trubkami 20×2 nad rovným stropem z odbočky na půdě, kondenzát do sifonu umyvadla v koupelně u ložnice.');
+ I.mark([4.45,3.1,5.6],-30,-34,11,FCC,'<strong>Kazetový fancoil FC</strong> ve stropě chodby u schodiště (kreslený pod ním), jediná klimatizace v domě. Voda z TČ trubkami 20×2 z odbočky u R2 nad rovný strop, v izolaci stropu. Tělo kazety je v krabici obalené parozábranou, kondenzát do sifonu umyvadla v koupelně u ložnice.');
  I.marks(document.getElementById('isoList'));}
 
 // One bifilar spiral at a large scale with the laying rules annotated.
@@ -547,8 +550,8 @@ function drawHydro(){const s=document.getElementById('hydro');s.replaceChildren(
  // zones
  R(20,40,150,440,{fill:'#eef0ec',stroke:'#c9d1cb',rx:10});T(95,62,'venku',{'text-anchor':'middle',fill:C.sub});
  R(185,40,395,440,{fill:'#f6f8f5',stroke:'#c9d1cb',rx:10});T(382,62,'technická místnost 1.02',{'text-anchor':'middle',fill:C.sub});
- R(595,40,90,440,{fill:'#f6efe2',stroke:'#dcc7a2',rx:10,'stroke-dasharray':'5 4'});T(640,62,'půda nad',{'text-anchor':'middle',fill:'#8a5a17'});T(640,78,'průjezdem',{'text-anchor':'middle',fill:'#8a5a17'});
- R(700,40,280,440,{fill:'#f3f6f2',stroke:'#c9d1cb',rx:10});T(840,62,'dům',{'text-anchor':'middle',fill:C.sub});
+ R(592,40,52,440,{fill:'#eef2f5',stroke:'#c5d0d8',rx:10,'stroke-dasharray':'5 4'});T(618,62,'studená',{'text-anchor':'middle','font-size':10.5,fill:'#4f6f82'});T(618,78,'půda',{'text-anchor':'middle','font-size':10.5,fill:'#4f6f82'});
+ R(652,40,328,440,{fill:'#f3f6f2',stroke:'#c9d1cb',rx:10});T(816,62,'dům',{'text-anchor':'middle',fill:C.sub});
  // heat pump
  R(40,150,110,110,{fill:'#dfe3e0',stroke:'#7d8b83',rx:8});T(95,185,'TČ LG 12 kW',{'text-anchor':'middle','font-weight':700,'font-size':12});T(95,203,'topí i chladí',{'text-anchor':'middle','font-size':11,fill:C.sub});T(95,221,'+ elektrokotel 9 kW',{'text-anchor':'middle','font-size':10.5,fill:C.sub});
  el(s,'circle',{cx:95,cy:120,r:12,fill:'#fff',stroke:C.sen,'stroke-width':2});T(95,124,'Te',{'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:C.sen});T(95,100,'venkovní čidlo (stinná fasáda)',{'text-anchor':'middle','font-size':9.5,fill:C.sen});
@@ -571,17 +574,17 @@ function drawHydro(){const s=document.getElementById('hydro');s.replaceChildren(
  // plant room UFH via RTL
  L([[540,180],[540,120],[565,120]],C.sup,2);R(560,108,16,24,{fill:'#fff',stroke:'#26352f'});T(572,100,'RTL',{'text-anchor':'end','font-size':9.5,fill:C.sub});
  // trench
- R(600,170,80,75,{fill:'#f2d9b6','fill-opacity':.6,stroke:'#c79a5a','stroke-dasharray':'5 4',rx:6});T(640,226,'izolační box',{'text-anchor':'middle','font-size':9.5,fill:'#8a5a17'});
- // cooling: tee to the cassette fan coil, then the mixing valve for the floor (bypass from the return); the cassette FC below
+ R(597,170,42,75,{fill:'#f2d9b6','fill-opacity':.6,stroke:'#c79a5a','stroke-dasharray':'5 4',rx:6});T(618,224,'zatepl.',{'text-anchor':'middle','font-size':9,fill:'#8a5a17'});T(618,236,'box',{'text-anchor':'middle','font-size':9,fill:'#8a5a17'});
+ // cooling, in the R2 cabinet: tee to the cassette fan coil, then the mixing valve for the floor (bypass from the return); the cassette FC below
  const dot=(x,y,c)=>el(s,'circle',{cx:x,cy:y,r:3.6,fill:c});
- L([[608,180],[608,418],[790,418]],C.sup,3);dot(608,180,C.sup);
- L([[650,200],[650,250]],C.ret,2.5);dot(650,250,C.ret);
- el(s,'polygon',{points:'640,170 650,180 640,190',fill:'#fff',stroke:'#26352f','stroke-width':1.5});el(s,'polygon',{points:'660,170 650,180 660,190',fill:'#fff',stroke:'#26352f','stroke-width':1.5});el(s,'polygon',{points:'640,200 650,180 660,200',fill:'#fff',stroke:'#26352f','stroke-width':1.5});
- R(645,152,10,10,{fill:'#fff',stroke:'#26352f'});T(650,124,'směšovací',{'text-anchor':'middle','font-size':9.5,fill:C.sub});T(650,136,'ventil',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
- T(0,0,'ke kazetě FC',{transform:'translate(602,335) rotate(-90)','text-anchor':'middle','font-size':9.5,fill:C.sup});
+ L([[668,180],[668,418],[790,418]],C.sup,3);dot(668,180,C.sup);
+ L([[696,200],[696,250]],C.ret,2.5);dot(696,250,C.ret);
+ el(s,'polygon',{points:'686,170 696,180 686,190',fill:'#fff',stroke:'#26352f','stroke-width':1.5});el(s,'polygon',{points:'706,170 696,180 706,190',fill:'#fff',stroke:'#26352f','stroke-width':1.5});el(s,'polygon',{points:'686,200 696,180 706,200',fill:'#fff',stroke:'#26352f','stroke-width':1.5});
+ R(691,152,10,10,{fill:'#fff',stroke:'#26352f'});T(692,106,'směšovací',{'text-anchor':'middle','font-size':9.5,fill:C.sub});T(692,118,'ventil u R2',{'text-anchor':'middle','font-size':9.5,fill:C.sub});
+ T(0,0,'ke kazetě FC',{transform:'translate(662,335) rotate(-90)','text-anchor':'middle','font-size':9.5,fill:C.sup});
  L([[790,418],[790,430]],C.sup,2.5);R(760,430,170,40,{fill:'#fff',stroke:'#7d8b83',rx:6});T(845,447,'FC · chodba v podkroví',{'text-anchor':'middle','font-weight':700,'font-size':11});
  T(845,462,'kazeta 600 × 600 ve stropě',{'text-anchor':'middle','font-size':9.5,fill:C.sub});L([[900,470],[900,478]],C.ret,2.5);
- L([[900,478],[672,478],[672,250]],C.ret,3);dot(672,250,C.ret);
+ L([[900,478],[714,478],[714,250]],C.ret,3);dot(714,250,C.ret);
  // manifolds
  const man=(x,y,n,name,sub,col)=>{R(x,y,20,120,{fill:'#263a30',rx:3});T(x+10,y-10,name,{'text-anchor':'middle','font-weight':700,'font-size':14});T(x+34,y-10,sub,{'font-size':10.5,fill:C.sub});
   for(let i=0;i<n;i++){const yy=y+8+i*(104/(n-1));el(s,'path',{d:`M${x+20} ${yy} h18 q14 0 14 6 q0 6 -14 6 h-4`,fill:'none',stroke:pal[i%pal.length],'stroke-width':2.2,opacity:i<n-(name==='R1'?2:1)?1:.3});}};

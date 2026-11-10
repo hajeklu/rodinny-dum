@@ -125,7 +125,7 @@ function atticBase(g,variant,o={}){const cmp=variant==='compact';
  for(const [a,b] of [[.3,FLAT[0]],[FLAT[1],8.0]])g.rect(a,b,.3,18.2,{fill:'#f3f5f2'});
  const rw=ROOFWIN[variant];for(const z of rw.k)g.rect(.93,1.92,z,z+.66,{fill:'#e3eef3',stroke:PAL.glass,'stroke-width':.8,'stroke-dasharray':'3 2'});for(const z of rw.t)g.rect(6.38,7.37,z,z+.66,{fill:'#e3eef3',stroke:PAL.glass,'stroke-width':.8,'stroke-dasharray':'3 2'});
  if(cmp){g.rect(.3,8.0,13.17,18.2,{fill:g.url('loft')});g.rect(.3,8.0,12.9,13.17,{fill:'#e7dfc4',stroke:PAL.partEdge});g.rect(3.8,4.6,12.9,13.17,{fill:'#fff'});
-  g.text(15.7,3.3,'Půda – neobytná',{'font-size':12,'font-weight':600,fill:PAL.sub});g.text(15.7,3.7,'nevytápěná, v zateplené obálce',{'font-size':9.5,fill:PAL.faint});}
+  g.text(15.7,3.3,'Půda – neobytná',{'font-size':12,'font-weight':600,fill:PAL.sub});g.text(15.7,3.7,'nevytápěná, studená (mimo obálku)',{'font-size':9.5,fill:PAL.faint});}
  g.rect(5.25,8.0,5.57,7.23,{fill:g.url('h'),stroke:PAL.fix});g.rect(6.25,8.0,4.45,5.57,{fill:g.url('h'),stroke:PAL.fix});g.text(6.4,6.77,'otvor schodiště',{'font-size':9,fill:PAL.sub});
  if(o.under)o.under(g);partitions(g,PARTS[variant]);
  fixRect(g,[4.28,6.33,1.45,3.05],{rx:3});

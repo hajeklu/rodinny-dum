@@ -64,14 +64,14 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <div class="fact"><b>1 · HR v technické místnosti, RD v předsíni</b><span>Přívod už je v technické místnosti, tam zůstává hlavní vypínač, svodiče, HDO, TČ a venkovní okruhy. Dům napájí jeden kabel CYKY-J 5×10 do RD za sedací nikou v předsíni, vedle R1 a SLP.</span></div>
     <div class="fact"><b>2 · Každá místnost vlastní kabel</b><span>Z RD paprskově do každé místnosti. Relé a stmívače jsou na DIN liště v RD, tlačítka vedou Cat6 do vstupů ESPHome. Když spadne Home Assistant nebo Wi-Fi, tlačítka spínají dál.</span></div>
     <div class="fact"><b>3 · Dva systémy světel</b><span>Hlavní světlo 230 V (okruhy L1–L4) a noční orientační světlo 24 V (N1, N2) se zálohou z baterie. Když vypadne jistič hlavních světel nebo proud, v noci se dál svítí na cestu.</span></div>
-    <div class="fact"><b>4 · Světla nahoře, zásuvky dole</b><span>V podkroví vedou světla nad rovným stropem, v přízemí podlahou podkroví a vývrtem do dutiny panelu nebo v podhledech 2,40 m. Zásuvky a spotřebiče vedou v chráničkách v EPS podlahy a nahoru stěnou.</span></div>
+    <div class="fact"><b>4 · Světla nahoře, zásuvky dole</b><span>V podkroví vedou světla nad rovným stropem v izolaci, nad kterou je studená půda, v přízemí podlahou podkroví a vývrtem do dutiny panelu nebo v podhledech 2,40 m. Zásuvky a spotřebiče vedou v chráničkách v EPS podlahy a nahoru stěnou.</span></div>
     <div class="fact"><b>5 · Spotřebiče na vlastních okruzích</b><span>Varná deska 400 V a trouba v ostrůvku, myčka, lednice a mrazák s vlastním chráničem, pračka a sušička v prádelně, tři elektrické žebříky přes relé.</span></div>
     <div class="fact"><b>6 · Venku z HR</b><span>Světla v průjezdu, sloupky u příjezdovky, LED pod terasou a schody, zásuvky v průjezdu a na terase, ČOV, čerpadlo retenční nádrže, brána (hotovo) a kabel na wallbox.</span></div>
   </div>
 
   <section class="card">
     <h2>Prostorové schéma · celý dům</h2>
-    <p class="desc">Rozložený pohled ze strany terasy: dole přízemí s technickou místností a průjezdem, nad ním podkroví a nahoře prostor nad rovným stropem podkroví, kde vede páteř světel a napáječ RD. Šedé jsou svazky kabelů v chráničkách, barevné jednotlivé kabely k prvkům. Bez měřítka, čísla odkazují na seznam pod obrázkem.</p>
+    <p class="desc">Rozložený pohled ze strany terasy: dole přízemí s technickou místností a průjezdem, nad ním podkroví a nahoře studená půda nad rovným stropem podkroví, kde v izolaci stropu vede páteř světel a napáječ RD. Šedé jsou svazky kabelů v chráničkách, barevné jednotlivé kabely k prvkům. Bez měřítka, čísla odkazují na seznam pod obrázkem.</p>
     <div class="wrap"><svg id="iso" viewBox="0 0 1110 620" role="img" aria-label="Prostorové schéma elektroinstalace v domě"></svg></div>
     <div class="legend" id="legIso"></div>
     <ol class="isolist" id="isoList"></ol>
@@ -93,7 +93,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
 
   <section class="card">
     <h2>Podkroví · E-02</h2>
-    <p class="desc">Čárkovaně nad rovným stropem (2,60 m nad podlahou podkroví, v teplém prostoru pod hřebenem), plně v podlaze (chráničky v EPS 50 pod anhydritem). Páteř nad stropem vede souběžně s chodbou asi 0,15 m od stěny k terase, mimo rozdělovače rekuperace a kazetu klimatizace. Nakreslená je dispozice podle D1.3, varianta „Zadní část neobytná“ by potřebovala vlastní výkres.</p>
+    <p class="desc">Čárkovaně nad rovným stropem (2,60 m nad podlahou podkroví, na kleštinách v izolaci stropu, nad ní je studená půda), plně v podlaze (chráničky v EPS 50 pod anhydritem). Páteř nad stropem vede souběžně s chodbou asi 0,15 m od stěny k terase, mimo rozdělovače rekuperace a kazetu klimatizace. Nakreslená je dispozice podle D1.3, varianta „Zadní část neobytná“ by potřebovala vlastní výkres.</p>
     <div class="wrap"><svg id="attic" viewBox="0 0 1200 744" role="img" aria-label="Půdorys podkroví s elektroinstalací"></svg></div>
     <div class="notes" style="margin-top:12px">
       <div class="note"><strong>Napáječ RD</strong><br>CYKY-J 5×10 z HR stoupá prostupem E1 do vestavěné skříně pokoje 2.08 (stejný kastlík jako rekuperace V1), vede nad rovným stropem podél páteře k rohu skříně pokoje 2.04 a stoupačkou E2 dolů do RD. <span id="feedLen"></span></div>
@@ -200,7 +200,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <li><strong>Před objednáním panelů:</strong> E1 a E2 do výrobního výkresu spolu s P1–P3, P9, B a C.</li>
       <li><strong>Hrubá stavba:</strong> chráničky přes obvodové zdi k motorům žaluzií a k venkovním světlům a zásuvkám, před zateplením. Výkop pod průjezdem a podél příjezdovky, dokud není dlažba.</li>
       <li><strong>Technická místnost:</strong> HR na stěnu, připojit stávající přívod a HDO. Prozatímní staveništní zásuvky z HR.</li>
-      <li><strong>Podkroví před SDK stropem:</strong> páteř nad stropem, napáječ RD, krabice světel a rezervy ke střešním oknům.</li>
+      <li><strong>Podkroví po parozábraně stropu, před SDK a před foukáním izolace:</strong> páteř nad stropem, napáječ RD, krabice světel a rezervy ke střešním oknům. Každý kabel dolů do stropu projde parozábranou vzduchotěsně.</li>
       <li><strong>Podlahy:</strong> v podlaze podkroví kabely ke stropním světlům přízemí s vývrty do dutin, pak chráničky zásuvek a spotřebičů v obou podlažích. Teprve potom topení a potěr.</li>
       <li><strong>Stěny:</strong> drážky v instalačních zónách, hluboké krabice s N, Cat6 k tlačítkům a čidlům. Každý kabel popsat na obou koncích, vše vyfotit a zaměřit od rohů, než přijde omítka.</li>
       <li><strong>RD a SLP:</strong> zapojit rozvaděč, výchozí revize, pak kompletace vypínačů, zásuvek a svítidel.</li>
@@ -241,6 +241,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
       <div class="note"><strong>Výkon a tarif</strong><br>Hlavní jistič 3 × 32 A. TČ, záložní ohřev 9 kW, deska a později wallbox najednou ho mohou shodit. Záložní ohřev blokuje HDO, wallbox potřebuje řízení výkonu podle odběru (měření v HR, HA).</div>
       <div class="note"><strong>Rozvod je pracovní návrh</strong><br>Polohy prvků a tras jsou z 3D modelu, přepočtené na skutečnou desku 8,30 × 11,90 m, s přesností asi ±10 cm. Dimenzování, selektivitu, úbytky napětí a ochrany potvrdí prováděcí projekt nebo elektrikář.</div>
       <div class="note"><strong>Varianta podkroví</strong><br>Nakreslená je dispozice podle D1.3. Ve variantě „Zadní část neobytná“ zůstává HR, E1, E2 i páteř nad stropem, mění se jen vývody v podkroví.</div>
+      <div class="note risk"><strong>Kabely v izolaci stropu</strong><br>Nad rovným stropem je studená půda a kabely tam leží v asi 600 mm izolace. Kabel celý obalený izolací má zhruba poloviční zatížitelnost (ČSN 33 2000-5-52, koeficient 0,5). Napáječ RD CYKY-J 5×10 na B25 pak vychází právě na hranici a světelné okruhy podkroví 1,5 mm² na B10 těsně pod ní. Elektrikář to musí přepočítat: o průřez víc, menší jistič, nebo kabely vést navrchu izolace. Kabely dolů ke krabicím ve stropě procházejí parozábranou, proto vzduchotěsné krabice nebo průchodky s manžetou.</div>
     </div>
   </section>
 
@@ -438,7 +439,7 @@ function drawIso(){const s=$('iso'),E1=1.4,E2=2.4,lev=y=>y<=3.0?y:y<5.6?y+E1:y+E
  const ink='#263a30';
  I.mark([3.05,1.4,16.47],-40,40,1,ink,'<strong>HR</strong> v technické místnosti na stěně k průjezdu. Sem už vede přívod z pilíře a HDO (šedě čárkovaně). Odtud TČ, záložní ohřev, rekuperace, venkovní okruhy a napáječ RD.');
  I.mark([4.65,2.6,18.02],34,10,2,col('feed'),'<strong>Prostup E1</strong> v dobetonávce u štítu vedle C a P1. Napáječ CYKY-J 5×10 stoupá ve vestavěné skříni pokoje 2.08.');
- I.mark([4.97,5.79,14.4],18,-34,3,col('feed'),'<strong>Nad rovným stropem podkroví</strong> vede páteř světel a žaluzií podkroví a napáječ RD, v teplém prostoru pod hřebenem.');
+ I.mark([4.97,5.79,14.4],18,-34,3,col('feed'),'<strong>Nad rovným stropem podkroví</strong> vede páteř světel a žaluzií podkroví a napáječ RD, v izolaci stropu, nad ní je studená půda.');
  I.mark([2.95,4.6,11.3],-44,-24,4,col('feed'),'<strong>Stoupačka E2</strong> v rohu skříně pokoje 2.04 a za zadní stěnou sedací niky v předsíni, stropem v pásu Z2: napáječ dolů, okruhy podkroví nahoru.');
  I.mark([2.81,1.2,11.2],-48,30,5,ink,'<strong>RD</strong> v předsíni za sedací nikou, vedle R1 a SLP. Relé a stmívače světel, ovladače žaluzií, zdroje 24 V se zálohou, moduly ESPHome.');
  I.mark([3.65,2.95,4.0],-28,-30,6,col('light'),'<strong>Světla přízemí shora</strong>: kabely v podlaze podkroví, vývrt do dutiny panelu nebo krabice v podhledu (pás v obýváku, ostrůvek, koupelna, předsíň).');
