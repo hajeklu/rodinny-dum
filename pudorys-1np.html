@@ -81,11 +81,11 @@ const EPS=200,WALL=300;
 const PARTS=[{x0:0,x1:8300,s0:0,s1:11900},{x0:0,x1:8300,s0:16100,s1:18500}];
 // Openings: frame a–b along the wall; rough opening is 20 mm bigger on each jamb. fr = frame depth band across the wall (model positions).
 const OPEN=[
- {id:'FIX',side:'front',a:5780,b:7780,w:2000,h:2400,sill:0,head:2400,kind:'fix',where:'přední štít u rohu, 1.11',lintel:'2× IPE 240, L ≈ 2 500 (podle nákupu), uložení na ZB rohu potvrdit statikem',note:'pevné zasklení'},
- {id:'HS',side:'right',a:320,b:3320,w:3000,h:2400,sill:0,head:2400,kind:'hs',where:'boční stěna k terase, 1.11',lintel:'2× IPE 240, L 3 640 (statika Ing. Khol)',note:'zvedací posuvné, práh ±0'},
+ {id:'FIX',side:'front',a:5780,b:7780,w:2000,h:2400,sill:0,head:2400,kind:'fix',where:'přední štít u rohu, 1.11',lintel:'2× IPE 240, L ≈ 2 640 (300 + 2 040 + 300), uložení na ZB rohu potvrdit statikem',note:'pevné zasklení'},
+ {id:'HS',side:'right',a:320,b:3320,w:3000,h:2400,sill:0,head:2400,kind:'hs',where:'boční stěna k terase, 1.11',lintel:'2× IPE 240, L 3 640 (300 na ZB rohu + 3 040 + 300)',note:'zvedací posuvné, práh ±0'},
  {id:'O1',side:'right',a:8000,b:9000,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'koupelna 1.05',lintel:'SOLBET NS 140 (120 + 180)'},
- {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',where:'obývák 1.11',lintel:'2× IPE 240, L 3 500',note:'pevné zasklení v rámu, dvě pole se sloupkem'},
- {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 500',note:'pevné zasklení v rámu, dvě pole se sloupkem; deska linky zajíždí do špalety jako parapet'},
+ {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',where:'obývák 1.11',lintel:'2× IPE 240, L 3 640 (300 + 3 040 + 300)',note:'pevné zasklení v rámu, dvě pole se sloupkem'},
+ {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 640 (300 + 3 040 + 300)',note:'pevné zasklení v rámu, dvě pole se sloupkem; deska linky zajíždí do špalety jako parapet'},
  {id:'O4',side:'entry',a:1150,b:2150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'komora 1.08',lintel:'SOLBET NS 140 (120 + 180)'},
  {id:'D1',side:'entry',a:3350,b:5150,w:1800,h:2200,sill:0,head:2200,kind:'entry',where:'vstup do předsíně 1.03',lintel:'SOLBET NS 230 (120 + 180)',note:'křídlo 1 200 + světlík 600 na straně WC, panty u světlíku'},
  {id:'O5',side:'entry',a:6150,b:7150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'WC 1.04',lintel:'SOLBET NS 140 (120 + 180)'},
