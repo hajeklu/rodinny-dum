@@ -156,6 +156,7 @@ for(let i=0;i<xs.length-1;i++)for(let j=0;j<ys.length-1;j++){let x=(xs[i]+xs[i+1
 for(let i=0;i<openings.length;i++){let o=openings[i],p=pos+.21;windowPart(name+'_window'+i,group==='upper'?'upperglass':'glass',axis,p,...o);}
 if($('surrounds').checked&&name!=='Entrance_ground'&&name!=='Technical_entry')windowSurrounds(name,group,axis,pos,openings);
 }
+
 // Charcoal surrounds 12 cm wide, 35 mm proud of the plaster; windows get a wider sill and the reveals share the colour.
 // Slat panel beside the fix: as wide as the corner pier, touching the fix surround.
 function decorSlatSpan(){const edge=8-fixOffset-2-.12;return [edge-(fixOffset+.2),edge];}
@@ -186,6 +187,11 @@ function cladding(name,axis,pos,lo,hi,y0,y1,holes=[],taper=0,style='flat',edge='
   let spans=[[lo+leftInset,hi-rightInset]];
   for(const o of holes){if(y>=o[3]||y+board<=o[2])continue;const next=[];for(const [a,b] of spans){if(o[1]<=a||o[0]>=b){next.push([a,b]);continue;}if(o[0]>a)next.push([a,o[0]]);if(o[1]<b)next.push([o[1],b]);}spans=next;}
   for(let part=0;part<spans.length;part++){const [a,b]=spans[part];if(b-a<.045)continue;const poly=[[a,y],[b,y],[b,y+board],[a,y+board]];prism(name+'_course_'+row+'_'+part,'ground',timber(row),poly,axis,pos,.032);}
+ // A course that only partly overlaps an opening is trimmed to the head or sill line instead of being left out over the opening's width,
+ // otherwise white plaster shows as a strip above the head and below the sill.
+ for(const o of holes){if(y>=o[3]||y+board<=o[2])continue;const a=Math.max(o[0],lo+leftInset),b=Math.min(o[1],hi-rightInset);if(b-a<.01)continue;for(const [v0,v1] of [[y,Math.min(y+board,o[2])],[Math.max(y,o[3]),y+board]])if(v1-v0>.002)prism(name+'_course_trim_'+row,'ground',timber(row),[[a,v0],[b,v0],[b,v1],[a,v1]],axis,pos,.032);
+  // its joint batten too, where the joint lies clear of the opening (else the white wall shows through the 14 mm gap)
+  if(row<rows-1&&(y+board>=o[3]||y+pitch+.004<=o[2]))prism(name+'_joint_trim_'+row,'ground',[.20,.16,.12],[[a,y+board-.004],[b,y+board-.004],[b,y+pitch+.004],[a,y+pitch+.004]],axis,pos+.008,.016);}
   // Dark recessed batten line in the joint above, only where the next course continues.
   const nextSetback=setbackAt(row+1);
   const jointLo=lo+(edge==='left'?nextSetback:0),jointHi=hi-(edge==='right'?nextSetback:0);
@@ -1172,6 +1178,7 @@ wall('Front_ground','ground','z',-.2,-.2,8.2,0,2.9,[[8-fixOffset-2,8-fixOffset,.
 wall('Entrance_ground','ground','z',11.7,-.2,8.2,0,2.9,[small(1),[3.2,5,.24,2.44,'doorside:.6:b:b'],small(6)]);
 // Anthracite threshold sill through the reveal, flush with the bottom of the door frame (level entrance from the passage paving).
 box('Entrance_threshold','ground',[.24,.26,.27],3.18,.205,11.775,1.84,.035,12.233-11.775);
+box('Technical_threshold','ground',[.24,.26,.27],5.78,.205,15.967,1.04,.035,16.425-15.967);
 wall('Technical_left','ground','x',-.2,16.5,18.3,0,2.9);
 wall('Technical_right','ground','x',7.7,16.5,18.3,0,2.9);
 wall('Technical_back','ground','z',18.3,-.2,8.2,0,2.9,[small(1),small(3.5),small(6)]);
@@ -1184,7 +1191,8 @@ if($('slab').checked)abMark(slabLayer);
 wall('Upper_left','upper','x',-.2,.3,18.3,FLOOR,EAVE);wall('Upper_right','upper','x',7.7,.3,18.3,FLOOR,EAVE);
 wall('Front_gable','upper','z',-.2,-.2,8.2,FLOOR,RIDGE,[[2.25,3.25,3.3,5.5],[4.75,5.75,3.3,5.5]],true);
 wall('Back_gable','upper','z',18.3,-.2,8.2,FLOOR,RIDGE,[[2.25,3.25,3.3,5.5],[4.75,5.75,3.3,5.5]],true);
-for(let z of [-.28,18.68])for(let x of [2.25,4.75]){for(let u=x;u<x+1.01;u+=.125)box('Juliet_rail','upperglass',C.frame,u,3.30,z,.018,1.05,.018);box('Juliet_top','upperglass',C.frame,x,4.33,z,1.02,.03,.03);}
+// Frameless glass Juliet balustrades in a slim charcoal base shoe, drawn see-through.
+for(let z of [-.28,18.68])for(let x of [2.25,4.75]){box('Juliet_glass','upperglass',[.40,.53,.56],x+.02,3.36,z+.012,.96,1.02,.012);box('Juliet_shoe','upperglass',C.frame,x,3.30,z,1.0,.07,.04);}
 // Low, quiet grey plinth; openings start above this level.
 // Low dark plinth; its top line runs exactly at the HS / fix threshold (+0.24) and all timber sits on it.
 {const pc=[.24,.26,.27],py0=-.15,ph=.39,t=.012,run=(n,axis,out,lo,hi,holes=[])=>{let spans=[[lo,hi]];for(const [a,b] of holes)spans=spans.flatMap(([l,r])=>b<=l||a>=r?[[l,r]]:[[l,a],[b,r]].filter(([x,y])=>y-x>.01));const piece=(l,r,hh)=>axis==='x'?box(n,'ground',pc,out,py0,l,t,hh,r-l):box(n,'ground',pc,l,py0,out,r-l,hh,t);for(const [l,r] of spans)piece(l,r,ph);for(const [a,b] of holes)piece(a,b,.24-py0);};
@@ -1195,7 +1203,7 @@ run('Dark_plinth_front','z',-.2-t,-.2,8.2);run('Dark_plinth_back','z',18.8,-.2,8
 run('Dark_plinth_passage_main','z',12.2,-.2,8.2);run('Dark_plinth_passage_technical','z',16-t,-.2,8.2);}
 // Passage walls are clad edge to edge; the boards wrap the corners and stop on the side facades.
 cladding('Entrance_timber','z',12.201,-.227,8.233,.24,2.899,[small(1),[3.2,5,.24,2.44],small(6)],0);
-cladding('Technical_timber','z',15.974,-.227,8.233,.24,2.899,[[6,7,.24,2.44]],0);
+cladding('Technical_timber','z',15.974,-.227,8.233,.24,2.899,[[5.8,6.8,.24,2.44]],0);
 // On the facades the timber ends in square stair steps: the bottom courses run furthest.
 // Every course is its own step with a long 13 cm tread, bottom longest.
 // Timber end on the side facades: straight with a charcoal end trim, alternating (zip) board ends, or steps.
@@ -1207,7 +1215,7 @@ for(const [name,pos] of [['left',-.227],['right',8.201]]){
 }
 for(let x=-.2,i=0;x<8.2;x+=.14,i++)box('Passage_timber_ceiling','upper',timber(i),x+.003,2.865,12.2,Math.min(.134,8.2-x-.003),.034,3.8);
 // Matching timber reveals and slim charcoal sills remove the white cut-out look.
-for(let spec of [[11.90,12.23,[small(1),[3.2,5,.24,2.44],small(6)]],[15.97,16.30,[[6,7,.24,2.44]]]]){
+for(let spec of [[11.90,12.23,[small(1),[3.2,5,.24,2.44],small(6)]],[15.97,16.30,[[5.8,6.8,.24,2.44]]]]){
  let [za,zb,holes]=spec;
  for(let [a,b,c,d] of holes){box('Timber_reveal_left','ground',timber(0),a,c,za,.016,d-c,zb-za);box('Timber_reveal_right','ground',timber(0),b-.016,c,za,.016,d-c,zb-za);box('Timber_reveal_head','ground',timber(0),a,d-.016,za,b-a,.016,zb-za);if(c>1)box('Charcoal_window_sill','ground',C.frame,a-.015,c-.017,za,b-a+.03,.017,zb-za);}
 }
@@ -1316,9 +1324,9 @@ gl.uniform1f(uniform.night,nightMode?1:0);gl.uniform1f(uniform.deep,orientMode?1
 const straddles=(q,c)=>{if(!q.bb){const lo=[1e9,1e9,1e9],hi=[-1e9,-1e9,-1e9];for(const v of q.vertices)for(let i=0;i<3;i++){lo[i]=Math.min(lo[i],v[i]);hi[i]=Math.max(hi[i],v[i]);}q.bb=[lo,hi];}
  const [lo,hi]=q.bb;let a=c[3],z=c[3];for(let i=0;i<3;i++){a+=c[i]*(c[i]>0?lo[i]:hi[i]);z+=c[i]*(c[i]>0?hi[i]:lo[i]);}return a<0&&z>0;};
 const panes=[],part=b=>{gl.uniform1f(uniform.clipOn,!cut||b.part.name==='Ground'||b.part.group==='horizon'?0:b.part.faces.length>1?2:1);gl.bindBuffer(gl.ARRAY_BUFFER,b.buffer);gl.enableVertexAttribArray(attrib.p);gl.enableVertexAttribArray(attrib.n);gl.vertexAttribPointer(attrib.p,3,gl.FLOAT,false,24,0);gl.vertexAttribPointer(attrib.n,3,gl.FLOAT,false,24,12);gl.uniform3fv(uniform.color,evening()&&litGlass(b.part)?[.66,.53,.34]:b.part.color);const tile=/^(Flat|Wave)_tile_course_/.test(b.part.name);gl.uniform1f(uniform.wave,b.part.name.startsWith('Wave_tile_course_')?1:0);gl.uniform4fv(uniform.tile,b.part.tile||[0,0,0,0]);gl.uniform1f(uniform.emissive,nightMode&&(orientMode?/^Amber_/.test(b.part.name):/^Lamp_|^Light_|_led|_glow|_light$|Mirror_glow/.test(b.part.name)||litGlass(b.part))?1:0);gl.uniform1f(uniform.finish,b.part.name==='Floor_pu'?9.0:b.part.name==='Floor_micro'?10.0:b.part.name==='Floor_concrete'?11.0:b.part.name.startsWith('Moss_')?8.0:b.part.name==='Wood_ceiling'?7.0:b.part.name.startsWith('Sterka_')?6.0:b.part.name==='Wall_tile'?5.0:b.part.name==='Floor_oak'?3.0:b.part.name==='Floor_tile'?4.0:b.part.name.startsWith('Cobble_')?2.0:tile&&roofFinish==='glazura'?1.0:0.0);if(cut&&b.part.name!=='Ground'&&b.part.group!=='horizon'&&b.part.faces.length>1&&straddles(b.part,cut)){gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);gl.drawArrays(gl.TRIANGLES,0,b.count);gl.cullFace(gl.FRONT);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(0,-16);gl.drawArrays(gl.TRIANGLES,0,b.count);gl.disable(gl.POLYGON_OFFSET_FILL);gl.disable(gl.CULL_FACE);}else gl.drawArrays(gl.TRIANGLES,0,b.count);};
-for(let b of buffers){if(!visible(b.part.group))continue;if(eyeMode&&isPane(b.part)){panes.push(b);continue;}part(b);}
+for(let b of buffers){if(!visible(b.part.group))continue;if(eyeMode&&isPane(b.part)||b.part.name==='Juliet_glass'){panes.push(b);continue;}part(b);}
 // Eye-level view: glazing drawn last, see-through.
-if(panes.length){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);gl.uniform1f(uniform.alpha,.25);panes.forEach(part);gl.depthMask(true);gl.disable(gl.BLEND);}
+if(panes.length){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);panes.forEach(b=>{gl.uniform1f(uniform.alpha,b.part.name==='Juliet_glass'?.1:.25);part(b);});gl.depthMask(true);gl.disable(gl.BLEND);}
 placeLabels(m);placeCompass(right,viewH);lastM=m;placeMeasures();}
 let pointers=new Map(),lastDist=0;
 canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.focus();});
