@@ -150,9 +150,13 @@ function windowPart(name,group,axis,pos,a,b,bottom,top,type){let dep=.075,fw=.06
   box(name+'_lever',group,[.08,.08,.09],hinge==='b'?hx-.01:hx-.11,bottom+1.0,pos+(pos<6?dep+.005:-.04),.15,.02,.035);}}}
 function wall(name,group,axis,pos,lo,hi,y0,y1,openings=[],gable=false){
 const gap=.02,rough=openings.map(o=>[o[0]-gap,o[1]+gap,o[2]-gap,o[3]+gap]);
-let xs=[lo,hi],ys=[y0,y1];if(gable)xs.push(4);for(let o of rough){xs.push(o[0],o[1]);ys.push(o[2],o[3]);}
+let xs=[lo,hi],ys=[y0,y1];if(gable)xs.push(4);if(group==='ground'&&y0<PLINTH&&y1>PLINTH)ys.push(PLINTH);for(let o of rough){xs.push(o[0],o[1]);ys.push(o[2],o[3]);}
 xs=[...new Set(xs.filter(x=>x>=lo&&x<=hi))].sort((a,b)=>a-b);ys=[...new Set(ys.filter(y=>y>=y0&&y<=y1))].sort((a,b)=>a-b);
-for(let i=0;i<xs.length-1;i++)for(let j=0;j<ys.length-1;j++){let x=(xs[i]+xs[i+1])/2,y=(ys[j]+ys[j+1])/2;if(rough.some(o=>x>o[0]&&x<o[1]&&y>o[2]&&y<o[3]))continue;let poly=[[xs[i],ys[j]],[xs[i+1],ys[j]],[xs[i+1],ys[j+1]],[xs[i],ys[j+1]]];if(gable){poly=clip(poly,p=>EAVE+p[0]-p[1]);poly=clip(poly,p=>EAVE+8-p[0]-p[1]);}prism(name+'_'+i+'_'+j,group,C.wall,poly,axis,pos,.5);}
+for(let i=0;i<xs.length-1;i++)for(let j=0;j<ys.length-1;j++){let x=(xs[i]+xs[i+1])/2,y=(ys[j]+ys[j+1])/2;if(rough.some(o=>x>o[0]&&x<o[1]&&y>o[2]&&y<o[3]))continue;let poly=[[xs[i],ys[j]],[xs[i+1],ys[j]],[xs[i+1],ys[j+1]],[xs[i],ys[j+1]]];if(gable){poly=clip(poly,p=>EAVE+p[0]-p[1]);poly=clip(poly,p=>EAVE+8-p[0]-p[1]);}
+ // Below +0.24 the wall carries only the 100 mm XPS of the plinth instead of the 200 mm EPS: its outer face steps 100 mm back, and walls
+ // that own a corner of the plan are shortened by the same 100 mm there, so the recess turns the corner.
+ if(group==='ground'&&ys[j+1]<=PLINTH+1e-4){const outAtPos=pos<1||name==='Technical_entry',cut=u=>u<=-.19?u+PREC:u>=8.19?u-PREC:u;poly=poly.map(([u,v])=>[cut(u),v]);prism(name+'_'+i+'_'+j,group,C.wall,poly,axis,outAtPos?pos+PREC:pos,.5-PREC);}
+ else prism(name+'_'+i+'_'+j,group,C.wall,poly,axis,pos,.5);}
 for(let i=0;i<openings.length;i++){let o=openings[i],p=pos+.21;windowPart(name+'_window'+i,group==='upper'?'upperglass':'glass',axis,p,...o);}
 if($('surrounds').checked&&name!=='Entrance_ground'&&name!=='Technical_entry')windowSurrounds(name,group,axis,pos,openings);
 }
@@ -198,6 +202,8 @@ function cladding(name,axis,pos,lo,hi,y0,y1,holes=[],taper=0,style='flat',edge='
   if(row<rows-1)for(const [a,b] of spans){const ja=Math.max(a,jointLo),jb=Math.min(b,jointHi);if(jb-ja<.045)continue;prism(name+'_joint_'+row,'ground',[.20,.16,.12],[[ja,y+board-.004],[jb,y+board-.004],[jb,y+pitch+.004],[ja,y+pitch+.004]],axis,pos+.008,.016);}
  }
 }
+// Plinth: top at the HS / fix threshold, XPS 100 mm against the 200 mm EPS above, so its face sits 100 mm behind the facade.
+const PLINTH=.24,PREC=.1;
 const FLOOR=3.15,KNEE=.968,EAVE=FLOOR+KNEE+.30,RIDGE=EAVE+4;
 // Roof window positions along the house (pre-mirror; side 1 becomes the HS / south side).
 // Dropped living-room ceiling (pre-mirror plan): a perimeter frame at the window heads, 1.35 m wide along the whole front gable (TV wall,
@@ -1170,7 +1176,7 @@ else box('Cobble_passage','site',C.granite,-.2,P0-.06,pz0,8.4,.06,pz1-pz0);
 if(siteMode==='level')for(const [x0,x1,z0,z1] of [[3.1,5.1,12.25,12.39],[5.7,6.9,15.82,15.96]]){box('Passage_drain','site',[.11,.11,.12],x0,PP-.002,z0,x1-x0,.0035,z1-z0);
  for(let x=x0+.02;x<x1-.015;x+=.03)box('Passage_drain_bar','site',[.45,.46,.47],x,PP+.0016,z0+.018,.012,.0008,z1-z0-.036);}
 box('Driveway_kerb','site',[.62,.63,.62],-5.32,P0-.075,-7,.12,.1,25.8);box('Driveway_kerb_end','site',[.62,.63,.62],-5.32,P0-.075,18.8,5.12,.1,.12);const terraceZ=-.25,terraceLength=terraceMode==='full'?19.05:7;terrace(terraceZ,terraceLength);
-box('Base_main','ground',C.concrete,-.2,-.15,-.2,8.4,.15,12.4);box('Base_technical','ground',C.concrete,-.2,-.15,16,8.4,.15,2.8);box('Floor_main','ground',C.floor,.3,0,.3,7.4,.24,11.4);box('Floor_technical','ground',C.floor,.3,0,16.5,7.4,.24,1.8);
+box('Base_main','ground',C.concrete,-.1,-.15,-.1,8.2,.15,12.2);box('Base_technical','ground',C.concrete,-.1,-.15,16.1,8.2,.15,2.6);box('Floor_main','ground',C.floor,.3,0,.3,7.4,.24,11.4);box('Floor_technical','ground',C.floor,.3,0,16.5,7.4,.24,1.8);
 const small=(a)=>[a,a+1,1.74,2.44];
 wall('Left_ground','ground','x',-.2,.3,11.7,0,2.9,[[1.4,4.4,1.14,1.74],[6.2,9.2,1.14,1.74]]);
 wall('Right_ground','ground','x',7.7,.3,11.7,0,2.9,[[hsOffset,hsOffset+3,.24,2.64],small(8.0)]);
@@ -1196,11 +1202,11 @@ for(let z of [-.28,18.68])for(let x of [2.25,4.75]){box('Juliet_glass','uppergla
 // Low, quiet grey plinth; openings start above this level.
 // Low dark plinth; its top line runs exactly at the HS / fix threshold (+0.24) and all timber sits on it.
 {const pc=[.24,.26,.27],py0=-.15,ph=.39,t=.012,run=(n,axis,out,lo,hi,holes=[])=>{let spans=[[lo,hi]];for(const [a,b] of holes)spans=spans.flatMap(([l,r])=>b<=l||a>=r?[[l,r]]:[[l,a],[b,r]].filter(([x,y])=>y-x>.01));const piece=(l,r,hh)=>axis==='x'?box(n,'ground',pc,out,py0,l,t,hh,r-l):box(n,'ground',pc,l,py0,out,r-l,hh,t);for(const [l,r] of spans)piece(l,r,ph);for(const [a,b] of holes)piece(a,b,.24-py0);};
-run('Dark_plinth_left','x',-.2-t,-.2-t,12.2);run('Dark_plinth_left_technical','x',-.2-t,16,18.8+t);
-run('Dark_plinth_right','x',8.2,-.2-t,12.2,[]);run('Dark_plinth_right_technical','x',8.2,16,18.8+t);
-run('Dark_plinth_front','z',-.2-t,-.2,8.2);run('Dark_plinth_back','z',18.8,-.2,8.2);
+run('Dark_plinth_left','x',-.1-t,-.1-t,12.1);run('Dark_plinth_left_technical','x',-.1-t,16.1,18.7+t);
+run('Dark_plinth_right','x',8.1,-.1-t,12.1,[]);run('Dark_plinth_right_technical','x',8.1,16.1,18.7+t);
+run('Dark_plinth_front','z',-.1-t,-.1,8.1);run('Dark_plinth_back','z',18.7,-.1,8.1);
 // The plinth line continues through the passage, so timber everywhere starts on the same +0.24 edge.
-run('Dark_plinth_passage_main','z',12.2,-.2,8.2);run('Dark_plinth_passage_technical','z',16-t,-.2,8.2);}
+run('Dark_plinth_passage_main','z',12.1,-.1,8.1);run('Dark_plinth_passage_technical','z',16.1-t,-.1,8.1);}
 // Passage walls are clad edge to edge; the boards wrap the corners and stop on the side facades.
 cladding('Entrance_timber','z',12.201,-.227,8.233,.24,2.899,[small(1),[3.2,5,.24,2.44],small(6)],0);
 cladding('Technical_timber','z',15.974,-.227,8.233,.24,2.899,[[5.8,6.8,.24,2.44]],0);
