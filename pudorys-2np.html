@@ -97,9 +97,9 @@ const OPEN=[
 const SIDE={front:{out:-EPS,inn:WALL,fr:[10,85],rail:-280},back:{out:LEN+EPS,inn:LEN-WALL,fr:[18415,18490],rail:LEN+280}};
 // Roof windows VELUX FK08 66 × 140: frame start along the house (model roofWindowZ), k = driveway / north side (S), t = HS / south side (J).
 // In plan the dashed outline is the opening in the sloped ceiling lining, as on the model's eye-level ceiling (x 0.50–1.45 and 6.85–7.80).
-const RW={d13:{k:[4960,10230],t:[4840,7550,10350,12200]},compact:{k:[5500,8600,10700],t:[4800,8000,10350,11650]}};
+const RW={d13:{k:[4960,7580,10230],t:[4840,7550,10350,12200]},compact:{k:[5500,8600,10700],t:[4800,8000,10350,11650]}};
 const RWX={k:[500,1450],t:[6850,7800]},RWW=660;
-const RWROOM={d13:{4960:'koupelna 2.03',10230:'pokoj 2.04',4840:'schodiště',7550:'prádelna 2.05',10350:'WC 2.06',12200:'koupelna 2.07'},
+const RWROOM={d13:{4960:'koupelna 2.03',7580:'pokoj 2.04, nad stolem',10230:'pokoj 2.04',4840:'schodiště',7550:'prádelna 2.05',10350:'WC 2.06',12200:'koupelna 2.07'},
  compact:{5500:'koupelna 2.03',8600:'dětský pokoj 1',10700:'dětský pokoj 1',4800:'schodiště',8000:'koupelna dětí',10350:'dětský pokoj 2',11650:'dětský pokoj 2'}};
 const winList=()=>[...RW[V].k.map((s,i)=>({id:'S'+(i+1),side:'k',s})),...RW[V].t.map((s,i)=>({id:'J'+(i+1),side:'t',s}))];
 // Partitions 150 mm from the model (upperInterior), with a tag, the rooms either side, a check distance and the tag position on the plan.
@@ -393,7 +393,7 @@ function sidePanel(){const cmp=V==='compact',rooms=ROOMS[V],warm=rooms.filter(r=
   `Chodba 1 110 mezi příčkami, pokoje na straně příjezdu 3 190, na straně HS 3 100 až k nadezdívce, WC na předstěnách 250 (D1.3: 1 100, 3 000 a 2 700 + instalační předstěna 300).`,
   `<b>Podlaha ${lv(FLOOR)}</b>, schodiště 18 × 170 (D1.3: +3,000 a 18 × 166,7). <b>Rovný podhled ${lv(CEIL)}</b>, světlá výška ${nb(CLEAR)} (DSP strop ve 3,0 m), kleštiny na každé vazbě (Krov).`,
   `Dubové zábradlí v. 1 000 kolem otvoru končí na omítnutém komíně, přední běh pokračuje podél horních stupňů ke střední stěně. Lavice podél zábradlí, průchod od schodů do chodby zůstává volný.`,
-  `<b>Střešní okna VELUX FK08 66 × 140</b>: ${RW[V].t.length} na jižní straně (HS), ${RW[V].k.length} na severní (D1.3: 4 + 4 okna 800 × 1 200 souměrně). Mimo příčky nejméně 150 mm${cmp?'':' a mezi krokvemi podle Krovu'}.`,
+  `<b>Střešní okna VELUX FK08 66 × 140</b>: ${RW[V].t.length} na jižní straně (HS), ${RW[V].k.length} na severní (D1.3: 4 + 4 okna 800 × 1 200 souměrně). Mimo příčky nejméně 150 mm${cmp?'':' a mezi krokvemi podle Krovu. Pokoj 2.04 má dvě okna S2 a S3 jako v DSP, s jedním by nesplnil 1/10 podlahové plochy'}.`,
   `Klimatizace: kazetový fancoil 620 × 620 v rovném podhledu chodby u schodiště, studená voda z TČ${cmp?' přes směšovací ventil na půdě':''}, kondenzát čerpadlem do sifonu umyvadla 2.03.`,
   `Krov: třetí rám R2 se stojkami 2U140 v příčkách chodby (s 9 910), R1 a R3 kolem dveří na koncích chodby jako v D1.3${cmp?' (R3 stojí volně na půdě)':''}.`,
   `Rozdělovač topení R2 zapuštěný v zesílené příčce chodby nad R1 (projekt topení: v koupelně 2.05 u WC 2.06). Kastlík VZT 620 × 350 na předním konci dělicí stěny ložnice, revizní otvor v podhledu chodby s rozdělovači VZT nad ním.`];

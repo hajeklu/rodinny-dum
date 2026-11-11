@@ -289,7 +289,7 @@ D('S7','appl',[4.92,U0+1.3,13.12],{fl:'a',n:[1,0],t:'Žebřík v koupelně 2.07'
 for(const x of [2.9,5.4])D('Ž2','motor',[x,5.55,-.33],{fl:'a',drop:[x,.05],t:'Žaluzie balkonových dveří ložnice'});
 for(const x of [2.9,5.4])D('Ž2','motor',[x,5.55,18.83],{fl:'a',drop:[x,18.45],t:'Žaluzie okna v pokoji 2.08'});
 for(const z of [4.84,7.55,10.35,12.2])D('Ž2','rez',[6.45,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
-for(const z of [4.96,10.23])D('Ž2','rez',[1.85,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
+for(const z of [4.96,7.58,10.23])D('Ž2','rez',[1.85,5.82,z+.33],{fl:'a',t:'Rezerva ke střešnímu oknu (otevírání, markýza)'});
 D('T1','tech',[4.45,Uc+.12,5.6],{fl:'a',t:'Kazetový fancoil FC'});
 D('T1','tech',[3.65,U0+1.4,10.85],{fl:'a',n:[1,0],t:'Zónový regulátor R2'});
 

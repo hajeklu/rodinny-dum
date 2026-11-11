@@ -8,7 +8,7 @@ Interaktivní 3D studie a pracovní podklady ke stavbě rodinného domu: model, 
 
 ## 3D model · varianta v09
 
-Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrácenou orientaci, střechu 45°, okapní přesah 1,00 m (dříve 1,20 m) a štítový 0,80 m. Střešní okna: VELUX FK08 66 × 140 cm, čtyři na jižní a dvě na severní straně.
+Interaktivní 3D studie bez garáže. Zachovává dohodnutou stranově převrácenou orientaci, střechu 45°, okapní přesah 1,00 m (dříve 1,20 m) a štítový 0,80 m. Střešní okna: VELUX FK08 66 × 140 cm, čtyři na jižní a tři na severní straně.
 
 <table>
 <tr><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-interier-prizemi.webp" alt="Přízemí bez střechy: kuchyň, obývák s krbem a schodiště"></a><br><sub>Přízemí bez střechy: kuchyň, obývák s krbem a schodiště</sub></td><td width="50%"><a href="https://hajeklu.github.io/rodinny-dum/"><img src="screenshots/model-interier-podkrovi.webp" alt="Podkroví: ložnice se šatnou, dva pokoje, koupelny a prádelna"></a><br><sub>Podkroví: ložnice se šatnou, dva pokoje, koupelny a prádelna</sub></td></tr>

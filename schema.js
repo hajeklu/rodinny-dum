@@ -41,7 +41,7 @@ const ROOMS={
 const FLAT=[1.78,6.52];                                   // edges of the flat attic ceiling (+5.66); outside them the slope
 const FRAMES=[['R1',4.365],['R2',9.91],['R3',14.205]];    // steel ridge frames over the corridor
 const CHIMNEY=[5.27,5.65,5.2,5.6];
-const ROOFWIN={compact:{k:[5.5,8.6,10.7],t:[4.8,8.0,10.35,11.65]},d13:{k:[4.96,10.23],t:[4.84,7.55,10.35,12.2]}};
+const ROOFWIN={compact:{k:[5.5,8.6,10.7],t:[4.8,8.0,10.35,11.65]},d13:{k:[4.96,7.58,10.23],t:[4.84,7.55,10.35,12.2]}};
 // Plant room: tanks, the heat pump outdoor unit, the MVHR unit.
 const PLANT={tv:[17.5,1.15,.45],aku:[17.75,2.3,.27],rtl:[3.15,4.05,17.85,18.15],ctl:[1.9,2.2,16.55,17.15],hp:[1.37,2.47,19.0,19.4],unit:[5.1,5.85,17.64,18.2]};
 // Ceiling penetrations of the ground floor (all trades). at [z,x], d diameter (m), who: vzt, top, kan, ele. Grouped as on stropni-panely:
