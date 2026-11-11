@@ -72,6 +72,7 @@ footer{margin:24px 0 6px;padding-top:14px;border-top:1px solid #d8dfd9;color:#73
     <div class="notes" style="margin-top:12px">
       <div class="note"><strong>A · R1, rozvaděč RD a SLP v předsíni</strong><br>Stejné místo jako v projektu: příčka ke komoře, kde je podle elektro projektu i hlavní rozvaděč domu (791 × 571 mm) a vývod 230 V pro rozdělovač. Na příčce vedle sebe rozvaděč RD a R1 (10 vývodů: 8 okruhů + 2 rezerva, s průtokoměry), nad R1 zónový regulátor a SLP (HA, router, switch, UPS). Rozvaděč vedle rozdělovače, ne pod ním. Vše schová vestavěná skříň a zadní stěna sedací niky, která se udělá jako servisní dvířka.</div>
       <div class="note"><strong>B a C · stoupačka a přívod z technické místnosti</strong><br><strong>B:</strong> stoupačka R2 → R1 (2× 26×3 v izolaci) a 2 chráničky Ø 32 pro kabely, prostup stropem v instalačním pásu Z2 u zadní stěny, asi 2,76 m od líce stěny u kuchyně a 0,6 m od líce stěny u vstupu. <strong>C:</strong> přívod z TČ jde v technické místnosti pod strop a prostupem u štítu nahoru do půdy nad průjezdem (topení 2× 32, voda, chránička pro data), dál viz podkroví. Prostup C je ve stejné dobetonávce jako prostup rekuperace P1, viz výkresy P-01 a V-04 níže.</div>
+      <div class="note"><strong>Stěnové topení nad vanou a nika</strong><br>Na příčce P5 ke WC po celé délce vany (x 5,35–7,05), od okraje vany do asi 2,0 m. Smyčky obcházejí niku 800 × 320 mm (x 5,85–6,65, 1,10–1,42 m nad podlahou) s odstupem asi 5 cm, takže stěna topí na 2,0 m² místo 2,4 m² (asi o 30 W méně). Trubky vedou pod nikou i nad ní, do jejího okolí nevrtat. Před omítkou trasy vyfotit a okótovat.</div>
     </div>
   </section>
 
@@ -344,7 +345,7 @@ const R1=[
  {id:'1.3',room:'Obývák – u okna',s:15,q:54,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[2.05,1.8],lay:[{r:[.3,3.15,.3,3.7],e:'z1',c:'hi',t:'s'}],fw:[[9.65,3.15],[9.5,4.94],[4.0,4.94],[3.95,3.25]]},
  {id:'1.4',room:'Jídelna',s:15,q:54,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[5.05,1.7],lay:[{r:[.65,4.75,4.05,6.05],e:'z1',c:'hi',t:'s'}],fw:[[9.6,3.1],[9.45,4.86],[6.3,4.86]]},
  {id:'1.5',room:'Kuchyň a chodba 1.06 – dlažba, i pod linkou a ostrůvkem',s:15,q:62,ctl:'Obytná část · termopohon, čidlo v obýváku (krb a slunce ji zavřou samy)',lab:[8.05,3.85],lay:[{r:[2.6,4.75,6.2,9.67],e:'z1',c:'lo',t:'s'},{r:[.3,2.6,6.2,9.22],e:'z1',c:'hi',t:'s'}],fw:[[9.9,2.85]],lk:[[[9.5,2.53]]]},
- {id:'1.6',room:'Koupelna 1.05 – podlaha + stěna nad vanou',s:10,q:60,wall:2.4,ctl:'Koupelna · termopohon, 23–24 °C + elektrický žebřík',lab:[8.4,6.75],lay:[{r:[5.32,8.0,7.54,9.62],e:'x0',c:'hi',t:'s'}],fw:[[10.2,3.75],[9.65,4.75],[9.59,5.05]],wh:[5.35,7.05,10.25,10.33]},
+ {id:'1.6',room:'Koupelna 1.05 – podlaha + stěna nad vanou',s:10,q:60,wall:2.0,ctl:'Koupelna · termopohon, 23–24 °C + elektrický žebřík',lab:[8.4,6.75],lay:[{r:[5.32,8.0,7.54,9.62],e:'x0',c:'hi',t:'s'}],fw:[[10.2,3.75],[9.65,4.75],[9.59,5.05]],wh:[5.35,7.05,10.25,10.33]},
  {id:'1.7',room:'WC 1.04',s:10,q:85,ctl:'WC · termopohon, 20 °C',lab:[11.04,6.8],lay:[{r:[5.32,7.51,10.48,11.6],e:'x0',c:'hi',t:'s'}],fw:[[10.8,3.1],[11.47,3.25]]},
  {id:'1.8',room:'Předsíň 1.03 (dlažba)',s:10,q:100,ctl:'ručně, otevřeno',lab:[10.9,4.6],lay:[{r:[3.35,5.17,10.44,11.35],e:'x0',c:'lo',t:'s'}],fw:[[10.52,3.1]]}
 ];

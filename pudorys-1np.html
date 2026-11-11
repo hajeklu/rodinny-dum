@@ -125,7 +125,7 @@ const PSET=[
  ['P2','komora / předsíň','2 590–2 740','9 670–11 600',150,'2 290 od vnitřního líce levé stěny',''],
  ['P3','předsíň / chodba','2 740–5 170','9 670–9 820',150,'200 před P1 (P1 je kvůli lednici posunutá do komory)','DV1 1 000, 710 od P2'],
  ['P4','chodba / koupelna a WC','5 170–5 320','7 390–11 600',150,'2 680 od vnitřního líce pravé stěny','DV2 700, 910 od P6 · DV3 700, 50 od vstupní stěny'],
- ['P5','koupelna / WC','5 320–8 000','10 330–10 480',150,'1 120 od vnitřního líce vstupní stěny',''],
+ ['P5','koupelna / WC','5 320–8 000','10 330–10 480',150,'1 120 od vnitřního líce vstupní stěny','nika nad vanou 800 × 320, x 5 850–6 650, 1 100–1 420 nad hotovou podlahou, 80 do tvárnice ze strany koupelny'],
  ['P6','schodiště / koupelna','5 320–8 000','7 390–7 540',150,'2 790 od P5',''],
  ['P7','pod 1. ramenem, ke krbu, nosná pod VM2','5 100–6 750','5 950–6 200',250,'konec 150 před prvním stupněm',''],
  ['P8','střední stěna schodiště','6 750–6 850','5 570–6 200',100,'',''],
@@ -218,8 +218,10 @@ for(const d of DOORS){
  el('path',{d:`M${X(cx)} ${Y(cs)}A${r*K} ${r*K} 0 0 ${sweep} ${X(ox)} ${Y(os)}`,fill:'none',stroke:'#111','stroke-width':W.hair},gIn);
 }
 // Partition tags matching the setting-out table.
-for(const [id,x,sv,rot] of [['P1',620,9745],['P2',2665,11150,1],['P3',4810,9745],['P4',5245,10050,1],['P5',6600,10405],['P6',6150,7465],['P7',5950,6075],['P8',6800,5885,1],['P9',6150,5560,1],['P10',6300,4375,1]]){
+for(const [id,x,sv,rot] of [['P1',620,9745],['P2',2665,11150,1],['P3',4810,9745],['P4',5245,10050,1],['P5',7300,10405],['P6',6150,7465],['P7',5950,6075],['P8',6800,5885,1],['P9',6150,5560,1],['P10',6300,4375,1]]){
  const a={'font-size':.95,'font-weight':700,fill:'#7a1f12',stroke:'#fff','stroke-width':.5,'paint-order':'stroke',dy:.33};if(rot)a.transform=`rotate(-90 ${X(x)} ${Y(sv)})`;T(x,sv,id,a,gIn);}
+// Niche over the bath in P5 (above the cut plane, dashed): 80 into the block from the bathroom face.
+R(5850,6650,10330,10410,{fill:'#fff',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'.6 .4'},gIn);
 // Fireplace, flue, firewood niche and the oak slat screen toward the living room.
 R(5250,6250,4200,5200,{fill:'#5b5b5b',stroke:'#111','stroke-width':W.mid},gIn);T(5750,4640,'KRB',{fill:'#fff','font-size':1.6,'font-weight':700},gIn);
 R(5270,5650,5200,5600,{fill:'url(#pZ)',stroke:'#111','stroke-width':W.mid},gIn);L([[5270,5200],[5650,5600]],{stroke:'#111','stroke-width':W.hair},gIn);L([[5270,5600],[5650,5200]],{stroke:'#111','stroke-width':W.hair},gIn);
@@ -301,6 +303,7 @@ lvl(4450,4700,'±0,000');lvl(4750,16800,'±0,000');lvl(5450,13250,'−0,025');
 for(const [id,x,s] of [['DV1',3950,9230],['DV2',5710,8150],['DV3',5710,10660],['DV4',2100,10080]]){const d=DOORS.find(q=>q.id===id);T(x,s,d.label,{'font-size':1.2,fill:'#333'},gTxt);}
 T(6200,1150,'čtecí kout u FIXu',{'font-size':1.15,fill:'#777'},gTxt);
 T(7125,4335,'nika na dřevo pod schody',{'font-size':.95,fill:'#555'},gTxt);
+T(6250,10150,'nika 800 × 320, h 1 100',{'font-size':.9,fill:'#555'},gTxt);
 T(7125,4120,'dubové lamely',{'font-size':1.0,fill:'#7a5a33'},gTxt);
 T(3750,6040,'přechod dub / dlažba',{'font-size':1.1,fill:'#333'},gTxt);
 T(480,5300,'předstěna 350',{'font-size':1.05,fill:'#555',transform:`rotate(-90 ${X(480)} ${Y(5300)})`},gTxt);
@@ -464,7 +467,7 @@ side.innerHTML=`<style>
   <li>Okna O2, O3 <b>3 000 × 600, P 900</b> (D1.2: 3 000 × 900, P 900). Poloha beze změny. Obě <b>pevně zasklená</b>.</li>
   <li>Vstup D1 ve stejném otvoru 1 800, nově křídlo 1 200 + světlík 600. Dveře předsíň → chodba jednokřídlé 1 000 v ose vstupu (D1.2: 1 600 dvoukřídlé).</li>
   <li class="warn">Příčka předsíň a chodba / WC a koupelna má líc na 5 170 (D1.2: 5 100, po rozšíření domu 5 250). Světlík pak končí v rohu u WC, předsíň a chodba jsou o 80 mm užší, WC a koupelna o 80 mm širší. Pokud chceš držet D1.2, posuň příčku a oboje dveře o 80 mm.</li>
-  <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Stoupačka K2 v rohu obložená. WC s předstěnou 390 přes čelo, schová K1 a V2 (D1.2: předstěna 165 podél obvodové stěny).</li>
+  <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Nad vanou nika 800 × 320 v příčce P5 (80 do tvárnice), umývátko ve WC proto se stojánkovou baterií. Stoupačka K2 v rohu obložená. WC s předstěnou 390 přes čelo, schová K1 a V2 (D1.2: předstěna 165 podél obvodové stěny).</li>
   <li>Schodiště 18 × 170 mm, konstrukční výška 3 060 podle výškového řezu (D1.2: 18 × 166,7). Výroba podle zaměření.</li>
   <li>Pilíř mezi O2 a O3: předstěna 350 se stoupačkou S2 do K3 (Kanalizace, varianta A).</li>
   <li><b>Příčka P1 kuchyně / komora o 200 dál v komoře</b> (D1.2: v linii s P3), aby se za okno O3 vešla vestavná lednice 600 a distanční lišta pro dveře přes 90°. <span class="warn">Kuchyně je o 100 kratší, na lištu zbývá 70 místo 170; ověřit, případně P1 o 100 dál.</span> Komora 1 580 místo 1 780, ostrůvek od skrytých dveří 1 050.</li>

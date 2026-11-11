@@ -166,7 +166,7 @@ for(const z of [7.0,8.9])D('L2','spot',[4.1,Y1,z],{t:'Přisazená bodovka v chod
 D('L2','wall',[7.98,2.55,6.3],{n:[-1,0],t:'Nástěnné svítidlo nad schodištěm'});
 for(const z of [8.5,9.7])D('L2','spot',[6.25,PY,z],{j:'Jbath',t:'Bodovka v podhledu koupelny (IP44)'});
 D('L2','wall',[6.25,1.6,7.575],{n:[0,1],j:'Jbath',t:'Podsvícené zrcadlo'});
-D('L2','strip',null,{pts:[[5.55,1.75,10.31],[6.95,1.75,10.31]],j:'Jbath',t:'LED v nice nad vanou'});
+D('L2','strip',null,{pts:[[5.87,1.65,10.32],[6.63,1.65,10.32]],j:'Jbath',t:'LED v nice nad vanou (24 V SELV, IP65, zdroj v podhledu mimo zóny)'});   // niche 0.8 m in P5, top +1.42 above the floor
 D('L2','spot',[6.45,PY,11.05],{t:'Bodovka v podhledu WC'});
 D('L2','ceil',[1.75,PY,10.85],{t:'Světlo v komoře (spíná kontakt dveří)'});
 // N1 night lights, fed through the floor
