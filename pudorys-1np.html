@@ -80,12 +80,16 @@ const W={thick:.35,mid:.25,thin:.13,hair:.08};
 const EPS=200,WALL=300;
 const PARTS=[{x0:0,x1:8300,s0:0,s1:11900},{x0:0,x1:8300,s0:16100,s1:18500}];
 // Openings: frame a–b along the wall; rough opening is 20 mm bigger on each jamb. fr = frame depth band across the wall (model positions).
+// hidden: fixed glazing without a visible frame, no mullion; hiddenFix: the same for the HS fixed field toward the corner. For these a–b is
+// the visible glass and the 65 mm frame (cover) sits beyond it in the rough opening, drawn dashed, covered outside by the EPS of the reveal
+// and inside by a 65 mm XPS/PIR board with plaster (85 mm from the jamb to the glass). The ZB corner stays as it is, so FIX and HS grow
+// away from the corner (variant agreed 12. 11.).
 const OPEN=[
- {id:'FIX',side:'front',a:5780,b:7780,w:2000,h:2400,sill:0,head:2400,kind:'fix',where:'přední štít u rohu, 1.11',lintel:'2× IPE 240, L ≈ 2 640 (300 + 2 040 + 300), uložení na ZB rohu potvrdit statikem',note:'pevné zasklení'},
- {id:'HS',side:'right',a:320,b:3320,w:3000,h:2400,sill:0,head:2400,kind:'hs',where:'boční stěna k terase, 1.11',lintel:'2× IPE 240, L 3 640 (300 na ZB rohu + 3 040 + 300)',note:'zvedací posuvné, práh ±0'},
+ {id:'FIX',side:'front',a:5715,b:7715,w:2000,h:2400,sill:0,head:2400,kind:'fix',hidden:true,cover:65,where:'přední štít u rohu, 1.11',lintel:'2× IPE 240, L ≈ 2 770 (300 + 2 170 + 300), uložení na ZB rohu potvrdit statikem',note:'pevné zasklení bez rámu'},
+ {id:'HS',side:'right',a:385,b:3385,w:3000,h:2400,sill:0,head:2400,kind:'hs',hiddenFix:true,cover:65,where:'boční stěna k terase, 1.11',lintel:'2× IPE 240, L 3 770 (300 na ZB rohu + 3 170 + 300)',note:'zvedací posuvné, práh ±0'},
  {id:'O1',side:'right',a:8000,b:9000,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'koupelna 1.05',lintel:'SOLBET NS 140 (120 + 180)'},
- {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',where:'obývák 1.11',lintel:'2× IPE 240, L 3 640 (300 + 3 040 + 300)',note:'pevné zasklení v rámu, dvě pole se sloupkem'},
- {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 640 (300 + 3 040 + 300)',note:'pevné zasklení v rámu, dvě pole se sloupkem; deska linky zajíždí do špalety jako parapet'},
+ {id:'O2',side:'left',a:1400,b:4400,w:3000,h:600,sill:900,head:1500,kind:'win',hidden:true,cover:65,where:'obývák 1.11',lintel:'2× IPE 240, L 3 770 (300 + 3 170 + 300)',note:'pevné zasklení bez rámu, jedno sklo'},
+ {id:'O3',side:'left',a:6200,b:9200,w:3000,h:600,sill:900,head:1500,kind:'win',hidden:true,cover:65,where:'kuchyně 1.07',lintel:'2× IPE 240, L 3 770 (300 + 3 170 + 300)',note:'bez rámu, jedno sklo; deska linky jako parapet'},
  {id:'O4',side:'entry',a:1150,b:2150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'komora 1.08',lintel:'SOLBET NS 140 (120 + 180)'},
  {id:'D1',side:'entry',a:3350,b:5150,w:1800,h:2200,sill:0,head:2200,kind:'entry',where:'vstup do předsíně 1.03',lintel:'SOLBET NS 230 (120 + 180)',note:'křídlo 1 200 + světlík 600 na straně WC, panty u světlíku'},
  {id:'O5',side:'entry',a:6150,b:7150,w:1000,h:700,sill:1500,head:2200,kind:'win',where:'WC 1.04',lintel:'SOLBET NS 140 (120 + 180)'},
@@ -103,7 +107,7 @@ const SIDE={
  techentry:{along:'x',out:16100-EPS,inn:16400,fr:[16110,16185]},
  back:{along:'x',out:18500+EPS,inn:18200,fr:[18410,18485]}
 };
-const rough=o=>[o.a-20,o.b+20];
+const rough=o=>[o.a-(o.cover||0)-20,o.b+(o.cover||0)+20];
 // Partitions 150 mm (pórobeton) with door gaps; doors: [a,b] along the wall, hinge end, swing side (+1 = higher coordinate across the wall).
 const PARTS_IN=[
  {x0:300,x1:2590,s0:9870,s1:10020,gaps:[[1750,2450]]},
@@ -183,14 +187,17 @@ for(const o of OPEN){
  const bandRect=(u0,u1,v0,v1,a)=>sd.along==='s'?R(v0,v1,u0,u1,a,gOpen):R(u0,u1,v0,v1,a,gOpen);
  const lineAlong=(u0,u1,v,a)=>sd.along==='s'?L([[v,u0],[v,u1]],a,gOpen):L([[u0,v],[u1,v]],a,gOpen);
  if(o.kind==='win'||o.kind==='fix'){
-  bandRect(o.a,o.b,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.mid});lineAlong(o.a,o.b,fm,{stroke:'#111','stroke-width':W.thin});
-  if(o.b-o.a>2500)lineAlong((o.a+o.b)/2-30,(o.a+o.b)/2+30,f0,{stroke:'#111','stroke-width':W.mid});
+  if(o.hidden){bandRect(o.a-o.cover,o.b+o.cover,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'.6 .4'});lineAlong(o.a-o.cover,o.b+o.cover,fm,{stroke:'#111','stroke-width':W.mid});}
+  else{bandRect(o.a,o.b,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.mid});lineAlong(o.a,o.b,fm,{stroke:'#111','stroke-width':W.thin});
+  if(o.b-o.a>2500)lineAlong((o.a+o.b)/2-30,(o.a+o.b)/2+30,f0,{stroke:'#111','stroke-width':W.mid});}
   if(o.kind==='win'){lineAlong(r0,r1,sd.inn,{stroke:'#111','stroke-width':W.hair});lineAlong(r0,r1,sd.out,{stroke:'#111','stroke-width':W.hair});}
  }else if(o.kind==='hs'){
-  bandRect(o.a,o.b,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.mid});
   const mid=(o.a+o.b)/2;
-  bandRect(o.a+60,mid+50,f0+12,f0+32,{fill:'#fff',stroke:'#111','stroke-width':W.thin});      // fixed field toward the corner
-  bandRect(mid-50,o.b-60,f1-32,f1-12,{fill:'#fff',stroke:'#111','stroke-width':W.thin});      // sliding sash, inner track
+  if(o.hiddenFix){bandRect(o.a-o.cover,o.b+o.cover,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'.6 .4'});
+   bandRect(o.a-o.cover,mid+50,f0+12,f0+32,{fill:'#fff',stroke:'#111','stroke-width':W.thin});}   // fixed field toward the corner, its frame hidden
+  else{bandRect(o.a,o.b,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.mid});
+   bandRect(o.a+60,mid+50,f0+12,f0+32,{fill:'#fff',stroke:'#111','stroke-width':W.thin});}      // fixed field toward the corner
+  bandRect(mid-50,o.b+(o.cover||0)-60,f1-32,f1-12,{fill:'#fff',stroke:'#111','stroke-width':W.thin});      // sliding sash, inner track
   L([[sd.inn-110,o.b-450],[sd.inn-110,o.b-1150]],{stroke:'#111','stroke-width':W.thin,'marker-end':'url(#arr)'},gOpen);
  }else if(o.kind==='entry'){
   bandRect(o.a,o.b,f0,f1,{fill:'#fff',stroke:'#111','stroke-width':W.mid});
@@ -202,6 +209,10 @@ for(const o of OPEN){
   const hx=o.b-40,hy=f1,leaf=920;L([[hx,hy],[hx,hy+leaf]],{stroke:'#111','stroke-width':W.mid},gOpen);
   el('path',{d:`M${X(o.a+40)} ${Y(hy)}A${leaf*K} ${leaf*K} 0 0 1 ${X(hx)} ${Y(hy+leaf)}`,fill:'none',stroke:'#111','stroke-width':W.hair},gOpen);
  }
+ // Hidden frame: inside a 65 mm board with plaster (grey), outside the EPS of the reveal, both from the jamb to the visible glass.
+ if(o.cover){const fi=Math.abs(f0-sd.inn)<Math.abs(f1-sd.inn)?f0:f1,fo=fi===f0?f1:f0,lo=(p,q)=>[Math.min(p,q),Math.max(p,q)];
+  for(const [u0,u1] of [[r0,o.a],[o.b,r1]]){bandRect(u0,u1,...lo(fi,sd.inn),{fill:'#e2e2e2',stroke:'#111','stroke-width':W.hair});
+   bandRect(u0,u1,...lo(fo,sd.out),{fill:'#fff',stroke:'#111','stroke-width':W.hair});}}
 }
 
 // ---------------- Partitions, fireplace, fittings ----------------
@@ -251,7 +262,7 @@ stairs.forEach((p,k)=>{PG(p,{fill:'#fff',stroke:'#111','stroke-width':W.thin},gI
  walk.forEach(([x,s],k)=>{if(k===0||k===5||k===9||k===11||k===15||k===17){const [dx,ds]=k<6?[0,190]:k<12?[230,0]:[0,-300];T(x+dx,s+ds,String(k+1),{'font-size':1.05,fill:'#333'},gIn);}});}
 // Ceiling opening above the stair (dashed) and the dropped ceiling (dash-dot).
 PG([[6250,4450],[8000,4450],[8000,7230],[5250,7230],[5250,5570],[6250,5570]],{fill:'none',stroke:'#111','stroke-width':W.thin,'stroke-dasharray':'1.6 .6'},gIn);
-{const da={fill:'none',stroke:'#3d6db3','stroke-width':W.thin,'stroke-dasharray':'2 .5 .3 .5'};PG([[300,300],[8000,300],[8000,4200],[5760,4200],[5760,1650],[300,1650]],da,gIn);R(2000,3050,6650,8750,da,gIn);}
+{const da={fill:'none',stroke:'#3d6db3','stroke-width':W.thin,'stroke-dasharray':'2 .5 .3 .5'};PG([[300,300],[8000,300],[8000,4200],[5715,4200],[5715,1650],[300,1650]],da,gIn);R(2000,3050,6650,8750,da,gIn);}
 T(4600,1500,'podhled 2 400',{'font-size':1.25,fill:'#3d6db3','text-anchor':'start'},gIn);T(5860,3950,'podhled 2 400',{'font-size':1.1,fill:'#3d6db3','text-anchor':'start'},gIn);
 // Ceiling penetration for the riser from the box in the bedroom (two MVHR Ø 90). No AC on the ground floor, it is upstairs in the hallway.
 R(3850,4070,1170,1480,{fill:'none',stroke:'#b8402f','stroke-width':W.mid},gIn);L([[3850,1170],[4070,1480]],{stroke:'#b8402f','stroke-width':W.thin},gIn);L([[3850,1480],[4070,1170]],{stroke:'#b8402f','stroke-width':W.thin},gIn);
@@ -342,7 +353,7 @@ const env=[-200,0,300,8000,8300,8500];
 // Outer chains; on the A4 sheet with extension lines from 1.5 mm off the building.
 const exB=A4?Y(-200)+1.5:null,exT=A4?Y(18700)-1.5:null,exL=A4?X(-200)-1.5:null,exR=A4?X(8500)+1.5:null;
 // Front gable (bottom).
-dimH(Y(-200)+8,[-200,0,5760,7800,8300,8500],{ext:exB});
+dimH(Y(-200)+8,[-200,0,5630,7800,8300,8500],{ext:exB});
 dimH(Y(-200)+14,env,{ext:exB});
 dimH(Y(-200)+20,[-200,8500],{ext:exB});
 // Plant room back (top).
@@ -351,11 +362,11 @@ dimH(Y(18700)-14,env,{ext:exT});
 dimH(Y(18700)-20,[-200,8500],{ext:exT});
 // Left side (driveway).
 const lenStruct=[-200,0,300,11600,11900,12100,15900,16100,16400,18200,18500,18700];
-dimV(X(-200)-8,[-200,0,1380,4420,6180,9220,11900,12100,15900,16100,18500,18700],{ext:exL});
+dimV(X(-200)-8,[-200,0,1315,4485,6115,9285,11900,12100,15900,16100,18500,18700],{ext:exL});
 dimV(X(-200)-14,lenStruct,{ext:exL});
 dimV(X(-200)-20,[-200,12100,15900,18700],{ext:exL});
 // Right side (terrace).
-dimV(X(8500)+8,[-200,0,300,3340,7980,9020,11900,12100,15900,16100,18500,18700],{right:true,ext:exR});
+dimV(X(8500)+8,[-200,0,300,3470,7980,9020,11900,12100,15900,16100,18500,18700],{right:true,ext:exR});
 dimV(X(8500)+14,lenStruct,{right:true,ext:exR});
 dimV(X(8500)+20,[-200,18700],{right:true,ext:exR});
 // Passage: entrance wall and plant room wall facing it.
@@ -389,21 +400,25 @@ dimV(X(820),[4400,6200],{size:1.2});
  TP(XD(DX0),YD(DS1)-2.2,'DETAIL ROHU FIX–HS · 1 : 20',{'font-size':2.2,'font-weight':700,'text-anchor':'start'},gD);
  el('polygon',{points:[[7800,-200],[8500,-200],[8500,300],[8300,300],[8300,0],[7800,0]].map(([x,s])=>XD(x)+','+YD(s)).join(' '),fill:'url(#pE5)',stroke:'#111','stroke-width':.13},gD);
  RD(7800,8300,0,300,{fill:'url(#pZ5)',stroke:'#111','stroke-width':.35});
- // FIX frame (x … 7 780) and HS frame (s 320 …) near the outer face of the masonry, glass in the middle of the frame depth.
- RD(DX0,7780,10,85,{fill:'#fff',stroke:'#111','stroke-width':.25});LD([[DX0,47.5],[7780,47.5]],{stroke:'#111','stroke-width':.13});
- RD(8210,8285,320,DS1,{fill:'#fff',stroke:'#111','stroke-width':.25});LD([[8247.5,320],[8247.5,DS1]],{stroke:'#111','stroke-width':.13});
+ // FIX and the HS fixed field without a visible frame, the ZB corner untouched: the frames (dashed) stay in the rough openings, covered
+ // outside by the EPS of the reveal and inside by a 65 mm XPS/PIR board with plaster (grey), 85 mm from the jamb to the glass.
+ const dash={fill:'#fff',stroke:'#111','stroke-width':.13,'stroke-dasharray':'.8 .5'},lin={fill:'#e2e2e2',stroke:'#111','stroke-width':.13},epsR={fill:'url(#pE5)',stroke:'#111','stroke-width':.13};
+ RD(DX0,7780,10,85,dash);LD([[DX0,47.5],[7780,47.5]],{stroke:'#111','stroke-width':.25});
+ RD(8210,8285,320,DS1,dash);LD([[8247.5,320],[8247.5,DS1]],{stroke:'#111','stroke-width':.25});
+ RD(7715,7800,85,300,lin);RD(8000,8210,300,385,lin);RD(7715,7800,-200,10,epsR);RD(8285,8500,300,385,epsR);
  // Room-side faces: 200 mm of the corner pier between the FIX jamb and the HS jamb; dashed lines of the reveals.
  LD([[DX0,300],[7800,300]],{stroke:'#999','stroke-width':.1,'stroke-dasharray':'1 .6'});LD([[8000,300],[8000,DS1]],{stroke:'#999','stroke-width':.1,'stroke-dasharray':'1 .6'});
  const lab=(x,sv,t,a={})=>TP(XD(x),YD(sv),t,{'font-size':1.6,...a},gD);
  lab(8050,140,'ZB',{'font-weight':700});lab(8150,-120,'EPS 200');lab(7400,160,'FIX · hrubý otvor do 7 800');lab(7700,600,'HS · hrubý otvor od 300',{'text-anchor':'end'});
  lab(7400,560,'interiér');lab(7400,-300,'exteriér');
- dimH(YD(DS0)+5,[7780,7800,8300,8500],{X:XD,parent:gD,size:1.6});
- dimV(XD(DX1)+5,[-200,0,300,320],{Y:YD,parent:gD,size:1.6,right:true});
+ dimH(YD(DS0)+5,[7715,7800,8300,8500],{X:XD,parent:gD,size:1.6});
+ dimV(XD(DX1)+5,[-200,0,300,385],{Y:YD,parent:gD,size:1.6,right:true});
  const note=(x,y,lines)=>lines.forEach((l,i)=>TP(x,y+i*2.3,l,{'font-size':1.6,'text-anchor':'start'},gD));
  note(XD(DX0)-48,YD(DS1)+2,['ZB roh 300 × 500 (ztracené bednění, beton):','x 7 800–8 300, s 0–300. Mezi FIX a HS není tvárnice.',
-  'FIX: rám x 5 780–7 780, hrubý otvor 5 760–7 800.','HS: rám s 320–3 320, hrubý otvor 300–3 340.',
-  'Rámy u vnějšího líce zdiva (10–85 mm), EPS 200 přes rám.','Vnitřní líc pilíře mezi ostěními je jen 200 mm.',
-  'Nad oběma otvory 2× IPE 240; uložení na ZB rohu','a spojení párů IPE potvrdit statikem.']);
+  'ZB beze změny. Rám (čárkovaně) zvenku pod EPS','ostění, zevnitř deska XPS/PIR 65 + stěrka (šedě).',
+  'Sklo začíná 85 od ZB (x 7 715, s 385), FIX a HS','jsou rozšířené na straně od rohu (výpis otvorů).',
+  'Nahoře je hned věnec: horní rám schová jen podhled','u oken 2 315 místo 2 400, nebo bude sklo o 85 nižší.',
+  'Vnitřní líc pilíře mezi ostěními je jen 200 mm.','Nad otvory 2× IPE 240 ve věnci, potvrdit statikem.']);
 }
 // ---------------- North arrow, scale bar, sheet frame ----------------
 const gOv=g({id:'overlay'});
@@ -441,9 +456,9 @@ side.innerHTML=`<style>
  <tr><td>1.01</td><td>Garáž</td><td class="n">–</td><td class="n">37 m²</td><td>vypuštěna</td></tr>
  <tr><th colspan="2">Celkem bez garáže</th><th class="n">${dec(tot)} m²</th><th class="n">${totD} m²</th><th></th></tr></table>
  <div class="muted" style="margin-top:6px">Světlé plochy mezi omítnutými stěnami. Světlá výška 2 660 mm, v obýváku pod podhledem 2 400 mm (obrys čerchovaně). Hranice obýváku, jídelny, kuchyně a chodby jsou bez stěny (tečkovaně).</div>
- <h3>Výpis otvorů v obvodových stěnách</h3>
+ <h3>Výpis otvorů v obvodových stěnách <span class="warn" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:19px">* bez rámu (i HS): rozměr = sklo, rám 65 pod ostěním, otvor o 2 × 85 větší</span></h3>
  <table><tr><th>Ozn.</th><th>Místo</th><th class="n">Rám š × v</th><th class="n">Otvor š</th><th class="n">Parapet / práh</th><th class="n">Vrch rámu</th><th>Překlad</th></tr>
- ${OPEN.map(o=>`<tr><td><b>${o.id}</b></td><td>${esc(o.where)}${o.note?'<br><span class="muted">'+esc(o.note)+'</span>':''}</td><td class="n">${o.w} × ${o.h}</td><td class="n">${o.w+40}</td><td class="n">${o.sill?'P '+o.sill:'práh ±0'}</td><td class="n">${o.head}</td><td>${esc(o.lintel)}</td></tr>`).join('')}
+ ${OPEN.map(o=>`<tr><td><b>${o.id}</b></td><td>${esc(o.where)}${o.note?'<br><span class="muted">'+esc(o.note)+'</span>':''}</td><td class="n">${o.w} × ${o.h}</td><td class="n">${rough(o)[1]-rough(o)[0]}${o.hidden||o.hiddenFix?' *':''}</td><td class="n">${o.sill?'P '+o.sill:'práh ±0'}</td><td class="n">${o.head}</td><td>${esc(o.lintel)}</td></tr>`).join('')}
  </table>
  <h3>Vnitřní dveře</h3>
  <table><tr><th>Ozn.</th><th class="n">Křídlo š/v</th><th>Místo a otevírání</th></tr>
@@ -463,8 +478,8 @@ side.innerHTML=`<style>
   <li><b>Dům 8 300 × 11 900</b> podle zaměřené desky: o 300 širší a o 70 delší než zdivo v DSP (8 000 × 11 830), hřeben o 150 výš.</li>
   <li>Bez garáže 1.01. Technická místnost 1.02 zůstává za otevřeným průjezdem (8 300 × 2 400).</li>
   <li><b>HS 3 000 × 2 400</b> hned u předního rohu (D1.2: HS 2 000 × 2 200 ve vzdálenosti 1 420 od rohu a dveře 1 000 × 2 200 u schodiště, ty jsou zrušené).</li>
-  <li><b>FIX 2 000 × 2 400</b> v předním štítu u stejného rohu, roh ze ZB 300 × 500 (D1.2: tři francouzská okna 1 000 × 2 200 ve štítu).</li>
-  <li>Okna O2, O3 <b>3 000 × 600, P 900</b> (D1.2: 3 000 × 900, P 900). Poloha beze změny. Obě <b>pevně zasklená</b>.</li>
+  <li><b>FIX 2 000 × 2 400 bez rámu</b> v předním štítu u stejného rohu, roh ze ZB 300 × 500 (D1.2: tři francouzská okna 1 000 × 2 200 ve štítu).</li>
+  <li>Okna O2, O3 <b>3 000 × 600, P 900</b> (D1.2: 3 000 × 900, P 900). Poloha beze změny. Obě <b>pevně zasklená bez rámu, jedno sklo</b>.</li>
   <li>Vstup D1 ve stejném otvoru 1 800, nově křídlo 1 200 + světlík 600. Dveře předsíň → chodba jednokřídlé 1 000 v ose vstupu (D1.2: 1 600 dvoukřídlé).</li>
   <li class="warn">Příčka předsíň a chodba / WC a koupelna má líc na 5 170 (D1.2: 5 100, po rozšíření domu 5 250). Světlík pak končí v rohu u WC, předsíň a chodba jsou o 80 mm užší, WC a koupelna o 80 mm širší. Pokud chceš držet D1.2, posuň příčku a oboje dveře o 80 mm.</li>
   <li>Koupelna bez pračky a sušičky (jsou v podkroví 2.05), vana se zástěnou, skříňka pod oknem. Nad vanou nika 800 × 320 v příčce P5 (80 do tvárnice), umývátko ve WC proto se stojánkovou baterií. Stoupačka K2 v rohu obložená. WC s předstěnou 390 přes čelo, schová K1 a V2 (D1.2: předstěna 165 podél obvodové stěny).</li>
@@ -494,7 +509,7 @@ side.innerHTML=`<style>
  <table class="tb">
   <tr><td style="width:26%">Stavba</td><td colspan="3"><b>Novostavba rodinného domu Hájek</b> · p. p. č. 49/5, k. ú. Krásný Les u Frýdlantu</td></tr>
   <tr><td>Investor</td><td>Ing. Luboš Hájek</td><td>Měřítko</td><td>1 : 100 (A3)</td></tr>
-  <tr><td>Podklady</td><td>D1.2 DSP (Ing. Dávid Jurčo, 02/2024), statika Ing. Khol 04/2024, 3D studie v09, Kanalizace, Topení, zaměření desky</td><td>Datum</td><td>3. 11. 2026</td></tr>
+  <tr><td>Podklady</td><td>D1.2 DSP (Ing. Dávid Jurčo, 02/2024), statika Ing. Khol 04/2024, 3D studie v09, Kanalizace, Topení, zaměření desky</td><td>Datum</td><td>12. 11. 2026</td></tr>
   <tr><td>Zpracoval</td><td>— Claude (AI asistent)</td><td>Výkres</td><td class="big">Půdorys 1NP</td></tr>
  </table>
 </div>`;
