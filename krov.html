@@ -64,7 +64,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 </header>
 <main>
   <div class="eyebrow">Kóty v milimetrech · výšková nula = horní líc hrubé základové desky · x napříč (0 = líc zdiva strany C), s podél (0 = líc štítu A)</div>
-  <p class="lead">Krov je postavený na geometrii naší 3D studie: sklon 45°, okapový přesah 1,0 m a štítový 0,8 m od fasády, tašková krytina, sedm střešních oken VELUX FK08 (4 na jih, 3 na sever), komín krbu a rovný podhled v podkroví ve 2,60 m. Princip nosné konstrukce i průřezy jsou převzaté ze statiky a výkresu krovu D1.4: krokve 120×200 na pozednicích 160×140, vrcholová vaznice 2U200 na ocelových rámech 2U140 u dveří chodby a kleštiny 2×60×180. Navíc je uprostřed třetí rám R2, jehož stojky jsou schované v příčkách chodby. Krokve jsou rovnoměrně po 0,9 m jako v DSP a všechny stejné; okna S1, S3 a J1 jsou proti modelu posunutá tak, aby padla mezi krokve, S2 sedí uprostřed pole naproti J2, a komín padne do pole s odstupem 50 mm. Všechny rozměry se dopočítávají.</p>
+  <p class="lead">Krov je postavený na geometrii naší 3D studie: sklon 45°, okapový přesah 1,0 m a štítový 0,8 m od fasády, tašková krytina, sedm střešních oken VELUX FK08 (4 na jih, 3 na sever), komín krbu s výlezem pro kominíka a rovný podhled v podkroví ve 2,60 m. Princip nosné konstrukce i průřezy jsou převzaté ze statiky a výkresu krovu D1.4: krokve 120×200 na pozednicích 160×140, vrcholová vaznice 2U200 na ocelových rámech 2U140 u dveří chodby a kleštiny 2×60×180. Navíc je uprostřed třetí rám R2, jehož stojky jsou schované v příčkách chodby. Krokve jsou rovnoměrně po 0,9 m jako v DSP a všechny stejné; okna S1, S3 a J1 jsou proti modelu posunutá tak, aby padla mezi krokve, S2 sedí uprostřed pole naproti J2, a komín padne do pole s odstupem 50 mm. Všechny rozměry se dopočítávají.</p>
   <div class="chips"><span class="chip">krokve 120×200 po 0,9 m · sklon 45°</span><span class="chip">pozednice 160×140 na ŽB věnci</span><span class="chip">vaznice ze dvou U profilů svařených do truhlíku</span><span class="chip">sloupy a rámy 2U140</span><span class="chip">kleštiny 2×60×180 na každé vazbě</span><span class="chip">tašky na latích 40×60 a kontralatích 50×60</span></div>
 
   <div class="notice"><strong>V čem se krov liší od DSP a co je potřeba potvrdit se statikem:</strong>
@@ -97,7 +97,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
 
   <section class="card">
     <h2>3D model krovu</h2>
-    <p class="desc">Tažením otáčíte, kolečkem nebo dvěma prsty přibližujete, s klávesou Shift nebo pravým tlačítkem posouváte. Výměny u oken a komína jsou oranžově, přidaný rám R2 oranžovou ocelí.</p>
+    <p class="desc">Tažením otáčíte, kolečkem nebo dvěma prsty přibližujete, s klávesou Shift nebo pravým tlačítkem posouváte. Výměny u oken, výlezu a komína jsou oranžově, přidaný rám R2 oranžovou ocelí.</p>
     <div class="toolbar">
       <div class="seg" role="group" aria-label="Pohled"><button type="button" data-view="axo" aria-pressed="true">Axonometrie</button><button type="button" data-view="gable" aria-pressed="false">Štít A</button><button type="button" data-view="side" aria-pressed="false">Jih</button><button type="button" data-view="top" aria-pressed="false">Shora</button></div>
       <div class="toggles">
@@ -110,7 +110,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3px;stroke-linejoin:rou
     </div>
     <div class="viewer"><canvas id="gl" aria-label="Otočný 3D model krovu"></canvas><div class="hint">táhnout = otočit · kolečko = zoom · Shift + táhnout = posun</div><div class="nogl" id="nogl">Prohlížeč nepodporuje WebGL, 3D model nejde zobrazit. Výkresy níže fungují.</div></div>
     <div class="legend">
-      <span><i style="background:#cc9e61"></i>krokve</span><span><i style="background:#e08a3c"></i>výměny u oken a komína</span><span><i style="background:#e8c999"></i>kleštiny</span><span><i style="background:#a87745"></i>pozednice</span><span><i style="background:#5c6a74"></i>ocel: vaznice a rámy 2U140</span><span><i style="background:#d9772e"></i>navržená podpora R2</span><span><i style="background:#3d4449"></i>střešní okna</span><span><i style="background:#ddd5c8"></i>komín</span>
+      <span><i style="background:#cc9e61"></i>krokve</span><span><i style="background:#e08a3c"></i>výměny u oken, výlezu a komína</span><span><i style="background:#e8c999"></i>kleštiny</span><span><i style="background:#a87745"></i>pozednice</span><span><i style="background:#5c6a74"></i>ocel: vaznice a rámy 2U140</span><span><i style="background:#d9772e"></i>navržená podpora R2</span><span><i style="background:#3d4449"></i>střešní okna</span><span><i style="background:#ddd5c8"></i>komín</span>
     </div>
   </section>
 
@@ -183,6 +183,9 @@ const r2Geo=()=>{const c=P.corrC,h=P.corrW/2;return {posts:[[c-h-135,c-h-15],[c+
 const WIN=[{id:'J1',side:1,s:4840,s0:4800},{id:'J2',side:1,s:7550,s0:7550},{id:'J3',side:1,s:10350,s0:10350},{id:'J4',side:1,s:12200,s0:12200},{id:'S1',side:0,s:4960,s0:5500},{id:'S2',side:0,s:7580,s0:7580},{id:'S3',side:0,s:10230,s0:10000}];
 const WW=660,WL=1400,WCL=30,WSL=40,WT0=200*SQ;   // frame, side gap to rafters, gap to headers, opening starts 200 mm (plan) past the wall face
 const CH={x0:5270,x1:5650,s0:5200,s1:5600,cl:50}; // fireplace flue from the model interior, 50 mm clear of timber
+// Sweep's roof hatch from the cold attic (VELUX GVT 103, frame 540 × 830) in the bay next to the chimney, lower edge level with the
+// chimney's down-slope face (model x 5.06–5.65); t0/t1 = frame on the slope like the windows, side and header gaps as for windows.
+const HATCH={id:'V',s0:5880,s1:6420,t0:4050,t1:4880};
 const COLS=[{id:'R1',s:4365,door:true},{id:'R2',s:9910,proposal:true},{id:'R3',s:14205,door:true}];
 
 function derive(){
@@ -208,6 +211,7 @@ function layout(){
   const D=derive(),half=P.rafB/2,hits=(c,lo,hi)=>c+half>lo+.5&&c-half<hi-.5;
   const ops=WIN.map(w=>({...w,kind:'win',sLo:w.s-WCL,sHi:w.s+WW+WCL,tLo:WT0,tHi:WT0+WL+2*WSL}));
   ops.push({id:'K',kind:'chim',side:1,sLo:CH.s0-CH.cl,sHi:CH.s1+CH.cl,tLo:(P.W-CH.x1-CH.cl)*SQ,tHi:(P.W-CH.x0+CH.cl)*SQ+P.rafH});
+  ops.push({id:HATCH.id,kind:'hatch',side:1,sLo:HATCH.s0-WCL,sHi:HATCH.s1+WCL,tLo:HATCH.t0-WSL,tHi:HATCH.t1+WSL});
   const cols=COLS.filter(c=>!c.proposal||P.r2);
   // Even grid like the DSP (axis about 0.9 m, at most P.maxAxis). Roof windows are fixed to the battens, so they only need
   // a bay without a rafter; where no bay fits, the rafter is trimmed. Shortest path over 10 mm steps: every pair costs 1,
@@ -223,7 +227,7 @@ function layout(){
   pairs.forEach((p,i)=>{p.n=i+1;p.cut=[[],[]];p.col=cols.find(c=>Math.abs(c.s-p.s)<1)||null;p.notes=[]});
   for(const o of ops){
     o.trimmed=pairs.filter(p=>p.kind==='main'&&hits(p.s,o.sLo,o.sHi));
-    o.trimmed.forEach(p=>{p.cut[o.side].push(o);p.notes.push(`${o.side?'jih':'sever'}: vyměněná krokev (${o.kind==='chim'?'komín':'okno '+o.id})`)});
+    o.trimmed.forEach(p=>{p.cut[o.side].push(o);p.notes.push(`${o.side?'jih':'sever'}: vyměněná krokev (${o.kind==='chim'?'komín':o.kind==='hatch'?'výlez':'okno '+o.id})`)});
     o.left=pairs.filter(p=>p.s+half<=o.sLo+.5).pop();o.right=pairs.find(p=>p.s-half>=o.sHi-.5);
     const s0=o.left.s+half,s1=o.right.s-half;
     o.headers=[{side:o.side,s0,s1,t0:o.tLo-P.rafB,t1:o.tLo},{side:o.side,s0,s1,t0:o.tHi,t1:o.tHi+P.rafB}];
@@ -301,6 +305,7 @@ function buildScene(L,show){
   for(const o of L.ops){for(const h of [...o.headers,...o.jambs])prism(toX(h.side,slab(D,h.t0,h.t1,0,P.rafH)),h.s0,h.s1,COL.cut)}
   if(show.kl)for(const p of L.pairs)if(p.kl){prism(klProfile(D),p.s-half-P.klT,p.s-half,COL.kl);prism(klProfile(D),p.s+half,p.s+half+P.klT,COL.kl)}
   if(show.open){for(const o of L.ops)if(o.kind==='win'){prism(toX(o.side,slab(D,o.tLo+WSL,o.tLo+WSL+WL,120,D.pRoof+10)),o.s,o.s+WW,COL.win);prism(toX(o.side,slab(D,o.tLo+WSL+50,o.tLo+WSL+WL-50,D.pRoof+10,D.pRoof+14)),o.s+50,o.s+WW-50,COL.glass)}
+    prism(toX(1,slab(D,HATCH.t0,HATCH.t1,120,D.pRoof+10)),HATCH.s0,HATCH.s1,COL.win);prism(toX(1,slab(D,HATCH.t0+50,HATCH.t1-50,D.pRoof+10,D.pRoof+14)),HATCH.s0+50,HATCH.s1-50,COL.glass);
     box(CH.x0,CH.x1,CH.s0,CH.s1,D.floor,D.chimTop,COL.chim)}
   if(show.bat){
     for(const p of L.pairs)for(const side of [0,1])for(const piece of rafterPieces(L,p,side)){const tops=piece.map(q=>TP(D,q[0],q[1])).filter(q=>Math.abs(q[1]-P.rafH)<1).map(q=>q[0]);if(tops.length<2)continue;prism(toX(side,slab(D,Math.min(...tops),Math.max(...tops),P.rafH,P.rafH+P.cb)),p.s-30,p.s+30,COL.cb)}
@@ -493,6 +498,7 @@ function drawPlan(L){
   for(const p of L.pairs)for(const side of [0,1])for(const piece of rafterPieces(L,p,side)){const [a,b]=xRange(toX(side,piece));R(p.s-half,p.s+half,a,b,{fill:p.cut[side].length?'#e08a3c':'#cc9e61',stroke:'#7a5530','stroke-width':.5})}
   for(const o of L.ops)for(const h of [...o.headers,...o.jambs]){const [a,b]=xRange(toX(h.side,slab(D,h.t0,h.t1,0,P.rafH)));R(h.s0,h.s1,a,b,{fill:'#e08a3c',stroke:'#8a4a17','stroke-width':.5})}
   for(const o of L.ops){if(o.kind==='win'){const [a,b]=xRange(toX(o.side,slab(D,o.tLo+WSL,o.tLo+WSL+WL,120,D.pRoof)));R(o.s,o.s+WW,a,b,{fill:'#bcd3dc',stroke:'#2c3338','stroke-width':1.4,'fill-opacity':.85});T(g,SX(o.s+WW/2),XY((a+b)/2)+4,o.id,'label halo',{'text-anchor':'middle'})}
+    else if(o.kind==='hatch'){const [a,b]=xRange(toX(1,slab(D,HATCH.t0,HATCH.t1,120,D.pRoof)));R(HATCH.s0,HATCH.s1,a,b,{fill:'#bcd3dc',stroke:'#2c3338','stroke-width':1.4,'fill-opacity':.85});T(g,SX((HATCH.s0+HATCH.s1)/2),XY((a+b)/2)+4,'V','label halo',{'text-anchor':'middle'})}
     else{R(CH.s0,CH.s1,CH.x0,CH.x1,{fill:'#ddd5c8',stroke:'#6d625a','stroke-width':1.2});T(g,SX((CH.s0+CH.s1)/2),XY(CH.x1)+14,'komín','tiny halo',{'text-anchor':'middle','font-weight':700})}}
   for(const c of L.cols){const k2=c.proposal?'#d9772e':'#3c474f';R(c.s-half,c.s+half,4080,4220,{fill:k2});
     const posts=c.door?[[3590,3730],[4570,4710]]:r2Geo().posts;for(const [a,b] of posts)R(c.s-(c.door?half:70),c.s+(c.door?half:70),a,b,{fill:'none',stroke:k2,'stroke-width':1.3});
@@ -626,7 +632,7 @@ function tables(L){
   const grp=arr=>{const m=new Map();for(const v of arr){const r=Math.round(v/10)*10;m.set(r,(m.get(r)||0)+1)}return [...m.entries()].sort((a,b)=>b[0]-a[0])};
   for(const [len,n] of grp(pieces))it('Krokve vyměněné, díly','120×200',n,len,'u oken a u komína');
   const hdr=[],jm=[];for(const o of L.ops){for(const h of o.headers)hdr.push(h.s1-h.s0);for(const j of o.jambs)jm.push((j.t1-j.t0))}
-  for(const [len,n] of grp(hdr))it('Výměny','120×200',n,len,'nad a pod okny a komínem');
+  for(const [len,n] of grp(hdr))it('Výměny','120×200',n,len,'nad a pod okny, výlezem a komínem');
   for(const [len,n] of grp(jm))it('Pomocné krokve u oken','120×200',n,len,'boční ostění oken');
   const nk=L.pairs.filter(p=>p.kl).length,klLen=P.W-2*(D.klBot-D.A0-D.RT);
   it('Kleštiny','2× 60×180',2*nk,klLen,`${nk} vazeb, šrouby M12 2× na každé straně`);
@@ -666,7 +672,8 @@ function facts(L,t){
     ['','Počet krokví',`V délce domu je ${nIn} vazeb s osovou roztečí ${fmt(Math.min(...ax))}–${fmt(Math.max(...ax))} mm, skoro stejně jako v DSP (22 vazeb po 740–960 mm). V každém štítovém přesahu je navíc jen krajní krokev, celkem tedy ${L.pairs.length} vazeb a ${2*L.pairs.length} stejných krokví. Hustší rozteč nic nepřinese, statika i DSP počítají s krokvemi 120×200 zhruba po 0,9 m.`],
     ['','Vaznice do truhlíku',`Dva ${P.uName} jsou otočené přírubami k sobě a svařené přerušovaným svarem do jednoho uzavřeného profilu ${P.ridgeW} × ${P.ridgeH}. Proti profilům zády k sobě je mnohem tužší v kroucení a odolnější proti klopení, krokve leží na rovné ploše ${P.ridgeW} mm se zářezem ${P.ridgeSeat} × ${P.ridgeSeat}. ${P.r2?'Spoj':'Spoje'} v ${P.r2?'místě':'místech'} nulového momentu (s ≈ ${ridgeSplices(L).map(fmt).join(' a ')}), aby kusy byly do 12 m, konce zaslepit; protikorozní ochranu dohodnout s výrobcem. Potvrdí statik.`],
     ['','Okna VELUX',`Okna se kotví montážními úhelníky do latí. Aby padla mezi krokve, jsou proti modelu posunutá: ${WIN.filter(w=>w.s!==w.s0).map(w=>`${w.id} o ${w.s>w.s0?'+':'−'}${fmt(Math.abs(w.s-w.s0))} mm`).join(', ')}; všechna zůstávají ve svých místnostech nejméně 150 mm od příček. Žádná krokev se nevyměňuje, nad a pod oknem jsou jen výměny pro ostění. Spodní vnější hrana rámu vychází asi ${m2(foot)} m nad podlahou podkroví.`],
-    ['','Komín krbu',`Průduch je převzatý z interiéru modelu (x 5 270–5 650, s 5 200–5 600); nad střechou ve vizualizaci zatím chybí. Padne do pole mezi krokve s odstupem 50 mm od dřeva, nad a pod ním jsou výměny. Na vazbě těsně vedle komína nejsou kleštiny, podhled tam zavěsit na výměnu. Ústí musí být nejméně 0,65 m nad hřebenem (zakreslen ${lvl(D.chimTop)}); ověřit s kominíkem a projektantem.`],
+    ['','Komín krbu',`Průduch je převzatý z interiéru modelu (x 5 270–5 650, s 5 200–5 600). Padne do pole mezi krokve s odstupem 50 mm od dřeva, nad a pod ním jsou výměny. Na vazbě těsně vedle komína nejsou kleštiny, podhled tam zavěsit na výměnu. Ústí musí být nejméně 0,65 m nad hřebenem (zakreslen ${lvl(D.chimTop)}); ověřit s kominíkem a projektantem.`],
+    ['','Výlez ke komínu',`Komín stojí nad studenou půdou a pod ním je otvor schodiště, z podkroví se k němu oknem nedostaneš. Kominík půjde zatepleným poklopem 60 × 80 ve stropě chodby na půdu, po lávce nad izolací k výlezu V v sousedním poli vedle komína (s ${fmt(HATCH.s0)}–${fmt(HATCH.s1)}, výlez do nevytápěné půdy, např. VELUX GVT 103 54 × 83, bočně otevíravý) a z něj na plošinu pod komínem. Výlez padne mezi krokve, nad a pod ním jsou jen výměny. Lávku od poklopu ke komínu (asi 2,5 m, na stojkách nad izolací, kolem kazety FC) a nad výlezem bezpečnostní hák pro postroj dohodnout s pokrývačem a kominíkem.`],
     ['','Přesahy ve štítech',`V každém štítovém přesahu je jen krajní krokev. Nese ji pozednice a vaznice vyložené asi 1,1 m za osu štítové zdi. Latě mezi krajní a štítovou krokví pnou ${fmt(gb.s-vg.s)} mm, což je pro latě 40×60 horní mez; v přesazích použít latě 50×60. Pozednice kotvit M16 po nejvýš 1,2 m, v rozích hustěji; podložit asfaltovým pásem.`],
     ['','Kleštiny na každé vazbě',`Rovný podhled ve ${lvl(D.ceil)} je široký asi ${m2(P.W-2*(D.ceil-D.A0+P.wall))} m, proto jsou kleštiny na všech vazbách kromě té u komína a podhled na nich visí. Sloupy R1–R3 stojí mezi vazbami, nejméně 190 mm od kleštin.`],
     ['','Sloupy na panelech',`Stojky rámů stojí na stropních panelech. Bodová zatížení od vaznice je potřeba roznést (ocelová deska, uložení nad žebrem panelu) a odsouhlasit s dodavatelem panelů.`],
@@ -722,7 +729,7 @@ function cutList(L){
   const rows=rafters.map(r=>({id:r.id,name:r.name,prof:'120×200',n:r.n,len:r.len,cuts:r.id==='A'?'oba konce svisle (45°), zářez na pozednici a na vaznici':r.id==='B'||r.id==='D'?'pata svisle (45°), zářez na pozednici, konec 90°':'začátek 90°, zářez na vaznici, vrchol svisle (45°)',where:r.where.join(', ')}));
   const grp=list=>{const m=new Map();for(const [len,w] of list){const r=Math.round(len);if(!m.has(r))m.set(r,[]);m.get(r).push(w)}return [...m.entries()].sort((a,b)=>b[0]-a[0])};
   let fi=0;
-  for(const [len,w] of grp(L.ops.flatMap(o=>o.headers.map(h=>[h.s1-h.s0,o.id]))))rows.push({id:'F'+(++fi),name:'Výměna',prof:'120×200',n:w.length,len,cuts:'oba konce 90°',where:[...new Set(w)].map(x=>x==='K'?'komín':'okno '+x).join(', ')});
+  for(const [len,w] of grp(L.ops.flatMap(o=>o.headers.map(h=>[h.s1-h.s0,o.id]))))rows.push({id:'F'+(++fi),name:'Výměna',prof:'120×200',n:w.length,len,cuts:'oba konce 90°',where:[...new Set(w)].map(x=>x==='K'?'komín':x===HATCH.id?'výlez':'okno '+x).join(', ')});
   let id='G';for(const [len,w] of grp(L.ops.flatMap(o=>o.jambs.map(j=>[j.t1-j.t0,o.id]))))rows.push({id,name:'Pomocná krokev u okna',prof:'120×200',n:w.length,len,cuts:'oba konce 90°',where:[...new Set(w)].join(', ')});
   const nk=L.pairs.filter(p=>p.kl).length,klLen=Math.round(P.W-2*(D.klBot-D.A0-D.RT));
   rows.push({id:'H',name:'Kleština',prof:'60×180',n:2*nk,len:klLen,cuts:`oba konce 45° do lichoběžníku, horní hrana ${fmt(klLen-2*P.klH)}`,where:`${nk} vazeb, po prkně z každé strany`});

@@ -454,7 +454,23 @@ if(side===1){const cx0=5.27,cx1=5.65,cz0=5.2,cz1=5.6,top=RIDGE+.15+.38;
  box('Chimney_roof','roof',C.wall,cx0,5.9,cz0,cx1-cx0,top-5.9,cz1-cz0);
  box('Chimney_cap','roof',[.56,.57,.56],cx0-.04,top,cz0-.04,cx1-cx0+.08,.06,cz1-cz0+.08);
  pipe('Chimney_liner','roof',[.62,.64,.66],[(cx0+cx1)/2,top+.06,(cz0+cz1)/2],[(cx0+cx1)/2,top+.17,(cz0+cz1)/2],.09);
- roofBox('Chimney_flashing',cx0-.07,cx1+.07,cz0-.07,cz1+.07,.009+up,.036+up,flash);}
+ roofBox('Chimney_flashing',cx0-.07,cx1+.07,cz0-.07,cz1+.07,.009+up,.036+up,flash);
+ // Sweep access (19. 11.): the chimney stands over the cold attic and the HS strip of the attic floor under it is the stair opening, so no
+ // room window can lead to it. The way is the insulated corridor hatch 60 × 80 into the cold attic, the raised walkway over the ceiling
+ // insulation, then a roof hatch for unheated lofts (VELUX GVT 103, 54 × 83 cm, black, side-hung) in the next rafter bay beside the chimney
+ // (z 5.88–6.42 between the rafters at 5.71 and 6.59 of krov.html), its lower edge level with the chimney's down-slope face. Under both a
+ // level platform on brackets fixed to support tiles (about 1.36 × 0.30 m, e.g. step platforms 88 + 41 cm) where the sweep stands at the flue.
+ const hz0=5.88,hz1=6.42,hx1=5.647,hx0=hx1-.83/Math.SQRT2,blk=[.07,.075,.08];
+ roofBox('Roof_hatch_flashing',hx0-.06,hx1+.07,hz0-.07,hz1+.07,.009+up,.024+up,blk);
+ roofBox('Roof_hatch_recess',hx0,hx1,hz0,hz1,.024+up,.05+up,[.05,.06,.065]);
+ roofBox('Roof_hatch_glass',hx0+.05,hx1-.05,hz0+.05,hz1-.05,.051+up,.055+up,[.24,.31,.35]);
+ for(const [a,b,c,d] of [[hx0,hx1,hz0,hz0+.05],[hx0,hx1,hz1-.05,hz1],[hx0,hx0+.05,hz0+.05,hz1-.05],[hx1-.05,hx1,hz0+.05,hz1-.05]])roofBox('Roof_hatch_frame',a,b,c,d,.024+up,.095+up,blk);
+ const px0=hx1+.13,pd=.30,pz0=5.12,pz1=6.48,py=h(px0)+.075+up,pc=[.2,.215,.225];
+ box('Roof_platform','roof',pc,px0,py,pz0,pd,.03,pz1-pz0);
+ for(let k=1;k<6;k++)box('Roof_platform_slot','roof',[.09,.1,.11],px0+k*pd/6-.007,py+.03,pz0+.03,.014,.002,pz1-pz0-.06);
+ // Brackets: a slim leg from the tile to the front of the tread and a strut from the support tile behind it, every ~0.65 m.
+ for(const z of [pz0+.05,(pz0+pz1)/2,pz1-.05]){const xf=px0+pd-.035;pipe('Roof_platform_bracket','roof',pc,[xf,h(xf)+.012+up,z],[xf,py,z],.009,6);
+  pipe('Roof_platform_bracket','roof',pc,[px0+.01,h(px0+.01)+.012+up,z],[xf,py-.01,z],.009,6);pipe('Roof_platform_bracket','roof',pc,[px0+.01,py-.004,z],[xf,py-.004,z],.009,6);}}
 for(const [za,zb,lipA,lipB] of [[z0-.022,z0,z0,z0+.06],[z1,z1+.022,z1-.06,z1]]){roofBox('Verge_flashing',x0,x1,za,zb,-.12,.04+up,flash);roofBox('Verge_flashing_lip',x0,x1,lipA,lipB,.026+up,.04+up,flash);roofBox('Verge_timber_fascia',x0,x1,za+.004,zb-.004,-.32,-.12,timber(2));}
 roofBox('Ridge_cap',side===0?A-.16:A,side===0?A:A+.16,z0-.022,z1+.022,.026+up,.05+up,flash);
 // Half-round 150 mm gutter hung in front of the eave: rolled front bead, raised back edge, drip flashing
