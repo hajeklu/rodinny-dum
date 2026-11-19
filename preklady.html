@@ -120,12 +120,14 @@ function openings(mode){
  const fix=mode==='fix',F=K.floor,out=[];
  const add=o=>{o.r=o.r||{u0:o.u0-K.gap,u1:o.u1+K.gap,z0:o.door?0:o.z0-K.gap,z1:o.z1+K.gap};out.push(o);};
  // FIX and HS: head under the ring beam, the IPE pair cast in the ring beam, one end on the ZB corner, the other on a pad in course 11.
- add({id:'FIX',wall:'A',where:'obývák 1.11',u0:5780,u1:7780,z0:F,z1:F+2400,door:true,r:{u0:5760,u1:7800,z0:0,z1:RING0},
-  lint:[{t:'ipe',u0:5460,u1:8100,z0:RING0,z1:RING1,txt:'2× IPE 240 · L 2 640 ve věnci'}],pads:[[5460,5760]],
-  over:'2× IPE 240, L 2 640, zalité ve věnci',st:['ok','věnec + IPE'],note:'uložení na ZB rohu a polštáři potvrdit statikem'});
- add({id:'HS',wall:'B',where:'obývák 1.11',u0:320,u1:3320,z0:F,z1:F+2400,door:true,r:{u0:300,u1:3340,z0:0,z1:RING0},
-  lint:[{t:'ipe',u0:0,u1:3640,z0:RING0,z1:RING1,txt:'2× IPE 240 · L 3 640 ve věnci'}],pads:[[3340,3640]],
-  over:'2× IPE 240, L 3 640, zalité ve věnci',st:['ok','věnec + IPE']});
+ // Frameless fixed glazing (agreed 12. 11., Půdorys 1NP): u0–u1 is the frame, 65 mm beyond the glass on each side and hidden in the
+ // reveal, the rough opening 20 mm more; FIX and HS grow away from the ZB corner, so O2, O3, FIX and HS are 2 × 85 mm wider than the glass.
+ add({id:'FIX',wall:'A',where:'obývák 1.11',u0:5650,u1:7780,z0:F,z1:F+2400,door:true,r:{u0:5630,u1:7800,z0:0,z1:RING0},
+  lint:[{t:'ipe',u0:5330,u1:8100,z0:RING0,z1:RING1,txt:'2× IPE 240 · L 2 770 ve věnci'}],pads:[[5330,5630]],
+  over:'2× IPE 240, L 2 770, zalité ve věnci',st:['ok','věnec + IPE'],note:'bez viditelného rámu: sklo 2 000, rám schovaný v ostění; uložení na ZB rohu a polštáři potvrdit statikem'});
+ add({id:'HS',wall:'B',where:'obývák 1.11',u0:320,u1:3450,z0:F,z1:F+2400,door:true,r:{u0:300,u1:3470,z0:0,z1:RING0},
+  lint:[{t:'ipe',u0:0,u1:3770,z0:RING0,z1:RING1,txt:'2× IPE 240 · L 3 770 ve věnci'}],pads:[[3470,3770]],
+  over:'2× IPE 240, L 3 770, zalité ve věnci',st:['ok','věnec + IPE'],note:'křídlo 3 000, pevné pole bez viditelného rámu'});
  // The passage: no wall below, the IPE pair in the ring beam line of both long walls carries the knee wall and the roof.
  for(const w of ['B','C'])add({id:'průjezd',wall:w,where:'průjezd',passage:true,u0:11900,u1:16100,z0:0,z1:RING0,door:true,r:{u0:11900,u1:16100,z0:0,z1:RING0},
   lint:[{t:'ipe',u0:11500,u1:16500,z0:RING0,z1:RING1,txt:'2× IPE 240 · L 5 000'}],pads:[[11500,11900],[16100,16500]],
@@ -133,9 +135,9 @@ function openings(mode){
  // O2 and O3: low wide windows with their own IPE pair.
  for(const [id,u,where] of [['O2',1400,'obývák 1.11'],['O3',6200,'kuchyně 1.07']]){
   const z0=F+900,z1=fix?T(8)-K.gap:F+1500,r1=z1+K.gap,lz0=fix?Bc(9):r1;
-  add({id,wall:'C',where,u0:u,u1:u+3000,z0,z1,lint:[{t:'ipe',u0:u-320,u1:u+3320,z0:lz0,z1:lz0+240,txt:'2× IPE 240 · L 3 640'}],
-   over:fix?'2× IPE 240 místo 9. řady, nad ním celé řady 10 a 11':'2× IPE 240, L 3 640, přes spáru 8. a 9. řady',
-   st:fix?['ok','9. řada']:['warn','přes spáru řad'],bad:fix?null:{joint:T(8)},note:fix?'rám 3 000 × '+fmt(z1-z0)+', polštáře pod konce IPE potvrdit statikem':'řady 8 a 9 se nad oknem řežou'});}
+  add({id,wall:'C',where,u0:u-65,u1:u+3065,z0,z1,lint:[{t:'ipe',u0:u-385,u1:u+3385,z0:lz0,z1:lz0+240,txt:'2× IPE 240 · L 3 770'}],
+   over:fix?'2× IPE 240, L 3 770, místo 9. řady, nad ním celé řady 10 a 11':'2× IPE 240, L 3 770, přes spáru 8. a 9. řady',
+   st:fix?['ok','9. řada']:['warn','přes spáru řad'],bad:fix?null:{joint:T(8)},note:'sklo 3 000 bez viditelného rámu; '+(fix?'rám vysoký '+fmt(z1-z0)+', polštáře pod konce IPE potvrdit statikem':'řady 8 a 9 se nad oknem řežou')});}
  // Small windows and doors: SOLBET lintel one course high.
  const smallTop=fix?T(10)-K.gap:F+2200;
  for(const [id,wall,u,where] of SMALL){const r1=smallTop+K.gap,lz0=fix?Bc(11):r1,z0=smallTop-700,cut=T(7)-(z0-K.gap);
@@ -153,8 +155,8 @@ function openings(mode){
   over:fix?'SOLBET NS 230 místo 11. řady; panely průjezdu a stojky krovu R3 nese věnec nad ním se zesílenou spodní výztuží':'SOLBET NS 230, zajíždí 25 mm do věnce',
   st:fix?['info','výztuž věnce']:['warn','do věnce 25 mm'],bad:fix?null:{ring:true},note:fix?'dveře 1 800 × '+fmt(smallTop-F)+'; zatížení ~27,7 kN/m + 2 stojky po ~17 kN, výztuž potvrdí statik':''});
  // Proposal from the 3D model: narrow window in the other corner of the front gable, head under the ring beam like the FIX.
- if(fix)add({id:'rohové okno',wall:'A',where:'obývák 1.11 · návrh z modelu',proposal:true,u0:650,u1:1150,z0:F,z1:F+2400,door:true,r:{u0:630,u1:1170,z0:0,z1:RING0},
-  lint:[{t:'ring',u0:330,u1:1470,z0:RING0,z1:RING1,txt:'překladem je věnec'}],over:'věnec, nad otvorem s výztuží podle statika',st:['info','návrh'],note:'jen pokud se okno udělá'});
+ if(fix)add({id:'rohové okno',wall:'A',where:'obývák 1.11 · návrh z modelu',proposal:true,u0:585,u1:1215,z0:F,z1:F+2400,door:true,r:{u0:565,u1:1235,z0:0,z1:RING0},
+  lint:[{t:'ring',u0:265,u1:1535,z0:RING0,z1:RING1,txt:'překladem je věnec'}],over:'věnec, nad otvorem s výztuží podle statika',st:['info','návrh'],note:'jen pokud se okno udělá'});
  // Gable doors O9–O12: frame 1 000 × 2 200 from the attic floor (+3 300).
  const gTop=3300+2200;
  for(const [id,wall,u] of [['O9','GA',2400],['O10','GA',4900],['O11','GF',2400],['O12','GF',4900]]){
