@@ -59,13 +59,13 @@ svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#25372e}
     </aside>
   </div>
   <div class="note"><strong>Montážní vůle:</strong> v seznamu jsou uvedené rozměry rámů. Pracovní předpoklad je 20 mm vůle po každém ostění a 20 mm nahoře i dole, takže hrubý otvor ve zdivu je o 40 mm širší a vyšší. Přesný rozměr a práh potvrdit podle dodaného rámu a montážního systému.</div>
-  <div class="note"><strong>Rozvržení rohu:</strong> ZB 500 mm podél předního štítu a 300 mm podél boční stěny vyplňuje x=7 800–8 300, s=0–300. Rám FIX 2 000 mm: x=5 780–7 780; hrubý otvor x=5 760–7 800 navazuje přímo na ZB. HS navazuje hned za ZB bez vložené tvárnice: hrubý otvor s=300–3 340, rám s=320–3 320. Rám D2 zůstává posunutý o 200 mm doleva: x=5 950–6 950; hrubý otvor x=5 930–6 970.</div>
+  <div class="note"><strong>Rozvržení rohu:</strong> ZB 500 mm podél předního štítu a 300 mm podél boční stěny vyplňuje x=7 800–8 300, s=0–300. FIX, O2, O3 a pevné pole HS jsou bez viditelného rámu (dohodnuto 12. 11., Půdorys 1NP): rám 65 mm je za sklem schovaný v ostění, takže hrubý otvor je o 2 × 85 mm širší než sklo a FIX i HS rostou směrem od ZB. FIX: sklo 2 000 x=5 715–7 715, rám x=5 650–7 780, hrubý otvor x=5 630–7 800 navazuje přímo na ZB. HS navazuje hned za ZB bez vložené tvárnice: hrubý otvor s=300–3 470, rám s=320–3 450 (křídlo 3 000). Rám D2 zůstává posunutý o 200 mm doleva: x=5 950–6 950; hrubý otvor x=5 930–6 970.</div>
   <div class="note danger"><strong>Podklad:</strong> deska je zaměřená na 8,3 × 11,9 m a obvodové zdivo lícuje s její hranou. Poloha otvorů je z pracovní vizualizace v09 s vnitřní dispozicí na původním místě (otvory ve štítech x + 150, FIX x + 300). Je to rozpis podle modelu, nikoli vytyčení; délky krajních kusů upravte podle skutečných hran desky.</div>
   <section class="card section-card">
     <div class="card-head"><h2>Otvory a návaznost na první řadu</h2><p>Pod FIX, HS a dveřmi D1/D2 je v půdorysu mezera. U parapetových oken O1–O8 první řada pokračuje, protože jejich parapet je výše.</p></div>
     <div class="openings" id="openingList"></div>
   </section>
-  <footer>Pracovní výkres podle vizualizace rodinného domu Hájek · model v09 · datum aktualizace: 3. 11. 2026.</footer>
+  <footer>Pracovní výkres podle vizualizace rodinného domu Hájek · model v09 · datum aktualizace: 19. 11. 2026.</footer>
 </main>
 <script>
 'use strict';
@@ -73,8 +73,8 @@ const NS='http://www.w3.org/2000/svg';
 const installClearance=20;
 const runs=[
  // As built on the measured slab 8 300 × 11 900: the gables run x 0–8 300, the long walls s 300–11 600 between them.
- {id:'A',name:'Přední štít u FIX',axis:'x',start:0,pieces:[...Array(4).fill(['full',590]),['cut',450],...Array(5).fill(['full',590]),['void',2040,'FIX'],['zb',500]],orientation:'h',y:1930},
- {id:'B',name:'Pravá boční stěna / HS',axis:'s',start:300,pieces:[['void',3040,'HS'],...Array(14).fill(['full',590])],orientation:'v',x:955,y:800},
+ {id:'A',name:'Přední štít u FIX',axis:'x',start:0,pieces:[...Array(4).fill(['full',590]),['cut',320],...Array(5).fill(['full',590]),['void',2170,'FIX'],['zb',500]],orientation:'h',y:1930},
+ {id:'B',name:'Pravá boční stěna / HS',axis:'s',start:300,pieces:[['void',3170,'HS'],['cut',460],...Array(13).fill(['full',590])],orientation:'v',x:955,y:800},
  {id:'C',name:'Levá boční stěna',axis:'s',start:300,pieces:[...Array(9).fill(['full',590]),['cut',90],...Array(10).fill(['full',590])],orientation:'v',x:155,y:800},
  {id:'D',name:'Zadní hrana hlavní části',axis:'x',start:0,pieces:[...Array(2).fill(['full',590]),['cut',380],...Array(3).fill(['full',590]),['void',1840,'D1'],...Array(2).fill(['full',590]),['cut',180],...Array(3).fill(['full',590])],orientation:'h',y:770},
  {id:'E',name:'Technická část k průjezdu',axis:'x',start:0,pieces:[...Array(4).fill(['full',590]),['cut',30],...Array(6).fill(['full',590]),['void',1040,'D2'],['full',590],['full',590],['cut',150]],orientation:'h',y:320},
@@ -83,11 +83,11 @@ const runs=[
  {id:'H',name:'Pravý bok technické části',axis:'s',start:16400,pieces:[['full',590],['cut',30],['full',590],['full',590]],orientation:'v',x:955,y:140}
 ];
 const openings=[
- {code:'FIX',wall:'A',axis:'x',start:5780,end:7780,size:'2 000 × 2 400',level:'spodní hrana +240'},
- {code:'HS',wall:'B',axis:'s',start:320,end:3320,size:'3 000 × 2 400',level:'spodní hrana +240'},
+ {code:'FIX',wall:'A',axis:'x',start:5650,end:7780,size:'2 130 × 2 400',level:'spodní hrana +240',note:'sklo 2 000 bez viditelného rámu'},
+ {code:'HS',wall:'B',axis:'s',start:320,end:3450,size:'3 130 × 2 400',level:'spodní hrana +240',note:'křídlo 3 000, pevné pole bez viditelného rámu'},
  {code:'O1',wall:'B',axis:'s',start:8000,end:9000,size:'1 000 × 700',level:'parapet +1 740'},
- {code:'O2',wall:'C',axis:'s',start:1400,end:4400,size:'3 000 × 700',level:'parapet +1 140'},
- {code:'O3',wall:'C',axis:'s',start:6200,end:9200,size:'3 000 × 700',level:'parapet +1 140'},
+ {code:'O2',wall:'C',axis:'s',start:1335,end:4465,size:'3 130 × 600',level:'parapet +1 140',note:'sklo 3 000 bez viditelného rámu'},
+ {code:'O3',wall:'C',axis:'s',start:6135,end:9265,size:'3 130 × 600',level:'parapet +1 140',note:'sklo 3 000 bez viditelného rámu'},
  {code:'O4',wall:'D',axis:'x',start:1150,end:2150,size:'1 000 × 700',level:'parapet +1 740'},
  {code:'D1',wall:'D',axis:'x',start:3350,end:5150,size:'1 800 × 2 200',level:'spodní hrana +240'},
  {code:'O5',wall:'D',axis:'x',start:6150,end:7150,size:'1 000 × 700',level:'parapet +1 740'},
@@ -154,7 +154,7 @@ function renderPlan(){
  // Blue marks show raised windows; floor-level openings are drawn as actual gaps in the row.
  const hmarks=[['O4',1130,2170,758],['O5',6130,7170,758],['O6',1130,2170,148],['O7',3630,4670,148],['O8',6130,7170,148]];
  for(const [code,a,b,y] of hmarks){let xa=x0+a*s,xb=x0+b*s;el('line',{x1:xa,y1:y,x2:xb,y2:y,class:'opening-mark'},svg);el('line',{x1:xa,y1:y-6,x2:xa,y2:y+6,class:'opening-mark'},svg);el('line',{x1:xb,y1:y-6,x2:xb,y2:y+6,class:'opening-mark'},svg);addLabel(svg,(xa+xb)/2,y-8,code+' '+fmt(b-a), 'opening-text')}
- const vmarks=[['O1',7980,9020,1007],['O2',1380,4420,143],['O3',6180,9220,143]];
+ const vmarks=[['O1',7980,9020,1007],['O2',1315,4485,143],['O3',6115,9285,143]];
  for(const [code,a,b,x] of vmarks){let ya=yAtS(a),yb=yAtS(b),lo=Math.min(ya,yb),hi=Math.max(ya,yb);el('line',{x1:x,y1:lo,x2:x,y2:hi,class:'opening-mark'},svg);el('line',{x1:x-6,y1:lo,x2:x+6,y2:lo,class:'opening-mark'},svg);el('line',{x1:x-6,y1:hi,x2:x+6,y2:hi,class:'opening-mark'},svg);let tx=x-14,cy=(lo+hi)/2;el('text',{x:tx,y:cy,class:'opening-text','text-anchor':'middle',transform:'rotate(-90 '+tx+' '+cy+')'},svg,code+' '+fmt(b-a))}
  // Overall and chained dimensions.
  drawDim(svg,x0,70,x0+830,70,'8 300 ZDIVO');
@@ -193,8 +193,8 @@ function renderCorner(){
  const frameStart=hsGap.from+installClearance,frameEnd=hsGap.to-installClearance;
  for(const at of [frameStart,frameEnd]){const y=sideY-(at-300)*scale;el('line',{x1:sideX-4,y1:y,x2:cornerX+4,y2:y,stroke:'#125f75','stroke-width':3},svg);}
  el('rect',{x:75,y:596,width:840,height:82,rx:8,fill:'#f2f6f2',stroke:'#d6e0d8'},svg);
- addLabel(svg,495,619,'FIX rám x=5 780–7 780; hrubý otvor x=5 760–7 800 navazuje na ZB.', 'small');
- addLabel(svg,495,642,'HS rám s=320–3 320; hrubý otvor s=300–3 340 (3 040 mm).', 'small');
+ addLabel(svg,495,619,'FIX rám x=5 650–7 780 (sklo 2 000); hrubý otvor x=5 630–7 800 navazuje na ZB.', 'small');
+ addLabel(svg,495,642,'HS rám s=320–3 450; hrubý otvor s=300–3 470 (3 170 mm).', 'small');
  addLabel(svg,495,665,'Vůle 20 mm na obou stranách rámu; mezi ZB a HS není žádná tvárnice.', 'small');
 }
 function renderSchedule(){
@@ -226,7 +226,7 @@ function fillLists(){
   const roughW=frameW+2*installClearance,roughH=frameH+2*installClearance;
   const status=floorOpenings.includes(o.code)?'otvor v první řadě':'parapetové okno · první řada pokračuje';
   const d=document.createElement('div');d.className='opening';
-  d.innerHTML='<b>'+o.code+'</b> · rám '+(o.axis==='x'?'x':'s')+' '+fmt(o.start)+'–'+fmt(o.end)+' mm <small>rám '+fmt(frameW)+' × '+fmt(frameH)+' mm · hrubý otvor '+fmt(roughW)+' × '+fmt(roughH)+' mm · vůle '+installClearance+' mm/strana · '+status+'</small>';
+  d.innerHTML='<b>'+o.code+'</b> · rám '+(o.axis==='x'?'x':'s')+' '+fmt(o.start)+'–'+fmt(o.end)+' mm <small>rám '+fmt(frameW)+' × '+fmt(frameH)+' mm · hrubý otvor '+fmt(roughW)+' × '+fmt(roughH)+' mm · vůle '+installClearance+' mm/strana · '+status+(o.note?' · '+o.note:'')+'</small>';
   ol.appendChild(d)
  }
 }
@@ -250,7 +250,7 @@ function fillLists(){
   const roughW=frameW+2*installClearance,roughH=frameH+2*installClearance;
   const status=floorOpenings.includes(o.code)?'otvor v první řadě':'parapetové okno · první řada pokračuje';
   const d=document.createElement('div');d.className='opening';
-  d.innerHTML='<b>'+o.code+'</b> · rám '+(o.axis==='x'?'x':'s')+' '+fmt(o.start)+'–'+fmt(o.end)+' mm <small>rám '+fmt(frameW)+' × '+fmt(frameH)+' mm · hrubý otvor '+fmt(roughW)+' × '+fmt(roughH)+' mm · vůle '+installClearance+' mm/strana · '+status+'</small>';
+  d.innerHTML='<b>'+o.code+'</b> · rám '+(o.axis==='x'?'x':'s')+' '+fmt(o.start)+'–'+fmt(o.end)+' mm <small>rám '+fmt(frameW)+' × '+fmt(frameH)+' mm · hrubý otvor '+fmt(roughW)+' × '+fmt(roughH)+' mm · vůle '+installClearance+' mm/strana · '+status+(o.note?' · '+o.note:'')+'</small>';
   ol.appendChild(d)
  }
 }
