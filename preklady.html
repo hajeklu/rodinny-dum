@@ -63,7 +63,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3.5px;stroke-linejoin:r
 
   <div class="grid">
     <div class="fact"><b>Věnec jako překlad</b><span>HS, FIX a průjezd končí přímo pod věncem. Dvojice IPE 240 se zalije do věnce a nese se s ním. Rohové okno z modelu by bylo stejné: překladem by byl samotný věnec.</span></div>
-    <div class="fact"><b>Překlad SOLBET v 11. řadě</b><span>Malá okna a dveře, i vchod D1. Překlad je vysoký jako jedna řada (240) a leží hned pod věncem. Ve štítech je stejný překlad nad balkonovými dveřmi v 11. řadě štítu, věnec tam není.</span></div>
+    <div class="fact"><b>Překlad SOLBET v 11. řadě</b><span>Malá okna a dveře, i vchod D1. Překlad je vysoký jako jedna řada (240) a leží hned pod věncem. Ve štítech je stejný překlad nad balkonovými dveřmi v 11. řadě štítu. Věnec nadezdívky obchází rohy a ve štítu končí u dveří.</span></div>
     <div class="fact"><b>2× IPE 240 nad O2 a O3</b><span>Široká okna jsou nízko. Nad nimi zůstává zdivo až k věnci, takže potřebují vlastní ocelový překlad v řadě nad oknem.</span></div>
   </div>
 
@@ -84,7 +84,7 @@ svg .halo{paint-order:stroke;stroke:#fbfcfa;stroke-width:3.5px;stroke-linejoin:r
       <div class="note"><strong>Malá okna a dveře:</strong> výkres má rám do +2 200 od podlahy. Hrubý otvor pak končí v 11. řadě a překlad 240 by zajel 25 mm do věnce. Okna 1 000 × 700 zůstanou, jen se posunou o 27 mm níž (parapet 1 473 od podlahy). Hrubý otvor skončí na vršku 10. řady, překlad leží přesně v 11. řadě a dole se tvárnice 7. řady zařízne asi o 14 mm (s podkladním profilem 30 mm asi o 24). Dveře níž jít nemůžou, ty budou vysoké 2 170. Posledních pár centimetrů se dorovná na stavbě: překlad se vždy položí přímo na vršek 10. řady a nic se pod něj nepodkládá. Rozdíl dole vyrovná podkladní profil pod oknem (XPS nebo PUR, 30–50 mm). Ten nese jen okno, takže tam XPS nevadí. S rámem 670 sedí profil 36 mm přímo na vršek 7. řady a nic se neřeže. Okna i dveře se objednají podle zaměření hotových otvorů.</div>
       <div class="note"><strong>O2 a O3:</strong> s rámem 600 leží IPE přes spáru 8. a 9. řady a obě řady se nad oknem řežou. S rámem asi 790 (parapet zůstává 900 kvůli lince) leží IPE celé v 9. řadě a nad ním jsou dvě celé řady. Pod konce IPE dát polštáře jako u HS, potvrdit statikem.</div>
       <div class="note"><strong>Vchod D1:</strong> systémový překlad SOLBET NS 230 v 11. řadě, jako ve výpisu otvorů. Na tuhle stěnu se ale opírají panely průjezdu (asi 27,7 kN/m) a dvě stojky krovu R3 (po asi 17 kN). To ať nese věnec nad překladem: nad dveřmi dostane dole asi 3× Ø 14 místo 2× Ø 12 a hustší třmínky, stejně jako nad okny v téže stěně. Únosnost NS 230 jsem v podkladech SOLBET nenašel, výztuž věnce potvrdí statik.</div>
-      <div class="note"><strong>Štíty v podkroví:</strong> věnec ve štítech nebude, nad balkonovými dveřmi O9–O12 jsou jen překlady SOLBET NS 140. Řady štítu začínají na panelech (+3 175). Hrubý otvor dveří skončí na vršku 10. řady štítu (+5 595) a překlad leží v 11. řadě. Rám 2 200 od podlahy podkroví má nad sebou 75 mm, nebo se objedná rám až 2 275.</div>
+      <div class="note"><strong>Štíty v podkroví:</strong> věnec nadezdívky (4 řady a nad nimi 300) obchází rohy a ve štítech pokračuje až k hrubým otvorům balkonových dveří O9–O12. Přes dveře nejde, nad nimi jsou překlady SOLBET NS 140. Řady štítu začínají na panelech (+3 175). Hrubý otvor dveří skončí na vršku 10. řady štítu (+5 595) a překlad leží v 11. řadě. Rám 2 200 od podlahy podkroví má nad sebou 75 mm, nebo se objedná rám až 2 275.</div>
     </div>
   </section>
   <footer>Pracovní podklad podle Půdorysu 1NP, Půdorysu 2NP, Výškového řezu (varianta A), Stropních panelů a statiky Ing. Khol 04/2024. Řady jsou spočítané z výchozích hodnot Výškového řezu. Po vyzdění první řady je přepočítat podle skutečnosti. Uložení překladů, polštáře a výztuž věnce nad vchodem potvrdí statik. Vazba tvárnic je kreslená orientačně.</footer>
@@ -215,6 +215,10 @@ function wallCard(w,ops){
   for(const [a,b] of spans)R(a,b,RING0,RING1,{fill:'url(#pRing)',stroke:'#7d897f'});
   R(0,w.L,PAN0,PAN1,{fill:'#8e978f',stroke:'#6f7a72'});
   for(const [a,b] of (w.zb||[]))R(a,b,0,RING0,{fill:'url(#pConc)',stroke:'#78837b','stroke-width':1.2});}
+ // Gables: the knee-wall ring beam (4 courses + 300) turns the corners and runs on up to the rough openings of the balcony doors (19. 11.).
+ else{const rs=ops.filter(o=>o.gableDoor).map(o=>o.r),a=Math.min(...rs.map(r=>r.u0)),b=Math.max(...rs.map(r=>r.u1));
+  for(const [p,q] of [[0,a],[b,w.L]])R(p,q,GT(4),CAP,{fill:'url(#pRing)',stroke:'#7d897f'},body);
+  Tx(X(a/2),Y((GT(4)+CAP)/2)+4,'věnec nadezdívky','tiny halo',{'text-anchor':'middle'});}
  
  // Openings, lintels, pads.
  for(const o of ops){
@@ -243,7 +247,7 @@ function wallCard(w,ops){
  // Course numbers on the left, key levels on the right.
  const xl=ML-10,xr=ML+w.L*k+10;
  for(const {c,z0,z1} of courses){if(w.gable&&c>12)break;Tx(xl,Y((z0+z1)/2)+4,String(c),'num',{'text-anchor':'end'});}
- const levels=w.gable?[[PAN1,'vršek panelů'],[3300,'podlaha'],[GT(4),'vršek nadezdívky'],...(mode==='fix'?[[GT(10),'vršek 10. řady'],[GT(11),'vršek překladu']]:[[3300+2200+K.gap,'hrubý otvor']])]
+ const levels=w.gable?[[PAN1,'vršek panelů'],[3300,'podlaha'],[GT(4),'vršek nadezdívky'],[CAP,'vršek věnce nadezdívky'],...(mode==='fix'?[[GT(10),'vršek 10. řady'],[GT(11),'vršek překladu']]:[[3300+2200+K.gap,'hrubý otvor']])]
   :[[0,'deska'],[K.floor,'podlaha'],[T(10),'vršek 10. řady'],[RING0,'spodek věnce'],[RING1,'vršek věnce'],[PAN1,'vršek panelů']];
  let lastY=1e9;for(const [z,t] of levels.sort((a,b)=>a[0]-b[0])){let y=Y(z)+4;if(lastY-y<13)y=lastY-13;lastY=y;
   el('line',{x1:xr-8,x2:xr-2,y1:Y(z),y2:Y(z),stroke:'#6f7a72'},svg);Tx(xr,y,`${lvl(z)} ${t}`,'tiny');}
